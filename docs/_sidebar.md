@@ -1,4 +1,4 @@
-* [🏠 Home](/README.md)
+* [🏠 Home](README.md)
 
 * 📦 Scripts
-  * [🚗 Fast Repair](/scripts/fast_repair.md)
+  * [🚗 Fast Repair](scripts/fast_repair.md)
