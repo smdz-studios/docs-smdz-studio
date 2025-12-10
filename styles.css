@@ -255,7 +255,7 @@ body {
 /* Home hero */
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 2.2rem;
   align-items: center;
   margin-bottom: 2.4rem;
@@ -277,43 +277,12 @@ body {
   font-size: 0.96rem;
   color: var(--text-muted);
   max-width: 32rem;
-  margin: 0 auto;
+  margin: 0.35rem auto 0 auto;
   text-align: center;
-}
-
-.hero-tagline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.16rem 0.6rem;
-  border-radius: 999px;
-  background: #262626;
-  border: 1px solid #3a3a3a;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #c7c7c7;
-  margin-bottom: 0.7rem;
-}
-
-.hero-tagline-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: #509205;
-  box-shadow: 0 0 12px rgba(80, 146, 5, 0.9);
 }
 
 .hero-header-wrapper {
   text-align: center;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.1rem;
-  justify-content: center;
 }
 
 /* Buttons (subtle animations) */
@@ -363,7 +332,7 @@ body {
   font-size: 1rem;
 }
 
-/* Home main logo: big, centered, NO frame, above hero text */
+/* Home main logo: big, centered, no frame */
 .hero-logo-panel {
   position: relative;
   border-radius: 0;
@@ -585,10 +554,6 @@ pre code {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .markdown-section {
     padding-top: 1.8rem;
   }
