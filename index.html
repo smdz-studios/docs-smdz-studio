@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMDZ Studios – FiveM Script Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="description" content="Documentation for FiveM scripts by SMDZ Studios." />
+
+  <!-- Docsify theme (dark) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+
+  <!-- Custom styles -->
+  <style>
+    :root {
+      /* Brand colors for SMDZ Studios */
+      --theme-color: #00e0ff;
+      --base-font-size: 16px;
+      --sidebar-width: 260px;
+      --content-max-width: 980px;
+
+      /* Accent colors */
+      --sidebar-background: #05080d;
+      --sidebar-border-color: #141923;
+      --sidebar-active-background: #111827;
+      --link-color: #00e0ff;
+      --link-color-hover: #4fd1ff;
+
+      /* Code blocks */
+      --code-font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+      --code-inline-background: #111827;
+      --code-theme-background: #020617;
+    }
+
+    body {
+      background-color: #020617;
+    }
+
+    /* Header brand styling */
+    .app-name-link, .app-name {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Logo/title row */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0 1.5rem 1rem 1.5rem;
+      border-bottom: 1px solid var(--sidebar-border-color);
+      margin-bottom: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: radial-gradient(circle at 20% 20%, #00e0ff, #1e293b);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #0b1120;
+    }
+
+    .brand-text-main {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .brand-text-sub {
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    /* Top-right navbar */
+    .github-corner {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      right: 0;
+    }
+
+    /* Improve readability of main content */
+    .markdown-section {
+      max-width: var(--content-max-width);
+    }
+
+    .markdown-section h1 {
+      border: none;
+    }
+
+    .markdown-section h1,
+    .markdown-section h2,
+    .markdown-section h3 {
+      font-weight: 700;
+    }
+
+    /* Callout blocks */
+    .tip, .warning, .danger {
+      border-left-width: 4px !important;
+    }
+
+    .tip {
+      border-left-color: #22c55e !important;
+    }
+    .warning {
+      border-left-color: #eab308 !important;
+    }
+    .danger {
+      border-left-color: #ef4444 !important;
+    }
+
+    /* Simple badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: #020617;
+      border: 1px solid #111827;
+      color: #9ca3af;
+      margin-right: 0.25rem;
+    }
+
+    .badge--stable {
+      border-color: #22c55e;
+      color: #bbf7d0;
+    }
+
+    .badge--beta {
+      border-color: #eab308;
+      color: #facc15;
+    }
+
+    .badge--legacy {
+      border-color: #6b7280;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading SMDZ Studios documentation...</div>
+
+  <!-- Docsify core -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-lua.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+  <script>
+    window.$docsify = {
+      name: 'SMDZ Studios',
+      repo: '', // Optional: add your GitHub repo URL here
+      loadSidebar: true,
+      subMaxLevel: 3,
+      autoHeader: true,
+      coverpage: false,
+      themeColor: '#00e0ff',
+      maxLevel: 4,
+      ga: '',
+
+      search: {
+        maxAge: 86400000, // 1 day cache
+        paths: 'auto',
+        placeholder: 'Search scripts...',
+        noData: 'No results for this query.',
+        depth: 3
+      },
+
+      // Custom sidebar header with brand
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+
+      plugins: [
+        function(hook, vm) {
+          // Inject brand header into sidebar
+          hook.afterEach(function(html, next) {
+            next(html);
+          });
+
+          hook.doneEach(function() {
+            var sidebar = document.querySelector('.sidebar-nav');
+            if (sidebar && !document.querySelector('.brand-header')) {
+              var brand = document.createElement('div');
+              brand.className = 'brand-header';
+              brand.innerHTML = '' +
+                '<div class="brand-logo">S</div>' +
+                '<div>' +
+                  '<div class="brand-text-main">SMDZ STUDIOS</div>' +
+                  '<div class="brand-text-sub">FiveM Scripts & Utilities</div>' +
+                '</div>';
+              sidebar.parentNode.insertBefore(brand, sidebar);
+            }
+          });
+        }
+      ]
+    };
+  </script>
+</body>
+</html>
