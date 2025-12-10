@@ -8,7 +8,7 @@ window.SMDZ_BANNER_CONFIG = {
 
   // Type controls the color style via CSS:
   // "info" | "alert" | "sale" | "maintenance"
-  type: "alert",
+  type: "info",
 
   // HTML is allowed here (for links, bold text, icons, etc.)
   text: `

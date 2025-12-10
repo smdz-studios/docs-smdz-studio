@@ -42,23 +42,7 @@
     ↓
   </button>
 
-  <!-- Docsify core -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-
-  <!-- Plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-lua.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-
-  <!-- AOS (Animate On Scroll) -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- Protected banner configuration (edit only in this file) -->
-  <script src="banner-config.js"></script>
-
+  <!-- Docsify config must be defined BEFORE loading docsify.min.js -->
   <script>
     window.$docsify = {
       name: 'SMDZ Studios',
@@ -135,37 +119,59 @@
         }
       ]
     };
+  </script>
 
-    // Scroll toggle button logic
+  <!-- Docsify core (must come AFTER window.$docsify is defined) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+  <!-- Official Docsify plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+
+  <!-- Prism languages -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-lua.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+
+  <!-- AOS (Animate On Scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Protected banner configuration (edit only in this file) -->
+  <script src="banner-config.js"></script>
+
+  <script>
+    // Scroll toggle button logic + banner initialization
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('scroll-toggle-btn');
-      if (!btn) return;
-
-      function isAtBottom() {
-        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
-      }
-
-      function updateButtonState() {
-        if (isAtBottom()) {
-          btn.textContent = '↑';
-          btn.setAttribute('data-direction', 'up');
-        } else {
-          btn.textContent = '↓';
-          btn.setAttribute('data-direction', 'down');
+      if (btn) {
+        function isAtBottom() {
+          return window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
         }
-      }
 
-      btn.addEventListener('click', function () {
-        if (btn.getAttribute('data-direction') === 'up') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        function updateButtonState() {
+          if (isAtBottom()) {
+            btn.textContent = '↑';
+            btn.setAttribute('data-direction', 'up');
+          } else {
+            btn.textContent = '↓';
+            btn.setAttribute('data-direction', 'down');
+          }
         }
-      });
 
-      window.addEventListener('scroll', updateButtonState);
-      window.addEventListener('resize', updateButtonState);
-      updateButtonState();
+        btn.addEventListener('click', function () {
+          if (btn.getAttribute('data-direction') === 'up') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+          }
+        });
+
+        window.addEventListener('scroll', updateButtonState);
+        window.addEventListener('resize', updateButtonState);
+        updateButtonState();
+      }
 
       // Initialize announcement bar from protected config
       if (window.SMDZ_BANNER_CONFIG) {
