@@ -194,7 +194,7 @@ List common problems and solutions.
 
 ---
 
-## 🔄 Updates & Changelog
+## 🔄 Updates
 
 Describe how to update safely:
 
@@ -204,7 +204,7 @@ Describe how to update safely:
 4. Restore or merge your configuration changes.
 5. Start the resource and test.
 
-Example changelog format:
+Example internal notes:
 
 ```text
 v1.0.1
@@ -213,13 +213,15 @@ v1.0.1
 - Minor performance optimizations
 ```
 
+(You can keep a detailed changelog in your own repo or release notes; this docs site focuses on usage.)
+
 ---
 
 ## 📌 Notes & Recommendations
 
 - Test new versions on a **test server** before updating your main server.
-- Keep a **change log** of your own modifications.
-- Consider using a **version control system** (like Git) for your custom edits.
+- Keep a **backup** of your configs and custom code.
+- Consider using a **Git repository** for local changes.
 
 ---
 

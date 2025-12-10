@@ -11,14 +11,16 @@ This section lists all **SMDZ Studios** scripts that have dedicated documentatio
 
 ## 📂 Script Index
 
-Below is an example of how to structure your script list.
-
 ### Released Scripts
 
 - **[Example Script Template](example-script.md)** – Generic template for any new script.
-- *(Add real script pages here as you create them)*
+- *(Add real script pages here as you create them, for example:)*  
+  - **[SMDZ Vehicle Shop](smdz_vehicleshop.md)** – Advanced vehicle shop system.  
+  - **[SMDZ Dispatch](smdz_dispatch.md)** – Dispatch and radio communications.
 
 ### Planned / WIP Scripts
+
+Use this area to note ideas or upcoming releases:
 
 - `smdz_police_tools` – Planned police utilities and tools.
 - `smdz_vehicleshop` – Planned advanced vehicle shop.
@@ -41,4 +43,4 @@ Below is an example of how to structure your script list.
 
 5. (Optional) Add a direct link in `/_sidebar.md` under the **Scripts** section.
 
-This keeps your documentation **organized**, **consistent**, and easy to maintain.
+This keeps your SMDZ documentation **organized**, **coherent**, and easy to grow as your script library expands.
