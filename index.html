@@ -2,18 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SMDZ Studios – FiveM Script Documentation</title>
+  <title>SMDZ STUDIOS – FIVEM SCRIPT DOCUMENTATION</title>
+
+  <!-- SEO meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta name="description" content="Documentation for FiveM scripts by SMDZ Studios." />
+  <meta name="description" content="Dark-mode technical documentation for SMDZ Studios FiveM scripts: installation, configuration, usage guides and developer references." />
+  <meta name="keywords" content="SMDZ Studios, FiveM scripts, FiveM resources, GTA RP, ESX, QBCore, script documentation, installation guide, configuration, exports, events" />
+  <meta name="author" content="SMDZ Studios" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SMDZ STUDIOS – FIVEM SCRIPT DOCUMENTATION" />
+  <meta property="og:description" content="Official documentation for SMDZ Studios FiveM resources. Fast, readable, dark-mode docs for your server." />
+  <meta property="og:image" content="https://smdz-docs.example.com/assets/logo.png" />
+  <meta property="og:url" content="https://smdz-docs.example.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SMDZ STUDIOS – FIVEM SCRIPT DOCUMENTATION" />
+  <meta name="twitter:description" content="Dark-mode documentation for SMDZ Studios FiveM scripts." />
+  <meta name="twitter:image" content="https://smdz-docs.example.com/assets/logo.png" />
 
   <!-- Docsify theme (dark) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Global announcement bar – content & style controlled from banner-config.js -->
+  <div id="announcement-bar" class="announcement-bar">
+    <span id="announcement-text" class="announcement-text"></span>
+  </div>
+
   <div id="app">Loading SMDZ Studios documentation...</div>
+
+  <!-- Scroll button (bottom-right) -->
+  <button id="scroll-toggle-btn" class="scroll-toggle-btn" type="button">
+    ↓
+  </button>
 
   <!-- Docsify core -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
@@ -26,16 +53,23 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
+  <!-- AOS (Animate On Scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Protected banner configuration (edit only in this file) -->
+  <script src="banner-config.js"></script>
+
   <script>
     window.$docsify = {
       name: 'SMDZ Studios',
-      repo: '', // Optional: add your GitHub repo URL here
+      repo: '',
       loadSidebar: true,
       subMaxLevel: 3,
       autoHeader: true,
       coverpage: false,
-      themeColor: '#5865F2',
+      themeColor: '#509205',
       maxLevel: 4,
+      homepage: 'home.md',
 
       search: {
         maxAge: 86400000,
@@ -50,29 +84,109 @@
       },
 
       plugins: [
-        function(hook, vm) {
-          // Inject brand header with big logo into sidebar
-          hook.doneEach(function() {
+        // Sidebar brand header with bigger logo and "MENU"
+        function (hook, vm) {
+          hook.doneEach(function () {
             var sidebarParent = document.querySelector('.sidebar');
             var nav = document.querySelector('.sidebar-nav');
             if (sidebarParent && nav && !document.querySelector('.brand-header')) {
               var header = document.createElement('div');
               header.className = 'brand-header';
               header.innerHTML =
-                '<div class="brand-logo-wrapper">' +
+                '<div class="sidebar-logo-wrapper">' +
                   '<img src="assets/logo.png" alt="SMDZ Studios Logo" />' +
                 '</div>' +
-                '<div class="brand-title-block">' +
-                  '<div class="brand-text-main">SMDZ STUDIOS</div>' +
-                  '<div class="brand-text-sub">FiveM Scripts & Utilities</div>' +
-                  '<div class="brand-text-tagline">Powered by Discord‑style dark UI</div>' +
-                '</div>';
+                '<div class="sidebar-menu-label"><strong>MENU</strong></div>';
               sidebarParent.insertBefore(header, sidebarParent.firstChild);
+            }
+          });
+        },
+        // Global footer on every page
+        function (hook, vm) {
+          hook.afterEach(function (html, next) {
+            var footerHtml =
+              '<div class="smdz-footer">' +
+                '© 2025 - 2026 SMDZ Studios · All rights reserved · Not affiliated with Rockstar Games.' +
+              '</div>';
+            next(html + footerHtml);
+          });
+        },
+        // Add AOS attributes to headings and paragraphs on ALL pages
+        function (hook, vm) {
+          hook.afterEach(function (html, next) {
+            var processed = html
+              .replace(/<h1(?![^>]*data-aos)/g, '<h1 data-aos="fade-up"')
+              .replace(/<h2(?![^>]*data-aos)/g, '<h2 data-aos="fade-up" data-aos-delay="60"')
+              .replace(/<h3(?![^>]*data-aos)/g, '<h3 data-aos="fade-up" data-aos-delay="80"')
+              .replace(/<p(?![^>]*data-aos)/g, '<p data-aos="fade-up" data-aos-delay="100"');
+            next(processed);
+          });
+
+          hook.doneEach(function () {
+            if (window.AOS) {
+              AOS.init({
+                duration: 450,
+                easing: 'ease-out-quart',
+                once: false,
+                offset: 40
+              });
             }
           });
         }
       ]
     };
+
+    // Scroll toggle button logic
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.getElementById('scroll-toggle-btn');
+      if (!btn) return;
+
+      function isAtBottom() {
+        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
+      }
+
+      function updateButtonState() {
+        if (isAtBottom()) {
+          btn.textContent = '↑';
+          btn.setAttribute('data-direction', 'up');
+        } else {
+          btn.textContent = '↓';
+          btn.setAttribute('data-direction', 'down');
+        }
+      }
+
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('data-direction') === 'up') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+      });
+
+      window.addEventListener('scroll', updateButtonState);
+      window.addEventListener('resize', updateButtonState);
+      updateButtonState();
+
+      // Initialize announcement bar from protected config
+      if (window.SMDZ_BANNER_CONFIG) {
+        var bar = document.getElementById('announcement-bar');
+        var textEl = document.getElementById('announcement-text');
+        if (bar && textEl) {
+          var cfg = window.SMDZ_BANNER_CONFIG;
+
+          textEl.innerHTML = cfg.text;
+
+          bar.classList.add('announcement-type-' + cfg.type);
+          if (!cfg.enabled) {
+            bar.style.display = 'none';
+          } else {
+            requestAnimationFrame(function () {
+              bar.classList.add('announcement-visible');
+            });
+          }
+        }
+      }
+    });
   </script>
 </body>
 </html>

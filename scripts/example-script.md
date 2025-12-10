@@ -1,15 +1,29 @@
-# Example Script – Template
+# Example Script – Template (Ready to Fill)
 
-> Use this file as a template when documenting a new SMDZ Studios script.  
-> Duplicate this file, rename it (for example: `smdz_cars.md`), and replace the placeholder content.
+<div align="center" style="margin-bottom: 1.5rem;">
+  <!-- Replace the src with your real showcase video URL (YouTube, etc.) -->
+  <iframe
+    width="640"
+    height="360"
+    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    title="smdz_example showcase"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="max-width: 100%; border-radius: 12px;"
+  ></iframe>
+</div>
+
+> This file is a **ready-to-fill template** for a new SMDZ Studios script.  
+> In future chats, you can paste this file and I will help you fill each section with real data for your script.
 
 ---
 
 ## 🧩 Overview
 
-- **Name:** `smdz_example`
+- **Name:** `smdz_example` <!-- change to your resource name -->
 - **Author:** SMDZ Studios
-- **Type:** [Framework: ESX / QBCore / Standalone] – choose one
+- **Type:** ESX / QBCore / Standalone <!-- choose one -->
 - **Version:** `1.0.0`
 - **Status:** `Stable`  
 
@@ -20,33 +34,36 @@ Badges (optional):
 - <span class="badge badge--legacy">Legacy</span>
 
 **Short description:**  
-A short, clear description of what this script does and why it exists.  
-Example: “Lightweight example script demonstrating how SMDZ Studios documents FiveM resources.”
+_Example_: “Lightweight example script demonstrating how SMDZ Studios documents FiveM resources.”
+
+Replace this with a **1–2 sentence** description of what the script does.
 
 ---
 
 ## 📦 Requirements
 
-List all dependencies clearly:
+Fill this with the real dependencies of your script.
 
 - **FiveM server:** latest recommended build.
-- **Framework:** ESX / QBCore / Standalone (choose and describe).
-- **Optional dependencies:**
-  - `mysql-async` or `oxmysql`
-  - `es_extended` (for ESX)
-  - Any required assets (models, sounds, UI, etc.)
-
-If the script is **standalone**, specify that no framework is required.
+- **Framework:** ESX / QBCore / Standalone (pick the one you use).
+- **Dependencies (framework / database / extras):**
+  - `es_extended` / `qb-core` / none
+  - `oxmysql` or `mysql-async`
+  - Other scripts (e.g. target system, inventory, UI, etc.)
 
 ---
 
 ## 📥 Installation
 
-1. Download the resource:
-   - From Tebex / GitHub / direct link.  
-     Example: `smdz_example.zip`
-2. Extract the folder into your FiveM `resources` directory:
-   - Example path: `resources/[smdz]/smdz_example`
+Describe the exact installation steps.
+
+1. Download the resource: `smdz_example.zip` <!-- change name if needed -->
+2. Extract the folder into your FiveM `resources` directory, for example:
+
+```text
+resources/[smdz]/smdz_example
+```
+
 3. Add the resource to your `server.cfg`:
 
 ```bash
@@ -54,23 +71,19 @@ If the script is **standalone**, specify that no framework is required.
 ensure smdz_example
 ```
 
-4. Restart your server or start the resource from the console:
+4. Restart your server or start the resource manually:
 
 ```bash
 start smdz_example
 ```
 
-5. Check your server console for errors or warnings.
-
-> Tip: Always keep a backup of your configuration files before updating.
+5. Check the server console for errors.
 
 ---
 
 ## ⚙️ Configuration
 
-Describe the main configuration file(s), usually `config.lua` or `config.json`.
-
-Example `config.lua`:
+Explain your main configuration file(s), usually `config.lua`, `config.json` or similar.
 
 ```lua
 Config = {}
@@ -86,74 +99,75 @@ Config.ExampleValue = 100
 Config.DiscordWebhook = ''
 ```
 
-Explain each important option:
+For each important option, add a short explanation:
 
 - `Config.Locale` – language key, e.g. `en`, `es`, `fr`.
-- `Config.Debug` – when `true`, prints extra information to the console.
-- `Config.ExampleValue` – short explanation of what this value does.
+- `Config.Debug` – enables extra debug prints when `true`.
+- `Config.ExampleValue` – explain what changing this value does.
+- `Config.DiscordWebhook` – webhook URL for logs (if used).
+
+When you bring this template in another chat, tell me your real config and I will help you rewrite this section.
 
 ---
 
 ## 🎮 Usage
 
-Explain how the script is used in‑game:
-
-- **Commands:** what players or admins can type.
-- **Keybinds:** default key mappings.
-- **Menus / UI:** how to open and navigate any menus.
+Describe how staff and players use the script.
 
 ### Commands
 
-Example:
+Fill this table with real commands:
 
-| Command            | Description                                  | Permission / Notes              |
-|--------------------|----------------------------------------------|---------------------------------|
-| `/example`         | Opens the main example menu.                 | Everyone                        |
-| `/exampleadmin`    | Admin‑only command for testing features.     | Requires specific ACE / group   |
+| Command             | Description                                  | Permission / Notes              |
+|---------------------|----------------------------------------------|---------------------------------|
+| `/example`          | Opens the main example menu.                 | Everyone                        |
+| `/exampleadmin`     | Admin‑only test command.                     | Requires admin/ACE              |
 
 ### Keybinds
 
-If the script uses keybinds, mention how to change them:
+- Default key: `F5` – opens main menu. <!-- change if needed -->
+- How to change: for example, in `config.lua` under `Config.Keybind`.
 
-- Default key: `F5` – opens the main menu.
-- Configurable in: `config.lua` under `Config.Keybind`.
+### UI / Menus
+
+Explain any menus, markers, or UI elements players will see.
 
 ---
 
 ## 🔌 Events & Exports (Developers)
 
-This section is for **server owners and developers** who want to integrate your script with other resources.
+Use this section for server owners and developers who integrate your script with others.
 
 ### Server Events
 
-Example:
-
 ```lua
--- Triggered when a player uses the example feature
+-- Example: triggered when a player uses the example feature
 AddEventHandler('smdz_example:usedFeature', function(playerId, data)
     print(('[smdz_example] Player %s used %s'):format(playerId, data.feature))
 end)
 ```
 
-Document all relevant events:
+Document all of your server events in a table:
 
-| Event name                         | Side    | Description                                  |
-|------------------------------------|---------|----------------------------------------------|
-| `smdz_example:usedFeature`         | Server  | Fired when a player uses the example feature |
+| Event name                 | Parameters                       | Description                                  |
+|----------------------------|----------------------------------|----------------------------------------------|
+| `smdz_example:usedFeature` | `playerId`, `data`              | Fired when player uses the example feature   |
 
 ### Client Events
 
-Example:
-
 ```lua
 RegisterNetEvent('smdz_example:notify', function(message)
-    ESX.ShowNotification(message)
+    -- Show a notification using your framework or custom UI
 end)
 ```
 
-### Exports
+List client events the same way:
 
-Example:
+| Event name            | Parameters          | Description                      |
+|-----------------------|---------------------|----------------------------------|
+| `smdz_example:notify` | `message` (string)  | Shows a notification to player  |
+
+### Exports
 
 ```lua
 -- client.lua
@@ -163,76 +177,69 @@ local isActive = exports['smdz_example']:IsFeatureActive(playerId)
 exports['smdz_example']:GiveReward(playerId, amount)
 ```
 
-Document each export:
+Describe each export:
 
 | Export name       | Side    | Parameters                | Returns         | Description                         |
 |-------------------|---------|---------------------------|-----------------|-------------------------------------|
 | `IsFeatureActive` | Client  | `playerId` (number)       | `bool`          | Checks if feature is active.        |
 | `GiveReward`      | Server  | `playerId`, `amount`      | `nil`           | Gives a custom reward to a player.  |
 
+When you have your real events/exports ready, paste them in a future chat and I will generate these tables for you.
+
 ---
 
 ## 🧪 Debugging & Common Issues
 
-List common problems and solutions.
+List common problems you expect users to hit and how to solve them.
 
-**Example issues:**
+**Examples you can adapt:**
 
 1. **Resource does not start**
-   - Check console for errors.
-   - Make sure you did not rename the folder incorrectly.
-   - Confirm `ensure smdz_example` is present in `server.cfg`.
+   - Check console for red errors.
+   - Make sure the folder name matches exactly (for example `smdz_example`).
+   - Confirm `ensure smdz_example` is in `server.cfg`.
 
 2. **Database errors**
-   - Confirm your database credentials.
-   - Make sure required tables are created (include SQL if needed).
-   - Check if you use `oxmysql` vs `mysql-async` and configure accordingly.
+   - Check connection credentials.
+   - Verify that migration/SQL file has been executed.
+   - Confirm you selected the correct adapter (`oxmysql` / `mysql-async`).
 
 3. **Permissions not working**
-   - Verify ACE permissions or framework group checks.
-   - Confirm that admin commands are restricted correctly.
+   - Verify ACE groups or framework perms.
+   - Check that admin commands are not available to normal users.
 
 ---
 
 ## 🔄 Updates
 
-Describe how to update safely:
+Explain how to safely update the script:
 
-1. Backup your existing `config.lua` and any customized files.
+1. Backup your current `config.lua` and any modified files.
 2. Stop the resource.
-3. Replace the old script folder with the new version.
-4. Restore or merge your configuration changes.
-5. Start the resource and test.
+3. Replace the old resource folder with the new version.
+4. Re‑apply or merge your configuration changes.
+5. Start the resource and test everything.
 
-Example internal notes:
-
-```text
-v1.0.1
-- Fixed permission issue with /exampleadmin
-- Improved debug logging
-- Minor performance optimizations
-```
-
-(You can keep a detailed changelog in your own repo or release notes; this docs site focuses on usage.)
+You can also link to release notes if you keep them somewhere else.
 
 ---
 
 ## 📌 Notes & Recommendations
 
-- Test new versions on a **test server** before updating your main server.
-- Keep a **backup** of your configs and custom code.
-- Consider using a **Git repository** for local changes.
+- Always test new versions on a **test server** before pushing to production.
+- Keep backups of configs and custom changes.
+- Consider using **Git** to track local modifications to the resource.
 
 ---
 
 ## 📬 Support
 
-When requesting support for this script, provide:
+When users ask for support, request at least:
 
-- Script name and version (`smdz_example v1.0.0`).
+- Script name and version (for example: `smdz_example v1.0.0`).
 - Framework and version (ESX / QBCore / Standalone).
-- Server artifacts version.
-- Relevant console errors.
-- Steps to reproduce the problem.
+- FiveM artifacts/build version.
+- Steps to reproduce the issue.
+- Relevant console/server logs.
 
-This helps resolve issues **faster** and more **accurately**.
+In future chats, you can paste this template and tell me the details of a specific script; I’ll turn it into a complete, polished documentation page for that resource.

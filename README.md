@@ -16,7 +16,7 @@
 
 <p class="hero-subtitle">
   All official guides for SMDZ Studios FiveM scripts, in one place.
-  Install, configure, and extend your server with clean, well organized docs – built with a Discord‑style dark UI and powered by Docsify.
+  Install, configure, and extend your server with clean, well organized docs – built on a dark background and a green accent style.
 </p>
 
 <div class="hero-actions">
