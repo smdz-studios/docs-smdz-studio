@@ -34,7 +34,7 @@
 
 <div class="hero-logo-panel">
   <div class="hero-logo-inner">
-    <!-- Big logo from assets/logo.png -->
+    <!-- Big centered logo -->
     <img src="assets/logo.png" alt="SMDZ Studios Logo" />
   </div>
   <div class="hero-logo-caption">
