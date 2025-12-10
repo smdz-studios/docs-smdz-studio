@@ -1,7 +1,6 @@
-# SMDZ STUDIOS – FIVEM SCRIPT DOCS
+# 🚀 SMDZ STUDIOS – FIVEM SCRIPT DOCS
 
-<!-- MAIN BIG LOGO, CENTERED, NO CAPTION -->
-<div class="hero-logo-panel" data-aos="fade-up" data-aos-delay="80">
+<div class="hero-logo-panel">
   <div class="hero-logo-inner">
     <img src="assets/logo.png" alt="SMDZ Studios Logo" />
   </div>
@@ -9,7 +8,7 @@
 
 <div class="hero">
 
-<div data-aos="fade-up">
+<div>
 
 <div class="hero-header-wrapper">
   <div class="hero-tagline">
@@ -17,17 +16,16 @@
     FiveM scripts by SMDZ Studios
   </div>
 
-  <h1 class="hero-main-title" data-aos="fade-up" data-aos-delay="80">
+  <h1 class="hero-main-title">
     CLEAN DOCUMENTATION FOR SERIOUS SERVERS
   </h1>
 
-  <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="150">
-    Dark-mode documentation with a green accent, focused on helping you install and manage SMDZ Studios scripts quickly.
+  <p class="hero-subtitle">
+    A focused, dark‑mode documentation hub where you can install, configure and maintain SMDZ Studios scripts with confidence — without endless scrolling or confusing walls of text.
   </p>
 </div>
 
-<!-- SINGLE BUTTON TO STORE -->
-<div class="hero-actions" data-aos="fade-up" data-aos-delay="220">
+<div class="hero-actions">
   <a href="https://smdz-studios.tebex.io/" class="btn-primary" target="_blank" rel="noopener">
     <span class="btn-icon">🛒</span>
     Visit the store
@@ -40,61 +38,81 @@
 
 ---
 
-## ⚡ Quick start
+## ⚡ QUICK START
 
-<div data-aos="fade-up">
-  <ol>
-    <li>Open <strong><a href="scripts/README.md">Scripts Overview</a></strong>.</li>
-    <li>Select the script you are installing.</li>
-    <li>Follow the sections: <strong>Requirements</strong>, <strong>Installation</strong>, <strong>Configuration</strong>, and <strong>Usage</strong>.</li>
-  </ol>
+If you just purchased a script and want to get it running as fast as possible, follow this path:
+
+1. Open **[Scripts Overview](scripts/README.md)**.  
+2. Click on the script you are installing.  
+3. Follow the sections in order:
+
+   - **Requirements** – what your server needs to have installed.  
+   - **Installation** – where to place the resource and how to `ensure` it.  
+   - **Configuration** – how to adapt the script to your framework and preferences.  
+   - **Usage** – commands, keybinds and how your staff/players will interact with it.
+
+A minimal example in your `server.cfg` could look like:
 
 ```bash
 ## SMDZ Studios resources
 ensure smdz_example
 # ensure smdz_your_script_here
 ```
+
+---
+
+## 🧭 HOW THIS DOCS SITE IS ORGANIZED
+
+Think of this documentation as a compact, well‑structured hub:
+
+<div class="feature-row">
+  <div class="feature-card">
+    <h3>🏠 Home</h3>
+    <p>
+      High‑level overview, quick start guide and links to the most important sections.
+      If you are lost, start here.
+    </p>
+  </div>
+  <div class="feature-card">
+    <h3>📚 Scripts</h3>
+    <p>
+      One dedicated page per script with everything you need:
+      installation, configuration, usage examples, events and exports.
+    </p>
+  </div>
+  <div class="feature-card">
+    <h3>🆘 Support & Guides</h3>
+    <p>
+      Practical guides for common issues, Asset Escrow explanations and how to open an effective support ticket.
+    </p>
+  </div>
 </div>
 
 ---
 
-## 🧭 How this docs site is organized
+## 🧪 ADDING A NEW SMDZ SCRIPT
 
-<div class="feature-row" data-aos="fade-up">
-  <div class="feature-card">
-    <h3>Home</h3>
-    <p>Short overview and quick links. You are here.</p>
-  </div>
-  <div class="feature-card">
-    <h3>Scripts</h3>
-    <p>One page per script with installation, configuration, usage and developer info.</p>
-  </div>
-  <div class="feature-card">
-    <h3>Search</h3>
-    <p>Use the search bar in the sidebar to jump directly to any script or keyword.</p>
-  </div>
-</div>
+Whenever you release or install a new SMDZ script and want to document it properly, follow this workflow:
 
----
+1. Duplicate the template:
 
-## 🧪 Adding a new SMDZ script
+   ```text
+   scripts/example-script.md
+   ```
 
-<div data-aos="fade-up">
-  <ol>
-    <li>Duplicate <code>scripts/example-script.md</code>.</li>
-    <li>Rename it to something like <code>scripts/smdz_myscript.md</code>.</li>
-    <li>Fill the template with:
-      <ul>
-        <li>Overview &amp; Requirements</li>
-        <li>Installation &amp; Configuration</li>
-        <li>Usage (commands, keybinds)</li>
-        <li>Events &amp; exports</li>
-      </ul>
-    </li>
-    <li>Add the file to <strong><a href="scripts/README.md">Scripts Overview</a></strong> and (optionally) to the sidebar.</li>
-  </ol>
+2. Rename it to match your script name, for example:
 
-  <p>
-    When you are ready, you can paste the template into a future chat and I will help you fill every section with real details for that script.
-  </p>
-</div>
+   - `scripts/smdz_vehicleshop.md`  
+   - `scripts/smdz_dispatch.md`
+
+3. Fill in the sections:
+
+   - **Overview & Requirements** – what the script does and what it depends on.  
+   - **Installation & Configuration** – exact steps and key options.  
+   - **Usage** – commands, keybinds, admin features and player flow.  
+   - **Events & Exports** – for owners and developers who want to integrate it with other systems.
+
+4. Add the file to **[Scripts Overview](scripts/README.md)** and, if you want quick access from the menu, to `_sidebar.md`.
+
+💡 **Tip:**  
+In a future chat you can paste your new `scripts/smdz_myscript.md` here and I can help you refine the wording, explain options clearly and structure the page so it feels as polished as the rest of the docs.

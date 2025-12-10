@@ -23,9 +23,6 @@
   <!-- Docsify theme (dark) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
 
-  <!-- AOS (Animate On Scroll) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -35,7 +32,18 @@
     <span id="announcement-text" class="announcement-text"></span>
   </div>
 
-  <div id="app">Loading SMDZ Studios documentation...</div>
+  <!-- Page loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="page-loader-inner">
+      <div class="page-loader-logo">
+        <img src="assets/logo.png" alt="SMDZ Studios Logo" />
+      </div>
+      <div class="page-loader-spinner"></div>
+      <p class="page-loader-text">Preparing SMDZ Studios docs…</p>
+    </div>
+  </div>
+
+  <div id="app" class="app-hidden">Loading SMDZ Studios documentation...</div>
 
   <!-- Scroll button (bottom-right) -->
   <button id="scroll-toggle-btn" class="scroll-toggle-btn" type="button">
@@ -63,10 +71,10 @@
         depth: 3
       },
 
-    alias: {
-      '/_sidebar.md': 'https://docs.smdz-studios.com/_sidebar.md',
-      '/.*/_sidebar.md': 'https://docs.smdz-studios.com/_sidebar.md'
-    },
+      alias: {
+        '/_sidebar.md': '/_sidebar.md',
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
 
       plugins: [
         // Sidebar brand header with bigger logo and "MENU"
@@ -95,28 +103,6 @@
               '</div>';
             next(html + footerHtml);
           });
-        },
-        // Add AOS attributes to headings and paragraphs on ALL pages
-        function (hook, vm) {
-          hook.afterEach(function (html, next) {
-            var processed = html
-              .replace(/<h1(?![^>]*data-aos)/g, '<h1 data-aos="fade-up"')
-              .replace(/<h2(?![^>]*data-aos)/g, '<h2 data-aos="fade-up" data-aos-delay="60"')
-              .replace(/<h3(?![^>]*data-aos)/g, '<h3 data-aos="fade-up" data-aos-delay="80"')
-              .replace(/<p(?![^>]*data-aos)/g, '<p data-aos="fade-up" data-aos-delay="100"');
-            next(processed);
-          });
-
-          hook.doneEach(function () {
-            if (window.AOS) {
-              AOS.init({
-                duration: 450,
-                easing: 'ease-out-quart',
-                once: false,
-                offset: 40
-              });
-            }
-          });
         }
       ]
     };
@@ -136,15 +122,16 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
-  <!-- AOS (Animate On Scroll) -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
   <!-- Protected banner configuration -->
   <script src="banner-config.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var btn = document.getElementById('scroll-toggle-btn');
+      var app = document.getElementById('app');
+      var loader = document.getElementById('page-loader');
+
+      // Scroll button logic
       if (btn) {
         function isAtBottom() {
           return window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
@@ -192,6 +179,16 @@
           }
         }
       }
+
+      // Simple page loader: keep loader visible ~3s, then show Docsify
+      setTimeout(function () {
+        if (loader) {
+          loader.classList.add('page-loader-hidden');
+        }
+        if (app) {
+          app.classList.remove('app-hidden');
+        }
+      }, 3000);
     });
   </script>
 </body>
