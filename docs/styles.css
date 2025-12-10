@@ -1,0 +1,172 @@
+/* ======= Global dark theme tweaks ======= */
+
+:root {
+  --smdz-bg: #181818;
+  --smdz-bg-alt: #202020;
+  --smdz-border: #2a2a2a;
+  --smdz-text: #f3f3f3;
+  --smdz-muted: #9fa3b5;
+  --smdz-accent: #ffcc00;
+  --smdz-accent-soft: rgba(255, 204, 0, 0.15);
+}
+
+body {
+  background-color: var(--smdz-bg);
+}
+
+/* Sidebar */
+
+.sidebar {
+  background-color: #151515;
+  border-right: 1px solid var(--smdz-border);
+}
+
+.app-name-link {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* Content width */
+
+.markdown-section {
+  max-width: 960px;
+}
+
+/* ======= Home / README layout ======= */
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-logo {
+  margin-bottom: 1.5rem;
+}
+
+.hero-logo img {
+  max-width: 260px;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  color: var(--smdz-muted);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--smdz-accent-soft);
+  color: var(--smdz-accent);
+  margin-bottom: 1rem;
+}
+
+/* Script grid */
+
+.scripts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.script-card {
+  display: block;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(135deg, #1f1f1f, #191919);
+  border: 1px solid var(--smdz-border);
+  text-decoration: none;
+  color: var(--smdz-text);
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s;
+}
+
+.script-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border-color: var(--smdz-accent);
+}
+
+.script-card-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.script-card-pill {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--smdz-accent);
+}
+
+.script-card-body {
+  font-size: 0.85rem;
+  color: var(--smdz-muted);
+  margin-top: 0.35rem;
+}
+
+/* Sections on home */
+
+.home-section-title {
+  font-size: 1.15rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.home-section-text {
+  font-size: 0.95rem;
+  color: var(--smdz-muted);
+}
+
+/* Links */
+
+.markdown-section a {
+  color: var(--smdz-accent);
+}
+
+/* Video wrapper (Fast Repair showcase) */
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 1rem auto 2rem auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.video-wrapper::before {
+  content: "";
+  display: block;
+  padding-bottom: 56.25%; /* 16:9 */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Small footer */
+
+.smdz-footer {
+  margin-top: 3rem;
+  font-size: 0.75rem;
+  color: var(--smdz-muted);
+  text-align: center;
+  border-top: 1px solid var(--smdz-border);
+  padding-top: 0.75rem;
+}

@@ -2,44 +2,30 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>SMDZ Studios · Documentation</title>
+    <title>SMDZ Studios · Docs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- Tema base Docsify (oscuro) -->
+
+    <!-- Tema base oscuro de Docsify -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/themes/dark.css">
-    
+
     <!-- Estilos personalizados SMDZ -->
-    <link rel="stylesheet" href="style.css"> <!-- Cambiado de styles.css a style.css -->
-    
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div id="app"></div>
 
     <script>
       window.$docsify = {
-        name: 'SMDZ Studios',
-        repo: 'tu-usuario/tu-repo', // Agrega tu repositorio GitHub si lo tienes
+        name: 'SMDZ Studios · Scripts',
         loadSidebar: true,
-        subMaxLevel: 3, // Aumentado para mejor organización
-        auto2top: true, // Auto scroll al inicio al cambiar página
-        search: {
-          placeholder: 'Buscar en documentación...',
-          noData: 'No se encontraron resultados',
-          depth: 3
-        }
+        subMaxLevel: 2,
+        search: 'auto'
       }
     </script>
 
     <!-- Docsify core -->
     <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-    
-    <!-- Plugin de búsqueda -->
+    <!-- Plugin búsqueda -->
     <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    
-    <!-- Plugin de zoom de imágenes -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   </body>
 </html>
