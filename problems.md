@@ -1,24 +1,12 @@
-# COMMON PROBLEMS & TROUBLESHOOTING:
+# 🚀 **COMMON PROBLEMS & TROUBLESHOOTING:**
 
 Use this page as a **lookup guide**.  
-Scan the **index** first, then jump directly to the section that matches what you see in your console or in‑game.
+Search the **index** first, then jump directly to the section that matches what you see in your console or in‑game.
 
 ---
 
-## 🔍 QUICK INDEX:
 
-- [SCRIPT WON’T START / CRASHES ON STARTUP](#🚀-script-won-t-start--crashes-on-startup)
-- [DATABASE & SQL ISSUES](#🗄-database--sql-issues)
-- [PERMISSIONS & ADMIN COMMANDS](#👥-permissions--admin-commands-not-working)
-- [FRAMEWORK (ESX / QBCORE / STANDALONE) PROBLEMS](#🔑-framework-compatibility-esx--qbcore--standalone)
-- [CONFIGURATION MISTAKES](#🎛-configuration-mistakes)
-- [UI / TARGET / NOTIFICATION ISSUES](#🎨-ui--notifications--target-integrations)
-- [PERFORMANCE & TICK USAGE](#🌍-performance--tick-usage)
-- [WHEN TO CONTACT SUPPORT](#📬-when-to-contact-support)
-
----
-
-## 🚀 SCRIPT WON’T START / CRASHES ON STARTUP:
+## SCRIPT WON’T START / CRASHES ON STARTUP:
 
 **What you see:**
 
@@ -106,7 +94,7 @@ If you see anything like this, go to:
 
 ---
 
-## 🗄 DATABASE & SQL ISSUES:
+# 🗄 **DATABASE & SQL ISSUES:**
 
 **What you see:**
 
@@ -228,7 +216,7 @@ Access denied for command /smdz_admin
 
 ---
 
-## 🔑 FRAMEWORK COMPATIBILITY (ESX / QBCORE / STANDALONE):
+# 🔑 **FRAMEWORK COMPATIBILITY (ESX / QBCORE / STANDALONE):**
 
 **What you see:**
 
@@ -299,7 +287,7 @@ ensure smdz_example
 
 ---
 
-## 🎨 UI / NOTIFICATIONS / TARGET INTEGRATIONS:
+# 🎨 **UI / NOTIFICATIONS / TARGET INTEGRATIONS:**
 
 **What you see:**
 
@@ -331,7 +319,7 @@ Config.Notification = 'ox_lib'     -- 'mythic', 'okok', etc.
 
 ---
 
-## 🌍 PERFORMANCE & TICK USAGE:
+# 🌍 **PERFORMANCE & TICK USAGE:**
 
 **What you see:**
 
@@ -375,7 +363,7 @@ If it still seems heavy, gather:
 
 ---
 
-## 📬 WHEN TO CONTACT SUPPORT:
+# **📬 WHEN TO CONTACT SUPPORT:**
 
 If you have gone through:
 

@@ -861,6 +861,7 @@ Yes, restart the resource or server to apply config changes.
 
 - ❓ **HOW DO I GET SUPPORT OR REPORT BUGS?**
 Contact through the Tebex page, Discord, or the official documentation links.
+
 - ❓ **HOW CAN I TROUBLESHOOT ISSUES IF THINGS DON'T WORK?**
 1. Enable debug mode for more logs.
 2. Check dependency order.
@@ -870,6 +871,7 @@ Contact through the Tebex page, Discord, or the official documentation links.
 - ❓ **IS THIS SYSTEM SECURE AGAINST CHEATERS?**
 Yes, all critical actions are validated server-side. No client can bypass restrictions or hack the system without server approval.
 
+
 # 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026.
 - **STEPS:** *Backup config → replace folder → restore config → restart.*
@@ -877,7 +879,6 @@ Yes, all critical actions are validated server-side. No client can bypass restri
 
 # 📬 **SUPPORT:**
 Include version, framework, logs, reproduction steps.
-
 
 
 # ⚠️🚨 **IMPORTANT WARNING:**

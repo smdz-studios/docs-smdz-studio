@@ -19,7 +19,7 @@
 </p>
 
 
-## 🧩 **OVERVIEW:**
+# 🧩 **OVERVIEW:**
 - **Name:** `fast_repair_sergioomdz`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore 
@@ -29,13 +29,13 @@
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
 
-## 📦 **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 - FiveM server (latest build)
 - ESX / QBCore / Standalone
 - Optional: Notification systems
 
 
-## ⚡ **FEATURES:**
+# ⚡ **FEATURES:**
 - Animated mechanic NPC repairs your vehicle.
 - Configurable repair price or free mode.
 - Customizable particle effects and sounds.
@@ -47,7 +47,7 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 - Easy to translate and configure. (NEW: More than ten languages supported!)
 
 
-## 📥 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
 ```
 resources/[smdz]/fast_repair_sergioomdz
@@ -59,7 +59,7 @@ ensure fast_repair_sergioomdz
 **The script will print credits and block execution if the folder name is incorrect.**
 
 
-## ⚙️ **CONFIGURATION:**
+# ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
 ```lua
@@ -151,13 +151,13 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 - `fast_repair:logRepair` -->
 
 
-## 🛠️ **TROUBLESHOOTING:**
+# 🛠️ **TROUBLESHOOTING:**
 1. Script does not run: Check the folder name is exactly fast_repair_sergioomdz.
 2. NPC or particles not appearing: Make sure the model, animation, and particle names exist and are typed correctly. Try different offsets or scales.
 3. Uncaught TypeError: Failed to fetch: Your NUI files (HTML, JS) may be missing or not loading. Check your resource structure.
 
 
-## ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 - Q: **How do I add more repair locations?**
 - A: Add entries to the RepairPoints table in config.lua.
 
@@ -170,10 +170,11 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 - Q: **How do I translate the script?**
 - A: Edit the Lang variable and L() function in config.lua with your own texts.
 
-## 🔄 **UPDATES:**
+
+# 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026.
 - **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 
-## 📬 **SUPPORT:**
+# 📬 **SUPPORT:**
 Include version, framework, logs, reproduction steps.

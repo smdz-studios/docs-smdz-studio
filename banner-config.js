@@ -4,7 +4,7 @@ window.SMDZ_BANNER_CONFIG = {
   enabled: true,
 
   // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning"
-  type: "info",
+  type: "warning",
 
   // "full" | "compact"
   layout: "compact",

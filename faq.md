@@ -5,7 +5,7 @@ You can treat it as a “first stop” before opening a ticket.
 
 ---
 
-## 🔄 **HOW DO I UPDATE A SCRIPT WITHOUT LOSING MY CONFIG?:**
+# 🔄 **HOW DO I UPDATE A SCRIPT WITHOUT LOSING MY CONFIG?:**
 
 1. **Back up your configuration files**, usually things like `config.lua`, `settings.lua`, `locales/*.lua`.  
 2. **Download the latest version** of the script from the official Tebex link.  
@@ -23,7 +23,7 @@ If you are not sure how to merge a specific update, you can always ask in **Supp
 
 ---
 
-## 🧱 **WHICH FRAMEWORKS ARE SUPPORTED?:**
+# 🧱 **WHICH FRAMEWORKS ARE SUPPORTED?:**
 
 Most SMDZ Studios scripts focus on the main modern FiveM ecosystems:
 
@@ -40,7 +40,7 @@ If a script does not list your framework explicitly, assume it is **not** suppor
 
 ---
 
-## 🚀 **HOW CAN I OPTIMIZE PERFORMANCE?:**
+# 🚀 **HOW CAN I OPTIMIZE PERFORMANCE?:**
 
 A few general recommendations:
 
@@ -60,7 +60,7 @@ If you believe a specific SMDZ script is heavier than it should be, gather:
 
 ---
 
-## 📜 **WHAT ABOUT LICENSING AND ASSET ESCROW?:**
+# 📜 **WHAT ABOUT LICENSING AND ASSET ESCROW?:**
 
 Some SMDZ scripts are protected using the **Asset Escrow** system from Cfx.re and Tebex.
 
@@ -74,7 +74,7 @@ For a detailed explanation (including common entitlement errors and how to solve
 
 ---
 
-## 🧩 **WHAT INFORMATION SHOULD I INCLUDE WHEN ASKING FOR HELP?:**
+# 🧩 **WHAT INFORMATION SHOULD I INCLUDE WHEN ASKING FOR HELP?:**
 
 A very good support message usually contains:
 

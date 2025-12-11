@@ -1,4 +1,4 @@
-# 🆘 SUPPORT
+# 🆘 **SUPPORT:**
 
 This page explains **how to request support in a way that is fast, clear and professional** for both you and SMDZ Studios.
 
@@ -11,7 +11,7 @@ Discord is usually the **fastest** way to get help, especially when screenshots 
 
 ---
 
-## 📋 REQUIRED INFORMATION FOR SUPPORT
+# 📋 **REQUIRED INFORMATION FOR SUPPORT:**
 
 To avoid long back‑and‑forth conversations and to get a useful answer on the first reply, always include:
 
@@ -56,7 +56,7 @@ The more precise and complete this information is, the faster SMDZ Studios can i
 
 ---
 
-## 🧪 BUG REPORTS & QUALITY FEEDBACK
+# 🧪 **BUG REPORTS & QUALITY FEEDBACK:**
 
 Well‑written bug reports and detailed feedback are extremely valuable.  
 They help SMDZ Studios make each script **more stable, faster and easier to configure** for the entire community.
@@ -91,7 +91,7 @@ Those rewards are **optional** and decided case‑by‑case after reviewing:
 
 ---
 
-## 🧷 BEFORE YOU OPEN A TICKET
+# **🧷 BEFORE YOU OPEN A TICKET:**
 
 Before contacting support, it is strongly recommended to:
 

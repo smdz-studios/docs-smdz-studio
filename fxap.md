@@ -5,7 +5,7 @@ This page is written for **server owners**, even if you do not have a deep techn
 
 ---
 
-## 🧠 WHAT IS ASSET ESCROW?:
+# 🧠 **WHAT IS ASSET ESCROW?:**
 
 You can think about Asset Escrow as a **lock** that protects the internal logic of a script, while still allowing you to configure and use it on your server.
 
@@ -22,7 +22,7 @@ If the check fails, the resource may refuse to start and will usually display a 
 
 ---
 
-## 🔗 HOW LICENSING & ACCOUNT LINKING WORKS:
+# 🔗 **HOW LICENSING & ACCOUNT LINKING WORKS:**
 
 The licensing model for escrowed assets involves **three main elements**:
 
@@ -73,7 +73,7 @@ If the ownership does not match, you will see errors about missing entitlements 
 
 ---
 
-## ✏️ WHAT YOU ARE ALLOWED TO EDIT (AND WHAT YOU ARE NOT):
+# ✏️ **WHAT YOU ARE ALLOWED TO EDIT (AND WHAT YOU ARE NOT):**
 
 A simple, safe rule to remember is:
 
@@ -119,7 +119,7 @@ Editing protected areas can:
 
 ---
 
-## 🔁 UPDATING AN ESCROWED SCRIPT SAFELY:
+# 🔁 **UPDATING AN ESCROWED SCRIPT SAFELY:**
 
 When a new version of an escrowed script is published, you should follow a methodical update process to avoid losing configuration or breaking the validation.
 
@@ -159,7 +159,7 @@ By following these steps, you keep your configuration while ensuring that the es
 
 ---
 
-## 🚨 ESCROW / ENTITLEMENT ERRORS – DETAILED GUIDE:
+**# 🚨 ESCROW / ENTITLEMENT ERRORS – DETAILED GUIDE:**
 
 Below you will find the most common error messages related to Asset Escrow, with clear explanations and action plans.
 
@@ -302,7 +302,7 @@ This error often points to **network or connectivity problems** between your ser
 
 ---
 
-## 📌 BEST PRACTICES WHEN USING ASSET ESCROW:
+# 📌 **BEST PRACTICES WHEN USING ASSET ESCROW:**
 
 To maintain a stable and secure environment while using escrowed SMDZ Studios scripts:
 
@@ -317,7 +317,7 @@ These practices protect both your investment and the stability of your server.
 
 ---
 
-## ❓ STILL NEED HELP WITH ESCROW OR ENTITLEMENTS?:
+# ❓ **STILL NEED HELP WITH ESCROW OR ENTITLEMENTS?:**
 
 If, after following this guide, you still experience problems:
 
@@ -346,20 +346,7 @@ Each section follows the same structure:
 
 ---
 
-## 🔍 QUICK INDEX:
-
-- [SCRIPT WON’T START / CRASHES ON STARTUP](#🚀-script-won-t-start--crashes-on-startup)
-- [DATABASE & SQL ISSUES](#🗄-database--sql-issues)
-- [PERMISSIONS & ADMIN COMMANDS](#👥-permissions--admin-commands-not-working)
-- [FRAMEWORK (ESX / QBCORE / STANDALONE) PROBLEMS](#🔑-framework-compatibility-esx--qbcore--standalone)
-- [CONFIGURATION MISTAKES](#🎛-configuration-mistakes)
-- [UI / TARGET / NOTIFICATION ISSUES](#🎨-ui--notifications--target-integrations)
-- [PERFORMANCE & TICK USAGE](#🌍-performance--tick-usage)
-- [WHEN TO CONTACT SUPPORT](#📬-when-to-contact-support)
-
----
-
-## 🚀 SCRIPT WON’T START / CRASHES ON STARTUP:
+# 🚀 **SCRIPT WON’T START / CRASHES ON STARTUP:**
 
 ### WHAT YOU SEE:
 
@@ -467,7 +454,7 @@ That page explains, in detail, how to fix ownership and entitlement problems.
 
 ---
 
-## 🗄 DATABASE & SQL ISSUES:
+# 🗄 DATABASE & SQL ISSUES:
 
 ### WHAT YOU SEE:
 
@@ -549,7 +536,7 @@ Correct these values in the adapter configuration and restart the server.
 
 ---
 
-## 👥 PERMISSIONS & ADMIN COMMANDS NOT WORKING:
+# 👥 **PERMISSIONS & ADMIN COMMANDS NOT WORKING:**
 
 ### WHAT YOU SEE:
 
@@ -599,7 +586,7 @@ Access denied for command /smdz_admin
 
 ---
 
-## 🔑 FRAMEWORK COMPATIBILITY (ESX / QBCORE / STANDALONE):
+# 🔑 **FRAMEWORK COMPATIBILITY (ESX / QBCORE / STANDALONE):**
 
 ### WHAT YOU SEE:
 
@@ -677,7 +664,7 @@ Whenever possible, stick closely to the examples provided in the documentation a
 
 ---
 
-## 🎨 UI / NOTIFICATIONS / TARGET INTEGRATIONS:
+# 🎨 **UI / NOTIFICATIONS / TARGET INTEGRATIONS:**
 
 ### WHAT YOU SEE:
 
@@ -712,7 +699,7 @@ Config.Notification = 'ox_lib'      -- 'mythic', 'okok', etc.
 
 ---
 
-## 🌍 PERFORMANCE & TICK USAGE:
+# 🌍 **PERFORMANCE & TICK USAGE:**
 
 ### WHAT YOU SEE:
 
@@ -755,7 +742,7 @@ If you still experience high usage, gather:
 
 ---
 
-## 📬 WHEN TO CONTACT SUPPORT:
+# 📬 **WHEN TO CONTACT SUPPORT:**
 
 If you have worked through the relevant section for your problem and still cannot resolve the issue, SMDZ Studios is available to assist.
 

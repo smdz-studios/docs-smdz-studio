@@ -1,16 +1,13 @@
 <div class="hero-logo-panel">
   <div class="hero-logo-inner">
-    <img src="assets/logo.png" alt="SMDZ Studios Logo" style="max-width: 290px; max-height: 290px;" />
+    <img src="assets/logo.png" alt="SMDZ Studios Logo" style="max-width: 390px; max-height: 390px;" />
   </div>
 </div>
-
 <div class="hero-header-wrapper" style="margin-top: 0.5rem; margin-bottom: 1.8rem; text-align: center;">
   <h1 class="hero-main-title">
     OFFICIAL DOCUMENTATION
   </h1>
 </div>
-
----
 
 ## ⚡ **QUICK START FOR NEW CUSTOMERS:**
 
