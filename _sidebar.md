@@ -7,15 +7,16 @@
   - [Common Problems](/problems.md)
   - [Asset Escrow System](/fxap.md)
 
-- ▶️ **SCRIPTS FIVEM**
+- ▶️ **PAID RESOURCES**
   <!-- - [Scripts Overview](/scripts/README.md) -->
   - [🚗 | Fast Repair — v 1.0](/scripts/fast-repair.md)
 
+- ▶️ **FREE RESOURCES**
+  - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
 
 
 
 
 
 
-  
   <!-- - [Example Script Template](/scripts/example-script.md) -->
