@@ -1,4 +1,4 @@
-# PREMIUM RADAR & MINIMAP TOGGLE
+# FREE PREMIUM RADAR & MINIMAP TOGGLE
 <div align="center" style="margin-bottom: 1.5rem;">
   <iframe
     width="640"
@@ -14,29 +14,29 @@
 
 
 ## 🧩 **OVERVIEW:**
-- **Name:** `fast_repair_sergioomdz`
+- **Name:** `smdz_toggleradar`
 - **Author:** SMDZ Studios
-- **Framework:** ESX / QBCore 
-- **Version:** `1.0.0`
+- **Framework:** Standalone
+- **Version:** `1.0.0 - OPEN SOURCE`
 - **Status:** <span class="badge badge--stable">Stable</span>
 
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
 
 ## 📦 **REQUIREMENTS:**
-- FiveM server (latest build)
-- ESX / QBCore / Standalone
-- Optional: Notification systems
+- Build: FiveM server (any build)
+- Framework: Standalone
 
 
 ## ⚡ **FEATURES:**
-- - Instantly hide or show your minimap & radar
-Multilanguage support (English, Spanish, Portuguese)
+- Instantly hide or show your minimap & radar
+- Multilanguage support (English, Spanish, Portuguese)
 - No dependencies (works with any server)
 - ACE permissions for admin control
 - Clean, safe code with server-side checks
 
-## 📥 **Installation**
+
+## 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
 ```
 resources/[smdz]/toggleradar
@@ -78,10 +78,56 @@ Config.RequireACE = false
 Config.ACEPermission = "minimap.toggle"
 ```
 
+
 ## 🎮 **USAGE:**
 
 - Type /togglerminimap in chat to toggle the minimap and radar on or off.
 *Messages will appear in your selected language.*
+
+
+## 🌐 **LANGUAGES:**
+<span class="badge badge--new">NEW UPDATE</span>
+
+1. English (en)
+2. Spanish (es)
+3. Portuguese (pt)
+4. French (fr)
+5. German (de)
+6. Italian (it)
+7. Russian (ru)
+8. Arabic (ar)
+
+**You can add as many as you want; right below we've included more languages ​​for you to copy and paste.**
+```lua
+Config.Languages = {
+    fr = {
+        enabled = "^2Radar activé.",
+        disabled = "^1Radar désactivé.",
+        noperm = "^1Vous n'avez pas la permission d'utiliser cette commande."
+    },
+    de = {
+        enabled = "^2Radar aktiviert.",
+        disabled = "^1Radar deaktiviert.",
+        noperm = "^1Du hast keine Berechtigung, diesen Befehl zu benutzen."
+    },
+    it = {
+        enabled = "^2Radar attivato.",
+        disabled = "^1Radar disattivato.",
+        noperm = "^1Non hai il permesso per usare questo comando."
+    },
+    ru = {
+        enabled = "^2Радар включён.",
+        disabled = "^1Радар выключен.",
+        noperm = "^1У вас нет прав для использования этой команды."
+    },
+    ar = {
+        enabled = "^2تم تفعيل الرادار.",
+        disabled = "^1تم تعطيل الرادار.",
+        noperm = "^1ليس لديك إذن لاستخدام هذا الأمر."
+    }
+}
+
+```
 
 
 ## 🔌 **EVENTS:**
@@ -91,15 +137,14 @@ Config.ACEPermission = "minimap.toggle"
 ### Server
 - `minimap:server:checkPerm`
 
+
 ## 🛠️ **TROUBLESHOOTING:**
-1. Script does not run: Check the folder name is exactly fast_repair_sergioomdz.
-2. NPC or particles not appearing: Make sure the model, animation, and particle names exist and are typed correctly. Try different offsets or scales.
-3. Uncaught TypeError: Failed to fetch: Your NUI files (HTML, JS) may be missing or not loading. Check your resource structure.
+1. Script does not run: Check the ACE permissions.
 
 
 ## 🔄 **UPDATES:**
-- There are **NO** plans to add script updates during 2025 and early 2026.
-- **STEPS:** *Backup config → replace folder → restore config → restart.*
+- There are **NO** plans to add script updates during 2025 and early 2026. **Anyway, this resource is open source, edit it however you like :)**
 
-## 📬 **SUPPORT:**
-Include version, framework, logs, reproduction steps.
+
+## 📬 **NEED HELP?:**
+Open an ticket in my Discord server or visit SUPPORT section.

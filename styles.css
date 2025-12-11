@@ -470,6 +470,11 @@ body {
   color: #d7ffb8;
 }
 
+.badge--new {
+  border-color: #4bdfe2db;
+  color: #44809c;
+}
+
 .badge--beta {
   border-color: #f59e0b;
   color: #ffecb5;

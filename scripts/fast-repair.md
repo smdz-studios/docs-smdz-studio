@@ -41,7 +41,8 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 - Full ESX/QBCore compatibility.
 - Easy to translate and configure. (NEW: More than ten languages supported!)
 
-## 📥 **Installation**
+
+## 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
 ```
 resources/[smdz]/fast_repair_sergioomdz
@@ -51,6 +52,7 @@ resources/[smdz]/fast_repair_sergioomdz
 ensure fast_repair_sergioomdz
 ```
 **The script will print credits and block execution if the folder name is incorrect.**
+
 
 ## ⚙️ **CONFIGURATION:**
 All in `config.lua`:
@@ -143,10 +145,12 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 ### Server
 - `fast_repair:logRepair` -->
 
+
 ## 🛠️ **TROUBLESHOOTING:**
 1. Script does not run: Check the folder name is exactly fast_repair_sergioomdz.
 2. NPC or particles not appearing: Make sure the model, animation, and particle names exist and are typed correctly. Try different offsets or scales.
 3. Uncaught TypeError: Failed to fetch: Your NUI files (HTML, JS) may be missing or not loading. Check your resource structure.
+
 
 ## ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 - Q: **How do I add more repair locations?**
@@ -164,6 +168,7 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 ## 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026.
 - **STEPS:** *Backup config → replace folder → restore config → restart.*
+
 
 ## 📬 **SUPPORT:**
 Include version, framework, logs, reproduction steps.

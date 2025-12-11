@@ -1,17 +1,17 @@
-- ▶️ **INFORMATION**
+- 🏠 **INFORMATION**
   - [Home](/home.md)
 
-- ▶️ **SUPPORT**
+- 📬 **SUPPORT**
   - [Get Support](/support.md)
   - [FAQ](/faq.md)
   - [Common Problems](/problems.md)
   - [Asset Escrow System](/fxap.md)
 
-- ▶️ **PAID RESOURCES**
+- 💲 **PAID RESOURCES**
   <!-- - [Scripts Overview](/scripts/README.md) -->
   - [🚗 | Fast Repair — v 1.0](/scripts/fast-repair.md)
 
-- ▶️ **FREE RESOURCES**
+- 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
 
 
