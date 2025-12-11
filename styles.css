@@ -42,7 +42,7 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* Global announcement bar — read-only for viewers, configured in banner-config.js */
+/* Global announcement bar — configured in banner-config.js */
 .announcement-bar {
   position: sticky;
   top: 0;
@@ -58,6 +58,7 @@ body {
   transition: opacity 0.22s ease-out, transform 0.22s ease-out;
 }
 
+/* Types (backgrounds) */
 .announcement-type-info {
   background: var(--announce-info-bg);
 }
@@ -70,12 +71,91 @@ body {
 .announcement-type-maintenance {
   background: var(--announce-maintenance-bg);
 }
+.announcement-type-announcement {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+}
+.announcement-type-warning {
+  background: linear-gradient(90deg, #c2410c, #f97316);
+}
 
+/* Compact layout (less invasive) */
+.announcement-layout-compact {
+  padding-top: 0.28rem;
+  padding-bottom: 0.28rem;
+  font-size: 0.78rem;
+}
+
+/* Visibility */
 .announcement-bar.announcement-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* Content structure */
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 0.75rem;
+}
+
+.announcement-align-left .announcement-inner {
+  justify-content: flex-start;
+}
+
+.announcement-align-center .announcement-inner {
+  justify-content: center;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.announcement-icon {
+  font-size: 0.95rem;
+}
+
+.announcement-text-block {
+  text-align: left;
+}
+
+.announcement-title {
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.announcement-subtitle {
+  font-size: 0.78rem;
+  opacity: 0.92;
+}
+
+/* CTA button */
+.announcement-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.75rem;
+  border: 1px solid rgba(249, 250, 251, 0.65);
+  color: #f9fafb;
+  background: rgba(15, 15, 15, 0.15);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease-out, transform 0.12s ease-out, box-shadow 0.12s ease-out;
+}
+
+.announcement-cta:hover {
+  background: rgba(15, 15, 15, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Fallback text span (old config) */
 .announcement-text {
   display: inline-block;
   max-width: 960px;
@@ -252,6 +332,33 @@ body {
   color: #9a9a9a;
 }
 
+.smdz-footer-logos {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.smdz-footer-logos img {
+  max-height: 18px;
+  width: auto;
+  opacity: 0.85;
+  filter: grayscale(0.2);
+  transition: opacity 0.15s ease-out, filter 0.15s ease-out, transform 0.12s ease-out;
+}
+
+.smdz-footer-logos img:hover {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-1px);
+}
+
+/* Ocultar app-name-link generado por Docsify */
+.app-name-link {
+  display: none !important;
+}
+
 /* Home hero */
 .hero {
   display: grid;
@@ -273,66 +380,7 @@ body {
   text-shadow: 0 4px 14px rgba(0, 0, 0, 0.9);
 }
 
-.hero-subtitle {
-  font-size: 0.96rem;
-  color: var(--text-muted);
-  max-width: 32rem;
-  margin: 0.35rem auto 0 auto;
-  text-align: center;
-}
-
-.hero-header-wrapper {
-  text-align: center;
-}
-
-/* Buttons (subtle animations) */
-.btn-primary,
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  border-radius: 999px;
-  padding: 0.45rem 0.95rem;
-  font-size: 0.8rem;
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition:
-    background 0.18s ease-out,
-    border-color 0.18s ease-out,
-    transform 0.16s ease-out,
-    box-shadow 0.16s ease-out;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #509205, #65b40a);
-  color: #f9fafb;
-  box-shadow: 0 0 0 1px #161616, 0 10px 24px rgba(0, 0, 0, 0.75);
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px) scale(1.015);
-  box-shadow: 0 0 0 1px #161616, 0 14px 30px rgba(0, 0, 0, 0.85);
-}
-
-.btn-ghost {
-  background: #262626;
-  border-color: #3a3a3a;
-  color: #f3f3f3;
-}
-
-.btn-ghost:hover {
-  background: #2f2f2f;
-  border-color: #4a4a4a;
-  transform: translateY(-1px);
-}
-
-.btn-icon {
-  font-size: 1rem;
-}
-
-/* Home main logo: big, centered, no frame */
+/* Home main logo */
 .hero-logo-panel {
   position: relative;
   border-radius: 0;
@@ -344,12 +392,6 @@ body {
   min-height: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.hero-logo-inner {
-  display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -371,7 +413,7 @@ body {
   }
 }
 
-/* Simple feature row on home */
+/* Feature row on home */
 .feature-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -386,6 +428,9 @@ body {
   padding: 0.8rem 0.9rem;
   font-size: 0.84rem;
   color: #f0f0f0;
+  transform: translateY(4px);
+  opacity: 0.95;
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out;
 }
 
 .feature-card h3 {
@@ -397,6 +442,12 @@ body {
   margin: 0;
   font-size: 0.8rem;
   color: var(--text-muted);
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  background: #282828;
 }
 
 /* Badges */

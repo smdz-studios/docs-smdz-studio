@@ -1,71 +1,106 @@
 # 🆘 SUPPORT
 
-If you need help with any **SMDZ Studios** FiveM script, you are in the right place.  
-Please use one of the official channels below so we can verify your purchase and provide proper, tracked support.
+This page explains **how to request support in a way that is fast, clear and professional** for both you and SMDZ Studios.
+
+For any question, bug or installation issue related to **SMDZ Studios** FiveM scripts, please use one of the following official channels:
 
 - 📧 **Email:** `smdzstudios@gmail.com`  
 - 💬 **Discord:** [Join the SMDZ Studios Discord](https://discord.gg/XraafphzrQ)
 
-We strongly recommend Discord for faster, more interactive assistance.
+Discord is usually the **fastest** way to get help, especially when screenshots or short videos are needed.
 
 ---
 
 ## 📋 REQUIRED INFORMATION FOR SUPPORT
 
-To help you quickly and avoid “back and forth” questions, please include the following information in your first message:
+To avoid long back‑and‑forth conversations and to get a useful answer on the first reply, always include:
 
 1. **Script name**  
    - Example: `smdz_example`, `smdz_vehicleshop`, `smdz_dispatch`, etc.
 
 2. **Script version**  
-   - Example: `v1.0.3` (check the config file, manifest or the Tebex download page).
+   - Example: `v1.0.3`.  
+   - You can usually find this in the config file, the `fxmanifest.lua`, or on the Tebex download page.
 
 3. **Framework and version**
    - ESX / QBCore / Standalone.  
-   - Include the framework version if relevant (for example “ESX Legacy”, specific QBCore commit, etc.).
+   - If relevant, specify:
+     - “ESX Legacy” / “Old ESX”  
+     - QBCore fork or commit (if not using the main repo)
 
-4. **Tebex purchase ID**
-   - The **order ID / transaction ID** from Tebex that proves your purchase.
+4. **Server environment**
+   - Local test server / VPS / dedicated machine / game panel.  
+   - Operating system (Windows / Linux) and database type (MySQL / MariaDB).
 
-5. **Clear description of the issue**
+5. **Tebex purchase ID**
+   - The **order ID / transaction ID** from Tebex that proves your purchase.  
+   - This helps verify ownership and ensure you are running an official version.
+
+6. **Clear description of the issue**
    - What you expected to happen.  
    - What actually happens instead.  
-   - Any visible errors (console, F8, server logs).
+   - Any visible errors (server console, F8 console, client logs).
 
-6. **Reproduction steps**
-   - Short, numbered list that lets us reproduce the issue on a clean test server, for example:
-     1. Start the server.  
-     2. Join with a fresh character.  
-     3. Run `/example`.  
-     4. See that the menu does not open and the console prints error `XYZ`.
+7. **Reproduction steps**
+   - A short, numbered list that allows the issue to be reproduced on a clean test server, for example:
+     1. Start the server with only the framework + database adapter + the SMDZ script.  
+     2. Join the server with a fresh character.  
+     3. Run `/example` or perform the specific action.  
+     4. Observe that the menu does not open and error `XYZ` appears in the console.
+
+8. **Configuration snippets (if relevant)**
+   - Only include the parts of your config that are related to the problem.  
+   - Remove or mask any secrets (webhooks, API keys, passwords) before sharing.
+
+The more precise and complete this information is, the faster SMDZ Studios can identify the root cause and provide a real solution instead of guesses.
 
 ---
 
-## 🐛 BUG REPORTS & REWARDS
+## 🧪 BUG REPORTS & QUALITY FEEDBACK
+
+Well‑written bug reports and detailed feedback are extremely valuable.  
+They help SMDZ Studios make each script **more stable, faster and easier to configure** for the entire community.
 
 <div class="tip">
   <p>
-    High‑quality bug reports help improve every SMDZ Studios script for the entire community.
-    In some cases, taking the time to reproduce and document an issue clearly can be
-    <strong>rewarded</strong> with:
-  </p>
-
-  - An additional script copy.  
-  - A discount on a future purchase.  
-  - A gift card or store credit.  
-  - In special situations, even a <strong>free script</strong> from the shop.
-
-  <p>
-    Any reward is always granted at the discretion of SMDZ Studios after an internal review
-    of the bug impact, reproducibility and overall contribution.
+    When you take the time to reproduce an issue on a clean environment, capture useful logs and describe it
+    clearly, you are not just fixing your own problem — you are improving the script for every server that uses it.
   </p>
 </div>
 
-When you report a bug, please try to include:
+When reporting a bug, try to provide:
 
-- All **required information** from the previous section.  
-- Screenshots or short videos that show the problem clearly.  
-- Any relevant parts of your configuration (with secrets like webhooks removed).  
-- Exact steps to reproduce the issue on a default test environment.
+- ✅ A **minimal test scenario** (for example: only framework + database + the SMDZ script).  
+- ✅ The **exact version** of the script and framework.  
+- ✅ Full console logs from server startup until the error appears.  
+- ✅ Relevant parts of your configuration (with sensitive data removed).  
+- ✅ `resmon` screenshots if the bug is related to performance.
 
-Well‑documented reports not only help you; they also make the script more robust for every future customer. 💚
+If a bug is confirmed, reproducible and has a noticeable impact, SMDZ Studios may, at its sole discretion:
+
+- Offer an additional script copy  
+- Apply a discount to a future purchase  
+- Provide store credit or a gift card  
+- In exceptional cases, grant a **free script** from the shop  
+
+Those rewards are **optional** and decided case‑by‑case after reviewing:
+
+- The severity and impact of the bug  
+- How easy it is to reproduce  
+- The quality and usefulness of the information you provided  
+
+---
+
+## 🧷 BEFORE YOU OPEN A TICKET
+
+Before contacting support, it is strongly recommended to:
+
+1. Read the specific script documentation page (especially **Requirements**, **Installation**, **Configuration** and **Troubleshooting** sections).  
+2. Check the **[Common Problems](problems.md)** page for:
+   - Script not starting  
+   - Database / SQL issues  
+   - Permissions and admin commands  
+   - Framework compatibility (ESX / QBCore / Standalone)  
+3. Review the **[Asset Escrow System](fxap.md)** page if your problem is related to entitlements or ownership.
+
+If after doing this the problem persists, then open a ticket with all the required information. 💚

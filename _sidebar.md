@@ -8,5 +8,14 @@
   - [Asset Escrow System](/fxap.md)
 
 - ▶️ **SCRIPTS FIVEM**
-  - [Scripts Overview](/scripts/README.md)
-  - [Example Script Template](/scripts/example-script.md)
+  <!-- - [Scripts Overview](/scripts/README.md) -->
+  - [🚗 | Fast Repair — v 1.0](/scripts/fast-repair.md)
+
+
+
+
+
+
+
+  
+  <!-- - [Example Script Template](/scripts/example-script.md) -->

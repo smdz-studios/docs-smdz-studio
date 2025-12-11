@@ -1,59 +1,59 @@
-# 🚀 SMDZ STUDIOS – FIVEM SCRIPT DOCS
-
 <div class="hero-logo-panel">
   <div class="hero-logo-inner">
-    <img src="assets/logo.png" alt="SMDZ Studios Logo" style="max-width: 210px; max-height: 210px;" />
+    <img src="assets/logo.png" alt="SMDZ Studios Logo" style="max-width: 290px; max-height: 290px;" />
   </div>
 </div>
 
 <div class="hero-header-wrapper" style="margin-top: 0.5rem; margin-bottom: 1.8rem; text-align: center;">
   <h1 class="hero-main-title">
-    DOCUMENTATION THAT MATCHES YOUR SERVER QUALITY
+    OFFICIAL DOCUMENTATION
   </h1>
-
-  <p class="hero-subtitle" style="text-align: center;">
-    All SMDZ Studios FiveM scripts documented in one place: clean, dark, and focused on what server owners
-    actually need — clear installation steps, safe configuration and practical examples.
-  </p>
 </div>
 
 ---
 
 ## ⚡ QUICK START FOR NEW CUSTOMERS
 
-If you are here because you just purchased a script, start with this checklist:
+If you are here because you just purchased a script, follow this path before touching your live server:
 
-1. **Locate your script page**  
-   Open **[Scripts Overview](scripts/README.md)** and click on the script you bought.
+1. **Find your script page**  
+   Open **[Scripts Overview](scripts/README.md)** and click on the exact script you bought.
 
-2. **Read the Requirements section**  
-   Confirm you have:
-   - Correct framework (ESX / QBCore / Standalone).  
-   - Required dependencies (database adapter, target system, UI library, etc.).  
+2. **Read the “Requirements” section carefully**  
+   Confirm that you have:
+   - The correct framework: **ESX / QBCore / Standalone**  
+   - Required dependencies: database adapter, target system, UI library, etc.  
+   - Any extra resources mentioned on that script’s page.
 
-3. **Install the resource**  
-   Follow the exact folder structure shown in the docs and add the `ensure` line to your `server.cfg`:
+3. **Install the resource in the correct folder**  
+   Place the script following the structure recommended in the docs, then add the `ensure` line to your `server.cfg`:
 
-   ```bash
-   ## SMDZ Studios resources
-   ensure smdz_example
-   # ensure smdz_your_script_here
-   ```
+   <pre><code>## SMDZ Studios resources
+ensure smdz_example
+# ensure smdz_your_script_here
+</code></pre>
 
 4. **Configure before going live**  
-   Open `config.lua` (or similar) and adjust:
-   - Framework selection.  
-   - Target / notification systems.  
-   - Any options related to your economy, jobs or permissions.
+   Open `config.lua` (or similar) and check at least:
 
-5. **Test on a non‑production environment**  
-   Always test new scripts first on:
-   - A local server, or  
-   - A staging/test server with fewer resources loaded.
+   - `Config.Framework` (ESX / QBCore / Standalone)  
+   - Target / interaction system (for example `qb-target`, `ox_target`, etc.)  
+   - Notification / UI system (for example `ox_lib`, `mythic_notify`…)  
+   - Options linked to your economy, jobs, permissions or inventory.
+
+5. **Test in a non‑production environment**  
+   Before using it on your main RP server:
+
+   - Run the script on a **local test server**, or  
+   - Use a dedicated **staging/testing server** with fewer resources loaded.
+
+   This makes it easier to detect conflicts and understand how the script behaves in a clean setup.
 
 ---
 
 ## 🧭 WHAT YOU WILL FIND IN THESE DOCS
+
+Think of this documentation as a focused hub for **server owners** and **developers** using SMDZ Studios scripts:
 
 <div class="feature-row">
   <div class="feature-card">
@@ -81,32 +81,61 @@ If you are here because you just purchased a script, start with this checklist:
 
 ---
 
-## 🧪 ADDING OR DOCUMENTING A NEW SMDZ SCRIPT
+## 🧩 HOW TO USE THESE DOCS EFFICIENTLY
 
-When you want to add your own documentation for a new SMDZ script:
+To avoid wasting time and to keep your server stable, use this flow whenever you work with an SMDZ Studios resource:
 
-1. **Duplicate the template file**
+1. **Start from the script page**  
+   - Read the page of the script you are installing or updating from top to bottom.  
+   - Do not skip the “Requirements” or any “Notes for updates”.
 
-   ```text
-   scripts/example-script.md
-   ```
+2. **Search by keyword when you are stuck**  
+   - Use the search box on the left for specific terms such as  
+     `framework`, `export`, `event`, `command`, `target`, `notify`, etc.  
+   - This is useful if you remember the feature but not the exact section.
 
-2. **Rename it** to match your resource name, for example:
+3. **Use troubleshooting before opening a ticket**  
+   - Check **[Common Problems](problems.md)** when:
+     - The resource doesn’t start.  
+     - There are SQL / database issues.  
+     - Permissions do not behave as expected.  
+     - Performance seems worse than it should be.
 
-   - `scripts/smdz_vehicleshop.md`  
-   - `scripts/smdz_dispatch.md`
+4. **Go to support when you have a real, reproducible issue**  
+   - When something feels “off” and you can reproduce it, move to **[Support](support.md)**.  
+   - There you will find exactly what information to include so that SMDZ Studios can help effectively.
 
-3. **Fill in each section carefully**
+---
 
-   - **Overview & Requirements** – short description and dependencies.  
-   - **Installation & Configuration** – step‑by‑step with real paths and code blocks.  
-   - **Usage** – commands, keybinds, menus, staff vs player features.  
-   - **Events & Exports** – how other scripts can interact with this one.
+## 🧪 FOR SERVER OWNERS & DEVELOPERS
 
-4. **Link it from the index and sidebar**
+Whether you are just installing scripts or building systems around them:
 
-   - Add it to **[Scripts Overview](scripts/README.md)**.  
-   - Optionally, add a direct shortcut in `_sidebar.md` under **SCRIPTS FIVEM**.
+- **Server owners / staff**
+
+  Focus mainly on:
+
+  - **Requirements** – what the script needs to run.  
+  - **Installation** – where to place it and how to start it.  
+  - **Configuration** – framework mode, target, notifications, economy and jobs.  
+  - **Usage** – commands, keybinds, menus, jobs and permissions.
+
+- **Developers / integrators**
+
+  Look for:
+
+  - **Events** – server/client events you can listen to or trigger.  
+  - **Exports** – functions you can call from other scripts.  
+  - **Callbacks / Interfaces** – ways to plug your systems into SMDZ resources.
+
+This lets you connect SMDZ scripts with:
+
+- Job systems.  
+- Logs and admin panels.  
+- Custom UIs.  
+- Other RP systems (garages, inventories, dispatch, etc.).
+
+If you need more technical detail for developers, you can suggest new sections via support so they can be added to the documentation.
 
 ---
 
@@ -114,9 +143,14 @@ When you want to add your own documentation for a new SMDZ script:
 
 Depending on what you need right now:
 
-- 🧩 **You have a problem/error** → Go to **[Common Problems](problems.md)** for step‑by‑step diagnostics.  
-- 🧾 **You want to understand Asset Escrow** → Read **[Asset Escrow System](fxap.md)**.  
-- 🆘 **You need direct help** → Visit **[Support](support.md)** for contact details and what to include in your ticket.
+- 🧩 **You have a problem/error**  
+  → Go to **[Common Problems](problems.md)** for step‑by‑step diagnostics.  
+
+- 🧾 **You want to understand Asset Escrow / entitlements**  
+  → Read **[Asset Escrow System](fxap.md)** to understand how Cfx.re / Tebex protection works and how to fix typical entitlement issues.  
+
+- 🆘 **You need direct help**  
+  → Visit **[Support](support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.  
 
 Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.  
 Everything here is designed to save you time and reduce guesswork when running your FiveM server with SMDZ Studios scripts. 💚

@@ -99,8 +99,16 @@
           hook.afterEach(function (html, next) {
             var footerHtml =
               '<div class="smdz-footer">' +
-                '© 2025 - 2026 SMDZ Studios · All rights reserved · Not affiliated with Rockstar Games.<br />' +
-                'Made with ❤️ by SMDZ Studios · Powered by Docsify & GitHub Copilot.' +
+                '© 2025 - 2026 SMDZ Studios · All rights reserved · Not affiliated with Rockstar Games<br />' +
+                'Made with 💚 by SMDZ Studios · Powered by Docsify & GitHub Copilot' +
+                '<div class="smdz-footer-logos">' +
+                  '<img src="assets/smdz.png" alt="SMDZ Studios" />' +
+                  '<img src="assets/cfx.png" alt="Cfx.re" />' +
+                  '<img src="assets/esx.png" alt="ESX" />' +
+                  '<img src="assets/qbcore.png" alt="QBCore" />' +
+                  '<img src="assets/qbox.png" alt="Qbox" />' +
+                  '<img src="assets/vrp.png" alt="vRP" />' +
+                '</div>' +
               '</div>';
             next(html + footerHtml);
           });
@@ -164,16 +172,78 @@
       // Initialize announcement bar from protected config
       if (window.SMDZ_BANNER_CONFIG) {
         var bar = document.getElementById('announcement-bar');
-        var textEl = document.getElementById('announcement-text');
-        if (bar && textEl) {
+        if (bar) {
           var cfg = window.SMDZ_BANNER_CONFIG;
 
-          textEl.innerHTML = cfg.text;
-
-          bar.classList.add('announcement-type-' + cfg.type);
           if (!cfg.enabled) {
             bar.style.display = 'none';
           } else {
+            // Base type
+            if (cfg.type) {
+              bar.classList.add('announcement-type-' + cfg.type);
+            }
+
+            // Layout (simple: full/compact)
+            if (cfg.layout === 'compact') {
+              bar.classList.add('announcement-layout-compact');
+            }
+
+            // Alignment
+            if (cfg.align === 'left') {
+              bar.classList.add('announcement-align-left');
+            } else {
+              bar.classList.add('announcement-align-center');
+            }
+
+            // Build inner HTML (simple row)
+            var inner = document.createElement('div');
+            inner.className = 'announcement-inner';
+
+            var content = document.createElement('div');
+            content.className = 'announcement-content';
+
+            if (cfg.icon) {
+              var icon = document.createElement('span');
+              icon.className = 'announcement-icon';
+              icon.textContent = cfg.icon;
+              content.appendChild(icon);
+            }
+
+            var textBlock = document.createElement('div');
+            textBlock.className = 'announcement-text-block';
+
+            if (cfg.title) {
+              var title = document.createElement('div');
+              title.className = 'announcement-title';
+              title.textContent = cfg.title;
+              textBlock.appendChild(title);
+            }
+
+            if (cfg.subtitle) {
+              var subtitle = document.createElement('div');
+              subtitle.className = 'announcement-subtitle';
+              subtitle.innerHTML = cfg.subtitle;
+              textBlock.appendChild(subtitle);
+            }
+
+            content.appendChild(textBlock);
+            inner.appendChild(content);
+
+            // CTA if enabled
+            if (cfg.cta && cfg.cta.enabled && cfg.cta.label && cfg.cta.url) {
+              var cta = document.createElement('a');
+              cta.className = 'announcement-cta';
+              cta.href = cfg.cta.url;
+              cta.target = cfg.cta.target || '_blank';
+              cta.rel = 'noopener';
+              cta.textContent = cfg.cta.label;
+              inner.appendChild(cta);
+            }
+
+            // Clear old simple span if present
+            bar.innerHTML = '';
+            bar.appendChild(inner);
+
             requestAnimationFrame(function () {
               bar.classList.add('announcement-visible');
             });
