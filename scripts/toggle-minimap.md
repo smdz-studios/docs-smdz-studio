@@ -12,8 +12,12 @@
   ></iframe>
 </div>
 
+<p style="text-align: center; font-weight: bold; color: red;">
+  THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
+</p>
 
-## 🧩 **OVERVIEW:**
+
+# 🧩 **OVERVIEW:**
 - **Name:** `smdz_toggleradar`
 - **Author:** SMDZ Studios
 - **Framework:** Standalone
@@ -23,12 +27,12 @@
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
 
-## 📦 **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 - Build: FiveM server (any build)
 - Framework: Standalone
 
 
-## ⚡ **FEATURES:**
+# ⚡ **FEATURES:**
 - Instantly hide or show your minimap & radar
 - Multilanguage support (English, Spanish, Portuguese)
 - No dependencies (works with any server)
@@ -36,7 +40,7 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 - Clean, safe code with server-side checks
 
 
-## 📥 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
 ```
 resources/[smdz]/toggleradar
@@ -47,7 +51,7 @@ ensure toggleradar
 ```
 
 
-## ⚙️ **CONFIGURATION:**
+# ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
 ```lua
@@ -79,13 +83,13 @@ Config.ACEPermission = "minimap.toggle"
 ```
 
 
-## 🎮 **USAGE:**
+# 🎮 **USAGE:**
 
 - Type /togglerminimap in chat to toggle the minimap and radar on or off.
 *Messages will appear in your selected language.*
 
 
-## 🌐 **LANGUAGES:**
+# 🌐 **LANGUAGES:**
 <span class="badge badge--new">NEW UPDATE</span>
 
 1. English (en)
@@ -130,7 +134,7 @@ Config.Languages = {
 ```
 
 
-## 🔌 **EVENTS:**
+# 🔌 **EVENTS:**
 ### Client
 - `minimap:client:permissionResult`
 
@@ -138,13 +142,12 @@ Config.Languages = {
 - `minimap:server:checkPerm`
 
 
-## 🛠️ **TROUBLESHOOTING:**
+# 🛠️ **TROUBLESHOOTING:**
 1. Script does not run: Check the ACE permissions.
 
 
-## 🔄 **UPDATES:**
+# 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026. **Anyway, this resource is open source, edit it however you like :)**
 
-
-## 📬 **NEED HELP?:**
+# 📬 **NEED HELP?:**
 Open an ticket in my Discord server or visit SUPPORT section.

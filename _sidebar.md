@@ -10,6 +10,7 @@
 - 💲 **PAID RESOURCES**
   <!-- - [Scripts Overview](/scripts/README.md) -->
   - [🚗 | Fast Repair — v 1.0](/scripts/fast-repair.md)
+  - [🚗 | Speed For Zones](/scripts/speed-for-zones.md)
 
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)

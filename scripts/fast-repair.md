@@ -14,6 +14,11 @@
   ></iframe>
 </div>
 
+<p style="text-align: center; font-weight: bold; color: red;">
+  THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
+</p>
+
+
 ## 🧩 **OVERVIEW:**
 - **Name:** `fast_repair_sergioomdz`
 - **Author:** SMDZ Studios

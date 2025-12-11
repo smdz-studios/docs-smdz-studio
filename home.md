@@ -12,12 +12,12 @@
 
 ---
 
-## ⚡ QUICK START FOR NEW CUSTOMERS
+## ⚡ **QUICK START FOR NEW CUSTOMERS:**
 
 If you are here because you just purchased a script, follow this path before touching your live server:
 
 1. **Find your script page**  
-   Open **[Scripts Overview](scripts/README.md)** and click on the exact script you bought.
+   Open the left menu and click on the exact script you bought.
 
 2. **Read the “Requirements” section carefully**  
    Confirm that you have:
@@ -51,7 +51,7 @@ ensure smdz_example
 
 ---
 
-## 🧭 WHAT YOU WILL FIND IN THESE DOCS
+## 🧭 **WHAT YOU WILL FIND IN THESE DOCS:**
 
 Think of this documentation as a focused hub for **server owners** and **developers** using SMDZ Studios scripts:
 
@@ -81,7 +81,7 @@ Think of this documentation as a focused hub for **server owners** and **develop
 
 ---
 
-## 🧩 HOW TO USE THESE DOCS EFFICIENTLY
+## 🧩 **HOW TO USE THESE DOCS EFFICIENTLY:**
 
 To avoid wasting time and to keep your server stable, use this flow whenever you work with an SMDZ Studios resource:
 
@@ -107,7 +107,7 @@ To avoid wasting time and to keep your server stable, use this flow whenever you
 
 ---
 
-## 🧪 FOR SERVER OWNERS & DEVELOPERS
+## 🧪 **FOR SERVER OWNERS & DEVELOPERS:**
 
 Whether you are just installing scripts or building systems around them:
 
@@ -139,7 +139,7 @@ If you need more technical detail for developers, you can suggest new sections v
 
 ---
 
-## 📬 WHERE TO GO NEXT
+## 📬 **WHERE TO GO NEXT:**
 
 Depending on what you need right now:
 
