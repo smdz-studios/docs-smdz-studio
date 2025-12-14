@@ -9,7 +9,7 @@
   </h1>
 </div>
 
-## ⚡ **QUICK START FOR NEW CUSTOMERS:**
+# ⚡ **QUICK START FOR NEW CUSTOMERS:**
 
 If you are here because you just purchased a script, follow this path before touching your live server:
 
@@ -22,15 +22,7 @@ If you are here because you just purchased a script, follow this path before tou
    - Required dependencies: database adapter, target system, UI library, etc.  
    - Any extra resources mentioned on that script’s page.
 
-3. **Install the resource in the correct folder**  
-   Place the script following the structure recommended in the docs, then add the `ensure` line to your `server.cfg`:
-
-   <pre><code>## SMDZ Studios resources
-ensure smdz_example
-# ensure smdz_your_script_here
-</code></pre>
-
-4. **Configure before going live**  
+3. **Configure before going live**  
    Open `config.lua` (or similar) and check at least:
 
    - `Config.Framework` (ESX / QBCore / Standalone)  
@@ -38,7 +30,7 @@ ensure smdz_example
    - Notification / UI system (for example `ox_lib`, `mythic_notify`…)  
    - Options linked to your economy, jobs, permissions or inventory.
 
-5. **Test in a non‑production environment**  
+4. **Test in a non‑production environment**  
    Before using it on your main RP server:
 
    - Run the script on a **local test server**, or  
@@ -48,7 +40,7 @@ ensure smdz_example
 
 ---
 
-## 🧭 **WHAT YOU WILL FIND IN THESE DOCS:**
+# 🧭 **WHAT YOU WILL FIND IN THESE DOCS:**
 
 Think of this documentation as a focused hub for **server owners** and **developers** using SMDZ Studios scripts:
 
@@ -78,7 +70,7 @@ Think of this documentation as a focused hub for **server owners** and **develop
 
 ---
 
-## 🧩 **HOW TO USE THESE DOCS EFFICIENTLY:**
+# 🧩 **HOW TO USE THESE DOCS EFFICIENTLY:**
 
 To avoid wasting time and to keep your server stable, use this flow whenever you work with an SMDZ Studios resource:
 
@@ -104,7 +96,7 @@ To avoid wasting time and to keep your server stable, use this flow whenever you
 
 ---
 
-## 🧪 **FOR SERVER OWNERS & DEVELOPERS:**
+# 🧪 **FOR SERVER OWNERS & DEVELOPERS:**
 
 Whether you are just installing scripts or building systems around them:
 
@@ -136,7 +128,7 @@ If you need more technical detail for developers, you can suggest new sections v
 
 ---
 
-## 📬 **WHERE TO GO NEXT:**
+# 📬 **WHERE TO GO NEXT:**
 
 Depending on what you need right now:
 

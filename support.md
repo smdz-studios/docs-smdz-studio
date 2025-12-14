@@ -61,12 +61,12 @@ The more precise and complete this information is, the faster SMDZ Studios can i
 Well‑written bug reports and detailed feedback are extremely valuable.  
 They help SMDZ Studios make each script **more stable, faster and easier to configure** for the entire community.
 
-<div class="tip">
+<!-- <div class="tip"> -->
   <p>
     When you take the time to reproduce an issue on a clean environment, capture useful logs and describe it
     clearly, you are not just fixing your own problem — you are improving the script for every server that uses it.
   </p>
-</div>
+<!-- </div> -->
 
 When reporting a bug, try to provide:
 
@@ -74,7 +74,7 @@ When reporting a bug, try to provide:
 - ✅ The **exact version** of the script and framework.  
 - ✅ Full console logs from server startup until the error appears.  
 - ✅ Relevant parts of your configuration (with sensitive data removed).  
-- ✅ `resmon` screenshots if the bug is related to performance.
+- ✅ `resmon 1` screenshots if the bug is related to performance.
 
 If a bug is confirmed, reproducible and has a noticeable impact, SMDZ Studios may, at its sole discretion:
 
@@ -87,7 +87,7 @@ Those rewards are **optional** and decided case‑by‑case after reviewing:
 
 - The severity and impact of the bug  
 - How easy it is to reproduce  
-- The quality and usefulness of the information you provided  
+- The quality and usefulness of the information you provided
 
 ---
 
