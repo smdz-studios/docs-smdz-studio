@@ -96,38 +96,6 @@ To avoid wasting time and to keep your server stable, use this flow whenever you
 
 ---
 
-# 🧪 **FOR SERVER OWNERS & DEVELOPERS:**
-
-Whether you are just installing scripts or building systems around them:
-
-- **Server owners / staff**
-
-  Focus mainly on:
-
-  - **Requirements** – what the script needs to run.  
-  - **Installation** – where to place it and how to start it.  
-  - **Configuration** – framework mode, target, notifications, economy and jobs.  
-  - **Usage** – commands, keybinds, menus, jobs and permissions.
-
-- **Developers / integrators**
-
-  Look for:
-
-  - **Events** – server/client events you can listen to or trigger.  
-  - **Exports** – functions you can call from other scripts.  
-  - **Callbacks / Interfaces** – ways to plug your systems into SMDZ resources.
-
-This lets you connect SMDZ scripts with:
-
-- Job systems.  
-- Logs and admin panels.  
-- Custom UIs.  
-- Other RP systems (garages, inventories, dispatch, etc.).
-
-If you need more technical detail for developers, you can suggest new sections via support so they can be added to the documentation.
-
----
-
 # 📬 **WHERE TO GO NEXT:**
 
 Depending on what you need right now:
