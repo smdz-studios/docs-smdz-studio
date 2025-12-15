@@ -134,7 +134,7 @@ Config.DebugMode = true             -- Enable general debug mode for all script 
 Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic sound
 ```
 
-## 🎮 **USAGE:**
+# 🎮 **USAGE:**
 1. Drive your vehicle to any configured repair point.
 2. Stop inside the marker. An NPC (if enabled) will appear and begin repair.
 3. Wait for the progress bar and effects to finish.
