@@ -11,6 +11,7 @@
   - [🧰 | Fast Repair — v 1.0](/scripts/fast-repair.md)
   - [🚗 | Speed For Zones](/scripts/speed-for-zones.md)
   - [📐 | HUD 2D Builder](/scripts/hud2d-builder.md)
+  - [🚌 | Bus Travel](/scripts/bus-travel.md)
 
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)

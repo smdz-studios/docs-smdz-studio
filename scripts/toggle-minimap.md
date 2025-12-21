@@ -1,4 +1,3 @@
-# FREE PREMIUM RADAR & MINIMAP TOGGLE
 <div align="center" style="margin-bottom: 1.5rem;">
   <iframe
     width="640"

@@ -1,5 +1,3 @@
-# 📐 SMDZ HUD 2D BUILDER
-
 <div align="center" style="margin-bottom: 1.5rem;">
   <iframe
     width="640"
