@@ -1,3 +1,4 @@
+# 🚌 SMDZ BUS TRAVELS — DOCUMENTATION
 <div align="center" style="margin-bottom: 1.5rem;">
   <iframe
     width="640"
@@ -24,7 +25,6 @@
 
 **SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.  
 It adds interactive bus stops with a clean menu, configurable fares and travel times, an optional immersive *Real Bus* experience, broad compatibility with popular community providers, and optional webhook logging for server activity.
-# 🚌 SMDZ BUS TRAVELS — DOCUMENTATION
 
 Welcome to **SMDZ Bus Travels**, a configurable public transport system for FiveM with support for multiple frameworks, inventories, targets, notifications, progress bars, and advanced roleplay features.
 
@@ -32,17 +32,20 @@ Welcome to **SMDZ Bus Travels**, a configurable public transport system for Five
 
 # ✨ FEATURES:
 
-- 🗺️ **Multiple bus stops** with map blips and world markers  
-- ⏳ **Waiting flow** with animations, progress bar, and travel time  
-- 🌙 **Night service blocking** with custom hours  
-- 🌧️ **Weather blocking** for storms/snow/etc.  
-- 🚍 **Bus spawn realism** (local bus + NPC driver)  
-- 💸 **Dynamic pricing** by distance  
-- 🧑‍🚒 **Government discount**  
+- 🗺️ **Route network** with multiple stops, blips, and markers  
+- 🧭 **Context menu UX** with stop lore, prices, and availability status  
+- ⏳ **Two‑stage flow** (waiting → boarding → travel) for immersive RP  
+- 🚍 **Local bus spawn** with NPC driver and optional vehicle color  
+- 🌙 **Night service control** with configurable operating hours  
+- 🌧️ **Weather shutdowns** for snow, storms, fog, and more  
+- 🚦 **Dynamic blip status** (red when blocked by night or weather)  
+- 💸 **Dynamic pricing** driven by distance, bounds, and rounding  
+- 🧑‍🚒 **Government discounts** via job whitelists  
 - 💎 **VIP access** (discount or free) via framework groups or ACE  
-- 🔔 **Multi‑provider notifications bridge**  
-- ⏱️ **Multi‑provider progressbar bridge**  
-- 🧾 **Discord webhooks** for logs  
+- 🔔 **Notification bridge** supporting major ecosystems  
+- ⏱️ **Progressbar bridge** supporting multiple providers  
+- 📡 **Discord webhooks** for purchase/cancel/complete logs  
+- 🧩 **Exports and callbacks** for custom integrations  
 
 ---
 
@@ -400,6 +403,16 @@ end
 - If target interaction fails, ensure the selected target resource is started or set `Config.Target = 'none'`.
 - If markers do not draw, ensure `Config.Markers.Enabled = true` and reduce `DrawDistance` only if needed.
 - If exports do not work, ensure the resource name matches `smdz_bus_travels` and is started.
+- If you see “service unavailable,” verify `lib.callback` is working and `ox_lib` is up.
+- If weather blocking shows during clear skies, your weather script may use non‑standard names; update the list.
+- If the travel time feels too short, increase `Config.TravelProgress.BaseMs` and `PerMeter`.
+- If the bus spawns underground, adjust the Z value in `Config.StopsBusSpawn`.
+- If the bus spawns on top of the player, move the spawn a few meters away from the stop coords.
+- If the menu is always blocked, check `Config.NightDisabled` and the configured hours.
+- If prices feel inconsistent, check rounding and `Config.Pricing.Min/Max` values.
+- If VIP shows but no discount is applied, confirm `Config.AccessPricing.StackWithGov` and mode.
+- If notifications are missing, set `Config.Notify = 'fallback'` to test the pipeline.
+- If progress bar hangs, switch to `fallback` to isolate provider issues.
 
 ---
 
@@ -431,6 +444,30 @@ A: Yes. Adjust `Config.TravelProgress.BaseMs`, `PerMeter`, and `DistanceMultipli
 
 **Q: Can I change the bus color?**  
 A: Yes. Use `Config.BusSpawn.RandomColor` or set `Config.BusSpawn.Color`.
+
+**Q: Can I disable weather blocking entirely?**  
+A: Yes. Set `Config.WeatherBlock.Enabled = false`.
+
+**Q: Do I need ox_target?**  
+A: No. Set `Config.Target = 'none'` to use the fallback key interaction.
+
+**Q: Can I show VIP as discount and still apply gov discount?**  
+A: Yes. Set `Config.AccessPricing.StackWithGov = true`.
+
+**Q: Why are webhooks not sending?**  
+A: Ensure `Config.Webhooks.Enabled = true` and the webhook URL is valid.
+
+**Q: How do I change the night hours?**  
+A: Edit `Config.NightFromHour` and `Config.NightToHour`.
+
+**Q: Can I override stop descriptions per locale?**  
+A: Yes. Update the `STOP_*_DESC` keys in `locales/en.lua` and `locales/es.lua`.
+
+**Q: Can I reduce CPU usage?**  
+A: Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance`.
+
+**Q: Is the bus spawn networked for all players?**  
+A: No. It is local per player to prevent collisions and duplication.
 
 ---
 
