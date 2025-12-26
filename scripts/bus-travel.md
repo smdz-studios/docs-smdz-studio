@@ -252,9 +252,17 @@ Locales live in:
 ```
 locales/en.lua
 locales/es.lua
+locales/fr.lua
+locales/de.lua
+locales/it.lua
+locales/pt.lua
+locales/nl.lua
+locales/tr.lua
+locales/ru.lua
+locales/ja.lua
 ```
 
-Edit those files to customize all in‑game text.
+Set the language with `Config.Locale` and edit these files to customize all in‑game text.
 
 ---
 
