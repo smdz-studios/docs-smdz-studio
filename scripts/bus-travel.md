@@ -78,10 +78,19 @@ ensure smdz_bus_travels
 
 ---
 
-# ⚙️ CONFIGURATION (SHARED/CONFIG.LUA):
+# 📦 REQUIREMENTS:
 
-Everything is controlled from `shared/config.lua`.  
-All options are documented inline, so open that file and edit values.
+- `ox_lib` (required)  
+  - Used for UI context menus, notifications, and callbacks (`lib.callback`).  
+  - Ensure it starts **before** `smdz_bus_travels` in `server.cfg`.
+
+Optional but supported dependencies (auto‑detected):
+- Targets: `ox_target`, `qb-target`
+- Inventories: `ox_inventory`, `origen_inventory`, `codem-inventory`, `qs-inventory`, `qb-inventory`, `lj-inventory`, `ak47_inventory`, `core_inventory`
+- Progress bars: `progressbar`, `mythic_progbar`, `esx_progressbar`
+- Notifications: `okokNotify`, `mythic_notify`, `pNotify`, `qs-notify`, `codem-notification`, `t-notify`, `brutal_notify`, `wasabi_notify`, `origen_notify`, `renzu_notify`, `cd_notifications`
+
+---
 
 # 🧩 BRIDGES (PROVIDERS):
 
