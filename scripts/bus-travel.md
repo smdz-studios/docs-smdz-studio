@@ -30,22 +30,65 @@ Welcome to **SMDZ Bus Travels**, a configurable public transport system for Five
 
 ---
 
+# 🚌 SMDZ BUS TRAVELS — DOCUMENTATION
+<div align="center" style="margin-bottom: 1.5rem;">
+  <iframe
+    width="640"
+    height="360"
+    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    title="smdz_bus_travels showcase"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="max-width: 100%; border-radius: 12px;"
+  ></iframe>
+</div>
+
+<p style="text-align: center; font-weight: bold; color: red;">
+  THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
+</p>
+
+# 🧩 **OVERVIEW:**
+- **Name:** `smdz_bus_travels`
+- **Author:** SMDZ Studios
+- **Framework:** ESX / QBCore / QB Box 
+- **Version:** `1.0.0`
+- **Status:** <span class="badge badge--stable">Stable</span>
+
+**SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.  
+It adds interactive bus stops with a clean menu, configurable fares and travel times, an optional immersive *Real Bus* experience, broad compatibility with popular community providers, and optional webhook logging for server activity.
+
+---
+
 # ✨ FEATURES:
 
-- 🗺️ **Route network** with multiple stops, blips, and markers  
-- 🧭 **Context menu UX** with stop lore, prices, and availability status  
-- ⏳ **Two‑stage flow** (waiting → boarding → travel) for immersive RP  
-- 🚍 **Local bus spawn** with NPC driver and optional vehicle color  
-- 🌙 **Night service control** with configurable operating hours  
-- 🌧️ **Weather shutdowns** for snow, storms, fog, and more  
-- 🚦 **Dynamic blip status** (red when blocked by night or weather)  
-- 💸 **Dynamic pricing** driven by distance, bounds, and rounding  
-- 🧑‍🚒 **Government discounts** via job whitelists  
-- 💎 **VIP access** (discount or free) via framework groups or ACE  
-- 🔔 **Notification bridge** supporting major ecosystems  
-- ⏱️ **Progressbar bridge** supporting multiple providers  
-- 📡 **Discord webhooks** for purchase/cancel/complete logs  
-- 🧩 **Exports and callbacks** for custom integrations  
+- 🗺️ **Route network** with multiple predefined and configurable stops, including map blips and world markers for clear navigation.
+- 🧭 **Context menu UX** with a clean interface showing stop lore, ticket prices, route availability, and real-time service status.
+- ⏳ **Two-stage flow** *(waiting → boarding → travel)* that simulates realistic public transport timing for immersive roleplay.
+- 🚍 **Local bus spawn** with an NPC driver, realistic boarding behavior, and optional vehicle color customization.
+- 🌙 **Night service control** with fully configurable operating hours to automatically pause routes during late-night schedules.
+- 🌧️ **Weather shutdowns** that suspend service during snow, storms, heavy rain, fog, and other severe conditions.
+- 🚦 **Dynamic blip status** that updates in real time, turning red when routes are blocked by night hours or weather.
+- 💸 **Dynamic pricing system** calculated from travel distance with configurable minimums, maximums, and rounding rules.
+- 🧑‍🚒 **Government discounts** via job whitelists for police, EMS, firefighters, and other public services.
+- 💎 **VIP access** offering discounted or free travel through framework groups or ACE permissions.
+- 🔔 **Notification bridge** supporting major notification ecosystems with automatic fallback handling.
+- ⏱️ **Progressbar bridge** compatible with multiple popular progress bar providers.
+- 📡 **Discord webhooks** logging purchases, cancellations, and completed trips with structured embeds.
+- 🧩 **Exports and callbacks** for easy custom integrations and advanced server-side logic.
+- 🎨 **Customizable visuals** including bus colors, marker styles, and blip appearance.
+- 🧾 **Full localization** with 10+ languages and fully editable lore text.
+- 🧱 **Graceful fallbacks** for notifications, progress bars, and targetless interaction mode.
+- 🧠 **Config-first design** with clean, centralized configuration for easy setup and maintenance.
+
+
+Each feature is designed to feel native to GTA V roleplay. The menu not only shows routes and prices, it also reflects service availability in real time. The flow is intentionally paced: players wait, board a physical bus with an NPC driver, then travel with a distance‑based duration that feels believable.
+
+Operations are reactive. Night hours can suspend service, weather can shut down routes, and blips update color to communicate status instantly. Pricing is flexible and realistic, with base fees, per‑meter costs, bounds, and rounding so the economy stays balanced.
+
+Discounts and VIP access are fully optional but powerful. Government jobs can receive special fares, while VIPs can be granted discounts or free rides via framework groups or ACE permissions. Notifications and progress bars are handled through bridges so you can plug in whatever ecosystem your server already uses.
+
+The system is built for maintainability: all settings are centralized, exports and callbacks are available for custom scripts, and locale files let you replace every message and stop description with your own lore. If a dependency is missing, the script falls back cleanly so the core experience still works.
 
 ---
 
@@ -411,6 +454,7 @@ end
 - If target interaction fails, ensure the selected target resource is started or set `Config.Target = 'none'`.
 - If markers do not draw, ensure `Config.Markers.Enabled = true` and reduce `DrawDistance` only if needed.
 - If exports do not work, ensure the resource name matches `smdz_bus_travels` and is started.
+- If using `Config.Target = 'none'`, ensure `Config.InteractKey` is a valid key name or control index.
 - If you see “service unavailable,” verify `lib.callback` is working and `ox_lib` is up.
 - If weather blocking shows during clear skies, your weather script may use non‑standard names; update the list.
 - If the travel time feels too short, increase `Config.TravelProgress.BaseMs` and `PerMeter`.
