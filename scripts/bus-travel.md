@@ -3,7 +3,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    src="https://www.youtube.com/embed/H8KpxUg2aDk"
     title="smdz_bus_travels showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
