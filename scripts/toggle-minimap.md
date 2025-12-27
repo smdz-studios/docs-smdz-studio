@@ -17,7 +17,7 @@
 
 ---
 
-# 🧩 **OVERVIEW:**
+# 🧩 OVERVIEW:
 - **Name:** `smdz_toggleradar`
 - **Author:** SMDZ Studios
 - **Framework:** Standalone
@@ -29,13 +29,13 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 
 ---
 
-# 📦 **REQUIREMENTS:**
+# 📦 REQUIREMENTS:
 - Build: FiveM server (any build)
 - Framework: Standalone
 
 ---
 
-# ✨ **FEATURES:**
+# ✨ FEATURES:
 - 🗺️ Instantly hide or show your minimap & radar
 - 🌍 Multilanguage support (English, Spanish, Portuguese)
 - 🧩 No dependencies (works with any server)
@@ -44,7 +44,7 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 
 ---
 
-# 📥 **INSTALLATION:**
+# 📥 INSTALLATION:
 1. Download and unzip the resource to your server's resources/ folder.
 ```
 resources/[smdz]/toggleradar
@@ -56,7 +56,7 @@ ensure toggleradar
 
 ---
 
-# ⚙️ **CONFIGURATION:**
+# ⚙️ CONFIGURATION:
 All in `config.lua`:
 
 ```lua
@@ -89,7 +89,7 @@ Config.ACEPermission = "minimap.toggle"
 
 ---
 
-# 🎮 **USAGE:**
+# 🎮 USAGE:
 
 - Type /togglerminimap in chat to toggle the minimap and radar on or off.
 *Messages will appear in your selected language.*
@@ -141,7 +141,7 @@ Config.Languages = {
 
 ---
 
-# 🔌 **EVENTS:**
+# 🔌 EVENTS:
 ### Client
 - `minimap:client:permissionResult`
 
@@ -150,10 +150,10 @@ Config.Languages = {
 
 ---
 
-# 🛠️ **TROUBLESHOOTING:**
+# 🛠️ TROUBLESHOOTING:
 1. Script does not run: Check the ACE permissions.
 
 ---
 
-# 🔄 **UPDATES:**
+# 🔄 UPDATES:
 - There are **NO** plans to add script updates during 2025 and early 2026. **Anyway, this resource is open source, edit it however you like :)**
