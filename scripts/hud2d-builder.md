@@ -19,7 +19,7 @@
 
 ---
 
-# 🧩 **OVERVIEW:**
+# 🧩 OVERVIEW:
 - **Resource name:** `smdz_hud2d_builder`
 - **Author:** **SMDZ Studios**
 - **Version:** `1.0.0`
@@ -696,7 +696,7 @@ Recommended update workflow:
 
 ---
 
-# ⚠️🚨 **IMPORTANT WARNING:**
+# ⚠️🚨 IMPORTANT WARNING:
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

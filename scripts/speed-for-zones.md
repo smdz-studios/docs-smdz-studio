@@ -17,7 +17,7 @@
 
 ---
 
-# 🧩 **OVERVIEW:**
+# 🧩 OVERVIEW:
 - **Name:** `smdz_speedforzones`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore 
@@ -878,7 +878,7 @@ Yes, all critical actions are validated server-side. No client can bypass restri
 
 ---
 
-# ⚠️🚨 **IMPORTANT WARNING:**
+# ⚠️🚨 IMPORTANT WARNING:
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

@@ -18,7 +18,7 @@
 
 ---
 
-# 🧩 **OVERVIEW:**
+# 🧩 OVERVIEW:
 - **Name:** `fast_repair_sergioomdz`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore 
@@ -186,7 +186,7 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 
 ---
 
-# ⚠️🚨 **IMPORTANT WARNING:**
+# ⚠️🚨 IMPORTANT WARNING:
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

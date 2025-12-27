@@ -16,7 +16,7 @@
   THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
-# 🧩 **OVERVIEW:**
+# 🧩 OVERVIEW:
 - **Name:** `smdz_bus_travels`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore / QB Box 
@@ -842,7 +842,7 @@ Config.BusSpawn = {
 
 ---
 
-# ⚠️🚨 **IMPORTANT WARNING:**
+# ⚠️🚨 IMPORTANT WARNING:
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
