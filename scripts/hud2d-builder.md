@@ -31,7 +31,7 @@
 
 ---
 
-# ⚡ **FEATURES:**
+# ✨ **FEATURES:**
 - 🎯 **Live HUD editing:** Move elements while seeing changes immediately.
 - 🧱 **Multiple elements:** Maintain a list of text elements and switch active element quickly.
 - 🎨 **Styling tools:**
@@ -668,7 +668,7 @@ A: Rendering a small set of text elements per frame is lightweight. If you rende
 **Q: Can I integrate this with a staff menu?**  
 A: Yes. Use client exports `openEditor()` / `closeEditor()` and `requestPermission()` to gate access.
 
----
+<!-- ---
 
 # 🔄 **UPDATES:**
 Recommended update workflow:
@@ -686,18 +686,17 @@ Recommended update workflow:
    ```bash
    start smdz_hud2d_builder
    ```
-6. Validate on staging before production
+6. Validate on staging before production -->
 
 ---
 
-# 🧑‍💻 **SUPPORT:**
-When requesting support, include:
-- Script name & version: `smdz_hud2d_builder v1.0.0`
-- Framework (if any) + versions
-- FiveM artifact/build
-- Steps to reproduce
-- Server logs + client stack traces (if present)
+# 🔄 **UPDATES:**
+- There are **NO** plans to add script updates during 2025 and early 2026.
+- **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
-✅ Thanks for using **SMDZ HUD 2D Builder v1.0.0**.
+# ⚠️🚨 **IMPORTANT WARNING:**
+**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+
+If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

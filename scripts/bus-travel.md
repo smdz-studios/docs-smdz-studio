@@ -498,14 +498,7 @@ A: Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance
 **Q: Is the bus spawn networked for all players?**  
 A: No. It is local per player to prevent collisions and duplication.
 
----
 
-**Recommended dependencies:**
-- `ox_lib`
-- `ox_target` (optional)
-- `ox_inventory` (optional)
-
-Other supported systems work fine if detected.
 ---
 
 # ⚙️ CONFIG.LUA FILE:
@@ -843,10 +836,13 @@ Config.BusSpawn = {
 
 ---
 
-# 📬 SUPPORT:
+# 🔄 **UPDATES:**
+- There are **NO** plans to add script updates during 2025 and early 2026.
+- **STEPS:** *Backup config → replace folder → restore config → restart.*
 
-If you need help, open an issue with:
+---
 
-- your config
-- framework/inventory/target setup
-- client and server console logs
+# ⚠️🚨 **IMPORTANT WARNING:**
+**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+
+If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

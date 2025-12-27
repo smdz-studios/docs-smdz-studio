@@ -16,6 +16,7 @@
   THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
 </p>
 
+---
 
 # 🧩 **OVERVIEW:**
 - **Name:** `fast_repair_sergioomdz`
@@ -27,13 +28,16 @@
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
 
+---
+
 # 📦 **REQUIREMENTS:**
 - FiveM server (latest build)
 - ESX / QBCore / Standalone
 - Optional: Notification systems
 
+---
 
-# ⚡ **FEATURES:**
+# ✨ **FEATURES:**
 - Animated mechanic NPC repairs your vehicle.
 - Configurable repair price or free mode.
 - Customizable particle effects and sounds.
@@ -44,6 +48,7 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 - Full ESX/QBCore compatibility.
 - Easy to translate and configure. (NEW: More than ten languages supported!)
 
+---
 
 # 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
@@ -56,6 +61,7 @@ ensure fast_repair_sergioomdz
 ```
 **The script will print credits and block execution if the folder name is incorrect.**
 
+---
 
 # ⚙️ **CONFIGURATION:**
 All in `config.lua`:
@@ -132,6 +138,8 @@ Config.DebugMode = true             -- Enable general debug mode for all script 
 Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic sound
 ```
 
+---
+
 # 🎮 **USAGE:**
 1. Drive your vehicle to any configured repair point.
 2. Stop inside the marker. An NPC (if enabled) will appear and begin repair.
@@ -148,12 +156,14 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 ### Server
 - `fast_repair:logRepair` -->
 
+---
 
 # 🛠️ **TROUBLESHOOTING:**
 1. Script does not run: Check the folder name is exactly fast_repair_sergioomdz.
 2. NPC or particles not appearing: Make sure the model, animation, and particle names exist and are typed correctly. Try different offsets or scales.
 3. Uncaught TypeError: Failed to fetch: Your NUI files (HTML, JS) may be missing or not loading. Check your resource structure.
 
+---
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 - Q: **How do I add more repair locations?**
@@ -168,11 +178,15 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 - Q: **How do I translate the script?**
 - A: Edit the Lang variable and L() function in config.lua with your own texts.
 
+---
 
 # 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026.
 - **STEPS:** *Backup config → replace folder → restore config → restart.*
 
+---
 
-# 📬 **SUPPORT:**
-Include version, framework, logs, reproduction steps.
+# ⚠️🚨 **IMPORTANT WARNING:**
+**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+
+If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

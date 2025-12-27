@@ -15,6 +15,8 @@
   THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
+---
+
 # 🧩 **OVERVIEW:**
 - **Name:** `smdz_speedforzones`
 - **Author:** SMDZ Studios
@@ -26,8 +28,9 @@ Welcome to the official documentation for smdz_speedforzones, your all-in-one so
 This guide covers everything: installation, configuration, features, troubleshooting, FAQs, and more.
 Emojis highlight key sections for clarity and navigation.
 
+---
 
-# ⚡ **FEATURES:**
+# ✨ **FEATURES:**
 
 - 🚧 Zone-based speed limits using PolyZone polygons.
 - 🌊 Smooth speed cap transitions for realistic driving.
@@ -45,6 +48,7 @@ Emojis highlight key sections for clarity and navigation.
 - 🐞 Debug mode for setup and troubleshooting.
 - 🌎 Multilingual support (English/Spanish, extendable).
 
+---
 
 # 📦 **REQUIREMENTS AND INSTALLATION:**
 ### 1. 🧩 **DEPENDENCIES:**
@@ -55,13 +59,8 @@ Emojis highlight key sections for clarity and navigation.
 - **ox_inventory** (optional, recommended for modern inventory)
 - **OneSync Infinity** (recommended)
 
-### 2. 📁 **FOLDER NAME:**
 
-- Must be **EXACTLY:** `smdz_speedforzones`
-**The script will print credits and block execution if the folder name is incorrect.**
-
-
-### 3. 📄 **SERVER.CFG ORDER:**
+### 2. 📄 **SERVER.CFG ORDER:**
 
 ```cfg
 ensure ox_lib
@@ -72,6 +71,7 @@ ensure ox_inventory   # optional
 ensure smdz_speedforzones
 ```
 
+---
 
 # 🗺️ **ZONES:**
 Zones are defined in config.lua under Config.Zones.
@@ -98,6 +98,7 @@ Config.Zones = {
 } 
 ```
 
+---
 
 # 🧩 **HACK ITEMS & MINIGAME:**
 
@@ -122,6 +123,7 @@ Players can temporarily bypass speed limits by purchasing and using hack items.
 All hack attempts and item removals are validated server-side.  
 The unlock applies only to the specific vehicle and exactly for the configured time.
 
+---
 
 # 💰 **DEALERS:**
 
@@ -142,7 +144,7 @@ Dealers use **ox_lib** menus for a modern experience.
 - 🔍 Server checks funds, cooldown, proximity.  
 - 📦 Item delivered; if inventory fails, refund is automatic.
 
-
+---
 
 # ⚙️ **CONFIGURATION:**
 Everything is in config.lua.
@@ -389,9 +391,6 @@ Config.Locales = { -- Translations container keyed by locale code
     log_exit_title = 'Fahrzeug hat Zone verlassen' -- Webhook title for zone exit
   }
 }
-
-
-
 
 
 -- ╔══════════════════════════════════════════════════════╗
@@ -733,6 +732,8 @@ Config.Debug = { -- Debug configuration
 -- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####  
 ```
 
+---
+
 # 🔒 **SECURITY:**
 ### Expanded Security Information
 
@@ -766,7 +767,7 @@ Config.Debug = { -- Debug configuration
 - ✅ Review logs regularly for suspicious activity.  
 - 🔄 Restart the server or resource after changing `config.lua`.
 
-
+---
 
 # 🐞 COMMON PROBLEMS:
 
@@ -818,7 +819,7 @@ Config.Debug = { -- Debug configuration
 **Problem:** Players cannot see or use items/dealers.  
 **Solution:** Check registration in inventory system, dealer config and ensure correct dependency start order.
 
-
+---
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 - ❓ **CAN I USE THIS ON ESX OR QBCORE?**
@@ -869,18 +870,15 @@ Contact through the Tebex page, Discord, or the official documentation links.
 - ❓ **IS THIS SYSTEM SECURE AGAINST CHEATERS?**
 Yes, all critical actions are validated server-side. No client can bypass restrictions or hack the system without server approval.
 
+---
 
 # 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026.
 - **STEPS:** *Backup config → replace folder → restore config → restart.*
 
-
-# 📬 **SUPPORT:**
-Include version, framework, logs, reproduction steps.
-
+---
 
 # ⚠️🚨 **IMPORTANT WARNING:**
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-If you rename the folder, the script will NOT function and will stop automatically for security reasons.
-*Always use the exact name: smdz_speedforzones*
+If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

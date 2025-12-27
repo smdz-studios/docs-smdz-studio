@@ -15,6 +15,7 @@
   THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
 </p>
 
+---
 
 # 🧩 **OVERVIEW:**
 - **Name:** `smdz_toggleradar`
@@ -26,18 +27,22 @@
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
 
+---
+
 # 📦 **REQUIREMENTS:**
 - Build: FiveM server (any build)
 - Framework: Standalone
 
+---
 
-# ⚡ **FEATURES:**
-- Instantly hide or show your minimap & radar
-- Multilanguage support (English, Spanish, Portuguese)
-- No dependencies (works with any server)
-- ACE permissions for admin control
-- Clean, safe code with server-side checks
+# ✨ **FEATURES:**
+- 🗺️ Instantly hide or show your minimap & radar
+- 🌍 Multilanguage support (English, Spanish, Portuguese)
+- 🧩 No dependencies (works with any server)
+- 🛡️ ACE permissions for admin control
+- ✅ Clean, safe code with server-side checks
 
+---
 
 # 📥 **INSTALLATION:**
 1. Download and unzip the resource to your server's resources/ folder.
@@ -49,6 +54,7 @@ resources/[smdz]/toggleradar
 ensure toggleradar
 ```
 
+---
 
 # ⚙️ **CONFIGURATION:**
 All in `config.lua`:
@@ -81,6 +87,7 @@ Config.RequireACE = false
 Config.ACEPermission = "minimap.toggle"
 ```
 
+---
 
 # 🎮 **USAGE:**
 
@@ -132,6 +139,7 @@ Config.Languages = {
 
 ```
 
+---
 
 # 🔌 **EVENTS:**
 ### Client
@@ -140,13 +148,12 @@ Config.Languages = {
 ### Server
 - `minimap:server:checkPerm`
 
+---
 
 # 🛠️ **TROUBLESHOOTING:**
 1. Script does not run: Check the ACE permissions.
 
+---
 
 # 🔄 **UPDATES:**
 - There are **NO** plans to add script updates during 2025 and early 2026. **Anyway, this resource is open source, edit it however you like :)**
-
-# 📬 **NEED HELP?:**
-Open an ticket in my Discord server or visit SUPPORT section.
