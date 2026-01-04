@@ -223,7 +223,7 @@ Config.Notify = {
 --=============================================================
 Config.Webhook = {
     Enabled  = true,
-    Url      = 'https://discord.com/api/webhooks/1456287299267596395/rNRNLDhdBDeYszq8OvTMbULglERc21rZEdMU1b4hhuKGVWvQG2ftMQmMS7aXDU_D74c5',
+    Url      = 'https://discord.com/api/webhooks/XXXX/XXXXXXXX',
     Identity = {
         Username = 'WEBHOOK_USERNAME',
         Avatar   = ''                 -- '' = none / url .png
