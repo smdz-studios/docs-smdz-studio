@@ -12,8 +12,6 @@
   ></iframe>
 </div>
 
-A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premium NUI, and grant items, money, and optional vehicles with strong anti-abuse and creator code bonuses.
-
 ---
 
 # 🧩 OVERVIEW:
