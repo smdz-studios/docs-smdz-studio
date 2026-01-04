@@ -10,12 +10,11 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
-
 <p style="text-align: center; font-weight: bold; color: red;">
   THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
-# 🧩 OVERVIEW:
+# 🧩 **OVERVIEW:**
 - **Name:** `smdz_bus_travels`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore / QB Box 
@@ -27,7 +26,7 @@ It adds interactive bus stops with a clean menu, configurable fares and travel t
 
 ---
 
-# ✨ FEATURES:
+# ✨ **FEATURES:**
 
 - 🗺️ **Route network** with multiple predefined and configurable stops, including map blips and world markers for clear navigation.
 - 🧭 **Context menu UX** with a clean interface showing stop lore, ticket prices, route availability, and real-time service status.
@@ -59,7 +58,7 @@ The system is built for maintainability: all settings are centralized, exports a
 
 ---
 
-# 📦 INSTALLATION:
+# 📦 **INSTALLATION:**
 
 1) Place the resource in your server resources folder:  
 
@@ -77,7 +76,7 @@ ensure smdz_bus_travels
 
 ---
 
-# 📦 REQUIREMENTS:
+# 📦 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - `ox_lib` (required)  
   - Used for UI context menus, notifications, and callbacks (`lib.callback`).  
@@ -86,7 +85,7 @@ ensure smdz_bus_travels
 
 ---
 
-# 🧩 BRIDGES (PROVIDERS):
+# 🧩 **BRIDGES (PROVIDERS):**
 
 ## 🔔 NOTIFICATIONS:
 
@@ -147,7 +146,7 @@ Supported inventory providers:
 
 ---
 
-# 🕒 NIGHT BLOCKING:
+# 🕒 **NIGHT BLOCKING:**
 
 If `Config.NightDisabled = true`, the service blocks between:
 
@@ -159,7 +158,7 @@ Players will see a message that includes the available hours.
 
 ---
 
-# 🌧️ WEATHER BLOCKING:
+# 🌧️ **WEATHER BLOCKING:**
 
 Use `Config.WeatherBlock.Blocked` to define blocked weather types:
 
@@ -171,7 +170,7 @@ When blocked, the menu shows a warning and prevents travel.
 
 ---
 
-# 💸 PRICING:
+# 💸 **PRICING:**
 
 Dynamic pricing is controlled by:
 
@@ -187,7 +186,7 @@ If disabled, `Config.DefaultPrice` is used.
 
 ---
 
-# 🎖️ VIP ACCESS (DISCOUNT OR FREE):
+# 🎖️ **VIP ACCESS (DISCOUNT OR FREE):**
 
 Enable:
 
@@ -209,7 +208,7 @@ VIP users see a special menu entry with a crown icon.
 
 ---
 
-# 🚌 BUS SPAWN REALISM:
+# 🚌 **BUS SPAWN REALISM:**
 
 Each stop can spawn a local bus so the player boards before teleport.
 
@@ -234,7 +233,7 @@ Config.BusSpawn.Color
 
 ---
 
-# 🗺️ STOPS:
+# 🗺️ **STOPS:**
 
 Stops are defined in:
 
@@ -255,7 +254,7 @@ Descriptions are stored in locales.
 
 ---
 
-# 🌍 LOCALES:
+# 🌍 **LOCALES:**
 
 Locales live in:
 
@@ -276,7 +275,7 @@ Set the language with `Config.Locale` and edit these files to customize all in�
 
 ---
 
-# 🔎 DEBUG MODE:
+# 🔎 **DEBUG MODE:**
 
 Enable debug logs:
 
@@ -293,7 +292,7 @@ You will see extra console output for:
 
 ---
 
-# 📡 WEBHOOKS:
+# 📡 **WEBHOOKS:**
 
 Enable Discord logging:
 
@@ -314,7 +313,7 @@ Supports:
 
 ---
 
-# 👨‍💻 EVENTS & EXPORTS (DEVELOPERS):
+# 👨‍💻 **EVENTS & EXPORTS (DEVELOPERS):**
 
 Below is the full developer surface (events, callbacks, exports) available in this resource.
 
@@ -407,7 +406,7 @@ end
 
 ---
 
-# 🛠️ TROUBLESHOOTING:
+# 🛠️ **TROUBLESHOOTING:**
 
 - If the bus does not appear, enable `Config.Debug` and check for `DBG_BUS_SPAWN_*` logs.
 - If progress bars do not show, verify the selected provider resource is started.
@@ -435,7 +434,7 @@ end
 
 ---
 
-# ❓ FAQ – FREQUENTLY ASKED QUESTIONS:
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 **Q: Can I disable dynamic pricing?**  
 A: Yes. Set `Config.Pricing.Enabled = false` and use `Config.DefaultPrice`.
@@ -491,7 +490,7 @@ A: No. It is local per player to prevent collisions and duplication.
 
 ---
 
-# ⚙️ CONFIG.LUA FILE:
+# ⚙️ **CONFIG.LUA FILE:**
 
 ```lua
 --  ____  __  __ ____  _____
@@ -832,7 +831,7 @@ Config.BusSpawn = {
 
 ---
 
-# ⚠️🚨 IMPORTANT WARNING:
+# ⚠️🚨 **IMPORTANT WARNING:**
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

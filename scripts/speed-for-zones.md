@@ -17,7 +17,7 @@
 
 ---
 
-# 🧩 OVERVIEW:
+# 🧩 **OVERVIEW:**
 - **Name:** `smdz_speedforzones`
 - **Author:** SMDZ Studios
 - **Framework:** ESX / QBCore 
@@ -60,7 +60,7 @@ Emojis highlight key sections for clarity and navigation.
 - **OneSync Infinity** (recommended)
 
 
-### 2. 📄 **SERVER.CFG ORDER:**
+### 2. 📄 SERVER.CFG ORDER:
 
 ```cfg
 ensure ox_lib
@@ -769,7 +769,7 @@ Config.Debug = { -- Debug configuration
 
 ---
 
-# 🐞 COMMON PROBLEMS:
+# 🐞 **COMMON PROBLEMS:**
 
 ## 📁 FOLDER NAME ERROR:
 **Problem:** Resource prints an error and stops.  
@@ -878,7 +878,7 @@ Yes, all critical actions are validated server-side. No client can bypass restri
 
 ---
 
-# ⚠️🚨 IMPORTANT WARNING:
+# ⚠️🚨 **IMPORTANT WARNING:**
 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal

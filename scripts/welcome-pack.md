@@ -11,12 +11,15 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
+<p style="text-align: center; font-weight: bold; color: red;">
+  THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
+</p>
 
 A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premium NUI, and grant items, money, and optional vehicles with strong anti-abuse and creator code bonuses.
 
 ---
 
-# 🧩 OVERVIEW:
+# 🧩 **OVERVIEW:**
 
 - **Name:** `smdz_welcome_pack`
 - **Author:** SMDZ Studios
@@ -29,7 +32,7 @@ An all-in-one welcome pack system with NPC interaction, NUI rewards, creator cod
 
 ---
 
-# 🧩 FEATURES:
+# ✨ **FEATURES:**
 
 | Module | Description | Details |
 | --- | --- | --- |
@@ -48,7 +51,7 @@ An all-in-one welcome pack system with NPC interaction, NUI rewards, creator cod
 
 ---
 
-# 📦 REQUIREMENTS:
+# 📦 **REQUIREMENTS:**
 
 - **FiveM server:** latest recommended build.
 - **Framework:** ESX / QBCore / QBX / Standalone.
@@ -63,7 +66,7 @@ Note: If you use `mysql-async`, replace `@oxmysql/lib/MySQL.lua` with `@mysql-as
 
 ---
 
-# 🛠️ INSTALLATION:
+# 🛠️ **INSTALLATION:**
 
 1. Download the resource: `smdz_welcome_pack.zip`.
 2. Extract into your FiveM resources:
@@ -95,7 +98,7 @@ start smdz_welcome_pack
 
 ---
 
-# ⚙️ CONFIGURATION:
+# ⚙️ **CONFIGURATION:**
 
 Main configuration: `config.lua`.
 
@@ -147,7 +150,7 @@ Config.NUIVehicleImage = 'nui://smdz_welcome_pack/nui/assets/vehicles/default.pn
 
 ---
 
-# 🧍 NPCS & REWARDS:
+# 🧍 **NPCS & REWARDS:**
 
 ```lua
 Config.NPCs = {
@@ -195,7 +198,7 @@ Note: If `Config.ScenariosNPC.enabled = true`, the per-NPC `scenario` is only us
 
 ---
 
-# 🎭 SCENARIO ROTATION:
+# 🎭 **SCENARIO ROTATION:**
 
 ```lua
 Config.ScenariosNPC = {
@@ -214,7 +217,7 @@ Config.ScenariosNPC = {
 
 ---
 
-# 🧾 CREATOR / INVITE CODES:
+# 🧾 **CREATOR / INVITE CODES:**
 
 ```lua
 Config.CreatorCodes = {
@@ -235,7 +238,7 @@ Config.CreatorCodes = {
 
 ---
 
-# 🏆 CREATOR OWNER REWARDS:
+# 🏆 **CREATOR OWNER REWARDS:**
 
 Owners can check their codes and claim tier rewards from the NUI.
 
@@ -261,7 +264,7 @@ The owner panel shows:
 
 ---
 
-# 🖥️ UI / NUI:
+# 🖥️ **UI / NUI:**
 
 | Config | Description |
 | --- | --- |
@@ -282,7 +285,7 @@ NUI assets:
 
 ---
 
-# 📣 NOTIFICATIONS:
+# 📣 **NOTIFICATIONS:**
 
 | Provider | Event |
 | --- | --- |
@@ -295,7 +298,7 @@ NUI assets:
 
 ---
 
-# ⛽ FUEL:
+# ⛽ **FUEL:**
 
 | Provider | Method |
 | --- | --- |
@@ -310,7 +313,7 @@ NUI assets:
 
 ---
 
-# 📊 WEBHOOK LOGS:
+# 📊 **WEBHOOK LOGS:**
 
 ```lua
 Config.Webhook = {
@@ -331,7 +334,7 @@ Logged events:
 
 ---
 
-# 🧪 DEBUG:
+# 🧪 **DEBUG:**
 
 Set `Config.Debug = true` to view detailed logs. All debug prints use locale keys.
 
@@ -348,7 +351,7 @@ Set `Config.Debug = true` to view detailed logs. All debug prints use locale key
 
 ---
 
-# 🧰 EVENTS & EXPORTS (Developers):
+# 🧰 **EVENTS & EXPORTS (Developers):**
 
 ## Server Events
 
@@ -374,7 +377,7 @@ No exports are defined by default.
 
 ---
 
-# 🧭 USAGE:
+# 🧭 **USAGE:**
 
 ### Player Flow
 
@@ -396,7 +399,7 @@ The command suggestion is registered on client load and localized via `CMD_VIEWM
 
 ---
 
-# 🗃️ DATABASE:
+# 🗃️ **DATABASE:**
 
 ```sql
 CREATE TABLE IF NOT EXISTS smdz_welcome (
@@ -425,7 +428,7 @@ CREATE TABLE IF NOT EXISTS smdz_welcome_code_claims (
 
 ---
 
-# 🛠️ DEBUGGING & COMMON ISSUES:
+# 🛠️ **DEBUGGING & COMMON ISSUES:**
 
 1. **NUI does not open**
    - Check `ui_page` and `nui/` files in `fxmanifest.lua`.
@@ -454,30 +457,14 @@ CREATE TABLE IF NOT EXISTS smdz_welcome_code_claims (
 
 ---
 
-# 🔄 UPDATES:
-
-1. Backup your `config.lua` and any custom changes.
-2. Stop the resource.
-3. Replace the old folder with the new version.
-4. Merge your config changes.
-5. Start the resource and test.
+# 🔄 **UPDATES:**
+- There are **NO** plans to add script updates during 2025 and early 2026.
+- **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
-# 📝 NOTES:
+# ⚠️🚨 **IMPORTANT WARNING:**
+**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-- Always test updates on a staging server.
-- Keep backups of database + configs.
-- Use Git to track local edits.
-
----
-
-# 🆘 SUPPORT:
-
-Please include:
-
-- Script name and version (`smdz_welcome_pack vX.X.X`).
-- Framework type and version.
-- FiveM artifacts/build version.
-- Steps to reproduce.
-- Relevant console logs.
+If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
+*If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
