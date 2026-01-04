@@ -12,8 +12,8 @@
   - [🚗 | Speed For Zones](/scripts/speed-for-zones.md)
   - [📐 | HUD 2D Builder](/scripts/hud2d-builder.md)
   - [🚌 | Bus Travel](/scripts/bus-travel.md)
-  <!-- - [🎁 | Welcome Pack](/scripts/welcome-pack.md)
-  - [🔖 | Evidence Markers](/scripts/evidence-markers.md) -->
+  <!-- - [🎁 | Welcome Pack](/scripts/welcome-pack.md) -->
+  - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
 
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
