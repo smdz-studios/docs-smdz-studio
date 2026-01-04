@@ -19,7 +19,7 @@
 
 ---
 
-## 🧩 Overview
+# 🧩 OVERVIEW:
 
 - **Name:** `smdz_example` <!-- change to your resource name -->
 - **Author:** SMDZ Studios
@@ -40,7 +40,7 @@ Replace this with a **1–2 sentence** description of what the script does.
 
 ---
 
-## 📦 Requirements
+# 📦 REQUIREMENTS:
 
 Fill this with the real dependencies of your script.
 
@@ -53,7 +53,7 @@ Fill this with the real dependencies of your script.
 
 ---
 
-## 📥 Installation
+# 📥 Installation
 
 Describe the exact installation steps.
 
@@ -81,7 +81,7 @@ start smdz_example
 
 ---
 
-## ⚙️ Configuration
+# ⚙️ CONFIGURATION:
 
 Explain your main configuration file(s), usually `config.lua`, `config.json` or similar.
 
@@ -110,7 +110,7 @@ When you bring this template in another chat, tell me your real config and I wil
 
 ---
 
-## 🎮 Usage
+# 🎮 USAGE:
 
 Describe how staff and players use the script.
 
@@ -134,7 +134,7 @@ Explain any menus, markers, or UI elements players will see.
 
 ---
 
-## 🔌 Events & Exports (Developers)
+# 🔌 Events & Exports (Developers)
 
 Use this section for server owners and developers who integrate your script with others.
 
@@ -188,7 +188,7 @@ When you have your real events/exports ready, paste them in a future chat and I 
 
 ---
 
-## 🧪 Debugging & Common Issues
+# 🧪 Debugging & Common Issues
 
 List common problems you expect users to hit and how to solve them.
 
@@ -210,7 +210,7 @@ List common problems you expect users to hit and how to solve them.
 
 ---
 
-## 🔄 Updates
+# 🔄 UPDATES:
 
 Explain how to safely update the script:
 
@@ -224,7 +224,7 @@ You can also link to release notes if you keep them somewhere else.
 
 ---
 
-## 📌 Notes & Recommendations
+# 📌 NOTES:
 
 - Always test new versions on a **test server** before pushing to production.
 - Keep backups of configs and custom changes.
@@ -232,7 +232,7 @@ You can also link to release notes if you keep them somewhere else.
 
 ---
 
-## 📬 Support
+# 📬 SUPPORT:
 
 When users ask for support, request at least:
 
