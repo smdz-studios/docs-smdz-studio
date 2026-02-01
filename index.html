@@ -45,12 +45,12 @@
 
   <div id="app" class="app-hidden">Loading SMDZ Studios documentation...</div>
 
-  <!-- Scroll button (bottom-right) -->
+
   <button id="scroll-toggle-btn" class="scroll-toggle-btn" type="button">
     ↓
   </button>
 
-  <!-- Docsify config must be defined BEFORE loading docsify.min.js -->
+
   <script>
     window.$docsify = {
       name: 'SMDZ Studios',
@@ -77,7 +77,7 @@
       },
 
       plugins: [
-        // Sidebar brand header with bigger logo and "MENU"
+
         function (hook, vm) {
           hook.doneEach(function () {
             var sidebarParent = document.querySelector('.sidebar');
@@ -94,13 +94,13 @@
             }
           });
         },
-        // Global footer on every page
+
         function (hook, vm) {
           hook.afterEach(function (html, next) {
             var footerHtml =
               '<div class="smdz-footer">' +
                 '© 2025 - 2026 SMDZ Studios · All rights reserved · Not affiliated with R* Games<br />' +
-                'Made with 💚 by SMDZ Studios · Powered by Docsify' +
+                'Made with 💚 by SMDZ Studios' +
                 '<div class="smdz-footer-logos">' +
                   '<img src="assets/smdz.png" alt="SMDZ Studios" />' +
                   '<img src="assets/cfx.png" alt="Cfx.re" />' +
@@ -131,7 +131,7 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
-  <!-- Protected banner configuration -->
+
   <script src="banner-config.js"></script>
 
   <script>
@@ -140,7 +140,7 @@
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
 
-      // Scroll button logic
+
       if (btn) {
         function isAtBottom() {
           return window.innerHeight + window.scrollY >= document.body.offsetHeight - 4;
@@ -169,7 +169,7 @@
         updateButtonState();
       }
 
-      // Initialize announcement bar from protected config
+
       if (window.SMDZ_BANNER_CONFIG) {
         var bar = document.getElementById('announcement-bar');
         if (bar) {
@@ -178,24 +178,24 @@
           if (!cfg.enabled) {
             bar.style.display = 'none';
           } else {
-            // Base type
+
             if (cfg.type) {
               bar.classList.add('announcement-type-' + cfg.type);
             }
 
-            // Layout (simple: full/compact)
+
             if (cfg.layout === 'compact') {
               bar.classList.add('announcement-layout-compact');
             }
 
-            // Alignment
+
             if (cfg.align === 'left') {
               bar.classList.add('announcement-align-left');
             } else {
               bar.classList.add('announcement-align-center');
             }
 
-            // Build inner HTML (simple row)
+
             var inner = document.createElement('div');
             inner.className = 'announcement-inner';
 
@@ -229,7 +229,7 @@
             content.appendChild(textBlock);
             inner.appendChild(content);
 
-            // CTA if enabled
+
             if (cfg.cta && cfg.cta.enabled && cfg.cta.label && cfg.cta.url) {
               var cta = document.createElement('a');
               cta.className = 'announcement-cta';
@@ -240,7 +240,7 @@
               inner.appendChild(cta);
             }
 
-            // Clear old simple span if present
+
             bar.innerHTML = '';
             bar.appendChild(inner);
 
@@ -251,7 +251,7 @@
         }
       }
 
-      // Simple page loader: keep loader visible ~3s, then show Docsify
+
       setTimeout(function () {
         if (loader) {
           loader.classList.add('page-loader-hidden');

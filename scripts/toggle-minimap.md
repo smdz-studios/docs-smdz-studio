@@ -55,7 +55,7 @@ ensure toggleradar
 
 ---
 
-# ⚙️ **CONFIGURATION:**
+# ⚙️ **CONFIGURATION FILE:**
 All in `config.lua`:
 
 ```lua

@@ -145,7 +145,7 @@ Dealers use **ox_lib** menus for a modern experience.
 
 ---
 
-# ⚙️ **CONFIGURATION:**
+# ⚙️ **CONFIGURATION FILE:**
 Everything is in config.lua.
 Key sections:
 - 🧑‍💻 FrameworkMode: auto, esx, qb, none
