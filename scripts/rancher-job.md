@@ -86,7 +86,7 @@ Optional integrations:
 
 ---
 
-# 🔁 **JOB FLOW (STATE MACHINE)**
+# 🔁 **JOB FLOW:**
 1. 💤 **Idle**: no global job exists.
 2. ✅ **Available**: job spawns based on `Config.JobCycle` or the admin command. NPC and blip appear at the selected point.
 3. 🧑‍🌾 **Active**: a player accepts the job. Server spawns cows and assigns a delivery point.
