@@ -691,13 +691,13 @@ Recommended update workflow:
 ---
 
 # 🔄 **UPDATES:**
-- There are **NO** plans to add script updates during 2025 and early 2026.
-- **STEPS:** *Backup config → replace folder → restore config → restart.*
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
-# ⚠️🚨 IMPORTANT WARNING:
-**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+# ⚠️ **IMPORTANT WARNING:**
+🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-*If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
+🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

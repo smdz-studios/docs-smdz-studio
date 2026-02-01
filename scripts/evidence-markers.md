@@ -16,7 +16,7 @@
 </p>
 
 
-# 🧩 OVERVIEW:
+# 🧩 **OVERVIEW:**
 
 - **Name:** `smdz_evidence_markers`
 - **Author:** SMDZ Studios
@@ -26,7 +26,7 @@
 
 ---
 
-# ✨ FEATURES:
+# ✨ **FEATURES:**
 - 🎯 **Fully synced evidence markers**  
   Placeable, pick-up-able evidence markers with real-time sync, editable notes, and **3D labels visible to all players**.
 - 📝 **Crime-Scene NUI Interface**  
@@ -66,7 +66,7 @@
 
 ---
 
-# 🧰 REQUIREMENTS:
+# 🧰 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - Target (required): `ox_target` or `qb-target` (script stops if missing).
 - Inventory (auto): `ox_inventory`, `lj-inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory` (extendable).
@@ -74,7 +74,7 @@
 
 ---
 
-# 📦 INSTALLATION:
+# 📦 **INSTALLATION:**
 1) Place in `resources/[smdz]/smdz_evidence_markers`.
 2) Ensure dependencies start before this resource.
 3) Example `server.cfg`:
@@ -88,7 +88,7 @@
 
 ---
 
-# 🔧 CONFIGURATION (config.lua):
+# 🔧 **CONFIGURATION (config.lua):**
 ```lua
 --[[===========================================================
 --  ____  __  __ ____  _____
@@ -294,7 +294,7 @@ Config.Cleanup = {
 
 ---
 
-# 🤝 COMPATIBILITY:
+# 🤝 **COMPATIBILITY:**
 
 - 🎒 **Inventories**  
   `ox_inventory`, `lj-inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory`  
@@ -316,7 +316,7 @@ Config.Cleanup = {
 
 ---
 
-# 🧭 QUICKSTART:
+# 🧭 **QUICKSTART:**
 1) Use a marker item.
 2) Gizmo auto-opens; drag axes, `G` snaps to ground.
 3) Controls: `W` translate, `R` rotate, `Q` world/local, `ENTER` place, `BACKSPACE/ESC` cancel, `G` snap.
@@ -325,7 +325,7 @@ Config.Cleanup = {
 
 ---
 
-# 🎮 CONTROLS (PLACEMENT):
+# 🎮 **CONTROLS (PLACEMENT):**
 
 - Placement gizmo **opens automatically** when using an evidence marker.
 - Mouse-driven gizmo controls:
@@ -340,7 +340,7 @@ Config.Cleanup = {
 
 ---
 
-# 📝 NOTES & TARGET INTERACTIONS:
+# 📝 **NOTES & TARGET INTERACTIONS:**
 
 - Target-based actions:
   - Pick up marker
@@ -357,7 +357,7 @@ Config.Cleanup = {
 
 ---
 
-# 🌐 DISCORD WEBHOOKS:
+# 🌐 **DISCORD WEBHOOKS:**
 
 - Fully configurable via `Config.Webhook`:
   - Webhook URL
@@ -374,7 +374,7 @@ Config.Cleanup = {
 
 ---
 
-# 🧹 AUTO-CLEANUP SYSTEM:
+# 🧹 **AUTO-CLEANUP SYSTEM:**
 
 - Optional timed cleanup using `Cleanup.IntervalHours`.
 - Automatically removes placed markers to keep the map clean.
@@ -383,7 +383,7 @@ Config.Cleanup = {
 ---
 
 
-# 🧪 DEBUG:
+# 🧪 **DEBUG:**
 - Turn `Config.Debug = true` to enable rich `[SMDZ DEBUG]` output with colored console lines.
 - Startup logs: detected framework / target / inventory / notify / locale / cleanup timers (auto shows what was chosen when in `auto`).
 - Runtime logs: gizmo state (mouse/world-local/snap), placement clamps, note edits, targets add/remove, sync requests, cleanup removals, webhook sends/failures.
@@ -391,7 +391,7 @@ Config.Cleanup = {
 - Recommended: keep debug on during setup; disable for production once all systems are green.
 ---
 
-# 🛠️ DEVELOPER EVENTS (PREFIXED):
+# 🛠️ **DEVELOPER EVENTS:**
 - **Namespace:** all events start with `smdz_evidence_markers:`.
 - **Notes:** `smdz_evidence_markers:setNote` triggers a webhook (edit/clear) and refreshes draw text for everyone.
 
@@ -412,14 +412,14 @@ Config.Cleanup = {
   
 ---
 
-# 🔄 UPDATES:
-- There are **NO** plans to add script updates during 2025 and early 2026.
-- **STEPS:** *Backup config → replace folder → restore config → restart.*
+# 🔄 **UPDATES:**
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
-# ⚠️🚨 IMPORTANT WARNING:
-**DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+# ⚠️ **IMPORTANT WARNING:**
+🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-*If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
+🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

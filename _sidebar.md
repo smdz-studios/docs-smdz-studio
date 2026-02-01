@@ -14,6 +14,7 @@
   - [🚌 | Bus Travel](/scripts/bus-travel.md)
   <!-- - [🎁 | Welcome Pack](/scripts/welcome-pack.md) -->
   - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
+  - [🐄 | Rancher Job](/scripts/rancher-job.md)
 
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
