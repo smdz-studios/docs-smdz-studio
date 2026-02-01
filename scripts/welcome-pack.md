@@ -1,5 +1,4 @@
 <div align="center" style="margin-bottom: 1.5rem;">
-  <!-- Replace the src with your real showcase video URL (YouTube, etc.) -->
   <iframe
     width="640"
     height="360"
@@ -12,7 +11,7 @@
   ></iframe>
 </div>
 <p style="text-align: center; font-weight: bold; color: red;">
-  THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
+  ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
 A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premium NUI, and grant items, money, and optional vehicles with strong anti-abuse and creator code bonuses.
@@ -458,7 +457,7 @@ CREATE TABLE IF NOT EXISTS smdz_welcome_code_claims (
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
 - 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---

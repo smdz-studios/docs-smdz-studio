@@ -1,5 +1,4 @@
 <div align="center" style="margin-bottom: 1.5rem;">
-  <!-- Replace the src with your real showcase video URL (YouTube, etc.) -->
   <iframe
     width="640"
     height="360"
@@ -13,7 +12,7 @@
 </div>
 
 <p style="text-align: center; font-weight: bold; color: red;">
-  THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
+  ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
 </p>
 
 ---
@@ -181,7 +180,7 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
 - 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---

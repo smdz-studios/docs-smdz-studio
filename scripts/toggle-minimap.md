@@ -11,7 +11,7 @@
   ></iframe>
 </div>
 <p style="text-align: center; font-weight: bold; color: red;">
-  THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
+  ⚠️ THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
 </p>
 
 ---

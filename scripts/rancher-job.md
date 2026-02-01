@@ -3,7 +3,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/uL_JPA9jfqA"
+    src="https://www.youtube.com/embed/Nchou9aqnc0"
     title="smdz_rancher_job"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -21,7 +21,7 @@
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_rancher_job`
 - 🧑‍💻 **Author:** SMDZ Studios
-- 🧭 **Framework:** ESX / QBCore / QBX / Standalone
+- 🧭 **Framework:** ESX / QBCore / QBX / Standalone (STANDALONE NOT TESTED)
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">Stable</span>
 
@@ -31,33 +31,37 @@
 
 ---
 
-# 🧱 **CORE ARCHITECTURE**
-- 🛡️ **Server-authoritative job state**: single global job, tracked and validated on the server.
-- 🌍 **OneSync entities**: cows and NPCs are networked for all players.
-- 🔌 **Bridged integrations**: framework, target, and notifications are modular and configurable.
-- 🌐 **Locale-first**: all player-facing strings and webhook logs are localized.
-
----
-
-# 🔁 **JOB FLOW (STATE MACHINE)**
-1. 💤 **Idle**: no global job exists.
-2. ✅ **Available**: job spawns based on `Config.JobCycle` or the admin command. NPC and blip appear at the selected point.
-3. 🧑‍🌾 **Active**: a player accepts the job. Server spawns cows and assigns a delivery point.
-4. 🐄 **Herding**: player must keep cows in range. Whistle timing, scare logic, and loss timers are applied.
-5. 📦 **Delivery**: player reaches the drop-off (must be on foot), server validates proximity/time/ratio.
-6. 💰 **Complete**: payout is processed, job is cleaned, cooldown begins.
-7. ⛔ **Canceled/Expired**: if time expires, player disconnects, or all cows are lost, cleanup runs and the cycle resets.
-
----
-
 # ✨ **KEY FEATURES**
 - 🌍 OneSync networked cows/NPCs visible to all players.
 - 🐄 Realistic herd behavior: cows can follow, ignore, flee, or die.
 - 📣 Whistle system with warning + loss enforcement.
 - 🛡️ Server-side anti-exploit validation and cooldowns.
-- 🧩 Multi-framework support: ESX, QB, QBX, standalone.
+- 🧩 Multi-framework support: ESX, QB, QBX, standalone (STANDALONE NOT TESTED).
 - 🔔 Multiple notification systems with unified config.
 - 📝 Extensive localization and webhook logging.
+- 📦 Inventory support (ox_inventory / tgiann-inventory / qs-inventory / origen_inventory / core_inventory / jpr-inventory / codem-inventory / framework inventory) — used only for item payouts.
+
+---
+
+# 🤝 **COMPATIBILITY:**
+
+- 🎒 **Inventories**  
+  `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory`  
+  *(Automatic fallback to native ESX / QBCore / QBX inventory functions if no supported inventory is detected)*
+
+- 🎯 **Target Systems**  
+  `ox_target`, `qb-target`  
+  *(Fallback to `Config.Target.fallbackKey` when no target is detected)*
+
+- 🔔 **Notification Systems**  
+  `ox_lib`, `esx`, `qbcore`, `qbx_core`, `origen_notify`, `wasabi_notify`, `brutal_notify`, `rtx_notify`,  
+  `vms_notifyv2`, `mythic_notify`, `okokNotify`, `codem-notification`
+
+- 🧩 **Frameworks**  
+  `ESX`, `QBCore`, `QBX`, `Standalone (STANDALONE NOT TESTED)`
+
+- 🌍 **Locales Included**  
+  `en`, `es`, `pt`, `fr`, `de`, `it`
 
 ---
 
@@ -67,6 +71,7 @@
 Optional integrations:
 - 🧩 Frameworks: `es_extended`, `qb-core`, `qbx_core`
 - 🎯 Target systems: `ox_target`, `qb-target`
+- 📦 Inventory: `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory` (optional, used only for item payouts)
 - 🔔 Notification systems: `ox_lib`, `okokNotify`, `vms_notifyv2`, `brutal_notify`, `origen_notify`, `codem-notification`, `wasabi_notify`, `rtx_notify`, `mythic_notify`
 
 ---
@@ -81,12 +86,23 @@ Optional integrations:
 
 ---
 
+# 🔁 **JOB FLOW (STATE MACHINE)**
+1. 💤 **Idle**: no global job exists.
+2. ✅ **Available**: job spawns based on `Config.JobCycle` or the admin command. NPC and blip appear at the selected point.
+3. 🧑‍🌾 **Active**: a player accepts the job. Server spawns cows and assigns a delivery point.
+4. 🐄 **Herding**: player must keep cows in range. Whistle timing, scare logic, and loss timers are applied.
+5. 📦 **Delivery**: player reaches the drop-off (must be on foot), server validates proximity/time/ratio.
+6. 💰 **Complete**: payout is processed, job is cleaned, cooldown begins.
+7. ⛔ **Canceled/Expired**: if time expires, player disconnects, or all cows are lost, cleanup runs and the cycle resets.
+
+---
+
 # 🧰 **CONFIGURATION GUIDE**
 🗂️ Main file: `shared/config.lua`
 
 ### 1) Core
 - 🌐 `Config.Locale`, `Config.LocaleFallback`
-- 🧩 `Config.Framework` = `auto | esx | qbcore | qbx_core | standalone`
+- 🧩 `Config.Framework` = `auto | esx | qbcore | qbx_core | standalone (STANDALONE NOT TESTED)`
 - 🔔 `Config.Notify` (table with mode + per-system settings)
 - 📦 `Config.Inventory` (inventory mode detection)
 - 🎯 `Config.Target.mode` = `auto | ox | qb | none`
@@ -154,7 +170,21 @@ Supported modes:
 - `rtx_notify`
 - `mythic_notify`
 - ESX / QB / QBX native
-- Standalone fallback
+- Standalone fallback (STANDALONE NOT TESTED)
+
+---
+
+# 📦 **INVENTORY**
+Inventory is used **only for item payouts**. If no supported inventory is detected, the script falls back to native ESX/QBCore/QBX item functions.
+
+Supported inventories:
+- `ox_inventory`
+- `tgiann-inventory`
+- `qs-inventory`
+- `origen_inventory`
+- `core_inventory`
+- `jpr-inventory`
+- `codem-inventory`
 
 ---
 
@@ -169,15 +199,16 @@ Supported modes:
 ---
 
 # 🛡️ **ANTI-EXPLOIT VALIDATION (SERVER)**
-🧯 The server validates job completion and logs failures:
-- 📍 Player proximity to delivery point
-- ⏱️ Minimum job time
-- 📊 Delivery ratio vs. spawned cows
-- 🧭 Distance drift checks
-- ⛔ Optional max job duration
-- 🚶 On-foot requirements for whistle and delivery
+🧯 The server validates completion before payout and can block or cancel the job if checks fail:
+- 📍 **Delivery distance**: player must be within `Config.AntiExploit.deliveryMaxDistance`.
+- ⏱️ **Minimum time**: job must run at least `Config.AntiExploit.minJobTimeSec`.
+- 📊 **Delivered ratio**: delivered cows must meet `Config.AntiExploit.minDeliveredRatio` and `Config.Herd.requiredRatio`.
+- 🧭 **Distance drift**: client-reported distance must match server calculation (`Config.AntiExploit.maxDistanceDriftKm`).
+- 🚶 **On-foot enforcement**: optional checks for start/whistle/finish.
+- 🧯 **Spam protection**: cooldowns and max finish attempts (`startCooldownMs`, `finishCooldownMs`, `maxFinishAttempts`).
+- ⛔ **Job expiry**: optional max duration via `Config.AntiExploit.maxJobDurationSec`.
 
----
+If a check fails, the attempt is blocked, logged (debug/webhook), and the player is notified.\n---
 
 # 🐄 **COW LOSS & DEATH LOGIC**
 - ☠️ Cows can die; dead cows are removed from the delivery count.
@@ -215,7 +246,7 @@ Config.DebugAdvanced = {
 # 📡 **EVENTS**
 | Side | Event | Purpose |
 |------|-------|---------|
-| Client | `smdz_rancher_job:client:jobUpdate` | Sync global job state to clients. |
+| Client | `smdz_rancher_job:client:jobUpdate` | Sync global job state to clients (NPC/blip/state). |
 | Client | `smdz_rancher_job:client:startJob` | Starts the job client-side and sets delivery. |
 | Client | `smdz_rancher_job:client:jobEnd` | Ends the job and cleans up client state. |
 | Client | `smdz_rancher_job:client:notify` | Shows a localized notification. |
@@ -225,9 +256,7 @@ Config.DebugAdvanced = {
 | Server | `smdz_rancher_job:server:finish` | Validates delivery and triggers payout. |
 | Server | `smdz_rancher_job:server:scare` | Makes nearby cows flee when shots happen. |
 | Server | `smdz_rancher_job:server:lostCows` | Confirms lost cows and triggers flee/delete. |
-| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |
-
----
+| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |\n---
 
 # 🧾 **WEBHOOK LOGGING**
 🔗 Enable in `shared/config.lua`:
@@ -283,6 +312,21 @@ Config.Webhook = {
 ❓ **Q: How do I force a job?**
 ✅ A: Use the configured admin command (see `Config.Command`). It supports ACE perms and framework permissions, and optionally accepts a point ID.
 
+❓ **Q: Item payouts don’t add to inventory.**
+✅ A: Ensure `Config.Pay.method = 'item'`, the item exists, and `Config.Inventory.mode` matches your inventory resource. Check the startup banner for detected inventory.
+
+❓ **Q: I want to disable herd loss.**
+✅ A: Set `Config.Herd.lostAllConfirmTicks` to a very high value and increase `Config.Herd.lostRadius`. You can also reduce `Config.Herd.lossCheckMs` to make checks less aggressive.
+
+❓ **Q: Why is the payout low?**
+✅ A: Payout is based on delivered cows and distance. Verify `Config.Pay.basePerCow`, `Config.Pay.distanceMultiplier`, and `Config.Pay.longTripBonusThresholdKm`.
+
+❓ **Q: The job ends instantly after starting.**
+✅ A: Check `Config.AntiExploit.minJobTimeSec`, `Config.JobCycle.activeDurationMs`, and ensure the player is the active job owner.
+
+❓ **Q: Webhook messages show empty point labels.**
+✅ A: Ensure each point has a `label` set in `Config.Points`. The log uses `{pointLabel}` from that field.
+
 ---
 
 # 🧩 **TROUBLESHOOTING**
@@ -296,11 +340,16 @@ Config.Webhook = {
 - 🔗 **Webhook not firing**: validate `Config.Webhook.enabled = true`, URL is valid, and the server can reach Discord (no firewall blocks).
 - 💰 **No payout**: ensure `Config.Pay.enabled = true`, method is valid, and the framework/inventory bridge is detected. Check server logs for payout failure.
 - 💬 **Chat suggestion missing**: verify `Config.Command.suggestion.enabled` and restart the resource or the chat resource.
+- 🚫 **Cannot whistle**: check on-foot requirement and `Config.Herd.whistleCooldownMs`. Ensure `Config.Whistle.key` matches your keybind.
+- 🧭 **Target not detected**: confirm target resource is started and `Config.Target.mode = 'auto'` or matches your target system.
+- 🧾 **Inventory not detected**: verify the inventory resource name and `Config.Inventory.mode = 'auto'` or set it explicitly.
+- 🧪 **Debug logs missing**: set `Config.Debug = true` and enable `Config.DebugAdvanced` flags.
+- 🧯 **Players abusing finish spam**: lower `Config.AntiExploit.finishCooldownMs` and `Config.AntiExploit.maxFinishAttempts`.
 
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
 - 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
@@ -310,4 +359,5 @@ Config.Webhook = {
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+
 

@@ -11,7 +11,7 @@
   ></iframe>
 </div>
 <p style="text-align: center; font-weight: bold; color: red;">
-  THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
+  ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
 # 🧩 **OVERVIEW:**
@@ -826,7 +826,7 @@ Config.BusSpawn = {
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026.
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
 - 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---

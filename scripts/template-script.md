@@ -1,7 +1,7 @@
 # Example Script – Template (Ready to Fill)
 
 <div align="center" style="margin-bottom: 1.5rem;">
-  <!-- Replace the src with your real showcase video URL (YouTube, etc.) -->
+  
   <iframe
     width="640"
     height="360"
