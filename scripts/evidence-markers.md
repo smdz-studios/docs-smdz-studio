@@ -487,7 +487,17 @@ Config.Cleanup = {
 - Added `Config.DrawText3D.ScanInterval` and cached nearby markers to reduce per-frame drawtext cost.
 - Added `Config.DrawText3D.IdleWait` to lower drawtext loop frequency when no markers are nearby.
 - Now the debug mode is displayed correctly; previously, even when activated, it was not shown.
-  
+  - Files changed:
+- `config.lua` (You need to replace the old config.lua with the new one)
+- `fxmanifest.lua`
+- `bridge/inventory.lua`
+- `client/cl_main.lua`
+- `client/cl_exports.lua`
+- `server/sv_main.lua`
+- `server/sv_exports.lua`
+- `INSTALL_FILES/items_ox_inventory.lua`
+- `INSTALL_FILES/items_qs_inventory.lua`
+- 
 ---
 
 # 🔄 **UPDATES:**
