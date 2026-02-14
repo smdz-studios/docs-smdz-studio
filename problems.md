@@ -3,10 +3,66 @@
 Use this page as a **lookup guide**.  
 Search the **index** first, then jump directly to the section that matches what you see in your console or in‑game.
 
+**Tip:** Use `Ctrl + F` (or `Cmd + F` on Mac) to jump straight to a keyword from your console.
+---
+
+# 🧩 Error: syntax error near '<\1>'
+
+There are two possible ways why this error occurs
+
+* You have used FileZilla which is breaking the structure of the script so please use WinSCP which works as expected and doesn't break anything.\
+  \
+  If you did not use FileZilla but you "drag and drop it" with Remote Desktop Control that will still damage it, so please drag and drop the zip and unzip it on server do not move it with method "file by file"\\
+* Your server is outdated and needs to be at least 4752 or greater.
+
+### 📦 FileZilla set binary mode
+
+If you are using FileZilla try reupload whole resource with binary mode
+
+<figure><img src="https://1037498771-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MZErcztD5BvrKnwRGJq%2Fuploads%2Fgit-blob-8cc0c6b3b6a5cf74b86212f918f5ec3814835146%2Ftransfer-type.png?alt=media" alt=""><figcaption><p>Binary transfer mode</p></figcaption></figure>
+
+### 🔍 How can I check my version?
+
+Write into your server console `version`command
+
+### ⬆️ How to update?
+
+#### 🪟 Windows
+
+Please check this video
+
+<div align="center" style="margin-bottom: 1.5rem;">
+  <iframe
+    width="640"
+    height="360"
+    src="https://www.youtube.com/embed/aXCgN07a-yY"
+    title="fix error"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="max-width: 100%; border-radius: 12px;"
+  ></iframe>
+</div>
+
+#### 🐧 Linux
+
+1. Download the last recommended artifact from this page <https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/>
+2. Turn off your server
+3. Delete `cache` & `alpine` folder
+4. Unzip `fx.tar.xz` with command `tar -xf fx.rar.xz`
+5. Start the server and write `version` to see a new version
+
+#### 🪟 Windows
+
+Exactly the same but you use windows FXServer artifact <https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/>
+
+And remove the server folder and replace it with the newly downloaded version.
+
+
 ---
 
 
-## SCRIPT WON’T START / CRASHES ON STARTUP:
+## 🧯 SCRIPT WON’T START / CRASHES ON STARTUP:
 
 **What you see:**
 
@@ -14,7 +70,7 @@ Search the **index** first, then jump directly to the section that matches what 
 - Console shows red errors when running `ensure` or on server boot.
 - `resources list` does not show the script as loaded.
 
-### A. QUICK CHECKLIST:
+### ✅ A. QUICK CHECKLIST:
 
 ```text
 [ ] Folder name is correct
@@ -26,7 +82,7 @@ Search the **index** first, then jump directly to the section that matches what 
 
 ---
 
-### B. FOLDER NAME / PATH PROBLEMS:
+### 📁 B. FOLDER NAME / PATH PROBLEMS:
 
 **Symptoms (console examples):**
 
@@ -52,7 +108,7 @@ Resource smdz_exmaple does not exist.
 
 ---
 
-### C. MISSING DEPENDENCIES:
+### 🧩 C. MISSING DEPENDENCIES:
 
 **Look for words like:** `es_extended`, `qb-core`, `oxmysql`, `mysql-async`, `target`, `inventory`.
 
@@ -79,7 +135,7 @@ No such export oxmysql:execute
 
 ---
 
-### D. ESCROW / ENTITLEMENT ERRORS:
+### 🔒 D. ESCROW / ENTITLEMENT ERRORS:
 
 **Examples:**
 
@@ -94,6 +150,14 @@ If you see anything like this, go to:
 
 ---
 
+### 🧼 E. CACHE CLEANUP (OPTIONAL):
+
+If you just updated resources or configs and still see old behavior:
+
+1. Stop the server.
+2. Delete the `cache` and `server-cache` folders (if they exist).
+3. Start the server and test again.
+
 # 🗄 **DATABASE & SQL ISSUES:**
 
 **What you see:**
@@ -104,7 +168,7 @@ If you see anything like this, go to:
 
 ---
 
-### A. QUICK IDENTIFIER:
+### 🧭 A. QUICK IDENTIFIER:
 
 Check the console for words like:
 
@@ -115,7 +179,7 @@ Check the console for words like:
 
 ---
 
-### B. ADAPTER NOT INSTALLED / NOT STARTED:
+### 🧱 B. ADAPTER NOT INSTALLED / NOT STARTED:
 
 **Errors:**
 
@@ -142,7 +206,7 @@ Check the console for words like:
 
 ---
 
-### C. MISSING TABLES / MIGRATIONS:
+### 🧩 C. MISSING TABLES / MIGRATIONS:
 
 **Errors:**
 
@@ -160,7 +224,7 @@ Check the console for words like:
 
 ---
 
-### D. WRONG DATABASE CREDENTIALS:
+### 🔑 D. WRONG DATABASE CREDENTIALS:
 
 If the server can’t connect at all:
 
@@ -179,7 +243,7 @@ If the server can’t connect at all:
 
 ---
 
-### A. FRAMEWORK PERMISSION CONFIG:
+### 🧭 A. FRAMEWORK PERMISSION CONFIG:
 
 Each framework handles perms differently:
 
@@ -194,7 +258,7 @@ Each framework handles perms differently:
 
 ---
 
-### B. ACE PERMISSIONS:
+### 🛡️ B. ACE PERMISSIONS:
 
 **Error examples:**
 
@@ -225,7 +289,7 @@ Access denied for command /smdz_admin
 
 ---
 
-### A. WRONG FRAMEWORK MODE IN CONFIG:
+### 🧩 A. WRONG FRAMEWORK MODE IN CONFIG:
 
 Look for a setting similar to:
 
@@ -240,7 +304,7 @@ Config.Framework = 'ESX'       -- 'ESX', 'QBCore' or 'Standalone'
 
 ---
 
-### B. FRAMEWORK START ORDER:
+### 🧱 B. FRAMEWORK START ORDER:
 
 Make sure frameworks start **before** SMDZ scripts:
 
@@ -260,7 +324,7 @@ ensure smdz_example
 
 ---
 
-### A. COMPARE WITH DEFAULT CONFIG:
+### 🧭 A. COMPARE WITH DEFAULT CONFIG:
 
 1. Take your current `config.lua`.
 2. Compare it with the **fresh config** from a clean download.
@@ -271,7 +335,7 @@ ensure smdz_example
 
 ---
 
-### B. COMMON CONFIG PITFALLS:
+### ⚠️ B. COMMON CONFIG PITFALLS:
 
 - Empty required fields (e.g. webhooks, keys).
 - Typos in enum values (`ESX` vs `esx`, etc.).
@@ -297,7 +361,7 @@ ensure smdz_example
 
 ---
 
-### A. IDENTIFY WHICH SYSTEM YOU USE:
+### 🧭 A. IDENTIFY WHICH SYSTEM YOU USE:
 
 Check your own resources:
 
@@ -328,7 +392,7 @@ Config.Notification = 'ox_lib'     -- 'mythic', 'okok', etc.
 
 ---
 
-### A. MEASURE FIRST:
+### ⏱️ A. MEASURE FIRST:
 
 Use the built‑in profiler:
 
@@ -343,7 +407,7 @@ Look specifically at the line for the SMDZ script, e.g. `smdz_example`.
 
 ---
 
-### B. IF USAGE IS HIGH:
+### 🧰 B. IF USAGE IS HIGH:
 
 1. Check config for:
    - Tight loops (e.g. every `0` or `0.01` seconds).
@@ -363,7 +427,7 @@ If it still seems heavy, gather:
 
 ---
 
-# **📬 WHEN TO CONTACT SUPPORT:**
+# 📬 **WHEN TO CONTACT SUPPORT:**
 
 If you have gone through:
 
@@ -374,7 +438,7 @@ If you have gone through:
 
 ---
 
-### PREPARE THIS INFORMATION:
+### 🧾 PREPARE THIS INFORMATION:
 
 ```text
 • Script name:         smdz_example
