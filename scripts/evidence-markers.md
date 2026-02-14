@@ -20,7 +20,7 @@
 - **Name:** `smdz_evidence_markers`
 - **Author:** SMDZ Studios
 - **Type:** ESX / QBCore / QBX / Standalone
-- **Version:** `1.0.0`
+- **Version:** `1.1.0`
 - **Status:** <span class="badge badge--stable">Stable</span>
 
 ---
@@ -68,7 +68,7 @@
 # 🧰 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - Target (required): `ox_target` or `qb-target` (script stops if missing).
-- Inventory (auto): `ox_inventory`, `lj-inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory` (extendable).
+- Inventory (auto): `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory` (extendable).
 - Framework (auto): ESX / QBCore / QBox / standalone.
 
 ---
@@ -192,7 +192,7 @@ Config.Target = {
 -- 06) INVENTORY
 --=============================================================
 -- Supported:
---   ox_inventory, lj_inventory, qs_inventory, qb_inventory, origen_inventory,
+--   ox_inventory, qs_inventory, qb_inventory, origen_inventory,
 --   core_inventory, ak47_inventory, none
 --
 -- PrioritizeFallback:
@@ -274,6 +274,9 @@ Config.Placement = {
 Config.DrawText3D = {
     Enabled      = true,
     Distance     = 7.0,
+    RenderDistance = 10.0, -- drawtext only within this distance to reduce CPU
+    ScanInterval = 500,    -- ms between proximity scans for drawtext culling
+    IdleWait     = 400,    -- ms to wait when no markers are nearby
     Scale        = 0.50,
     HeightOffset = 0.55,
     Color        = { r = 255, g = 215, b = 0 } -- gold/yellow
@@ -296,7 +299,7 @@ Config.Cleanup = {
 # 🤝 **COMPATIBILITY:**
 
 - 🎒 **Inventories**  
-  `ox_inventory`, `lj-inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory`  
+  `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory`  
   *(Automatic fallback to native ESX / QBCore inventory functions if no supported inventory is detected)*
 
 - 🎯 **Target Systems** *(Required)*  
@@ -408,6 +411,82 @@ Config.Cleanup = {
 | `smdz_evidence_markers:updateNote` | Server → Client | Update note/title draw text for all players. |
 | `smdz_evidence_markers:notify` | Server → Client | Send notification via configured notify bridge. |
 
+  
+---
+
+# 📤 **EXPORTS:**
+
+**Client Exports**
+- `useItem(itemName, slot)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:useItem('crime_marker_1', 1)
+  ```
+- `requestSync()`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:requestSync()
+  ```
+- `setDebug(enabled)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:setDebug(true)
+  ```
+- `setDrawTextEnabled(enabled)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:setDrawTextEnabled(false)
+  ```
+
+**Server Exports**
+- `useItem(source, itemName, slot)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:useItem(source, 'crime_marker_1', 1)
+  ```
+- `addItem(source, itemName, count, slot)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:addItem(source, 'crime_marker_1', 1, false)
+  ```
+- `removeItem(source, itemName, count, slot)`  
+  Example:
+  ```lua
+  exports['smdz_evidence_markers']:removeItem(source, 'crime_marker_1', 1, false)
+  ```
+- `getCount(source, itemName)`  
+  Example:
+  ```lua
+  local count = exports['smdz_evidence_markers']:getCount(source, 'crime_marker_1')
+  ```
+- `getInventoryMode()`  
+  Example:
+  ```lua
+  local mode = exports['smdz_evidence_markers']:getInventoryMode()
+  ```
+- `getMarkers()`  
+  Example:
+  ```lua
+  local markers = exports['smdz_evidence_markers']:getMarkers()
+  ```
+
+---
+
+# 🧾 **CHANGELOG:**
+
+## `1.1.0` - 2026-02-14
+- Added compatibility layer in `config.lua` to map new structured config to legacy fields used by runtime.
+- Added client and server exports `useItem` and declared them in `fxmanifest.lua`.
+- Updated server logic to support marker definitions under `Config.Markers.Items` and safe ox_inventory export handling.
+- Updated ox_inventory item definitions to call `smdz_evidence_markers.useItem` via server export.
+- Updated QS inventory item definitions with usable fields (`name`, `type`, `unique`, `useable`, `shouldClose`).
+- Removed all `lj-inventory` support from the inventory bridge.
+- Moved exports into `client/cl_exports.lua` and `server/sv_exports.lua` and added additional utility exports.
+- Fixed ox_inventory export signature handling so items can be used reliably.
+- Added `Config.DrawText3D.RenderDistance` to limit drawtext rendering distance for lower CPU usage.
+- Added `Config.DrawText3D.ScanInterval` and cached nearby markers to reduce per-frame drawtext cost.
+- Added `Config.DrawText3D.IdleWait` to lower drawtext loop frequency when no markers are nearby.
+- Now the debug mode is displayed correctly; previously, even when activated, it was not shown.
   
 ---
 
