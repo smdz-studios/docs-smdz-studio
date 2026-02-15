@@ -1,6 +1,6 @@
 # 🧾 **CHANGELOG:**
 
-## Evidence Markers - `1.1.0` - 2026-02-14
+## 🔖 | Evidence Markers - `1.1.0` - 2026-02-14
 - Added compatibility layer in `config.lua` to map new structured config to legacy fields used by runtime.
 - Added client and server exports `useItem` and declared them in `fxmanifest.lua`.
 - Updated server logic to support marker definitions under `Config.Markers.Items` and safe ox_inventory export handling.
