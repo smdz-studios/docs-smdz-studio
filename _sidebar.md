@@ -16,7 +16,7 @@
   <!-- - [🎁 | Welcome Pack](/scripts/welcome-pack.md) -->
   - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
-  <!-- - [📡 | Emergency GPS](/scripts/emergency-gps.md) -->
+  - [📡 | Emergency GPS](/scripts/emergency-gps.md)
   
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)

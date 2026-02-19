@@ -2,7 +2,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/ZGQf04_Mfpc"
+    src="https://www.youtube.com/embed/swNMk8jDDzM"
     title="smdz_emergency_gps showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -11,7 +11,7 @@
   ></iframe>
 </div>
 <p style="text-align: center; font-weight: bold; color: red;">
-  ⚠️ THIS SCRIPT IS AVAILABLE ONLY ESCROW VERSION
+  ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
 ---
