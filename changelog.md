@@ -1,5 +1,14 @@
 # 🧾 **CHANGELOG:**
 
+---
+
+## 🔖 | Evidence Markers - `1.1.1` - 2026-02-20
+- The `client/cl_edit_props.lua` file is now open source to avoid `"syntax error near '<\1>'"` problems.
+- The `INSTALL_FILES/items_tgiann-inventory.lua` file has been added for convenience when adding objects to this inventory.
+**NOTE: This update is not required for current customers.**
+
+---
+
 ## 🔖 | Evidence Markers - `1.1.0` - 2026-02-14
 - Added compatibility layer in `config.lua` to map new structured config to legacy fields used by runtime.
 - Added client and server exports `useItem` and declared them in `fxmanifest.lua`.
