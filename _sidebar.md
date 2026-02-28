@@ -17,6 +17,7 @@
   - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
   - [📡 | Emergency GPS](/scripts/emergency-gps.md)
+  - [📱 | LB Phone APP - Emergency Alerts](/scripts/app-emergency-alerts.md)
   
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
