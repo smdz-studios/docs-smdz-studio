@@ -17,11 +17,11 @@
 
 # 🧩 **OVERVIEW:**
 
-- **Name:** `smdz_evidence_markers`
-- **Author:** SMDZ Studios
-- **Type:** ESX / QBCore / QBX / Standalone
-- **Version:** `1.1.1`
-- **Status:** <span class="badge badge--stable">Stable</span>
+- 📌 **Name:** `smdz_evidence_markers`
+- 🧑‍💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** ESX / QBCore / QBX / Standalone
+- 🧾 **Version:** `1.1.1`
+- **Status:** <span class="badge badge--stable">STABLE</span>
 
 ---
 

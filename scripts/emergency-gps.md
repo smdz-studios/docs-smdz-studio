@@ -18,10 +18,10 @@
 
 # 🧩 **OVERVIEW:**
 
-- **Name:** `smdz_emergency_gps`
-- **Author:** SMDZ Studios
-- **Type:** ESX / QBCore / QBX
-- **Version:** `1.0.0`
+- 📌 **Name:** `smdz_emergency_gps`
+- 🧑‍💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** ESX / QBCore / QBX
+- 🧾 **Version:** `1.0.0`
 - **Status:** <span class="badge badge--stable">Stable</span>
 
 SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle references** for emergency roles. Players pick an icon, label, color, and size, then broadcast that reference to teammates sharing the same job. Favorites, themes, view distance, menu animation, and default labels are stored per player.

@@ -21,15 +21,15 @@
 
 # 🧩 OVERVIEW:
 
-- **Name:** `smdz_example` <!-- change to your resource name -->
-- **Author:** SMDZ Studios
-- **Type:** ESX / QBCore / Standalone <!-- choose one -->
-- **Version:** `1.0.0`
+- 📌 **Name:** `smdz_example` <!-- change to your resource name -->
+- 🧑‍💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** ESX / QBCore / Standalone <!-- choose one -->
+- 🧾 **Version:** `1.0.0`
 - **Status:** `Stable`  
 
 Badges (optional):
 
-- <span class="badge badge--stable">Stable</span>
+- <span class="badge badge--stable">STABLE</span>
 - <span class="badge badge--beta">Beta</span>
 - <span class="badge badge--legacy">Legacy</span>
 

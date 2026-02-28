@@ -20,11 +20,11 @@ A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premiu
 
 # 🧩 **OVERVIEW:**
 
-- **Name:** `smdz_welcome_pack`
-- **Author:** SMDZ Studios
-- **Type:** ESX / QBCore / QBX / Standalone
-- **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">Stable</span>
+- 📌 **Name:** `smdz_welcome_pack`
+- 🧑‍💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** ESX / QBCore / QBX / Standalone
+- 🧾 **Version:** `1.0.0`
+- **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**  
 An all-in-one welcome pack system with NPC interaction, NUI rewards, creator codes, owner tiers, and multi-framework compatibility.

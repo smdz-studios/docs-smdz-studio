@@ -23,7 +23,7 @@
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (STANDALONE NOT TESTED)
 - 🧾 **Version:** `1.0.0`
-- ✅ **Status:** <span class="badge badge--stable">Stable</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 🐄 A production-grade rancher job for FiveM with OneSync-synced entities, multi-framework bridges, and server-side validation. Designed for roleplay servers that want believable herding without punishing edge cases.
 
@@ -31,7 +31,7 @@
 
 ---
 
-# ✨ **KEY FEATURES:**
+# ✨ **FEATURES:**
 - 🌍 OneSync networked cows/NPCs visible to all players.
 - 🐄 Realistic herd behavior: cows can follow, ignore, flee, or die.
 - 📣 Whistle system with warning + loss enforcement.

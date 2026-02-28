@@ -485,6 +485,11 @@ body {
   color: #c0c0c0;
 }
 
+.badge--eol {
+  border-color: #f51a1a;
+  color: #f51a1a;
+}
+
 /* Callouts */
 .tip,
 .warning,
