@@ -14,12 +14,13 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
+
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_bus_travels`
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box / Standalone
 - 🧾 **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.  
 It adds interactive bus stops with a clean menu, configurable fares and travel times, an optional immersive *Real Bus* experience, broad compatibility with popular community providers, and optional webhook logging for server activity.

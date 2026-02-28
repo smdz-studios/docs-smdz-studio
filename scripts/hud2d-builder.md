@@ -17,14 +17,13 @@
   THIS RESOURCE HELPS IN THE DEVELOPMENT OF OTHERS, IT DOES NOT CREATE INTERACTIONS BETWEEN PLAYERS
 </p>
 
----
 
 # 🧩 OVERVIEW:
 - 📌 **Name:** `smdz_hud2d_builder`
 - 🧑‍💻 **Author:** **SMDZ Studios**
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 
 **Short description:**  

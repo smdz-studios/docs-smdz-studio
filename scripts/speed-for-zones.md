@@ -14,14 +14,13 @@
  ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
----
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_speedforzones`
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore 
 - 🧾 **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 Welcome to the official documentation for smdz_speedforzones, your all-in-one solution for zone-based speed control in FiveM.
 This guide covers everything: installation, configuration, features, troubleshooting, FAQs, and more.

@@ -16,7 +16,6 @@
 
 A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premium NUI, and grant items, money, and optional vehicles with strong anti-abuse and creator code bonuses.
 
----
 
 # 🧩 **OVERVIEW:**
 
@@ -24,7 +23,7 @@ A modern **welcome rewards** system for FiveM servers. Spawn NPCs, open a premiu
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone
 - 🧾 **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**  
 An all-in-one welcome pack system with NPC interaction, NUI rewards, creator codes, owner tiers, and multi-framework compatibility.

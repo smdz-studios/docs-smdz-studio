@@ -25,7 +25,7 @@
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Standalone <!-- choose one -->
 - 🧾 **Version:** `1.0.0`
-- **Status:** `Stable`  
+- ✅ **Status:** `Stable`  
 
 Badges (optional):
 

@@ -20,7 +20,7 @@
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.0.0`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **SMDZ LB Emergency App** is a full emergency alert ecosystem for **LB Phone** on FiveM. It provides:
 

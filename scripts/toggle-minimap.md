@@ -14,14 +14,13 @@
   ⚠️ THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
 </p>
 
----
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_toggleradar`
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0 - OPEN SOURCE`
-- **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
