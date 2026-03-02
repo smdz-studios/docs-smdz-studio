@@ -3,7 +3,7 @@
 ---
 
 
-# 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
+## 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
 
 ### ✨ Highlights
 - Added favorite color support with SQL persistence (same behavior as icon favorites).
@@ -26,7 +26,7 @@
 - Cleaned locales and UI strings to match the new feature set.
 - Persist last label/icon/color/scale in SQL (shared across devices).
 
-### :dividers: Files Modified
+### 🗂️ Files Modified
 - `client/cl_client.lua`
 - `server/sv_server.lua`
 - `html/app.js`
