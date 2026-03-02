@@ -31,10 +31,11 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 
 - 🧭 Custom vehicle references with label, icon, color, and size.
 - ⭐ Favorites with quick right‑click toggle and SQL persistence.
+- 🎨 Color favorites with right‑click toggle and SQL persistence.
 - ✏️ Favorites panel supports label editing (same limits as main).
-- 🎨 25+ UI themes per player + view distance slider.
+- 🎨 28+ UI themes per player + view distance slider.
 - 🧩 ESX / QBCore / QBX / standalone support (auto‑detect or forced).
-- 💾 Per‑player settings saved: favorites, theme, view distance, menu animation, default label.
+- 💾 Per‑player settings saved: favorites, favorite colors, theme, view distance, menu animation, default label, last label/icon/color/scale.
 - 🧠 Debug fake users for stress testing (NUI only).
 - 🧩 Standalone mode with ACE permissions (no framework required).
 - 🧑‍🤝‍🧑 Multi‑job support (ESX job2 / QB gang optional).
@@ -44,7 +45,7 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 - 🧹 Auto cleanup for stale refs.
 - 🚗 Driver + copilot support with vehicle rules.
 - ⚡ Performance‑aware updates and Ultra‑Idle mode.
-- 🧑‍💼 Management panel with job‑based permissions, search, edit, ping, and remove‑all.
+- 🧑‍💼 Management panel with job‑based permissions, search, edit, and remove‑all.
 
 ---
 
@@ -94,7 +95,7 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 1) Player creates a ref → `smdz_emergency_gps:start` (server) → broadcast to job.
 2) Client sends periodic updates → `smdz_emergency_gps:update` → broadcast to job.
 3) Management edits/deletes → server validates permissions → broadcast to job.
-4) Per‑player settings saved to SQL (`favorites`, `theme`, `view_distance`, `menu_anim`, `default_label`)
+4) Per‑player settings saved to SQL (`favorites`, `favorite_colors`, `theme`, `view_distance`, `menu_anim`, `default_label`, `last_label`, `last_sprite`, `last_color`, `last_scale`)
 
 ---
 
@@ -158,8 +159,7 @@ Config.Management = {
     view = 2,
     update = 3,
     delete = 3,
-    deleteAll = 4,
-    ping = 3
+    deleteAll = 4
   },
   JobLabels = { -- Optional display labels for jobs in management panel
     police = 'LSPD',
@@ -182,7 +182,7 @@ Config.MultiJob = {
 -- Standalone (ACE Permissions)
 --====================================================
 Config.Standalone = {
-  Enabled = false, -- Enable ACE job permissions when no framework is running
+  Enabled = true, -- Enable ACE job permissions when no framework is running
   AceJobPrefix = 'smdz_emergency_gps.job.', -- Example: smdz_emergency_gps.job.police
   AceJobGradePrefix = 'smdz_emergency_gps.job.%s.grade.', -- Example: smdz_emergency_gps.job.police.grade.4
   AceGradePrefix = 'smdz_emergency_gps.grade.', -- Example: smdz_emergency_gps.grade.4 (global fallback)
@@ -205,8 +205,7 @@ Config.RateLimit = {
     manageUnsubscribe = 400,
     manageUpdate = 500,
     manageDelete = 500,
-    manageDeleteAll = 1200,
-    managePing = 500
+    manageDeleteAll = 1200
   },
   ClientExports = { -- Client-side export limits
     OpenUI = 400,
@@ -264,8 +263,11 @@ Config.Performance = {
   BlipScale = 0.95, -- Default blip scale multiplier
   UltraIdle = true, -- Reduce background work when idle
   DebugThresholdMs = 0, -- Perf debug threshold in ms
-  JobPollIntervalMs = 60000 -- Slow job poll interval (ms)
+  JobPollIntervalMs = 60000, -- Slow job poll interval (ms)
+  OpenAttemptCooldownMs = 400, -- Min ms between open attempts (spam protection)
+  DeniedOpenCooldownMs = 1000 -- Extra cooldown when job/vehicle is not allowed
 }
+
 
 --====================================================
 -- Database (persist settings)
@@ -426,6 +428,11 @@ Table: `smdz_emergency_gps_settings`
 | --- | --- | --- |
 | `identifier` | TEXT | Player identifier (fivemlicense). Primary key prefix index. |
 | `favorites` | LONGTEXT | JSON array of icon names. |
+| `favorite_colors` | LONGTEXT | JSON array of color ids. |
+| `last_label` | TEXT | Last used label (per player). |
+| `last_sprite` | INT | Last used sprite (per player). |
+| `last_color` | INT | Last used color (per player). |
+| `last_scale` | FLOAT | Last used scale (per player). |
 | `theme` | TEXT | Theme preset key. |
 | `view_distance` | INT | Max distance (meters). |
 | `default_label` | TEXT | Player default label. |
@@ -436,6 +443,11 @@ Table: `smdz_emergency_gps_settings`
 CREATE TABLE IF NOT EXISTS `smdz_emergency_gps_settings` (
   `identifier` TEXT NOT NULL,
   `favorites` LONGTEXT,
+  `favorite_colors` LONGTEXT,
+  `last_label` TEXT,
+  `last_sprite` INT,
+  `last_color` INT,
+  `last_scale` FLOAT,
   `theme` TEXT,
   `view_distance` INT,
   `default_label` TEXT,
@@ -452,10 +464,10 @@ CREATE TABLE IF NOT EXISTS `smdz_emergency_gps_settings` (
 - **Main tab:** set label, icon, size, color, then press **Create**.
 - **Label input:** max characters enforced; red warning appears at limit.
 - **Favorites tab:** reuse favorites, edit label, and still change size/color.
-- **Config tab:** select theme, view distance, menu animation, and default label.
-- **Management tab:** search players, expand rows, edit label/color/scale, ping, or remove refs.
+- **Config tab:** select theme, view distance, menu animation, default label, and quick reset for last selection.
+- **Management tab:** search players, expand rows, edit label/color/scale, or remove refs.
 - **Delete:** removes your current blip (only via menu button or auto cleanup).
-- **Right‑click:** toggle an icon as favorite.
+- **Right‑click:** toggle an icon or color as favorite.
 - **Drag panel:** move the NUI around the screen (stays in bounds).
 - **Vehicle exit:** if `Config.RequireVehicle = true`, NUI closes when you leave the vehicle.
 
@@ -467,10 +479,15 @@ Favorites, theme, view distance, default label, and menu animation are saved per
 
 Stored fields:
 - `favorites` (JSON array)
+- `favorite_colors` (JSON array of color ids)
 - `theme` (string)
 - `view_distance` (number)
 - `default_label` (string)
 - `menu_anim` (boolean)
+- `last_label` (string)
+- `last_sprite` (number)
+- `last_color` (number)
+- `last_scale` (number)
 
 Notes:
 - Favorites are unique per player.
@@ -485,7 +502,6 @@ Notes:
 - **Scope:** managers only see and manage refs of their own job.
 - **Search:** filter by player name.
 - **Expand:** click arrow to edit label, color, and size.
-- **Ping:** sends a notify to the owner.
 - **Remove all:** confirmation modal before deleting all refs for the job.
 - **Live refresh:** list updates every `Config.Management.RefreshIntervalMs` (server‑side cache).
 - **Street + vehicle info:** street name, vehicle label, and plate.
@@ -495,7 +511,7 @@ Notes:
 # 🎨 **THEMES:**
 
 Theme presets included:
-`classic`, `ember`, `mint`, `cobalt`, `slate`, `forest`, `dune`, `neon`, `ice`, `ocean`, `amber`, `graphite`, `sunrise`, `royal`, `violet`, `sage`, `ruby`, `sand`, `steel`, `lava`, `midnight`, `rose`, `citrus`, `storm`, `plasma`.
+`classic`, `ember`, `mint`, `cobalt`, `slate`, `forest`, `dune`, `neon`, `ice`, `ocean`, `amber`, `graphite`, `sunrise`, `royal`, `violet`, `sage`, `ruby`, `sand`, `steel`, `lava`, `midnight`, `rose`, `citrus`, `obsidian`, `lagoon`, `saffron`, `storm`, `plasma`.
 
 Each player can set their own theme in the **Config** tab.
 
@@ -615,7 +631,6 @@ TriggerEvent('smdz_gps:exportRefreshManagement')
 | Client | `smdz_emergency_gps:managePermission` | Management panel access result. |
 | Client | `smdz_emergency_gps:manageData` | Management list data payload. |
 | Client | `smdz_emergency_gps:manageDenied` | Permission denied feedback to NUI. |
-| Client | `smdz_emergency_gps:notifyPing` | Notify the blip owner (ping). |
 | Server | `smdz_emergency_gps:requestSettings` | Request player settings from DB. |
 | Server | `smdz_emergency_gps:saveSettings` | Save player settings to DB. |
 | Server | `smdz_emergency_gps:setJob` | Sync job to server cache. |
@@ -629,7 +644,6 @@ TriggerEvent('smdz_gps:exportRefreshManagement')
 | Server | `smdz_emergency_gps:manageUpdate` | Update ref (label/color/scale). |
 | Server | `smdz_emergency_gps:manageDelete` | Delete a single ref. |
 | Server | `smdz_emergency_gps:manageDeleteAll` | Delete all refs for a job. |
-| Server | `smdz_emergency_gps:managePing` | Ping a ref owner. |
 
 ---
 
@@ -680,7 +694,7 @@ end)
 | No icons in NUI | Missing files or wrong extension list | Check `html/icons/` and `Config.NUIBlipImageExtensions`. |
 | GIF previews not showing | Extension not allowed or filename mismatch | Ensure file name matches `Config.Blips` and `gif` is in extensions. |
 | Settings not saving | DB resource not running or table missing | Start DB resource; import `sql/database.sql`. |
-| Favorites not saving | JSON column missing / DB error | Confirm `favorites` column exists (LONGTEXT). |
+| Favorites not saving | JSON column missing / DB error | Confirm `favorites` and `favorite_colors` columns exist (LONGTEXT). |
 | Default label not applied | Saved value empty or over limit | Set in Config tab and keep under `Config.MaxLabel`. |
 | Label error not showing | Missing locale key | Ensure `ui_label_error` exists in all locales. |
 | Blips disappear | View distance too low / job mismatch | Increase view distance; confirm same job. |

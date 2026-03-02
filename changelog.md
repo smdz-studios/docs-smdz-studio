@@ -2,6 +2,46 @@
 
 ---
 
+
+# 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
+
+### ✨ Highlights
+- Added favorite color support with SQL persistence (same behavior as icon favorites).
+- Added 3 new UI themes: Obsidian, Lagoon, Saffron.
+- Remember and persist last label, icon, color, and scale between NUI openings.
+
+### 🧪 UI/UX
+- Blocks game inputs while typing in the NUI to prevent keybind conflicts.
+- Favorites tab label title now shows correctly above the label input.
+- UI now displays the Quick Reset title/description/button texts (reset block localized).
+- Added a Config reset button to clear last label/icon/color/scale for the player.
+- Favorited color indicators now show the golden star, same as icon favorites.
+
+### 🧩 Fixes
+- Fixed duplicate vehicle refs when driver and copilot create refs on the same vehicle (now single ref per vehicle netId).
+- Resmon optimization adjustments applied.
+
+### 🔧 Changes
+- Removed all management ping functionality (UI, events, permissions, locales and webhooks).
+- Cleaned locales and UI strings to match the new feature set.
+- Persist last label/icon/color/scale in SQL (shared across devices).
+
+### :dividers: Files Modified
+- `client/cl_client.lua`
+- `server/sv_server.lua`
+- `html/app.js`
+- `html/index.html`
+- `html/style.css`
+- `bridge/database.lua`
+- `sql/database.sql`
+- `locales/en.lua`
+- `locales/es.lua`
+- `locales/fr.lua`
+- `locales/pt.lua`
+- `locales/de.lua`
+
+---
+
 ## 🔖 | Evidence Markers - `1.1.1` - 2026-02-20
 - The `client/cl_edit_props.lua` file is now open source to avoid `"syntax error near '<\1>'"` problems.
 - The `INSTALL_FILES/items_tgiann-inventory.lua` file has been added for convenience when adding objects to this inventory.

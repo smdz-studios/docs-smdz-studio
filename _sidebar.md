@@ -21,3 +21,7 @@
   
 - 🔥 **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
+
+- 🎨 **REDESINGS**
+  - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
+
