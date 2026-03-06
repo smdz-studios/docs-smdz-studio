@@ -2,7 +2,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/91j87adasdw-aN0"
+    src="https://www.youtube.com/embed/LMqX2KpahwM"
     title="oxtarget redesing showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -30,6 +30,7 @@
 - 🍎 Premium iOS‑style look with smooth animations
 - 🧰 In‑game Theme Editor (`/oxtheme`) with preview, search and filters
 - 💾 Optional per‑player theme saving (database)
+- 🎨 Optional Gaussian blur design for the background when in use.
 - 🏷️ Donator + Discord Booster theme access control
 - ↔️ Optional split layout (left/right) when more than 3 options
 - 🔊 Optional subtle UI audio (open/close/select)
@@ -196,6 +197,14 @@ SQL file: `ox_target_themes.sql`
 Table: `smdz_ox_target_themes_crystal`
 
 If `Config.ThemeSaveToDB = false`, the DB is not used.
+
+```sql
+CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
+  identifier VARCHAR(128) PRIMARY KEY,
+  theme VARCHAR(64) NOT NULL,
+  colors LONGTEXT NOT NULL
+);
+```
 
 ---
 
