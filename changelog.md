@@ -3,6 +3,44 @@
 ---
 
 
+## 🎨 | SMDZ Ox Target Crystal Style - `1.1.0` - 2026-03-13
+
+### ✅ Added
+- Added ACE permission support for restricted themes in `Config.ThemeDonator` and `Config.ThemeDiscordBoosters`:
+  - New `AcePermissions` option (for example: `group.admin`, `admin`, `themediscordboosters`).
+- Added server callback `ox_target:hasAcePermission` for client-side ACE checks.
+- Added real `server.cfg` / `permissions.cfg` usage examples in `config.lua`.
+- Two new languages ​​have been added to the locale. (nl.lua and tr.lua)
+
+### 🔧 Changed
+- Updated theme lock checks in `client/main.lua` to grant access using OR logic:
+  - `Groups` **or** `AcePermissions`.
+  - Neither one overrides the other.
+- Strengthened server-side permission validation:
+  - Supports both `admin` and `group.admin` formats.
+  - Uses `qbx_core:HasPermission` when available, with `IsPlayerAceAllowed` fallback.
+- Improved QBX framework group checks in `client/framework/qbx.lua`:
+  - Fixed `QBX:HasGroup` filter usage.
+  - Added compatibility for multi-job/multi-gang group structures.
+  - Added permission caching to reduce repeated callback calls.
+- Updated `config.lua` comments with clearer real-world examples.
+
+### 🧩 Fixed
+- Improved QBCore group compatibility in `client/framework/qb.lua`:
+  - Safer `PlayerData` fallback handling.
+  - Grade parsing compatibility for `number`, `string`, and `table` formats.
+  - More robust group/permission matching (including `group.<perm>` patterns).
+  - Prevented invalid comparisons when hash filters include non-numeric grade values.
+
+### :dividers: Files Modified
+- `config.lua`
+- `client/main.lua`
+- `server/main.lua`
+- `client/framework/qbx.lua`
+- `client/framework/qb.lua`
+
+---
+
 ## 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
 
 ### ✨ Highlights

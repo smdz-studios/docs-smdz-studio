@@ -20,7 +20,7 @@
 - 📌 **Name:** `ox_target` by Overextended
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / VRP / ND
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 ---
@@ -31,7 +31,7 @@
 - 🧰 In‑game Theme Editor (`/oxtheme`) with preview, search and filters
 - 💾 Optional per‑player theme saving (database)
 - 🎨 Optional Gaussian blur design for the background when in use.
-- 🏷️ Donator + Discord Booster theme access control
+- 🏷️ Donator + Discord Booster theme access control (Framework Groups + ACE)
 - ↔️ Optional split layout (left/right) when more than 3 options
 - 🔊 Optional subtle UI audio (open/close/select)
 
@@ -81,6 +81,7 @@ Donator / Booster access control:
 Config.ThemeDonator = {
   Enabled = true,
   Groups = { 'donator', 'admin' },
+  AcePermissions = { 'group.donator', 'group.admin' },
   ShowLocked = true,
   ShowBadge = true
 }
@@ -88,10 +89,113 @@ Config.ThemeDonator = {
 Config.ThemeDiscordBoosters = {
   Enabled = true,
   Groups = { 'booster', 'admin' },
+  AcePermissions = { 'group.booster', 'group.admin' },
   ShowLocked = true,
   ShowBadge = true
 }
 ```
+
+Permission behavior:
+- `Groups` and `AcePermissions` use **OR** logic.
+- Access is granted if the player matches at least one framework group **or** one ACE permission.
+- ACE does not override groups, and groups do not override ACE.
+
+Implementation (cfg + config.lua):
+1. Add ACE rules in `permissions.cfg` using `themedonator` and/or `themediscordboosters`.
+2. Ensure `server.cfg` executes that file: `exec permissions.cfg`.
+3. Assign the player to a principal with `add_principal` (`identifier.fivem`, `identifier.discord`, etc.).
+4. In `config.lua`, set `Groups` and `AcePermissions` for the mode you want (Groups only, ACE only, or Mixed OR).
+5. Restart the server after changing permissions/config.
+
+Quick ACE recipes (only one type):
+- `group.admin` can use only Donator themes:
+```cfg
+add_ace group.admin themedonator allow
+add_principal identifier.fivem:11791281 group.admin
+```
+```lua
+Config.ThemeDonator.Groups = {}
+Config.ThemeDonator.AcePermissions = { 'themedonator', 'group.admin' }
+Config.ThemeDiscordBoosters.Groups = {}
+Config.ThemeDiscordBoosters.AcePermissions = {}
+```
+- `group.admin` can use only Booster themes:
+```cfg
+add_ace group.admin themediscordboosters allow
+add_principal identifier.fivem:11791281 group.admin
+```
+```lua
+Config.ThemeDonator.Groups = {}
+Config.ThemeDonator.AcePermissions = {}
+Config.ThemeDiscordBoosters.Groups = {}
+Config.ThemeDiscordBoosters.AcePermissions = { 'themediscordboosters', 'group.admin' }
+```
+- Same idea for other groups (`group.vip`, `group.mod`, etc.):
+```cfg
+add_ace group.vip themedonator allow
+add_principal identifier.fivem:11791281 group.vip
+```
+```lua
+Config.ThemeDonator.Groups = {}
+Config.ThemeDonator.AcePermissions = { 'group.vip', 'themedonator' }
+```
+
+Mode 1: Framework groups only
+```lua
+Config.ThemeDonator.Groups = { 'donator' }
+Config.ThemeDonator.AcePermissions = {}
+
+Config.ThemeDiscordBoosters.Groups = { 'booster' }
+Config.ThemeDiscordBoosters.AcePermissions = {}
+```
+
+Mode 2: ACE only (for example `group.admin`)
+```cfg
+# permissions.cfg
+add_ace group.admin themedonator allow
+add_ace group.admin themediscordboosters allow
+
+# server.cfg
+exec permissions.cfg
+add_principal identifier.fivem:11791281 group.admin
+```
+
+```lua
+Config.ThemeDonator.Groups = {}
+Config.ThemeDonator.AcePermissions = { 'group.admin', 'themedonator' }
+
+Config.ThemeDiscordBoosters.Groups = {}
+Config.ThemeDiscordBoosters.AcePermissions = { 'group.admin', 'themediscordboosters' }
+```
+
+Mode 3: Mixed (Groups OR ACE)
+```cfg
+# permissions.cfg
+add_ace group.admin themedonator allow
+
+# server.cfg
+exec permissions.cfg
+add_principal identifier.fivem:11791281 group.admin
+```
+
+```lua
+Config.ThemeDonator.Groups = { 'donator' }
+Config.ThemeDonator.AcePermissions = { 'group.admin', 'themedonator' }
+```
+
+Optional: direct ACE for one player (without groups)
+```cfg
+add_ace identifier.fivem:11791281 themedonator allow
+```
+
+```lua
+Config.ThemeDonator.Groups = {}
+Config.ThemeDonator.AcePermissions = { 'themedonator' }
+```
+
+Notes:
+- You can use any ACE principal name (`group.admin`, `group.mod`, `group.vip`, etc.).
+- `admin` and `group.admin` are both supported by the permission check.
 
 Webhook logging:
 ```lua
@@ -169,7 +273,7 @@ Each theme supports:
 - `label` (display name)
 - `id` (short ID shown in UI)
 - `defaultTheme` (true/false)
-- `groups` (donator‑only)
+- `donatorgroups` (donator-only flag)
 - `boosterGroups` (discord booster‑only)
 - CSS variables (`--accent`, `--panel`, etc.)
 
@@ -179,16 +283,18 @@ premium_white = {
   defaultTheme = true,
   label = 'Premium White',
   id = '01',
-  groups = false,
+  donatorgroups = false,
   boosterGroups = false,
   ['--accent'] = '#ffffff'
 }
 ```
 
 Access rules:
-- 🎟️ Use `groups` for donator‑only themes
+- 🎟️ Use `donatorgroups = true` for donator‑only themes
 - 🚀 Use `boosterGroups` for Discord boosters
 - ✅ Group names must match your framework groups (ESX/QB/QBX/VRP/ND)
+- 🔐 Use `Config.ThemeDonator.AcePermissions` / `Config.ThemeDiscordBoosters.AcePermissions` for ACE checks from `cfg`
+- ➕ Access logic is OR (`Groups` OR `AcePermissions`)
 
 ---
 
@@ -247,7 +353,7 @@ Set `Config.NuiTheme` to your theme key, or mark a theme with `defaultTheme = tr
 Set `Config.ThemeEditor = false` in `config.lua`.
 
 **Why is a theme locked for me?**
-Check `Config.ThemeDonator.Groups` and `Config.ThemeDiscordBoosters.Groups` and make sure your framework group matches.
+Check `Config.ThemeDonator.Groups` / `Config.ThemeDiscordBoosters.Groups` and `AcePermissions` entries, then verify your framework group and ACE setup in `permissions.cfg` and `server.cfg`.
 
 **Can I hide locked themes from the list?**
 Yes. Set `ShowLocked = false` in the Donator/Booster config blocks.

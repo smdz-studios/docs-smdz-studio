@@ -19,7 +19,7 @@
 
 ---
 
-# 🧩 OVERVIEW:
+# 🧩 **OVERVIEW:**
 
 - 📌 **Name:** `smdz_example` <!-- change to your resource name -->
 - 🧑‍💻 **Author:** SMDZ Studios
@@ -40,7 +40,7 @@ Replace this with a **1–2 sentence** description of what the script does.
 
 ---
 
-# 📦 REQUIREMENTS:
+# 📦 **REQUIREMENTS:**
 
 Fill this with the real dependencies of your script.
 
@@ -81,7 +81,7 @@ start smdz_example
 
 ---
 
-# ⚙️ CONFIGURATION:
+# ⚙️ **CONFIGURATION:**
 
 Explain your main configuration file(s), usually `config.lua`, `config.json` or similar.
 
@@ -224,22 +224,15 @@ You can also link to release notes if you keep them somewhere else.
 
 ---
 
-# 📌 NOTES:
 
-- Always test new versions on a **test server** before pushing to production.
-- Keep backups of configs and custom changes.
-- Consider using **Git** to track local modifications to the resource.
+# 🔄 **UPDATES:**
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
+- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
-# 📬 SUPPORT:
+# ⚠️ **IMPORTANT WARNING:**
+🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-When users ask for support, request at least:
-
-- Script name and version (for example: `smdz_example v1.0.0`).
-- Framework and version (ESX / QBCore / Standalone).
-- FiveM artifacts/build version.
-- Steps to reproduce the issue.
-- Relevant console/server logs.
-
-In future chats, you can paste this template and tell me the details of a specific script; I’ll turn it into a complete, polished documentation page for that resource.
+⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
+🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
