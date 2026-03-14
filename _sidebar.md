@@ -13,11 +13,12 @@
   - [🚗 | Speed For Zones](/scripts/speed-for-zones.md)
   - [📐 | HUD 2D Builder](/scripts/hud2d-builder.md)
   - [🚌 | Bus Travel](/scripts/bus-travel.md)
-  <!-- - [🎁 | Welcome Pack](/scripts/welcome-pack.md) -->
   - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
   - [📡 | Emergency GPS](/scripts/emergency-gps.md)
   - [📱 | LB Phone APP - Emergency Alerts](/scripts/app-emergency-alerts.md)
+  - [👤 | Peds Manager](/scripts/peds-manager.md)
+  - [🐾 | Pets Rescue](/scripts/pets-rescue.md)
 
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)

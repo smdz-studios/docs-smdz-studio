@@ -140,6 +140,24 @@
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
 
+      function updateAnnouncementOffset(barEl) {
+        var root = document.documentElement;
+        if (!barEl || barEl.style.display === 'none') {
+          root.style.setProperty('--announcement-offset', '0px');
+          document.body.classList.remove('has-announcement-bar');
+          return;
+        }
+
+        var barHeight = Math.ceil(barEl.getBoundingClientRect().height);
+        if (barHeight > 0) {
+          root.style.setProperty('--announcement-offset', barHeight + 'px');
+          document.body.classList.add('has-announcement-bar');
+        } else {
+          root.style.setProperty('--announcement-offset', '0px');
+          document.body.classList.remove('has-announcement-bar');
+        }
+      }
+
 
       if (btn) {
         function isAtBottom() {
@@ -177,6 +195,7 @@
 
           if (!cfg.enabled) {
             bar.style.display = 'none';
+            updateAnnouncementOffset(bar);
           } else {
 
             if (cfg.type) {
@@ -246,6 +265,11 @@
 
             requestAnimationFrame(function () {
               bar.classList.add('announcement-visible');
+              updateAnnouncementOffset(bar);
+            });
+
+            window.addEventListener('resize', function () {
+              updateAnnouncementOffset(bar);
             });
           }
         }
