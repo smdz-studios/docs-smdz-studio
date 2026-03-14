@@ -36,7 +36,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/app-emergency-alerts.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/app-emergency-alerts.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -53,7 +53,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/bus-travel.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -70,7 +70,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/emergency-gps.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/emergency-gps.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -87,7 +87,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/evidence-markers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/evidence-markers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -104,7 +104,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/fast-repair.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/fast-repair.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -121,7 +121,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/hud2d-builder.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/hud2d-builder.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -138,7 +138,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/rancher-job.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -155,7 +155,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>

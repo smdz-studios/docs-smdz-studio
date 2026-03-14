@@ -32,7 +32,7 @@
   - More robust group/permission matching (including `group.<perm>` patterns).
   - Prevented invalid comparisons when hash filters include non-numeric grade values.
 
-### :dividers: Files Modified
+### 🗂️ Files Modified
 - `config.lua`
 - `client/main.lua`
 - `server/main.lua`
