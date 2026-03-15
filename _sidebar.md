@@ -1,5 +1,5 @@
 - 🏠 **INFORMATION**
-  - [Home](/home.md)
+  - [Home](/portal.md)
   - [Changelog](/changelog.md)
   
 - 📬 **SUPPORT**
@@ -16,15 +16,14 @@
   - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
   - [📡 | Emergency GPS](/scripts/emergency-gps.md)
-  - [📱 | LB Phone APP - Emergency Alerts](/scripts/app-emergency-alerts.md)
-  <!-- - [👤 | Peds Manager](/scripts/peds-manager.md)
-  - [🐾 | Pets Rescue](/scripts/pets-rescue.md) -->
+  - [📱 | Emergency Alerts APP](/scripts/app-emergency-alerts.md)
 
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
 
-
+<!-- 
 - **FREE RESOURCES**
-  - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
+  - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md) -->
 
-
+  <!-- - [👤 | Peds Manager](/scripts/peds-manager.md)
+  - [🐾 | Pets Rescue](/scripts/pets-rescue.md) -->
