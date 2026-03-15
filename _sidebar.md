@@ -17,14 +17,14 @@
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
   - [📡 | Emergency GPS](/scripts/emergency-gps.md)
   - [📱 | LB Phone APP - Emergency Alerts](/scripts/app-emergency-alerts.md)
-  - [👤 | Peds Manager](/scripts/peds-manager.md)
-  - [🐾 | Pets Rescue](/scripts/pets-rescue.md)
+  <!-- - [👤 | Peds Manager](/scripts/peds-manager.md)
+  - [🐾 | Pets Rescue](/scripts/pets-rescue.md) -->
 
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
 
 
-- 🔥 **FREE RESOURCES**
+- **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md)
 
 
