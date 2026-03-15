@@ -169,7 +169,7 @@
       <h3>OX Target Redesing Crystal</h3>
       <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
