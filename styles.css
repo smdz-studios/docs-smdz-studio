@@ -967,3 +967,63 @@ pre code {
     min-height: 160px;
   }
 }
+
+/* Pagination Styles */
+.docsify-pagination-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333333;
+}
+
+.pagination-item {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pagination-item a {
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  color: #a1a1aa;
+  transition: all 0.2s ease-out;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #333333;
+  background: #18181b;
+}
+
+.pagination-item a:hover {
+  text-decoration: none;
+  background: #27272a;
+  border-color: #509205;
+  color: #fafafa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fafafa;
+  margin-top: 0.3rem;
+  transition: color 0.2s ease-out;
+}
+
+.pagination-item a:hover .pagination-item-title {
+  color: #65b40a;
+}
+
+.pagination-item-subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.pagination-item--next {
+  text-align: right;
+  margin-left: auto;
+}
