@@ -33,7 +33,7 @@
       <h3>App Emergency Alerts</h3>
       <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/app-emergency-alerts.md">VIEW DOCS</a>
@@ -50,7 +50,7 @@
       <h3>Bus Travel</h3>
       <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/bus-travel.md">VIEW DOCS</a>
@@ -67,7 +67,7 @@
       <h3>Emergency GPS</h3>
       <p>Fast emergency location tracking for team coordination, response clarity and safer operations.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/emergency-gps.md">VIEW DOCS</a>
@@ -84,7 +84,7 @@
       <h3>Evidence Markers</h3>
       <p>Reliable evidence placement and scene visualization with practical controls for RP workflows.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/evidence-markers.md">VIEW DOCS</a>
@@ -118,7 +118,7 @@
       <h3>HUD2D Builder</h3>
       <p>Build and tune HUD elements quickly with modular options for custom server interfaces.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/hud2d-builder.md">VIEW DOCS</a>
@@ -135,10 +135,27 @@
       <h3>Rancher Job</h3>
       <p>Ranch workflow with configurable tasks and progression to expand farming roleplay scenarios.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span>OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/speedzones.png" alt="Speed For Zones preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Speed For Zones</h3>
+      <p>Speed zones is a zones-based speed limits using PolyZone polygons.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/speed-for-zones.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
