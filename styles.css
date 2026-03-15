@@ -43,6 +43,35 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* Custom WebKit Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46; 
+  border-radius: 5px;
+  border: 2px solid #18181b; /* Para crear un pequeño margen interno y que no parezca pegado */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b; 
+}
+
+/* Scrollbar en la barra lateral específica (Docsify a veces lo reescribe) */
+aside.sidebar::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+aside.sidebar::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
 /* Global announcement bar — configured in banner-config.js */
 .announcement-bar {
   position: sticky;
@@ -189,13 +218,16 @@ body {
 
 /* Sidebar */
 .sidebar {
-  background: #1f1f1f;
-  border-right: 1px solid var(--sidebar-border-color);
+  background: #18181b;
+  border-right: 1px solid #27272a;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-toggle {
-  background: #161616;
-  border-color: #333333;
+  background: #18181b;
+  border-color: #27272a;
 }
 
 body.has-announcement-bar .sidebar {
@@ -207,12 +239,23 @@ body.has-announcement-bar .sidebar-toggle {
   top: calc(var(--announcement-offset) + 6px) !important;
 }
 
-/* Sidebar brand: bigger logo + MENU label */
+/* Sidebar brand: logo + sleek label */
 .brand-header {
-  padding: 1.1rem 0 0.7rem 0;
-  border-bottom: 1px solid #333333;
-  background: #1f1f1f;
+  padding: 1.5rem 0 1rem 0;
+  border-bottom: 1px solid #27272a;
+  background: linear-gradient(180deg, #1f1f22 0%, #18181b 100%);
   text-align: center;
+  position: relative;
+}
+
+.brand-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(122, 214, 60, 0.5), transparent);
 }
 
 .sidebar-logo-wrapper {
@@ -222,99 +265,125 @@ body.has-announcement-bar .sidebar-toggle {
 }
 
 .sidebar-logo-wrapper img {
-  max-height: 80px;
+  max-height: 85px;
   width: auto;
   object-fit: contain;
-  animation: logoPulse 3.2s ease-in-out infinite;
-}
-
-.sidebar-menu-label {
-  margin-top: 0.35rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  color: #cfcfcf;
-}
-
-@keyframes logoPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 0 rgba(122, 214, 60, 0));
-  }
-  50% {
-    transform: scale(1.04);
-    filter: drop-shadow(0 0 10px rgba(122, 214, 60, 0.2));
-  }
 }
 
 /* Sidebar nav */
 .sidebar-nav {
-  padding-top: 0.4rem;
+  padding-top: 1.2rem;
+  padding-bottom: 2rem;
 }
 
 .sidebar-nav ul {
-  padding-left: 0.6rem;
+  padding-left: 0;
+  margin: 0;
 }
 
 .sidebar-nav li {
-  margin: 0.08rem 0;
+  margin: 0.25rem 0;
+  list-style-type: none;
 }
 
 .sidebar-nav a {
-  display: block;
-  padding: 0.35rem 1.2rem;
-  border-radius: 0.45rem;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  transition: all 0.12s ease-out;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.5rem 1rem 0.5rem 1.4rem;
+  margin: 0 0.8rem;
+  border-radius: 0.5rem;
+  color: #a1a1aa;
+  font-size: 0.86rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
 }
 
-.sidebar-nav a:hover {
-  color: #f3f3f3;
-  background: #2b2b2b;
+/* Expandir ligeramente el texto al hacer hover */
+.sidebar-nav > ul > li > ul > li > a:hover {
+  color: #fafafa;
+  background: #27272a;
+  border-color: #3f3f46;
+  padding-left: 1.8rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-nav .active > a,
 .sidebar-nav a.active {
-  color: #f3f3f3;
-  background: linear-gradient(135deg, #509205, #65b40a);
-  box-shadow: 0 0 0 1px #161616;
+  color: #ffffff;
+  background: linear-gradient(90deg, rgba(80, 146, 5, 0.15) 0%, transparent 100%);
+  border-color: #3f5f1c;
+  border-left: 3px solid #65b40a;
+  box-shadow: inset 1px 0 8px rgba(101, 180, 10, 0.08);
+  font-weight: 600;
+  border-radius: 0.4rem;
+  padding-left: 1.4rem;
+}
+
+.sidebar-nav .active > a::before,
+.sidebar-nav a.active::before {
+  display: none;
 }
 
 .sidebar-nav > ul > li > a {
   text-transform: uppercase;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  opacity: 0.95;
-  margin: 0.1rem 0 0.1rem 0.2rem;
-  color: #8b8b8b;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: #71717a;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  padding-left: 1.2rem;
+}
+
+.sidebar-nav > ul > li > ul {
+  border-left: 1px solid #3f3f46;
+  margin-left: 1.6rem;
+  padding-left: 0.4rem;
 }
 
 .sidebar-nav > ul > li > a + ul > li > a {
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
+  padding: 0.45rem 1rem;
+  margin: 0.15rem 0;
+  font-weight: 500;
 }
 
 /* Search */
 .search {
-  padding: 0.75rem 1.3rem 0.15rem 1.3rem;
+  padding: 1.2rem 1.2rem 0.4rem 1.2rem;
 }
 
 .search input {
-  background: #262626;
-  border-radius: 999px;
-  border: 1px solid #3a3a3a;
-  padding: 0.4rem 0.9rem;
-  font-size: 0.8rem;
-  color: #f3f3f3;
-  transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+  background: rgba(255, 255, 255, 0.05); /* Lighter background for better contrast */
+  border-radius: 0.6rem;
+  border: 1px solid #3f3f46;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  color: #fafafa;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .search input:focus {
   outline: none;
-  border-color: #509205;
-  box-shadow: 0 0 0 1px rgba(80, 146, 5, 0.85);
-  background: #2a2a2a;
+  border-color: #65b40a;
+  box-shadow: 0 0 0 3px rgba(101, 180, 10, 0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.search input::placeholder {
+  color: #71717a;
 }
 
 /* Content */
