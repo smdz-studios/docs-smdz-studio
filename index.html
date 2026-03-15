@@ -43,6 +43,11 @@
     </div>
   </div>
 
+  <!-- Native Reading Progress Bar -->
+  <div id="reading-progress-container">
+    <div id="reading-progress-bar"></div>
+  </div>
+
   <div id="app" class="app-hidden">Loading SMDZ Studios documentation...</div>
 
 
@@ -115,16 +120,10 @@
         }
       ],
       pagination: {
-        previousText: 'Anterior',
-        nextText: 'Siguiente',
+        previousText: 'Previous',
+        nextText: 'Next',
         crossChapter: true,
         crossChapterText: true
-      },
-      readingProgress: {
-        color: '#65b40a',
-        bounces: true,
-        zIndex: 100,
-        height: '3px'
       }
     };
   </script>
@@ -139,7 +138,6 @@
 
   <!-- Navigation & Progress plugins -->
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-reading-progress@1/dist/docsify-plugin-reading-progress.js"></script>
 
   <!-- Prism languages -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
@@ -300,6 +298,17 @@
           app.classList.remove('app-hidden');
         }
       }, 3000);
+
+      // Native Reading Progress Bar Logic
+      var progressBar = document.getElementById('reading-progress-bar');
+      window.addEventListener('scroll', function() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        if (progressBar) {
+          progressBar.style.width = scrolled + '%';
+        }
+      });
     });
   </script>
 </body>
