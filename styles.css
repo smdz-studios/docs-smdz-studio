@@ -362,10 +362,10 @@ body.has-announcement-bar .sidebar-toggle {
 }
 
 .search input {
-  background: rgba(255, 255, 255, 0.05); /* Lighter background for better contrast */
+  background: #18181b; /* Fondo igual que la sidebar */
   border-radius: 0.6rem;
   border: 1px solid #3f3f46;
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 1rem;
   font-size: 0.85rem;
   color: #fafafa;
   width: 100%;
@@ -378,11 +378,56 @@ body.has-announcement-bar .sidebar-toggle {
   outline: none;
   border-color: #65b40a;
   box-shadow: 0 0 0 3px rgba(101, 180, 10, 0.2), inset 0 2px 4px rgba(0,0,0,0.1);
-  background: rgba(255, 255, 255, 0.08);
+  background: #18181b; /* Mantenemos el mismo color de fondo al hacer foco */
 }
 
 .search input::placeholder {
   color: #71717a;
+}
+
+/* Docsify Search Results Customization */
+.sidebar .search .results-panel {
+  padding: 0.5rem 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar .search .matching-post {
+  border-bottom: 1px solid #27272a;
+  padding: 0.8rem 0;
+  margin-bottom: 0;
+}
+
+.sidebar .search .matching-post:last-child {
+  border-bottom: none;
+}
+
+.sidebar .search .matching-post h2 {
+  font-size: 0.9rem;
+  margin: 0 0 0.3rem 0;
+  color: #fafafa;
+}
+
+.sidebar .search .matching-post p {
+  font-size: 0.78rem;
+  margin: 0;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+
+/* Highlighted search terms */
+.sidebar .search .matching-post p em {
+  font-style: normal;
+  color: #65b40a;
+  font-weight: 800;
+  background: rgba(101, 180, 10, 0.1);
+  padding: 0 0.15rem;
+  border-radius: 0.15rem;
+}
+
+.search .clear-button {
+  top: auto;
+  bottom: 0px;
+  right: 1.5rem;
 }
 
 /* Content */
