@@ -41,7 +41,6 @@
     </div>
   </article>
 
-<div class="home-showcase-grid">
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/appemergencyalerts.png" alt="App Emergency Alerts preview image" />
