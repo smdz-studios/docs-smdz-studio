@@ -24,6 +24,26 @@
 </div>
 
 
+
+<div class="home-showcase-grid">
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/pedsmanager.png" alt="Peds Manager preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Peds Manager</h3>
+      <p>Full-featured ped assignment manager with a modern NUI for staff and players, built-in catalog, duration controls, logs, webhooks, and automatic appearance restore.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/peds-manager.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
 <div class="home-showcase-grid">
   <article class="home-showcase-card">
     <div class="home-showcase-media">
@@ -33,7 +53,7 @@
       <h3>App Emergency Alerts</h3>
       <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/app-emergency-alerts.md">VIEW DOCS</a>

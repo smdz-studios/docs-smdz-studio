@@ -22,7 +22,7 @@
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX (auto-detected)
 - 🧾 **Version:** `1.0.0`
-- ✅ **Status:** `Stable`
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**  
 Full-featured ped assignment manager with a modern NUI for staff and players, built-in catalog, duration controls, logs, webhooks, and automatic appearance restore.
