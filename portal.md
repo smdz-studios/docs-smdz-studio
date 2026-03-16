@@ -32,7 +32,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Peds Manager</h3>
-      <p>Full-featured ped assignment manager with a modern NUI for staff and players, built-in catalog, duration controls, logs, webhooks, and automatic appearance restore.</p>
+      <p>Advanced ped management system with admin tools, ped requests, and appearance restore.</p>
       <div class="home-showcase-tags">
         <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
