@@ -26,6 +26,23 @@
 <div class="home-showcase-grid">
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/crystaloxtarget.png" alt="OX Target Redesing Crystal preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>OX Target Redesing Crystal</h3>
+      <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/pedsmanager.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
@@ -53,23 +70,6 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/app-emergency-alerts.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="home-showcase-card">
-    <div class="home-showcase-media">
-      <img src="assets/bustravels.png" alt="Bus Travel preview image" />
-    </div>
-    <div class="home-showcase-body">
-      <h3>Bus Travel</h3>
-      <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
-      <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
-      </div>
-      <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -111,40 +111,6 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
-    </div>
-    <div class="home-showcase-body">
-      <h3>Fast Repair</h3>
-      <p>Lightweight repair logic designed for smoother vehicle maintenance and roleplay consistency.</p>
-      <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
-      </div>
-      <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/fast-repair.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="home-showcase-card">
-    <div class="home-showcase-media">
-      <img src="assets/hud2dbuilder.png" alt="HUD2D Builder preview image" />
-    </div>
-    <div class="home-showcase-body">
-      <h3>HUD2D Builder</h3>
-      <p>Build and tune HUD elements quickly with modular options for custom server interfaces.</p>
-      <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
-      </div>
-      <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/hud2d-builder.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-    </div>
-  </article>
-
-  <article class="home-showcase-card">
-    <div class="home-showcase-media">
       <img src="assets/rancherjob.png" alt="Rancher Job preview image" />
     </div>
     <div class="home-showcase-body">
@@ -155,6 +121,23 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/bustravels.png" alt="Bus Travel preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Bus Travel</h3>
+      <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -179,16 +162,33 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/crystaloxtarget.png" alt="OX Target Redesing Crystal preview image" />
+      <img src="assets/hud2dbuilder.png" alt="HUD2D Builder preview image" />
     </div>
     <div class="home-showcase-body">
-      <h3>OX Target Redesing Crystal</h3>
-      <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
+      <h3>HUD2D Builder</h3>
+      <p>Build and tune HUD elements quickly with modular options for custom server interfaces.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/hud2d-builder.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Fast Repair</h3>
+      <p>Lightweight repair logic designed for smoother vehicle maintenance and roleplay consistency.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/fast-repair.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
