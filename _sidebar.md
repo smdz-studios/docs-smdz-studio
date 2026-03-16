@@ -1,5 +1,5 @@
 - 🏠 **INFORMATION**
-  - [Home](/portal.md)
+  - [Portal](/portal.md)
   - [Changelog](/changelog.md)
   
 - 📬 **SUPPORT**
@@ -17,7 +17,8 @@
   - [🐄 | Rancher Job](/scripts/rancher-job.md)
   - [📡 | Emergency GPS](/scripts/emergency-gps.md)
   - [📱 | Emergency Alerts APP](/scripts/app-emergency-alerts.md)
-
+  - [👤 | Peds Manager](/scripts/peds-manager.md)
+  
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
 
@@ -25,5 +26,4 @@
 - **FREE RESOURCES**
   - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md) -->
 
-  <!-- - [👤 | Peds Manager](/scripts/peds-manager.md)
-  - [🐾 | Pets Rescue](/scripts/pets-rescue.md) -->
+  <!-- - [🐾 | Pets Rescue](/scripts/pets-rescue.md) -->
