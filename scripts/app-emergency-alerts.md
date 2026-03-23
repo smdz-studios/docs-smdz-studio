@@ -19,7 +19,7 @@
 - 📌 **Name:** `smdz_lb_emergency_app`
 - 🧑‍💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **SMDZ LB Emergency App** is a full emergency alert ecosystem for **LB Phone** on FiveM. It provides:
@@ -154,6 +154,43 @@ Access is controlled in two layers:
 2. **Alert type access** (who can send each type)
 
 This lets you allow broad panel access but restrict specific alert types to higher ranks or different jobs.
+
+---
+
+# **🔐 ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
+
+`/deletealert` can be authorized with any of these:
+
+- `Config.AdminCommandPermissions.Groups` (framework groups)
+- `Config.AdminCommandPermissions.Aces` (ACE permission objects)
+- `Config.AdminCommandPermissions.AceGroups` (ACE groups, like `admin` / `group.admin`)
+
+If a player matches **any** configured option, access is granted.
+
+Config example:
+
+```lua
+Config.AdminCommandPermissions = {
+    Enabled = true,
+    Groups = { "owner", "admin" },
+    Aces = { "smdz_lb_emergency_app.deletealert" },
+    AceGroups = { "admin" }
+}
+```
+
+`server.cfg` example (recommended ACE object flow):
+
+```cfg
+add_ace group.admin smdz_lb_emergency_app.deletealert allow
+add_principal identifier.license:YOUR_LICENSE group.admin
+```
+
+`server.cfg` example for `AceGroups`:
+
+```cfg
+add_ace group.admin group.admin allow
+add_principal identifier.license:YOUR_LICENSE group.admin
+```
 
 ---
 
@@ -380,7 +417,7 @@ See the **Exports + Events** section below for full details.
 
 - All critical checks are server‑side (permissions, cooldown, word filter).
 - Unauthorized attempts can be logged in webhook.
-- `/deletealert` is restricted by framework group permissions.
+- `/deletealert` is restricted by framework group permissions and/or ACE permissions.
 
 ---
 
@@ -442,7 +479,7 @@ See the **Exports + Events** section below for full details.
     - Check for DB errors in console.
 
 14. **Delete alert command doesn’t work**
-    - Ensure your group is in `Config.AdminCommandPermissions`.
+    - Ensure your group is in `Config.AdminCommandPermissions.Groups`, your ACE is in `Config.AdminCommandPermissions.Aces`, or your ACE group is in `Config.AdminCommandPermissions.AceGroups`.
     - Use `/deletealert [ID]`.
 
 15. **Item usage does nothing**
@@ -655,9 +692,15 @@ Config.CommandPermissions = { -- Permissions to use the /alerta command (job-bas
     JobWaitMs = 15000 -- Time to wait for job data on first login (ms).
 }
 
-Config.AdminCommandPermissions = { -- Admin permissions for /deletealert (group-based).
+Config.AdminCommandPermissions = { -- Admin permissions for /deletealert (group and/or ACE-based).
     Enabled = true, -- Enable or disable admin permission checks.
-    Groups = { "owner", "admin" } -- Framework permission groups allowed to delete alerts.
+    Groups = { "owner", "admin" }, -- Framework permission groups allowed to delete alerts.
+    Aces = { -- ACE objects allowed to delete alerts (any match grants access).
+        -- "smdz_lb_emergency_app.deletealert"
+    },
+    AceGroups = { -- ACE groups allowed (supports "admin" or "group.admin").
+        -- "admin"
+    }
 }
 
 -- --------------------------------------------------
