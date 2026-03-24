@@ -2,6 +2,17 @@
 
 ---
 
+## 📱 | SMDZ LB PHONE APP Emergency Alerts  - `1.1.0` - 2026-03-23
+
+### ✅ Added
+- Support for ACE permissions has been added to the administrative command to delete alerts. (ACE or GROUPS permissions)
+- Docs updated.
+
+### 🧩 Fixed
+- An SQL error regarding player settings has been fixed.
+
+---
+
 
 ## 🎨 | SMDZ Ox Target Crystal Style - `1.1.0` - 2026-03-13
 
