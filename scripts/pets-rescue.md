@@ -2,7 +2,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    src="https://www.youtube.com/embed/qsPc3GIS330"
     title="smdz_pets_rescue showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

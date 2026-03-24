@@ -31,7 +31,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Pets Rescue</h3>
-      <p>AMission system where players rescue lost pets for NPCs, searching dynamic areas and earning rewards. Enhances civilian roleplay and adds immersive, repeatable gameplay.</p>
+      <p>A Mission system where players rescue lost pets for NPCs, searching dynamic areas and earning rewards. Enhances civilian roleplay and adds immersive, repeatable gameplay.</p>
       <div class="home-showcase-tags">
         <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
