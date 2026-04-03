@@ -1,5 +1,14 @@
 # 🧾 **CHANGELOG:**
 
+
+## 🔖 | Evidence Markers - `1.2.0` - 2026-04-03
+### 🧩 Fixes
+- A bug has been fixed for ox inventory which was blocking the purchase and drag from an ox inventory store to the inventory.
+
+### 🗂️ Files Modified
+- `server/sv_exports.lua`
+
+
 ---
 
 ## 📱 | SMDZ LB PHONE APP Emergency Alerts  - `1.1.0` - 2026-03-23
