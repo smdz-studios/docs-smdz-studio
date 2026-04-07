@@ -17,7 +17,7 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_bus_travels`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box / Standalone
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -27,7 +27,7 @@ It adds interactive bus stops with a clean menu, configurable fares and travel t
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 
 - 🗺️ **Route network** with multiple predefined and configurable stops, including map blips and world markers for clear navigation.
 - 🧭 **Context menu UX** with a clean interface showing stop lore, ticket prices, route availability, and real-time service status.

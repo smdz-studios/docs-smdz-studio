@@ -15,17 +15,17 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **NAME:** `smdz_pets_rescue`
-- 🧑‍💻 **AUTHOR:** SMDZ Studios
-- 🧭 **FRAMEWORK:** ESX / QBCore / QBX
-- 🧾 **VERSION:** `1.0.0`
-- ✅ **STATUS:** <span class="badge badge--stable">STABLE</span>
+- 📌 **Name:** `smdz_pets_rescue`
+- 💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** ESX / QBCore / QBX
+- 🧾 **Version:** `1.0.0`
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 SMDZ Pets Rescue is a mission system where players help local NPCs recover lost pets. It features dynamic NPC spawns, search areas, animal behavior, mission timers, dialogue UI, reward delivery, and robust webhooks with detailed identifiers.
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 
 - 🧭 **Dynamic NPC spawns** with smart rerolls, zone cooldowns, and configurable active limits.
 - 🐾 **Multiple mission types** (lost cat, scared dog) with unique behavior rules.

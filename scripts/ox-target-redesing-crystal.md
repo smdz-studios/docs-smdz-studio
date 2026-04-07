@@ -18,14 +18,14 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `ox_target` by Overextended
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / VRP / ND
 - 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 - 🎨 Modern NUI (React + TS + Vite + Tailwind + Zustand + Framer Motion)
 - 🍎 Premium iOS‑style look with smooth animations
 - 🧰 In‑game Theme Editor (`/oxtheme`) with preview, search and filters

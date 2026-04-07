@@ -17,7 +17,7 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_toggleradar`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0 - OPEN SOURCE`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -30,7 +30,7 @@
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 - 🗺️ Instantly hide or show your minimap & radar
 - 🌍 Multilanguage support (English, Spanish, Portuguese)
 - 🧩 No dependencies (works with any server)

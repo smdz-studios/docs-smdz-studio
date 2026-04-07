@@ -19,7 +19,7 @@
 # 🧩 **OVERVIEW:**
 
 - 📌 **Name:** `smdz_peds_manager`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX (auto-detected)
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -29,7 +29,7 @@ Full-featured ped assignment manager with a modern NUI for staff and players, bu
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 
 - ✅ **Modern NUI** with separate player/admin panels, optimized layout, and smooth interactions.
 - 🧩 **Built‑in ped catalog** with categories, search, filters, pagination, and image previews.

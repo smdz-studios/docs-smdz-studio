@@ -17,7 +17,7 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_lb_emergency_app`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>

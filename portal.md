@@ -27,6 +27,24 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/uav.png" alt="UAV preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Realistic UAV</h3>
+      <p>UAV is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a modern overlay.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/pets-rescue.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
@@ -200,7 +218,7 @@
       <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
     </div>
     <div class="home-showcase-body">
-      <h3>Fast Repair</h3>
+      <h3>Fast Repair 1.0</h3>
       <p>Lightweight repair logic designed for smoother vehicle maintenance and roleplay consistency.</p>
       <div class="home-showcase-tags">
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>

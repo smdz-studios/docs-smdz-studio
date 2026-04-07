@@ -18,14 +18,14 @@
 # 🧩 **OVERVIEW:**
 
 - 📌 **Name:** `smdz_evidence_markers`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone
 - 🧾 **Version:** `1.2.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 - 🎯 **Fully synced evidence markers**  
   Placeable, pick-up-able evidence markers with real-time sync, editable notes, and **3D labels visible to all players**.
 - 📝 **Crime-Scene NUI Interface**  

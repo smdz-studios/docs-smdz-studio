@@ -20,7 +20,7 @@
 
 # 🧩 OVERVIEW:
 - 📌 **Name:** `smdz_hud2d_builder`
-- 🧑‍💻 **Author:** **SMDZ Studios**
+- 💻 **Author:** **SMDZ Studios**
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -31,7 +31,7 @@
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 - 🎯 **Live HUD editing:** Move elements while seeing changes immediately.
 - 🧱 **Multiple elements:** Maintain a list of text elements and switch active element quickly.
 - 🎨 **Styling tools:**

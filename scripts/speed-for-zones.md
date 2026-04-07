@@ -17,7 +17,7 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_speedforzones`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore 
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -28,7 +28,7 @@ Emojis highlight key sections for clarity and navigation.
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 
 - 🚧 Zone-based speed limits using PolyZone polygons.
 - 🌊 Smooth speed cap transitions for realistic driving.

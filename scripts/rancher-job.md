@@ -20,7 +20,7 @@
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_rancher_job`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (STANDALONE NOT TESTED)
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
@@ -31,7 +31,7 @@
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 - 🌍 OneSync networked cows/NPCs visible to all players.
 - 🐄 Realistic herd behavior: cows can follow, ignore, flee, or die.
 - 📣 Whistle system with warning + loss enforcement.

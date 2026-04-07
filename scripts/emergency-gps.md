@@ -18,7 +18,7 @@
 # 🧩 **OVERVIEW:**
 
 - 📌 **Name:** `smdz_emergency_gps`
-- 🧑‍💻 **Author:** SMDZ Studios
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">Stable</span>
@@ -27,7 +27,7 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 
 ---
 
-# ✨ **FEATURES:**
+# ⭐ **FEATURES:**
 
 - 🧭 Custom vehicle references with label, icon, color, and size.
 - ⭐ Favorites with quick right‑click toggle and SQL persistence.
