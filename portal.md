@@ -36,7 +36,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/realistic-uav.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
