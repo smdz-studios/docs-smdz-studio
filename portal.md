@@ -25,6 +25,25 @@
 
 <div class="home-showcase-grid">
 
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/speedbumps.png" alt="SpeedBumps preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Speed Bumps</h3>
+      <p>SMDZ Speed Bumps is a traffic-control system for FiveM designed to make your city feel alive, organized, and professional.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/realistic-uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/uav.png" alt="UAV preview image" />
@@ -267,15 +286,14 @@ Think of this documentation as a focused hub for **server owners** and **develop
 
 Depending on what you need right now:
 
-- 🧩 **You have a problem/error**  
-  → Go to **[Common Problems](problems.md)** for step‑by‑step diagnostics.  
+- 🧩 **You have a problem/error**
+  → Go to **[Common Problems](problems.md)** for step‑by‑step diagnostics.
 
-- 🧾 **You want to understand Asset Escrow / entitlements**  
-  → Read **[Asset Escrow System](fxap.md)** to understand how Cfx.re / Tebex protection works and how to fix typical entitlement issues.  
+- 🧾 **You want to understand Asset Escrow / entitlements**
+  → Read **[Asset Escrow System](fxap.md)** to understand how Cfx.re / Tebex protection works and how to fix typical entitlement issues.
 
-- 🆘 **You need direct help**  
-  → Visit **[Support](support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.  
+- 🆘 **You need direct help**
+  → Visit **[Support](support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.
 
-Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.  
+Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.
 Everything here is designed to save you time and reduce guesswork when running your FiveM server with SMDZ Studios scripts. 💚
-
