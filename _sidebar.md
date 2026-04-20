@@ -20,7 +20,7 @@
   - [👤 | Peds Manager](/scripts/peds-manager.md)
   - [🐾 | Pets Rescue](/scripts/pets-rescue.md)
   - [✈️ | Realistic UAV](/scripts/realistic-uav.md)
-  <!-- - [X | Speed Bumpers](/scripts/speed-bumpers.md) -->
+  - [🚧 | Speed Bumpers](/scripts/speed-bumpers.md)
   -
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
