@@ -1,8 +1,46 @@
-# 🧾 **CHANGELOG:**
+# 🧾 **CHANGELOG SMDZ STUDIOS:**
+
+## 🔖 | Evidence Markers - `1.3.0` - 2026-04-21
+### ✅ Added
+- Marker info interaction on active markers through target.
+- Marker info now opens using the same existing evidence NUI card in read-only mode.
+- New config block `Config.Target.Info`.
+- New config block `Config.Timezone`.
+- Server-side anti-spam and validation for marker info requests.
+- Minor improvements to increase optimization.
+
+### 🔧 Changed
+- Updated default place/pickup animations in `config.lua`:
+  - `dict = 'random@domestic'`
+  - `name = 'pickup_low'`
+- Banner framework display now correctly reads `Config.Framework.Mode` (fixed `table: 0x...` output).
+- Webhook identity now uses `Config.Webhook.Identity` consistently (`Username`, `Avatar`).
+
+### ❌ Removed
+- **The use of Xbox Live IDs has been completely eliminated to comply with the [new CFX changes](https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645/1).**
+- Legacy compatibility bootstrap code from the bottom of `config.lua`.
+
+
+### 🗂️ Files Modified
+- `bridge/framework.lua`
+- `bridge/notify.lua`
+- `bridge/targets.lua`
+- `client/cl_edit_props.lua`
+- `client/cl_exports.lua`
+- `client/cl_main.lua`
+- `config.lua`
+- `locales/en.lua`
+- `locales/es.lua`
+- `nui/app.js`
+- `nui/index.html`
+- `nui/style.css`
+- `server/sv_main.lua`
+
+---
+
+
 
 ## 🐄 | The Rancher Job - `1.1.0` - 2026-04-21
-
-
 ### 🧩 Fixes
 - **The use of Xbox Live IDs has been completely eliminated to comply with the [new CFX changes](https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645/1).**
 - Prevented global job expiration/rotation while a player is actively running the ranch job (`currentJob.activeBy`).
