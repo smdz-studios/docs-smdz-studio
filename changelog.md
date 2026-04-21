@@ -1,5 +1,29 @@
 # 🧾 **CHANGELOG:**
 
+## 🐄 | The Rancher Job - `1.1.0` - 2026-04-21
+
+
+### 🧩 Fixes
+- **The use of Xbox Live IDs has been completely eliminated to comply with the [new CFX changes](https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645/1).**
+- Prevented global job expiration/rotation while a player is actively running the ranch job (`currentJob.activeBy`).
+- This stops the NPC/job point from changing mid-run and avoids herd loss caused by forced job resets.
+
+### 🚀 Performance
+- Added NPC distance-based streaming on client side:
+  - NPC and job blip are created only when the player is within `200.0` meters.
+  - NPC and job blip are cleaned up when the player is farther than `200.0` meters.
+- Added cow distance culling on server side:
+  - Spawned cow entities now use `SetEntityDistanceCullingRadius(..., 200.0)`.
+  - Players farther than `200.0` meters do not stream/render those cows.
+
+### 🗂️ Files Updated
+- `client/main.lua`
+- `server/main.lua`
+- `shared/config.lua`
+
+
+---
+
 
 ## 🔖 | Evidence Markers - `1.2.0` - 2026-04-03
 ### 🧩 Fixes

@@ -22,7 +22,7 @@
 - 📌 **Name:** `smdz_rancher_job`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (STANDALONE NOT TESTED)
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 🐄 A production-grade rancher job for FiveM with OneSync-synced entities, multi-framework bridges, and server-side validation. Designed for roleplay servers that want believable herding without punishing edge cases.
@@ -45,22 +45,22 @@
 
 # 🤝 **COMPATIBILITY:**
 
-- 🎒 **Inventories**  
-  `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory`  
+- 🎒 **Inventories**
+  `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory`
   *(Automatic fallback to native ESX / QBCore / QBX inventory functions if no supported inventory is detected)*
 
-- 🎯 **Target Systems**  
-  `ox_target`, `qb-target`  
+- 🎯 **Target Systems**
+  `ox_target`, `qb-target`
   *(Fallback to `Config.Target.fallbackKey` when no target is detected)*
 
-- 🔔 **Notification Systems**  
-  `ox_lib`, `esx`, `qbcore`, `qbx_core`, `origen_notify`, `wasabi_notify`, `brutal_notify`, `rtx_notify`,  
+- 🔔 **Notification Systems**
+  `ox_lib`, `esx`, `qbcore`, `qbx_core`, `origen_notify`, `wasabi_notify`, `brutal_notify`, `rtx_notify`,
   `vms_notifyv2`, `mythic_notify`, `okokNotify`, `codem-notification`
 
-- 🧩 **Frameworks**  
+- 🧩 **Frameworks**
   `ESX`, `QBCore`, `QBX`, `Standalone (STANDALONE NOT TESTED)`
 
-- 🌍 **Locales Included**  
+- 🌍 **Locales Included**
   `en`, `es`, `pt`, `fr`, `de`, `it`
 
 ---
@@ -249,22 +249,22 @@ All in `config.lua`:
 ```lua
 --  ____  __  __ ____  _____
 -- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / / 
---  ___) | |  | | |_| |/ /_ 
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
 -- |____/|_|  |_|____/____|
 --
---  ____  _____ _   _ ____ ___ ___  ____  
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___| 
--- \___ \  | | | | | | | | | | | | \___ \ 
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
 --  ___) | | | | |_| | |_| | | |_| |___) |
 -- |____/  |_|  \___/|____/___\___/|____/
 
 
 Config = {}
 
---===================================================== 
+--=====================================================
 -- CORE
---===================================================== 
+--=====================================================
 Config.Debug = false -- enable debug prints
 Config.DebugAdvanced = { -- advanced debug config table
   enabled = false, -- enable advanced debug
@@ -278,13 +278,13 @@ Config.DebugAdvanced = { -- advanced debug config table
 Config.Locale = 'en' -- default locale key
 Config.LocaleFallback = 'en' -- fallback locale key
 
---===================================================== 
+--=====================================================
 -- FRAMEWORK / NOTIFY / TARGET
---===================================================== 
+--=====================================================
 Config.Framework = 'auto' -- Framework: 'auto' | 'esx' | 'qbcore' | 'qbx_core' | 'standalone'
 
 -- Inventory mode options:
--- 'auto' | 'ox_inventory' | 'tgiann-inventory' | 'qs-inventory' | 'origen_inventory' 
+-- 'auto' | 'ox_inventory' | 'tgiann-inventory' | 'qs-inventory' | 'origen_inventory'
 -- 'core_inventory' | 'jpr-inventory' | 'codem-inventory' | 'esx' | 'qbcore' | 'qbx_core' | 'standalone'
 Config.Inventory = { -- inventory config table
   mode = 'auto', -- inventory mode selection
@@ -304,7 +304,7 @@ Config.Notify = { -- notification system config
   brutal = { type = 'info', sound = false }, -- brutal_notify options
   origen = { type = 'info' }, -- origen_notify options
   codem = { header = 'SMDZ Rancher Job' }, -- codem-notification options
-} 
+}
 
 -- Target: 'auto' | 'ox' | 'qb' | 'none'
 Config.Target = { -- target config table
@@ -317,9 +317,9 @@ Config.Target = { -- target config table
   maxDistance = 1.5, -- max distance to interact with NPC
 }
 
---===================================================== 
+--=====================================================
 -- WEBHOOK LOGS
---===================================================== 
+--=====================================================
 Config.Webhook = { -- webhook config
   enabled = true, -- enable discord webhooks
   url = '', -- webhook URL
@@ -340,9 +340,9 @@ Config.Webhook = { -- webhook config
   }
 }
 
---===================================================== 
+--=====================================================
 -- ANTI-EXPLOIT
---===================================================== 
+--=====================================================
 Config.AntiExploit = { -- anti-exploit config
   minJobTimeSec = 45, -- minimum time before payout
   maxJobDurationSec = 0, -- max job duration (0 disables)
@@ -357,18 +357,18 @@ Config.AntiExploit = { -- anti-exploit config
   requireOnFootForFinish = true, -- require on foot to finish
 }
 
---===================================================== 
+--=====================================================
 -- INPUT KEY
---===================================================== 
-Config.Whistle = { 
+--=====================================================
+Config.Whistle = {
   key = 303, -- control key code (default U)
   inputGroup = 0, -- control group
   requireOnFoot = true, -- block whistle when in vehicle
 }
 
---===================================================== 
+--=====================================================
 -- NPC + BLIP
---===================================================== 
+--=====================================================
 Config.Npc = {
   model = `a_m_m_farmer_01`, -- npc model hash
   scenario = 'WORLD_HUMAN_CLIPBOARD', -- npc scenario
@@ -385,9 +385,9 @@ Config.JobBlip = { -- job blip config
   name = 'job_blip_name', -- locale key for blip name
 }
 
---===================================================== 
+--=====================================================
 -- NPC 3D TEXT
---===================================================== 
+--=====================================================
 Config.DrawText = { -- 3D text config
   enabled = true, -- enable npc 3d text
   distance = 4.0, -- draw distance
@@ -411,9 +411,9 @@ Config.DrawText = { -- 3D text config
   }
 }
 
---===================================================== 
+--=====================================================
 -- COMMAND
---===================================================== 
+--=====================================================
 Config.Command = { -- command config
   enabled = true, -- enable admin command
   name = 'generatecowjob', -- command name
@@ -431,9 +431,9 @@ Config.Command = { -- command config
   }
 }
 
---===================================================== 
+--=====================================================
 -- JOB VISIBILITY + CYCLE
---===================================================== 
+--=====================================================
 Config.JobVisibility = { -- job visibility table
   mode = 'all', -- visibility mode
   randomCount = 10, -- number of players who see the job
@@ -447,9 +447,9 @@ Config.JobCycle = { -- job cycle table
   activeDurationMs = 18 * 60 * 1000, -- job lifetime in ms
 }
 
---===================================================== 
+--=====================================================
 -- COWS + HERD
---===================================================== 
+--=====================================================
 Config.CowModel = `a_c_cow` -- cow model hash
 Config.CowCount = { min = 9, max = 20 } -- cow count range
 Config.CowWanderSpeed = { min = 0.6, max = 1.1 } -- wander speed range
@@ -477,9 +477,9 @@ Config.Herd = { -- herd behavior table
   requiredRatio = 0.75, -- ratio needed to consider success
 }
 
---===================================================== 
+--=====================================================
 -- DELIVERY
---===================================================== 
+--=====================================================
 Config.Delivery = { -- delivery config
   blip = { -- delivery blip settings
     sprite = 1, -- delivery blip sprite
@@ -509,9 +509,9 @@ Config.Delivery = { -- delivery config
   interactDistance = 2.0, -- delivery interact distance
 }
 
---===================================================== 
+--=====================================================
 -- PAYOUT
---===================================================== 
+--=====================================================
 Config.Pay = { -- payout config
   enabled = true, -- enable payouts
   method = 'item', -- payout method (item | cash | bank | money)
@@ -524,9 +524,9 @@ Config.Pay = { -- payout config
   maxDistanceKmForCalc = 12.0, -- max distance used for payout
 }
 
---===================================================== 
+--=====================================================
 -- LOCATIONS
---===================================================== 
+--=====================================================
 Config.Points = {
   {
     id = 1, -- point id
@@ -704,5 +704,3 @@ Config.Webhook = {
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
-
-
