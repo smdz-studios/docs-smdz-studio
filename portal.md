@@ -25,6 +25,22 @@
 
 <div class="home-showcase-grid">
 
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/lbappifruit.png" alt="iFruit Pods APP preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>iFruit Pods APP</h3>
+      <p>A production-ready LB Phone app designed to control wireless pods, featuring secure audio playback, advanced playlist management, queue & repeat systems, persistent settings (including dark mode), and asynchronous webhook logging.</p>
+      <div class="home-showcase-tags">
+        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ifruit-pods.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">

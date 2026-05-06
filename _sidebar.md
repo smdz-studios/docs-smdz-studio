@@ -21,6 +21,7 @@
   - [🐾 | Pets Rescue](/scripts/pets-rescue.md)
   - [✈️ | Realistic UAV](/scripts/realistic-uav.md)
   - [🚧 | Speed Bumpers](/scripts/speed-bumpers.md)
+  - [🎧 | iFruit Pods APP](/scripts/ifruit-pods.md)
   -
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
