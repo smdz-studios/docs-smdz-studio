@@ -22,23 +22,17 @@
 - 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
-**SMDZ LB Emergency App** is a full emergency alert ecosystem for **LB Phone** on FiveM. It provides:
-
-- A **phone app** for all players to view alerts.
-- A **panel** for authorized jobs to send official alerts.
-- **Real-time delivery** by zone and type.
-- **Audit logs**, **anti-spam**, and **persistence**.
-
+**Short description:**
+**SMDZ LB Emergency App** is a full emergency alert ecosystem for **LB Phone** on FiveM.
 This is built to feel like a real-world public alert system (Amber/Police/Medical/etc.) with strong roleplay control and a clean iOS‑style UI.
 
 ---
 
-# **✨ FEATURES:**
+# **⭐ FEATURES:**
 
 - 📱 **LB Phone app integration** (custom app with configurable name, icon, and description)
 - 🧭 **Zone-based dispatch** using PolyZone (Los Santos, North, Cayo Perico, or ALL)
 - 🧩 **Multi-framework support** (ESX, QBCore, QBX, vRP auto-detected)
-- 🧑‍✈️ **Per-alert type permissions** by job and minimum grade
 - 🧰 **Command + keybind panel** (configurable, or item-only mode)
 - 🧾 **Usable item support** for ESX/QBCore + client export for other inventories
 - 🔔 **Emergency notifications** via LB Phone export (always delivered)
@@ -58,7 +52,6 @@ This is built to feel like a real-world public alert system (Amber/Police/Medica
 - 🎨 **iOS-style UI** with light/dark themes and modern settings panel
 - 🌍 **Multi-language** (EN, ES, DE, FR, PT-BR) fully localizable
 - 🧾 **Admin tools** (delete alert by ID with permission checks)
-- 🧾 **Chat command help** (localized suggestions)
 - 📡 **Webhook logs** (staff audit logs + public IC embeds with role mention & image)
 - 🧪 **Extensive debug logs** with levels and colors
 - 🧩 **Exports for integration** (client + server APIs)
@@ -508,64 +501,64 @@ See the **Exports + Events** section below for full details.
 
 # **❓ FAQ:**
 
-**How do I add a new alert type?**  
+**How do I add a new alert type?**
 Add it in `Config.AlertTypes` and mirror it in `Config.AlertPermissions.Types`.
 
-**Can I allow alerts without a phone item?**  
+**Can I allow alerts without a phone item?**
 Set `Config.RequirePhoneItem = false`.
 
-**Do hidden alert types still notify players?**  
+**Do hidden alert types still notify players?**
 Yes. Sound/flashlight/notification always fire. Hidden types only affect the feed.
 
-**How do I update the UI?**  
+**How do I update the UI?**
 Run `npm run build` inside `ui/` and restart the resource.
 
-**Why doesn’t the panel open for my job?**  
+**Why doesn’t the panel open for my job?**
 Check `Config.CommandPermissions` and `Config.AlertPermissions` for job + grade.
 
-**Why does it say “not authorized” even for police?**  
+**Why does it say “not authorized” even for police?**
 Verify the exact job name and grade (case‑sensitive on some frameworks).
 
-**Can I send alerts from another script?**  
+**Can I send alerts from another script?**
 Yes. Use server export `SendAlert(source, data)` or client export `SendAlert(data)`.
 
-**Can I make the panel item‑only?**  
+**Can I make the panel item‑only?**
 Yes. Enable `Config.PanelItem.Enabled = true` and set `ItemName = "smdz_alerts"`.
 
-**Why does the key mapping not work?**  
+**Why does the key mapping not work?**
 If `PanelItem` is enabled, command and key mapping are disabled by design.
 
-**Can I change the default alert type?**  
+**Can I change the default alert type?**
 Yes. Set `Config.DefaultAlertType`.
 
-**Can I change the default zone?**  
+**Can I change the default zone?**
 Yes. Set `Config.DefaultZone` and `Config.AllZoneLabel`.
 
-**Does the script log admin deletions?**  
+**Does the script log admin deletions?**
 Yes. Deletes are logged via webhook with alert ID and author info.
 
-**Do alerts expire automatically?**  
+**Do alerts expire automatically?**
 Yes if `Config.Expiration.Enabled = true`.
 
-**Can I disable flashlight blinking?**  
+**Can I disable flashlight blinking?**
 Yes. Set `Config.Flashlight.Enabled = false`.
 
-**Can I disable sound globally?**  
+**Can I disable sound globally?**
 Yes. Set `Config.Sound.Volume = 0` or remove the sound file.
 
-**Are user settings per‑player?**  
+**Are user settings per‑player?**
 Yes. Settings are stored per identifier in the database.
 
-**Can users clear only their own history?**  
+**Can users clear only their own history?**
 Yes. “Clear history” is per user only.
 
-**Why does the app show the wrong language?**  
+**Why does the app show the wrong language?**
 Check `Config.Locale`, `Config.FallbackLocale`, and the locale file exists.
 
-**Can I rename the resource folder?**  
+**Can I rename the resource folder?**
 No. The resource is locked to `smdz_lb_emergency_app`.
 
-**Is LB Phone required?**  
+**Is LB Phone required?**
 Yes. The app depends on LB Phone exports and NUI.
 
 ---
@@ -589,13 +582,13 @@ All in `config.lua`:
 
 --  ____  __  __ ____  _____
 -- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / / 
---  ___) | |  | | |_| |/ /_ 
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
 -- |____/|_|  |_|____/____|
 --
---  ____  _____ _   _ ____ ___ ___  ____  
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___| 
--- \___ \  | | | | | | | | | | | | \___ \ 
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
 --  ___) | | | | |_| | |_| | | |_| |___) |
 -- |____/  |_|  \___/|____/___\___/|____/
 
@@ -994,8 +987,8 @@ Config.PublicWebhook = { -- Public Discord webhook for in-character alert announ
 -- --------------------------------------------------
 Config.Debug = { -- Debug settings (prints).
     Enabled = false, -- Enable or disable debug logs.
-    
-    
+
+
     -- WARNING: IF YOU PURCHASED THIS SCRIPT, THIS COMMAND WILL BE USELESS TO YOU; IT WAS USED IN PRODUCTION TO CREATE THIS WORK OF ART.
     LayoutCommand = "debuguialert", -- Command to toggle phone app layout mode (Discord-only).
     LayoutDiscordId = "492311610036322305" -- Discord ID allowed to use the layout command.
@@ -1020,5 +1013,3 @@ Config.Debug = { -- Debug settings (prints).
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
-
-

@@ -54,7 +54,7 @@
 
 ---
 
-# ✅ **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 - ✅ **FiveM server:** any recent artifact (latest recommended build preferred).
 - ✅ **Framework:** none required.
 - ✅ **Optional:** notification library/framework if you want nicer feedback:

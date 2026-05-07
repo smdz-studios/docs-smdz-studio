@@ -23,11 +23,11 @@
 - 🧭 **Framework:** ESX / QBCore
 - 🧾 **Version:** `1.2.0`
 - ✅ **Status:** <span class="badge badge--eol">END OF LIFE (DISCONTINUED)</span>
+
 **⚠️ This project has been officially discontinued.
 Development has stopped and no further updates or support will be provided for this version.
 A complete rework (V2) is currently in development, featuring a full overhaul of the system, improved performance, and new features.**
 
----
 **Short description:**
 Fast Repair is a modern, professional, and highly configurable vehicle repair script for FiveM.
 It brings immersive repair experiences with animated NPCs, visual effects, cooldowns, and full framework support ESX/QBCore.
@@ -42,15 +42,16 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 ---
 
 # ⭐ **FEATURES:**
-- Animated mechanic NPC repairs your vehicle.
-- Configurable repair price or free mode.
-- Customizable particle effects and sounds.
-- Cooldown/anti-spam system.
-- Unlimited repair locations with optional map blips.
-- Discord webhook logging.
-- Protection against renaming/leaks.
-- Full ESX/QBCore compatibility.
-- Easy to translate and configure. (NEW: More than ten languages supported!)
+- 🔧 **Immersive mechanic NPC** that dynamically repairs player vehicles with smooth animated interactions.
+- 💰 **Flexible pricing system** with configurable repair costs or completely free repair mode.
+- ✨ **Custom particle effects & audio feedback** fully configurable to match your server style.
+- ⏱️ **Built-in cooldown & anti-spam protection** to prevent abuse and unnecessary event spam.
+- 📍 **Unlimited repair stations** with optional configurable map blips and custom locations.
+- 📡 **Advanced Discord webhook logging** for repair actions and server monitoring.
+- 🛡️ **Protection against renaming, tampering, and unauthorized leaks.**
+- 🔄 **Full compatibility with ESX & QBCore frameworks** with seamless integration.
+- 🌍 **Localization-ready system** with easy configuration and support for 10+ languages.
+- ⚡ **Optimized performance** with lightweight logic and low resmon usage.
 
 ---
 
@@ -163,24 +164,33 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 ---
 
 # 🛠️ **TROUBLESHOOTING:**
-1. Script does not run: Check the folder name is exactly fast_repair_sergioomdz.
-2. NPC or particles not appearing: Make sure the model, animation, and particle names exist and are typed correctly. Try different offsets or scales.
-3. Uncaught TypeError: Failed to fetch: Your NUI files (HTML, JS) may be missing or not loading. Check your resource structure.
+
+| Issue | Possible Cause | Solution |
+|---|---|---|
+| ❌ Script does not start | Incorrect resource folder name | Make sure the folder name is exactly `fast_repair_sergioomdz`. |
+| 👨‍🔧 NPC, animations, or particles are missing | Invalid model, animation, or particle names | Verify that all configured assets exist and are spelled correctly. Try adjusting offsets, rotations, or particle scales if needed. |
+| 🌐 `Uncaught TypeError: Failed to ...` | Missing or broken NUI files | Ensure your `html`, `js`, and related NUI files are present and loading correctly inside the resource structure. |
+| 📍 Blips or repair locations not appearing | Invalid coordinates or disabled blips | Double-check the configured coordinates and ensure blips are enabled in the config. |
+| 🔔 Notifications not showing | Unsupported or misconfigured notification system | Verify your selected notification bridge/system is installed and configured properly. |
+| ⚠️ Discord webhooks not sending logs | Invalid webhook URL or blocked requests | Confirm the webhook URL is correct and that your server can access Discord endpoints. |
+| 🔄 Repairs not syncing properly | Framework/event conflict | Ensure ESX/QBCore versions are supported and avoid duplicate repair resources running simultaneously. |
+| ⚡ High resmon usage | Too many active locations or debug enabled | Reduce active repair points or disable debug/developer mode in production servers. |
 
 ---
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-- Q: **How do I add more repair locations?**
-- A: Add entries to the RepairPoints table in config.lua.
 
-- Q: **Can I change the mechanic ped or animation?**
-- A: Yes! Modify MechanicNPCHash, MechanicNPCAnimDict, and MechanicNPCAnim in config.lua.
-
-- Q: **Is it compatible with my framework?**
-- A: Yes. Works with ESX, QBCore, and can be adapted for custom frameworks.
-
-- Q: **How do I translate the script?**
-- A: Edit the Lang variable and L() function in config.lua with your own texts.
+| Question | Answer |
+|---|---|
+| 📍 **How do I add more repair locations?** | Add new entries inside the `RepairPoints` table in `config.lua`. You can create unlimited repair spots with custom settings and optional map blips. |
+| 👨‍🔧 **Can I change the mechanic ped or animation?** | Yes! Modify `MechanicNPCHash`, `MechanicNPCAnimDict`, and `MechanicNPCAnim` inside `config.lua` to fully customize the mechanic appearance and behavior. |
+| 🔄 **Is it compatible with my framework?** | Yes. The script supports **ESX** and **QBCore** out of the box and can also be adapted for custom frameworks if needed. |
+| 🌍 **How do I translate the script?** | Edit the `Lang` variable and the `L()` translation function inside `config.lua` with your own language texts. |
+| 💰 **Can repairs be free for players?** | Absolutely. You can enable free repairs or configure custom repair prices directly from the config file. |
+| 🔔 **Does the script support custom notification systems?** | Yes. The script can be integrated with multiple notification systems or your own custom notification export. |
+| 📡 **Are Discord logs included?** | Yes. The script includes configurable Discord webhook logs for repair actions and server monitoring. |
+| ⚡ **Is the script optimized?** | Yes. The resource is designed with lightweight loops and optimized logic to ensure low resmon usage. |
+| 🛠️ **Can I disable particles, sounds, or effects?** | Yes. All visual and audio effects can be individually enabled, disabled, or customized through the config. |
 
 ---
 

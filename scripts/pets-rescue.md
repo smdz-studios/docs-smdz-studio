@@ -21,6 +21,7 @@
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
+**Short description:**
 SMDZ Pets Rescue is a mission system where players help local NPCs recover lost pets. It features dynamic NPC spawns, search areas, animal behavior, mission timers, dialogue UI, reward delivery, and robust webhooks with detailed identifiers.
 
 ---
@@ -95,7 +96,7 @@ Start the server and confirm no errors in console.
 
 # ⚙️ **CONFIGURATION:**
 
-**Main config:** `config/config.lua`  
+**Main config:** `config/config.lua`
 **NPC points:** `config/npc-config.lua`
 
 ---
@@ -319,7 +320,7 @@ end)
 
 ## **EXPORTS:**
 
-Exports are safe wrappers designed for integration with other resources.  
+Exports are safe wrappers designed for integration with other resources.
 They return `false` if the feature is unavailable or no mission is active, so always validate the result.
 
 All export examples below assume the resource name is **`smdz_pets_rescue`**.
