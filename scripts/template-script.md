@@ -236,3 +236,4 @@ You can also link to release notes if you keep them somewhere else.
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+
