@@ -23,6 +23,11 @@
   <!-- Docsify theme (dark) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
 
+  <!-- Brand typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -83,6 +88,61 @@
       },
 
       plugins: [
+        function (hook, vm) {
+          function initMicroInteractions() {
+            var revealTargets = document.querySelectorAll('.feature-card, .home-showcase-card, .pagination-item');
+            if (revealTargets.length > 0) {
+              var observer = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add('is-revealed');
+                    obs.unobserve(entry.target);
+                  }
+                });
+              }, {
+                threshold: 0.16,
+                rootMargin: '0px 0px -8% 0px'
+              });
+
+              revealTargets.forEach(function (el, index) {
+                el.style.setProperty('--reveal-delay', Math.min(index, 8) * 45 + 'ms');
+                observer.observe(el);
+              });
+            }
+
+            var anchors = document.querySelectorAll('.markdown-section a[href^="#"], .content a[href^="#"]');
+            anchors.forEach(function (anchorEl) {
+              if (anchorEl.dataset.anchorSmoothBound === '1') {
+                return;
+              }
+
+              anchorEl.addEventListener('click', function (event) {
+                var href = anchorEl.getAttribute('href');
+                if (!href || href.length < 2) {
+                  return;
+                }
+
+                var target = document.querySelector(href);
+                if (!target) {
+                  return;
+                }
+
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.history && window.history.pushState) {
+                  window.history.pushState(null, '', href);
+                }
+              });
+
+              anchorEl.dataset.anchorSmoothBound = '1';
+            });
+          }
+
+          hook.doneEach(function () {
+            requestAnimationFrame(initMicroInteractions);
+          });
+        },
+
         function (hook, vm) {
           var collapseConfig = {
             defaultCollapsed: true,

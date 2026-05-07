@@ -18,11 +18,12 @@
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_bus_travels`
 - 💻 **Author:** SMDZ Studios
-- 🧭 **Framework:** ESX / QBCore / QB Box / Standalone
+- 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
-
-**SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.  
+-
+**Short description:**
+**SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.
 It adds interactive bus stops with a clean menu, configurable fares and travel times, an optional immersive *Real Bus* experience, broad compatibility with popular community providers, and optional webhook logging for server activity.
 
 ---
@@ -48,20 +49,11 @@ It adds interactive bus stops with a clean menu, configurable fares and travel t
 - 🧱 **Graceful fallbacks** for notifications, progress bars, and targetless interaction mode.
 - 🧠 **Config-first design** with clean, centralized configuration for easy setup and maintenance.
 
-
-Each feature is designed to feel native to GTA V roleplay. The menu not only shows routes and prices, it also reflects service availability in real time. The flow is intentionally paced: players wait, board a physical bus with an NPC driver, then travel with a distance‑based duration that feels believable.
-
-Operations are reactive. Night hours can suspend service, weather can shut down routes, and blips update color to communicate status instantly. Pricing is flexible and realistic, with base fees, per‑meter costs, bounds, and rounding so the economy stays balanced.
-
-Discounts and VIP access are fully optional but powerful. Government jobs can receive special fares, while VIPs can be granted discounts or free rides via framework groups or ACE permissions. Notifications and progress bars are handled through bridges so you can plug in whatever ecosystem your server already uses.
-
-The system is built for maintainability: all settings are centralized, exports and callbacks are available for custom scripts, and locale files let you replace every message and stop description with your own lore. If a dependency is missing, the script falls back cleanly so the core experience still works.
-
 ---
 
 # 📦 **INSTALLATION:**
 
-1) Place the resource in your server resources folder:  
+1) Place the resource in your server resources folder:
 
 ```
 resources/[smdz]/smdz_bus_travels
@@ -79,8 +71,8 @@ ensure smdz_bus_travels
 
 # 📦 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
-- `ox_lib` (required)  
-  - Used for UI context menus, notifications, and callbacks (`lib.callback`).  
+- `ox_lib` (required)
+  - Used for UI context menus, notifications, and callbacks (`lib.callback`).
   - Ensure it starts **before** `smdz_bus_travels` in `server.cfg`.
 
 
@@ -320,59 +312,59 @@ Below is the full developer surface (events, callbacks, exports) available in th
 
 ## CLIENT EVENTS:
 
-- `smdz_bus_travels:openMenu`  
-  Params: `stopId`  
+- `smdz_bus_travels:openMenu`
+  Params: `stopId`
   Opens the bus menu for a specific stop.
 
 ## SERVER EVENTS:
 
-- `smdz_bus_travels:cancelTrip`  
+- `smdz_bus_travels:cancelTrip`
   Refunds and cancels the active trip.
 
-- `smdz_bus_travels:completeTrip`  
+- `smdz_bus_travels:completeTrip`
   Marks the trip complete and sends webhook logs.
 
 ## SERVER CALLBACKS (ox_lib):
 
-- `smdz_bus_travels:canUse`  
-  Returns: `ok, reason`  
+- `smdz_bus_travels:canUse`
+  Returns: `ok, reason`
   Checks if the service is available.
 
-- `smdz_bus_travels:getRoutePrice`  
-  Params: `fromId, toId`  
+- `smdz_bus_travels:getRoutePrice`
+  Params: `fromId, toId`
   Returns: `ok, price, reason`
 
-- `smdz_bus_travels:payCashForRoute`  
-  Params: `fromId, toId, weatherName, clientHour`  
+- `smdz_bus_travels:payCashForRoute`
+  Params: `fromId, toId, weatherName, clientHour`
   Returns: `ok, price, message`
 
-- `smdz_bus_travels:getAccessBenefit`  
+- `smdz_bus_travels:getAccessBenefit`
   Returns: `ok, mode, percent`
 
 ## EXPORTS:
 
 ### Shared:
 
-- `T(key, ...)`  
+- `T(key, ...)`
   Localized string helper (from `shared/locale.lua`).
 
 ### Client:
 
-- `OpenMenu(stopId)`  
-- `GetStops()`  
-- `GetStopById(stopId)`  
-- `IsNightBlocked()`  
-- `IsWeatherBlocked()` → returns `(bool, weatherName)`  
-- `CalcTravelMs(fromId, toId)`  
+- `OpenMenu(stopId)`
+- `GetStops()`
+- `GetStopById(stopId)`
+- `IsNightBlocked()`
+- `IsWeatherBlocked()` → returns `(bool, weatherName)`
+- `CalcTravelMs(fromId, toId)`
 
 ### Server:
 
-- `GetStops()`  
-- `GetStopById(stopId)`  
-- `IsNightBlockedAtHour(hour)`  
-- `IsWeatherBlocked(weatherName)`  
-- `HasVip(source)`  
-- `GetAccessBenefit(source)` → returns `(bool, mode, percent)`  
+- `GetStops()`
+- `GetStopById(stopId)`
+- `IsNightBlockedAtHour(hour)`
+- `IsWeatherBlocked(weatherName)`
+- `HasVip(source)`
+- `GetAccessBenefit(source)` → returns `(bool, mode, percent)`
 
 ## EXPORT USAGE EXAMPLES:
 
@@ -437,55 +429,55 @@ end
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-**Q: Can I disable dynamic pricing?**  
+**Q: Can I disable dynamic pricing?**
 A: Yes. Set `Config.Pricing.Enabled = false` and use `Config.DefaultPrice`.
 
-**Q: Can I disable the bus spawn and keep instant teleport?**  
+**Q: Can I disable the bus spawn and keep instant teleport?**
 A: Yes. Set `Config.BusSpawn.WaitBeforeTeleportMs = 0` and remove spawn entries.
 
-**Q: Why does the VIP line not show?**  
+**Q: Why does the VIP line not show?**
 A: Make sure `Config.AccessPricing.Enabled = true` and your group/ACE is listed.
 
-**Q: Can I force a specific notifications provider?**  
+**Q: Can I force a specific notifications provider?**
 A: Yes. Set `Config.Notify = 'provider_name'` (e.g., `ox_lib`, `okokNotify`).
 
-**Q: Can I use a different progress bar provider?**  
+**Q: Can I use a different progress bar provider?**
 A: Yes. Set `Config.ProgressBar` to `ox_lib`, `progressbar`, `mythic_progbar`, `esx_progressbar`, or `fallback`.
 
-**Q: How do I add or remove stops?**  
+**Q: How do I add or remove stops?**
 A: Edit `Config.Stops` and update `Config.StopsBusSpawn` with matching stop IDs.
 
-**Q: The menu is red/blocked even during the day. Why?**  
+**Q: The menu is red/blocked even during the day. Why?**
 A: Check `Config.NightDisabled`, your game time, and your weather blocking list.
 
-**Q: Can I change travel time realism?**  
+**Q: Can I change travel time realism?**
 A: Yes. Adjust `Config.TravelProgress.BaseMs`, `PerMeter`, and `DistanceMultiplier`.
 
-**Q: Can I change the bus color?**  
+**Q: Can I change the bus color?**
 A: Yes. Use `Config.BusSpawn.RandomColor` or set `Config.BusSpawn.Color`.
 
-**Q: Can I disable weather blocking entirely?**  
+**Q: Can I disable weather blocking entirely?**
 A: Yes. Set `Config.WeatherBlock.Enabled = false`.
 
-**Q: Do I need ox_target?**  
+**Q: Do I need ox_target?**
 A: No. Set `Config.Target = 'none'` to use the fallback key interaction.
 
-**Q: Can I show VIP as discount and still apply gov discount?**  
+**Q: Can I show VIP as discount and still apply gov discount?**
 A: Yes. Set `Config.AccessPricing.StackWithGov = true`.
 
-**Q: Why are webhooks not sending?**  
+**Q: Why are webhooks not sending?**
 A: Ensure `Config.Webhooks.Enabled = true` and the webhook URL is valid.
 
-**Q: How do I change the night hours?**  
+**Q: How do I change the night hours?**
 A: Edit `Config.NightFromHour` and `Config.NightToHour`.
 
-**Q: Can I override stop descriptions per locale?**  
+**Q: Can I override stop descriptions per locale?**
 A: Yes. Update the `STOP_*_DESC` keys in `locales/en.lua` and `locales/es.lua`.
 
-**Q: Can I reduce CPU usage?**  
+**Q: Can I reduce CPU usage?**
 A: Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance`.
 
-**Q: Is the bus spawn networked for all players?**  
+**Q: Is the bus spawn networked for all players?**
 A: No. It is local per player to prevent collisions and duplication.
 
 
@@ -496,13 +488,13 @@ A: No. It is local per player to prevent collisions and duplication.
 ```lua
 --  ____  __  __ ____  _____
 -- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / / 
---  ___) | |  | | |_| |/ /_ 
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
 -- |____/|_|  |_|____/____|
 --
---  ____  _____ _   _ ____ ___ ___  ____  
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___| 
--- \___ \  | | | | | | | | | | | | \___ \ 
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
 --  ___) | | | | |_| | |_| | | |_| |___) |
 -- |____/  |_|  \___/|____/___\___/|____/
 

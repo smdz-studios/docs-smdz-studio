@@ -24,6 +24,7 @@
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
+**Short description:**
 `smdz_uav` is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a React/Vite UI overlay.
 
 ---
@@ -103,13 +104,13 @@ Main file:
 ```lua
 --  ____  __  __ ____  _____
 -- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / / 
---  ___) | |  | | |_| |/ /_ 
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
 -- |____/|_|  |_|____/____|
 --
---  ____  _____ _   _ ____ ___ ___  ____  
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___| 
--- \___ \  | | | | | | | | | | | | \___ \ 
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
 --  ___) | | | | |_| | |_| | | |_| |___) |
 -- |____/  |_|  \___/|____/___\___/|____/
 
@@ -192,7 +193,7 @@ Config.UAV = { -- Main UAV lifecycle and behavior settings.
 -- 06) Aerial Camera
 
 -- WARNING --
---- DUE TO TECHNICAL LIMITATIONS IN FIVEM, IT IS NORMAL FOR THE IMAGE TO APPEAR BLURRY WHEN YOU ZOOM IN OR FOR SOME TEXTURES TO FAIL TO LOAD WHEN VIEWED FROM THE AIR. 
+--- DUE TO TECHNICAL LIMITATIONS IN FIVEM, IT IS NORMAL FOR THE IMAGE TO APPEAR BLURRY WHEN YOU ZOOM IN OR FOR SOME TEXTURES TO FAIL TO LOAD WHEN VIEWED FROM THE AIR.
 --- THIS IS NOT A PROBLEM WITH SMDZ STUDIOS.
 --- TO AVOID THIS, WE RECOMMEND SETTING THE PLANE TO FLY ABOUT 300 METERS ABOVE THE GROUND
 
@@ -245,8 +246,8 @@ Config.Blip = { -- Blip visual settings for sweep targets.
 
 -- 10) Notifications
 Config.Notify = { -- Notification bridge and payload defaults.
-    provider = 'origen_notify', 
-    -- Provider: auto, ox_lib, esx, qbcore, okoknotify, origen_notify, wasabi_notify, wasabi_uikit, 
+    provider = 'origen_notify',
+    -- Provider: auto, ox_lib, esx, qbcore, okoknotify, origen_notify, wasabi_notify, wasabi_uikit,
     -- rtx_notify, codem-notification, vms_notifyv2, esx_notify, brutal_notify, fl-notify, gtm-ui.
     title = 'UAV', -- Default notification title.
     duration = 3500, -- Default notification duration in milliseconds.

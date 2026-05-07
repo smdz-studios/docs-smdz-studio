@@ -1,106 +1,125 @@
-# 🆘 **SUPPORT:**
+# Support Center
 
-This page explains **how to request support in a way that is fast, clear and professional** for both you and SMDZ Studios.
+<div class="hero">
+  <div class="hero-logo-panel">
+    <div class="hero-logo-inner">
+      <img src="assets/logo.png" alt="SMDZ Studios" />
+    </div>
+    <h2 class="hero-main-title">SMDZ Support</h2>
+    <p style="text-align:center;max-width:760px;margin:0.4rem auto 0.2rem auto;color:#cfcfcf;">
+      Fast, clear and professional support for all SMDZ Studios resources.
+      The better your report, the faster we can reproduce and solve your issue.
+    </p>
+    <div class="hero-quick-links" style="margin-top:0.9rem;">
+      <a class="hero-quick-link hero-quick-link--support" href="https://discord.gg/BJztNfwcyh" target="_blank" rel="noopener">Open Discord Support</a>
+      <a class="hero-quick-link hero-quick-link--store" href="mailto:smdzstudios@gmail.com">Send Email</a>
+    </div>
+  </div>
+</div>
 
-For any question, bug or installation issue related to **SMDZ Studios** FiveM scripts, please use one of the following official channels:
+## Official Channels
 
-- 📧 **Email:** `smdzstudios@gmail.com`  
-- 💬 **Discord:** [Join the SMDZ Studios Discord](https://discord.gg/XraafphzrQ)
+<div class="feature-row">
+  <div class="feature-card">
+    <h3>Discord (Recommended)</h3>
+    <p>
+      Join our server for the fastest support flow, easier log sharing, and media attachments.
+      <br /><br />
+      <a href="https://discord.gg/BJztNfwcyh" target="_blank" rel="noopener">Join SMDZ Discord</a>
+    </p>
+  </div>
+  <div class="feature-card">
+    <h3>Email</h3>
+    <p>
+      Best for account-related details or longer technical reports.
+      <br /><br />
+      <a href="mailto:smdzstudios@gmail.com">smdzstudios@gmail.com</a>
+    </p>
+  </div>
+  <div class="feature-card">
+    <h3>Response Quality Tip</h3>
+    <p>
+      Include all required details in your first message to avoid back-and-forth.
+      This usually cuts resolution time dramatically.
+    </p>
+  </div>
+</div>
 
-Discord is usually the **fastest** way to get help, especially when screenshots or short videos are needed.
+## Required Information
 
----
+Please include all items below when opening support:
 
-# 📋 **REQUIRED INFORMATION FOR SUPPORT:**
+1. Script name
+2. Script version
+3. Framework and version (`ESX`, `QBCore`, `Standalone`)
+4. Server environment (`Windows`/`Linux`, local/VPS/dedicated, DB type)
+5. Tebex purchase ID (transaction/order ID)
+6. Clear issue description (expected behavior vs actual behavior)
+7. Reproduction steps
+8. Relevant config snippets (with secrets removed)
+9. Logs or screenshots (`server console`, `F8`, `resmon 1` if performance-related)
 
-To avoid long back‑and‑forth conversations and to get a useful answer on the first reply, always include:
+> Security note: Never share passwords, license keys, tokens, webhooks, or private credentials.
 
-1. **Script name**  
-   - Example: `smdz_example`, `smdz_vehicleshop`, `smdz_dispatch`, etc.
+## Example Ticket Template (Copy/Paste)
 
-2. **Script version**  
-   - Example: `v1.0.3`.  
-   - You can usually find this in the config file, the `fxmanifest.lua`, or on the Tebex download page.
+```txt
+Script Name:
+Script Version:
+Framework + Version:
+Server Environment:
+Database:
+Tebex Purchase ID:
 
-3. **Framework and version**
-   - ESX / QBCore / Standalone.  
-   - If relevant, specify:
-     - “ESX Legacy” / “Old ESX”  
-     - QBCore fork or commit (if not using the main repo)
+Issue Summary:
+Expected Behavior:
+Actual Behavior:
 
-4. **Server environment**
-   - Local test server / VPS / dedicated machine / game panel.  
-   - Operating system (Windows / Linux) and database type (MySQL / MariaDB).
+Reproduction Steps:
+1.
+2.
+3.
 
-5. **Tebex purchase ID**
-   - The **order ID / transaction ID** from Tebex that proves your purchase.  
-   - This helps verify ownership and ensure you are running an official version.
+Logs / Error Output:
 
-6. **Clear description of the issue**
-   - What you expected to happen.  
-   - What actually happens instead.  
-   - Any visible errors (server console, F8 console, client logs).
+Relevant Config Snippet (sanitized):
+```
 
-7. **Reproduction steps**
-   - A short, numbered list that allows the issue to be reproduced on a clean test server, for example:
-     1. Start the server with only the framework + database adapter + the SMDZ script.  
-     2. Join the server with a fresh character.  
-     3. Run `/example` or perform the specific action.  
-     4. Observe that the menu does not open and error `XYZ` appears in the console.
+## Before Opening a Ticket
 
-8. **Configuration snippets (if relevant)**
-   - Only include the parts of your config that are related to the problem.  
-   - Remove or mask any secrets (webhooks, API keys, passwords) before sharing.
+Run this quick checklist first:
 
-The more precise and complete this information is, the faster SMDZ Studios can identify the root cause and provide a real solution instead of guesses.
+1. Read the script page fully (`Requirements`, `Installation`, `Configuration`, `Troubleshooting`).
+2. Check [Common Problems](problems.md) for known setup issues.
+3. Review [Asset Escrow System](fxap.md) for entitlement/ownership problems.
+4. Test on a minimal environment (framework + DB + target SMDZ script).
+5. Confirm your dependency order in `server.cfg` is correct.
 
----
+## Bug Reports and Community Value
 
-# 🧪 **BUG REPORTS & QUALITY FEEDBACK:**
+High-quality bug reports help us improve stability and performance for every server using SMDZ resources.
 
-Well‑written bug reports and detailed feedback are extremely valuable.  
-They help SMDZ Studios make each script **more stable, faster and easier to configure** for the entire community.
+Strong reports usually include:
 
-<!-- <div class="tip"> -->
-  <p>
-    When you take the time to reproduce an issue on a clean environment, capture useful logs and describe it
-    clearly, you are not just fixing your own problem — you are improving the script for every server that uses it.
-  </p>
-<!-- </div> -->
+1. Minimal reproducible setup
+2. Exact versions and environment
+3. Full startup-to-error logs
+4. Sanitized config excerpt
+5. Performance evidence (`resmon 1`) when relevant
 
-When reporting a bug, try to provide:
+When a report is confirmed, reproducible, and impactful, SMDZ Studios may optionally provide a reward (store credit, discount, or additional script) on a case-by-case basis.
 
-- ✅ A **minimal test scenario** (for example: only framework + database + the SMDZ script).  
-- ✅ The **exact version** of the script and framework.  
-- ✅ Full console logs from server startup until the error appears.  
-- ✅ Relevant parts of your configuration (with sensitive data removed).  
-- ✅ `resmon 1` screenshots if the bug is related to performance.
+## Support Scope
 
-If a bug is confirmed, reproducible and has a noticeable impact, SMDZ Studios may, at its sole discretion:
+Support covers:
 
-- Offer an additional script copy  
-- Apply a discount to a future purchase  
-- Provide store credit or a gift card  
-- In exceptional cases, grant a **free script** from the shop  
+1. Installation and configuration issues
+2. Framework compatibility checks
+3. Known bug triage and reproduction
+4. Guidance based on official SMDZ documentation
 
-Those rewards are **optional** and decided case‑by‑case after reviewing:
+Support does not cover:
 
-- The severity and impact of the bug  
-- How easy it is to reproduce  
-- The quality and usefulness of the information you provided
-
----
-
-# **🧷 BEFORE YOU OPEN A TICKET:**
-
-Before contacting support, it is strongly recommended to:
-
-1. Read the specific script documentation page (especially **Requirements**, **Installation**, **Configuration** and **Troubleshooting** sections).  
-2. Check the **[Common Problems](problems.md)** page for:
-   - Script not starting  
-   - Database / SQL issues  
-   - Permissions and admin commands  
-   - Framework compatibility (ESX / QBCore / Standalone)  
-3. Review the **[Asset Escrow System](fxap.md)** page if your problem is related to entitlements or ownership.
-
-If after doing this the problem persists, then open a ticket with all the required information. 💚
+1. Full custom development unrelated to the purchased script
+2. Third-party modifications not made by SMDZ Studios
+3. Unsafe server setups or obfuscated unofficial builds
