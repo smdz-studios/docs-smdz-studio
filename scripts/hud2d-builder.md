@@ -17,6 +17,7 @@
   THIS RESOURCE HELPS IN THE DEVELOPMENT OF OTHERS, IT DOES NOT CREATE INTERACTIONS BETWEEN PLAYERS
 </p>
 
+---
 
 # 🧩 OVERVIEW:
 - 📌 **Name:** `smdz_hud2d_builder`
@@ -26,12 +27,13 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 
-**Short description:**  
+**Short description:**
 `smdz_hud2d_builder` is a lightweight in-game editor for building **2D text HUD elements** in FiveM using GTA’s DrawText natives. You can create multiple elements, position them with precision tools (grid + snap), style them (font/color/scale), and export your layout as a simple Lua snippet for reuse in other resources.
 
 ---
 
 # ⭐ **FEATURES:**
+
 - 🎯 **Live HUD editing:** Move elements while seeing changes immediately.
 - 🧱 **Multiple elements:** Maintain a list of text elements and switch active element quickly.
 - 🎨 **Styling tools:**
@@ -630,42 +632,42 @@ This warning prints once per category by design (to avoid spam).
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-<!-- **Q: Why is there no background box behind the text?**  
+<!-- **Q: Why is there no background box behind the text?**
 A: Background support is intentionally removed in v1.0.0 by design request. If you want it later, it can be implemented as an optional module or a separate version. -->
 
-**Q: Can I use this without ESX/QBCore?**  
+**Q: Can I use this without ESX/QBCore?**
 A: Yes. The builder is standalone. Notifications can fallback to chat if no provider is available.
 
-**Q: Can I restrict usage to admins only?**  
+**Q: Can I restrict usage to admins only?**
 A: Yes. Enable permissions in `shared/config.lua` and use either ACE permissions or allowed identifiers:
 - `Config.Permissions.Enabled = true`
 - Configure `Ace` and/or whitelists.
 
-**Q: Do generated snippets work on any server?**  
+**Q: Do generated snippets work on any server?**
 A: Yes. They are plain Lua snippets that draw text elements every frame and can be placed into any resource.
 
-**Q: Does this script store per-player HUD layouts?**  
+**Q: Does this script store per-player HUD layouts?**
 A: By default, it saves snippets into the resource folder. It does not implement user profiles or per-player layouts out of the box.
 
-**Q: Can I import a snippet back into the editor?**  
+**Q: Can I import a snippet back into the editor?**
 A: Not in v1.0.0. An importer can be implemented in a future update. (v2.0.0)
 
-**Q: Why do keys behave differently for some players?**  
+**Q: Why do keys behave differently for some players?**
 A: FiveM uses control IDs which can be remapped at the client level (GTA/FiveM settings). The resource cannot prevent client remaps.
 
-**Q: Can I change the default controls?**  
+**Q: Can I change the default controls?**
 A: Yes, server-side: edit `shared/keys_config.lua` and restart the resource.
 
-**Q: Is there a server-side export to read elements from all players?**  
+**Q: Is there a server-side export to read elements from all players?**
 A: Not in v1.0.0. Elements are client-side while editing. For global persistence you’d implement server storage and sync.
 
-**Q: Does it support resolution scaling / safezone?**  
+**Q: Does it support resolution scaling / safezone?**
 A: Elements are stored as normalized screen coordinates (0.0–1.0). Actual look varies by aspect ratio and safe zone. Use grid/snap for consistent placement.
 
-**Q: Will this impact performance?**  
+**Q: Will this impact performance?**
 A: Rendering a small set of text elements per frame is lightweight. If you render very large numbers of elements, you should test and consider optimizing your final HUD implementation.
 
-**Q: Can I integrate this with a staff menu?**  
+**Q: Can I integrate this with a staff menu?**
 A: Yes. Use client exports `openEditor()` / `closeEditor()` and `requestPermission()` to gate access.
 
 <!-- ---
