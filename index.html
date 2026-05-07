@@ -83,6 +83,120 @@
       },
 
       plugins: [
+        function (hook, vm) {
+          var collapseConfig = {
+            defaultCollapsed: true,
+            minLines: 8
+          };
+
+          function getCodeLanguage(preEl) {
+            if (!preEl) {
+              return 'text';
+            }
+
+            var dataLang = preEl.getAttribute('data-lang');
+            if (dataLang && dataLang.trim() !== '') {
+              return dataLang.trim().toLowerCase();
+            }
+
+            var codeEl = preEl.querySelector('code');
+            if (!codeEl || !codeEl.className) {
+              return 'text';
+            }
+
+            var match = codeEl.className.match(/language-([\w-]+)/i);
+            return match && match[1] ? match[1].toLowerCase() : 'text';
+          }
+
+          function normalizeLanguage(preEl, lang) {
+            if (preEl && lang && lang !== '') {
+              preEl.setAttribute('data-lang', lang.toUpperCase());
+            }
+          }
+
+          function getLineCount(preEl) {
+            var codeEl = preEl.querySelector('code');
+            if (!codeEl) {
+              return 0;
+            }
+
+            var text = codeEl.textContent || '';
+            if (text === '') {
+              return 0;
+            }
+
+            return text.split(/\r\n|\r|\n/).length;
+          }
+
+          function updateToggleState(preEl, toggleBtn, wrapper, isCollapsed) {
+            if (!preEl || !toggleBtn || !wrapper) {
+              return;
+            }
+
+            if (isCollapsed) {
+              preEl.classList.add('is-collapsed');
+              wrapper.classList.add('code-collapsed');
+              toggleBtn.textContent = 'Show code';
+              toggleBtn.setAttribute('aria-expanded', 'false');
+            } else {
+              preEl.classList.remove('is-collapsed');
+              wrapper.classList.remove('code-collapsed');
+              toggleBtn.textContent = 'Hide code';
+              toggleBtn.setAttribute('aria-expanded', 'true');
+            }
+          }
+
+          function bindCodeCollapsers() {
+            var codeBlocks = document.querySelectorAll('.markdown-section pre');
+            if (!codeBlocks || codeBlocks.length === 0) {
+              return;
+            }
+
+            codeBlocks.forEach(function (preEl) {
+              if (preEl.dataset.collapsibleBound === '1') {
+                return;
+              }
+
+              var lineCount = getLineCount(preEl);
+              if (lineCount < collapseConfig.minLines) {
+                return;
+              }
+
+              var lang = getCodeLanguage(preEl);
+              normalizeLanguage(preEl, lang);
+
+              var wrapper = document.createElement('div');
+              wrapper.className = 'code-collapse-wrapper';
+              preEl.parentNode.insertBefore(wrapper, preEl);
+              wrapper.appendChild(preEl);
+
+              var controls = document.createElement('div');
+              controls.className = 'code-collapse-controls';
+
+              var toggleBtn = document.createElement('button');
+              toggleBtn.type = 'button';
+              toggleBtn.className = 'code-collapse-toggle';
+              toggleBtn.setAttribute('aria-label', 'Toggle code visibility');
+
+              controls.appendChild(toggleBtn);
+              wrapper.appendChild(controls);
+
+              var isCollapsed = collapseConfig.defaultCollapsed;
+              updateToggleState(preEl, toggleBtn, wrapper, isCollapsed);
+
+              toggleBtn.addEventListener('click', function () {
+                isCollapsed = !isCollapsed;
+                updateToggleState(preEl, toggleBtn, wrapper, isCollapsed);
+              });
+
+              preEl.dataset.collapsibleBound = '1';
+            });
+          }
+
+          hook.doneEach(function () {
+            requestAnimationFrame(bindCodeCollapsers);
+          });
+        },
 
         function (hook, vm) {
           hook.doneEach(function () {

@@ -884,6 +884,56 @@ pre code {
   font-size: 0.78rem !important;
 }
 
+.code-collapse-wrapper {
+  position: relative;
+  margin: 1.1rem 0;
+}
+
+.code-collapse-wrapper pre {
+  margin: 0;
+  transition: max-height 0.22s ease-out;
+}
+
+.code-collapse-wrapper pre.is-collapsed {
+  max-height: 260px;
+  overflow: hidden;
+}
+
+.code-collapse-wrapper.code-collapsed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  height: 72px;
+  background: linear-gradient(to bottom, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0.95));
+  pointer-events: none;
+}
+
+.code-collapse-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.45rem;
+}
+
+.code-collapse-toggle {
+  background: #202020;
+  border: 1px solid #3a3a3a;
+  color: #d4d4d8;
+  border-radius: 0.45rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+}
+
+.code-collapse-toggle:hover {
+  color: #ffffff;
+  border-color: #65b40a;
+  box-shadow: 0 0 0 2px rgba(101, 180, 10, 0.15);
+}
+
 /* Copy Code Plugin Restyling */
 .docsify-copy-code-button {
   background: rgba(30,30,30,0.85) !important;
