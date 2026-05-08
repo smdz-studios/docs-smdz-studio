@@ -99,73 +99,225 @@ npm run build
 Main files:
 
 - `config.lua`
+```lua
+Config = Config or {}
+
+-- =========================================================
+-- CONFIG INDEX
+-- 01) Core
+-- 02) Framework / Inventory
+-- 03) Bridge Providers (Target / TextUI / Notification / Banking)
+-- 04) Transfer Rules
+-- 05) Sound / Animation / UI
+-- 06) History / NPC Points
+-- 07) Security / Permissions / Webhook
+-- =========================================================
+
+-- 01) Core
+Config.Locale = 'en' -- Active locale file key.
+Config.Debug = false -- Enables structured debug prints.
+
+-- 02) Framework / Inventory
+Config.Framework = {
+    Mode = 'auto' -- auto | esx | qbcore | qbx | standalone.
+}
+
+Config.Inventory = {
+    RequiredItem = 'phone', -- Required item to allow NFC transfers.
+    PreferOxInventory = true -- If ox_inventory is started, use it first for item checks.
+}
+
+-- 03) Bridge Providers
+Config.Target = {
+    Mode = 'auto', -- auto | ox_target | qb_target.
+    Label = 'nfc_label', -- Locale key for target interaction label.
+    Icon = 'fa-solid fa-mobile-screen-button', -- Target icon.
+    Distance = 2.0 -- Max interaction distance.
+}
+
+Config.TextUI = {
+    Mode = 'auto',
+    -- auto | custom | ox_lib | codem-textui | brutal_3dtextui | wasabi_uikit | okokTextUI | qs-textui |
+    -- jg-textui | cd_drawtextui | brutal_textui | dsco_textui | lation_ui | ZSX_UIV2 | framework.
+    DefaultKey = 38, -- Default key control for TextUI interaction (E).
+    DefaultDistance = 2.0 -- Default TextUI interaction distance.
+}
+
+Config.Notification = {
+    Mode = 'auto',
+    -- auto | custom | ox_lib | esx | qbcore | okokNotify | origen_notify | wasabi_notify | wasabi_uikit | rtx_notify |
+    -- codem-notification | vms_notifyv2 | esx_notify | brutal_notify | FL-Notify | gtm-ui | RO_Notify | RxNotify.
+    Position = 'top-right', -- Default notification position.
+    Duration = 5000, -- Default notification duration (ms).
+    TitleLocale = 'ui_title' -- Locale key used as notification title.
+}
+
+Config.Banking = {
+    Mode = 'auto',
+    -- auto | custom | framework | okokBanking | Renewed-Banking | qb-banking | fd_banking |
+    -- kartik-banking | tgg-banking | tgiann-bank | wasabi_banking.
+    UseFrameworkAsPrimary = true -- In auto mode, framework bridge is always resolved first.
+}
+
+-- 04) Transfer Rules
+Config.Transfer = {
+    Distance = 3.0, -- Max distance between sender and receiver.
+    MinAmount = 1, -- Minimum transfer amount.
+    MaxAmount = 50000, -- Maximum transfer amount.
+    NoteMaxLength = 120, -- Max note length after sanitization.
+    RequestTimeout = 15, -- Request expiration time (seconds).
+    Cooldown = 5, -- Cooldown between actions (seconds).
+    RateLimitPerMinute = 6, -- Max create requests per minute per player.
+    FeePercent = 2, -- Transfer fee percent.
+    FeeMode = 'sender', -- sender | deduct.
+    QuickPresets = { 100, 500, 1000, 5000 } -- UI quick amount presets.
+}
+
+
+-- 05) Sound / Animation / UI
+Config.Sound = {
+    Enabled = true, -- Enables custom UI/NUI sounds.
+    Volume = 0.35, -- Default sound volume.
+    Enable3D = true, -- Enables nearby positional playback behavior.
+    SuccessFile = 'appleplay.ogg' -- Sound file name placed in /sound.
+}
+
+Config.Animation = {
+    Enabled = true, -- Enables transfer phone animation.
+    Dict = 'cellphone@', -- Animation dictionary.
+    Clip = 'cellphone_text_read_base', -- Animation clip.
+    Prop = 'prop_phone_ing', -- Prop model attached to hand.
+    PropBone = 28422, -- Hand bone id.
+    PropPlacement = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }, -- Prop offsets/rotations.
+    Flag = 51 -- Animation flag.
+}
+
+
+-- 06) History / NPC Points
+Config.History = {
+    Enabled = true, -- Enables history tracking and viewing.
+    MaxRows = 100, -- Max rows returned from DB.
+    IncludeTestRows = true -- Adds fake rows only when test mode is enabled.
+}
+
+Config.NpcPoints = {
+    {
+        id = 'nfc_point_1', -- Unique npc point id.
+        coords = vector4(152.4772, -1041.3099, 29.3741, 40.5014), -- Spawn position and heading.
+        model = 'a_m_m_business_01', -- Ped model name.
+        scenario = 'WORLD_HUMAN_STAND_MOBILE', -- Idle scenario.
+        interaction = 'textui', -- auto | target | textui.
+        textUiLocale = 'textui_open_history', -- Locale key used in TextUI.
+        distance = 2.0 -- Interaction distance.
+    },
+    {
+        id = 'nfc_point_2', -- Unique npc point id.
+        coords = vector4(240.2536, 225.6349, 106.2868, 198.7836), -- Spawn position and heading.
+        model = 'a_m_m_business_01', -- Ped model name.
+        scenario = 'WORLD_HUMAN_STAND_MOBILE', -- Idle scenario.
+        interaction = 'textui', -- auto | target | textui.
+        textUiLocale = 'textui_open_history', -- Locale key used in TextUI.
+        distance = 2.0 -- Interaction distance.
+    }
+}
+
+-- 07) Security / Permissions / Webhook
+Config.Webhook = {
+    Enabled = false, -- Enables Discord webhook logging.
+    Url = '' -- Discord webhook URL.
+}
+
+Config.Permissions = {
+    RequireAdminForDebug = true, -- Restricts debug actions to admins.
+    Ace = {
+        Admin = 'smdz.nfc.admin', -- Full admin permission.
+        ManageHistory = 'smdz.nfc.history', -- Optional history management permission.
+        ForceCancel = 'smdz.nfc.forcecancel' -- Optional force-cancel permission.
+    },
+    FrameworkGroups = {
+        ESX = { 'admin', 'superadmin', '_dev' }, -- ESX groups with admin access.
+        QBCore = { 'god', 'admin', 'mod' }, -- QBCore groups with admin access.
+        QBX = { 'god', 'admin', 'mod' } -- QBX groups with admin access.
+    }
+}
+
+```
+
 - `config_testmode.lua`
+```lua
 
-### Core
+Config = Config or {}
 
-| Key | Description |
-|-----|-------------|
-| `Config.Locale` | Active locale (`en`, `es`). |
-| `Config.Debug` | Enables non-error debug logs. |
+Config.TestMode = {
+    Enabled = false, -- Enables local test flows (`/nfctest`) and fake test helpers.
+    Accounts = {
+        { id = 'bank', labelLocale = 'account_personal', balance = 999999, type = 'personal' }, -- Personal account mock.
+        { id = 'savings', labelLocale = 'account_savings', balance = 350000, type = 'personal' }, -- Savings account mock.
+        { id = 'business', labelLocale = 'account_business', balance = 1200000, type = 'society' } -- Business account mock.
+    },
+    HistoryRows = {
+        { account = 'bank', from = 'John Foster', to = 'Ava Torres', amount = 450, note = 'Lunch split', statusLocale = 'status_sent' }, -- Fake sent row.
+        { account = 'savings', from = 'Ava Torres', to = 'John Foster', amount = 120, note = 'Taxi share', statusLocale = 'status_cancelled' }, -- Fake cancelled row.
+        { account = 'business', from = 'Mason Lee', to = 'John Foster', amount = 980, note = 'Invoice #842', statusLocale = 'status_sent' }, -- Fake received row.
+        { account = 'bank', from = 'Noah Reed', to = 'Mia Clark', amount = 75, note = 'Coffee', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Mia Clark', to = 'Noah Reed', amount = 55, note = 'Parking', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Ethan Price', to = 'Noah Reed', amount = 310, note = 'Repair order', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Liam Hart', to = 'Sofia Gray', amount = 680, note = 'Event ticket', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Sofia Gray', to = 'Liam Hart', amount = 200, note = 'Fuel share', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Olivia Stone', to = 'Liam Hart', amount = 1450, note = 'Supply payment', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Lucas Dunn', to = 'Emma Cole', amount = 95, note = 'Snack run', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Emma Cole', to = 'Lucas Dunn', amount = 140, note = 'Car wash', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Jack Wade', to = 'Lucas Dunn', amount = 730, note = 'Contract #12', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Aiden Fox', to = 'Zoe Hall', amount = 260, note = 'Dinner split', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Zoe Hall', to = 'Aiden Fox', amount = 180, note = 'Groceries', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Henry Mills', to = 'Aiden Fox', amount = 1210, note = 'Maintenance fee', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Levi Dean', to = 'Nora Bell', amount = 410, note = 'Taxi bill', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Nora Bell', to = 'Levi Dean', amount = 165, note = 'Cinema', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Grace Park', to = 'Levi Dean', amount = 1990, note = 'Invoice #552', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Mason Drew', to = 'Ivy Snow', amount = 88, note = 'Snacks', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Ivy Snow', to = 'Mason Drew', amount = 133, note = 'Bridge toll', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Wyatt Cole', to = 'Mason Drew', amount = 840, note = 'Delivery payout', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Caleb West', to = 'Luna Reed', amount = 502, note = 'Club entry', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Luna Reed', to = 'Caleb West', amount = 249, note = 'Medical fee', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Aria Quinn', to = 'Caleb West', amount = 1330, note = 'Trade transfer', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Dylan Hart', to = 'Chloe King', amount = 360, note = 'Concert split', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Chloe King', to = 'Dylan Hart', amount = 215, note = 'Tuner parts', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Julian Frost', to = 'Dylan Hart', amount = 910, note = 'Fleet bill', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Ryder Shaw', to = 'Hazel Knight', amount = 620, note = 'Rent share', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Hazel Knight', to = 'Ryder Shaw', amount = 300, note = 'Food order', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Violet Cross', to = 'Ryder Shaw', amount = 1765, note = 'Workshop fee', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Finn Blake', to = 'Ruby Cole', amount = 148, note = 'Tool rent', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Ruby Cole', to = 'Finn Blake', amount = 194, note = 'Tow charge', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Owen Holt', to = 'Finn Blake', amount = 1044, note = 'Business loan', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Kai Page', to = 'Lily Ray', amount = 285, note = 'Party prep', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Lily Ray', to = 'Kai Page', amount = 158, note = 'Bridge pass', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Stella Moon', to = 'Kai Page', amount = 2210, note = 'Installment', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Asher Dale', to = 'Maya Holt', amount = 432, note = 'Garage split', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Maya Holt', to = 'Asher Dale', amount = 277, note = 'Road tax', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Theo Vale', to = 'Asher Dale', amount = 1122, note = 'Store restock', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Jude Pike', to = 'Nova Lane', amount = 364, note = 'Fishing gear', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Nova Lane', to = 'Jude Pike', amount = 188, note = 'Beach event', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Elena Ward', to = 'Jude Pike', amount = 1650, note = 'Business refund', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Cole Nash', to = 'Skye Finch', amount = 523, note = 'Vehicle paint', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Skye Finch', to = 'Cole Nash', amount = 289, note = 'Mechanic tip', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Roman Hale', to = 'Cole Nash', amount = 2075, note = 'Contract wire', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Axel Crane', to = 'Iris Poe', amount = 96, note = 'Snack stand', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Iris Poe', to = 'Axel Crane', amount = 119, note = 'Cinema pass', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Nina Vale', to = 'Axel Crane', amount = 934, note = 'Office fee', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Blake Stone', to = 'June Hart', amount = 715, note = 'Deposit', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'June Hart', to = 'Blake Stone', amount = 344, note = 'Grocer run', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Grant Dove', to = 'Blake Stone', amount = 1884, note = 'Warehouse payment', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Parker Finn', to = 'Rose Lane', amount = 237, note = 'Gift', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Rose Lane', to = 'Parker Finn', amount = 142, note = 'Roadside fee', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Amber Holt', to = 'Parker Finn', amount = 1510, note = 'Project payout', statusLocale = 'status_sent' },
+        { account = 'bank', from = 'Tyler York', to = 'Eva Moss', amount = 389, note = 'Ride service', statusLocale = 'status_sent' },
+        { account = 'savings', from = 'Eva Moss', to = 'Tyler York', amount = 211, note = 'Fuel refill', statusLocale = 'status_cancelled' },
+        { account = 'business', from = 'Milo Reed', to = 'Tyler York', amount = 1278, note = 'Monthly invoice', statusLocale = 'status_sent' }
+    }
+}
+```
 
-### Framework / Inventory
 
-| Key | Description |
-|-----|-------------|
-| `Config.Framework.Mode` | `auto`, `esx`, `qbcore`, `qbx`, `standalone`. |
-| `Config.Inventory.RequiredItem` | Required item to allow transfers (default `phone`). |
-| `Config.Inventory.PreferOxInventory` | Prefer `ox_inventory` search when available. |
-
-### Transfer Rules
-
-| Key | Description |
-|-----|-------------|
-| `Distance` | Max sender/receiver distance check. |
-| `MinAmount`, `MaxAmount` | Transfer amount clamp. |
-| `NoteMaxLength` | Max sanitized note length. |
-| `RequestTimeout` | Receiver accept/reject timeout (seconds). |
-| `Cooldown` | Configured cooldown value (for custom expansion). |
-| `RateLimitPerMinute` | Anti-spam request limit per player per minute. |
-| `FeePercent` | Percentage fee. |
-| `FeeMode` | `sender` (sender pays fee on top) or `deduct` (fee deducted from received amount). |
-| `QuickPresets` | Quick amount buttons in sender NUI. |
-
-### Sound / Animation / UI
-
-| Key | Description |
-|-----|-------------|
-| `Config.Sound.Enabled` | Enables NUI SFX / nearby playback event. |
-| `Config.Sound.Volume` | Base playback volume. |
-| `Config.Sound.Enable3D` | 3D behavior toggle in config context. |
-| `Config.Sound.SuccessFile` | Intended success SFX file name (see Troubleshooting note). |
-| `Config.Animation.*` | Dict/clip/prop/bone/flag values for transfer animation sequence. |
-
-### History / NPC
-
-| Key | Description |
-|-----|-------------|
-| `Config.History.Enabled` | Enables DB-backed history callbacks/UI. |
-| `Config.History.MaxRows` | Max history rows returned per player. |
-| `Config.History.IncludeTestRows` | Inject test rows if test mode is enabled. |
-| `Config.NpcPoints` | Spawned NPC interaction points for opening history UI. |
-
-### Security / Permissions / Logging
-
-| Key | Description |
-|-----|-------------|
-| `Config.Webhook.Enabled` / `Config.Webhook.Url` | Discord webhook transfer logs. |
-| `Config.Permissions.Ace.*` | ACE permission nodes. |
-| `Config.Permissions.FrameworkGroups.*` | Admin group lists per framework. |
-
-### Test Mode
-
-Use `config_testmode.lua`:
-
-| Key | Description |
-|-----|-------------|
-| `Config.TestMode.Enabled` | Enables `/nfctest` and local simulation flows. |
-| `Config.TestMode.Accounts` | Mock accounts shown in sender UI. |
-| `Config.TestMode.HistoryRows` | Mock history rows appended to history callback output. |
 
 ---
 
@@ -175,6 +327,9 @@ Locale files:
 
 - `locales/en.lua`
 - `locales/es.lua`
+- `locales/pt.lua`
+- `locales/fr.lua`
+- `locales/de.lua`
 
 The script uses `_L(key, ...)` from `shared/locales.lua` with English fallback. No gameplay text should be hardcoded in Lua logic.
 
@@ -195,6 +350,14 @@ The script uses `_L(key, ...)` from `shared/locales.lua` with English fallback. 
 | TextUI interaction | `E` (`38`) | Opens NPC history when using TextUI mode. |
 | NUI close | `ESC` | Closes active NFC NUI. |
 | NUI accept (receiver) | `ENTER` | Accepts incoming transfer while receiver panel is open. |
+
+---
+
+# 🔌 **EXPORTS:**
+
+No public resource exports are defined by `smdz_nfc_transfer` itself.
+
+Internal code uses exports from other resources via bridge adapters.
 
 ---
 
@@ -243,28 +406,6 @@ The script uses `_L(key, ...)` from `shared/locales.lua` with English fallback. 
 | `submitSender` | NUI -> Client | Sends sender input to server create request. |
 | `receiverReply` | NUI -> Client | Sends accept/reject response to server. |
 
-<!-- ---
-
-# 🧩 **FRAMEWORK COMPATIBILITY:**
-
-| Framework | Status | Notes |
-|----------|--------|-------|
-| ESX | Supported | Uses `getSharedObject`, xPlayer account/job/group APIs. |
-| QBCore | Supported | Uses `GetCoreObject`, PlayerData money/job/gang APIs. |
-| QBX | Supported | Uses QB-style core object + PlayerData flow. |
-| Standalone | Partial | Framework-dependent money/accounts/admin features are limited. |
-
-Framework is detected automatically unless explicitly forced in config. -->
-<!--
----
-
-# 🎯 **TARGET SYSTEM COMPATIBILITY:**
-
-| Target | Status |
-|--------|--------|
-| `ox_target` | Supported |
-| `qb-target` | Supported |
-| none | Supported fallback (TextUI/NPC only) | -->
 
 ---
 
@@ -467,35 +608,12 @@ A: Enables `/nfctest`, mock accounts, and optional fake history rows for UI test
 **Q: Can I rename the resource folder?**
 A: No. Folder rename triggers resource validation lock and automatic stop.
 
-<!-- ---
-
-# 📚 **DEVELOPER NOTES:**
-
-Resource structure:
-
-- `fxmanifest.lua`
-- `config.lua`
-- `config_testmode.lua`
-- `shared/` (debug + localization loader)
-- `bridge/` (framework/target/textui/notify/banking/database abstraction)
-- `client/` (transfer UI flow + NPC history interactions)
-- `server/` (secure transfer lifecycle + anti-abuse + webhook + DB)
-- `web/` (React/Vite/Tailwind NUI)
-- `sql/` (history table)
-
-Bridge-first architecture allows provider swaps without touching core gameplay logic. -->
 
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
-- 🛠️ During this period, the script will only receive:
-  - **Bug fixes / emergency patches** if necessary
-  - **Small content additions or minor improvements** from time to time
-- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
-
-- 🧾 **UPDATE STEPS:**
-  *Backup config → replace folder → restore config → restart server.*
+- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
+- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
 
 ---
 
