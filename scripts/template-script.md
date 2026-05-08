@@ -1,7 +1,7 @@
 # Example Script – Template (Ready to Fill)
 
 <div align="center" style="margin-bottom: 1.5rem;">
-  
+
   <iframe
     width="640"
     height="360"
@@ -14,7 +14,7 @@
   ></iframe>
 </div>
 
-> This file is a **ready-to-fill template** for a new SMDZ Studios script.  
+> This file is a **ready-to-fill template** for a new SMDZ Studios script.
 > In future chats, you can paste this file and I will help you fill each section with real data for your script.
 
 ---
@@ -25,7 +25,7 @@
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Standalone <!-- choose one -->
 - 🧾 **Version:** `1.0.0`
-- ✅ **Status:** `Stable`  
+- ✅ **Status:** `Stable`
 
 Badges (optional):
 
@@ -33,7 +33,7 @@ Badges (optional):
 - <span class="badge badge--beta">Beta</span>
 - <span class="badge badge--legacy">Legacy</span>
 
-**Short description:**  
+**Short description:**
 _Example_: “Lightweight example script demonstrating how SMDZ Studios documents FiveM resources.”
 
 Replace this with a **1–2 sentence** description of what the script does.
@@ -224,10 +224,15 @@ You can also link to release notes if you keep them somewhere else.
 
 ---
 
-
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
-- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
+- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
+
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
 
 ---
 
@@ -236,4 +241,3 @@ You can also link to release notes if you keep them somewhere else.
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
-

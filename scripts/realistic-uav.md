@@ -591,9 +591,14 @@ npm run build
 ---
 
 # 🔄 **UPDATES:**
+- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
 
-- 📅 There are **NO** planned updates during 2025 and early 2026 (except emergency bug fixes).
-- 🧾 **STEPS:** *Backup config -> replace folder -> restore config -> restart resource.*
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
 
 ---
 

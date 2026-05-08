@@ -18,7 +18,7 @@
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_speedforzones`
 - 💻 **Author:** SMDZ Studios
-- 🧭 **Framework:** ESX / QBCore 
+- 🧭 **Framework:** ESX / QBCore
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
@@ -93,7 +93,7 @@ Config.Zones = {
     texts = { enter = 'CITY LIMIT', exit = 'LEFT CITY' },
     points = { vector2(x1, y1), vector2(x2, y2), ... }
   }
-} 
+}
 ```
 
 ---
@@ -104,21 +104,21 @@ Players can temporarily bypass speed limits by purchasing and using hack items.
 
 **Flow:**
 
-1. 🛒 Buy a hack item (mothercard) from a dealer.  
-2. 🚶‍♂️ Use it while on foot near a vehicle.  
-3. ✖️ Complete the PCB minigame (from `pcb_minigame`).  
+1. 🛒 Buy a hack item (mothercard) from a dealer.
+2. 🚶‍♂️ Use it while on foot near a vehicle.
+3. ✖️ Complete the PCB minigame (from `pcb_minigame`).
 4. 🔓 On success, the vehicle is “unlocked” for a set time.
 
 **Config options:**
 
-- 🧱 `Config.Hack.minigame`: resource name (default: `pcb_minigame`)  
-- 🔩 `solderCount`: minigame difficulty  
-- ⏱️ `minigameTimeSec`: minigame duration  
-- 🧷 `consumeOnSuccess` / `consumeOnFail`: item removal  
-- 🧪 Items: label, duration, price per item  
+- 🧱 `Config.Hack.minigame`: resource name (default: `pcb_minigame`)
+- 🔩 `solderCount`: minigame difficulty
+- ⏱️ `minigameTimeSec`: minigame duration
+- 🧷 `consumeOnSuccess` / `consumeOnFail`: item removal
+- 🧪 Items: label, duration, price per item
 
-**🔒 SECURITY:**  
-All hack attempts and item removals are validated server-side.  
+**🔒 SECURITY:**
+All hack attempts and item removals are validated server-side.
 The unlock applies only to the specific vehicle and exactly for the configured time.
 
 ---
@@ -129,17 +129,17 @@ Dealers use **ox_lib** menus for a modern experience.
 
 **Config options:**
 
-- 📍 `coords`: dealer location  
-- 🧍 `pedModel`: character model  
-- 🛒 `saleItems`: items and prices  
-- 💳 `money.mode`: `account` (ESX/QB) or `item` (inventory)  
-- ⏳ `purchaseCooldownMin`: cooldown per player to prevent spam  
+- 📍 `coords`: dealer location
+- 🧍 `pedModel`: character model
+- 🛒 `saleItems`: items and prices
+- 💳 `money.mode`: `account` (ESX/QB) or `item` (inventory)
+- ⏳ `purchaseCooldownMin`: cooldown per player to prevent spam
 
 **Flow:**
 
-- 🚶 Approach dealer NPC.  
-- 📑 Open menu, select item to buy.  
-- 🔍 Server checks funds, cooldown, proximity.  
+- 🚶 Approach dealer NPC.
+- 📑 Open menu, select item to buy.
+- 🔍 Server checks funds, cooldown, proximity.
 - 📦 Item delivered; if inventory fails, refund is automatic.
 
 ---
@@ -161,13 +161,13 @@ All in `config.lua`:
 
 ```lua
 
--- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####  
---#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     # 
---#       # # # # #     #     #      #          #    #     # #     #  #  #     # #       
--- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####  
---      # #     # #     #   #              #    #    #     # #     #  #  #     #       # 
---#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     # 
--- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####  
+-- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####
+--#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     #
+--#       # # # # #     #     #      #          #    #     # #     #  #  #     # #
+-- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####
+--      # #     # #     #   #              #    #    #     # #     #  #  #     #       #
+--#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     #
+-- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####
 --[[
 ================================================================================
 SMDZ SpeedForZones – MASTER CONFIG (READ-ONLY TEMPLATE)
@@ -721,13 +721,13 @@ Config.Debug = { -- Debug configuration
 
 
 
--- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####  
---#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     # 
---#       # # # # #     #     #      #          #    #     # #     #  #  #     # #       
--- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####  
---      # #     # #     #   #              #    #    #     # #     #  #  #     #       # 
---#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     # 
--- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####  
+-- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####
+--#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     #
+--#       # # # # #     #     #      #          #    #     # #     #  #  #     # #
+-- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####
+--      # #     # #     #   #              #    #    #     # #     #  #  #     #       #
+--#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     #
+-- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####
 ```
 
 ---
@@ -742,27 +742,27 @@ Config.Debug = { -- Debug configuration
   - Every event (buy, use item, hack) is double-checked: player identity, permissions, item presence, and proximity.
 
 - 🪪 **Permissions and role protection.**
-  - Use ACE permissions, ESX/QBCore groups and job whitelists.  
+  - Use ACE permissions, ESX/QBCore groups and job whitelists.
     Only authorized users (admins, certain jobs) can bypass or access special features if you configure them.
 
 - 🔥 **Discord webhook logging.**
-  - All important events (zone entry/exit, purchases, hack attempts) can be logged to your Discord for moderation and audit.  
+  - All important events (zone entry/exit, purchases, hack attempts) can be logged to your Discord for moderation and audit.
     Keep track of what happens, who buys, and who hacks.
 
 - 🧬 **Resource folder name protection.**
-  - If the resource folder is not named **smdz_speedforzones**, the script will **NOT** run.  
+  - If the resource folder is not named **smdz_speedforzones**, the script will **NOT** run.
     This prevents accidental leaks and ensures you control where the script runs.
 
 - 🐞 **Debug mode for safe setup.**
-  - Enable debug for verbose logs during installation and testing.  
+  - Enable debug for verbose logs during installation and testing.
     Disable it in production for performance and security.
 
 ### Best Practices:
 
-- ✅ Always start your dependencies in the correct order.  
-- ✅ Use webhooks for real-time monitoring in production.  
-- ✅ Set admin bypasses and job whitelists only for trusted users.  
-- ✅ Review logs regularly for suspicious activity.  
+- ✅ Always start your dependencies in the correct order.
+- ✅ Use webhooks for real-time monitoring in production.
+- ✅ Set admin bypasses and job whitelists only for trusted users.
+- ✅ Review logs regularly for suspicious activity.
 - 🔄 Restart the server or resource after changing `config.lua`.
 
 ---
@@ -770,51 +770,51 @@ Config.Debug = { -- Debug configuration
 # 🐞 **COMMON PROBLEMS:**
 
 ## 📁 FOLDER NAME ERROR:
-**Problem:** Resource prints an error and stops.  
+**Problem:** Resource prints an error and stops.
 **Solution:** Rename the folder to **smdz_speedforzones**.
 
 
 ## 📍 DEALER MENU DOESN'T OPEN:
-**Problem:** No menu at dealer location.  
+**Problem:** No menu at dealer location.
 **Solution:** Start **ox_lib** before this resource and check dealer config.
 
 ## 🛠️ HACK ITEM NOT CONSUMED:
-**Problem:** Item remains after use.  
+**Problem:** Item remains after use.
 **Solution:** Check your inventory integration (ox_inventory recommended), confirm item is registered and present.
 
 
 ## 🚗 VEHICLE NOT UNLOCKED AFTER HACK:
-**Problem:** Speed cap still applies after minigame.  
+**Problem:** Speed cap still applies after minigame.
 **Solution:** Make sure **OneSync** is enabled and vehicle is networked. Confirm hack event is processed by the server.
 
 
 ## 🔥 WEBHOOK LOGS NOT SENT:
-**Problem:** No Discord notifications.  
+**Problem:** No Discord notifications.
 **Solution:** Verify webhook URL in config.lua. Check server firewall and Discord permissions.
 
 
 ## 🧩 FRAMEWORK NOT DETECTED:
-**Problem:** Money/items not working.  
+**Problem:** Money/items not working.
 **Solution:** Explicitly set **FrameworkMode** if your server has both ESX and QBCore.
 
 
 ## 🚦 CLAMP FEELS TOO SOFT OR HARD:
-**Problem:** Speed transitions feel unnatural.  
+**Problem:** Speed transitions feel unnatural.
 **Solution:** Adjust **Smoothing** parameters in config.
 
 
 ## 🎮 MINIGAME DOES NOT LAUNCH:
-**Problem:** Nothing happens when using hack item.  
+**Problem:** Nothing happens when using hack item.
 **Solution:** Ensure **pcb_minigame** is started and matches the configured resource name.
 
 
 ## ⚡ PLAYERS REPORT LAG OR SLOW RESPONSE:
-**Problem:** Delay in speed enforcement or menu opening.  
+**Problem:** Delay in speed enforcement or menu opening.
 **Solution:** Check server performance, ensure OneSync is enabled, and debug logs are disabled in production.
 
 
 ## 📦 ITEMS OR DEALERS NOT SHOWING UP:
-**Problem:** Players cannot see or use items/dealers.  
+**Problem:** Players cannot see or use items/dealers.
 **Solution:** Check registration in inventory system, dealer config and ensure correct dependency start order.
 
 ---
@@ -871,8 +871,14 @@ Yes, all critical actions are validated server-side. No client can bypass restri
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
-- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
+- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
+
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
 
 ---
 
