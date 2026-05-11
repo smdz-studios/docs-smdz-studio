@@ -25,6 +25,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 `smdz_ifruit_pods` is a production-ready LB Phone app that controls wireless pods with validated audio playback, playlists, queue/repeat controls, persistent settings (including dark mode), and async webhook logs.
 
 ---

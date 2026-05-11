@@ -23,6 +23,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 **SMDZ LB Emergency App** is a full emergency alert ecosystem for **LB Phone** on FiveM.
 This is built to feel like a real-world public alert system (Amber/Police/Medical/etc.) with strong roleplay control and a clean iOS‑style UI.
 

@@ -25,6 +25,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 `smdz_uav` is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a React/Vite UI overlay.
 
 ---
@@ -102,17 +103,6 @@ Main file:
 - `config.lua`
 
 ```lua
---  ____  __  __ ____  _____
--- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / /
---  ___) | |  | | |_| |/ /_
--- |____/|_|  |_|____/____|
---
---  ____  _____ _   _ ____ ___ ___  ____
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
--- \___ \  | | | | | | | | | | | | \___ \
---  ___) | | | | |_| | |_| | | |_| |___) |
--- |____/  |_|  \___/|____/___\___/|____/
 
 -- =========================================================
 -- CONFIG INDEX

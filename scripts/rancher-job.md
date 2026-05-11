@@ -26,6 +26,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 A production-grade rancher job for FiveM with OneSync-synced entities, multi-framework bridges, and server-side validation. Designed for roleplay servers that want believable herding without punishing edge cases.
 The resource spawns one global ranching contract at a time. Players start the job from an NPC, herd cows using a whistle, and deliver them to a random drop-off. Cows react to danger, can stray, and can die. All entities are synced to all players via OneSync, and the server validates completion to deter exploits.
 

@@ -22,9 +22,12 @@
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
+
+**Short description:**
+
 Welcome to the official documentation for smdz_speedforzones, your all-in-one solution for zone-based speed control in FiveM.
 This guide covers everything: installation, configuration, features, troubleshooting, FAQs, and more.
-Emojis highlight key sections for clarity and navigation.
+
 
 ---
 
@@ -160,14 +163,6 @@ Key sections:
 All in `config.lua`:
 
 ```lua
-
--- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####
---#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     #
---#       # # # # #     #     #      #          #    #     # #     #  #  #     # #
--- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####
---      # #     # #     #   #              #    #    #     # #     #  #  #     #       #
---#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     #
--- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####
 --[[
 ================================================================================
 SMDZ SpeedForZones – MASTER CONFIG (READ-ONLY TEMPLATE)
@@ -718,16 +713,6 @@ Config.Debug = { -- Debug configuration
   level = 1 -- 1 = info; >1 = verbose (may be noisy in production)
 }
 
-
-
-
--- #####  #     # ######  #######     #####  ####### #     # ######  ### #######  #####
---#     # ##   ## #     #      #     #     #    #    #     # #     #  #  #     # #     #
---#       # # # # #     #     #      #          #    #     # #     #  #  #     # #
--- #####  #  #  # #     #    #        #####     #    #     # #     #  #  #     #  #####
---      # #     # #     #   #              #    #    #     # #     #  #  #     #       #
---#     # #     # #     #  #         #     #    #    #     # #     #  #  #     # #     #
--- #####  #     # ######  #######     #####     #     #####  ######  ### #######  #####
 ```
 
 ---

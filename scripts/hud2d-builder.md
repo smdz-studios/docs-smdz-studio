@@ -27,6 +27,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 `smdz_hud2d_builder` is a lightweight in-game editor for building **2D text HUD elements** in FiveM using GTA’s DrawText natives. You can create multiple elements, position them with precision tools (grid + snap), style them (font/color/scale), and export your layout as a simple Lua snippet for reuse in other resources.
 
 ---

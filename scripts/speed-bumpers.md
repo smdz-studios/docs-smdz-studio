@@ -24,6 +24,7 @@
 - ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 A fully featured Speed Bump Management System for FiveM, built with secure server-side validation and seamless multiframework support (ESX / QBCore / QBX). Includes a modern React-based NUI placement system, persistent SQL storage, advanced admin edit locking, and integrated Discord logging for full control and monitoring.
 
 Designed for performance, security, and a smooth in-game editing experience.

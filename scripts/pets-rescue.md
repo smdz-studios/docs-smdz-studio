@@ -22,6 +22,7 @@
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 SMDZ Pets Rescue is a mission system where players help local NPCs recover lost pets. It features dynamic NPC spawns, search areas, animal behavior, mission timers, dialogue UI, reward delivery, and robust webhooks with detailed identifiers.
 
 ---
