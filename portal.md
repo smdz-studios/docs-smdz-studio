@@ -30,7 +30,7 @@
       <img src="assets/nfc-transfer.png" alt="NFC Transfer preview image" />
     </div>
     <div class="home-showcase-body">
-      <h3>NFC Transfer</h3>
+      <h3>NFC Transfers</h3>
       <p>High-end NFC money transfer system with secure server-side validation, React NUI, account-aware banking bridges, optional history/NPC interaction, and broad compatibility with ESX/QB ecosystems.</p>
       <div class="home-showcase-tags">
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
