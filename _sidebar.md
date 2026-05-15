@@ -22,8 +22,8 @@
   - [✈️ | Realistic UAV](/scripts/realistic-uav.md)
   - [🚧 | Speed Bumpers](/scripts/speed-bumpers.md)
   - [🎧 | iFruit Pods APP](/scripts/ifruit-pods.md)
-  <!-- - [🎥 | Streamers List](/scripts/streamers-list.md)
-  - [🎧 | NFC Transfer](/scripts/nfc-transfer.md) -->
+  <!-- - [🎥 | Streamers List](/scripts/streamers-list.md) -->
+  - [💵 | NFC Transfer](/scripts/nfc-transfer.md)
   -
 - 🎨 **REDESINGS**
   - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)

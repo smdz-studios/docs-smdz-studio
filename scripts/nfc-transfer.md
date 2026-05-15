@@ -20,10 +20,28 @@
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (auto-detected)
 - 🧾 **Version:** `1.0.0`
-- ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
+
 High-end NFC money transfer system with secure server-side validation, React NUI, account-aware banking bridges, optional history/NPC interaction, and broad compatibility with ESX/QB ecosystems.
+
+---
+
+# ⭐ **FEATURES:**
+
+🛡️ **Security-first architecture:** fully **server-authoritative transfer flow** with strict validation before any money movement.
+🔒 **Anti-exploit protection suite:** includes **anti-spam rate limits, request locks, timeout control, and drop-safe cleanup**.
+⚡ **One-click framework compatibility:** automatic detection for **ESX, QBCore, and QBX**, with standalone fallback support.
+🏦 **Plug-and-play banking bridge:** compatible with **framework banking systems** and major third-party banking resources.
+📱 **Realistic NFC conditions:** both players require the configured phone item and must stay within **configurable short-range distance**.
+💸 **Smart transfer fee engine:** supports configurable **percentage fees** with **`sender`** or **`deduct`** payout logic.
+🎯 **Ecosystem-ready bridge layer:** auto/manual support for popular **Target, TextUI, and Notification** providers.
+🌍 **Fully localized experience:** locale-based architecture with built-in **EN / ES / PT / FR / DE** support and fallback handling.
+🧾 **Persistent transfer history:** optional SQL logging with **account, amount, note, status, and timestamp tracking**.
+🔔 **Staff-ready webhook logs:** optional Discord embeds for **accepted, rejected, cancelled, expired, failed, and completed** transfer states.
+🎨 **Deluxe NUI included:** modern **React + Vite + Tailwind** interface for sender, receiver, and transfer history panels.
+🧪 **Fast QA workflow:** built-in **`/nfctest`**, mock accounts, and test history rows for rapid UI and transfer validation.
 
 ---
 
@@ -31,7 +49,7 @@ High-end NFC money transfer system with secure server-side validation, React NUI
 
 - **FiveM server:** Latest recommended artifact.
 - **Lua:** `5.4`.
-- **Required dependency:** `ox_lib`.
+- **Required dependency:** `ox_lib` and target system.
 - **Framework support:**
   - `es_extended` (ESX)
   - `qb-core` (QBCore)
@@ -82,15 +100,72 @@ npm run build
 
 ---
 
-# ⚡ **DEPENDENCIES:**
+## 🔌 **BRIDGE COMPATIBILITY:**
 
-| Dependency | Required | Purpose |
-|------------|----------|---------|
-| `ox_lib` | Yes | Callbacks, TextUI fallback, notifications fallback |
-| Framework (`es_extended` / `qb-core` / `qbx_core`) | Optional | Player identity, admin groups, money/inventory bridge |
-| `oxmysql`, `mysql-async`, or `ghmattimysql`. | Yes | Stores and fetches `smdz_nfc_history` |
-| `ox_target` or `qb-target` | Yes | Player/NPC interaction through target |
-| Banking resource | Optional | Society/gang/shared account integration |
+### Frameworks (auto-detected)
+
+* ESX / `es_extended`
+* QBCore / `qb-core`
+* QBX / `qbx_core`
+* Standalone fallback
+
+### Notification Systems
+
+- `auto`
+- `ox_lib`
+- `esx`
+- `qbcore`
+- `okoknotify`
+- `origen_notify`
+- `wasabi_notify`
+- `wasabi_uikit`
+- `rtx_notify`
+- `codem-notification`
+- `vms_notifyv2`
+- `esx_notify`
+- `brutal_notify`
+- `fl-notify`
+- `gtm-ui`
+- `ro_notify`
+- `rxnotify`
+
+### Target Systems
+
+- `auto`
+- `ox_target`
+- `qb_target`
+
+### TextUI Systems
+
+- `auto`
+- `custom`
+- `ox_lib`
+- `codem-textui`
+- `brutal_3dtextui`
+- `wasabi_uikit`
+- `okokTextUI`
+- `qs-textui`
+- `jg-textui`
+- `cd_drawtextui`
+- `brutal_textui`
+- `dsco_textui`
+- `lation_ui`
+- `ZSX_UIV2`
+- `framework`
+
+### Banking Systems
+
+- `auto`
+- `custom`
+- `framework`
+- `okokBanking`
+- `Renewed-Banking`
+- `qb-banking`
+- `fd_banking`
+- `kartik-banking`
+- `tgg-banking`
+- `tgiann-bank`
+- `wasabi_banking`
 
 ---
 
@@ -99,6 +174,8 @@ npm run build
 Main files:
 
 - `config.lua`
+
+
 ```lua
 Config = Config or {}
 
@@ -244,6 +321,8 @@ Config.Permissions = {
 ```
 
 - `config_testmode.lua`
+
+
 ```lua
 
 Config = Config or {}
@@ -430,15 +509,28 @@ Internal code uses exports from other resources via bridge adapters.
 
 Table: `smdz_nfc_history`
 
-Stored fields include:
-- request id
-- sender/receiver identifiers
-- sender/receiver names
-- account id
-- amount
-- note
-- status
-- created/updated timestamps
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_nfc_history` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `request_id` VARCHAR(64) NOT NULL,
+  `sender_identifier` VARCHAR(80) NOT NULL,
+  `receiver_identifier` VARCHAR(80) NOT NULL,
+  `sender_name` VARCHAR(64) NOT NULL,
+  `receiver_name` VARCHAR(64) NOT NULL,
+  `account_id` VARCHAR(80) NOT NULL,
+  `amount` INT NOT NULL DEFAULT 0,
+  `note` VARCHAR(255) NOT NULL DEFAULT '',
+  `status` VARCHAR(24) NOT NULL DEFAULT 'CANCEL',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_smdz_nfc_request_id` (`request_id`),
+  KEY `idx_smdz_nfc_sender_identifier` (`sender_identifier`),
+  KEY `idx_smdz_nfc_receiver_identifier` (`receiver_identifier`),
+  KEY `idx_smdz_nfc_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+```
 
 Indexes are included for sender/receiver identifier and created timestamp.
 
