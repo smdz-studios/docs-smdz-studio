@@ -22,7 +22,7 @@
 - 📌 **Name:** `smdz_rancher_job`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (STANDALONE NOT TESTED)
-- 🧾 **Version:** `1.1.0`
+- 🧾 **Version:** `1.2.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
@@ -47,7 +47,7 @@ The resource spawns one global ranching contract at a time. Players start the jo
 # 🤝 **COMPATIBILITY:**
 
 - 🎒 **Inventories**
-  `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory`
+  `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `ak47_inventory`,`codem-inventory`
   *(Automatic fallback to native ESX / QBCore / QBX inventory functions if no supported inventory is detected)*
 
 - 🎯 **Target Systems**

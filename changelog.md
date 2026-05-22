@@ -1,5 +1,33 @@
 # 🧾 **CHANGELOG SMDZ STUDIOS:**
 
+#  🐄 | The Rancher Job - `1.2.0` - 2026-05-22
+### ✅ Added
+- New global anti-exploit toggle `Config.AntiExploit.enabled`.
+- Shared anti-exploit state helper in client and server to keep behavior consistent.
+- Added `@ox_lib/init.lua` to `shared_scripts` in `fxmanifest.lua`.
+- Added `dependency 'ox_lib'` in `fxmanifest.lua`.
+- Added inventory bridge support for `ak47_inventory` (`AddItem` export integration).
+
+### 🔧 Changed
+- Fixed job finish validation so active jobs are no longer blocked with `expired_job` while already in progress.
+- Anti-exploit checks now fully respect `Config.AntiExploit.enabled` across start/finish flow.
+- Improved finish delivery validation to reduce false `notify_job_invalid_delivery` caused by temporary server-side herd desync at delivery time.
+
+### ❌  Removed
+- Removed `Config.AntiExploit.maxFinishAttempts` from `shared/config.lua`.
+- Removed all server-side `maxFinishAttempts` / `finishAttempts` spam-cancel logic.
+
+### 🗂️ Files Modified
+- `bridge/inventory.lua`
+- `client/main.lua`
+- `server/main.lua`
+- `shared/config.lua`
+- `fxmanifest.lua`
+
+
+---
+
+
 ## 🔖 | Evidence Markers - `1.3.0` - 2026-04-21
 ### ✅ Added
 - Marker info interaction on active markers through target.
