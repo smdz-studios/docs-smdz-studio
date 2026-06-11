@@ -27,6 +27,24 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/streamers-list.png" alt="Streamers List preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Streamers List</h3>
+      <p>Advanced streamer list system with a modern NUI, secure streamer applications, real-time staff panel, SQL persistence, and Twitch/Kick live checks handled server-side.</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/nfc-transfer.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/nfc-transfer.png" alt="NFC Transfer preview image" />
     </div>
     <div class="home-showcase-body">
