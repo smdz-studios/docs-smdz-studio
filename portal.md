@@ -36,7 +36,7 @@
         <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/nfc-transfer.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/streamers-list.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>

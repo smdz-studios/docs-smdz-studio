@@ -31,16 +31,27 @@ High-end NFC money transfer system with secure server-side validation, React NUI
 # ⭐ **FEATURES:**
 
 🛡️ **Security-first architecture:** fully **server-authoritative transfer flow** with strict validation before any money movement.
+
 🔒 **Anti-exploit protection suite:** includes **anti-spam rate limits, request locks, timeout control, and drop-safe cleanup**.
+
 ⚡ **One-click framework compatibility:** automatic detection for **ESX, QBCore, and QBX**, with standalone fallback support.
+
 🏦 **Plug-and-play banking bridge:** compatible with **framework banking systems** and major third-party banking resources.
+
 📱 **Realistic NFC conditions:** both players require the configured phone item and must stay within **configurable short-range distance**.
+
 💸 **Smart transfer fee engine:** supports configurable **percentage fees** with **`sender`** or **`deduct`** payout logic.
+
 🎯 **Ecosystem-ready bridge layer:** auto/manual support for popular **Target, TextUI, and Notification** providers.
+
 🌍 **Fully localized experience:** locale-based architecture with built-in **EN / ES / PT / FR / DE** support and fallback handling.
+
 🧾 **Persistent transfer history:** optional SQL logging with **account, amount, note, status, and timestamp tracking**.
+
 🔔 **Staff-ready webhook logs:** optional Discord embeds for **accepted, rejected, cancelled, expired, failed, and completed** transfer states.
+
 🎨 **Deluxe NUI included:** modern **React + Vite + Tailwind** interface for sender, receiver, and transfer history panels.
+
 🧪 **Fast QA workflow:** built-in **`/nfctest`**, mock accounts, and test history rows for rapid UI and transfer validation.
 
 ---
