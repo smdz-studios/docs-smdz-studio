@@ -33,7 +33,7 @@
       <h3>Streamers List</h3>
       <p>Advanced streamer list system with a modern NUI, secure streamer applications, real-time staff panel, SQL persistence, and Twitch/Kick live checks handled server-side.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span>
+        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/nfc-transfer.md">VIEW DOCS</a>
