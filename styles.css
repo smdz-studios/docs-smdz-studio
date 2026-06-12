@@ -79,7 +79,7 @@ aside.sidebar::-webkit-scrollbar-thumb {
   background: #3f3f46;
 }
 
-/* Global announcement bar — configured in banner-config.js */
+/* Global announcement bar — configured in plugins/banner-config.js */
 .announcement-bar {
   position: sticky;
   top: 0;
