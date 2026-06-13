@@ -30,7 +30,6 @@
     var referrer = document.referrer || 'Direct visit';
     var language = navigator.language || 'Unknown';
     var screenSize = window.screen ? window.screen.width + 'x' + window.screen.height : 'Unknown';
-    var viewportSize = window.innerWidth + 'x' + window.innerHeight;
     var userAgent = navigator.userAgent || 'Unknown';
     var country = getCountryName(location.country);
     var locationSummary = [location.city, location.region, country].filter(Boolean).join(', ') || 'Unknown';
@@ -62,9 +61,7 @@
             },
             {
               name: '\uD83C\uDF0D LOCATION',
-              value:
-                '\uD83D\uDCCD **Country / City:** ' + sanitize(locationSummary, 300) + '\n' +
-                '\uD83D\uDD12 **Anonymous IP:** ' + sanitize(maskIpAddress(location.ip), 100),
+              value: '\uD83D\uDCCD **Country / City:** ' + sanitize(locationSummary, 300),
               inline: true
             },
             {
@@ -76,9 +73,7 @@
             },
             {
               name: '\uD83D\uDDA5\uFE0F DISPLAY',
-              value:
-                '\uD83D\uDCD0 **Screen:** ' + screenSize + '\n' +
-                '\uD83D\uDD0E **Viewport:** ' + viewportSize,
+              value: '\uD83D\uDCD0 **Screen:** ' + screenSize,
               inline: true
             },
             {
@@ -183,26 +178,6 @@
     }
 
     return 'Desktop';
-  }
-
-  function maskIpAddress(ipAddress) {
-    if (!ipAddress || typeof ipAddress !== 'string') {
-      return 'Unknown';
-    }
-
-    if (ipAddress.indexOf(':') !== -1) {
-      var ipv6Groups = ipAddress.split(':');
-      var visibleGroups = ipv6Groups.slice(0, Math.min(4, ipv6Groups.length));
-      return visibleGroups.join(':') + ':****:****:****:****';
-    }
-
-    var ipv4Groups = ipAddress.split('.');
-    if (ipv4Groups.length === 4) {
-      ipv4Groups[3] = '***';
-      return ipv4Groups.join('.');
-    }
-
-    return 'Masked';
   }
 
   function sanitize(value, maxLength) {
