@@ -205,6 +205,47 @@
             });
           }
 
+          function enhanceScriptVideos() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            if (routePath.indexOf('/scripts/') !== 0) {
+              return;
+            }
+
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var videoFrames = contentRoot.querySelectorAll('iframe[src*="youtube.com/embed"], iframe[src*="youtube-nocookie.com/embed"]');
+            videoFrames.forEach(function (frameEl) {
+              if (frameEl.dataset.scriptVideoBound === '1') {
+                return;
+              }
+
+              var wrapperEl = frameEl.closest('div');
+              if (!wrapperEl || wrapperEl.closest('.script-video-showcase')) {
+                return;
+              }
+
+              wrapperEl.classList.add('script-video-showcase');
+              wrapperEl.removeAttribute('align');
+              wrapperEl.removeAttribute('style');
+
+              frameEl.removeAttribute('style');
+              frameEl.classList.add('script-video-frame');
+              frameEl.setAttribute('loading', 'lazy');
+
+              var labelEl = document.createElement('div');
+              labelEl.className = 'script-video-label';
+              labelEl.innerHTML =
+                '<span class="script-video-label-icon" aria-hidden="true"></span>' +
+                '<span>Showcase Video</span>';
+
+              wrapperEl.insertBefore(labelEl, frameEl);
+              frameEl.dataset.scriptVideoBound = '1';
+            });
+          }
+
           function cleanRenderedMojibake() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot || contentRoot.dataset.mojibakeCleaned === '1') {
@@ -726,6 +767,7 @@
               cleanRenderedMojibake();
               initMicroInteractions();
               applyImportantCallouts();
+              enhanceScriptVideos();
             });
           });
         },
