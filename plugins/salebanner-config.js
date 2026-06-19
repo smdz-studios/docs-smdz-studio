@@ -6,7 +6,7 @@ window.SMDZ_SALE_BANNER_CONFIG = {
   text: "🏆 FIFA WORLD CUP 2026 SALE — 30% OFF FROM JUNE 11 TO JULY 19! ⚽",
 
   // Optional text repeated between loops.
-  separator: "SPECIAL OFFER",
+  separator: "SPECIAL DISCOUNT",
 
   url: "https://smdz-studios.tebex.io/",
   target: "_blank",
