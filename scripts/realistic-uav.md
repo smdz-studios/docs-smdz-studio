@@ -489,7 +489,7 @@ Both global and player cooldown values are persisted in SQL when enabled.
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

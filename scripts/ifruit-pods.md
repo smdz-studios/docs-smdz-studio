@@ -669,7 +669,7 @@ Developer tips:
 
 ---
 
-# 🧪 **DEBUGGING & COMMON ISSUES:**
+# 🧪 **COMMON ISSUES:**
 
 | Issue | Symptoms | Likely Cause | Fix | Useful Debug Keys |
 |---|---|---|---|---|

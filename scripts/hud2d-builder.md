@@ -670,26 +670,6 @@ A: Rendering a small set of text elements per frame is lightweight. If you rende
 **Q: Can I integrate this with a staff menu?**
 A: Yes. Use client exports `openEditor()` / `closeEditor()` and `requestPermission()` to gate access.
 
-<!-- ---
-
-# 🔄 **UPDATES:**
-Recommended update workflow:
-1. Backup:
-   - `shared/config.lua`
-   - `shared/*_config.lua`
-   - `snippets/`
-2. Stop resource:
-   ```bash
-   stop smdz_hud2d_builder
-   ```
-3. Replace files with new version
-4. Merge configs back
-5. Start:
-   ```bash
-   start smdz_hud2d_builder
-   ```
-6. Validate on staging before production -->
-
 ---
 
 # 🔄 **UPDATES:**

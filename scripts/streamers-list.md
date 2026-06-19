@@ -547,46 +547,11 @@ Auto-create/migration behavior:
 - Incremental refresh flow with async web checks.
 - Admin real-time broadcasts only to subscribed authorized users.
 
----
-
-# 🛠 **TROUBLESHOOTING:**
-
-| Symptom | Likely Cause | Fix |
-|---|---|---|
-| `Failed to load script @oxmysql/lib/MySQL.lua` | `oxmysql` is missing or starts after this resource | Install/start `oxmysql` first in `server.cfg` |
-| Lua parse error `unexpected symbol near '<\239>'` | Broken BOM/encoding in Lua file | Re-save file as clean UTF-8 and restart |
-| `attempt to index a nil value (global 'Config')` | `config.lua` failed to load | Fix encoding/syntax and restart |
-| Locale parser errors in `locales/*.lua` | Malformed Lua table or bad encoding | Compare with `locales/en.lua`, fix keys and UTF-8 |
-| Form submit button appears to do nothing | JS callback error, forms disabled, or callback not registered | Check NUI console, `Config.Forms.enabled`, and `client/main.lua` callbacks |
-| Admin actions appear delayed | UI cooldown/cached snapshot timing | Request refresh and check debug logs |
-| Featured toggles but looks reverted | Stale cache or featured value parse mismatch | Enable `FEATURED` debug logs and verify DB/log sequence |
-| Reject form button does not work | Missing/too-short reject reason | Enter valid reason and retry |
-| Kick streamers never show live | Proxy unreachable or blocked outbound | Verify `Config.Kick.proxyBase` and host connectivity |
-| Twitch streamers always offline | Blocked/limited page responses or URL mismatch | Validate outbound access and allowed URL prefixes |
-| No Discord webhook messages | Invalid webhook URL or blocked outbound requests | Verify webhook URL and network egress |
-| Streamer create succeeds but not visible | Duplicate blocked or stale admin list | Check duplicate validation and refresh admin data |
-| Admin panel opens for unauthorized user | Permission mode misconfigured | Recheck `Config.AdminPermissions.mode` and lists |
-| Admin panel blocked for authorized user | Missing Discord identifier / wrong ACE setup | Verify identifier exists and ACE principal mapping |
-| Reason field fails unexpectedly | Sanitized length below configured minimum | Check `minReasonLength/maxReasonLength` and sanitized content |
-| SQL migration errors on startup | DB user lacks ALTER privileges | Grant privileges or run migration manually |
-| Featured temporary never expires | Cleanup interval/worker not applying | Verify cleanup thread and `featured_until` values |
-| Featured expires too early/late | Bad server time/timezone assumptions | Check server clock and input hours |
-| Rejection message keeps showing | Rejection not acknowledged | Use acknowledge flow; verify DB `acknowledged` update |
-| Scrollbar/colors do not change | Color config not reloaded | Save `ui_colors.lua` and restart resource |
-| Buttons/text unreadable | Invalid color token/value | Restore valid keys and hex/rgba values |
-| `bad argument #2 to 'format'` | Locale placeholder mismatch (`%d/%s`) | Fix format placeholders or argument types |
-| Forms table not auto-created | Auto-create disabled or DB unavailable | Set `Config.Forms.autoCreateTable = true` and verify DB |
-| Delete form button does nothing | Callback/permission/identifier issue | Validate payload and permission in server logs |
-| NUI animation starts in wrong position | Stale saved panel position | Clear stored position/localStorage and retry |
-| Resource starts but loads no entries | Empty/invalid SQL rows or URL filtered | Check `smdz_streamers_entries` data and allowlist |
-| Excessive debug log spam | Debug enabled in production | Set `Config.Debug = false` |
-| Cannot create streamer from admin | Button miswired or invalid payload | Ensure `Create` triggers `saveAdminStreamer` and payload passes validation |
-| Featured shows as live style in admin | Badge class reused from live status | Use dedicated featured badge style |
-| Duplicate streamer still gets in | Data differs only in case/spacing and was not normalized | Keep normalized duplicate checks (`lower/trim`) by username/URL |
 
 ---
 
-# ❓ **FAQ:**
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|
@@ -623,6 +588,44 @@ Auto-create/migration behavior:
 | Why might admin/public lists differ briefly? | Short-lived cache/refresh timing; real-time broadcast sync resolves it. |
 | Do I need manual cleanup of old records? | Normally no; cleanup jobs handle expired forms/featured state. |
 | Fast post-update smoke test? | Open `/streamers`, open `/adminstreamers`, create one test streamer, and submit/review one form. |
+
+
+---
+
+# 🧪 **COMMON PROBLEMS:**
+
+| Symptom | Likely Cause | Fix |
+|---|---|---|
+| `Failed to load script @oxmysql/lib/MySQL.lua` | `oxmysql` is missing or starts after this resource | Install/start `oxmysql` first in `server.cfg` |
+| Lua parse error `unexpected symbol near '<\239>'` | Broken BOM/encoding in Lua file | Re-save file as clean UTF-8 and restart |
+| `attempt to index a nil value (global 'Config')` | `config.lua` failed to load | Fix encoding/syntax and restart |
+| Locale parser errors in `locales/*.lua` | Malformed Lua table or bad encoding | Compare with `locales/en.lua`, fix keys and UTF-8 |
+| Form submit button appears to do nothing | JS callback error, forms disabled, or callback not registered | Check NUI console, `Config.Forms.enabled`, and `client/main.lua` callbacks |
+| Admin actions appear delayed | UI cooldown/cached snapshot timing | Request refresh and check debug logs |
+| Featured toggles but looks reverted | Stale cache or featured value parse mismatch | Enable `FEATURED` debug logs and verify DB/log sequence |
+| Reject form button does not work | Missing/too-short reject reason | Enter valid reason and retry |
+| Kick streamers never show live | Proxy unreachable or blocked outbound | Verify `Config.Kick.proxyBase` and host connectivity |
+| Twitch streamers always offline | Blocked/limited page responses or URL mismatch | Validate outbound access and allowed URL prefixes |
+| No Discord webhook messages | Invalid webhook URL or blocked outbound requests | Verify webhook URL and network egress |
+| Streamer create succeeds but not visible | Duplicate blocked or stale admin list | Check duplicate validation and refresh admin data |
+| Admin panel opens for unauthorized user | Permission mode misconfigured | Recheck `Config.AdminPermissions.mode` and lists |
+| Admin panel blocked for authorized user | Missing Discord identifier / wrong ACE setup | Verify identifier exists and ACE principal mapping |
+| Reason field fails unexpectedly | Sanitized length below configured minimum | Check `minReasonLength/maxReasonLength` and sanitized content |
+| SQL migration errors on startup | DB user lacks ALTER privileges | Grant privileges or run migration manually |
+| Featured temporary never expires | Cleanup interval/worker not applying | Verify cleanup thread and `featured_until` values |
+| Featured expires too early/late | Bad server time/timezone assumptions | Check server clock and input hours |
+| Rejection message keeps showing | Rejection not acknowledged | Use acknowledge flow; verify DB `acknowledged` update |
+| Scrollbar/colors do not change | Color config not reloaded | Save `ui_colors.lua` and restart resource |
+| Buttons/text unreadable | Invalid color token/value | Restore valid keys and hex/rgba values |
+| `bad argument #2 to 'format'` | Locale placeholder mismatch (`%d/%s`) | Fix format placeholders or argument types |
+| Forms table not auto-created | Auto-create disabled or DB unavailable | Set `Config.Forms.autoCreateTable = true` and verify DB |
+| Delete form button does nothing | Callback/permission/identifier issue | Validate payload and permission in server logs |
+| NUI animation starts in wrong position | Stale saved panel position | Clear stored position/localStorage and retry |
+| Resource starts but loads no entries | Empty/invalid SQL rows or URL filtered | Check `smdz_streamers_entries` data and allowlist |
+| Excessive debug log spam | Debug enabled in production | Set `Config.Debug = false` |
+| Cannot create streamer from admin | Button miswired or invalid payload | Ensure `Create` triggers `saveAdminStreamer` and payload passes validation |
+| Featured shows as live style in admin | Badge class reused from live status | Use dedicated featured badge style |
+| Duplicate streamer still gets in | Data differs only in case/spacing and was not normalized | Keep normalized duplicate checks (`lower/trim`) by username/URL |
 
 ---
 # 📚 **DEVELOPER NOTES:**

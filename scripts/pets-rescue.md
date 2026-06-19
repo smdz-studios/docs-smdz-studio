@@ -511,7 +511,7 @@ print('Active missions:', json.encode(missions))
 | Multiple NPCs on map | Too many NPCs | High `MaxNPCs` | Lower `Config.NPCSpawn.MaxNPCs`. |
 | Target shows wrong label | Target text not updated | Locale key mismatch | Update target label keys in `locales/*.lua`. |
 
-## ❓ **FAQ:**
+## ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

@@ -20,7 +20,7 @@
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.1.0`
-- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
+- ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
 

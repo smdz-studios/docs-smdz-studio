@@ -24,7 +24,7 @@
 - 🧾 **Version:** `1.2.0`
 - ✅ **Status:** <span class="badge badge--eol">END OF LIFE (DISCONTINUED)</span>
 
-**⚠️ This project has been officially discontinued.
+**This project has been officially discontinued.
 Development has stopped and no further updates or support will be provided for this version.
 A complete rework (V2) is currently in development, featuring a full overhaul of the system, improved performance, and new features.**
 

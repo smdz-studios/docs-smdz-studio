@@ -559,7 +559,7 @@ exports['smdz_peds_manager']:RequestData(source, 'player')
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

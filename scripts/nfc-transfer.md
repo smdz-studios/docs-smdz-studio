@@ -660,8 +660,9 @@ Implemented protections:
 - Check outbound request restrictions/firewall on host.
 
 ---
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 **Q: Is this script framework-locked?**
 A: No. It auto-detects ESX, QBCore, QBX, and can run in standalone fallback mode.

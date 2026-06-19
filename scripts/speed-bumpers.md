@@ -633,7 +633,7 @@ print(('Received bumps: %s'):format(tostring(count)))
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Short answer | Details / best practice |
 |----------|--------------|-------------------------|

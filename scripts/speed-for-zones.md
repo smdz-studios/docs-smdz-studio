@@ -805,6 +805,7 @@ Config.Debug = { -- Debug configuration
 ---
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
 - ❓ **CAN I USE THIS ON ESX OR QBCORE?**
 Yes, both are supported and auto-detected.
 

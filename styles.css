@@ -1756,42 +1756,118 @@ body.has-announcement-bar .sidebar-toggle {
 
 /* Badges */
 .badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  padding: 0.12rem 0.5rem;
+  gap: 0.36rem;
+  vertical-align: middle;
+  padding: 0.22rem 0.58rem;
   border-radius: 999px;
-  font-size: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: #262626;
-  border: 1px solid #3a3a3a;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.01)),
+    #262626;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #c7c7c7;
   margin-right: 0.25rem;
+  cursor: help;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.badge::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 0.42rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
+}
+
+.badge[data-badge-tooltip]::after {
+  content: attr(data-badge-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.65rem);
+  z-index: 40;
+  width: max-content;
+  max-width: min(280px, 78vw);
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background:
+    linear-gradient(180deg, rgba(39, 39, 42, 0.98), rgba(18, 18, 20, 0.98)),
+    #18181b;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.36);
+  color: #f4f4f5;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 6px) scale(0.96);
+  transition: opacity 0.16s ease-out, transform 0.16s ease-out;
+}
+
+.badge[data-badge-tooltip]:hover::after,
+.badge[data-badge-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.badge:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 .badge--stable {
-  border-color: #509205;
+  border-color: rgba(122, 214, 60, 0.36);
+  background:
+    linear-gradient(180deg, rgba(122, 214, 60, 0.16), rgba(122, 214, 60, 0.05)),
+    #1f271d;
   color: #d7ffb8;
 }
 
 .badge--new {
-  border-color: #4bdfe2db;
-  color: #44809c;
+  border-color: rgba(75, 223, 226, 0.36);
+  background:
+    linear-gradient(180deg, rgba(75, 223, 226, 0.15), rgba(75, 223, 226, 0.04)),
+    #1b2528;
+  color: #9ff6f8;
 }
 
 .badge--beta {
-  border-color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.42);
+  background:
+    linear-gradient(180deg, rgba(245, 158, 11, 0.17), rgba(245, 158, 11, 0.05)),
+    #2a2418;
   color: #ffecb5;
 }
 
 .badge--legacy {
-  border-color: #777777;
-  color: #c0c0c0;
+  border-color: rgba(161, 161, 170, 0.32);
+  background:
+    linear-gradient(180deg, rgba(161, 161, 170, 0.13), rgba(161, 161, 170, 0.04)),
+    #242426;
+  color: #d4d4d8;
 }
 
 .badge--eol {
-  border-color: #f51a1a;
-  color: #f51a1a;
+  border-color: rgba(239, 68, 68, 0.45);
+  background:
+    linear-gradient(180deg, rgba(239, 68, 68, 0.18), rgba(239, 68, 68, 0.05)),
+    #2a1b1b;
+  color: #fecaca;
 }
 
 /* Callouts */

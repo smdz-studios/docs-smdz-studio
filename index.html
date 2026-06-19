@@ -246,6 +246,47 @@
             });
           }
 
+          function enhanceStatusBadges() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var badgeTooltips = {
+              'badge--stable': 'Stable version: recommended for production servers.',
+              'badge--new': 'New update: recently added or changed content.',
+              'badge--beta': 'Beta version: usable, but may still change or need extra testing.',
+              'badge--legacy': 'Legacy version: older release kept for compatibility.',
+              'badge--eol': 'End of life: discontinued and no longer actively supported.'
+            };
+
+            var badges = contentRoot.querySelectorAll('.badge');
+            badges.forEach(function (badgeEl) {
+              if (badgeEl.dataset.badgeTooltipBound === '1') {
+                return;
+              }
+
+              var tooltipText = '';
+              Object.keys(badgeTooltips).some(function (className) {
+                if (badgeEl.classList.contains(className)) {
+                  tooltipText = badgeTooltips[className];
+                  return true;
+                }
+
+                return false;
+              });
+
+              if (!tooltipText) {
+                return;
+              }
+
+              badgeEl.setAttribute('data-badge-tooltip', tooltipText);
+              badgeEl.setAttribute('tabindex', '0');
+              badgeEl.setAttribute('aria-label', (badgeEl.textContent || '').trim() + ': ' + tooltipText);
+              badgeEl.dataset.badgeTooltipBound = '1';
+            });
+          }
+
           function cleanRenderedMojibake() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot || contentRoot.dataset.mojibakeCleaned === '1') {
@@ -768,6 +809,7 @@
               initMicroInteractions();
               applyImportantCallouts();
               enhanceScriptVideos();
+              enhanceStatusBadges();
             });
           });
         },

@@ -336,7 +336,7 @@ Your existing scripts do **not** need to change.
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 **Does it change exports?**
 No. All exports are the same as original `ox_target`.
 
