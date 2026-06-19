@@ -40,6 +40,53 @@
   <!-- Page loader -->
   <div id="page-loader" class="page-loader">
     <div class="page-loader-inner">
+      <div class="page-loader-modern">
+        <div class="page-loader-orbit" aria-hidden="true">
+          <svg class="page-loader-ring page-loader-ring--outer" viewBox="0 0 220 220" focusable="false">
+            <circle cx="110" cy="110" r="92"></circle>
+            <path d="M110 18a92 92 0 0 1 92 92"></path>
+          </svg>
+          <svg class="page-loader-ring page-loader-ring--inner" viewBox="0 0 220 220" focusable="false">
+            <circle cx="110" cy="110" r="66"></circle>
+            <path d="M44 110a66 66 0 0 1 132 0"></path>
+          </svg>
+
+          <div class="page-loader-icon page-loader-icon--code">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8.7 16.9 3.8 12l4.9-4.9 1.4 1.4L6.6 12l3.5 3.5-1.4 1.4Zm6.6 0-1.4-1.4 3.5-3.5-3.5-3.5 1.4-1.4 4.9 4.9-4.9 4.9Z"></path>
+            </svg>
+          </div>
+          <div class="page-loader-icon page-loader-icon--shield">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 22c-4.8-1.3-8-5.7-8-10.7V5.1L12 2l8 3.1v6.2c0 5-3.2 9.4-8 10.7Zm0-2.1c3.6-1.2 6-4.6 6-8.6V6.5l-6-2.3-6 2.3v4.8c0 4 2.4 7.4 6 8.6Zm-1-5.1 5-5-1.4-1.4L11 12l-1.6-1.6L8 11.8l3 3Z"></path>
+            </svg>
+          </div>
+          <div class="page-loader-icon page-loader-icon--server">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 4h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v3h14V6H5Zm-1 7h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1Zm1 2v3h14v-3H5Zm2-8h2v1H7V7Zm0 9h2v1H7v-1Z"></path>
+            </svg>
+          </div>
+          <div class="page-loader-icon page-loader-icon--search">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m20.3 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4.1 4.1 1.4-1.4ZM5 10.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"></path>
+            </svg>
+          </div>
+
+          <div class="page-loader-logo-core">
+            <img src="assets/logo.png" alt="SMDZ Studios Logo" />
+          </div>
+        </div>
+
+        <div class="page-loader-copy">
+          <p class="page-loader-kicker">SMDZ Studios</p>
+          <p class="page-loader-title">Preparing documentation</p>
+          <p class="page-loader-status">Indexing scripts, guides and support resources</p>
+        </div>
+
+        <div class="page-loader-progress" aria-hidden="true">
+          <span></span>
+        </div>
+      </div>
       <div class="page-loader-logo">
         <img src="assets/logo.png" alt="SMDZ Studios Logo" />
       </div>
@@ -77,8 +124,8 @@
       search: {
         maxAge: 86400000,
         paths: 'auto',
-        placeholder: 'Search SMDZ scripts...',
-        noData: 'No results for this query.',
+        placeholder: 'Search scripts, errors, config...',
+        noData: 'No matching docs found.',
         depth: 4,
         hideOtherSidebarContent: true
       },
@@ -90,7 +137,248 @@
 
       plugins: [
         function (hook, vm) {
+          function getCalloutVariant(text) {
+            var normalized = (text || '').replace(/\s+/g, ' ').trim().toUpperCase();
+
+            if (normalized.indexOf('END OF LIFE') !== -1 || normalized.indexOf('DISCONTINUED') !== -1) {
+              return {
+                className: 'doc-callout--deprecated',
+                label: 'DEPRECATED'
+              };
+            }
+
+            if (normalized.indexOf('ESCROW VERSION ONLY') !== -1 || normalized.indexOf('REDESING') !== -1) {
+              return {
+                className: 'doc-callout--escrow',
+                label: 'ESCROW'
+              };
+            }
+
+            if (normalized.indexOf('OPEN SOURCE AND ESCROW') !== -1) {
+              return {
+                className: 'doc-callout--open-source',
+                label: 'OPEN SOURCE + ESCROW'
+              };
+            }
+
+            if (normalized.indexOf('HELPS IN THE DEVELOPMENT OF OTHERS') !== -1) {
+              return {
+                className: 'doc-callout--open-source',
+                label: 'DEVELOPER RESOURCE'
+              };
+            }
+
+            return null;
+          }
+
+          function applyImportantCallouts() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            if (routePath.indexOf('/scripts/') !== 0) {
+              return;
+            }
+
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var candidateNodes = contentRoot.querySelectorAll('p, h1, h2, h3');
+            candidateNodes.forEach(function (node) {
+              if (node.dataset.calloutBound === '1') {
+                return;
+              }
+
+              var variant = getCalloutVariant(node.textContent);
+              if (!variant) {
+                return;
+              }
+
+              node.classList.add('doc-callout', variant.className);
+              node.setAttribute('data-callout-label', variant.label);
+              node.dataset.calloutBound = '1';
+            });
+          }
+
           function initMicroInteractions() {
+            var sidebarIconMap = {
+              '/portal.md': {
+                label: 'Portal',
+                path: 'M4 10.5 12 4l8 6.5V20h-6v-5h-4v5H4v-9.5Z'
+              },
+              '/changelog.md': {
+                label: 'Changelog',
+                path: 'M5 4h14v16H5V4Zm3 4h8V6H8v2Zm0 4h8v-2H8v2Zm0 4h5v-2H8v2Z'
+              },
+              'https://smdz-studios.tebex.io/': {
+                label: 'Store',
+                path: 'M4 6h16l-1.5 8.5H7L5.8 8H4V6Zm4 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'
+              },
+              '/support.md': {
+                label: 'Get Support',
+                path: 'M12 3a7 7 0 0 0-7 7v3H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h3v-7H5v-2a7 7 0 0 1 14 0v2h-2v7h3a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-1v-3a7 7 0 0 0-7-7Z'
+              },
+              '/faq.md': {
+                label: 'FAQ',
+                path: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-1 14h2v-2h-2v2Zm1-11a3 3 0 0 0-3 3h2a1 1 0 1 1 1 1c-1.3 0-2 1-2 2.3V13h2v-.7c0-.3.2-.5.6-.8A3 3 0 0 0 12 6Z'
+              },
+              '/problems.md': {
+                label: 'Common Problems',
+                path: 'M12 2 2 20h20L12 2Zm-1 6h2v6h-2V8Zm0 8h2v2h-2v-2Z'
+              },
+              '/fxap.md': {
+                label: 'Asset Escrow System',
+                path: 'M12 2 4 5v6.2c0 5 3.2 9.4 8 10.8 4.8-1.4 8-5.8 8-10.8V5l-8-3Zm-1 13 5-5-1.4-1.4L11 12.2 9.4 10.6 8 12l3 3Z'
+              },
+              '/scripts/fast-repair.md': { label: 'Fast Repair - v 1.0', path: 'M7 14h10l1 6H6l1-6Zm1-8h8v6H8V6Zm2 2v2h4V8h-4Zm-6 4h2v8H4v-8Zm14 0h2v8h-2v-8Z' },
+              '/scripts/speed-for-zones.md': { label: 'Speed For Zones', path: 'M12 4a9 9 0 0 1 9 9h-2a7 7 0 1 0-14 0H3a9 9 0 0 1 9-9Zm1 9 4-4-1.4-1.4-4.3 4.2A2 2 0 1 0 13 13Z' },
+              '/scripts/hud2d-builder.md': { label: 'HUD 2D Builder', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm1 10h10v2H7v-2Z' },
+              '/scripts/bus-travel.md': { label: 'Bus Travel', path: 'M6 3h12a2 2 0 0 1 2 2v10a3 3 0 0 1-1 2.2V20h-2v-2H7v2H5v-2.8A3 3 0 0 1 4 15V5a2 2 0 0 1 2-2Zm0 4v5h12V7H6Zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
+              '/scripts/evidence-markers.md': { label: 'Evidence Markers', path: 'M5 4h14v4H5V4Zm2 6h10v10H7V10Zm2 2v6h6v-6H9Z' },
+              '/scripts/rancher-job.md': { label: 'Rancher Job', path: 'M4 11 12 4l8 7v9h-5v-5H9v5H4v-9Zm5 0h6l-3-2.7L9 11Z' },
+              '/scripts/emergency-gps.md': { label: 'Emergency GPS', path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z' },
+              '/scripts/app-emergency-alerts.md': { label: 'Emergency Alerts APP', path: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm4 3v5H8l5 7v-5h3l-5-7Z' },
+              '/scripts/peds-manager.md': { label: 'Peds Manager', path: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0H4Z' },
+              '/scripts/pets-rescue.md': { label: 'Pets Rescue', path: 'M7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM9 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-7 4c3 0 6 3 6 6 0 2-1.8 3-3.3 2.2a5.3 5.3 0 0 0-5.4 0C7.8 20 6 19 6 17c0-3 3-6 6-6Z' },
+              '/scripts/realistic-uav.md': { label: 'Realistic UAV', path: 'M12 3 4 8l8 4 8-4-8-5Zm0 11-8-4v6l8 5 8-5v-6l-8 4Z' },
+              '/scripts/speed-bumpers.md': { label: 'Speed Bumpers', path: 'M3 14h18v4H3v-4Zm2-6h14l2 4H3l2-4Zm3 1-1 2h10l-1-2H8Z' },
+              '/scripts/ifruit-pods.md': { label: 'iFruit Pods APP', path: 'M8 5a4 4 0 0 1 8 0v8a4 4 0 0 1-8 0V5Zm10 5h2v3a8 8 0 0 1-16 0v-3h2v3a6 6 0 0 0 12 0v-3Z' },
+              '/scripts/nfc-transfer.md': { label: 'NFC Transfer', path: 'M3 7h18v10H3V7Zm2 2v6h14V9H5Zm2 1h5v2H7v-2Z' },
+              '/scripts/streamers-list.md': { label: 'Streamers List', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z' },
+              '/scripts/flyers.md': { label: 'Flyers', path: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z' },
+              '/scripts/railway-job.md': { label: 'Railway Job', path: 'M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3l2 3h-2.5l-1.3-2H8.8l-1.3 2H5l2-3a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 4v4h10V7H7Zm2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
+              '/scripts/ox-target-redesing-crystal.md': { label: 'Ox Target (Crystal Style)', path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z' }
+            };
+
+            var sidebarSectionIconMap = {
+              'INFORMATION': {
+                label: 'Information',
+                path: 'M11 7h2V5h-2v2Zm0 12h2V9h-2v10Zm1-17a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z'
+              },
+              'SUPPORT': {
+                label: 'Support',
+                path: 'M12 3a7 7 0 0 0-7 7v3H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h3v-7H5v-2a7 7 0 0 1 14 0v2h-2v7h3a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-1v-3a7 7 0 0 0-7-7Z'
+              },
+              'PAID RESOURCES': {
+                label: 'Paid Resources',
+                path: 'M4 6h16l-1.5 8.5H7L5.8 8H4V6Zm4 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'
+              },
+              'REDESINGS': {
+                label: 'Redesigns',
+                path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
+              },
+              'FREE RESOURCES': {
+                label: 'Free Resources',
+                path: 'M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7l-8-4Zm-1 12.2-3-3 1.4-1.4 1.6 1.6 4.6-4.6L17 9.2l-6 6Z'
+              }
+            };
+
+            var sidebarIconTextMap = {
+              'PORTAL': sidebarIconMap['/portal.md'],
+              'CHANGELOG': sidebarIconMap['/changelog.md'],
+              'STORE': sidebarIconMap['https://smdz-studios.tebex.io/'],
+              'GET SUPPORT': sidebarIconMap['/support.md'],
+              'FAQ': sidebarIconMap['/faq.md'],
+              'COMMON PROBLEMS': sidebarIconMap['/problems.md'],
+              'ASSET ESCROW SYSTEM': sidebarIconMap['/fxap.md']
+            };
+
+            function normalizeSidebarHref(rawHref) {
+              if (!rawHref) {
+                return '';
+              }
+
+              if (rawHref.indexOf('http') === 0) {
+                return rawHref.replace(/\/$/, '/');
+              }
+
+              var hashIndex = rawHref.indexOf('#');
+              var path = hashIndex >= 0 ? rawHref.slice(hashIndex + 1) : rawHref;
+              path = path.replace(/^!/, '').replace(/^\//, '/');
+
+              if (path.indexOf('/') !== 0) {
+                path = '/' + path;
+              }
+
+              return path;
+            }
+
+            function renderSidebarIcon(path) {
+              return '<svg class="sidebar-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+                '<path d="' + path + '"></path>' +
+              '</svg>';
+            }
+
+            function getSidebarSectionKey(text) {
+              var normalized = (text || '').replace(/\s+/g, ' ').trim().toUpperCase();
+              var keys = Object.keys(sidebarSectionIconMap);
+
+              for (var i = 0; i < keys.length; i += 1) {
+                if (normalized.indexOf(keys[i]) !== -1) {
+                  return keys[i];
+                }
+              }
+
+              return '';
+            }
+
+            function getSidebarTextIcon(text) {
+              var normalized = (text || '').replace(/\s+/g, ' ').trim().toUpperCase();
+              var keys = Object.keys(sidebarIconTextMap);
+
+              for (var i = 0; i < keys.length; i += 1) {
+                if (normalized.indexOf(keys[i]) !== -1) {
+                  return sidebarIconTextMap[keys[i]];
+                }
+              }
+
+              return null;
+            }
+
+            function enhanceSidebarIcons() {
+              var sidebarLinks = document.querySelectorAll('.sidebar-nav a[href]');
+              sidebarLinks.forEach(function (linkEl) {
+                if (linkEl.dataset.sidebarIconBound === '1') {
+                  return;
+                }
+
+                var key = normalizeSidebarHref(linkEl.getAttribute('href'));
+                var icon = sidebarIconMap[key] || getSidebarTextIcon(linkEl.textContent);
+                if (!icon) {
+                  return;
+                }
+
+                linkEl.innerHTML = renderSidebarIcon(icon.path) + '<span class="sidebar-link-label">' + icon.label + '</span>';
+                linkEl.dataset.sidebarIconBound = '1';
+              });
+
+              var sectionItems = document.querySelectorAll('.sidebar-nav > ul > li');
+              sectionItems.forEach(function (itemEl) {
+                if (itemEl.dataset.sidebarSectionIconBound === '1') {
+                  return;
+                }
+
+                var nestedList = itemEl.querySelector(':scope > ul');
+                if (!nestedList) {
+                  return;
+                }
+
+                var titleEl = itemEl.querySelector(':scope > p, :scope > strong, :scope > a, :scope > span');
+                if (!titleEl || titleEl.matches('ul, li')) {
+                  return;
+                }
+
+                var key = getSidebarSectionKey(titleEl.textContent);
+                var sectionIcon = sidebarSectionIconMap[key];
+                if (!sectionIcon) {
+                  return;
+                }
+
+                titleEl.classList.add('sidebar-section-title');
+                titleEl.innerHTML = renderSidebarIcon(sectionIcon.path) + '<span class="sidebar-link-label">' + sectionIcon.label + '</span>';
+                itemEl.dataset.sidebarSectionIconBound = '1';
+              });
+            }
+
             var revealTargets = document.querySelectorAll('.feature-card, .home-showcase-card, .pagination-item');
             if (revealTargets.length > 0) {
               var observer = new IntersectionObserver(function (entries, obs) {
@@ -137,10 +425,21 @@
 
               anchorEl.dataset.anchorSmoothBound = '1';
             });
+
+            var externalNavLinks = document.querySelectorAll('.sidebar a[href^="http"]');
+            externalNavLinks.forEach(function (linkEl) {
+              linkEl.setAttribute('target', '_blank');
+              linkEl.setAttribute('rel', 'noopener noreferrer');
+            });
+
+            enhanceSidebarIcons();
           }
 
           hook.doneEach(function () {
-            requestAnimationFrame(initMicroInteractions);
+            requestAnimationFrame(function () {
+              initMicroInteractions();
+              applyImportantCallouts();
+            });
           });
         },
 
@@ -338,6 +637,23 @@
       var btn = document.getElementById('scroll-toggle-btn');
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
+      var loaderHidden = false;
+
+      function hidePageLoader() {
+        if (loaderHidden) {
+          return;
+        }
+
+        loaderHidden = true;
+
+        if (loader) {
+          loader.classList.add('page-loader-hidden');
+        }
+
+        if (app) {
+          app.classList.remove('app-hidden');
+        }
+      }
 
       function updateAnnouncementOffset(barEl) {
         var root = document.documentElement;
@@ -474,15 +790,11 @@
         }
       }
 
+      window.addEventListener('load', function () {
+        window.setTimeout(hidePageLoader, 250);
+      });
 
-      setTimeout(function () {
-        if (loader) {
-          loader.classList.add('page-loader-hidden');
-        }
-        if (app) {
-          app.classList.remove('app-hidden');
-        }
-      }, 3000);
+      window.setTimeout(hidePageLoader, 1200);
 
       // Native Reading Progress Bar Logic
       var progressBar = document.getElementById('reading-progress-bar');
