@@ -87,9 +87,9 @@
 
 ---
 
-# 🔧 **CONFIGURATION (config.lua):**
-> The source of truth is the live `config.lua` file in this resource.
-> New keys available: `Config.Target.Info` and `Config.Timezone`.
+# ⚙️ **CONFIGURATION FILE:**
+All in `config.lua`:
+
 ```lua
 Config = Config or {}
 

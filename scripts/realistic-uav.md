@@ -437,29 +437,6 @@ Supported `Config.Notify.provider` values:
 - `fl-notify`
 - `gtm-ui`
 
----
-
-# 🌍 **LOCALIZATION:**
-
-Available locale files:
-
-- `locales/en.lua`
-- `locales/es.lua`
-- `locales/fr.lua`
-- `locales/de.lua`
-- `locales/it.lua`
-- `locales/pt.lua`
-- `locales/pt_br.lua`
-- `locales/tr.lua`
-
-Resolver:
-
-- `modules/locale.lua`
-
-Notes:
-
-- All player-facing texts (UI, notifications, debug, webhook labels) are key-based.
-- Locale aliases are configurable in `Config.LocaleAliases`.
 
 ---
 
@@ -570,13 +547,6 @@ Both global and player cooldown values are persisted in SQL when enabled.
 | Locale fallback shows key text | Missing translation in selected locale | Add the missing key to locale file or rely on fallback locale (`Config.FallbackLocale`). |
 | Emoji text looks broken in editor | Wrong file encoding view | Open files as UTF-8 and save as UTF-8 (no BOM). |
 
-UI build:
-
-```bash
-cd resources/[smdz]/smdz_uav/ui
-npm install
-npm run build
-```
 
 ---
 

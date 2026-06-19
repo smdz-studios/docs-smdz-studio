@@ -53,7 +53,7 @@ Fill this with the real dependencies of your script.
 
 ---
 
-# 📥 Installation
+# 📥 **INSTALLATION:**
 
 Describe the exact installation steps.
 

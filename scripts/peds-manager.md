@@ -45,6 +45,8 @@ Full-featured ped assignment manager with a modern NUI for staff and players, bu
 - 🎨 **NUI theming** via a dedicated `shared/nui-config.lua` color palette.
 - 🔗 **Discord Webhooks** with rich embeds, action colors, thumbnails, and character data when available.
 
+---
+
 # 📦 **REQUIREMENTS AND COMPATIBILITY:**
 
 - **FiveM server:** latest recommended build.
@@ -64,7 +66,7 @@ Full-featured ped assignment manager with a modern NUI for staff and players, bu
 
 ---
 
-# 📥 Installation
+# 📥 **INSTALLATION:**
 
 1. Download the resource: `smdz_peds_manager.zip`
 2. Extract it into your resources folder, for example:
@@ -359,10 +361,6 @@ NuiConfig.Colors = {
 |-------------|-------------------------------------|---------------------------------|
 | `/peds`     | Opens the player panel.              | Everyone                        |
 | `/pedsadmin`| Opens the admin panel.               | ACE or admin group required     |
-
-### Keybinds
-
-No default keybind. Access via commands.
 
 ### UI / Menus
 

@@ -509,48 +509,6 @@ Notes:
 
 ---
 
-# 🎨 **THEMES:**
-
-Theme presets included:
-`classic`, `ember`, `mint`, `cobalt`, `slate`, `forest`, `dune`, `neon`, `ice`, `ocean`, `amber`, `graphite`, `sunrise`, `royal`, `violet`, `sage`, `ruby`, `sand`, `steel`, `lava`, `midnight`, `rose`, `citrus`, `obsidian`, `lagoon`, `saffron`, `storm`, `plasma`.
-
-Each player can set their own theme in the **Config** tab.
-
----
-
-# 🖼 **ICONS:**
-
-- Preview icons live in `html/icons/`.
-- Supported extensions are defined in `Config.NUIBlipImageExtensions`.
-- Default list for selection is `Config.Blips` (name = filename without extension).
-- Optional override list for UI only: `Config.IconOptions`.
-
-Example:
-```lua
-Config.IconOptions = {
-  { name = "radar_police", sprite = 41, ext = "gif" },
-  { name = "radar_helicopter", sprite = 64, ext = "png" }
-}
-```
-
----
-
-# 🌍 **LOCALIZATION:**
-
-Locale files live in `locales/`. (It's too easy to add a new language, adapt it.)
-- `locales/en.lua`
-- `locales/es.lua`
-- `locales/fr.lua`
-- `locales/pt.lua`
-- `locales/de.lua`
-
-Set your default language:
-```lua
-Config.Locale = "en"
-```
-
----
-
 # 🔌 **API (EXPORTS & EVENTS):**
 
 Exports are defined in `client/cl_exports.lua`.

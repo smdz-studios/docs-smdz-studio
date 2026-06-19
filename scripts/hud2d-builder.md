@@ -397,14 +397,6 @@ return {
 
 ```
 
-
-## Important notes
-- 🌍 **Localization:** all user-visible messages should be locale-driven via `locales/*.lua`.
-- 🔑 **Keys:** the resource uses control IDs from `shared/keys_config.lua` only.
-- 🎮 **Client remaps:** players can remap controls in GTA settings; resources cannot override that.
-- 🧾 **Snippets:** saved into `Config.SnippetFolder` (default `snippets/`).
-- 📨 **Webhooks:** invalid webhook warnings are rate-limited to avoid console spam.
-
 ---
 
 # 🎮 **USAGE:**

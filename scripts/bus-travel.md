@@ -21,7 +21,7 @@
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
--
+
 **Short description:**
 **SMDZ Bus Travels** is a public transport system for FiveM designed for roleplay servers.
 It adds interactive bus stops with a clean menu, configurable fares and travel times, an optional immersive *Real Bus* experience, broad compatibility with popular community providers, and optional webhook logging for server activity.
@@ -226,64 +226,6 @@ Config.BusSpawn.Color
 
 ---
 
-# 🗺️ **STOPS:**
-
-Stops are defined in:
-
-```
-Config.Stops
-```
-
-Each entry includes:
-
-- `id`
-- `label`
-- `coords`
-- `descKey`
-- `blip`
-- `marker`
-
-Descriptions are stored in locales.
-
----
-
-# 🌍 **LOCALES:**
-
-Locales live in:
-
-```
-locales/en.lua
-locales/es.lua
-locales/fr.lua
-locales/de.lua
-locales/it.lua
-locales/pt.lua
-locales/nl.lua
-locales/tr.lua
-locales/ru.lua
-locales/ja.lua
-```
-
-Set the language with `Config.Locale` and edit these files to customize all in‑game text.
-
----
-
-# 🔎 **DEBUG MODE:**
-
-Enable debug logs:
-
-```
-Config.Debug = true
-```
-
-You will see extra console output for:
-- target detection
-- inventory/framework detection
-- webhook events
-- bus spawn
-- menu flow
-
----
 
 # 📡 **WEBHOOKS:**
 

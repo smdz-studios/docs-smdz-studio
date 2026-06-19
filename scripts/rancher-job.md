@@ -223,43 +223,10 @@ If a check fails, the attempt is blocked, logged (debug/webhook), and the player
 
 ---
 
-# 🧠 **ADVANCED DEBUGGING:**
-🧪 Enable advanced telemetry:
-```
-Config.Debug = true
-Config.DebugAdvanced = {
-  enabled = true,
-  logClientLoss = true,
-  logServerLoss = true,
-  logWhistle = true,
-  logScare = false,
-  logFinish = true,
-}
-```
-
-🧾 You will see `[SMDZ RANCHER JOB][ADV]` logs with:
-- 🐄 per-cow distance checks
-- 🧭 loss metadata (whistle timing, grace windows)
-- 🛡️ server loss confirmations
-
----
-
 # ⚙️ **CONFIGURATION FILE:**
 All in `config.lua`:
 
 ```lua
---  ____  __  __ ____  _____
--- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / /
---  ___) | |  | | |_| |/ /_
--- |____/|_|  |_|____/____|
---
---  ____  _____ _   _ ____ ___ ___  ____
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
--- \___ \  | | | | | | | | | | | | \___ \
---  ___) | | | | |_| | |_| | | |_| |___) |
--- |____/  |_|  \___/|____/___\___/|____/
-
 
 Config = {}
 

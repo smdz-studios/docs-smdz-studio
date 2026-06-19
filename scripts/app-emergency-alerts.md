@@ -120,37 +120,6 @@ start smdz_lb_emergency_app
 
 ---
 
-# **🔄 HOW IT WORKS (FLOW):**
-
-**1. Player opens panel**
-- Job/grade checked server‑side.
-- Panel appears only for authorized roles.
-
-**2. Alert is created**
-- Server validates type permissions, cooldowns, word filter.
-- A unique 3‑digit ID is assigned.
-
-**3. Delivery**
-- Server sends to target zone (or all).
-- Every player receives notification + sound + flashlight.
-
-**4. Persistence**
-- Alert saved in database.
-- New players see existing active alerts.
-
----
-
-# **🛡️ ROLES AND PERMISSIONS MODEL:**
-
-Access is controlled in two layers:
-
-1. **Command access** (who can open panel)
-2. **Alert type access** (who can send each type)
-
-This lets you allow broad panel access but restrict specific alert types to higher ranks or different jobs.
-
----
-
 # **🔐 ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
 
 `/deletealert` can be authorized with any of these:
