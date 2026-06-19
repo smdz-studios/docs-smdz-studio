@@ -1,33 +1,49 @@
-- 🏠 **INFORMATION**
-  - [Portal](/portal.md)
-  - [Changelog](/changelog.md)
+<!--
+Sidebar icons:
+- Link icon: add or edit the title as "icon:name", for example [FAQ](/faq.md "icon:faq").
+- Category icon: add or edit "icon:name" at the end of the category line.
+- You can use Lucide icon names from: https://lucide.dev/icons/
+- Use the Lucide slug in lowercase, for example "icon:package", "icon:badge-dollar-sign", "icon:circle-dollar-sign".
+- Local optimized icons already included in this docs:
+  info, information, portal, changelog, store, support, faq, warning, shield,
+  resources, paid, wrench, speedometer, monitor, bus, evidence, cow, location,
+  phone-alert, user, paw, drone, speed-bump, headphones, money, video, flyer,
+  train, crystal, radar, redesigns, free
+-->
 
-- 📬 **SUPPORT**
-  - [Get Support](/support.md)
-  - [FAQ](/faq.md)
-  - [Common Problems](/problems.md)
-  - [Asset Escrow System](/fxap.md)
+- **Information** "icon:info"
+  - [Portal](/portal.md "icon:portal")
+  - [Changelog](/changelog.md "icon:changelog")
+  - [Store](https://smdz-studios.tebex.io/ "icon:store")
 
-- 💲 **PAID RESOURCES**
-  - [🧰 | Fast Repair — v 1.0](/scripts/fast-repair.md)
-  - [🚗 | Speed For Zones](/scripts/speed-for-zones.md)
-  - [📐 | HUD 2D Builder](/scripts/hud2d-builder.md)
-  - [🚌 | Bus Travel](/scripts/bus-travel.md)
-  - [🔖 | Evidence Markers](/scripts/evidence-markers.md)
-  - [🐄 | Rancher Job](/scripts/rancher-job.md)
-  - [📡 | Emergency GPS](/scripts/emergency-gps.md)
-  - [📱 | Emergency Alerts APP](/scripts/app-emergency-alerts.md)
-  - [👤 | Peds Manager](/scripts/peds-manager.md)
-  - [🐾 | Pets Rescue](/scripts/pets-rescue.md)
-  - [✈️ | Realistic UAV](/scripts/realistic-uav.md)
-  - [🚧 | Speed Bumpers](/scripts/speed-bumpers.md)
-  - [🎧 | iFruit Pods APP](/scripts/ifruit-pods.md)
-  - [💵 | NFC Transfer](/scripts/nfc-transfer.md)
-  - [🎥 | Streamers List](/scripts/streamers-list.md)
-  -
-- 🎨 **REDESINGS**
-  - [🎨 | Ox Target (Crystal Style)](/scripts/ox-target-redesing-crystal.md)
+- **Support** "icon:support"
+  - [Get Support](/support.md "icon:support")
+  - [FAQ](/faq.md "icon:faq")
+  - [Common Problems](/problems.md "icon:warning")
+  - [Asset Escrow System](/fxap.md "icon:shield")
+
+- **Paid Resources** "icon:resources"
+  - [Fast Repair - v 1.0](/scripts/fast-repair.md "icon:wrench")
+  - [Speed For Zones](/scripts/speed-for-zones.md "icon:speedometer")
+  - [HUD 2D Builder](/scripts/hud2d-builder.md "icon:monitor")
+  - [Bus Travel](/scripts/bus-travel.md "icon:bus")
+  - [Evidence Markers](/scripts/evidence-markers.md "icon:evidence")
+  - [Rancher Job](/scripts/rancher-job.md "icon:cow")
+  - [Emergency GPS](/scripts/emergency-gps.md "icon:location")
+  - [Emergency Alerts APP](/scripts/app-emergency-alerts.md "icon:phone-alert")
+  - [Peds Manager](/scripts/peds-manager.md "icon:user")
+  - [Pets Rescue](/scripts/pets-rescue.md "icon:paw")
+  - [Realistic UAV](/scripts/realistic-uav.md "icon:drone")
+  - [Speed Bumpers](/scripts/speed-bumpers.md "icon:speed-bump")
+  - [iFruit Pods APP](/scripts/ifruit-pods.md "icon:headphones")
+  - [NFC Transfer](/scripts/nfc-transfer.md "icon:money")
+  - [Streamers List](/scripts/streamers-list.md "icon:video")
+  - [Flyers](/scripts/flyers.md "icon:flyer")
+  <!-- - [Railway Job](/scripts/railway-job.md "icon:train") -->
+
+- **Redesigns** "icon:redesigns"
+  - [Ox Target (Crystal Style)](/scripts/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
 <!--
-- **FREE RESOURCES**
-  - [🗺️ | Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md) -->
+- **Free Resources**
+  - [Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md "icon:radar") -->

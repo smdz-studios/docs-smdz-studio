@@ -23,6 +23,15 @@
   </div>
 </div>
 
+<div class="portal-filter-bar" aria-label="Resource filters">
+  <button class="portal-filter-btn is-active" type="button" data-filter="all">All</button>
+  <button class="portal-filter-btn" type="button" data-filter="open-source">Open Source</button>
+  <button class="portal-filter-btn" type="button" data-filter="esx">ESX</button>
+  <button class="portal-filter-btn" type="button" data-filter="qbcore">QBCore</button>
+  <button class="portal-filter-btn" type="button" data-filter="standalone">Standalone</button>
+  <button class="portal-filter-btn" type="button" data-filter="redesign">Redesigns</button>
+</div>
+
 <div class="home-showcase-grid">
 
   <article class="home-showcase-card">
@@ -168,10 +177,10 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/crystaloxtarget.png" alt="OX Target Redesing Crystal preview image" />
+      <img src="assets/crystaloxtarget.png" alt="OX Target Redesign Crystal preview image" />
     </div>
     <div class="home-showcase-body">
-      <h3>OX Target Redesing Crystal</h3>
+      <h3>OX Target Redesign Crystal</h3>
       <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
       <div class="home-showcase-tags">
         <span>ESX</span><span>QBCORE</span><span>QBX</span>

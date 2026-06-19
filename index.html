@@ -37,6 +37,11 @@
     <span id="announcement-text" class="announcement-text"></span>
   </div>
 
+  <!-- Sale banner - content & style controlled from plugins/salebanner-config.js -->
+  <div id="sale-banner" class="sale-banner">
+    <div class="sale-banner-track" aria-hidden="true"></div>
+  </div>
+
   <!-- Page loader -->
   <div id="page-loader" class="page-loader">
     <div class="page-loader-inner">
@@ -120,6 +125,7 @@
       themeColor: '#509205',
       maxLevel: 4,
       homepage: 'portal.md',
+      notFoundPage: '404.md',
 
       search: {
         maxAge: 86400000,
@@ -199,6 +205,44 @@
             });
           }
 
+          function cleanRenderedMojibake() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot || contentRoot.dataset.mojibakeCleaned === '1') {
+              return;
+            }
+
+            var walker = document.createTreeWalker(contentRoot, NodeFilter.SHOW_TEXT, {
+              acceptNode: function (node) {
+                var parent = node.parentElement;
+                if (!parent || parent.closest('pre, code, script, style')) {
+                  return NodeFilter.FILTER_REJECT;
+                }
+
+                return NodeFilter.FILTER_ACCEPT;
+              }
+            });
+
+            var textNodes = [];
+            while (walker.nextNode()) {
+              textNodes.push(walker.currentNode);
+            }
+
+            textNodes.forEach(function (node) {
+              node.nodeValue = node.nodeValue
+                .replace(/ðŸ[^\s]*/g, '')
+                .replace(/âœ…|âŒ|â“|âš ï¸|â¬†ï¸|â±ï¸/g, '')
+                .replace(/â†’/g, '')
+                .replace(/â€‘/g, '-')
+                .replace(/â€“|â€”/g, '-')
+                .replace(/â€¦/g, '...')
+                .replace(/â€œ|â€/g, '"')
+                .replace(/â€™/g, "'")
+                .replace(/\s{2,}/g, ' ');
+            });
+
+            contentRoot.dataset.mojibakeCleaned = '1';
+          }
+
           function initMicroInteractions() {
             var sidebarIconMap = {
               '/portal.md': {
@@ -266,11 +310,50 @@
                 label: 'Redesigns',
                 path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
               },
+              'REDESIGNS': {
+                label: 'Redesigns',
+                path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
+              },
               'FREE RESOURCES': {
                 label: 'Free Resources',
                 path: 'M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7l-8-4Zm-1 12.2-3-3 1.4-1.4 1.6 1.6 4.6-4.6L17 9.2l-6 6Z'
               }
             };
+
+            var sidebarNamedIconMap = {
+              portal: 'M4 10.5 12 4l8 6.5V20h-6v-5h-4v5H4v-9.5Z',
+              changelog: 'M5 4h14v16H5V4Zm3 4h8V6H8v2Zm0 4h8v-2H8v2Zm0 4h5v-2H8v2Z',
+              store: 'M4 6h16l-1.5 8.5H7L5.8 8H4V6Zm4 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z',
+              support: 'M12 3a7 7 0 0 0-7 7v3H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h3v-7H5v-2a7 7 0 0 1 14 0v2h-2v7h3a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-1v-3a7 7 0 0 0-7-7Z',
+              faq: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-1 14h2v-2h-2v2Zm1-11a3 3 0 0 0-3 3h2a1 1 0 1 1 1 1c-1.3 0-2 1-2 2.3V13h2v-.7c0-.3.2-.5.6-.8A3 3 0 0 0 12 6Z',
+              warning: 'M12 2 2 20h20L12 2Zm-1 6h2v6h-2V8Zm0 8h2v2h-2v-2Z',
+              shield: 'M12 2 4 5v6.2c0 5 3.2 9.4 8 10.8 4.8-1.4 8-5.8 8-10.8V5l-8-3Zm-1 13 5-5-1.4-1.4L11 12.2 9.4 10.6 8 12l3 3Z',
+              wrench: 'M21.3 6.7a5.5 5.5 0 0 1-6.8 6.8L7.2 20.8a2.8 2.8 0 0 1-4-4l7.3-7.3a5.5 5.5 0 0 1 6.8-6.8l-3.2 3.2 2 2 3.2-3.2ZM5.1 18.9a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z',
+              speedometer: 'M12 4a9 9 0 0 1 9 9h-2a7 7 0 1 0-14 0H3a9 9 0 0 1 9-9Zm1 9 4-4-1.4-1.4-4.3 4.2A2 2 0 1 0 13 13Z',
+              monitor: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm1 10h10v2H7v-2Z',
+              bus: 'M6 3h12a2 2 0 0 1 2 2v10a3 3 0 0 1-1 2.2V20h-2v-2H7v2H5v-2.8A3 3 0 0 1 4 15V5a2 2 0 0 1 2-2Zm0 4v5h12V7H6Zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+              evidence: 'M5 4h14v4H5V4Zm2 6h10v10H7V10Zm2 2v6h6v-6H9Z',
+              cow: 'M6.5 7 4 4.5V3l4 2h8l4-2v1.5L17.5 7A5.5 5.5 0 0 1 20 11.6V16a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4.4A5.5 5.5 0 0 1 6.5 7Zm2 6a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Zm7 0a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4ZM10 16.5h4v-2h-4v2Z',
+              location: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z',
+              'phone-alert': 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm4 3v8h2V5h-2Zm0 10v2h2v-2h-2Z',
+              user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0H4Z',
+              paw: 'M7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM9 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-7 4c3 0 6 3 6 6 0 2-1.8 3-3.3 2.2a5.3 5.3 0 0 0-5.4 0C7.8 20 6 19 6 17c0-3 3-6 6-6Z',
+              drone: 'M12 3 4 8l8 4 8-4-8-5Zm0 11-8-4v6l8 5 8-5v-6l-8 4Z',
+              'speed-bump': 'M3 14h18v4H3v-4Zm2-6h14l2 4H3l2-4Zm3 1-1 2h10l-1-2H8Z',
+              headphones: 'M12 3a8 8 0 0 0-8 8v6a3 3 0 0 0 3 3h2v-8H6v-1a6 6 0 0 1 12 0v1h-3v8h2a3 3 0 0 0 3-3v-6a8 8 0 0 0-8-8Z',
+              money: 'M3 6h18v12H3V6Zm2 3v6h14V9H5Zm7 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-5-3h2v2H7v-2Zm8 0h2v2h-2v-2Z',
+              video: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z',
+              flyer: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z',
+              train: 'M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3l2 3h-2.5l-1.3-2H8.8l-1.3 2H5l2-3a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 4v4h10V7H7Zm2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+              crystal: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z',
+              radar: 'M12 2a10 10 0 0 1 10 10h-2a8 8 0 1 0-8 8v2A10 10 0 1 1 12 2Zm1 3v7h6a7 7 0 0 0-6-7Z'
+            };
+            sidebarNamedIconMap.info = sidebarSectionIconMap.INFORMATION.path;
+            sidebarNamedIconMap.information = sidebarSectionIconMap.INFORMATION.path;
+            sidebarNamedIconMap.resources = sidebarSectionIconMap['PAID RESOURCES'].path;
+            sidebarNamedIconMap.paid = sidebarSectionIconMap['PAID RESOURCES'].path;
+            sidebarNamedIconMap.redesigns = sidebarSectionIconMap.REDESIGNS.path;
+            sidebarNamedIconMap.free = sidebarSectionIconMap['FREE RESOURCES'].path;
 
             var sidebarIconTextMap = {
               'PORTAL': sidebarIconMap['/portal.md'],
@@ -279,7 +362,25 @@
               'GET SUPPORT': sidebarIconMap['/support.md'],
               'FAQ': sidebarIconMap['/faq.md'],
               'COMMON PROBLEMS': sidebarIconMap['/problems.md'],
-              'ASSET ESCROW SYSTEM': sidebarIconMap['/fxap.md']
+              'ASSET ESCROW SYSTEM': sidebarIconMap['/fxap.md'],
+              'FAST REPAIR': sidebarIconMap['/scripts/fast-repair.md'],
+              'SPEED FOR ZONES': sidebarIconMap['/scripts/speed-for-zones.md'],
+              'HUD 2D BUILDER': sidebarIconMap['/scripts/hud2d-builder.md'],
+              'BUS TRAVEL': sidebarIconMap['/scripts/bus-travel.md'],
+              'EVIDENCE MARKERS': sidebarIconMap['/scripts/evidence-markers.md'],
+              'RANCHER JOB': sidebarIconMap['/scripts/rancher-job.md'],
+              'EMERGENCY GPS': sidebarIconMap['/scripts/emergency-gps.md'],
+              'EMERGENCY ALERTS APP': sidebarIconMap['/scripts/app-emergency-alerts.md'],
+              'PEDS MANAGER': sidebarIconMap['/scripts/peds-manager.md'],
+              'PETS RESCUE': sidebarIconMap['/scripts/pets-rescue.md'],
+              'REALISTIC UAV': sidebarIconMap['/scripts/realistic-uav.md'],
+              'SPEED BUMPERS': sidebarIconMap['/scripts/speed-bumpers.md'],
+              'IFRUIT PODS APP': sidebarIconMap['/scripts/ifruit-pods.md'],
+              'NFC TRANSFER': sidebarIconMap['/scripts/nfc-transfer.md'],
+              'STREAMERS LIST': sidebarIconMap['/scripts/streamers-list.md'],
+              'FLYERS': sidebarIconMap['/scripts/flyers.md'],
+              'RAILWAY JOB': sidebarIconMap['/scripts/railway-job.md'],
+              'OX TARGET': sidebarIconMap['/scripts/ox-target-redesing-crystal.md']
             };
 
             function normalizeSidebarHref(rawHref) {
@@ -302,10 +403,63 @@
               return path;
             }
 
-            function renderSidebarIcon(path) {
-              return '<svg class="sidebar-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
-                '<path d="' + path + '"></path>' +
-              '</svg>';
+            function normalizeLucideIconName(iconName) {
+              return (iconName || '')
+                .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                .replace(/[_\s]+/g, '-')
+                .replace(/[^a-z0-9-]/gi, '')
+                .replace(/--+/g, '-')
+                .replace(/^-|-$/g, '')
+                .toLowerCase();
+            }
+
+            function getSidebarLucideIcon(iconName) {
+              var normalizedIconName = normalizeLucideIconName(iconName);
+              if (!normalizedIconName) {
+                return null;
+              }
+
+              return {
+                external: true,
+                name: normalizedIconName,
+                url: 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/' + normalizedIconName + '.svg'
+              };
+            }
+
+            function renderSidebarIcon(icon) {
+              if (!icon) {
+                return '';
+              }
+
+              if (typeof icon === 'string') {
+                return '<svg class="sidebar-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+                  '<path d="' + icon + '"></path>' +
+                '</svg>';
+              }
+
+              if (icon.external && icon.url) {
+                return '<span class="sidebar-link-icon sidebar-link-icon--external" style="--sidebar-icon-url: url(&quot;' + icon.url + '&quot;);" aria-hidden="true"></span>';
+              }
+
+              if (icon.path) {
+                return '<svg class="sidebar-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+                  '<path d="' + icon.path + '"></path>' +
+                '</svg>';
+              }
+
+              return '';
+            }
+
+            function createSidebarIcon(iconName) {
+              var normalizedIconName = normalizeLucideIconName(iconName);
+              var localIconPath = sidebarNamedIconMap[normalizedIconName];
+              if (localIconPath) {
+                return {
+                  path: localIconPath
+                };
+              }
+
+              return getSidebarLucideIcon(normalizedIconName);
             }
 
             function getSidebarSectionKey(text) {
@@ -334,6 +488,75 @@
               return null;
             }
 
+            function getSidebarNamedIcon(linkEl) {
+              var title = linkEl.getAttribute('title') || '';
+              var match = title.match(/icon:([a-z0-9_-]+)/i);
+              if (!match || !match[1]) {
+                return null;
+              }
+
+              var iconName = match[1].toLowerCase();
+              linkEl.removeAttribute('title');
+
+              var icon = createSidebarIcon(iconName);
+              if (!icon) {
+                return null;
+              }
+
+              return icon;
+            }
+
+            function getSidebarSectionConfiguredIcon(itemEl, titleEl) {
+              var titleText = titleEl ? (titleEl.textContent || '') : '';
+              var titleMatch = titleText.match(/icon:([a-z0-9_-]+)/i);
+              if (titleMatch && titleMatch[1]) {
+                var titleIcon = createSidebarIcon(titleMatch[1]);
+                if (titleIcon) {
+                  return titleIcon;
+                }
+              }
+
+              function findIconComment(rootEl) {
+                var nodes = Array.prototype.slice.call(rootEl.childNodes || []);
+
+                for (var i = 0; i < nodes.length; i += 1) {
+                  var node = nodes[i];
+                  if (node.nodeType === 1 && node.matches && node.matches('ul')) {
+                    continue;
+                  }
+
+                  if (node.nodeType === 8) {
+                    var commentText = node.nodeValue || '';
+                    var match = commentText.match(/category-icon:([a-z0-9_-]+)/i);
+                    if (match && match[1]) {
+                      return match[1].toLowerCase();
+                    }
+                  }
+
+                  if (node.nodeType === 1) {
+                    var nestedIconName = findIconComment(node);
+                    if (nestedIconName) {
+                      return nestedIconName;
+                    }
+                  }
+                }
+
+                return '';
+              }
+
+              var iconName = findIconComment(itemEl);
+              if (!iconName) {
+                return null;
+              }
+
+              var icon = createSidebarIcon(iconName);
+              if (!icon) {
+                return null;
+              }
+
+              return icon;
+            }
+
             function enhanceSidebarIcons() {
               var sidebarLinks = document.querySelectorAll('.sidebar-nav a[href]');
               sidebarLinks.forEach(function (linkEl) {
@@ -342,12 +565,13 @@
                 }
 
                 var key = normalizeSidebarHref(linkEl.getAttribute('href'));
-                var icon = sidebarIconMap[key] || getSidebarTextIcon(linkEl.textContent);
+                var originalLabel = (linkEl.textContent || '').replace(/\s+/g, ' ').trim();
+                var icon = getSidebarNamedIcon(linkEl) || sidebarIconMap[key] || getSidebarTextIcon(originalLabel);
                 if (!icon) {
                   return;
                 }
 
-                linkEl.innerHTML = renderSidebarIcon(icon.path) + '<span class="sidebar-link-label">' + icon.label + '</span>';
+                linkEl.innerHTML = renderSidebarIcon(icon) + '<span class="sidebar-link-label">' + (icon.label || originalLabel) + '</span>';
                 linkEl.dataset.sidebarIconBound = '1';
               });
 
@@ -368,13 +592,18 @@
                 }
 
                 var key = getSidebarSectionKey(titleEl.textContent);
-                var sectionIcon = sidebarSectionIconMap[key];
+                var sectionIcon = getSidebarSectionConfiguredIcon(itemEl, titleEl) || sidebarSectionIconMap[key];
                 if (!sectionIcon) {
                   return;
                 }
 
+                var sectionLabel = (titleEl.textContent || '')
+                  .replace(/\s*"?icon:[a-z0-9_-]+"?/i, '')
+                  .replace(/\s+/g, ' ')
+                  .trim();
+
                 titleEl.classList.add('sidebar-section-title');
-                titleEl.innerHTML = renderSidebarIcon(sectionIcon.path) + '<span class="sidebar-link-label">' + sectionIcon.label + '</span>';
+                titleEl.innerHTML = renderSidebarIcon(sectionIcon) + '<span class="sidebar-link-label">' + (sectionIcon.label || sectionLabel) + '</span>';
                 itemEl.dataset.sidebarSectionIconBound = '1';
               });
             }
@@ -433,10 +662,68 @@
             });
 
             enhanceSidebarIcons();
+
+            var portalFilterButtons = document.querySelectorAll('.portal-filter-btn');
+            var portalCards = document.querySelectorAll('.home-showcase-card');
+            if (portalFilterButtons.length > 0 && portalCards.length > 0) {
+              portalCards.forEach(function (cardEl) {
+                if (cardEl.dataset.portalCategories) {
+                  return;
+                }
+
+                var cardText = (cardEl.textContent || '').toUpperCase();
+                var categories = ['all'];
+
+                if (cardText.indexOf('OPEN SOURCE') !== -1) {
+                  categories.push('open-source');
+                }
+
+                if (cardText.indexOf('ESX') !== -1) {
+                  categories.push('esx');
+                }
+
+                if (cardText.indexOf('QBCORE') !== -1 || cardText.indexOf('QBX') !== -1) {
+                  categories.push('qbcore');
+                }
+
+                if (cardText.indexOf('STANDALONE') !== -1) {
+                  categories.push('standalone');
+                }
+
+                if (cardText.indexOf('REDESIGN') !== -1 || cardText.indexOf('REDESING') !== -1 || cardText.indexOf('CRYSTAL') !== -1) {
+                  categories.push('redesign');
+                }
+
+                cardEl.dataset.portalCategories = categories.join(' ');
+              });
+
+              portalFilterButtons.forEach(function (buttonEl) {
+                if (buttonEl.dataset.portalFilterBound === '1') {
+                  return;
+                }
+
+                buttonEl.addEventListener('click', function () {
+                  var selectedFilter = buttonEl.getAttribute('data-filter') || 'all';
+
+                  portalFilterButtons.forEach(function (otherButton) {
+                    otherButton.classList.toggle('is-active', otherButton === buttonEl);
+                  });
+
+                  portalCards.forEach(function (cardEl) {
+                    var categories = cardEl.dataset.portalCategories || 'all';
+                    var shouldShow = selectedFilter === 'all' || categories.indexOf(selectedFilter) !== -1;
+                    cardEl.classList.toggle('is-filtered-out', !shouldShow);
+                  });
+                });
+
+                buttonEl.dataset.portalFilterBound = '1';
+              });
+            }
           }
 
           hook.doneEach(function () {
             requestAnimationFrame(function () {
+              cleanRenderedMojibake();
               initMicroInteractions();
               applyImportantCallouts();
             });
@@ -629,6 +916,7 @@
 
 
   <script src="plugins/banner-config.js?v=20260612"></script>
+  <script src="plugins/salebanner-config.js?v=20260619"></script>
   <script src="plugins/visitor-config.js?v=20260612-2"></script>
   <script src="plugins/visitor-notifier.js?v=20260613-1"></script>
 
@@ -655,20 +943,30 @@
         }
       }
 
-      function updateAnnouncementOffset(barEl) {
-        var root = document.documentElement;
+      function getVisibleBarHeight(barEl) {
         if (!barEl || barEl.style.display === 'none') {
-          root.style.setProperty('--announcement-offset', '0px');
-          document.body.classList.remove('has-announcement-bar');
-          return;
+          return 0;
         }
 
-        var barHeight = Math.ceil(barEl.getBoundingClientRect().height);
-        if (barHeight > 0) {
-          root.style.setProperty('--announcement-offset', barHeight + 'px');
+        var rect = barEl.getBoundingClientRect();
+        return rect.height > 0 ? Math.ceil(rect.height) : 0;
+      }
+
+      function updateTopBarsOffset() {
+        var root = document.documentElement;
+        var announcementBar = document.getElementById('announcement-bar');
+        var saleBanner = document.getElementById('sale-banner');
+        var announcementHeight = getVisibleBarHeight(announcementBar);
+        var saleHeight = getVisibleBarHeight(saleBanner);
+        var totalHeight = announcementHeight + saleHeight;
+
+        root.style.setProperty('--announcement-offset', totalHeight + 'px');
+        root.style.setProperty('--top-bars-offset', totalHeight + 'px');
+        root.style.setProperty('--sale-banner-top', announcementHeight + 'px');
+
+        if (totalHeight > 0) {
           document.body.classList.add('has-announcement-bar');
         } else {
-          root.style.setProperty('--announcement-offset', '0px');
           document.body.classList.remove('has-announcement-bar');
         }
       }
@@ -710,7 +1008,7 @@
 
           if (!cfg.enabled) {
             bar.style.display = 'none';
-            updateAnnouncementOffset(bar);
+            updateTopBarsOffset();
           } else {
 
             if (cfg.type) {
@@ -736,7 +1034,7 @@
             var content = document.createElement('div');
             content.className = 'announcement-content';
 
-            if (cfg.icon) {
+            if (cfg.icon && cfg.icon.indexOf('ð') === -1 && cfg.icon.indexOf('â') === -1) {
               var icon = document.createElement('span');
               icon.className = 'announcement-icon';
               icon.textContent = cfg.icon;
@@ -780,12 +1078,60 @@
 
             requestAnimationFrame(function () {
               bar.classList.add('announcement-visible');
-              updateAnnouncementOffset(bar);
+              updateTopBarsOffset();
             });
 
             window.addEventListener('resize', function () {
-              updateAnnouncementOffset(bar);
+              updateTopBarsOffset();
             });
+          }
+        }
+      }
+
+      if (window.SMDZ_SALE_BANNER_CONFIG) {
+        var saleBar = document.getElementById('sale-banner');
+        if (saleBar) {
+          var saleCfg = window.SMDZ_SALE_BANNER_CONFIG;
+
+          if (!saleCfg.enabled) {
+            saleBar.style.display = 'none';
+            updateTopBarsOffset();
+          } else {
+            var saleText = saleCfg.text || '';
+            var saleSeparator = saleCfg.separator || 'SALE';
+            var saleItems = [];
+
+            for (var saleIndex = 0; saleIndex < 8; saleIndex += 1) {
+              saleItems.push('<span class="sale-banner-item">' + saleText + '</span>');
+              saleItems.push('<span class="sale-banner-separator">' + saleSeparator + '</span>');
+            }
+
+            var saleTrack = saleBar.querySelector('.sale-banner-track');
+            if (saleTrack) {
+              saleTrack.innerHTML = saleItems.join('');
+              saleTrack.style.setProperty('--sale-banner-speed', (saleCfg.speedSeconds || 22) + 's');
+            }
+
+            if (saleCfg.url) {
+              saleBar.setAttribute('role', 'link');
+              saleBar.tabIndex = 0;
+              saleBar.addEventListener('click', function () {
+                window.open(saleCfg.url, saleCfg.target || '_blank', 'noopener');
+              });
+              saleBar.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  window.open(saleCfg.url, saleCfg.target || '_blank', 'noopener');
+                }
+              });
+            }
+
+            requestAnimationFrame(function () {
+              saleBar.classList.add('sale-banner-visible');
+              updateTopBarsOffset();
+            });
+
+            window.addEventListener('resize', updateTopBarsOffset);
           }
         }
       }
