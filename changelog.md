@@ -1,5 +1,46 @@
 # 🧾 **CHANGELOG SMDZ STUDIOS:**
 
+
+#  🚌 | SMDZ Bus Travels - `1.1.0` - 2026-06-20
+### 💰 Permanent Price Reduction
+
+- With the release of version `1.1.0`, the script’s price has been permanently reduced from **€16.99** to **€9.99**, excluding taxes. (escrow version)
+- This is a permanent price adjustment and not a limited-time discount.
+
+### 🧩 Fixes
+
+- Fixed several client-side synchronization issues that could cause inconsistent behavior between players.
+- Removed duplicate locale keys found in several supported languages.
+- Fixed the server startup thread to call `printStartupBanner()` directly.
+
+### 🚀 Improvements
+
+- Added additional waiting scenarios to `Config.WaitAnims` for more varied and natural NPC behavior.
+- Updated the server startup banner to display the currently selected or automatically detected:
+
+  - Framework
+  - Inventory
+  - Progress bar
+  - Notification system
+  - Locale
+
+### 🛡️ Security & Structure
+
+- Moved the locale core from `shared/locale.lua` to `init/locale.lua` for improved organization and initialization.
+- Moved webhook configuration exclusively to `server/server_config.lua`.
+- Removed `Config.Webhooks` from the shared configuration to prevent webhook URLs from being exposed client-side.
+
+### 🗂️ Files Updated
+
+- `fxmanifest.lua`
+- `init/locale.lua`
+- `server/server_config.lua`
+- `shared/config.lua`
+- `server/sv_main.lua`
+- `client/cl_main.lua`
+
+---
+
 #  🐄 | The Rancher Job - `1.2.0` - 2026-05-22
 ### ✅ Added
 - New global anti-exploit toggle `Config.AntiExploit.enabled`.
@@ -124,7 +165,7 @@
 
 ### 🔧 Changed
 - Updated theme lock checks in `client/main.lua` to grant access using OR logic:
-  - `Groups` **or** `AcePermissions`.
+  - `Groups` **or*- `AcePermissions`.
   - Neither one overrides the other.
 - Strengthened server-side permission validation:
   - Supports both `admin` and `group.admin` formats.
