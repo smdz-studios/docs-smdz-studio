@@ -36,6 +36,25 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/flyers.png" alt="Flyers preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Flyers</h3>
+      <p>SMDZ Flyers is an advanced flyer placement and advertising system for FiveM, designed to help roleplay servers bring businesses, events, job opportunities, and community announcements directly into the game world. It provides players with a clean and immersive way to create, preview, place, and interact with persistent flyers across Los Santos.</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/flyers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/streamers-list.png" alt="Streamers List preview image" />
     </div>
     <div class="home-showcase-body">
