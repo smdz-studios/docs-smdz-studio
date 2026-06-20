@@ -12,6 +12,7 @@
 - Fixed several client-side synchronization issues that could cause inconsistent behavior between players.
 - Removed duplicate locale keys found in several supported languages.
 - Fixed the server startup thread to call `printStartupBanner()` directly.
+- **The use of Xbox Live IDs has been completely eliminated to comply with the [new CFX changes](https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645/1).**
 
 ### 🚀 Improvements
 
@@ -143,7 +144,6 @@
 ---
 
 ## 📱 | SMDZ LB PHONE APP Emergency Alerts  - `1.1.0` - 2026-03-23
-
 ### ✅ Added
 - Support for ACE permissions has been added to the administrative command to delete alerts. (ACE or GROUPS permissions)
 - Docs updated.
@@ -155,7 +155,6 @@
 
 
 ## 🎨 | SMDZ Ox Target Crystal Style - `1.1.0` - 2026-03-13
-
 ### ✅ Added
 - Added ACE permission support for restricted themes in `Config.ThemeDonator` and `Config.ThemeDiscordBoosters`:
   - New `AcePermissions` option (for example: `group.admin`, `admin`, `themediscordboosters`).
@@ -193,7 +192,6 @@
 ---
 
 ## 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
-
 ### ✨ Highlights
 - Added favorite color support with SQL persistence (same behavior as icon favorites).
 - Added 3 new UI themes: Obsidian, Lagoon, Saffron.
