@@ -314,22 +314,6 @@ CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
 
 ---
 
-# 🌍 **LOCALES:**
-Locales are Lua files in `locales/`.
-Included languages:
-- English (`en.lua`)
-- Spanish (`es.lua`)
-- French (`fr.lua`)
-- German (`de.lua`)
-- Italian (`it.lua`)
-- Portuguese (`pt.lua`)
-- Portuguese (BR) (`pt-br.lua`)
-
-Set the language with `Config.Locale`.
-You can add as many languages ​​as you need.
-
----
-
 # 🔌 **COMPATIBILITY:**
 This resource keeps **all original exports and logic** from `ox_target`.
 Your existing scripts do **not** need to change.
@@ -363,6 +347,120 @@ Only if `Config.ThemeSaveToDB = true`.
 
 **How do I change the language?**
 Set `Config.Locale` to one of the available locales in `locales/`.
+
+---
+# 🔌 **CHECKLIST:**
+
+**If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.**
+Please complete **every step in order**. Do not skip any steps, even if you believe they are already correct.
+
+## 1️⃣ Test the original ox_target
+
+- [ ] Stop the server completely.
+- [ ] Install the original official `ox_target`.
+- [ ] Start the server and test whether Left Alt works.
+- [ ] Confirm whether the original version works correctly.
+
+> If the original `ox_target` does not work either, the issue is not caused by the redesign.
+
+## 2️⃣ Check the resource installation
+
+- [ ] Delete or move the previous `ox_target` folder outside the server resources directory.
+- [ ] Make sure there is only **one** installation of `ox_target`.
+- [ ] Rename the redesigned resource folder exactly to `ox_target`.
+- [ ] Make sure the resource is not inside another folder.
+
+### ✅ Correct structure
+
+`resources/[standalone]/ox_target/fxmanifest.lua`
+
+### ❌ Incorrect structure
+
+`resources/[standalone]/ox_target/ox_target/fxmanifest.lua`
+
+## 3️⃣ Check the start order
+
+Make sure `ox_lib` starts before `ox_target` in your `server.cfg`:
+
+`ensure ox_lib`
+`ensure ox_target`
+
+- [ ] Check that `ox_target` is not started in another `.cfg` file.
+- [ ] Make sure the original and redesigned versions are not both being started.
+- [ ] Fully restart the server after making changes.
+
+## 4️⃣ Check the target key binding
+
+- [ ] Open FiveM.
+- [ ] Go to **Settings → Key Bindings → FiveM**.
+- [ ] Search for `ox_target`, `target`, or `third eye`.
+- [ ] Confirm that the action is assigned to **Left Alt**.
+- [ ] Reset the binding or assign another temporary key for testing.
+- [ ] Test by holding **Left Alt**, not Right Alt.
+
+Add these lines before `ensure ox_target`:
+
+`setr ox_target:defaultHotkey LMENU`
+`setr ox_target:toggleHotkey 0`
+`setr ox_target:debug 1`
+
+Then restart the server completely.
+
+## 5️⃣ Check dependencies and duplicated resources
+
+- [ ] Confirm that `ox_lib` starts without errors.
+- [ ] Confirm that your `ox_lib` version is updated.
+- [ ] Temporarily disable other target systems such as `qb-target`, `qtarget`, `bt-target`, `eye-target`, or similar resources.
+- [ ] Search the entire resources folder for additional copies of `ox_target`.
+
+## 6️⃣ Check both consoles
+
+After starting the server:
+
+- [ ] Open the server console and check for warnings or errors.
+- [ ] Open the FiveM F8 console.
+- [ ] Look for messages containing `ox_target`, `ox_lib`, `NUI`, `SCRIPT ERROR`, `failed`, `missing`, or `dependency`.
+- [ ] Press Left Alt while the F8 console is open and check whether a new error appears.
+
+> “No errors” is not enough. Please check both the **server console** and the **client F8 console** carefully.
+
+## 7️⃣ Test an actual target interaction
+
+- [ ] Test an NPC, zone, vehicle, or interaction that previously worked with `ox_target`.
+- [ ] Confirm that the resource adding the target starts after `ox_target`.
+- [ ] Restart that resource after restarting `ox_target`.
+
+### Correct start order
+
+`ensure ox_lib`
+`ensure ox_target`
+`ensure your_script_using_target`
+
+## 8️⃣ Clear the FiveM client cache
+
+- [ ] Close FiveM completely.
+- [ ] Clear the FiveM client cache.
+- [ ] Do not delete the `game` folder.
+- [ ] Restart FiveM and reconnect to the server.
+
+## 📸 Send us the following information
+
+After completing the checklist, please send:
+
+1. A screenshot of the complete `ox_target` folder structure.
+2. The `ensure ox_lib` and `ensure ox_target` section from your `server.cfg`.
+3. A screenshot of your FiveM target key binding.
+4. Your client F8 console after joining the server.
+5. Your server console when `ox_target` starts.
+6. Your current `ox_lib` version.
+7. Your framework name and version.
+8. Confirmation of whether the original official `ox_target` works.
+9. The name of the script, NPC, zone, or interaction you are testing.
+
+> Please do not reply only with “still not working.” We need the requested screenshots and information to identify the exact cause.
+
+
+
 
 ---
 
