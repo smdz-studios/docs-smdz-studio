@@ -351,8 +351,11 @@ Set `Config.Locale` to one of the available locales in `locales/`.
 ---
 # 🔌 **CHECKLIST:**
 
-**If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.**
+<p style="text-align: center; font-weight: bold; color: red;">
+  **If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.**
 Please complete **every step in order**. Do not skip any steps, even if you believe they are already correct.
+</p>
+
 
 ## 1️⃣ Test the original ox_target
 
@@ -458,7 +461,6 @@ After completing the checklist, please send:
 9. The name of the script, NPC, zone, or interaction you are testing.
 
 > Please do not reply only with “still not working.” We need the requested screenshots and information to identify the exact cause.
-
 
 
 
