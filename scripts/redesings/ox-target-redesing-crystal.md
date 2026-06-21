@@ -352,8 +352,8 @@ Set `Config.Locale` to one of the available locales in `locales/`.
 # 🔌 **CHECKLIST:**
 
 <p style="text-align: center; font-weight: bold; color: red;">
-  **If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.**
-Please complete **every step in order**. Do not skip any steps, even if you believe they are already correct.
+- If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.
+- Please complete every step in order. Do not skip any steps, even if you believe they are already correct.
 </p>
 
 
