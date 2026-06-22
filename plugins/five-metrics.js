@@ -49,13 +49,7 @@
             <div class="five-metrics-card">
                 <div class="five-metrics-header">
                     <div class="five-metrics-header-copy">
-                        <span class="five-metrics-kicker">Live resource stats</span>
                         <span class="five-metrics-title">Current usage</span>
-                    </div>
-
-                    <div class="five-metrics-badge" aria-hidden="true">
-                        <span class="five-metrics-badge-dot"></span>
-                        Live
                     </div>
                 </div>
 
