@@ -578,6 +578,11 @@
                 .trim();
             }
 
+            function getCleanSidebarLabel(text) {
+              var cleaned = stripSidebarIconMetadata(text);
+              return cleaned || (text || '').replace(/\s+/g, ' ').trim();
+            }
+
             function getSidebarNamedIcon(linkEl) {
               var title = linkEl.getAttribute('title') || '';
               var match = title.match(/icon:([a-z0-9_-]+)/i);
@@ -656,12 +661,15 @@
 
                 var key = normalizeSidebarHref(linkEl.getAttribute('href'));
                 var originalLabel = (linkEl.textContent || '').replace(/\s+/g, ' ').trim();
-                var icon = getSidebarNamedIcon(linkEl) || sidebarIconMap[key] || getSidebarTextIcon(originalLabel);
+                var cleanedLabel = getCleanSidebarLabel(originalLabel);
+                var icon = getSidebarNamedIcon(linkEl) || sidebarIconMap[key] || getSidebarTextIcon(cleanedLabel);
                 if (!icon) {
                   return;
                 }
 
-                linkEl.innerHTML = renderSidebarIcon(icon) + '<span class="sidebar-link-label">' + (icon.label || originalLabel) + '</span>';
+                linkEl.removeAttribute('title');
+                linkEl.setAttribute('aria-label', icon.label || cleanedLabel);
+                linkEl.innerHTML = renderSidebarIcon(icon) + '<span class="sidebar-link-label">' + (icon.label || cleanedLabel) + '</span>';
                 linkEl.dataset.sidebarIconBound = '1';
               });
 
@@ -682,7 +690,7 @@
                 }
 
                 var rawSectionText = titleEl.textContent || '';
-                var cleanedSectionText = stripSidebarIconMetadata(rawSectionText);
+                var cleanedSectionText = getCleanSidebarLabel(rawSectionText);
                 var key = getSidebarSectionKey(cleanedSectionText);
                 var sectionIcon = getSidebarSectionConfiguredIcon(itemEl, titleEl) || sidebarSectionIconMap[key];
                 if (!sectionIcon) {
@@ -814,6 +822,7 @@
             requestAnimationFrame(function () {
               cleanRenderedMojibake();
               initMicroInteractions();
+              enhanceSidebarIcons();
               applyImportantCallouts();
               enhanceScriptVideos();
               enhanceStatusBadges();
