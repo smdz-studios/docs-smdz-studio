@@ -14,6 +14,12 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_bus_travels"
+></div>
+
+---
 
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_bus_travels`

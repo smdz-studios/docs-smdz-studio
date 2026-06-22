@@ -11,6 +11,11 @@
   ></iframe>
 </div>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_streamers_list"
+></div>
+
 ---
 
 # 🧩 **OVERVIEW:**
@@ -52,7 +57,6 @@ Advanced streamer list system with a modern NUI, secure streamer applications, r
   - localized action summaries (`who did what to which record`)
 - 🔔 **In-server result flow** for applicants (pending/rejected/acknowledge).
 - 🎨 **Centralized UI colors in `ui_colors.lua`** (no CSS rebuild needed for color theme changes).
-- 🌍 **Full localization architecture** (`en`, `es`, `de`, `fr`) for UI, notifications, and debug messages.
 
 ---
 

@@ -13,6 +13,12 @@
 </div>
 
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_speed_bumps"
+></div>
+
+
 ---
 
 # 🧩 **OVERVIEW:**
