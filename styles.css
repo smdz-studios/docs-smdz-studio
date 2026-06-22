@@ -2691,68 +2691,248 @@ pre:hover .docsify-copy-code-button {
   transition: width 0.1s ease-out;
 }
 
+
+
+
+
+
+
+
+/* =========================================================
+   5METRICS — RESOURCE USAGE CARD
+   ========================================================= */
+
 .five-metrics-resource {
-    margin: 18px 0 24px;
+    margin: 18px 0 26px;
 }
 
 .five-metrics-card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 15px 18px;
-    border: 1px solid rgba(127, 127, 127, 0.22);
-    border-radius: 10px;
-    background: rgba(127, 127, 127, 0.06);
+    gap: 24px;
+    width: 100%;
+    padding: 18px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 12px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.five-metrics-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--theme-color, #f0b90b);
 }
 
 .five-metrics-information {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
 }
 
 .five-metrics-title {
+    display: block;
     width: 100%;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    opacity: 0.65;
+    opacity: 0.62;
 }
 
 .five-metrics-count {
     font-size: 20px;
     font-weight: 800;
-    color: var(--theme-color, #42b983);
+    line-height: 1.2;
+    color: var(--theme-color, #f0b90b);
 }
 
 .five-metrics-description {
     font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
     opacity: 0.72;
 }
 
 .five-metrics-attribution {
     flex-shrink: 0;
     font-size: 12px;
-    opacity: 0.68;
+    line-height: 1.4;
+    white-space: nowrap;
+    opacity: 0.62;
 }
 
 .five-metrics-attribution a {
+    color: var(--theme-color, #f0b90b);
     font-weight: 700;
+    text-decoration: none;
+    transition:
+        opacity 0.18s ease,
+        text-decoration-color 0.18s ease;
 }
 
-.five-metrics-loading,
-.five-metrics-error {
+.five-metrics-attribution a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+.five-metrics-loading {
+    justify-content: flex-start;
+    min-height: 62px;
     font-size: 13px;
+    font-weight: 600;
     opacity: 0.72;
 }
 
-@media (max-width: 650px) {
+.five-metrics-loading span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.five-metrics-loading span::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border: 2px solid rgba(148, 163, 184, 0.25);
+    border-top-color: var(--theme-color, #f0b90b);
+    border-radius: 50%;
+    animation: five-metrics-spin 0.8s linear infinite;
+}
+
+@keyframes five-metrics-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.five-metrics-error {
+    justify-content: flex-start;
+    min-height: 62px;
+    border-color: rgba(239, 68, 68, 0.22);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239, 68, 68, 0.07),
+            rgba(239, 68, 68, 0.025)
+        );
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.five-metrics-error::before {
+    background: #ef4444;
+}
+
+/* =========================================================
+   LIGHT MODE
+   ========================================================= */
+
+body:not(.dark) .five-metrics-card {
+    border-color: rgba(15, 23, 42, 0.11);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.035),
+            rgba(15, 23, 42, 0.012)
+        );
+    box-shadow:
+        0 8px 22px rgba(15, 23, 42, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+body:not(.dark) .five-metrics-error {
+    border-color: rgba(220, 38, 38, 0.18);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(220, 38, 38, 0.055),
+            rgba(220, 38, 38, 0.018)
+        );
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
     .five-metrics-card {
         align-items: flex-start;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+        padding: 16px 17px;
+    }
+
+    .five-metrics-information {
+        width: 100%;
+    }
+
+    .five-metrics-count {
+        font-size: 18px;
+    }
+
+    .five-metrics-description {
+        font-size: 13px;
+    }
+
+    .five-metrics-attribution {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 420px) {
+    .five-metrics-information {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .five-metrics-title {
+        margin-bottom: 4px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .five-metrics-loading span::before {
+        animation: none;
+    }
+
+    .five-metrics-attribution a {
+        transition: none;
     }
 }
