@@ -2720,9 +2720,9 @@ pre:hover .docsify-copy-code-button {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
     width: 100%;
-    padding: 14px 16px 12px;
+    padding: 13px 14px 11px;
     overflow: hidden;
     border: 1px solid rgba(148, 163, 184, 0.08);
     border-radius: 14px;
@@ -2766,14 +2766,15 @@ pre:hover .docsify-copy-code-button {
     z-index: 1;
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: center;
+    gap: 0;
+    text-align: center;
 }
 
 .five-metrics-header-copy {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0;
     flex: 1 1 auto;
     min-width: 0;
 }
@@ -2781,7 +2782,7 @@ pre:hover .docsify-copy-code-button {
 .five-metrics-title {
     display: block;
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -2794,15 +2795,15 @@ pre:hover .docsify-copy-code-button {
     z-index: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    gap: 6px;
 }
 
 .five-metrics-stat {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border: 0;
     border-radius: 12px;
     background: transparent;
@@ -2812,8 +2813,8 @@ pre:hover .docsify-copy-code-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
     border-radius: 0;
     background: none;
@@ -2826,8 +2827,8 @@ pre:hover .docsify-copy-code-button {
 }
 
 .five-metrics-stat-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     fill: currentColor;
 }
 
@@ -2838,7 +2839,7 @@ pre:hover .docsify-copy-code-button {
 }
 
 .five-metrics-stat-value {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -2847,10 +2848,10 @@ pre:hover .docsify-copy-code-button {
 
 .five-metrics-stat-label {
     margin-top: 4px;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     line-height: 1.35;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #ffffff;
 }
@@ -3001,22 +3002,24 @@ body:not(.dark) .five-metrics-error {
 
 @media (max-width: 700px) {
     .five-metrics-card {
-        gap: 12px;
-        padding: 13px 14px 12px;
+        gap: 10px;
+        padding: 12px 13px 10px;
     }
 
     .five-metrics-header {
         flex-direction: column;
         align-items: flex-start;
+        text-align: left;
     }
 
     .five-metrics-stats {
         width: 100%;
         grid-template-columns: 1fr;
+        gap: 5px;
     }
 
     .five-metrics-stat {
-        padding: 10px 11px;
+        padding: 8px 10px;
     }
 
     .five-metrics-attribution {
@@ -3029,11 +3032,11 @@ body:not(.dark) .five-metrics-error {
     .five-metrics-stat {
         align-items: flex-start;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
     }
 
     .five-metrics-stat-value {
-        font-size: 22px;
+        font-size: 21px;
     }
 }
 
