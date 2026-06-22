@@ -122,7 +122,7 @@
       subMaxLevel: 3,
       autoHeader: true,
       coverpage: false,
-      themeColor: '#509205',
+      themeColor: '#d4a017',
       maxLevel: 4,
       homepage: 'portal.md',
       notFoundPage: '404.md',
@@ -532,6 +532,14 @@
               return '';
             }
 
+            function renderSidebarBadge(badgeText) {
+              if (!badgeText) {
+                return '';
+              }
+
+              return '<span class="sidebar-link-badge">' + badgeText + '</span>';
+            }
+
             function createSidebarIcon(iconName) {
               var normalizedIconName = normalizeLucideIconName(iconName);
               var localIconPath = sidebarNamedIconMap[normalizedIconName];
@@ -662,14 +670,32 @@
                 var key = normalizeSidebarHref(linkEl.getAttribute('href'));
                 var originalLabel = (linkEl.textContent || '').replace(/\s+/g, ' ').trim();
                 var cleanedLabel = getCleanSidebarLabel(originalLabel);
+                var isNewIdentityLink = key === '/new-identity.md';
                 var icon = getSidebarNamedIcon(linkEl) || sidebarIconMap[key] || getSidebarTextIcon(cleanedLabel);
+                if (isNewIdentityLink && !icon) {
+                  icon = createSidebarIcon('sparkles');
+                }
                 if (!icon) {
                   return;
                 }
 
+                if (isNewIdentityLink) {
+                  linkEl.classList.add('sidebar-new-identity-link');
+                }
+
+                var badgeHtml = isNewIdentityLink ? renderSidebarBadge('NEW') : '';
                 linkEl.removeAttribute('title');
                 linkEl.setAttribute('aria-label', icon.label || cleanedLabel);
-                linkEl.innerHTML = renderSidebarIcon(icon) + '<span class="sidebar-link-label">' + (icon.label || cleanedLabel) + '</span>';
+                if (isNewIdentityLink) {
+                  linkEl.innerHTML =
+                    renderSidebarIcon(icon) +
+                    '<span class="sidebar-new-identity-content">' +
+                      '<span class="sidebar-link-label">' + (icon.label || cleanedLabel) + '</span>' +
+                      badgeHtml +
+                    '</span>';
+                } else {
+                  linkEl.innerHTML = renderSidebarIcon(icon) + '<span class="sidebar-link-label">' + (icon.label || cleanedLabel) + '</span>';
+                }
                 linkEl.dataset.sidebarIconBound = '1';
               });
 
@@ -967,7 +993,7 @@
             var footerHtml =
               '<div class="smdz-footer">' +
                 '© 2025 - 2026 SMDZ Studios · All rights reserved · Not affiliated with R* Games<br />' +
-                'Made with 💚 by SMDZ Studios' +
+                'Made with 💛 by SMDZ Studios' +
                 '<div class="smdz-footer-logos">' +
                   '<img src="assets/smdz.png" alt="SMDZ Studios" />' +
                   '<img src="assets/cfx.png" alt="Cfx.re" />' +

@@ -12,5 +12,5 @@ window.SMDZ_SALE_BANNER_CONFIG = {
   target: "_blank",
 
   // Lower value = faster movement.
-  speedSeconds: 74
+  speedSeconds: 50
 };

@@ -15,6 +15,7 @@ Sidebar icons:
   - [Portal](/portal.md "icon:portal")
   - [Changelog](/changelog.md "icon:changelog")
   - [Store](https://smdz-studios.tebex.io/ "icon:store")
+  - [New Identity](/new-identity.md "icon:sparkles")
   <!-- - [Discord](https://smdz-studios.tebex.io/ "icon:headset") -->
 
 - **Support** "icon:support"
