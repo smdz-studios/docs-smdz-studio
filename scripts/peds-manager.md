@@ -14,6 +14,11 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
 </p>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_peds_manager"
+></div>
+
 ---
 
 # 🧩 **OVERVIEW:**

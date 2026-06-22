@@ -17,6 +17,11 @@
   THIS RESOURCE HELPS IN THE DEVELOPMENT OF OTHERS, IT DOES NOT CREATE INTERACTIONS BETWEEN PLAYERS
 </p>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_hud2d_builder"
+></div>
+
 ---
 
 # 🧩 OVERVIEW:
