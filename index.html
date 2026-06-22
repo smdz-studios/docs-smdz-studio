@@ -980,8 +980,10 @@
       }
     };
   </script>
+  <!-- Custom plugin: debe cargarse antes del core de Docsify -->
+  <script src="plugins/five-metrics.js?v=20260622"></script>
 
-  <!-- Docsify core (AFTER window.$docsify) -->
+  <!-- Docsify core: cargar una sola vez -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 
   <!-- Official Docsify plugins -->
@@ -998,7 +1000,7 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
-
+  <!-- Custom scripts -->
   <script src="plugins/banner-config.js?v=20260612"></script>
   <script src="plugins/salebanner-config.js?v=20260619"></script>
   <script src="plugins/visitor-config.js?v=20260612-2"></script>

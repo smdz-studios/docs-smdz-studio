@@ -60,17 +60,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #18181b; 
+  background: #18181b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46; 
+  background: #3f3f46;
   border-radius: 5px;
   border: 2px solid #18181b; /* Para crear un pequeño margen interno y que no parezca pegado */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b; 
+  background: #52525b;
 }
 
 /* Scrollbar en la barra lateral específica (Docsify a veces lo reescribe) */
@@ -1050,7 +1050,7 @@ body.has-announcement-bar .sidebar-toggle {
   background: #171717;
   border-bottom: 1px solid #353535;
   overflow: hidden;
-  padding: 0; 
+  padding: 0;
 }
 
 .home-showcase-media::after {
@@ -2691,3 +2691,68 @@ pre:hover .docsify-copy-code-button {
   transition: width 0.1s ease-out;
 }
 
+.five-metrics-resource {
+    margin: 18px 0 24px;
+}
+
+.five-metrics-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 18px;
+    border: 1px solid rgba(127, 127, 127, 0.22);
+    border-radius: 10px;
+    background: rgba(127, 127, 127, 0.06);
+}
+
+.five-metrics-information {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.five-metrics-title {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.65;
+}
+
+.five-metrics-count {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--theme-color, #42b983);
+}
+
+.five-metrics-description {
+    font-size: 14px;
+    opacity: 0.72;
+}
+
+.five-metrics-attribution {
+    flex-shrink: 0;
+    font-size: 12px;
+    opacity: 0.68;
+}
+
+.five-metrics-attribution a {
+    font-weight: 700;
+}
+
+.five-metrics-loading,
+.five-metrics-error {
+    font-size: 13px;
+    opacity: 0.72;
+}
+
+@media (max-width: 650px) {
+    .five-metrics-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

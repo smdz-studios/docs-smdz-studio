@@ -483,8 +483,6 @@ print('Active missions:', json.encode(missions))
 
 # 🧯 **COMMON ISSUES:**
 
-**Quick diagnosis table**
-
 | Issue | Symptoms | Likely Cause | Fix |
 |---|---|---|---|
 | NPCs not spawning | No NPCs appear after start | `npc-config.lua` missing entries or `animalSpawns` empty | Ensure `config/npc-config.lua` has points and each has `animalSpawns`. |
@@ -510,6 +508,8 @@ print('Active missions:', json.encode(missions))
 | Search zone too big | Search too hard | High `SearchAreaRadius` | Reduce `SearchAreaRadius` for the mission. |
 | Multiple NPCs on map | Too many NPCs | High `MaxNPCs` | Lower `Config.NPCSpawn.MaxNPCs`. |
 | Target shows wrong label | Target text not updated | Locale key mismatch | Update target label keys in `locales/*.lua`. |
+
+---
 
 ## ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 

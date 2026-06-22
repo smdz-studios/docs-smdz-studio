@@ -40,10 +40,13 @@ Sidebar icons:
   - [NFC Transfer](/scripts/nfc-transfer.md "icon:money")
   - [Streamers List](/scripts/streamers-list.md "icon:video")
   - [Flyers](/scripts/flyers.md "icon:flyer")
+  - [Voice Indicator](/scripts/voice-indicator.md "icon:mic")
+
   <!-- - [Railway Job](/scripts/railway-job.md "icon:train") -->
 
 - **Redesigns** "icon:redesigns"
   - [Ox Target (Crystal Style)](/scripts/redesings/ox-target-redesing-crystal.md "icon:crystal")
+
 
 <!--
 - **Free Resources**
