@@ -10,6 +10,14 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
+<p style="text-align: center; font-weight: bold; color: red;">
+  ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
+</p>
+
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_pets_rescue"
+></div>
 
 ---
 

@@ -1,5 +1,4 @@
 <div align="center" style="margin-bottom: 1.5rem;">
-  <!-- Replace the src with your real showcase video URL (YouTube, etc.) -->
   <iframe
     width="640"
     height="360"
@@ -15,6 +14,12 @@
 <p style="text-align: center; font-weight: bold; color: red;">
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
+
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_rancher_job"
+></div>
+
 
 ---
 

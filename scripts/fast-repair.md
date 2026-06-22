@@ -15,6 +15,11 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
 </p>
 
+<div
+  class="five-metrics-resource"
+  data-resource="fast_repair_sergioomdz"
+></div>
+
 ---
 
 # 🧩 **OVERVIEW:**

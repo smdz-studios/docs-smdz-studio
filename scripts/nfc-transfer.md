@@ -14,6 +14,11 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_nfc_transfer"
+></div>
+
 ---
 
 # 🧩 **OVERVIEW:**
@@ -662,7 +667,6 @@ Implemented protections:
 - Check outbound request restrictions/firewall on host.
 
 ---
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
