@@ -1,7 +1,7 @@
+
 (function () {
     'use strict';
 
-    // URL del Worker, sin barra al final.
     const WORKER_URL =
         'https://5metrics.sergioramonlopezmadrid.workers.dev';
 
@@ -11,7 +11,7 @@
     const RESOURCE_PATTERN =
         /^smdz_[a-z0-9][a-z0-9_-]{0,100}$/i;
 
-    function formatServerCount(value) {
+    function formatNumber(value) {
         return new Intl.NumberFormat(
             document.documentElement.lang || 'en'
         ).format(value);
@@ -20,29 +20,41 @@
     function renderLoading(element) {
         element.innerHTML = `
             <div class="five-metrics-card five-metrics-loading">
-                <span>Loading server usage...</span>
+                <span>Loading usage data...</span>
             </div>
         `;
     }
 
-    function renderSuccess(element, servers) {
-        const formattedServers = formatServerCount(servers);
-        const serverLabel = servers === 1 ? 'server' : 'servers';
+    function renderSuccess(
+        element,
+        servers,
+        players
+    ) {
+        const formattedServers =
+            formatNumber(servers);
+
+        const formattedPlayers =
+            formatNumber(players);
+
+        const serverLabel =
+            servers === 1 ? 'server' : 'servers';
+
+        const playerLabel =
+            players === 1 ? 'player' : 'players';
 
         element.innerHTML = `
             <div class="five-metrics-card">
                 <div class="five-metrics-information">
                     <span class="five-metrics-title">
-                        Server usage
+                        Current usage
                     </span>
 
                     <span class="five-metrics-count">
-                        ${formattedServers}
-                        ${serverLabel}
+                        ${formattedServers} ${serverLabel}
                     </span>
 
                     <span class="five-metrics-description">
-                        currently using this script
+                        • ${formattedPlayers} ${playerLabel}
                     </span>
                 </div>
 
@@ -66,7 +78,7 @@
         element.innerHTML = `
             <div class="five-metrics-card five-metrics-error">
                 <span>
-                    Server usage data is temporarily unavailable.
+                    Usage data is temporarily unavailable.
                 </span>
             </div>
         `;
@@ -84,7 +96,9 @@
 
         const resourceName = (
             element.dataset.resource || ''
-        ).trim().toLowerCase();
+        )
+            .trim()
+            .toLowerCase();
 
         if (!RESOURCE_PATTERN.test(resourceName)) {
             renderError(element);
@@ -116,20 +130,28 @@
 
             if (
                 data.success !== true ||
-                typeof data.servers !== 'number'
+                typeof data.servers !== 'number' ||
+                typeof data.players !== 'number'
             ) {
                 throw new Error(
-                    'Invalid server count response'
+                    'Invalid usage response'
                 );
             }
 
             renderSuccess(
                 element,
-                Math.max(0, Math.trunc(data.servers))
+                Math.max(
+                    0,
+                    Math.trunc(data.servers)
+                ),
+                Math.max(
+                    0,
+                    Math.trunc(data.players)
+                )
             );
         } catch (error) {
             console.error(
-                '[5Metrics] Could not load resource stats:',
+                '[5Metrics] Could not load usage stats:',
                 error
             );
 
@@ -138,19 +160,11 @@
     }
 
     function loadMetrics() {
-        const elements = document.querySelectorAll(
-            RESOURCE_SELECTOR
-        );
-
-        elements.forEach((element) => {
-            loadElement(element);
-        });
+        document
+            .querySelectorAll(RESOURCE_SELECTOR)
+            .forEach(loadElement);
     }
 
-    /*
-     * Docsify carga cada Markdown sin recargar la página.
-     * doneEach ejecuta el sistema después de renderizar cada .md.
-     */
     function fiveMetricsPlugin(hook) {
         hook.doneEach(function () {
             loadMetrics();
@@ -164,7 +178,6 @@
         window.$docsify.plugins || []
     );
 
-    // También permite comprobarlo al cargar la página inicialmente.
     document.addEventListener(
         'DOMContentLoaded',
         loadMetrics
