@@ -2892,7 +2892,7 @@ pre:hover .docsify-copy-code-button {
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.04em;
-    color: rgba(248, 250, 252, 0.9);
+    color: #ffffff;
 }
 
 .five-metrics-stat-label {
@@ -2902,7 +2902,7 @@ pre:hover .docsify-copy-code-button {
     line-height: 1.35;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(226, 232, 240, 0.5);
+    color: #ffffff;
 }
 
 .five-metrics-attribution {
