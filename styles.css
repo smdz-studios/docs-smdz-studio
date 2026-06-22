@@ -2071,8 +2071,13 @@ pre code {
 }
 
 .sidebar-link-label {
+  display: inline-block;
   min-width: 0;
   overflow: hidden;
+  max-width: 100%;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
   text-overflow: ellipsis;
 }
 
@@ -2101,6 +2106,11 @@ pre code {
   box-shadow: none !important;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.sidebar-section-title .sidebar-link-label {
+  max-width: calc(100% - 28px);
+  letter-spacing: 0.12em;
 }
 
 .sidebar-section-title .sidebar-link-icon {

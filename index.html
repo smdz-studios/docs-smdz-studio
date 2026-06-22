@@ -570,6 +570,14 @@
               return null;
             }
 
+            function stripSidebarIconMetadata(text) {
+              return (text || '')
+                .replace(/\s*"?icon:[a-z0-9_-]+"?/gi, '')
+                .replace(/\s*"?category-icon:[a-z0-9_-]+"?/gi, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            }
+
             function getSidebarNamedIcon(linkEl) {
               var title = linkEl.getAttribute('title') || '';
               var match = title.match(/icon:([a-z0-9_-]+)/i);
@@ -673,16 +681,15 @@
                   return;
                 }
 
-                var key = getSidebarSectionKey(titleEl.textContent);
+                var rawSectionText = titleEl.textContent || '';
+                var cleanedSectionText = stripSidebarIconMetadata(rawSectionText);
+                var key = getSidebarSectionKey(cleanedSectionText);
                 var sectionIcon = getSidebarSectionConfiguredIcon(itemEl, titleEl) || sidebarSectionIconMap[key];
                 if (!sectionIcon) {
                   return;
                 }
 
-                var sectionLabel = (titleEl.textContent || '')
-                  .replace(/\s*"?icon:[a-z0-9_-]+"?/i, '')
-                  .replace(/\s+/g, ' ')
-                  .trim();
+                var sectionLabel = cleanedSectionText;
 
                 titleEl.classList.add('sidebar-section-title');
                 titleEl.innerHTML = renderSidebarIcon(sectionIcon) + '<span class="sidebar-link-label">' + (sectionIcon.label || sectionLabel) + '</span>';
