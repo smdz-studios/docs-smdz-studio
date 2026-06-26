@@ -50,7 +50,8 @@
 
 ---
 
-# ⚙️ **CONFIGURATION (`CONFIG.LUA`):**
+# ⚙️ **CONFIGURATION FILE:**
+
 Core settings (example):
 ```lua
 Config.NuiTheme = 'premium_white' -- default theme key

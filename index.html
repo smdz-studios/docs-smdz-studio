@@ -20,6 +20,15 @@
   <meta name="twitter:description" content="Dark-mode documentation for SMDZ Studios FiveM scripts." />
   <meta name="twitter:image" content="https://docs.smdz-studios.com/assets/logo.png" />
 
+  <!-- Favicons live in assets/favicon/ so additional sizes can be added later. -->
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="assets/favicon/site.webmanifest" />
+  <meta name="theme-color" content="#1f1f1f" />
+
   <!-- Docsify theme (dark) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
 
@@ -125,7 +134,7 @@
       themeColor: '#d4a017',
       maxLevel: 4,
       homepage: 'portal.md',
-      notFoundPage: '404.md',
+      notFoundPage: 'errors-pages/404.md',
 
       alias: {
         '/_sidebar.md': '/_sidebar.md',
@@ -427,6 +436,84 @@
             sidebarNamedIconMap.paid = sidebarSectionIconMap['PAID RESOURCES'].path;
             sidebarNamedIconMap.redesigns = sidebarSectionIconMap.REDESIGNS.path;
             sidebarNamedIconMap.free = sidebarSectionIconMap['FREE RESOURCES'].path;
+            sidebarNamedIconMap.newspaper = getSidebarLucideIcon('newspaper');
+            sidebarNamedIconMap.sparkles = getSidebarLucideIcon('sparkles');
+            sidebarNamedIconMap.package = getSidebarLucideIcon('package');
+            sidebarNamedIconMap['package-open'] = getSidebarLucideIcon('package-open');
+            sidebarNamedIconMap['package-plus'] = getSidebarLucideIcon('package-plus');
+            sidebarNamedIconMap['package-check'] = getSidebarLucideIcon('package-check');
+            sidebarNamedIconMap['badge-dollar-sign'] = getSidebarLucideIcon('badge-dollar-sign');
+            sidebarNamedIconMap['circle-dollar-sign'] = getSidebarLucideIcon('circle-dollar-sign');
+            sidebarNamedIconMap['badge-check'] = getSidebarLucideIcon('badge-check');
+            sidebarNamedIconMap['badge-info'] = getSidebarLucideIcon('badge-info');
+            sidebarNamedIconMap['badge-alert'] = getSidebarLucideIcon('badge-alert');
+            sidebarNamedIconMap['shield-check'] = getSidebarLucideIcon('shield-check');
+            sidebarNamedIconMap['shield-alert'] = getSidebarLucideIcon('shield-alert');
+            sidebarNamedIconMap['shield-x'] = getSidebarLucideIcon('shield-x');
+            sidebarNamedIconMap['file-text'] = getSidebarLucideIcon('file-text');
+            sidebarNamedIconMap['file-code-2'] = getSidebarLucideIcon('file-code-2');
+            sidebarNamedIconMap['folder-open'] = getSidebarLucideIcon('folder-open');
+            sidebarNamedIconMap['folder-plus'] = getSidebarLucideIcon('folder-plus');
+            sidebarNamedIconMap.search = getSidebarLucideIcon('search');
+            sidebarNamedIconMap.command = getSidebarLucideIcon('command');
+            sidebarNamedIconMap.settings = getSidebarLucideIcon('settings');
+            sidebarNamedIconMap['sliders-horizontal'] = getSidebarLucideIcon('sliders-horizontal');
+            sidebarNamedIconMap['layout-grid'] = getSidebarLucideIcon('layout-grid');
+            sidebarNamedIconMap.database = getSidebarLucideIcon('database');
+            sidebarNamedIconMap.server = getSidebarLucideIcon('server');
+            sidebarNamedIconMap.globe = getSidebarLucideIcon('globe');
+            sidebarNamedIconMap['link-2'] = getSidebarLucideIcon('link-2');
+            sidebarNamedIconMap['share-2'] = getSidebarLucideIcon('share-2');
+            sidebarNamedIconMap.bookmark = getSidebarLucideIcon('bookmark');
+            sidebarNamedIconMap['bookmark-plus'] = getSidebarLucideIcon('bookmark-plus');
+            sidebarNamedIconMap['clipboard-list'] = getSidebarLucideIcon('clipboard-list');
+            sidebarNamedIconMap['calendar-days'] = getSidebarLucideIcon('calendar-days');
+            sidebarNamedIconMap['clock-3'] = getSidebarLucideIcon('clock-3');
+            sidebarNamedIconMap.tag = getSidebarLucideIcon('tag');
+            sidebarNamedIconMap.star = getSidebarLucideIcon('star');
+            sidebarNamedIconMap.rocket = getSidebarLucideIcon('rocket');
+            sidebarNamedIconMap.megaphone = getSidebarLucideIcon('megaphone');
+            sidebarNamedIconMap.bell = getSidebarLucideIcon('bell');
+            sidebarNamedIconMap['book-open'] = getSidebarLucideIcon('book-open');
+            sidebarNamedIconMap['book-open-text'] = getSidebarLucideIcon('book-open-text');
+            sidebarNamedIconMap.terminal = getSidebarLucideIcon('terminal');
+            sidebarNamedIconMap['code-2'] = getSidebarLucideIcon('code-2');
+            sidebarNamedIconMap.monitor = getSidebarLucideIcon('monitor');
+            sidebarNamedIconMap.navigation = getSidebarLucideIcon('navigation');
+            sidebarNamedIconMap['map-pinned'] = getSidebarLucideIcon('map-pinned');
+            sidebarNamedIconMap['car-front'] = getSidebarLucideIcon('car-front');
+            sidebarNamedIconMap.truck = getSidebarLucideIcon('truck');
+            sidebarNamedIconMap.ship = getSidebarLucideIcon('ship');
+            sidebarNamedIconMap['train-front'] = getSidebarLucideIcon('train-front');
+            sidebarNamedIconMap['bus-front'] = getSidebarLucideIcon('bus-front');
+            sidebarNamedIconMap.plane = getSidebarLucideIcon('plane');
+            sidebarNamedIconMap.lock = getSidebarLucideIcon('lock');
+            sidebarNamedIconMap['key-round'] = getSidebarLucideIcon('key-round');
+            sidebarNamedIconMap['user-round'] = getSidebarLucideIcon('user-round');
+            sidebarNamedIconMap['users-round'] = getSidebarLucideIcon('users-round');
+            sidebarNamedIconMap['paw-print'] = getSidebarLucideIcon('paw-print');
+            sidebarNamedIconMap['folder-search'] = getSidebarLucideIcon('folder-search');
+            sidebarNamedIconMap['file-search'] = getSidebarLucideIcon('file-search');
+            sidebarNamedIconMap['book-copy'] = getSidebarLucideIcon('book-copy');
+            sidebarNamedIconMap['scroll-text'] = getSidebarLucideIcon('scroll-text');
+            sidebarNamedIconMap['message-circle'] = getSidebarLucideIcon('message-circle');
+            sidebarNamedIconMap['messages-square'] = getSidebarLucideIcon('messages-square');
+            sidebarNamedIconMap['layout-dashboard'] = getSidebarLucideIcon('layout-dashboard');
+            sidebarNamedIconMap['panel-left'] = getSidebarLucideIcon('panel-left');
+            sidebarNamedIconMap['panel-top'] = getSidebarLucideIcon('panel-top');
+            sidebarNamedIconMap['panel-right'] = getSidebarLucideIcon('panel-right');
+            sidebarNamedIconMap['wand-sparkles'] = getSidebarLucideIcon('wand-sparkles');
+            sidebarNamedIconMap['paintbrush'] = getSidebarLucideIcon('paintbrush');
+            sidebarNamedIconMap.palette = getSidebarLucideIcon('palette');
+            sidebarNamedIconMap['clipboard-copy'] = getSidebarLucideIcon('clipboard-copy');
+            sidebarNamedIconMap['clipboard-pen-line'] = getSidebarLucideIcon('clipboard-pen-line');
+            sidebarNamedIconMap['hard-drive'] = getSidebarLucideIcon('hard-drive');
+            sidebarNamedIconMap['cloud-cog'] = getSidebarLucideIcon('cloud-cog');
+            sidebarNamedIconMap.cloud = getSidebarLucideIcon('cloud');
+            sidebarNamedIconMap.wifi = getSidebarLucideIcon('wifi');
+            sidebarNamedIconMap.radio = getSidebarLucideIcon('radio');
+            sidebarNamedIconMap.radar = getSidebarLucideIcon('radar');
+            sidebarNamedIconMap.siren = getSidebarLucideIcon('siren');
 
             var sidebarIconTextMap = {
               'PORTAL': sidebarIconMap['/portal.md'],
@@ -527,6 +614,10 @@
               var normalizedIconName = normalizeLucideIconName(iconName);
               var localIconPath = sidebarNamedIconMap[normalizedIconName];
               if (localIconPath) {
+                if (typeof localIconPath === 'object') {
+                  return localIconPath;
+                }
+
                 return {
                   path: localIconPath
                 };

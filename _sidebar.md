@@ -12,7 +12,7 @@ Sidebar icons:
 -->
 
 - **Important News** "icon:newspaper"
-  - [New Identity](/new-identity.md "icon:sparkles")
+  - [New Identity](news/new-identity.md "icon:sparkles")
 
 - **Information** "icon:info"
   - [Portal](/portal.md "icon:portal")

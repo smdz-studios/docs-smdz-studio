@@ -22,7 +22,7 @@ window.SMDZ_BANNER_CONFIG = {
   cta: {
     enabled: true,
     label: "View New Identity",
-    url: "/new-identity.md",
+    url: "news/new-identity.md",
     target: "_self"
   }
 };
