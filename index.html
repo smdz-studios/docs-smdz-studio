@@ -84,6 +84,7 @@
 
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-2" />
 </head>
 <body>
   <!-- Global announcement bar – content & style controlled from plugins/banner-config.js -->
@@ -332,6 +333,32 @@
             });
           }
 
+          function wrapMarkdownTables() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var tables = contentRoot.querySelectorAll('table');
+            tables.forEach(function (tableEl) {
+              if (tableEl.dataset.tableWrapped === '1') {
+                return;
+              }
+
+              var parentEl = tableEl.parentElement;
+              if (!parentEl || parentEl.classList.contains('markdown-table-scroll')) {
+                tableEl.dataset.tableWrapped = '1';
+                return;
+              }
+
+              var wrapperEl = document.createElement('div');
+              wrapperEl.className = 'markdown-table-scroll';
+              parentEl.insertBefore(wrapperEl, tableEl);
+              wrapperEl.appendChild(tableEl);
+              tableEl.dataset.tableWrapped = '1';
+            });
+          }
+
           function cleanRenderedMojibake() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot || contentRoot.dataset.mojibakeCleaned === '1') {
@@ -440,6 +467,10 @@
               'REDESIGNS': {
                 label: 'Redesigns',
                 path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
+              },
+              'TOOLS': {
+                label: 'Tools',
+                path: 'M21.3 6.7a5.5 5.5 0 0 1-6.8 6.8L7.2 20.8a2.8 2.8 0 0 1-4-4l7.3-7.3a5.5 5.5 0 0 1 6.8-6.8l-3.2 3.2 2 2 3.2-3.2ZM5.1 18.9a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z'
               },
               'FREE RESOURCES': {
                 label: 'Free Resources',
@@ -559,6 +590,13 @@
             sidebarNamedIconMap.radio = getSidebarLucideIcon('radio');
             sidebarNamedIconMap.radar = getSidebarLucideIcon('radar');
             sidebarNamedIconMap.siren = getSidebarLucideIcon('siren');
+            sidebarNamedIconMap.tools = getSidebarLucideIcon('wrench');
+            sidebarNamedIconMap['clipboard-copy'] = getSidebarLucideIcon('clipboard-copy');
+
+            sidebarIconMap['/tools/item-converter/'] = {
+              label: 'Item Converter',
+              path: 'M9 3h6a2 2 0 0 1 2 2v1h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2Zm0 3h6V5H9v1Zm-2 4v9h10v-9H7Zm2 2h6v1H9v-1Zm0 3h4v1H9v-1Z'
+            };
 
             var sidebarIconTextMap = {
               'PORTAL': sidebarIconMap['/portal.md'],
@@ -585,7 +623,8 @@
               'STREAMERS LIST': sidebarIconMap['/scripts/streamers-list.md'],
               'FLYERS': sidebarIconMap['/scripts/flyers.md'],
               'RAILWAY JOB': sidebarIconMap['/scripts/railway-job.md'],
-              'OX TARGET': sidebarIconMap['/scripts/ox-target-redesing-crystal.md']
+              'OX TARGET': sidebarIconMap['/scripts/ox-target-redesing-crystal.md'],
+              'ITEM CONVERTER': sidebarIconMap['/tools/item-converter/']
             };
 
             function normalizeSidebarHref(rawHref) {
@@ -958,6 +997,10 @@
               applyImportantCallouts();
               enhanceScriptVideos();
               enhanceStatusBadges();
+              wrapMarkdownTables();
+              if (typeof window.SMDZ_initItemConverterTool === 'function') {
+                window.SMDZ_initItemConverterTool();
+              }
             });
           });
         },
@@ -1152,6 +1195,7 @@
   <script src="plugins/salebanner-config.js?v=20260619"></script>
   <script src="plugins/visitor-config.js?v=20260612-2"></script>
   <script src="plugins/visitor-notifier.js?v=20260613-1"></script>
+  <script src="tools/item-converter/item-converter.js?v=20260626-2"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {

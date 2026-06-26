@@ -1,0 +1,333 @@
+.markdown-section .tool-shell {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.markdown-section .tool-banner {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0.4rem;
+}
+
+.markdown-section .tool-banner-image {
+  display: block;
+  width: min(100%, 1360px);
+  height: auto;
+  border-radius: 1.05rem;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+}
+
+.markdown-section .tool-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+  gap: 1rem;
+  align-items: stretch;
+  margin-bottom: 0.05rem;
+}
+
+.markdown-section .tool-hero-copy,
+.markdown-section .tool-hero-note {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    #232323;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.markdown-section .tool-hero-copy {
+  padding: 1.15rem 1.2rem;
+}
+
+.markdown-section .tool-kicker {
+  margin: 0 0 0.45rem;
+  color: #f5c242;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.markdown-section .tool-hero h1,
+.markdown-section .tool-hero h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-section .tool-description,
+.markdown-section .tool-note,
+.markdown-section .tool-footnote {
+  margin: 0;
+  color: rgba(243, 243, 243, 0.88);
+  line-height: 1.65;
+}
+
+.markdown-section .tool-hero-note {
+  padding: 1.15rem 1.2rem;
+  display: flex;
+  align-items: center;
+  border-left: 3px solid rgba(245, 194, 66, 0.48);
+}
+
+.markdown-section .tool-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.markdown-section .tool-stat,
+.markdown-section .tool-info-item {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.95rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.01)),
+    #212121;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.markdown-section .tool-stat {
+  padding: 0.85rem 0.95rem;
+}
+
+.markdown-section .tool-stat-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: rgba(181, 181, 181, 0.8);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.markdown-section .tool-stat strong {
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+}
+
+.markdown-section .tool-note strong {
+  color: #fff5d6;
+}
+
+.markdown-section .tool-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.markdown-section .tool-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.15rem 0 0.2rem;
+}
+
+.markdown-section .tool-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.markdown-section .tool-switcher-button,
+.markdown-section .tool-button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.7rem;
+  padding: 0.74rem 0.95rem;
+  background: #2b2b2b;
+  color: #f4f4f5;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease-out, border-color 0.15s ease-out, background 0.15s ease-out, color 0.15s ease-out;
+}
+
+.markdown-section .tool-switcher-button--neutral {
+  background: #202020;
+}
+
+.markdown-section .tool-switcher-button:hover,
+.markdown-section .tool-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(245, 194, 66, 0.35);
+  background: #313131;
+}
+
+.markdown-section .tool-switcher-button.is-active {
+  border-color: rgba(245, 194, 66, 0.38);
+  background: linear-gradient(180deg, rgba(245, 194, 66, 0.16), rgba(245, 194, 66, 0.06)), #2a2317;
+  color: #fff5d6;
+}
+
+.markdown-section .tool-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 1rem;
+}
+
+.markdown-section .tool-workspace-pane {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    #232323;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.markdown-section .tool-workspace-pane--output {
+  background:
+    linear-gradient(180deg, rgba(245, 194, 66, 0.03), rgba(255, 255, 255, 0.01)),
+    #222222;
+}
+
+.markdown-section .tool-pane-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-section .tool-pane-head h3,
+.markdown-section .tool-info-item strong {
+  margin: 0;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+}
+
+.markdown-section .tool-pane-subtitle,
+.markdown-section .tool-info-item span {
+  color: rgba(181, 181, 181, 0.86);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.markdown-section .tool-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.markdown-section .tool-button {
+  padding: 0.62rem 0.85rem;
+  background: #262626;
+}
+
+.markdown-section .tool-toolbar-actions .tool-button:first-child {
+  background: linear-gradient(180deg, rgba(245, 194, 66, 0.18), rgba(245, 194, 66, 0.08)), #302718;
+  border-color: rgba(245, 194, 66, 0.34);
+  color: #fff5d6;
+}
+
+.markdown-section .tool-button--ghost {
+  background: transparent;
+}
+
+.markdown-section .tool-textarea {
+  width: 100%;
+  min-height: 32rem;
+  resize: vertical;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.8rem;
+  padding: 0.95rem 1rem;
+  background: #181818;
+  color: #f5f5f5;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  tab-size: 2;
+  caret-color: #f5c242;
+  box-sizing: border-box;
+}
+
+.markdown-section .tool-textarea:focus {
+  outline: none;
+  border-color: rgba(245, 194, 66, 0.45);
+  box-shadow: 0 0 0 3px rgba(245, 194, 66, 0.08);
+}
+
+.markdown-section .tool-output {
+  margin: 0;
+  min-height: 32rem;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.8rem;
+  padding: 1rem 1.05rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
+    #181818;
+  color: #f5f5f5;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+
+.markdown-section .tool-output--plain {
+  display: block;
+}
+
+.markdown-section .tool-output.is-empty {
+  color: rgba(181, 181, 181, 0.72);
+  font-style: italic;
+}
+
+.markdown-section .tool-output::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.markdown-section .tool-status {
+  margin-top: 0.7rem;
+  color: rgba(181, 181, 181, 0.9);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.markdown-section .tool-footnote {
+  padding-top: 0.2rem;
+  font-size: 0.88rem;
+}
+
+.markdown-section .tool-info-bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.markdown-section .tool-info-item {
+  padding: 0.9rem 0.95rem;
+}
+
+@media (max-width: 980px) {
+  .markdown-section .tool-hero,
+  .markdown-section .tool-workspace,
+  .markdown-section .tool-info-bar,
+  .markdown-section .tool-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .markdown-section .tool-banner {
+    margin-top: 0.6rem;
+  }
+
+  .markdown-section .tool-textarea,
+  .markdown-section .tool-output {
+    min-height: 20rem;
+  }
+
+  .markdown-section .tool-card-actions {
+    justify-content: flex-start;
+  }
+}

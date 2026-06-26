@@ -14,18 +14,21 @@ Sidebar icons:
 - **Important News** "icon:newspaper"
   - [New Identity](news/new-identity.md "icon:sparkles")
 
-- **Information** "icon:info"
+- **Information**
   - [Portal](/portal.md "icon:portal")
   - [Changelog](/changelog.md "icon:changelog")
   - [Store](https://smdz-studios.tebex.io/ "icon:store")
 
-- **Support** "icon:support"
+- **Support**
   - [Get Support](/support.md "icon:support")
   - [FAQ](/faq.md "icon:faq")
   - [Common Problems](/problems.md "icon:warning")
   - [Asset Escrow System](/fxap.md "icon:shield")
 
-- **Paid Resources** "icon:resources"
+- **Tools** "icon:wrench"
+  - [Item Converter](/tools/item-converter/index.md "icon:wrench")
+
+- **Paid Resources**
   - [Fast Repair - v 1.0](/scripts/fast-repair.md "icon:wrench")
   - [Speed For Zones](/scripts/speed-for-zones.md "icon:speedometer")
   - [HUD 2D Builder](/scripts/hud2d-builder.md "icon:monitor")
@@ -46,10 +49,9 @@ Sidebar icons:
 
   <!-- - [Railway Job](/scripts/railway-job.md "icon:train") -->
 
-- **Redesigns** "icon:redesigns"
+- **Redesigns**
   - [Ox Target (Crystal Style)](/scripts/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
 
-<!--
 - **Free Resources**
-  - [Premium Radar & Minimap Toggle](/scripts/toggle-minimap.md "icon:radar") -->
+  - [Hadling Editor](/scripts/handling-editor.md "icon:toolbox")
