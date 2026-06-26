@@ -3396,6 +3396,97 @@ pre:hover .docsify-copy-code-button {
   visibility: hidden;
 }
 
+/* DevTools deterrent overlay */
+body.devtools-guard-active {
+  overflow: hidden !important;
+}
+
+body.devtools-guard-active #app,
+body.devtools-guard-active .sidebar,
+body.devtools-guard-active #announcement-bar,
+body.devtools-guard-active #sale-banner,
+body.devtools-guard-active .scroll-toggle-btn,
+body.devtools-guard-active #reading-progress-container {
+  filter: blur(18px) saturate(65%);
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.06;
+}
+
+body.devtools-guard-active > :not(.devtools-guard-overlay) {
+  visibility: hidden;
+}
+
+.devtools-guard-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top, rgba(245, 194, 66, 0.12), transparent 42%),
+    rgba(8, 8, 11, 0.92);
+  backdrop-filter: blur(10px);
+  transition: opacity 0.18s ease-out, visibility 0.18s ease-out;
+}
+
+.devtools-guard-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.devtools-guard-panel {
+  width: min(92vw, 460px);
+  padding: 1.3rem 1.25rem;
+  border: 1px solid rgba(245, 194, 66, 0.22);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(24, 24, 27, 0.98), rgba(16, 16, 18, 0.98)),
+    #101012;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+.devtools-guard-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.28rem 0.62rem;
+  margin-bottom: 0.85rem;
+  border-radius: 999px;
+  background: rgba(245, 194, 66, 0.14);
+  color: #f5c242;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.devtools-guard-panel h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.devtools-guard-panel p {
+  margin: 0.75rem 0 0;
+  color: #a7a7b2;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .markdown-section {

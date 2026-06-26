@@ -21,6 +21,7 @@
   <meta name="twitter:image" content="https://docs.smdz-studios.com/assets/logo.png" />
 
   <link rel="canonical" href="https://docs.smdz-studios.com/" />
+  <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';" />
   <meta name="application-name" content="SMDZ Studios Docs" />
   <meta name="apple-mobile-web-app-title" content="SMDZ Docs" />
   <meta name="format-detection" content="telephone=no" />
@@ -831,6 +832,8 @@
               });
             }
 
+            window.SMDZ_enhanceSidebarIcons = enhanceSidebarIcons;
+
             var revealTargets = document.querySelectorAll('.feature-card, .home-showcase-card, .pagination-item');
             if (revealTargets.length > 0) {
               var observer = new IntersectionObserver(function (entries, obs) {
@@ -949,7 +952,9 @@
               window.scrollTo(0, 0);
               cleanRenderedMojibake();
               initMicroInteractions();
-              enhanceSidebarIcons();
+              if (typeof window.SMDZ_enhanceSidebarIcons === 'function') {
+                window.SMDZ_enhanceSidebarIcons();
+              }
               applyImportantCallouts();
               enhanceScriptVideos();
               enhanceStatusBadges();
@@ -1154,6 +1159,202 @@
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
       var loaderHidden = false;
+
+      // Basic client-side deterrents only. This does not provide real security,
+      // but it helps reduce casual inspection and page copying attempts.
+      function bindBasicAntiInspection() {
+        function isEditableTarget(target) {
+          if (!target || typeof target.closest !== 'function') {
+            return false;
+          }
+
+          return !!target.closest('input, textarea, select, [contenteditable="true"], [contenteditable=""]');
+        }
+
+        function shouldBlockShortcut(event) {
+          var key = (event.key || '').toLowerCase();
+          var hasCtrlOrMeta = event.ctrlKey || event.metaKey;
+          var hasShift = event.shiftKey;
+
+          if (event.key === 'F12') {
+            return true;
+          }
+
+          if (hasCtrlOrMeta && hasShift && (key === 'i' || key === 'j' || key === 'c' || key === 'k')) {
+            return true;
+          }
+
+          if (hasCtrlOrMeta && key === 'u') {
+            return true;
+          }
+
+          return false;
+        }
+
+        function blockInspectionEvent(event) {
+          if (isEditableTarget(event.target)) {
+            return;
+          }
+
+          if (!shouldBlockShortcut(event)) {
+            return;
+          }
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (typeof event.stopImmediatePropagation === 'function') {
+            event.stopImmediatePropagation();
+          }
+
+          event.cancelBubble = true;
+          event.returnValue = false;
+        }
+
+        ['keydown', 'keypress', 'keyup'].forEach(function (eventName) {
+          window.addEventListener(eventName, blockInspectionEvent, true);
+          document.addEventListener(eventName, blockInspectionEvent, true);
+        });
+
+        document.addEventListener('contextmenu', function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (typeof event.stopImmediatePropagation === 'function') {
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        document.addEventListener('dragstart', function (event) {
+          if (event.target && typeof event.target.closest === 'function' && event.target.closest('img, a')) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+        }, true);
+      }
+
+      bindBasicAntiInspection();
+
+      function bindDevtoolsGuard() {
+        var overlayId = 'devtools-guard-overlay';
+        var activeClass = 'devtools-guard-active';
+        var geometryCheckDelayMs = 250;
+        var consoleSpamDelayMs = 450;
+        var thresholdPx = 96;
+        var baseline = {
+          outerWidth: window.outerWidth || 0,
+          outerHeight: window.outerHeight || 0,
+          innerWidth: window.innerWidth || 0,
+          innerHeight: window.innerHeight || 0,
+          screenAvailWidth: (window.screen && window.screen.availWidth) ? window.screen.availWidth : 0,
+          screenAvailHeight: (window.screen && window.screen.availHeight) ? window.screen.availHeight : 0
+        };
+        var guardTimer = null;
+        var consoleSpamTimer = null;
+        var consoleSpamTick = 0;
+
+        function ensureOverlay() {
+          var overlay = document.getElementById(overlayId);
+          if (overlay) {
+            return overlay;
+          }
+
+          overlay = document.createElement('div');
+          overlay.id = overlayId;
+          overlay.className = 'devtools-guard-overlay';
+          overlay.setAttribute('aria-hidden', 'true');
+          overlay.innerHTML =
+            '<div class="devtools-guard-panel">' +
+              '<div class="devtools-guard-badge">Protected view</div>' +
+              '<h2>Content temporarily hidden</h2>' +
+              '<p>Developer tools were detected. Close them to restore the documentation view.</p>' +
+            '</div>';
+          document.body.appendChild(overlay);
+          return overlay;
+        }
+
+        function hasGeometrySignal() {
+          var widthGap = Math.abs(window.outerWidth - window.innerWidth);
+          var heightGap = Math.abs(window.outerHeight - window.innerHeight);
+          var widthRatio = window.innerWidth > 0 ? window.outerWidth / window.innerWidth : 1;
+          var heightRatio = window.innerHeight > 0 ? window.outerHeight / window.innerHeight : 1;
+          var baseWidthGap = Math.abs((window.outerWidth || 0) - (window.innerWidth || 0) - (baseline.outerWidth - baseline.innerWidth));
+          var baseHeightGap = Math.abs((window.outerHeight || 0) - (window.innerHeight || 0) - (baseline.outerHeight - baseline.innerHeight));
+          var screenWidthGap = Math.abs((window.screen && window.screen.availWidth ? window.screen.availWidth : 0) - (window.innerWidth || 0));
+          var screenHeightGap = Math.abs((window.screen && window.screen.availHeight ? window.screen.availHeight : 0) - (window.innerHeight || 0));
+
+          return (
+            widthGap > thresholdPx ||
+            heightGap > thresholdPx ||
+            baseWidthGap > thresholdPx ||
+            baseHeightGap > thresholdPx ||
+            screenWidthGap > thresholdPx ||
+            screenHeightGap > thresholdPx ||
+            widthRatio > 1.18 ||
+            heightRatio > 1.18
+          );
+        }
+
+        function spamConsole() {
+          var stamp = new Date().toISOString();
+          var suffix = consoleSpamTick.toString().padStart(2, '0');
+
+          if (typeof console.clear === 'function') {
+            console.clear();
+          }
+
+          console.log('SMDZ STUDIOS');
+          console.log('SMDZ STUDIOS | ' + stamp);
+          console.log('SMDZ STUDIOS | ' + suffix);
+          console.warn('SMDZ STUDIOS');
+          console.info('SMDZ STUDIOS');
+          console.error('SMDZ STUDIOS');
+
+          consoleSpamTick += 1;
+        }
+
+        function setGuardState(shouldHide) {
+          var overlay = shouldHide ? ensureOverlay() : document.getElementById(overlayId);
+
+          document.body.classList.toggle(activeClass, shouldHide);
+
+          if (overlay) {
+            overlay.classList.toggle('is-visible', shouldHide);
+          }
+        }
+
+        function tick() {
+          setGuardState(hasGeometrySignal());
+        }
+
+        window.addEventListener('resize', tick, true);
+        window.addEventListener('focus', tick, true);
+        window.addEventListener('blur', tick, true);
+
+        guardTimer = window.setInterval(tick, geometryCheckDelayMs);
+        consoleSpamTimer = window.setInterval(function () {
+          if (document.body.classList.contains(activeClass)) {
+            spamConsole();
+          } else if (consoleSpamTick !== 0) {
+            consoleSpamTick = 0;
+          }
+        }, consoleSpamDelayMs);
+        tick();
+
+        window.addEventListener('beforeunload', function () {
+          if (guardTimer) {
+            window.clearInterval(guardTimer);
+            guardTimer = null;
+          }
+
+          if (consoleSpamTimer) {
+            window.clearInterval(consoleSpamTimer);
+            consoleSpamTimer = null;
+          }
+        });
+      }
+
+      bindDevtoolsGuard();
 
       function hidePageLoader() {
         if (loaderHidden) {
