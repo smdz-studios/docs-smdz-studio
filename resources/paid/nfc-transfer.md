@@ -414,22 +414,6 @@ Config.TestMode = {
 }
 ```
 
-
-
----
-
-# 🌍 **LOCALIZATION:**
-
-Locale files:
-
-- `locales/en.lua`
-- `locales/es.lua`
-- `locales/pt.lua`
-- `locales/fr.lua`
-- `locales/de.lua`
-
-The script uses `_L(key, ...)` from `shared/locales.lua` with English fallback. No gameplay text should be hardcoded in Lua logic.
-
 ---
 
 # 🎮 **COMMANDS:**
@@ -503,23 +487,6 @@ Internal code uses exports from other resources via bridge adapters.
 | `submitSender` | NUI -> Client | Sends sender input to server create request. |
 | `receiverReply` | NUI -> Client | Sends accept/reject response to server. |
 
-
----
-
-# 📱 **UI / NUI:**
-
-- Built with **React + Vite + TailwindCSS** (`web/src`).
-- Panels:
-  - Sender transfer panel
-  - Receiver approve/reject panel (with countdown)
-  - History table panel
-- NUI message actions:
-  - `openSender`
-  - `openReceiver`
-  - `openHistory`
-  - `close`
-  - `playSfx`
-- Focus and input locking are handled client-side for safe interaction.
 
 ---
 
@@ -722,8 +689,14 @@ A: No. Folder rename triggers resource validation lock and automatic stop.
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are **NO** plans to add script updates during 2025 and early 2026. (EMERGENCY UPDATES ARE PERFORMED TO FIX BUGS IF NECESSARY.)
-- 🧾 **STEPS:** *Backup config → replace folder → restore config → restart.*
+- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
+
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
 
 ---
 
@@ -731,4 +704,4 @@ A: No. Folder rename triggers resource validation lock and automatic stop.
 🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
 ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-🧩 *If you have an open source version, you can remove this security in the first lines of `server/main.lua`.*
+🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

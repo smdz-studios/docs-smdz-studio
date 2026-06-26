@@ -25,9 +25,9 @@ Sidebar icons:
   - [Common Problems](/problems.md "icon:warning")
   - [Asset Escrow System](/fxap.md "icon:shield")
 
-- **Tools** "icon:wrench"
+<!-- - **Tools** "icon:wrench"
   - [Blip Generator](/tools/blip-generator/index.md "icon:map-pinned")
-  - [Item Converter](/tools/item-converter/index.md "icon:wrench")
+  - [Item Converter](/tools/item-converter/index.md "icon:wrench") -->
 
 
 - **Paid Resources**
@@ -57,4 +57,3 @@ Sidebar icons:
 
 - **Free Resources**
   - [Handling Editor](/resources/free/handling-editor.md "icon:wrench")
-
