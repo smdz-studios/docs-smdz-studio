@@ -3222,6 +3222,17 @@ pre:hover .docsify-copy-code-button {
   justify-content: center;
   transition: opacity 0.28s ease-out, visibility 0.28s ease-out, transform 0.28s ease-out;
   overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  touch-action: none;
+}
+
+.page-loader,
+.page-loader * {
+  -webkit-user-drag: none;
 }
 
 .page-loader::before,

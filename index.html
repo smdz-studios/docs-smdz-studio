@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="https://docs.smdz-studios.com/assets/logo.png" />
 
   <link rel="canonical" href="https://docs.smdz-studios.com/" />
-  <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';" />
+  <!-- frame-ancestors must be sent as an HTTP header; meta tags cannot enforce it. -->
   <meta name="application-name" content="SMDZ Studios Docs" />
   <meta name="apple-mobile-web-app-title" content="SMDZ Docs" />
   <meta name="format-detection" content="telephone=no" />
@@ -85,7 +85,7 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-3" />
-  <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-1" />
+  <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-2" />
 </head>
 <body>
   <!-- Global announcement bar – content & style controlled from plugins/banner-config.js -->
@@ -599,11 +599,13 @@
               path: 'M9 3h6a2 2 0 0 1 2 2v1h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2Zm0 3h6V5H9v1Zm-2 4v9h10v-9H7Zm2 2h6v1H9v-1Zm0 3h4v1H9v-1Z'
             };
             sidebarIconMap['/tools/item-converter/index.md'] = sidebarIconMap['/tools/item-converter/'];
+            sidebarIconMap['/tools/item-converter/index.html'] = sidebarIconMap['/tools/item-converter/'];
             sidebarIconMap['/tools/blip-generator/'] = {
               label: 'Blip Generator',
               path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z'
             };
             sidebarIconMap['/tools/blip-generator/index.md'] = sidebarIconMap['/tools/blip-generator/'];
+            sidebarIconMap['/tools/blip-generator/index.html'] = sidebarIconMap['/tools/blip-generator/'];
 
             var sidebarIconTextMap = {
               'PORTAL': sidebarIconMap['/portal.md'],
@@ -994,6 +996,154 @@
             }
           }
 
+          function restoreToolMarkup() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            var toolRootId = '';
+            var toolClassName = '';
+
+            if (routePath.indexOf('/tools/blip-generator/') === 0) {
+              toolRootId = 'blip-generator-tool';
+              toolClassName = 'blip-generator-tool';
+            } else if (routePath.indexOf('/tools/item-converter/') === 0) {
+              toolRootId = 'item-converter-tool';
+              toolClassName = 'item-converter-tool';
+            } else {
+              return;
+            }
+
+            var selectors = ['pre code', 'pre', '.code-collapse-wrapper'];
+            var candidates = [];
+
+            selectors.forEach(function (selector) {
+              contentRoot.querySelectorAll(selector).forEach(function (node) {
+                if (candidates.indexOf(node) === -1) {
+                  candidates.push(node);
+                }
+              });
+            });
+
+            candidates.forEach(function (node) {
+              if (node.dataset && node.dataset.toolMarkupRestored === '1') {
+                return;
+              }
+
+              var source = node.textContent || '';
+              var markerIndex = source.indexOf('class="' + toolClassName + '"');
+              if (markerIndex === -1) {
+                markerIndex = source.indexOf("class='" + toolClassName + "'");
+              }
+              if (markerIndex === -1) {
+                markerIndex = source.indexOf('<div class="' + toolClassName + '"');
+              }
+              if (markerIndex === -1) {
+                markerIndex = source.indexOf("<div class='" + toolClassName + "'");
+              }
+              if (markerIndex === -1) {
+                return;
+              }
+
+              var markupStart = source.lastIndexOf('<', markerIndex);
+              if (markupStart === -1) {
+                markupStart = markerIndex;
+              }
+
+              var markup = source.slice(markupStart).trim();
+              if (!markup) {
+                return;
+              }
+
+              var template = document.createElement('template');
+              template.innerHTML = markup;
+
+              if (!template.content || !template.content.firstElementChild) {
+                return;
+              }
+
+              var targetNode = node;
+              if (node.classList && node.classList.contains('code-collapse-wrapper')) {
+                targetNode = node;
+              } else if (node.tagName === 'CODE' && node.parentElement && node.parentElement.classList.contains('code-collapse-wrapper')) {
+                targetNode = node.parentElement;
+              } else if (node.tagName === 'PRE' && node.parentElement && node.parentElement.classList.contains('code-collapse-wrapper')) {
+                targetNode = node.parentElement;
+              }
+
+              var replacement = document.createDocumentFragment();
+              while (template.content.firstChild) {
+                replacement.appendChild(template.content.firstChild);
+              }
+
+              if (targetNode.parentNode) {
+                targetNode.parentNode.replaceChild(replacement, targetNode);
+              }
+
+              contentRoot.dataset.toolMarkupRestored = toolRootId;
+            });
+          }
+
+          function ensureToolMarkupRendered() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            var isItemConverterRoute = routePath.indexOf('/tools/item-converter/') === 0;
+            var isBlipGeneratorRoute = routePath.indexOf('/tools/blip-generator/') === 0;
+
+            if (!isItemConverterRoute && !isBlipGeneratorRoute) {
+              return;
+            }
+
+            if (contentRoot.querySelector('#item-converter-tool, #blip-generator-tool')) {
+              return;
+            }
+
+            if (contentRoot.dataset.toolMarkupFetchState === routePath) {
+              return;
+            }
+
+            contentRoot.dataset.toolMarkupFetchState = routePath;
+
+            var sourcePath = isItemConverterRoute
+              ? '/tools/item-converter/index.html?v=20260626-4'
+              : '/tools/blip-generator/index.html?v=20260626-4';
+
+            fetch(sourcePath, { cache: 'no-store' })
+              .then(function (response) {
+                if (!response.ok) {
+                  throw new Error('Failed to load tool markup.');
+                }
+
+                return response.text();
+              })
+              .then(function (html) {
+                if (!contentRoot.isConnected) {
+                  return;
+                }
+
+                contentRoot.innerHTML = html;
+                delete contentRoot.dataset.toolMarkupFetchState;
+                restoreToolMarkup();
+
+                if (isItemConverterRoute && typeof window.SMDZ_initItemConverterTool === 'function') {
+                  window.SMDZ_initItemConverterTool();
+                }
+
+                if (isBlipGeneratorRoute && typeof window.SMDZ_initBlipGeneratorTool === 'function') {
+                  window.SMDZ_initBlipGeneratorTool();
+                }
+              })
+              .catch(function () {
+                delete contentRoot.dataset.toolMarkupFetchState;
+              });
+          }
+
           hook.doneEach(function () {
             requestAnimationFrame(function () {
               window.scrollTo(0, 0);
@@ -1006,6 +1156,10 @@
               enhanceScriptVideos();
               enhanceStatusBadges();
               wrapMarkdownTables();
+              restoreToolMarkup();
+              ensureToolMarkupRendered();
+              window.setTimeout(restoreToolMarkup, 60);
+              window.setTimeout(restoreToolMarkup, 240);
               if (typeof window.SMDZ_initItemConverterTool === 'function') {
                 window.SMDZ_initItemConverterTool();
               }
@@ -1087,6 +1241,11 @@
 
             codeBlocks.forEach(function (preEl) {
               if (preEl.dataset.collapsibleBound === '1') {
+                return;
+              }
+
+              if (preEl.id === 'item-converter-output') {
+                preEl.dataset.collapsibleBound = '1';
                 return;
               }
 
@@ -1207,7 +1366,8 @@
   <script src="plugins/visitor-config.js?v=20260612-2"></script>
   <script src="plugins/visitor-notifier.js?v=20260613-1"></script>
   <script src="tools/item-converter/item-converter.js?v=20260626-3"></script>
-  <script src="tools/blip-generator/blip-generator.js?v=20260626-1"></script>
+  <script src="assets/other/blips-fivem/blips-data.js?v=20260626-1"></script>
+  <script src="tools/blip-generator/blip-generator.js?v=20260626-2"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -1215,6 +1375,120 @@
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
       var loaderHidden = false;
+      var blockedKeyCooldown = 140;
+      var lastBlockedSignature = '';
+      var lastBlockedAt = 0;
+
+      function normalizeShortcutKey(event) {
+        return [
+          event.ctrlKey ? 'ctrl' : '',
+          event.metaKey ? 'meta' : '',
+          event.altKey ? 'alt' : '',
+          event.shiftKey ? 'shift' : '',
+          String(event.key || '').toLowerCase(),
+          String(event.code || '').toLowerCase()
+        ].join('|');
+      }
+
+      function shouldBlockShortcut(event) {
+        var key = String(event.key || '').toLowerCase();
+        var code = String(event.code || '').toLowerCase();
+        var hasModifier = !!(event.ctrlKey || event.metaKey || event.altKey);
+
+        if (key === 'f12' || code === 'f12') {
+          return true;
+        }
+
+        if (key === 'contextmenu' || code === 'contextmenu') {
+          return true;
+        }
+
+        if (event.shiftKey && key === 'f10') {
+          return true;
+        }
+
+        if ((event.ctrlKey || event.metaKey) && !event.altKey) {
+          if (!event.shiftKey && (key === 'u' || key === 's' || key === 'p')) {
+            return true;
+          }
+
+          if (event.shiftKey && (key === 'i' || key === 'j' || key === 'c' || key === 'k' || key === 'm')) {
+            return true;
+          }
+        }
+
+        if (event.metaKey && event.altKey && (key === 'i' || key === 'j' || key === 'c' || key === 'u' || key === 'p')) {
+          return true;
+        }
+
+        if (!hasModifier && (key === 'f12' || key === 'u')) {
+          return false;
+        }
+
+        return false;
+      }
+
+      function blockBestEffortSecurity(event) {
+        if (!event || event.defaultPrevented) {
+          return;
+        }
+
+        if (!shouldBlockShortcut(event)) {
+          return;
+        }
+
+        var signature = normalizeShortcutKey(event);
+        var now = Date.now();
+        if (signature === lastBlockedSignature && (now - lastBlockedAt) < blockedKeyCooldown) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          return;
+        }
+
+        lastBlockedSignature = signature;
+        lastBlockedAt = now;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          var activeEl = document.activeElement;
+          if (!activeEl.matches || !activeEl.matches('input, textarea, select, [contenteditable="true"]')) {
+            activeEl.blur();
+          }
+        }
+      }
+
+      function installGlobalSecurityGuards() {
+        document.addEventListener('contextmenu', function (event) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }, true);
+
+        document.addEventListener('selectstart', function (event) {
+          if (loader && !loader.classList.contains('page-loader-hidden')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        document.addEventListener('dragstart', function (event) {
+          if (loader && !loader.classList.contains('page-loader-hidden')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+
+        document.addEventListener('keydown', blockBestEffortSecurity, true);
+        document.addEventListener('keyup', function (event) {
+          if (shouldBlockShortcut(event)) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+      }
+
+      installGlobalSecurityGuards();
 
       function hidePageLoader() {
         if (loaderHidden) {
