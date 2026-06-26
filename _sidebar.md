@@ -11,12 +11,13 @@ Sidebar icons:
   train, crystal, radar, redesigns, free
 -->
 
+- **Important News** "icon:newspaper"
+  - [New Identity](/new-identity.md "icon:sparkles")
+
 - **Information** "icon:info"
   - [Portal](/portal.md "icon:portal")
   - [Changelog](/changelog.md "icon:changelog")
   - [Store](https://smdz-studios.tebex.io/ "icon:store")
-  - [New Identity](/new-identity.md "icon:sparkles")
-  <!-- - [Discord](https://smdz-studios.tebex.io/ "icon:headset") -->
 
 - **Support** "icon:support"
   - [Get Support](/support.md "icon:support")
