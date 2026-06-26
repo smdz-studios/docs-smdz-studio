@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: SMDZ Studios
+Site: https://docs.smdz-studios.com/
+
+/* SITE */
+Standards: Docsify, Markdown, HTML, CSS
+Language: Spanish / English
+Description: Documentation site for SMDZ Studios resources and scripts.
