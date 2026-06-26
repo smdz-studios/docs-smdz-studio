@@ -17,24 +17,24 @@
     remember: true
   };
 
-  var SPRITE_LIBRARY = {
-    1: { name: 'Standard' },
-    2: { name: 'Waypoint' },
-    3: { name: 'Race' },
-    4: { name: 'Car' },
-    5: { name: 'House' },
-    6: { name: 'Garage' },
-    7: { name: 'Shop' },
-    8: { name: 'Police' },
-    9: { name: 'Hospital' },
-    10: { name: 'Bank' },
-    40: { name: 'Mission' },
-    50: { name: 'Store' },
-    84: { name: 'Shop' },
-    85: { name: 'Apartment' },
-    161: { name: 'Vehicle' },
-    280: { name: 'Default Blip' },
-    291: { name: 'Activity' }
+  var SPRITE_LIBRARY = window.SMDZ_BLIP_SPRITES || {
+    1: { name: 'radar_standard', displayName: 'Standard', asset: '' },
+    2: { name: 'radar_waypoint', displayName: 'Waypoint', asset: '' },
+    3: { name: 'radar_race', displayName: 'Race', asset: '' },
+    4: { name: 'radar_car', displayName: 'Car', asset: '' },
+    5: { name: 'radar_house', displayName: 'House', asset: '' },
+    6: { name: 'radar_garage', displayName: 'Garage', asset: '' },
+    7: { name: 'radar_shop', displayName: 'Shop', asset: '' },
+    8: { name: 'radar_police', displayName: 'Police', asset: '' },
+    9: { name: 'radar_hospital', displayName: 'Hospital', asset: '' },
+    10: { name: 'radar_bank', displayName: 'Bank', asset: '' },
+    40: { name: 'radar_mission', displayName: 'Mission', asset: '' },
+    50: { name: 'radar_store', displayName: 'Store', asset: '' },
+    84: { name: 'radar_shop', displayName: 'Shop', asset: '' },
+    85: { name: 'radar_apartment', displayName: 'Apartment', asset: '' },
+    161: { name: 'radar_vehicle', displayName: 'Vehicle', asset: '' },
+    280: { name: 'radar_friend', displayName: 'Friend', asset: '' },
+    291: { name: 'radar_activity', displayName: 'Activity', asset: '' }
   };
 
   var COLOR_LIBRARY = {
@@ -285,8 +285,27 @@
     }
 
     return {
-      name: 'Sprite ' + spriteId
+      name: 'Sprite ' + spriteId,
+      displayName: 'Sprite ' + spriteId,
+      asset: ''
     };
+  }
+
+  function getSpriteEntries() {
+    return Object.keys(SPRITE_LIBRARY)
+      .map(function (key) {
+        var sprite = SPRITE_LIBRARY[key] || {};
+        return {
+          id: Number(key),
+          key: key,
+          name: sprite.name || ('sprite_' + key),
+          displayName: sprite.displayName || sprite.name || ('Sprite ' + key),
+          asset: sprite.asset || ''
+        };
+      })
+      .sort(function (left, right) {
+        return left.id - right.id;
+      });
   }
 
   function buildLuaCode(parsed) {
@@ -403,9 +422,18 @@
     var copyCodeBtn = toolRoot.querySelector('#blip-generator-copy-code');
     var copyCoordsBtn = toolRoot.querySelector('#blip-generator-copy-coords');
     var resetBtn = toolRoot.querySelector('#blip-generator-reset');
+    var spriteMenuToggleBtn = toolRoot.querySelector('#blip-generator-sprite-menu-toggle');
+    var spriteMenuEl = toolRoot.querySelector('#blip-generator-sprite-menu');
+    var spriteMenuCloseBtn = toolRoot.querySelector('#blip-generator-sprite-menu-close');
+    var spriteSearchEl = toolRoot.querySelector('#blip-generator-sprite-search');
+    var spriteListEl = toolRoot.querySelector('#blip-generator-sprite-list');
+    var spriteCountEl = toolRoot.querySelector('#blip-generator-sprite-count');
+    var spriteThumbEl = toolRoot.querySelector('#blip-generator-sprite-menu-thumb');
     var stepperButtons = toolRoot.querySelectorAll('[data-stepper-target]');
     var state = normalizeState(readStoredState() || DEFAULT_STATE);
     var toastTimer = null;
+    var spriteEntries = getSpriteEntries();
+    var spriteMenuBound = false;
 
     function readFormState() {
       return {
@@ -549,7 +577,7 @@
       }
 
       if (outputEls.previewMeta) {
-        outputEls.previewMeta.textContent = 'Sprite ' + parsed.spriteId + ' · Color ' + parsed.colorId + ' · ' + spriteInfo.name;
+        outputEls.previewMeta.textContent = 'Sprite ' + parsed.spriteId + ' · Color ' + parsed.colorId + ' · ' + (spriteInfo.displayName || spriteInfo.name);
       }
 
       if (outputEls.previewShortRange) {
@@ -561,7 +589,16 @@
       }
 
       if (outputEls.previewSprite) {
-        outputEls.previewSprite.textContent = String(parsed.spriteId);
+        var spriteAsset = spriteInfo.asset || '';
+        if (spriteAsset) {
+          outputEls.previewSprite.classList.add('has-image');
+          outputEls.previewSprite.innerHTML =
+            '<img class="blip-preview-sprite-image" src="' + spriteAsset + '" alt="' + escapeLuaString(spriteInfo.displayName || spriteInfo.name) + '" />' +
+            '<span class="blip-preview-sprite-text">' + String(parsed.spriteId) + '</span>';
+        } else {
+          outputEls.previewSprite.classList.remove('has-image');
+          outputEls.previewSprite.textContent = String(parsed.spriteId);
+        }
       }
 
       if (outputEls.previewScale) {
@@ -584,6 +621,176 @@
         outputEls.previewStage.style.setProperty('--blip-accent', colorInfo.hex);
         outputEls.previewStage.style.setProperty('--blip-scale', String(Math.max(0.35, Number(parsed.scale) || 0.8)));
       }
+
+      if (spriteThumbEl) {
+        if (spriteInfo.asset) {
+          spriteThumbEl.classList.add('has-image');
+          spriteThumbEl.innerHTML = '<img src="' + spriteInfo.asset + '" alt="" loading="lazy" />' + '<span>' + String(parsed.spriteId) + '</span>';
+        } else {
+          spriteThumbEl.classList.remove('has-image');
+          spriteThumbEl.textContent = String(parsed.spriteId);
+        }
+      }
+    }
+
+    function closeSpriteMenu() {
+      if (!spriteMenuEl || !spriteMenuToggleBtn) {
+        return;
+      }
+
+      if (spriteMenuEl.contains(document.activeElement) && spriteMenuToggleBtn.focus) {
+        spriteMenuToggleBtn.focus({ preventScroll: true });
+      }
+
+      spriteMenuEl.hidden = true;
+      spriteMenuToggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('is-sprite-picker-open');
+    }
+
+    function openSpriteMenu() {
+      if (!spriteMenuEl || !spriteMenuToggleBtn) {
+        return;
+      }
+
+      spriteMenuEl.hidden = false;
+      spriteMenuToggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('is-sprite-picker-open');
+      if (spriteSearchEl) {
+        window.setTimeout(function () {
+          spriteSearchEl.focus();
+        }, 0);
+      }
+    }
+
+    function buildSpriteCard(spriteEntry) {
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'blip-sprite-card';
+      button.setAttribute('data-sprite-id', String(spriteEntry.id));
+      button.setAttribute('data-search-text', (spriteEntry.id + ' ' + spriteEntry.name + ' ' + spriteEntry.displayName).toLowerCase());
+
+      var imgHtml = spriteEntry.asset
+        ? '<img class="blip-sprite-card-image" src="' + spriteEntry.asset + '" alt="" loading="lazy" />'
+        : '<span class="blip-sprite-card-placeholder">' + spriteEntry.id + '</span>';
+
+      button.innerHTML =
+        '<span class="blip-sprite-card-thumb">' + imgHtml + '</span>' +
+        '<span class="blip-sprite-card-meta">' +
+          '<strong>' + spriteEntry.id + '</strong>' +
+          '<small>' + spriteEntry.displayName + '</small>' +
+        '</span>';
+
+      return button;
+    }
+
+    function renderSpriteMenu(filterText) {
+      if (!spriteListEl) {
+        return;
+      }
+
+      var normalizedFilter = String(filterText || '').trim().toLowerCase();
+      var fragment = document.createDocumentFragment();
+      var visibleCount = 0;
+
+      spriteListEl.innerHTML = '';
+
+      spriteEntries.forEach(function (spriteEntry) {
+        var searchText = (spriteEntry.id + ' ' + spriteEntry.name + ' ' + spriteEntry.displayName).toLowerCase();
+        var shouldShow = !normalizedFilter || searchText.indexOf(normalizedFilter) !== -1;
+        if (!shouldShow) {
+          return;
+        }
+
+        visibleCount += 1;
+        fragment.appendChild(buildSpriteCard(spriteEntry));
+      });
+
+      spriteListEl.appendChild(fragment);
+
+      if (spriteCountEl) {
+        spriteCountEl.textContent = visibleCount + ' sprites';
+      }
+
+      Array.prototype.forEach.call(spriteListEl.querySelectorAll('.blip-sprite-card'), function (cardEl) {
+        cardEl.classList.toggle('is-selected', String(inputEls.spriteId && inputEls.spriteId.value) === String(cardEl.getAttribute('data-sprite-id') || ''));
+      });
+    }
+
+    function bindSpriteMenu() {
+      if (spriteMenuBound) {
+        return;
+      }
+
+      spriteMenuBound = true;
+
+      if (spriteMenuToggleBtn) {
+        spriteMenuToggleBtn.addEventListener('click', function () {
+          if (!spriteMenuEl) {
+            return;
+          }
+
+          if (spriteMenuEl.hidden) {
+            renderSpriteMenu(spriteSearchEl ? spriteSearchEl.value : '');
+            openSpriteMenu();
+          } else {
+            closeSpriteMenu();
+          }
+        });
+      }
+
+      if (spriteMenuCloseBtn) {
+        spriteMenuCloseBtn.addEventListener('click', closeSpriteMenu);
+      }
+
+      if (spriteSearchEl) {
+        spriteSearchEl.addEventListener('input', function () {
+          renderSpriteMenu(spriteSearchEl.value);
+        });
+      }
+
+      if (spriteMenuEl) {
+        spriteMenuEl.addEventListener('click', function (event) {
+          if (event.target === spriteMenuEl) {
+            closeSpriteMenu();
+          }
+        });
+      }
+
+      if (spriteListEl) {
+        spriteListEl.addEventListener('click', function (event) {
+          var cardEl = event.target && event.target.closest ? event.target.closest('.blip-sprite-card') : null;
+          if (!cardEl || !spriteListEl.contains(cardEl)) {
+            return;
+          }
+
+          var spriteId = cardEl.getAttribute('data-sprite-id') || '0';
+          if (inputEls.spriteId) {
+            inputEls.spriteId.value = spriteId;
+          }
+          render();
+          closeSpriteMenu();
+        });
+      }
+
+      document.addEventListener('click', function (event) {
+        if (!spriteMenuEl || spriteMenuEl.hidden) {
+          return;
+        }
+
+        if (spriteMenuEl.contains(event.target) || (spriteMenuToggleBtn && spriteMenuToggleBtn.contains(event.target))) {
+          return;
+        }
+
+        closeSpriteMenu();
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeSpriteMenu();
+        }
+      });
+
+      renderSpriteMenu('');
     }
 
     function updateCode(parsed, isValid) {
@@ -744,6 +951,7 @@
 
     writeFormState(state);
     render();
+    bindSpriteMenu();
     contentRoot.dataset.blipGeneratorBound = '1';
   }
 

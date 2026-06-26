@@ -27,7 +27,7 @@
       .replace(/'/g, "\\'");
   }
 
-  function prettifyItemKey(key) {
+  function prettifyKey(key) {
     return String(key || '')
       .replace(/[_-]+/g, ' ')
       .replace(/\s+/g, ' ')
@@ -37,17 +37,13 @@
       });
   }
 
-  function isLuaIdentifier(key) {
-    return /^[A-Za-z_][A-Za-z0-9_]*$/.test(String(key || ''));
-  }
-
   function stripLuaComments(text) {
     var source = String(text || '');
     var output = '';
     var index = 0;
-    var length = source.length;
     var inQuote = '';
     var escaped = false;
+    var length = source.length;
 
     while (index < length) {
       var char = source.charAt(index);
@@ -96,29 +92,86 @@
     return output;
   }
 
-  function readLuaValue(text, startIndex) {
-    var index = startIndex;
-    var length = text.length;
+  function normalizeConverterInput(text) {
+    var source = String(text || '').replace(/\uFEFF/g, '').trim();
 
-    while (index < length && /\s/.test(text.charAt(index))) {
+    if (!source) {
+      return '';
+    }
+
+    if (source.indexOf('```') !== -1) {
+      source = source.replace(/^\s*```[a-z0-9_-]*\s*/i, '');
+      source = source.replace(/\s*```\s*$/i, '');
+    }
+
+    source = source
+      .replace(/^\s*(?:lua|luau|text)\s*\n/i, '')
+      .replace(/\r\n/g, '\n');
+
+    return source.trim();
+  }
+
+  function findMatchingBrace(text, openIndex) {
+    var depth = 0;
+    var inQuote = '';
+    var escaped = false;
+    var index = openIndex;
+
+    while (index < text.length) {
+      var char = text.charAt(index);
+
+      if (inQuote) {
+        if (escaped) {
+          escaped = false;
+        } else if (char === '\\') {
+          escaped = true;
+        } else if (char === inQuote) {
+          inQuote = '';
+        }
+        index += 1;
+        continue;
+      }
+
+      if (char === '"' || char === "'") {
+        inQuote = char;
+        index += 1;
+        continue;
+      }
+
+      if (char === '{') {
+        depth += 1;
+      } else if (char === '}') {
+        depth -= 1;
+        if (depth === 0) {
+          return index;
+        }
+      }
+
       index += 1;
     }
 
-    if (index >= length) {
+    return -1;
+  }
+
+  function readLuaValue(text, startIndex) {
+    var index = startIndex;
+    while (index < text.length && /\s/.test(text.charAt(index))) {
+      index += 1;
+    }
+
+    if (index >= text.length) {
       return null;
     }
 
     var firstChar = text.charAt(index);
-
     if (firstChar === '"' || firstChar === "'") {
       var quote = firstChar;
       var valueStart = index + 1;
       var cursor = valueStart;
       var escaped = false;
 
-      while (cursor < length) {
+      while (cursor < text.length) {
         var currentChar = text.charAt(cursor);
-
         if (escaped) {
           escaped = false;
         } else if (currentChar === '\\') {
@@ -132,8 +185,7 @@
               .replace(/\\r/g, '\r')
               .replace(/\\t/g, '\t')
               .replace(/\\\\/g, '\\')
-              .replace(new RegExp('\\\\' + quote, 'g'), quote),
-            endIndex: cursor + 1
+              .replace(new RegExp('\\\\' + quote, 'g'), quote)
           };
         }
 
@@ -144,76 +196,23 @@
     }
 
     if (firstChar === '{') {
-      var depth = 0;
-      var cursorIndex = index;
-      var inQuote = '';
-      var escapedChar = false;
-      var inComment = false;
-
-      while (cursorIndex < length) {
-        var char = text.charAt(cursorIndex);
-        var nextChar = text.charAt(cursorIndex + 1);
-
-        if (inComment) {
-          if (char === '\n') {
-            inComment = false;
-          }
-
-          cursorIndex += 1;
-          continue;
-        }
-
-        if (inQuote) {
-          if (escapedChar) {
-            escapedChar = false;
-          } else if (char === '\\') {
-            escapedChar = true;
-          } else if (char === inQuote) {
-            inQuote = '';
-          }
-
-          cursorIndex += 1;
-          continue;
-        }
-
-        if (char === '"' || char === "'") {
-          inQuote = char;
-          cursorIndex += 1;
-          continue;
-        }
-
-        if (char === '-' && nextChar === '-') {
-          inComment = true;
-          cursorIndex += 2;
-          continue;
-        }
-
-        if (char === '{') {
-          depth += 1;
-        } else if (char === '}') {
-          depth -= 1;
-          if (depth === 0) {
-            return {
-              type: 'table',
-              value: text.slice(index + 1, cursorIndex),
-              endIndex: cursorIndex + 1
-            };
-          }
-        }
-
-        cursorIndex += 1;
+      var endIndex = findMatchingBrace(text, index);
+      if (endIndex === -1) {
+        return null;
       }
 
-      return null;
+      return {
+        type: 'table',
+        value: text.slice(index + 1, endIndex)
+      };
     }
 
     var tokenEnd = index;
-    while (tokenEnd < length) {
+    while (tokenEnd < text.length) {
       var tokenChar = text.charAt(tokenEnd);
       if (tokenChar === ',' || tokenChar === '\n' || tokenChar === '}') {
         break;
       }
-
       tokenEnd += 1;
     }
 
@@ -223,28 +222,27 @@
     }
 
     if (token === 'true') {
-      return { type: 'boolean', value: true, endIndex: tokenEnd };
+      return { type: 'boolean', value: true };
     }
 
     if (token === 'false') {
-      return { type: 'boolean', value: false, endIndex: tokenEnd };
+      return { type: 'boolean', value: false };
     }
 
     if (token === 'nil') {
-      return { type: 'nil', value: null, endIndex: tokenEnd };
+      return { type: 'nil', value: null };
     }
 
     if (/^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(token)) {
-      return { type: 'number', value: Number(token), endIndex: tokenEnd };
+      return { type: 'number', value: Number(token) };
     }
 
-    return { type: 'raw', value: token, endIndex: tokenEnd };
+    return { type: 'raw', value: token };
   }
 
   function extractLuaField(body, fieldName) {
-    var fieldPattern = new RegExp('(?:^|[\\s,{])' + escapeRegExp(fieldName) + '\\s*=\\s*', 'm');
-    var match = fieldPattern.exec(body);
-
+    var pattern = new RegExp('(?:^|[\\s,{])' + escapeRegExp(fieldName) + '\\s*=\\s*', 'm');
+    var match = pattern.exec(body);
     if (!match) {
       return null;
     }
@@ -252,8 +250,17 @@
     return readLuaValue(body, match.index + match[0].length);
   }
 
-  function detectSourceMode(source) {
-    var normalized = String(source || '').toLowerCase();
+  function extractNestedField(body, parentName, childName) {
+    var parentField = extractLuaField(body, parentName);
+    if (!parentField || parentField.type !== 'table') {
+      return null;
+    }
+
+    return extractLuaField(parentField.value, childName);
+  }
+
+  function detectSourceMode(text) {
+    var normalized = String(text || '').toLowerCase();
 
     if (normalized.indexOf('qbcore.shared.items') !== -1 || normalized.indexOf('type = \'item\'') !== -1 || normalized.indexOf('type = "item"') !== -1) {
       return 'qb-to-ox';
@@ -266,142 +273,83 @@
     return null;
   }
 
-  function analyzeItems(items, mode) {
-    var stats = {
-      itemCount: items.length,
-      warnings: 0,
-      missingLabels: 0,
-      missingWeights: 0,
-      missingImages: 0,
-      modeLabel: mode === 'qb-to-ox' ? 'QBCore' : 'ox_inventory'
-    };
-
-    items.forEach(function (item) {
-      if (!item.label) {
-        stats.missingLabels += 1;
-      }
-
-      if (item.weight === null || item.weight === undefined) {
-        stats.missingWeights += 1;
-      }
-
-      if (!item.image) {
-        stats.missingImages += 1;
-      }
-    });
-
-    stats.warnings = stats.missingLabels + stats.missingWeights;
-    return stats;
-  }
-
   function findItemBlocks(source) {
-    var normalized = stripLuaComments(String(source || '').replace(/\r\n/g, '\n'));
-    var itemPattern = /^\s*(?:\[\s*(['"])(.*?)\1\s*\]|([A-Za-z0-9_-]+))\s*=\s*\{/gm;
+    var normalizedSource = normalizeConverterInput(source);
+    var normalized = stripLuaComments(normalizedSource);
     var items = [];
+    var pattern = /^\s*(?:\[\s*(['"])(.*?)\1\s*\]|([A-Za-z0-9_.:-]+))\s*=\s*\{/gm;
     var match;
 
-    while ((match = itemPattern.exec(normalized)) !== null) {
+    while ((match = pattern.exec(normalized)) !== null) {
       var key = match[2] || match[3] || '';
       var openIndex = match.index + match[0].length - 1;
-      var depth = 0;
-      var cursor = openIndex;
-      var blockEnd = -1;
-      var inQuote = '';
-      var escaped = false;
-      var inComment = false;
+      var closeIndex = findMatchingBrace(normalized, openIndex);
 
-      while (cursor < normalized.length) {
-        var current = normalized.charAt(cursor);
-        var next = normalized.charAt(cursor + 1);
-
-        if (inComment) {
-          if (current === '\n') {
-            inComment = false;
-          }
-
-          cursor += 1;
-          continue;
-        }
-
-        if (inQuote) {
-          if (escaped) {
-            escaped = false;
-          } else if (current === '\\') {
-            escaped = true;
-          } else if (current === inQuote) {
-            inQuote = '';
-          }
-
-          cursor += 1;
-          continue;
-        }
-
-        if (current === '"' || current === "'") {
-          inQuote = current;
-          cursor += 1;
-          continue;
-        }
-
-        if (current === '-' && next === '-') {
-          inComment = true;
-          cursor += 2;
-          continue;
-        }
-
-        if (current === '{') {
-          depth += 1;
-        } else if (current === '}') {
-          depth -= 1;
-          if (depth === 0) {
-            blockEnd = cursor;
-            break;
-          }
-        }
-
-        cursor += 1;
-      }
-
-      if (blockEnd === -1) {
+      if (closeIndex === -1) {
         continue;
       }
 
       items.push({
         key: key,
-        body: normalized.slice(openIndex + 1, blockEnd)
+        body: normalized.slice(openIndex + 1, closeIndex)
       });
-      itemPattern.lastIndex = blockEnd + 1;
+
+      pattern.lastIndex = closeIndex + 1;
+    }
+
+    if (items.length === 0 && normalized.indexOf('{') !== -1) {
+      var fallbackPattern = /(?:\[\s*(['"])(.*?)\1\s*\]|([A-Za-z0-9_.:-]+))\s*=\s*\{/g;
+      while ((match = fallbackPattern.exec(normalized)) !== null) {
+        var fallbackKey = match[2] || match[3] || '';
+        var fallbackOpenIndex = normalized.indexOf('{', match.index + match[0].length - 1);
+        if (fallbackOpenIndex === -1) {
+          continue;
+        }
+
+        var fallbackCloseIndex = findMatchingBrace(normalized, fallbackOpenIndex);
+        if (fallbackCloseIndex === -1) {
+          continue;
+        }
+
+        items.push({
+          key: fallbackKey,
+          body: normalized.slice(fallbackOpenIndex + 1, fallbackCloseIndex)
+        });
+
+        fallbackPattern.lastIndex = fallbackCloseIndex + 1;
+      }
     }
 
     return items;
   }
 
-  function parseItemBlock(itemBlock) {
-    var body = itemBlock.body;
+  function parseItemBlock(block) {
+    var body = block.body;
     var labelValue = extractLuaField(body, 'label');
     var weightValue = extractLuaField(body, 'weight');
     var descriptionValue = extractLuaField(body, 'description');
     var imageValue = extractLuaField(body, 'image');
-    var clientValue = extractLuaField(body, 'client');
-    var clientImageValue = clientValue && clientValue.type === 'table' ? extractLuaField(clientValue.value, 'image') : null;
+    var clientImageValue = extractNestedField(body, 'client', 'image');
+    var stackValue = extractLuaField(body, 'stack');
+    var closeValue = extractLuaField(body, 'close');
+    var uniqueValue = extractLuaField(body, 'unique');
+    var useableValue = extractLuaField(body, 'useable');
+    var shouldCloseValue = extractLuaField(body, 'shouldClose');
 
     return {
-      key: itemBlock.key,
-      label: labelValue && labelValue.type === 'string' ? labelValue.value : prettifyItemKey(itemBlock.key),
-      weight: weightValue ? weightValue.value : null,
-      description: descriptionValue && descriptionValue.type === 'string' ? descriptionValue.value : null,
+      key: block.key,
+      label: labelValue && labelValue.type === 'string' ? labelValue.value : prettifyKey(block.key),
+      weight: weightValue && (weightValue.type === 'number' || weightValue.type === 'raw') ? weightValue.value : null,
+      description: descriptionValue && descriptionValue.type === 'string' ? descriptionValue.value : '',
       image: imageValue && imageValue.type === 'string'
         ? imageValue.value
-        : (clientImageValue && clientImageValue.type === 'string' ? clientImageValue.value : null),
-      stack: extractLuaField(body, 'stack'),
-      close: extractLuaField(body, 'close'),
-      unique: extractLuaField(body, 'unique'),
-      useable: extractLuaField(body, 'useable'),
-      shouldClose: extractLuaField(body, 'shouldClose')
+        : (clientImageValue && clientImageValue.type === 'string' ? clientImageValue.value : ''),
+      stack: stackValue && stackValue.type === 'boolean' ? stackValue.value : null,
+      close: closeValue && closeValue.type === 'boolean' ? closeValue.value : null,
+      unique: uniqueValue && uniqueValue.type === 'boolean' ? uniqueValue.value : null,
+      useable: useableValue && useableValue.type === 'boolean' ? useableValue.value : null,
+      shouldClose: shouldCloseValue && shouldCloseValue.type === 'boolean' ? shouldCloseValue.value : null
     };
-  }
-
-  function formatLuaString(value) {
-    return '\'' + escapeLuaString(value) + '\'';
   }
 
   function formatLuaValue(value) {
@@ -417,7 +365,7 @@
       return String(value);
     }
 
-    return formatLuaString(value);
+    return '\'' + escapeLuaString(value) + '\'';
   }
 
   function formatOxItems(items) {
@@ -431,26 +379,24 @@
         lines.push('    weight = ' + formatLuaValue(item.weight) + ',');
       }
 
-      if (item.stack && item.stack.type === 'boolean') {
-        lines.push('    stack = ' + formatLuaValue(item.stack.value) + ',');
-      } else if (item.unique && item.unique.type === 'boolean') {
-        lines.push('    stack = ' + (item.unique.value ? 'false' : 'true') + ',');
+      if (item.stack !== null) {
+        lines.push('    stack = ' + formatLuaValue(item.stack) + ',');
+      } else if (item.unique !== null) {
+        lines.push('    stack = ' + (item.unique ? 'false' : 'true') + ',');
+      } else {
+        lines.push('    stack = true,');
       }
 
-      if (item.close && item.close.type === 'boolean') {
-        lines.push('    close = ' + formatLuaValue(item.close.value) + ',');
-      } else if (item.shouldClose && item.shouldClose.type === 'boolean') {
-        lines.push('    close = ' + formatLuaValue(item.shouldClose.value) + ',');
+      if (item.close !== null) {
+        lines.push('    close = ' + formatLuaValue(item.close) + ',');
+      } else if (item.shouldClose !== null) {
+        lines.push('    close = ' + formatLuaValue(item.shouldClose) + ',');
       } else {
         lines.push('    close = true,');
       }
 
       if (item.description) {
         lines.push('    description = ' + formatLuaValue(item.description) + ',');
-      }
-
-      if (item.image) {
-        lines.push('    -- image = ' + formatLuaValue(item.image) + ',');
       }
 
       lines.push('  },');
@@ -464,35 +410,35 @@
     var lines = ['QBCore = QBCore or {}', 'QBCore.Shared = QBCore.Shared or {}', 'QBCore.Shared.Items = {'];
 
     items.forEach(function (item) {
-      var keyLine = isLuaIdentifier(item.key) ? item.key : ('[\'' + escapeLuaString(item.key) + '\']');
-      lines.push('  ' + keyLine + ' = {');
+      var keyName = /^[A-Za-z_][A-Za-z0-9_]*$/.test(item.key) ? item.key : ('[\'' + escapeLuaString(item.key) + '\']');
+      lines.push('  ' + keyName + ' = {');
       lines.push('    name = ' + formatLuaValue(item.key) + ',');
       lines.push('    label = ' + formatLuaValue(item.label) + ',');
       lines.push('    weight = ' + formatLuaValue(item.weight !== null && item.weight !== undefined ? item.weight : 0) + ',');
-      lines.push('    type = ' + formatLuaValue('item') + ',');
+      lines.push('    type = \'item\',');
 
       if (item.image) {
         lines.push('    image = ' + formatLuaValue(item.image) + ',');
       }
 
-      if (item.unique && item.unique.type === 'boolean') {
-        lines.push('    unique = ' + formatLuaValue(item.unique.value) + ',');
-      } else if (item.stack && item.stack.type === 'boolean') {
-        lines.push('    unique = ' + (item.stack.value ? 'false' : 'true') + ',');
+      if (item.unique !== null) {
+        lines.push('    unique = ' + formatLuaValue(item.unique) + ',');
+      } else if (item.stack !== null) {
+        lines.push('    unique = ' + (item.stack ? 'false' : 'true') + ',');
       } else {
         lines.push('    unique = false,');
       }
 
-      if (item.useable && item.useable.type === 'boolean') {
-        lines.push('    useable = ' + formatLuaValue(item.useable.value) + ',');
+      if (item.useable !== null) {
+        lines.push('    useable = ' + formatLuaValue(item.useable) + ',');
       } else {
         lines.push('    useable = false,');
       }
 
-      if (item.shouldClose && item.shouldClose.type === 'boolean') {
-        lines.push('    shouldClose = ' + formatLuaValue(item.shouldClose.value) + ',');
-      } else if (item.close && item.close.type === 'boolean') {
-        lines.push('    shouldClose = ' + formatLuaValue(item.close.value) + ',');
+      if (item.shouldClose !== null) {
+        lines.push('    shouldClose = ' + formatLuaValue(item.shouldClose) + ',');
+      } else if (item.close !== null) {
+        lines.push('    shouldClose = ' + formatLuaValue(item.close) + ',');
       } else {
         lines.push('    shouldClose = true,');
       }
@@ -508,6 +454,13 @@
 
     lines.push('}');
     return lines.join('\n');
+  }
+
+  function getSamples() {
+    return {
+      ox: "return {\n  ['water'] = {\n    label = 'Water',\n    weight = 500,\n    stack = true,\n    close = true,\n    description = 'Fresh bottled water.'\n  },\n  ['bandage'] = {\n    label = 'Bandage',\n    weight = 150,\n    stack = true,\n    close = true,\n    description = 'Heals small wounds.'\n  }\n}",
+      qb: "QBCore.Shared.Items = {\n  water = {\n    name = 'water',\n    label = 'Water',\n    weight = 500,\n    type = 'item',\n    image = 'water.png',\n    unique = false,\n    useable = false,\n    shouldClose = true,\n    combinable = nil,\n    description = 'Fresh bottled water.'\n  },\n  bandage = {\n    name = 'bandage',\n    label = 'Bandage',\n    weight = 150,\n    type = 'item',\n    image = 'bandage.png',\n    unique = false,\n    useable = true,\n    shouldClose = true,\n    combinable = nil,\n    description = 'Heals small wounds.'\n  }\n}"
+    };
   }
 
   function copyTextToClipboard(text) {
@@ -540,10 +493,22 @@
     });
   }
 
-  function getSamples() {
+  function countItemsAndWarnings(items) {
+    var warnings = 0;
+
+    items.forEach(function (item) {
+      if (!item.label) {
+        warnings += 1;
+      }
+
+      if (item.weight === null || item.weight === undefined) {
+        warnings += 1;
+      }
+    });
+
     return {
-      ox: "return {\n  ['water'] = {\n    label = 'Water',\n    weight = 500,\n    stack = true,\n    close = true,\n    description = 'Fresh bottled water.'\n  },\n  ['bandage'] = {\n    label = 'Bandage',\n    weight = 150,\n    stack = true,\n    close = true,\n    description = 'Heals small wounds.'\n  }\n}",
-      qb: "QBCore.Shared.Items = {\n  water = {\n    name = 'water',\n    label = 'Water',\n    weight = 500,\n    type = 'item',\n    image = 'water.png',\n    unique = false,\n    useable = false,\n    shouldClose = true,\n    combinable = nil,\n    description = 'Fresh bottled water.'\n  },\n  bandage = {\n    name = 'bandage',\n    label = 'Bandage',\n    weight = 150,\n    type = 'item',\n    image = 'bandage.png',\n    unique = false,\n    useable = true,\n    shouldClose = true,\n    combinable = nil,\n    description = 'Heals small wounds.'\n  }\n}"
+      itemCount: items.length,
+      warnings: warnings
     };
   }
 
@@ -569,18 +534,13 @@
     var convertBtn = toolRoot.querySelector('#item-converter-convert');
     var copyBtn = toolRoot.querySelector('#item-converter-copy');
     var downloadBtn = toolRoot.querySelector('#item-converter-download');
+    var copyOutputBtn = toolRoot.querySelector('#item-converter-copy-output');
     var swapBtn = toolRoot.querySelector('[data-action="swap"]');
     var clearBtn = toolRoot.querySelector('[data-action="clear"]');
-    var modeButtons = toolRoot.querySelectorAll('.tool-switcher-button');
+    var modeButtons = toolRoot.querySelectorAll('.item-converter-mode');
     var sampleButtons = toolRoot.querySelectorAll('[data-sample]');
     var samples = getSamples();
     var currentMode = toolRoot.dataset.mode || 'ox-to-qb';
-    var latestStats = analyzeItems([], currentMode);
-    var autoConvert = debounce(function () {
-      if (inputEl && inputEl.value.trim() !== '') {
-        convertCurrentValue();
-      }
-    }, 180);
 
     function setStatus(message, isError) {
       if (!statusEl) {
@@ -588,70 +548,67 @@
       }
 
       statusEl.textContent = message;
-      statusEl.style.color = isError ? '#fecaca' : 'rgba(181, 181, 181, 0.9)';
-    }
-
-    function getOutputText() {
-      return outputEl ? (outputEl.textContent || '') : '';
-    }
-
-    function setOutputText(value) {
-      if (!outputEl) {
-        return;
-      }
-
-      var outputValue = value || 'Converted Lua will appear here.';
-      outputEl.textContent = outputValue;
-      outputEl.classList.toggle('is-empty', !value);
-    }
-
-    function updateSummary(items, convertedText) {
-      latestStats = analyzeItems(items, currentMode);
-
-      if (formatEl) {
-        formatEl.textContent = latestStats.modeLabel;
-      }
-
-      if (itemsEl) {
-        itemsEl.textContent = String(latestStats.itemCount);
-      }
-
-      if (warningsEl) {
-        warningsEl.textContent = String(latestStats.warnings);
-      }
-
-      if (outputCountEl) {
-        outputCountEl.textContent = (convertedText ? convertedText.length : 0) + ' chars';
-      }
-
-      if (hintEl) {
-        var hintParts = [];
-        if (latestStats.missingLabels > 0) {
-          hintParts.push(latestStats.missingLabels + ' item' + (latestStats.missingLabels === 1 ? '' : 's') + ' missing labels');
-        }
-        if (latestStats.missingWeights > 0) {
-          hintParts.push(latestStats.missingWeights + ' item' + (latestStats.missingWeights === 1 ? '' : 's') + ' missing weights');
-        }
-        if (latestStats.missingImages > 0) {
-          hintParts.push(latestStats.missingImages + ' image' + (latestStats.missingImages === 1 ? '' : 's') + ' not mapped');
-        }
-
-        hintEl.textContent = hintParts.length > 0
-          ? ('Detected ' + latestStats.itemCount + ' items. ' + hintParts.join(' • '))
-          : ('Detected ' + latestStats.itemCount + ' items. Parser looks clean.');
-      }
+      statusEl.classList.toggle('is-error', !!isError);
     }
 
     function setMode(nextMode) {
       currentMode = nextMode === 'qb-to-ox' ? 'qb-to-ox' : 'ox-to-qb';
       toolRoot.dataset.mode = currentMode;
+
       modeButtons.forEach(function (buttonEl) {
-        var isActive = buttonEl.dataset.direction === currentMode;
-        buttonEl.classList.toggle('is-active', isActive);
+        buttonEl.classList.toggle('is-active', buttonEl.dataset.mode === currentMode);
       });
-      setStatus(currentMode === 'ox-to-qb' ? 'Source: ox_inventory. Target: QBCore.' : 'Source: QBCore. Target: ox_inventory.', false);
-      if (inputEl && inputEl.value) {
-        convertCurrentValue();
+
+      if (formatEl) {
+        formatEl.textContent = currentMode === 'ox-to-qb' ? 'ox_inventory' : 'QBCore';
+      }
+    }
+
+    function getOutputText() {
+      return outputEl ? outputEl.textContent : '';
+    }
+
+    function setOutputText(text) {
+      if (!outputEl) {
+        return;
+      }
+
+      outputEl.textContent = text || 'Converted Lua will appear here.';
+    }
+
+    function copyOutputToClipboard() {
+      var outputText = getOutputText();
+      if (!outputText || outputText === 'Converted Lua will appear here.') {
+        setStatus('Nothing to copy yet.', true);
+        return;
+      }
+
+      copyTextToClipboard(outputText).then(function () {
+        setStatus('Output copied to clipboard.', false);
+      }).catch(function () {
+        setStatus('Clipboard access was blocked by the browser.', true);
+      });
+    }
+
+    function updateSummary(itemBlocks, convertedText) {
+      var summary = countItemsAndWarnings(itemBlocks);
+
+      if (itemsEl) {
+        itemsEl.textContent = String(summary.itemCount);
+      }
+
+      if (warningsEl) {
+        warningsEl.textContent = String(summary.warnings);
+      }
+
+      if (outputCountEl) {
+        outputCountEl.textContent = String(convertedText ? convertedText.length : 0) + ' chars';
+      }
+
+      if (hintEl) {
+        hintEl.textContent = summary.itemCount > 0
+          ? ('Detected ' + summary.itemCount + ' item' + (summary.itemCount === 1 ? '' : 's') + '.')
+          : 'Drop a file or paste Lua to begin.';
       }
     }
 
@@ -660,9 +617,9 @@
       var itemBlocks = findItemBlocks(rawInput);
 
       if (!itemBlocks.length) {
-        setStatus('No item blocks were detected. Paste a Lua item table first.', true);
-        setOutputText('');
+        setOutputText('Converted Lua will appear here.');
         updateSummary([], '');
+        setStatus('No item blocks were detected. Paste a Lua item table or a fenced code block.', true);
         return;
       }
 
@@ -670,14 +627,22 @@
       var converted = currentMode === 'ox-to-qb' ? formatQbItems(items) : formatOxItems(items);
 
       setOutputText(converted);
-
       updateSummary(items, converted);
-      setStatus('Converted ' + items.length + ' item' + (items.length === 1 ? '' : 's') + ' successfully.', false);
+      setStatus('Converted ' + items.length + ' item' + (items.length === 1 ? '' : 's') + '.', false);
     }
+
+    var autoConvert = debounce(function () {
+      if (inputEl && inputEl.value.trim() !== '') {
+        convertCurrentValue();
+      }
+    }, 180);
 
     modeButtons.forEach(function (buttonEl) {
       buttonEl.addEventListener('click', function () {
-        setMode(buttonEl.dataset.direction);
+        setMode(buttonEl.dataset.mode);
+        if (inputEl && inputEl.value.trim() !== '') {
+          convertCurrentValue();
+        }
       });
     });
 
@@ -706,10 +671,10 @@
       clearBtn.addEventListener('click', function () {
         if (inputEl) {
           inputEl.value = '';
+          inputEl.focus();
         }
 
         setOutputText('');
-
         updateSummary([], '');
         setStatus('Workspace cleared.', false);
       });
@@ -720,19 +685,11 @@
     }
 
     if (copyBtn) {
-      copyBtn.addEventListener('click', function () {
-        var outputText = getOutputText();
-        if (!outputText || outputText === 'Converted Lua will appear here.') {
-          setStatus('Nothing to copy yet.', true);
-          return;
-        }
+      copyBtn.addEventListener('click', copyOutputToClipboard);
+    }
 
-        copyTextToClipboard(outputText).then(function () {
-          setStatus('Output copied to clipboard.', false);
-        }).catch(function () {
-          setStatus('Clipboard access was blocked by the browser.', true);
-        });
-      });
+    if (copyOutputBtn) {
+      copyOutputBtn.addEventListener('click', copyOutputToClipboard);
     }
 
     if (downloadBtn) {
@@ -804,9 +761,6 @@
 
     setMode(detectSourceMode(inputEl && inputEl.value) || currentMode);
     convertCurrentValue();
-    if (inputEl && inputEl.value.trim() !== '') {
-      autoConvert();
-    }
     contentRoot.dataset.itemConverterBound = '1';
   }
 

@@ -1,0 +1,84 @@
+<div class="item-converter-tool" id="item-converter-tool" data-mode="ox-to-qb">
+  <div class="item-converter-banner">
+    <img src="/assets/other/banner-item-converter.png" alt="Item Converter banner" data-no-zoom />
+  </div>
+
+  <div class="item-converter-hero">
+    <div class="item-converter-hero-copy">
+      <p class="item-converter-kicker">Tools</p>
+      <h1>Item Converter</h1>
+      <p class="item-converter-description">Paste your item table, choose the direction, and get clean Lua back in seconds. The tool is intentionally simple so it stays fast, readable, and easy to use.</p>
+    </div>
+  </div>
+
+  <div class="item-converter-toolbar">
+    <div class="item-converter-modes" role="tablist" aria-label="Conversion direction">
+      <button type="button" class="item-converter-mode is-active" data-mode="ox-to-qb">ox_inventory to QBCore</button>
+      <button type="button" class="item-converter-mode" data-mode="qb-to-ox">QBCore to ox_inventory</button>
+    </div>
+
+    <div class="item-converter-actions">
+      <button type="button" class="item-converter-action item-converter-action--primary" id="item-converter-convert">Convert</button>
+      <button type="button" class="item-converter-action" data-action="swap">Swap</button>
+      <button type="button" class="item-converter-action" data-action="clear">Clear</button>
+      <button type="button" class="item-converter-action" id="item-converter-copy">Copy code</button>
+      <button type="button" class="item-converter-action" id="item-converter-download">Download .lua</button>
+    </div>
+  </div>
+
+  <div class="item-converter-statusbar" id="item-converter-status">Ready.</div>
+
+  <div class="item-converter-stats" aria-label="Conversion summary">
+    <div class="item-converter-stat"><span>Mode</span><strong id="item-converter-format">ox_inventory</strong></div>
+    <div class="item-converter-stat"><span>Items</span><strong id="item-converter-items">0</strong></div>
+    <div class="item-converter-stat"><span>Warnings</span><strong id="item-converter-warnings">0</strong></div>
+    <div class="item-converter-stat"><span>Output</span><strong id="item-converter-output-count">0 chars</strong></div>
+  </div>
+
+  <div class="item-converter-info">
+    <svg class="item-converter-info-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 4a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 12 6Zm1.5 12h-3v-1.5h.75v-4H10.5V11h2.25v5.5h.75Z"></path>
+    </svg>
+    <div>
+      <strong>Tip:</strong>
+      <span>The tool auto-detects the most common `ox_inventory` and QBCore formats, so you can usually just paste and convert.</span>
+    </div>
+  </div>
+
+  <section class="item-converter-grid">
+    <div class="item-converter-panel">
+      <div class="item-converter-panel-head">
+        <h2 class="item-converter-panel-title">
+          <svg class="item-converter-panel-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7.7 6.3 9.1 7.7 6.8 10H16v2H6.8l2.3 2.3-1.4 1.4L2.9 12l4.8-4.8Z"></path>
+          </svg>
+          <span>Input</span>
+        </h2>
+        <span>Paste a Lua item table</span>
+      </div>
+      <div class="item-converter-box item-converter-box--input">
+        <textarea id="item-converter-input" class="item-converter-input" rows="18" spellcheck="false" placeholder="Paste your ox_inventory or QBCore item table here. You can also drop a .lua or .txt file."></textarea>
+      </div>
+      <p class="item-converter-hint" id="item-converter-hint">Drop a file or paste Lua to begin.</p>
+    </div>
+
+    <div class="item-converter-panel item-converter-panel--output">
+      <div class="item-converter-panel-head">
+        <div class="item-converter-panel-head-copy">
+          <h2 class="item-converter-panel-title">
+            <svg class="item-converter-panel-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M16.3 17.7 14.9 16.3l2.3-2.3H8v-2h9.2l-2.3-2.3 1.4-1.4 4.8 4.8-4.8 4.6Z"></path>
+            </svg>
+            <span>Output</span>
+          </h2>
+          <button type="button" class="item-converter-panel-copy" id="item-converter-copy-output">Copy output</button>
+        </div>
+        <span>Copy-ready Lua</span>
+      </div>
+      <div class="item-converter-box item-converter-box--output">
+        <pre id="item-converter-output" class="item-converter-output" tabindex="0" aria-readonly="true">Converted Lua will appear here.</pre>
+      </div>
+      <p class="item-converter-hint">The output updates automatically as you type.</p>
+    </div>
+  </section>
+</div>

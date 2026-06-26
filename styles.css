@@ -872,7 +872,10 @@ body.command-search-open {
   line-height: 1.4;
 }
 
-.command-search-close {
+.command-search-close,
+button[aria-label^="Close"],
+button[aria-label^="close"],
+.blip-sprite-picker-close {
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -889,13 +892,22 @@ body.command-search-open {
 }
 
 .command-search-close:hover,
-.command-search-close:focus-visible {
+.command-search-close:focus-visible,
+button[aria-label^="Close"]:hover,
+button[aria-label^="Close"]:focus-visible,
+button[aria-label^="close"]:hover,
+button[aria-label^="close"]:focus-visible,
+.blip-sprite-picker-close:hover,
+.blip-sprite-picker-close:focus-visible {
   transform: translateY(-1px);
   background: rgba(220, 38, 38, 0.28);
   border-color: rgba(248, 113, 113, 0.55);
 }
 
-.command-search-close:focus-visible {
+.command-search-close:focus-visible,
+button[aria-label^="Close"]:focus-visible,
+button[aria-label^="close"]:focus-visible,
+.blip-sprite-picker-close:focus-visible {
   outline: 2px solid rgba(245, 194, 66, 0.58);
   outline-offset: 2px;
 }
@@ -909,6 +921,14 @@ body.command-search-open {
   font-size: 1.25rem;
   line-height: 1;
   transform: translateY(-1px);
+}
+
+.blip-sprite-picker-close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  font-size: 1.3rem;
+  line-height: 1;
 }
 
 .command-search-inputwrap {
