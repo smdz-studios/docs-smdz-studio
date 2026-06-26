@@ -9,7 +9,7 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/faq.md',
   '/fxap.md',
   '/README.md',
-  '/new-identity.md',
+  '/news/new-identity.md',
   '/portal.md',
   '/problems.md',
   '/support.md',
