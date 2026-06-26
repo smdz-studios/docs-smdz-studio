@@ -85,6 +85,7 @@
   <!-- Custom styles -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-2" />
+  <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-1" />
 </head>
 <body>
   <!-- Global announcement bar – content & style controlled from plugins/banner-config.js -->
@@ -597,6 +598,12 @@
               label: 'Item Converter',
               path: 'M9 3h6a2 2 0 0 1 2 2v1h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2Zm0 3h6V5H9v1Zm-2 4v9h10v-9H7Zm2 2h6v1H9v-1Zm0 3h4v1H9v-1Z'
             };
+            sidebarIconMap['/tools/item-converter/index.md'] = sidebarIconMap['/tools/item-converter/'];
+            sidebarIconMap['/tools/blip-generator/'] = {
+              label: 'Blip Generator',
+              path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z'
+            };
+            sidebarIconMap['/tools/blip-generator/index.md'] = sidebarIconMap['/tools/blip-generator/'];
 
             var sidebarIconTextMap = {
               'PORTAL': sidebarIconMap['/portal.md'],
@@ -624,7 +631,8 @@
               'FLYERS': sidebarIconMap['/scripts/flyers.md'],
               'RAILWAY JOB': sidebarIconMap['/scripts/railway-job.md'],
               'OX TARGET': sidebarIconMap['/scripts/ox-target-redesing-crystal.md'],
-              'ITEM CONVERTER': sidebarIconMap['/tools/item-converter/']
+              'ITEM CONVERTER': sidebarIconMap['/tools/item-converter/'],
+              'BLIP GENERATOR': sidebarIconMap['/tools/blip-generator/']
             };
 
             function normalizeSidebarHref(rawHref) {
@@ -1001,6 +1009,9 @@
               if (typeof window.SMDZ_initItemConverterTool === 'function') {
                 window.SMDZ_initItemConverterTool();
               }
+              if (typeof window.SMDZ_initBlipGeneratorTool === 'function') {
+                window.SMDZ_initBlipGeneratorTool();
+              }
             });
           });
         },
@@ -1196,6 +1207,7 @@
   <script src="plugins/visitor-config.js?v=20260612-2"></script>
   <script src="plugins/visitor-notifier.js?v=20260613-1"></script>
   <script src="tools/item-converter/item-converter.js?v=20260626-2"></script>
+  <script src="tools/blip-generator/blip-generator.js?v=20260626-1"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {

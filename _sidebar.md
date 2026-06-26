@@ -25,8 +25,10 @@ Sidebar icons:
   - [Common Problems](/problems.md "icon:warning")
   - [Asset Escrow System](/fxap.md "icon:shield")
 
-- **Tools** "icon:wrench"
-  - [Item Converter](/tools/item-converter/index.md "icon:wrench")
+<!-- - **Tools** "icon:wrench"
+  - [Blip Generator](/tools/blip-generator/index.md "icon:map-pinned")
+  - [Item Converter](/tools/item-converter/index.md "icon:wrench") -->
+
 
 - **Paid Resources**
   - [Fast Repair - v 1.0](/scripts/fast-repair.md "icon:wrench")
@@ -53,5 +55,5 @@ Sidebar icons:
   - [Ox Target (Crystal Style)](/scripts/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
 
-- **Free Resources**
-  - [Hadling Editor](/scripts/handling-editor.md "icon:toolbox")
+<!-- - **Free Resources**
+  - [Hadling Editor](/scripts/handling-editor.md "icon:toolbox") -->
