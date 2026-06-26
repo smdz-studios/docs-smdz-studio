@@ -12,6 +12,10 @@
   ></iframe>
 </div>
 
+<div
+  class="five-metrics-resource"
+  data-resource="smdz_handling_editor"
+></div>
 
 ---
 
@@ -570,83 +574,28 @@ Enable `Config.General.Debug = true` while diagnosing a problem. Debug prints us
 | Exported speed does not exactly match an in-game km/h target. | `fInitialDriveMaxFlatVel` is not a direct speedometer value; drivetrain, drag, wheels, and game physics also affect speed. | Treat it as a tuning value, test in game, and adjust related fields carefully. |
 | The React build command fails. | Node.js/npm is missing, dependencies were not installed, or the command is being run from the wrong directory. | Follow `web/BUILD.md`, run `cd web`, then `npm install` and `npm run build`. |
 
-## FAQ
-
-### Is the script framework-dependent?
-
-No. It is standalone and does not require ESX, QBCore, Qbox, a database, inventory, or target system.
-
-### Is the script free?
-
-The intended distribution model is a free Asset Escrow edition and a separate paid open-source edition. The official store listing defines the final price, licence, included files, and support conditions.
-
-### Are handling changes permanent?
-
-No. The editor changes the active vehicle entity at runtime. Permanent tuning requires copying the exported XML into the correct vehicle `handling.meta` entry and restarting the relevant resource.
-
-### Does Export automatically modify `handling.meta`?
-
-No. Export generates a ready-to-copy XML entry. It never writes to your server files automatically.
-
-### Are presets permanent?
-
-No. Presets remain in client memory only for the current game session. They are removed when the client/resource session ends.
-
-### Can I edit addon or custom vehicles?
-
-Usually yes, provided the vehicle uses supported handling fields and is not blocked by the configured model/class restrictions. Custom vehicles can react differently to the same values, so test carefully.
-
-### Can I add more handling fields?
-
-The free configuration can enable, disable, move, and change ranges for fields already in the catalog. Adding entirely new native fields requires editing `shared/handling_catalog.lua`, which depends on the source access supplied by your edition.
-
-### Can I change all UI colours without rebuilding React?
-
-Yes. Edit `config_ui_colors.lua` and restart the resource. A React rebuild is not required for colour-only changes.
-
-### How do I change the React interface itself?
-
-Follow `web/BUILD.md`. From the `web` directory, install dependencies and run the production build command. The output is generated in `web/dist`.
-
-### Which languages are included?
-
-English, Spanish, French, German, Portuguese, Turkish, Italian, and Dutch: `en`, `es`, `fr`, `de`, `pt`, `tr`, `it`, and `nl`.
-
-### Can I disable notifications completely?
-
-Yes. Set `Config.Notifications.Enabled = false`, or select the `none` provider when you only want to suppress delivery through the bridge.
-
-### Can multiple staff members edit the same vehicle at the same time?
-
-There is no exclusive vehicle lock. Simultaneous edits can overwrite each other's runtime values and are not recommended.
-
-### Does `OpenEditor` check ACE permissions?
-
-No. It validates the local vehicle context but does not perform the server command's ACE check. Use the server `HasAccess` export before exposing a custom integration.
-
-### Why does a handling field have a limited range?
-
-The editor uses safety bounds to reduce accidental extreme values. Change those bounds with `Config.Handling.FieldOverrides` when you understand the effect of the field.
-
-### Can aircraft, boats, motorcycles, or special vehicles be edited?
-
-They are not blocked automatically unless their classes/models are configured as blocked. However, not every displayed field behaves meaningfully on every vehicle type. Use `BlockedClasses` when you want to restrict unsupported categories.
-
-### Can the hard-locked folder name be changed?
-
-The escrow edition must remain named `smdz_handling_editor`. Any modification or removal of the validation in an open-source edition must follow the licence terms supplied with that edition.
-
 ---
-# 🔄 UPDATES:
 
-1. Backup `config.lua`, `server/config.lua`, `bridge/notifications.lua`, and any edited locale files.
-2. Stop `smdz_handling_editor`.
-3. Delete the old resource folder instead of overwriting individual compiled UI files.
-4. Extract the new `smdz_handling_editor` folder.
-5. Re-apply or merge your configuration, notification bridge, and locale changes.
-6. Keep the exact folder name `smdz_handling_editor`.
-7. Start the resource and check the validation message in the server console.
-8. Test permissions, the editor, presets, XML export, notifications, and webhook logs.
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+|---|---|
+| Is the script framework-dependent? | No. It is standalone and does not require ESX, QBCore, Qbox, a database, inventory, or target system. |
+| Is the script free? | The intended distribution model is a free Asset Escrow edition and a separate paid open-source edition. The official store listing defines the final price, licence, included files, and support conditions. |
+| Are handling changes permanent? | No. The editor changes the active vehicle entity at runtime. Permanent tuning requires copying the exported XML into the correct vehicle `handling.meta` entry and restarting the relevant resource. |
+| Does Export automatically modify `handling.meta`? | No. Export generates a ready-to-copy XML entry. It never writes to your server files automatically. |
+| Are presets permanent? | No. Presets remain in client memory only for the current game session. They are removed when the client/resource session ends. |
+| Can I edit addon or custom vehicles? | Usually yes, provided the vehicle uses supported handling fields and is not blocked by the configured model/class restrictions. Custom vehicles can react differently to the same values, so test carefully. |
+| Can I add more handling fields? | The free configuration can enable, disable, move, and change ranges for fields already in the catalog. Adding entirely new native fields requires editing `shared/handling_catalog.lua`, which depends on the source access supplied by your edition. |
+| Can I change all UI colours without rebuilding React? | Yes. Edit `config_ui_colors.lua` and restart the resource. A React rebuild is not required for colour-only changes. |
+| How do I change the React interface itself? | Follow `web/BUILD.md`. From the `web` directory, install dependencies and run the production build command. The output is generated in `web/dist`. |
+| Which languages are included? | English, Spanish, French, German, Portuguese, Turkish, Italian, and Dutch: `en`, `es`, `fr`, `de`, `pt`, `tr`, `it`, and `nl`. |
+| Can I disable notifications completely? | Yes. Set `Config.Notifications.Enabled = false`, or select the `none` provider when you only want to suppress delivery through the bridge. |
+| Can multiple staff members edit the same vehicle at the same time? | There is no exclusive vehicle lock. Simultaneous edits can overwrite each other's runtime values and are not recommended. |
+| Does `OpenEditor` check ACE permissions? | No. It validates the local vehicle context but does not perform the server command's ACE check. Use the server `HasAccess` export before exposing a custom integration. |
+| Why does a handling field have a limited range? | The editor uses safety bounds to reduce accidental extreme values. Change those bounds with `Config.Handling.FieldOverrides` when you understand the effect of the field. |
+| Can aircraft, boats, motorcycles, or special vehicles be edited? | They are not blocked automatically unless their classes/models are configured as blocked. However, not every displayed field behaves meaningfully on every vehicle type. Use `BlockedClasses` when you want to restrict unsupported categories. |
+| Can the hard-locked folder name be changed? | The escrow edition must remain named `smdz_handling_editor`. Any modification or removal of the validation in an open-source edition must follow the licence terms supplied with that edition. |
 
 ---
 

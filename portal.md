@@ -45,7 +45,7 @@
         <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/flyers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/flyers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -64,7 +64,7 @@
         <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/streamers-list.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/streamers-list.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -82,7 +82,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/nfc-transfer.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/nfc-transfer.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/nfc-transfers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -101,7 +101,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ifruit-pods.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/ifruit-pods.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7432166" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -118,7 +118,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/speed-bumpers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-bumpers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-bumps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -136,7 +136,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/realistic-uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/realistic-uav.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/realistic-uav" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -154,7 +154,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/pets-rescue.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/pets-rescue.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/pets-rescue" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -171,7 +171,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/peds-manager.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/peds-manager.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/peds-manager" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -188,7 +188,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/app-emergency-alerts.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/app-emergency-alerts.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-alerts" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -205,7 +205,7 @@
         <span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/redesings/ox-target-redesing-crystal.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/oxtarget-crystal-style" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -222,7 +222,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/emergency-gps.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/emergency-gps.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -239,7 +239,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/evidence-markers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-markers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -256,7 +256,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/rancher-job.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -273,7 +273,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/bus-travel.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -290,7 +290,7 @@
         <span>ESX</span><span>QBCORE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/speed-for-zones.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-for-zones.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -307,7 +307,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/hud2d-builder.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/hud2d-builder.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -324,7 +324,7 @@
         <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/scripts/fast-repair.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/fast-repair.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -378,3 +378,5 @@ Depending on what you need right now:
 
 Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.
 Everything here is designed to save you time and reduce guesswork when running your FiveM server with SMDZ Studios scripts. 💚
+
+

@@ -3,7 +3,7 @@
     width="640"
     height="360"
     src="https://www.youtube.com/embed/UOqLiRLXrd0"
-    title="SMDZ Fast Repair Showcase"
+    title="SMDZ Toggle Minimap Showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
@@ -156,4 +156,3 @@ Config.Languages = {
   - **Bug fixes / emergency patches** if necessary
   - **Small content additions or minor improvements** from time to time
 - ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
-

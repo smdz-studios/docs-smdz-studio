@@ -25,35 +25,36 @@ Sidebar icons:
   - [Common Problems](/problems.md "icon:warning")
   - [Asset Escrow System](/fxap.md "icon:shield")
 
-<!-- - **Tools** "icon:wrench"
+- **Tools** "icon:wrench"
   - [Blip Generator](/tools/blip-generator/index.md "icon:map-pinned")
-  - [Item Converter](/tools/item-converter/index.md "icon:wrench") -->
+  - [Item Converter](/tools/item-converter/index.md "icon:wrench")
 
 
 - **Paid Resources**
-  - [Fast Repair - v 1.0](/scripts/fast-repair.md "icon:wrench")
-  - [Speed For Zones](/scripts/speed-for-zones.md "icon:speedometer")
-  - [HUD 2D Builder](/scripts/hud2d-builder.md "icon:monitor")
-  - [Bus Travel](/scripts/bus-travel.md "icon:bus")
-  - [Evidence Markers](/scripts/evidence-markers.md "icon:evidence")
-  - [Rancher Job](/scripts/rancher-job.md "icon:cow")
-  - [Emergency GPS](/scripts/emergency-gps.md "icon:location")
-  - [Emergency Alerts APP](/scripts/app-emergency-alerts.md "icon:phone-alert")
-  - [Peds Manager](/scripts/peds-manager.md "icon:user")
-  - [Pets Rescue](/scripts/pets-rescue.md "icon:paw")
-  - [Realistic UAV](/scripts/realistic-uav.md "icon:drone")
-  - [Speed Bumpers](/scripts/speed-bumpers.md "icon:speed-bump")
-  - [iFruit Pods APP](/scripts/ifruit-pods.md "icon:headphones")
-  - [NFC Transfer](/scripts/nfc-transfer.md "icon:money")
-  - [Streamers List](/scripts/streamers-list.md "icon:video")
-  - [Flyers](/scripts/flyers.md "icon:flyer")
-  - [Voice Indicator](/scripts/voice-indicator.md "icon:mic")
+  - [Fast Repair - v 1.0](/resources/paid/fast-repair.md "icon:wrench")
+  - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer")
+  - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
+  - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
+  - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
+  - [Rancher Job](/resources/paid/rancher-job.md "icon:cow")
+  - [Emergency GPS](/resources/paid/emergency-gps.md "icon:location")
+  - [Emergency Alerts APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
+  - [Peds Manager](/resources/paid/peds-manager.md "icon:user")
+  - [Pets Rescue](/resources/paid/pets-rescue.md "icon:paw")
+  - [Realistic UAV](/resources/paid/realistic-uav.md "icon:drone")
+  - [Speed Bumpers](/resources/paid/speed-bumpers.md "icon:speed-bump")
+  - [iFruit Pods APP](/resources/paid/ifruit-pods.md "icon:headphones")
+  - [NFC Transfer](/resources/paid/nfc-transfer.md "icon:money")
+  - [Streamers List](/resources/paid/streamers-list.md "icon:video")
+  - [Flyers](/resources/paid/flyers.md "icon:flyer")
+  - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")
 
-  <!-- - [Railway Job](/scripts/railway-job.md "icon:train") -->
+  <!-- - [Railway Job](/resources/paid/railway-job.md "icon:train") -->
 
 - **Redesigns**
-  - [Ox Target (Crystal Style)](/scripts/redesings/ox-target-redesing-crystal.md "icon:crystal")
+  - [Ox Target (Crystal Style)](/resources/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
 
-<!-- - **Free Resources**
-  - [Hadling Editor](/scripts/handling-editor.md "icon:toolbox") -->
+- **Free Resources**
+  - [Handling Editor](/resources/free/handling-editor.md "icon:wrench")
+

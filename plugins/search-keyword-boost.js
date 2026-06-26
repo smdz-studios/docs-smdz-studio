@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = process.cwd();
-const SCRIPTS_DIR = path.join(ROOT_DIR, 'scripts');
+const RESOURCES_DIR = path.join(ROOT_DIR, 'resources');
 
 const SEARCH_TAGS_START = '<!-- AUTO_SEARCH_TAGS:START -->';
 const SEARCH_TAGS_END = '<!-- AUTO_SEARCH_TAGS:END -->';
@@ -95,7 +95,7 @@ function ensureStyleRule(stylesPath) {
 function main() {
   const targetFiles = [
     ...listMarkdownFiles(ROOT_DIR),
-    ...listMarkdownFiles(SCRIPTS_DIR)
+    ...listMarkdownFiles(RESOURCES_DIR)
   ];
 
   let updatedFiles = 0;
