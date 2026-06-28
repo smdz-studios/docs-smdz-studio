@@ -870,6 +870,7 @@ The resource reads and/or tracks relevant `pma-voice` communication information,
 - Mumble speaking natives as a fallback.
 
 The resource does not use `voiceIntent` to determine radio or phone state because `voiceIntent` distinguishes speech from music, not the communication channel.
+
 ---
 
 # ❓ **FAQ:**
@@ -890,6 +891,7 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 | Is German included? | Yes. English, Spanish, French, and German locale files are included. |
 | Why is the default size 70%? | It provides a compact default. The panel recommends approximately 75% for a balanced result. |
 | Can custom radio or phone scripts integrate with the indicator? | Yes. Use `SetRadioActive` and `SetPhoneActive` when the custom resource does not expose expected `pma-voice` state. |
+
 ---
 
 # 🛠️ **COMMON PROBLEMS:**
