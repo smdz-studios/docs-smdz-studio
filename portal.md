@@ -34,6 +34,25 @@
 
 <div class="home-showcase-grid">
 
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/voice-indicator.png" alt="Voice Indicator preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Voice Indicator</h3>
+      <p>SMDZ Voice Indicator is a modern voice activity system for FiveM, designed to make player communication clearer, more immersive, and easier to understand during roleplay. It displays customizable indicators above nearby players while they speak, with dedicated visual states for proximity voice, radio transmissions, and phone calls.</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/voice-indicator.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="**https://smdz-studios.tebex.io/**" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/flyers.png" alt="Flyers preview image" />
@@ -46,7 +65,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/flyers.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7512981" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -65,7 +84,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/streamers-list.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7495147" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -223,7 +242,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/emergency-gps.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-gps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -240,7 +259,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-markers.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-markers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -257,7 +276,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/rancher-job.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/the-rancher-job" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -274,7 +293,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/bus-travel.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/bus-travels" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -291,7 +310,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-for-zones.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-for-zones" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -308,7 +327,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/hud2d-builder.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/drawtext-hud" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -325,7 +344,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/fast-repair.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/fast-repair" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
@@ -378,5 +397,3 @@ Depending on what you need right now:
 
 Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.
 Everything here is designed to save you time and reduce guesswork when running your FiveM server with SMDZ Studios scripts. 💚
-
-

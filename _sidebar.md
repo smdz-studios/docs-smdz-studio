@@ -47,7 +47,7 @@ Sidebar icons:
   - [NFC Transfer](/resources/paid/nfc-transfer.md "icon:money")
   - [Streamers List](/resources/paid/streamers-list.md "icon:video")
   - [Flyers](/resources/paid/flyers.md "icon:flyer")
-  <!-- - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic") -->
+  - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")
 
   <!-- - [Railway Job](/resources/paid/railway-job.md "icon:train") -->
 
