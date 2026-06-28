@@ -887,10 +887,7 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 | Which direct identifiers are supported for administrators? | Complete FiveM identifiers such as `discord:` and `license:` entries. |
 | Is the global enabled state persistent? | Yes, when `ServerConfig.Admin.PersistGlobalState = true`. |
 | Are webhook URLs sent to clients? | No. They are stored in `server/config_server.lua`, which is server-only. |
-| Can the webhook footer be changed? | No. It is permanently fixed to `SMDZ STUDIOS - VOICE INDICATOR`. |
 | Is German included? | Yes. English, Spanish, French, and German locale files are included. |
-| Is the React source included? | Yes. Editable source is in `web/src`, and FiveM uses the generated files in `web/dist`. |
-| Is the production UI completely impossible to reverse engineer? | No client-side build can be completely hidden. The build is minified and obfuscated, while sensitive validation remains server-side. |
 | Why is the default size 70%? | It provides a compact default. The panel recommends approximately 75% for a balanced result. |
 | Can custom radio or phone scripts integrate with the indicator? | Yes. Use `SetRadioActive` and `SetPhoneActive` when the custom resource does not expose expected `pma-voice` state. |
 ---
@@ -915,7 +912,6 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 | Indicators show through walls. | Line-of-sight protection is disabled or its flags were changed. | Enable `RequireLineOfSight` and restore the recommended flags. |
 | Indicators disappear inside vehicles. | The global vehicle switch or the viewer's personal preference is disabled. | Enable both `Config.Visibility.ShowInsideVehicles` and the player's panel option. |
 | A new locale shows missing or untranslated text. | Translation keys differ between locale files. | Copy all keys from `locales/en.lua`, translate every value, and add the file to `fxmanifest.lua`. |
-| React changes do not appear in FiveM. | Only `web/src` was edited and the production build was not regenerated. | Run `npm install`, then `npm run build`, and restart the resource. |
 | The UI breaks after an update. | Old and new files inside `web/dist` were mixed. | Delete the old resource folder and install the complete new version instead of merging generated assets. |
 
 ---
