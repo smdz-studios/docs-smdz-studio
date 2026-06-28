@@ -1,6 +1,6 @@
 <div class="hero-logo-panel">
   <div class="hero-logo-inner">
-    <img src="assets/logo.png" alt="SMDZ Studios Logo" style="max-width: 390px; max-height: 390px;" />
+    <img src="assets/logos/smdz-studios.png" alt="SMDZ Studios Logo" style="max-width: 390px; max-height: 390px;" />
   </div>
 </div>
 <div class="hero-header-wrapper" style="margin-top: 0.5rem; margin-bottom: 1.8rem; text-align: center;">

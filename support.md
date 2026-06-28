@@ -3,7 +3,7 @@
 <div class="hero">
   <div class="hero-logo-panel">
     <div class="hero-logo-inner">
-      <img src="assets/logo.png" alt="SMDZ Studios" />
+      <img src="assets/logos/smdz-studios.png" alt="SMDZ Studios" />
     </div>
     <h2 class="hero-main-title">SMDZ Support</h2>
     <p style="text-align:center;max-width:760px;margin:0.4rem auto 0.2rem auto;color:#cfcfcf;">
