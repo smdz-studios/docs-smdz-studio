@@ -22,7 +22,7 @@ window.SMDZ_BANNER_CONFIG = {
   cta: {
     enabled: true,
     label: "View New Identity",
-    url: "news/new-identity.md",
+    url: "https://docs.smdz-studios.com/#/news/new-identity",
     target: "_self"
   }
 };
