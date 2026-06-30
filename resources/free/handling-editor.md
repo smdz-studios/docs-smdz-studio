@@ -3,7 +3,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    src="https://www.youtube.com/embed/NDmZxcKt1nk"
     title="smdz_handling_editor showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -35,7 +35,34 @@
 
 ---
 
-### 💻 **PLANNED EDITIONS:**
+# ⭐ **FEATURES:**
+
+:zap: Real-Time Editing — Modify vehicle handling values instantly while staying inside the game.
+
+:car: Live Vehicle Testing — Drive, brake, turn, and test every change without restarting the resource.
+
+:bar_chart: 36 Editable Handling Values — Adjust engine power, top speed, braking, traction, steering, suspension, weight, damage, and more.
+
+:floppy_disk: Preset System — Save, load, and delete temporary handling presets during your current session.
+
+:page_facing_up: handling.meta Export — Generate a complete XML configuration ready to copy into your handling.meta file.
+
+:clipboard: One-Click XML Copy — Copy the generated handling data directly from the export window.
+
+:mag: Search and Categories — Quickly find values using the search bar or organized handling categories.
+
+:art: Configurable UI Colors — Customize the full interface color palette without rebuilding the React project.
+
+:bell: Notification Bridge — Compatible with multiple notification providers through an easy-to-edit bridge.
+
+:shield: ACE Permission Support — Restrict access to authorized staff members, developers, or specific server groups.
+
+:bar_chart: Discord Webhook Logs — Optional translated embeds with detailed information about editor activity.
+
+
+---
+
+# 💻 **PLANNED EDITIONS:**
 
 | Edition | Planned availability | Source access | Editable areas | Intended audience |
 |---|---|---|---|---|
@@ -431,7 +458,7 @@ Config.Handling = {
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 The editor changes supported handling values live on the vehicle currently driven by the authorized player. Changes are applied to the current vehicle entity and are not written permanently to any server file.
 
@@ -460,18 +487,6 @@ The editor changes supported handling values live on the vehicle currently drive
 - No default key is assigned to open the editor. Use `/handling` or a secure integration built around the exports.
 - The close control can be changed with `Config.Editor.CloseControl`.
 
-### UI / menus
-
-- Edit engine, braking, traction, suspension, and damage-related values in real time.
-- Search handling fields by translated label or technical field name.
-- Drag the main editor panel to another screen position.
-- View the original value captured at editor opening.
-- See modified fields highlighted immediately.
-- Reset every supported field to its captured original value.
-- Save, load, overwrite, and delete temporary presets.
-- Confirm preset deletion through a translated warning modal.
-- Export the current values as a `handling.meta` XML entry.
-- Copy the exported XML from the centred export window.
 
 ### Important behaviour
 
@@ -599,19 +614,6 @@ The server validates the action, checks ACE access, applies a per-player/action 
 TriggerEvent('smdz_handling:client:toggle')
 ```
 
-## NUI callbacks
-
-These callbacks are internal communication points between React and `client/main.lua`. Other resources should use the Lua exports instead of calling them directly.
-
-| Callback | Request data | Response data | Purpose |
-|---|---|---|---|
-| `editorClose` | `{ reason?: string }` | `{ ok: true }` | Finalises the close sequence after the React animation finishes. |
-| `handlingUpdate` | `{ field: string, value: number }` | `{ ok: bool, value?: number, message?: string }` | Validates, clamps, applies, and returns one handling value. |
-| `handlingReset` | None | `{ ok: bool, values: table, message?: string }` | Restores all captured original values. |
-| `handlingExport` | None | `{ ok: bool, values?: table, vehicle?: table, uppercase?: bool }` | Returns the current values and vehicle metadata used to build XML in React. |
-| `presetSave` | `{ name: string }` | `{ ok: bool, presets?: table, message?: string }` | Saves or overwrites a session preset. |
-| `presetLoad` | `{ name: string }` | `{ ok: bool, values?: table, message?: string }` | Applies a stored session preset. |
-| `presetDelete` | `{ name: string }` | `{ ok: bool, presets?: table, message?: string }` | Deletes a preset after the UI confirmation flow. |
 
 ## Client exports
 

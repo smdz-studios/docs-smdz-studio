@@ -54,5 +54,5 @@ Sidebar icons:
 - **Redesigns**
   - [Ox Target (Crystal Style)](/resources/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
-<!-- - **Free Resources**
-  - [Handling Editor](/resources/free/handling-editor.md "icon:wrench") -->
+- **Free Resources**
+  - [Handling Editor](/resources/free/handling-editor.md "icon:car")

@@ -35,6 +35,41 @@
 <div class="home-showcase-grid">
 
 
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/handling-editor.png" alt="Handling Editor preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Handling Editor</h3>
+      <p>SMDZ Handling Editor is a real-time vehicle tuning tool for FiveM. Edit handling values directly in-game, test changes instantly, save presets, restore original values, and export ready-to-use XML for your handling.meta file.</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span><span>FREE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/free/handling-editor.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/handling-editor" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/voice-indicator.png" alt="Voice Indicator preview image" />
@@ -47,10 +82,19 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/voice-indicator.md">VIEW DOCS</a>
-        <a class="home-showcase-btn home-showcase-btn--buy" href="**https://smdz-studios.tebex.io/**" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7523221" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
 
 
   <article class="home-showcase-card">
@@ -72,6 +116,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/streamers-list.png" alt="Streamers List preview image" />
@@ -88,6 +142,18 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <article class="home-showcase-card">
@@ -109,6 +175,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/lbappifruit.png" alt="iFruit Pods APP preview image" />
@@ -125,6 +202,18 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
@@ -230,6 +319,17 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/emergencygps.png" alt="Emergency GPS preview image" />
@@ -246,6 +346,17 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
@@ -264,6 +375,13 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/rancherjob.png" alt="Rancher Job preview image" />
@@ -280,6 +398,15 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
@@ -298,6 +425,17 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/speedzones.png" alt="Speed For Zones preview image" />
@@ -314,6 +452,16 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
@@ -332,6 +480,15 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
@@ -349,6 +506,11 @@
     </div>
   </article>
 </div>
+
+
+
+
+
 
 ---
 
