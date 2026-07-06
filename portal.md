@@ -41,6 +41,32 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/invitecodes.png" alt="Invite Codes preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Invite Codes</h3>
+      <p>SMDZ Invite Codes is a polished invitation and promotional code system for FiveM. Players can redeem configurable rewards through streamed NPCs, while authorized staff can create, edit, pause, monitor, and manage every code from a complete in-game administration panel</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/invite-codes.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/invite-codes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/handling-editor.png" alt="Handling Editor preview image" />
     </div>
     <div class="home-showcase-body">
@@ -233,6 +259,18 @@
   </article>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/uav.png" alt="UAV preview image" />
@@ -249,6 +287,18 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <article class="home-showcase-card">
@@ -268,6 +318,18 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/pedsmanager.png" alt="Peds Manager preview image" />
@@ -285,6 +347,17 @@
     </div>
   </article>
 
+
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/appemergencyalerts.png" alt="App Emergency Alerts preview image" />
@@ -301,6 +374,17 @@
       </div>
     </div>
   </article>
+
+
+
+
+
+
+
+
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">

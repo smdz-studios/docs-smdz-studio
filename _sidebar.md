@@ -31,23 +31,24 @@ Sidebar icons:
 
 
 - **Paid Resources**
-  - [Fast Repair - v 1.0](/resources/paid/fast-repair.md "icon:wrench")
-  - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer")
-  - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
-  - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
-  - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
-  - [Rancher Job](/resources/paid/rancher-job.md "icon:cow")
-  - [Emergency GPS](/resources/paid/emergency-gps.md "icon:location")
-  - [Emergency Alerts APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
-  - [Peds Manager](/resources/paid/peds-manager.md "icon:user")
-  - [Pets Rescue](/resources/paid/pets-rescue.md "icon:paw")
-  - [Realistic UAV](/resources/paid/realistic-uav.md "icon:drone")
-  - [Speed Bumpers](/resources/paid/speed-bumpers.md "icon:speed-bump")
-  - [iFruit Pods APP](/resources/paid/ifruit-pods.md "icon:headphones")
-  - [NFC Transfer](/resources/paid/nfc-transfer.md "icon:money")
-  - [Streamers List](/resources/paid/streamers-list.md "icon:video")
-  - [Flyers](/resources/paid/flyers.md "icon:flyer")
+  <!-- - [Fast Repair - v 1.0](/resources/paid/fast-repair.md "icon:wrench") -->
+  - [Invite Codes](/resources/paid/invite-codes.md "icon:ticket")
   - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")
+  - [Flyers](/resources/paid/flyers.md "icon:flyer")
+  - [Streamers List](/resources/paid/streamers-list.md "icon:video")
+  - [NFC Transfer](/resources/paid/nfc-transfer.md "icon:money")
+  - [iFruit Pods APP](/resources/paid/ifruit-pods.md "icon:headphones")
+  - [Speed Bumpers](/resources/paid/speed-bumpers.md "icon:speed-bump")
+  - [Realistic UAV](/resources/paid/realistic-uav.md "icon:drone")
+  - [Pets Rescue](/resources/paid/pets-rescue.md "icon:paw")
+  - [Peds Manager](/resources/paid/peds-manager.md "icon:user")
+  - [Emergency Alerts APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
+  - [Emergency GPS](/resources/paid/emergency-gps.md "icon:location")
+  - [Rancher Job](/resources/paid/rancher-job.md "icon:cow")
+  - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
+  - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
+  - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
+  - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer")
 
   <!-- - [Railway Job](/resources/paid/railway-job.md "icon:train") -->
 
