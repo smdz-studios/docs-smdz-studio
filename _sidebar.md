@@ -48,7 +48,7 @@ Sidebar icons:
   - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
   - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
   - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
-  - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer")
+  <!-- - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer") -->
 
   <!-- - [Railway Job](/resources/paid/railway-job.md "icon:train") -->
 
