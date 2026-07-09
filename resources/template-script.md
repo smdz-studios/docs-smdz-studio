@@ -25,13 +25,9 @@
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Standalone <!-- choose one -->
 - 🧾 **Version:** `1.0.0`
-- ✅ **Status:** `Stable`
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
-Badges (optional):
 
-- <span class="badge badge--stable">STABLE</span>
-- <span class="badge badge--beta">Beta</span>
-- <span class="badge badge--legacy">Legacy</span>
 
 **Short description:**
 _Example_: “Lightweight example script demonstrating how SMDZ Studios documents FiveM resources.”
@@ -188,7 +184,7 @@ When you have your real events/exports ready, paste them in a future chat and I 
 
 ---
 
-# 🧪 Debugging & Common Issues
+# 🧪 **COMMON ISSUES:**
 
 List common problems you expect users to hit and how to solve them.
 
@@ -207,37 +203,3 @@ List common problems you expect users to hit and how to solve them.
 3. **Permissions not working**
    - Verify ACE groups or framework perms.
    - Check that admin commands are not available to normal users.
-
----
-
-# 🔄 UPDATES:
-
-Explain how to safely update the script:
-
-1. Backup your current `config.lua` and any modified files.
-2. Stop the resource.
-3. Replace the old resource folder with the new version.
-4. Re‑apply or merge your configuration changes.
-5. Start the resource and test everything.
-
-You can also link to release notes if you keep them somewhere else.
-
----
-
-# 🔄 **UPDATES:**
-- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
-- 🛠️ During this period, the script will only receive:
-  - **Bug fixes / emergency patches** if necessary
-  - **Small content additions or minor improvements** from time to time
-- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
-
-- 🧾 **UPDATE STEPS:**
-  *Backup config → replace folder → restore config → restart server.*
-
----
-
-# ⚠️ **IMPORTANT WARNING:**
-🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
-
-⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

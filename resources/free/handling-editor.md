@@ -692,7 +692,7 @@ The resource also listens to FiveM's built-in `onResourceStop` and `playerDroppe
 
 ---
 
-# 🧪 Common Issues
+# 🧪 **COMMON ISSUES:**
 
 | Problem / symptom | Likely cause | Resolution |
 |---|---|---|
