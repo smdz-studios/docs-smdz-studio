@@ -32,6 +32,7 @@ Sidebar icons:
 
 - **Paid Resources**
   <!-- - [Fast Repair - v 1.0](/resources/paid/fast-repair.md "icon:wrench") -->
+  - [Cine Loadscreen](/resources/paid/cine-loadscreen.md "icon:cine")
   - [Invite Codes](/resources/paid/invite-codes.md "icon:ticket")
   - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")
   - [Flyers](/resources/paid/flyers.md "icon:flyer")

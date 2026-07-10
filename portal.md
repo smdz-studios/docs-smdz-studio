@@ -36,6 +36,22 @@
 
 
 
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/loading-screen-southland.png" alt="Cine Loadscreen preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Cine Loadscreen</h3>
+      <p>SMDZ Cinematic Loadscreen is a cinematic image-based loading screen for FiveM servers, inspired by American police TV show (Southland LAPD) opening credits and redesigned with a unique FiveM roleplay identity.</p>
+      <div class="home-showcase-tags">
+        <span>STANDALONE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/cine-loadscreen.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
 
 
 
