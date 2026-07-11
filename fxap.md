@@ -1,6 +1,6 @@
 # ASSET ESCROW SYSTEM (CFX.RE / TEBEX):
 
-The **Asset Escrow** system is used by Cfx.re and Tebex to protect premium FiveM resources, including several scripts created by **SMDZ Studios**.  
+The **Asset Escrow** system is used by Cfx.re and Tebex to protect premium FiveM resources, including several scripts created by **SMDZ Studios**.
 This page is written for **server owners**, even if you do not have a deep technical background. The goal is to explain, in clear language, what this system does and how to resolve the most common problems related to it.
 
 ---
@@ -17,7 +17,7 @@ In practice:
   - The script is **genuinely owned** by the account running your server.
   - The script has **not** been tampered with in an unsupported way.
 
-If the check is successful, the resource behaves like any normal script.  
+If the check is successful, the resource behaves like any normal script.
 If the check fails, the resource may refuse to start and will usually display a clear error message in the console.
 
 ---
@@ -26,15 +26,15 @@ If the check fails, the resource may refuse to start and will usually display a 
 
 The licensing model for escrowed assets involves **three main elements**:
 
-1. Your **Tebex account**, where you purchase the script.  
-2. Your **Cfx.re (FiveM) account**, which is linked to Tebex and owns your server license key.  
+1. Your **Tebex account**, where you purchase the script.
+2. Your **Cfx.re (FiveM) account**, which is linked to Tebex and owns your server license key.
 3. The **FiveM server license key**, which identifies your specific server.
 
 All three must align correctly.
 
 ### STEP 1 – PURCHASE ON TEBEX:
 
-- All official SMDZ Studios scripts are sold exclusively via:  
+- All official SMDZ Studios scripts are sold exclusively via:
   👉 **[SMDZ Studios Tebex Store](https://smdz-studios.tebex.io/)**
 
 When you purchase a script:
@@ -50,7 +50,7 @@ The link between Tebex and Cfx.re ensures that **Cfx.re knows which FiveM accoun
 
 To verify or create this link:
 
-1. Log into **Cfx.re Keymaster** with the FiveM account that will own the server license key:  
+1. Log into **Cfx.re Keymaster** with the FiveM account that will own the server license key:
    👉 <https://keymaster.fivem.net/>
 2. Log into your **Tebex account** in the same browser session.
 3. Follow the instructions in Tebex/Keymaster to link your accounts (if they are not already linked).
@@ -119,45 +119,6 @@ Editing protected areas can:
 
 ---
 
-# 🔁 **UPDATING AN ESCROWED SCRIPT SAFELY:**
-
-When a new version of an escrowed script is published, you should follow a methodical update process to avoid losing configuration or breaking the validation.
-
-### RECOMMENDED UPDATE PROCESS:
-
-1. **Back up your configuration files.**
-
-   For example:
-
-   ```bash
-   cp resources/[smdz]/smdz_example/config.lua backups/smdz_example_config_backup.lua
-   ```
-
-2. **Download the latest version** from the official Tebex download link.
-
-3. **Remove the old resource folder** from your server:
-
-   ```bash
-   rm -rf resources/[smdz]/smdz_example
-   ```
-
-4. **Extract the new version** into your resources directory:
-
-   ```bash
-   unzip smdz_example_latest.zip -d resources/[smdz]/
-   ```
-
-5. **Re‑apply your configuration changes carefully:**
-
-   - Open the new `config.lua` and your backup side‑by‑side.
-   - Copy your values from the backup into the new file.
-   - Pay attention to any **new options** introduced in the update and keep them intact.
-
-6. **Restart the entire FiveM server** and observe the console for any issues.
-
-By following these steps, you keep your configuration while ensuring that the escrowed code remains untouched and valid.
-
----
 
 **# 🚨 ESCROW / ENTITLEMENT ERRORS – DETAILED GUIDE:**
 
@@ -194,7 +155,7 @@ Your server is trying to start an asset that the **current Cfx.re account** (the
 3. **Align both:**
    - If they are different, you need to transfer the asset to the account that owns the server key.
 
-   You can do this using the official Cfx.re transfer system:  
+   You can do this using the official Cfx.re transfer system:
    👉 [How to transfer assets on Portal](https://support.cfx.re/hc/en-us/articles/16539411062044-How-to-transfer-assets-on-Portal)
 
 4. Once the transfer has completed, **restart the server** and confirm that the error no longer appears.
@@ -221,7 +182,7 @@ If the resource was bought using a different Cfx.re account than the one associa
 
 **Resolution:**
 
-1. Follow the official transfer guide:  
+1. Follow the official transfer guide:
    👉 [Transfer resource guide](https://support.cfx.re/hc/en-us/articles/16539411062044-How-to-transfer-assets-on-Portal)
 2. Transfer the asset to the account owning the server license key.
 3. Perform a **full server restart** and re‑check the console.
@@ -246,7 +207,7 @@ If the system clock on the server is significantly ahead or behind real time (co
 
 **How to check and correct the time:**
 
-1. On the server machine, open:  
+1. On the server machine, open:
    👉 <https://time.is/>
 2. Compare:
    - The time shown on `time.is`.
@@ -333,16 +294,6 @@ If, after following this guide, you still experience problems:
 
 With complete and precise information, SMDZ Studios can diagnose entitlement and escrow issues quickly and provide a clear resolution path.
 
----
-
-# COMMON PROBLEMS & TROUBLESHOOTING:
-
-The following guide is designed to help **server owners of any experience level** systematically diagnose and resolve common issues with SMDZ Studios scripts.  
-Each section follows the same structure:
-
-1. **What you see** in game or in the console.  
-2. **Why this usually happens**.  
-3. **Step‑by‑step actions** you can take to solve it.
 
 ---
 
@@ -447,7 +398,7 @@ You lack the required entitlement to use smdz_prop_finder
 Failed to verify protected resource
 ```
 
-In these cases, you should go to:  
+In these cases, you should go to:
 👉 **[ASSET ESCROW SYSTEM (CFX.RE / TEBEX)](fxap.md)**
 
 That page explains, in detail, how to fix ownership and entitlement problems.
@@ -697,48 +648,6 @@ Config.Notification = 'ox_lib'      -- 'mythic', 'okok', etc.
 3. Set the configuration values in the SMDZ script to exactly match these resource names.
 4. Restart the server and test in‑game.
 
----
-
-# 🌍 **PERFORMANCE & TICK USAGE:**
-
-### WHAT YOU SEE:
-
-- Players mention “lag” or delayed responses.
-- You suspect a particular script might be heavy on CPU.
-
----
-
-### A. MEASURING, NOT GUESSING:
-
-FiveM provides a built‑in resource monitor that you can enable in the console:
-
-```text
-resmon 1
-```
-
-This command shows per‑resource CPU usage. Focus on the line that corresponds to the SMDZ script (for example `smdz_example`) and note:
-
-- The average **ms** value.
-- Whether there are frequent spikes.
-
----
-
-### B. IF A SCRIPT APPEARS HEAVY:
-
-1. Review the configuration and identify options that might be expensive:
-   - Very frequent loops with low wait times.
-   - Extremely large areas or lists processed every frame.
-2. Increase wait times moderately or reduce the size and frequency of scanning operations.
-3. Disable optional diagnostic features, such as heavy debug printing or visualization.
-4. Test the script on a **minimal test server** (only framework + DB + SMDZ script) to rule out interference from other resources.
-
-If you still experience high usage, gather:
-
-- Screenshots of `resmon`.
-- Your configuration file.
-- Estimated player load.
-
-…and include this information in a support request.
 
 ---
 
