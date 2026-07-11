@@ -1,7 +1,7 @@
 # 🧾 **CHANGELOG SMDZ STUDIOS:**
 
 
-#  🚌 | SMDZ Bus Travels - `1.1.0` - 2026-06-20
+#  <span class="changelog-version-badge">1.1.0</span> 🚌 | SMDZ Bus Travels - 2026-06-20
 ### 💰 Permanent Price Reduction
 
 - With the release of version `1.1.0`, the script’s price has been permanently reduced from **€16.99** to **€9.99**, excluding taxes. (escrow version)
@@ -42,7 +42,7 @@
 
 ---
 
-#  🐄 | The Rancher Job - `1.2.0` - 2026-05-22
+#  <span class="changelog-version-badge">1.2.0</span> 🐄 | The Rancher Job - 2026-05-22
 ### ✅ Added
 - New global anti-exploit toggle `Config.AntiExploit.enabled`.
 - Shared anti-exploit state helper in client and server to keep behavior consistent.
@@ -70,7 +70,7 @@
 ---
 
 
-## 🔖 | Evidence Markers - `1.3.0` - 2026-04-21
+## <span class="changelog-version-badge">1.3.0</span> 🔖 | Evidence Markers - 2026-04-21
 ### ✅ Added
 - Marker info interaction on active markers through target.
 - Marker info now opens using the same existing evidence NUI card in read-only mode.
@@ -110,7 +110,7 @@
 
 
 
-## 🐄 | The Rancher Job - `1.1.0` - 2026-04-21
+## <span class="changelog-version-badge">1.1.0</span> 🐄 | The Rancher Job - 2026-04-21
 ### 🧩 Fixes
 - **The use of Xbox Live IDs has been completely eliminated to comply with the [new CFX changes](https://forum.cfx.re/t/deprecation-notice-xbox-live-and-microsoft-player-identifiers/5397645/1).**
 - Prevented global job expiration/rotation while a player is actively running the ranch job (`currentJob.activeBy`).
@@ -133,7 +133,7 @@
 ---
 
 
-## 🔖 | Evidence Markers - `1.2.0` - 2026-04-03
+## <span class="changelog-version-badge">1.2.0</span> 🔖 | Evidence Markers - 2026-04-03
 ### 🧩 Fixes
 - A bug has been fixed for ox inventory which was blocking the purchase and drag from an ox inventory store to the inventory.
 
@@ -143,7 +143,7 @@
 
 ---
 
-## 📱 | SMDZ LB PHONE APP Emergency Alerts  - `1.1.0` - 2026-03-23
+## <span class="changelog-version-badge">1.1.0</span> 📱 | SMDZ LB PHONE APP Emergency Alerts - 2026-03-23
 ### ✅ Added
 - Support for ACE permissions has been added to the administrative command to delete alerts. (ACE or GROUPS permissions)
 - Docs updated.
@@ -154,7 +154,7 @@
 ---
 
 
-## 🎨 | SMDZ Ox Target Crystal Style - `1.1.0` - 2026-03-13
+## <span class="changelog-version-badge">1.1.0</span> 🎨 | SMDZ Ox Target Crystal Style - 2026-03-13
 ### ✅ Added
 - Added ACE permission support for restricted themes in `Config.ThemeDonator` and `Config.ThemeDiscordBoosters`:
   - New `AcePermissions` option (for example: `group.admin`, `admin`, `themediscordboosters`).
@@ -191,7 +191,7 @@
 
 ---
 
-## 📡 | SMDZ Emergency GPS - `1.1.0` - 2026-03-02
+## <span class="changelog-version-badge">1.1.0</span> 📡 | SMDZ Emergency GPS - 2026-03-02
 ### ✨ Highlights
 - Added favorite color support with SQL persistence (same behavior as icon favorites).
 - Added 3 new UI themes: Obsidian, Lagoon, Saffron.
@@ -229,14 +229,14 @@
 
 ---
 
-## 🔖 | Evidence Markers - `1.1.1` - 2026-02-20
+## <span class="changelog-version-badge">1.1.1</span> 🔖 | Evidence Markers - 2026-02-20
 - The `client/cl_edit_props.lua` file is now open source to avoid `"syntax error near '<\1>'"` problems.
 - The `INSTALL_FILES/items_tgiann-inventory.lua` file has been added for convenience when adding objects to this inventory.
 **NOTE: This update is not required for current customers.**
 
 ---
 
-## 🔖 | Evidence Markers - `1.1.0` - 2026-02-14
+## <span class="changelog-version-badge">1.1.0</span> 🔖 | Evidence Markers - 2026-02-14
 - Added compatibility layer in `config.lua` to map new structured config to legacy fields used by runtime.
 - Added client and server exports `useItem` and declared them in `fxmanifest.lua`.
 - Updated server logic to support marker definitions under `Config.Markers.Items` and safe ox_inventory export handling.
