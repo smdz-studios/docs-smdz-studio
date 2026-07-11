@@ -11,13 +11,17 @@
       The better your report, the faster we can reproduce and solve your issue.
     </p>
     <div class="hero-quick-links" style="margin-top:0.9rem;">
-      <a class="hero-quick-link hero-quick-link--support" href="https://discord.gg/BJztNfwcyh" target="_blank" rel="noopener">Open Discord Support</a>
-      <a class="hero-quick-link hero-quick-link--store" href="mailto:smdzstudios@gmail.com">Send Email</a>
+      <span class="support-contact-tooltip" data-support-tooltip="Typical response time for support requests is 1-3 hours.">
+        <a class="hero-quick-link hero-quick-link--support" href="https://discord.gg/BJztNfwcyh" target="_blank" rel="noopener">Open Discord Support</a>
+      </span>
+      <span class="support-contact-tooltip" data-support-tooltip="Email support usually has a longer response time. Use Discord for faster assistance.">
+        <a class="hero-quick-link hero-quick-link--store" href="mailto:smdzstudios@gmail.com">Send Email</a>
+      </span>
     </div>
   </div>
 </div>
 
-## Official Channels
+<!-- ## Official Channels
 
 <div class="feature-row">
   <div class="feature-card">
@@ -43,7 +47,7 @@
       This usually cuts resolution time dramatically.
     </p>
   </div>
-</div>
+</div> -->
 
 ## Required Information
 

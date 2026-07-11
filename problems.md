@@ -1,455 +1,289 @@
-# 🚀 **COMMON PROBLEMS & TROUBLESHOOTING:**
-
-Use this page as a **lookup guide**.  
-Search the **index** first, then jump directly to the section that matches what you see in your console or in‑game.
-
-**Tip:** Use `Ctrl + F` (or `Cmd + F` on Mac) to jump straight to a keyword from your console.
----
-
-# 🧩 Error: syntax error near '<\1>'
-
-There are two possible ways why this error occurs
-
-* You have used FileZilla which is breaking the structure of the script so please use WinSCP which works as expected and doesn't break anything.\
-  \
-  If you did not use FileZilla but you "drag and drop it" with Remote Desktop Control that will still damage it, so please drag and drop the zip and unzip it on server do not move it with method "file by file"\\
-* Your server is outdated and needs to be at least 4752 or greater.
-
-### 📦 FileZilla set binary mode
-
-If you are using FileZilla try reupload whole resource with binary mode
-
-<figure><img src="https://1037498771-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MZErcztD5BvrKnwRGJq%2Fuploads%2Fgit-blob-8cc0c6b3b6a5cf74b86212f918f5ec3814835146%2Ftransfer-type.png?alt=media" alt=""><figcaption><p>Binary transfer mode</p></figcaption></figure>
-
-### 🔍 How can I check my version?
-
-Write into your server console `version`command
-
-### ⬆️ How to update?
-
-#### 🪟 Windows
-
-Please check this video
-
-<div align="center" style="margin-bottom: 1.5rem;">
-  <iframe
-    width="640"
-    height="360"
-    src="https://www.youtube.com/embed/aXCgN07a-yY"
-    title="fix error"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="max-width: 100%; border-radius: 12px;"
-  ></iframe>
-</div>
-
-#### 🐧 Linux
-
-1. Download the last recommended artifact from this page <https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/>
-2. Turn off your server
-3. Delete `cache` & `alpine` folder
-4. Unzip `fx.tar.xz` with command `tar -xf fx.rar.xz`
-5. Start the server and write `version` to see a new version
-
-#### 🪟 Windows
-
-Exactly the same but you use windows FXServer artifact <https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/>
-
-And remove the server folder and replace it with the newly downloaded version.
-
-
----
-
-
-## 🧯 SCRIPT WON’T START / CRASHES ON STARTUP:
-
-**What you see:**
-
-- Resource never appears as started.
-- Console shows red errors when running `ensure` or on server boot.
-- `resources list` does not show the script as loaded.
-
-### ✅ A. QUICK CHECKLIST:
-
-```text
-[ ] Folder name is correct
-[ ] Resource is in the right path
-[ ] "ensure" name matches folder
-[ ] All dependencies are started FIRST
-[ ] No obvious syntax error in config
-```
-
----
-
-### 📁 B. FOLDER NAME / PATH PROBLEMS:
-
-**Symptoms (console examples):**
-
-```text
-Could not find resource smdz_example.
-Resource smdz_exmaple does not exist.
-```
-
-**Steps:**
-
-1. Check the **folder name**:
-   - Should be exactly something like:
-     ```text
-     resources/[smdz]/smdz_example
-     ```
-2. Check `server.cfg`:
-   ```bash
-   ensure smdz_example
-   ```
-3. Avoid:
-   - Spaces: `smdz example`
-   - Capitalization mismatches: `SMDZ_Example`
-
----
-
-### 🧩 C. MISSING DEPENDENCIES:
-
-**Look for words like:** `es_extended`, `qb-core`, `oxmysql`, `mysql-async`, `target`, `inventory`.
-
-**Example errors:**
-
-```text
-attempt to index a nil value (global 'ESX')
-attempt to index a nil value (global 'QBCore')
-No such export oxmysql:execute
-```
-
-**Steps:**
-
-1. Open the script’s docs page and find the **REQUIREMENTS** section.
-2. In `server.cfg`, ensure dependencies start **before** the SMDZ script, e.g.:
-
-   ```bash
-   ensure oxmysql
-   ensure es_extended   # or qb-core
-   ensure smdz_example
-   ```
-
-3. Restart the server and re‑check the console.
-
----
-
-### 🔒 D. ESCROW / ENTITLEMENT ERRORS:
-
-**Examples:**
-
-```text
-This asset is not owned by this account
-You lack the required entitlement to use smdz_prop_finder
-Failed to verify protected resource
-```
-
-If you see anything like this, go to:  
-👉 **[ASSET ESCROW SYSTEM (CFX.RE / TEBEX)](fxap.md)** for a dedicated guide.
-
----
-
-### 🧼 E. CACHE CLEANUP (OPTIONAL):
-
-If you just updated resources or configs and still see old behavior:
-
-1. Stop the server.
-2. Delete the `cache` and `server-cache` folders (if they exist).
-3. Start the server and test again.
-
-# 🗄 **DATABASE & SQL ISSUES:**
-
-**What you see:**
-
-- Tables missing.
-- Data not saving.
-- Connection or adapter errors.
-
----
-
-### 🧭 A. QUICK IDENTIFIER:
-
-Check the console for words like:
-
-- `oxmysql`
-- `mysql-async`
-- `MySQL`
-- `table doesn't exist`
-
----
-
-### 🧱 B. ADAPTER NOT INSTALLED / NOT STARTED:
-
-**Errors:**
-
-```text
-[oxmysql] [ERROR] connection failed
-[mysql-async] Error: connect ECONNREFUSED
-```
-
-**Steps:**
-
-1. Make sure you have **one** DB adapter:
-
-   - Recommended: `oxmysql`
-   - Legacy: `mysql-async`
-
-2. Configure it with the correct DB credentials.
-3. Start it first in `server.cfg`:
-
-   ```bash
-   ensure oxmysql
-   ensure es_extended  # or qb-core
-   ensure smdz_example
-   ```
-
----
-
-### 🧩 C. MISSING TABLES / MIGRATIONS:
-
-**Errors:**
-
-```text
-[oxmysql] [ERROR] Table 'dbname.smdz_example' doesn't exist
-```
-
-**Steps:**
-
-1. Look in the script files for `.sql` (e.g. `smdz_example.sql`).
-2. In your DB manager (phpMyAdmin, HeidiSQL, DBeaver…):
-   - Select your FiveM database.
-   - Import the `.sql` file.
-3. Restart the server and check again.
-
----
-
-### 🔑 D. WRONG DATABASE CREDENTIALS:
-
-If the server can’t connect at all:
-
-- Recheck host, user, password, database, port.
-- Confirm the DB server accepts connections from your FiveM host.
-
----
-
-## 👥 PERMISSIONS & ADMIN COMMANDS NOT WORKING:
-
-**What you see:**
-
-- Admin commands do nothing for staff.
-- Normal players can run admin commands.
-- Messages like **“access denied”**.
-
----
-
-### 🧭 A. FRAMEWORK PERMISSION CONFIG:
-
-Each framework handles perms differently:
-
-- **ESX** → groups like `user`, `mod`, `admin`, `superadmin`.
-- **QBCore** → permission levels, `Group`, etc.
-
-**Steps:**
-
-1. Check script docs for **required group/permission**.
-2. For ESX, confirm the player has `group.admin` / `group.superadmin`.
-3. For QBCore, use existing permission systems or custom exports to give access.
-
----
-
-### 🛡️ B. ACE PERMISSIONS:
-
-**Error examples:**
-
-```text
-Access denied for command /smdz_admin
-```
-
-**Steps:**
-
-1. In `server.cfg`, add something like:
-
-   ```bash
-   add_ace group.admin smdz.scripts allow
-   add_principal identifier.license:xxxxxxxxxxxxxxxx group.admin
-   ```
-
-2. Replace `identifier.license:...` with your staff licenses.
-3. Restart server (or re‑exec these lines) and test again.
-
----
-
-# 🔑 **FRAMEWORK COMPATIBILITY (ESX / QBCORE / STANDALONE):**
-
-**What you see:**
-
-- Script clearly says “for ESX” or “for QBCore”, but you’re using another framework.
-- Functions like `ESX.GetPlayerFromId` or `QBCore.Functions.GetPlayer` are `nil`.
-
----
-
-### 🧩 A. WRONG FRAMEWORK MODE IN CONFIG:
-
-Look for a setting similar to:
-
-```lua
-Config.Framework = 'ESX'       -- 'ESX', 'QBCore' or 'Standalone'
-```
-
-**Steps:**
-
-1. Set the value to match your environment.
-2. Confirm the chosen framework is actually installed and started.
-
----
-
-### 🧱 B. FRAMEWORK START ORDER:
-
-Make sure frameworks start **before** SMDZ scripts:
-
-```bash
+<section class="support-hero support-hero--warning">
+  <p class="support-eyebrow">Troubleshooting</p>
+  <h1>Common Problems</h1>
+  <p>A symptom-first support page for FiveM resource issues. Pick what you see, then follow the shortest fix path.</p>
+  <div class="support-search-tip">Tip: copy one word from your console error and search it with <code>Ctrl + F</code>.</div>
+</section>
+
+<section class="support-route-grid" aria-label="Problem quick routes">
+  <a class="support-route-card" href="#startup">
+    <span class="support-route-kicker">Resource not loaded</span>
+    <strong>Startup</strong>
+    <small>Folder, ensure, dependencies and cache.</small>
+  </a>
+  <a class="support-route-card" href="#syntax-error">
+    <span class="support-route-kicker">Console error</span>
+    <strong>syntax error near &lt;\1&gt;</strong>
+    <small>Broken upload or outdated artifacts.</small>
+  </a>
+  <a class="support-route-card" href="#database">
+    <span class="support-route-kicker">Data not saving</span>
+    <strong>Database</strong>
+    <small>oxmysql, credentials and missing tables.</small>
+  </a>
+  <a class="support-route-card" href="#permissions">
+    <span class="support-route-kicker">Staff feature blocked</span>
+    <strong>Permissions</strong>
+    <small>ESX/QBCore groups and ACE permissions.</small>
+  </a>
+</section>
+
+<section class="support-section">
+  <h2 id="quick-index">Quick Index</h2>
+  <div class="support-index">
+    <a href="#syntax-error">syntax error near &lt;\1&gt;</a>
+    <a href="#startup">Script won't start</a>
+    <a href="#database">Database / SQL</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#framework">Framework</a>
+    <a href="#configuration">Configuration</a>
+    <a href="#integrations">UI / target / notifications</a>
+    <a href="#performance">Performance</a>
+    <a href="#support">Contact support</a>
+  </div>
+</section>
+
+<section class="support-section support-section--compact">
+  <h2 id="syntax-error">Error: syntax error near &lt;\1&gt;</h2>
+
+  <details class="support-accordion">
+    <summary>Most likely causes</summary>
+    <ul>
+      <li>The resource was uploaded file-by-file and the protected files were damaged.</li>
+      <li>FileZilla used the wrong transfer mode.</li>
+      <li>The resource was moved by Remote Desktop drag-and-drop instead of uploading the ZIP and extracting it on the server.</li>
+      <li>Your FiveM server artifacts are outdated. Use build <code>4752</code> or newer.</li>
+    </ul>
+  </details>
+
+  <details class="support-accordion">
+    <summary>Fix the upload</summary>
+    <ol>
+      <li>Delete the damaged resource folder from the server.</li>
+      <li>Upload the original ZIP file to the server.</li>
+      <li>Extract the ZIP directly on the server.</li>
+      <li>If you use FileZilla, set transfer type to binary before uploading.</li>
+      <li>Restart the server and test again.</li>
+    </ol>
+    <figure>
+      <img src="https://1037498771-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MZErcztD5BvrKnwRGJq%2Fuploads%2Fgit-blob-8cc0c6b3b6a5cf74b86212f918f5ec3814835146%2Ftransfer-type.png?alt=media" alt="FileZilla binary transfer mode">
+      <figcaption>FileZilla binary transfer mode.</figcaption>
+    </figure>
+  </details>
+
+  <details class="support-accordion">
+    <summary>Check or update server artifacts</summary>
+    <p>Run this in the server console:</p>
+    <pre><code>version</code></pre>
+    <p>Download the recommended artifact for your operating system:</p>
+    <ul>
+      <li>Linux: <a href="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/">FiveM Linux artifacts</a></li>
+      <li>Windows: <a href="https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/">FiveM Windows artifacts</a></li>
+    </ul>
+    <p class="support-note">After updating artifacts, stop the server fully before starting it again.</p>
+  </details>
+</section>
+
+<section class="support-section support-section--compact">
+  <h2 id="startup">Script Won't Start / Crashes On Startup</h2>
+
+  <details class="support-accordion">
+    <summary>Quick checklist</summary>
+    <ul>
+      <li>The resource folder name is correct.</li>
+      <li>The <code>ensure</code> line matches the folder name exactly.</li>
+      <li>Dependencies start before the SMDZ resource.</li>
+      <li>The resource is inside the correct <code>resources</code> path.</li>
+      <li>The console does not show a config syntax error.</li>
+    </ul>
+  </details>
+
+  <details class="support-accordion">
+    <summary>Could not find resource</summary>
+    <p>Example console message:</p>
+    <pre><code>Could not find resource smdz_example.</code></pre>
+    <ol>
+      <li>Check the folder path, for example <code>resources/[smdz]/smdz_example</code>.</li>
+      <li>Use the exact same name in <code>server.cfg</code>: <code>ensure smdz_example</code>.</li>
+      <li>Avoid spaces, extra suffixes like <code>-main</code>, and capitalization mismatches.</li>
+    </ol>
+  </details>
+
+  <details class="support-accordion">
+    <summary>Missing dependencies</summary>
+    <p>Look for errors mentioning <code>es_extended</code>, <code>qb-core</code>, <code>oxmysql</code>, <code>target</code> or <code>inventory</code>.</p>
+    <pre><code>ensure oxmysql
 ensure es_extended   # or qb-core
-ensure smdz_example
-```
+ensure smdz_example</code></pre>
+    <p>Open the script page and check its Requirements section before testing again.</p>
+  </details>
 
----
+  <details class="support-accordion">
+    <summary>Escrow or entitlement errors</summary>
+    <p>If you see ownership, entitlement or protected resource verification errors, use the dedicated guide.</p>
+    <a class="support-action" href="fxap.md">Open Asset Escrow guide</a>
+  </details>
 
-## 🎛 CONFIGURATION MISTAKES:
+  <details class="support-accordion">
+    <summary>Cache cleanup</summary>
+    <ol>
+      <li>Stop the server.</li>
+      <li>Delete <code>cache</code> and <code>server-cache</code> folders if they exist.</li>
+      <li>Start the server and test again.</li>
+    </ol>
+  </details>
+</section>
 
-**What you see:**
+<section class="support-section support-section--compact">
+  <h2 id="database">Database & SQL Issues</h2>
 
-- No obvious console error, but the script doesn’t behave as expected.
-- Blips not showing, zones not working, features half‑active.
+  <details class="support-accordion">
+    <summary>How to identify database problems</summary>
+    <p>Search the console for:</p>
+    <div class="support-badges">
+      <span>oxmysql</span>
+      <span>mysql-async</span>
+      <span>MySQL</span>
+      <span>table doesn't exist</span>
+      <span>ECONNREFUSED</span>
+    </div>
+  </details>
 
----
+  <details class="support-accordion">
+    <summary>Adapter not installed or not started</summary>
+    <pre><code>[oxmysql] [ERROR] connection failed
+[mysql-async] Error: connect ECONNREFUSED</code></pre>
+    <ol>
+      <li>Use one database adapter. Recommended: <code>oxmysql</code>.</li>
+      <li>Configure host, database, user, password and port.</li>
+      <li>Start the adapter before framework and SMDZ scripts.</li>
+    </ol>
+  </details>
 
-### 🧭 A. COMPARE WITH DEFAULT CONFIG:
+  <details class="support-accordion">
+    <summary>Missing tables or SQL files</summary>
+    <pre><code>[oxmysql] [ERROR] Table 'dbname.smdz_example' doesn't exist</code></pre>
+    <ol>
+      <li>Look inside the resource for provided <code>.sql</code> files.</li>
+      <li>Open phpMyAdmin, HeidiSQL, DBeaver or your database manager.</li>
+      <li>Select the correct FiveM database.</li>
+      <li>Import the SQL file and restart the server.</li>
+    </ol>
+  </details>
 
-1. Take your current `config.lua`.
-2. Compare it with the **fresh config** from a clean download.
-3. Look for:
-   - Removed lines.
-   - Wrong types (string instead of number, etc.).
-   - Invalid coordinates.
+  <details class="support-accordion">
+    <summary>Wrong database credentials</summary>
+    <ul>
+      <li>Check host, user, password, database and port.</li>
+      <li>Confirm the database user can connect from your FiveM host.</li>
+      <li>Confirm the database service is running.</li>
+    </ul>
+  </details>
+</section>
 
----
+<section class="support-section support-section--compact">
+  <h2 id="permissions">Permissions & Admin Commands</h2>
 
-### ⚠️ B. COMMON CONFIG PITFALLS:
+  <details class="support-accordion">
+    <summary>Framework permissions</summary>
+    <ul>
+      <li>ESX usually uses groups such as <code>user</code>, <code>mod</code>, <code>admin</code> and <code>superadmin</code>.</li>
+      <li>QBCore uses permission levels and server-specific permission systems.</li>
+      <li>Check the script documentation for the exact required group.</li>
+      <li>Test with a known staff account.</li>
+    </ul>
+  </details>
 
-- Empty required fields (e.g. webhooks, keys).
-- Typos in enum values (`ESX` vs `esx`, etc.).
-- Coordinates in the wrong format:
+  <details class="support-accordion">
+    <summary>ACE permissions</summary>
+    <p>Example configuration:</p>
+    <pre><code>add_ace group.admin smdz.scripts allow
+add_principal identifier.license:xxxxxxxxxxxxxxxx group.admin</code></pre>
+    <p>Replace the license identifier with the real identifier for your staff account, then restart or re-execute the config.</p>
+  </details>
+</section>
 
-  ```lua
-  -- GOOD:
-  vector3(215.0, -810.0, 30.0)
+<section class="support-section support-section--compact">
+  <h2 id="framework">Framework Compatibility</h2>
 
-  -- RISKY:
-  { x = 215, y = -810 }  -- if script expects vector3
-  ```
+  <details class="support-accordion">
+    <summary>Wrong framework mode</summary>
+    <p>Check the script config for a setting like:</p>
+    <pre><code>Config.Framework = 'ESX' -- ESX, QBCore or Standalone</code></pre>
+    <ol>
+      <li>Set the value to match your server.</li>
+      <li>Confirm the framework resource is installed.</li>
+      <li>Start the framework before the SMDZ script.</li>
+    </ol>
+  </details>
+</section>
 
----
+<section class="support-section support-section--compact">
+  <h2 id="configuration">Configuration Mistakes</h2>
 
-# 🎨 **UI / NOTIFICATIONS / TARGET INTEGRATIONS:**
+  <details class="support-accordion">
+    <summary>Compare with the default config</summary>
+    <ol>
+      <li>Back up your current <code>config.lua</code>.</li>
+      <li>Download a clean copy of the resource.</li>
+      <li>Compare your file with the fresh default config.</li>
+      <li>Look for removed options, wrong value types and invalid coordinates.</li>
+    </ol>
+  </details>
 
-**What you see:**
+  <details class="support-accordion">
+    <summary>Common config pitfalls</summary>
+    <ul>
+      <li>Empty required fields such as webhooks or keys.</li>
+      <li>Typos in mode names such as <code>ESX</code> vs <code>esx</code>.</li>
+      <li>Coordinates in the wrong format.</li>
+    </ul>
+    <pre><code>-- Good:
+vector3(215.0, -810.0, 30.0)
 
-- Looking at an entity does nothing (no target).
-- Menus don’t open, but there’s no clear error.
-- Notifications never appear.
+-- Risky if the script expects vector3:
+{ x = 215, y = -810 }</code></pre>
+  </details>
+</section>
 
----
+<section class="support-section support-section--compact">
+  <h2 id="integrations">UI / Notifications / Target Integrations</h2>
 
-### 🧭 A. IDENTIFY WHICH SYSTEM YOU USE:
+  <details class="support-accordion">
+    <summary>Menus, target actions or notifications do not appear</summary>
+    <ul>
+      <li>Identify your target resource: <code>qb-target</code>, <code>ox_target</code>, <code>qtarget</code>, etc.</li>
+      <li>Identify your notification resource: <code>ox_lib</code>, <code>mythic_notify</code>, <code>okokNotify</code>, etc.</li>
+      <li>Make sure the selected resources are installed and started.</li>
+      <li>Set the script config values to match your server.</li>
+    </ul>
+    <pre><code>Config.Target = 'qb-target'
+Config.Notification = 'ox_lib'</code></pre>
+  </details>
+</section>
 
-Check your own resources:
+<section class="support-section support-section--compact">
+  <h2 id="performance">Performance & Tick Usage</h2>
 
-- Target: `qb-target`, `ox_target`, `qtarget`, etc.
-- Notifications: `ox_lib`, `mythic_notify`, `okokNotify`, etc.
+  <details class="support-accordion">
+    <summary>Measure before changing config</summary>
+    <pre><code>resmon 1</code></pre>
+    <ul>
+      <li>Check the SMDZ resource while idle.</li>
+      <li>Check it again while actively using the feature.</li>
+      <li>Compare with other heavy resources on your server.</li>
+    </ul>
+  </details>
 
-Then open the script config. You’ll often see:
+  <details class="support-accordion">
+    <summary>If usage is high</summary>
+    <ol>
+      <li>Disable debug visuals.</li>
+      <li>Increase configurable scan/update intervals slightly.</li>
+      <li>Reduce large scan ranges where supported.</li>
+      <li>Test on a clean server with only the framework and the SMDZ script.</li>
+    </ol>
+  </details>
+</section>
 
-```lua
-Config.Target      = 'qb-target'   -- 'ox_target', 'qtarget', etc.
-Config.Notification = 'ox_lib'     -- 'mythic', 'okok', etc.
-```
 
-**Steps:**
-
-1. Set these values to match your actual resources.
-2. Check that those resources are started.
-3. Restart the server and test again.
-
----
-
-# 🌍 **PERFORMANCE & TICK USAGE:**
-
-**What you see:**
-
-- Players report “lag”.
-- You suspect a script might be heavy.
-
----
-
-### ⏱️ A. MEASURE FIRST:
-
-Use the built‑in profiler:
-
-```text
-resmon 1
-```
-
-Look specifically at the line for the SMDZ script, e.g. `smdz_example`.
-
-- **Idle usage** in ms should be low.
-- Compare with other heavy scripts on your server.
-
----
-
-### 🧰 B. IF USAGE IS HIGH:
-
-1. Check config for:
-   - Tight loops (e.g. every `0` or `0.01` seconds).
-   - Large scan ranges or many entities.
-2. Try:
-   - Increasing timers slightly.
-   - Disabling optional, heavy features (e.g. debug visuals).
-3. Test on a **clean server** with only the framework + SMDZ script to isolate.
-
-If it still seems heavy, gather:
-
-- `resmon` screenshot.
-- Player count.
-- Your config file.
-
-…then contact support.
-
----
-
-# 📬 **WHEN TO CONTACT SUPPORT:**
-
-If you have gone through:
-
-- The **section that matches your error**, and
-- The script’s dedicated documentation page,
-
-…but the problem persists, it’s time to open a ticket.
-
----
-
-### 🧾 PREPARE THIS INFORMATION:
-
-```text
-• Script name:         smdz_example
-• Script version:      v1.0.0
-• Framework:           ESX / QBCore / Standalone
-• Tebex purchase ID:   ################
-• Server artifacts:    (build number)
-• Full console log:    from startup until the issue appears
-• Steps to reproduce:  1, 2, 3...
-```
-
-Then go to **[Support](support.md)** and contact SMDZ Studios by **email** or **Discord**.
-
-The more precise your report, the **faster** and **better** the help you will receive.

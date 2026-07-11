@@ -6,21 +6,22 @@
 
   <!-- SEO meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta name="description" content="Official SMDZ Studios documentation for FiveM scripts, resources, setup guides, configuration, exports, events and support articles." />
-  <meta name="keywords" content="SMDZ Studios, FiveM documentation, FiveM scripts, FiveM resources, ESX, QBCore, GTA RP, installation guides, exports, events, support" />
+  <meta name="description" content="Official SMDZ Studios documentation for FiveM scripts, resources, setup guides, configuration, troubleshooting, Asset Escrow, FAQ and support articles." />
+  <meta name="keywords" content="SMDZ Studios, FiveM documentation, FiveM scripts, FiveM resources, ESX, QBCore, GTA RP, installation guides, troubleshooting, Asset Escrow, Tebex, Cfx.re, support" />
   <meta name="author" content="SMDZ Studios" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SMDZ Studios Docs | FiveM Script Documentation" />
-  <meta property="og:description" content="Official documentation for SMDZ Studios FiveM resources, scripts, support guides and technical references." />
+  <meta property="og:description" content="Official documentation for SMDZ Studios FiveM resources, setup guides, troubleshooting, Asset Escrow, FAQ and support." />
   <meta property="og:image" content="https://docs.smdz-studios.com/assets/logos/smdz-studios.png" />
   <meta property="og:url" content="https://docs.smdz-studios.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SMDZ Studios Docs | FiveM Script Documentation" />
-  <meta name="twitter:description" content="Official documentation for SMDZ Studios FiveM scripts, setup guides and support articles." />
+  <meta name="twitter:description" content="Official documentation for SMDZ Studios FiveM scripts, setup guides, troubleshooting and support articles." />
   <meta name="twitter:image" content="https://docs.smdz-studios.com/assets/logos/smdz-studios.png" />
 
   <link rel="canonical" href="https://docs.smdz-studios.com/" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://docs.smdz-studios.com/seo/sitemap.xml" />
   <!-- frame-ancestors must be sent as an HTTP header; meta tags cannot enforce it. -->
   <meta name="application-name" content="SMDZ Studios Docs" />
   <meta name="apple-mobile-web-app-title" content="SMDZ Docs" />
@@ -55,7 +56,7 @@
           "@id": "https://docs.smdz-studios.com/#website",
           "url": "https://docs.smdz-studios.com/",
           "name": "SMDZ Studios Docs",
-          "description": "Official documentation for SMDZ Studios FiveM scripts, setup guides, support articles and technical references.",
+          "description": "Official documentation for SMDZ Studios FiveM scripts, setup guides, troubleshooting, Asset Escrow, FAQ and support articles.",
           "publisher": {
             "@id": "https://docs.smdz-studios.com/#organization"
           },
@@ -358,6 +359,110 @@
               wrapperEl.appendChild(tableEl);
               tableEl.dataset.tableWrapped = '1';
             });
+          }
+
+          function setMetaContent(selector, value) {
+            var metaEl = document.querySelector(selector);
+            if (metaEl && value) {
+              metaEl.setAttribute('content', value);
+            }
+          }
+
+          function updateCanonicalUrl(value) {
+            var canonicalEl = document.querySelector('link[rel="canonical"]');
+            if (canonicalEl && value) {
+              canonicalEl.setAttribute('href', value);
+            }
+          }
+
+          function updateRouteSeo() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '/portal.md';
+            if (routePath === '/') {
+              routePath = '/portal.md';
+            }
+            var baseUrl = 'https://docs.smdz-studios.com/';
+            var defaultTitle = 'SMDZ Studios Docs | FiveM Script Documentation';
+            var defaultDescription = 'Official SMDZ Studios documentation for FiveM scripts, resources, setup guides, troubleshooting, Asset Escrow, FAQ and support articles.';
+            var routeMeta = {
+              '/portal.md': {
+                title: 'SMDZ Studios Portal | FiveM Resource Documentation',
+                description: 'Browse SMDZ Studios FiveM resources, paid and free scripts, framework support, documentation links and official support routes.'
+              },
+              '/faq.md': {
+                title: 'FAQ | SMDZ Studios FiveM Support',
+                description: 'Quick answers for SMDZ Studios FiveM resources, updates, supported frameworks, performance, licensing, configuration and support requests.'
+              },
+              '/problems.md': {
+                title: 'Common Problems | SMDZ Studios Troubleshooting',
+                description: 'Troubleshoot SMDZ Studios FiveM scripts by symptom, including startup errors, database issues, permissions, framework setup and performance.'
+              },
+              '/fxap.md': {
+                title: 'Asset Escrow Guide | SMDZ Studios',
+                description: 'Fix Cfx.re and Tebex Asset Escrow errors for SMDZ Studios resources, including ownership, entitlement and protected resource verification issues.'
+              },
+              '/support.md': {
+                title: 'Support | SMDZ Studios',
+                description: 'Contact SMDZ Studios support and learn what information to include for faster FiveM resource troubleshooting.'
+              },
+              '/changelog.md': {
+                title: 'Changelog | SMDZ Studios Docs',
+                description: 'Review recent SMDZ Studios documentation, resource and support changes.'
+              },
+              '/news/new-identity.md': {
+                title: 'New Identity | SMDZ Studios',
+                description: 'SMDZ Studios brand update with a refreshed visual identity, updated documentation style and cleaner resource presentation.'
+              },
+              '/resources/free/handling-editor.md': {
+                title: 'Handling Editor | Free FiveM Resource',
+                description: 'SMDZ Handling Editor is a free FiveM vehicle handling tool for real-time tuning, presets and handling.meta export.'
+              },
+              '/resources/paid/cine-loadscreen.md': {
+                title: 'Cine Loadscreen | SMDZ Studios',
+                description: 'Cinematic FiveM loading screen documentation for SMDZ Cine Loadscreen.'
+              },
+              '/resources/paid/invite-codes.md': {
+                title: 'Invite Codes | SMDZ Studios',
+                description: 'Documentation for SMDZ Invite Codes, a FiveM invitation and promotional code system with staff management tools.'
+              },
+              '/resources/paid/voice-indicator.md': {
+                title: 'Voice Indicator | SMDZ Studios',
+                description: 'Documentation for SMDZ Voice Indicator, a FiveM voice activity indicator for proximity, radio and phone communication.'
+              },
+              '/resources/paid/nfc-transfer.md': {
+                title: 'NFC Transfer | SMDZ Studios',
+                description: 'Documentation for SMDZ NFC Transfer, a FiveM money transfer system with framework banking compatibility.'
+              },
+              '/resources/paid/realistic-uav.md': {
+                title: 'Realistic UAV | SMDZ Studios',
+                description: 'Documentation for SMDZ Realistic UAV, a tactical FiveM UAV resource with synchronized aircraft and aerial camera controls.'
+              },
+              '/resources/paid/hud2d-builder.md': {
+                title: 'HUD 2D Builder | SMDZ Studios',
+                description: 'Documentation for SMDZ HUD 2D Builder, a FiveM tool for building and tuning custom HUD elements.'
+              }
+            };
+
+            var currentMeta = routeMeta[routePath] || {};
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!currentMeta.title && contentRoot) {
+              var heading = contentRoot.querySelector('h1, h2, h3');
+              if (heading && heading.textContent) {
+                currentMeta.title = heading.textContent.trim() + ' | SMDZ Studios Docs';
+              }
+            }
+
+            var title = currentMeta.title || defaultTitle;
+            var description = currentMeta.description || defaultDescription;
+            var routeUrl = routePath === '/portal.md' ? baseUrl : baseUrl + '#/' + routePath.replace(/^\//, '');
+
+            document.title = title;
+            setMetaContent('meta[name="description"]', description);
+            setMetaContent('meta[property="og:title"]', title);
+            setMetaContent('meta[property="og:description"]', description);
+            setMetaContent('meta[property="og:url"]', routeUrl);
+            setMetaContent('meta[name="twitter:title"]', title);
+            setMetaContent('meta[name="twitter:description"]', description);
+            updateCanonicalUrl(routeUrl);
           }
 
           function cleanRenderedMojibake() {
@@ -941,8 +1046,15 @@
             var portalFilterButtons = document.querySelectorAll('.portal-filter-btn');
             var portalCards = document.querySelectorAll('.home-showcase-card');
             if (portalFilterButtons.length > 0 && portalCards.length > 0) {
+              var filterCounts = {};
+
               portalCards.forEach(function (cardEl) {
                 if (cardEl.dataset.portalCategories) {
+                  (cardEl.dataset.portalCategories || '').split(/\s+/).forEach(function (categoryName) {
+                    if (categoryName) {
+                      filterCounts[categoryName] = (filterCounts[categoryName] || 0) + 1;
+                    }
+                  });
                   return;
                 }
 
@@ -951,6 +1063,14 @@
 
                 if (cardText.indexOf('OPEN SOURCE') !== -1) {
                   categories.push('open-source');
+                }
+
+                if (cardText.indexOf('FREE') !== -1) {
+                  categories.push('free');
+                }
+
+                if (cardText.indexOf('PAID') !== -1) {
+                  categories.push('paid');
                 }
 
                 if (cardText.indexOf('ESX') !== -1) {
@@ -970,9 +1090,27 @@
                 }
 
                 cardEl.dataset.portalCategories = categories.join(' ');
+                categories.forEach(function (categoryName) {
+                  filterCounts[categoryName] = (filterCounts[categoryName] || 0) + 1;
+                });
               });
 
               portalFilterButtons.forEach(function (buttonEl) {
+                var buttonFilter = buttonEl.getAttribute('data-filter') || 'all';
+                if (!buttonEl.dataset.filterLabel) {
+                  buttonEl.dataset.filterLabel = (buttonEl.textContent || '').replace(/\d+$/, '').trim();
+                }
+
+                var countEl = buttonEl.querySelector('.portal-filter-count');
+                if (!countEl) {
+                  countEl = document.createElement('span');
+                  countEl.className = 'portal-filter-count';
+                  buttonEl.textContent = buttonEl.dataset.filterLabel;
+                  buttonEl.appendChild(countEl);
+                }
+
+                countEl.textContent = String(filterCounts[buttonFilter] || 0);
+
                 if (buttonEl.dataset.portalFilterBound === '1') {
                   return;
                 }
@@ -985,7 +1123,7 @@
                   });
 
                   portalCards.forEach(function (cardEl) {
-                    var categories = cardEl.dataset.portalCategories || 'all';
+                    var categories = (cardEl.dataset.portalCategories || 'all').split(/\s+/);
                     var shouldShow = selectedFilter === 'all' || categories.indexOf(selectedFilter) !== -1;
                     cardEl.classList.toggle('is-filtered-out', !shouldShow);
                   });
@@ -1144,9 +1282,84 @@
               });
           }
 
+          function initSupportAccordions() {
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            contentRoot.querySelectorAll('.support-accordion').forEach(function (accordion) {
+              if (accordion.dataset.supportAccordionReady === '1') {
+                return;
+              }
+
+              var summary = accordion.querySelector('summary');
+              if (!summary) {
+                return;
+              }
+
+              var content = accordion.querySelector('.support-accordion-content');
+              if (!content) {
+                content = document.createElement('div');
+                content.className = 'support-accordion-content';
+
+                Array.prototype.slice.call(accordion.childNodes).forEach(function (node) {
+                  if (node !== summary) {
+                    content.appendChild(node);
+                  }
+                });
+
+                accordion.appendChild(content);
+              }
+
+              accordion.open = false;
+              content.style.height = '0px';
+              accordion.dataset.supportAccordionReady = '1';
+
+              summary.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                if (accordion.dataset.animating === '1') {
+                  return;
+                }
+
+                var shouldOpen = !accordion.open;
+                accordion.dataset.animating = '1';
+
+                if (shouldOpen) {
+                  accordion.open = true;
+                  content.style.height = '0px';
+
+                  requestAnimationFrame(function () {
+                    content.style.height = content.scrollHeight + 'px';
+                  });
+                } else {
+                  accordion.classList.add('is-closing');
+                  content.style.height = content.scrollHeight + 'px';
+
+                  requestAnimationFrame(function () {
+                    content.style.height = '0px';
+                  });
+                }
+
+                window.setTimeout(function () {
+                  if (shouldOpen) {
+                    content.style.height = 'auto';
+                  } else {
+                    accordion.open = false;
+                    accordion.classList.remove('is-closing');
+                  }
+
+                  delete accordion.dataset.animating;
+                }, 260);
+              });
+            });
+          }
+
           hook.doneEach(function () {
             requestAnimationFrame(function () {
               window.scrollTo(0, 0);
+              updateRouteSeo();
               cleanRenderedMojibake();
               initMicroInteractions();
               if (typeof window.SMDZ_enhanceSidebarIcons === 'function') {
@@ -1156,6 +1369,7 @@
               enhanceScriptVideos();
               enhanceStatusBadges();
               wrapMarkdownTables();
+              initSupportAccordions();
               restoreToolMarkup();
               ensureToolMarkupRendered();
               window.setTimeout(restoreToolMarkup, 60);

@@ -1,8 +1,12 @@
 /* TEAM */
 Developer: SMDZ Studios
 Site: https://docs.smdz-studios.com/
+Store: https://smdz-studios.tebex.io/
 
 /* SITE */
 Standards: Docsify, Markdown, HTML, CSS
-Language: Spanish / English
-Description: Documentation site for SMDZ Studios resources and scripts.
+Language: English / Spanish
+Description: Official documentation for SMDZ Studios FiveM resources, setup guides, troubleshooting, Asset Escrow, FAQ and support.
+Sitemap: https://docs.smdz-studios.com/seo/sitemap.xml
+Robots: https://docs.smdz-studios.com/seo/robots.txt
+Last update: 2026-07-11

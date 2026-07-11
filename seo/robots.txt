@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /node_modules/
+
 Sitemap: https://docs.smdz-studios.com/seo/sitemap.xml

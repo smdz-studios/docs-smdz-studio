@@ -39,12 +39,12 @@ It creates a serious police-drama atmosphere using fullscreen images, smooth zoo
 
 # ⭐ **FEATURES:**
 
-🎬 **Cinematic Opening Credits Style** – transforms the loading screen into a dramatic police-drama inspired intro.
-🖼️ **Image-Based Slideshow** – uses server images from the assets folder with smooth transitions and zoom effects.
-🔠 **Fully Configurable Texts** – every visible text can be edited from `config.lua`.
-🎞️ **Film Grain & Visual Effects** – includes black and white filter, grain, scanlines, vignette, and cinematic bars.
-🎭 **Dynamic Credits System** – custom credit items appear on screen with a clean cinematic animation.
-🎵 **Optional Music System** – supports a custom `.mp3` file added by the server owner.
+- 🎬 **Cinematic Opening Credits Style** – transforms the loading screen into a dramatic police-drama inspired intro.
+- 🖼️ **Image-Based Slideshow** – uses server images from the assets folder with smooth transitions and zoom effects.
+- 🔠 **Fully Configurable Texts** – every visible text can be edited from `config.lua`.
+- 🎞️ **Film Grain & Visual Effects** – includes black and white filter, grain, scanlines, vignette, and cinematic bars.
+- 🎭 **Dynamic Credits System** – custom credit items appear on screen with a clean cinematic animation.
+- 🎵 **Optional Music System** – supports a custom `.mp3` file added by the server owner.
 
 
 

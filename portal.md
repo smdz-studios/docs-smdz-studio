@@ -25,6 +25,8 @@
 
 <div class="portal-filter-bar" aria-label="Resource filters">
   <button class="portal-filter-btn is-active" type="button" data-filter="all">All</button>
+  <button class="portal-filter-btn portal-filter-btn--free" type="button" data-filter="free">Free</button>
+  <button class="portal-filter-btn portal-filter-btn--paid" type="button" data-filter="paid">Paid</button>
   <button class="portal-filter-btn" type="button" data-filter="open-source">Open Source</button>
   <button class="portal-filter-btn" type="button" data-filter="esx">ESX</button>
   <button class="portal-filter-btn" type="button" data-filter="qbcore">QBCore</button>
@@ -44,7 +46,7 @@
       <h3>Cine Loadscreen</h3>
       <p>SMDZ Cinematic Loadscreen is a cinematic image-based loading screen for FiveM servers, inspired by American police TV show (Southland LAPD) opening credits and redesigned with a unique FiveM roleplay identity.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span>
+        <span class="tag-paid">PAID</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/cine-loadscreen.md">VIEW DOCS</a>
@@ -63,7 +65,7 @@
       <h3>Invite Codes</h3>
       <p>SMDZ Invite Codes is a polished invitation and promotional code system for FiveM. Players can redeem configurable rewards through streamed NPCs, while authorized staff can create, edit, pause, monitor, and manage every code from a complete in-game administration panel</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/invite-codes.md">VIEW DOCS</a>
@@ -89,7 +91,7 @@
       <h3>Handling Editor</h3>
       <p>SMDZ Handling Editor is a real-time vehicle tuning tool for FiveM. Edit handling values directly in-game, test changes instantly, save presets, restore original values, and export ready-to-use XML for your handling.meta file.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span><span>FREE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-free">FREE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/free/handling-editor.md">VIEW DOCS</a>
@@ -120,7 +122,7 @@
       <h3>Voice Indicator</h3>
       <p>SMDZ Voice Indicator is a modern voice activity system for FiveM, designed to make player communication clearer, more immersive, and easier to understand during roleplay. It displays customizable indicators above nearby players while they speak, with dedicated visual states for proximity voice, radio transmissions, and phone calls.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/voice-indicator.md">VIEW DOCS</a>
@@ -147,7 +149,7 @@
       <h3>Flyers</h3>
       <p>SMDZ Flyers is an advanced flyer placement and advertising system for FiveM, designed to help roleplay servers bring businesses, events, job opportunities, and community announcements directly into the game world. It provides players with a clean and immersive way to create, preview, place, and interact with persistent flyers across Los Santos.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/flyers.md">VIEW DOCS</a>
@@ -176,7 +178,7 @@
       <h3>Streamers List</h3>
       <p>Advanced streamer list system with a modern NUI, secure streamer applications, real-time staff panel, SQL persistence, and Twitch/Kick live checks handled server-side.</p>
       <div class="home-showcase-tags">
-        <span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/streamers-list.md">VIEW DOCS</a>
@@ -206,7 +208,7 @@
       <h3>NFC Transfers</h3>
       <p>High-end NFC money transfer system with secure server-side validation, React NUI, account-aware banking bridges, optional history/NPC interaction, and broad compatibility with ESX/QB ecosystems.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/nfc-transfer.md">VIEW DOCS</a>
@@ -236,7 +238,7 @@
       <h3>iFruit Pods APP</h3>
       <p>A production-ready LB Phone app designed to control wireless pods, featuring secure audio playback, advanced playlist management, queue & repeat systems, persistent settings (including dark mode), and asynchronous webhook logging.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/ifruit-pods.md">VIEW DOCS</a>
@@ -265,7 +267,7 @@
       <h3>Speed Bumps</h3>
       <p>SMDZ Speed Bumps is a traffic-control system for FiveM designed to make your city feel alive, organized, and professional.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-bumpers.md">VIEW DOCS</a>
@@ -295,7 +297,7 @@
       <h3>Realistic UAV</h3>
       <p>UAV is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a modern overlay.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/realistic-uav.md">VIEW DOCS</a>
@@ -325,7 +327,7 @@
       <h3>Pets Rescue</h3>
       <p>A Mission system where players rescue lost pets for NPCs, searching dynamic areas and earning rewards. Enhances civilian roleplay and adds immersive, repeatable gameplay.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/pets-rescue.md">VIEW DOCS</a>
@@ -354,7 +356,7 @@
       <h3>Peds Manager</h3>
       <p>Advanced ped management system with admin tools, ped requests, and appearance restore.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/peds-manager.md">VIEW DOCS</a>
@@ -382,7 +384,7 @@
       <h3>App Emergency Alerts</h3>
       <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/app-emergency-alerts.md">VIEW DOCS</a>
@@ -410,7 +412,7 @@
       <h3>OX Target Redesign Crystal</h3>
       <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/redesings/ox-target-redesing-crystal.md">VIEW DOCS</a>
@@ -438,7 +440,7 @@
       <h3>Emergency GPS</h3>
       <p>Fast emergency location tracking for team coordination, response clarity and safer operations.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/emergency-gps.md">VIEW DOCS</a>
@@ -466,7 +468,7 @@
       <h3>Evidence Markers</h3>
       <p>Reliable evidence placement and scene visualization with practical controls for RP workflows.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-markers.md">VIEW DOCS</a>
@@ -490,7 +492,7 @@
       <h3>Rancher Job</h3>
       <p>Ranch workflow with configurable tasks and progression to expand farming roleplay scenarios.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/rancher-job.md">VIEW DOCS</a>
@@ -516,7 +518,7 @@
       <h3>Bus Travel</h3>
       <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/bus-travel.md">VIEW DOCS</a>
@@ -544,7 +546,7 @@
       <h3>Speed For Zones</h3>
       <p>Speed zones is a zones-based speed limits using PolyZone polygons.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-for-zones.md">VIEW DOCS</a>
@@ -571,7 +573,7 @@
       <h3>HUD2D Builder</h3>
       <p>Build and tune HUD elements quickly with modular options for custom server interfaces.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/hud2d-builder.md">VIEW DOCS</a>
@@ -588,7 +590,7 @@
 
 
 
-
+<!--
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
@@ -604,7 +606,7 @@
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/fast-repair" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
-  </article>
+  </article> -->
 </div>
 
 
