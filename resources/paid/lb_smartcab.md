@@ -3,7 +3,7 @@
   <iframe
     width="640"
     height="360"
-    src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+    src="https://www.youtube.com/embed/xG1eruDUARc"
     title="smdz_lb_smartcab showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -43,11 +43,6 @@ The resource includes configurable AI driving, economy support, no-service zones
 - 🌙 **Dynamic night fares** – Automatically apply a configurable overnight multiplier to eligible journeys and optionally reflect it in the live taximeter.
 - 🧾 **Persistent trip history and receipts** – Completed, cancelled, and failed journeys can be stored in SQL with destination, plate, status, reason, fare, add-ons, cancellation fees, and timestamps.
 - 🚫 **Configurable no-service zones** – Restrict pickups, destinations, or both inside selected circular areas such as islands, restricted facilities, or unsupported map regions.
-- 🌍 **Extensive multilingual support** – Includes English, Spanish, German, French, Italian, Dutch, Polish, Portuguese, Brazilian Portuguese, and Turkish.
-- 🔔 **Smart LB Phone notifications** – Event-based alerts include throttling and duplicate prevention, helping players stay informed without notification spam.
-- 📊 **Detailed Discord webhook logs** – Track requests, pickups, route starts, completions, cancellations, payments, Ride+ activity, charging purchases, and service errors from a protected server-side configuration.
-- 🎨 **Professional ready-to-use interface** – The included UI is optimized for LB Phone and ready for production use. Interface design or source-level UI modifications are available only with an **Open Source** version of the resource.
-- 🛡️ **Server-authoritative validation** – Sensitive actions such as billing, subscriptions, history access, charging, and service state changes are checked server-side to reduce abuse and invalid requests.
 
 ---
 
@@ -58,7 +53,7 @@ The resource includes configurable AI driving, economy support, no-service zones
 - **Dependencies:**
   - `lb-phone` – required to register, install, open, notify, read battery data, and display the SmartCab application.
   - `oxmysql` – required for trip history, Ride+ subscriptions, and persistent application settings.
-  - A valid and streamed taxi vehicle model. The default model is `vivanite2`.
+  - A valid and streamed taxi vehicle model. The default model is `vivanite2`. (INCLUDED IN THE GTA 5 BASE GAME)
 
 ---
 
@@ -180,6 +175,289 @@ The included `smdz_smartcab.sql` file can be imported manually before the first 
 The public configuration is located in `config.lua`. Discord webhook information is protected separately inside the server-only `server_config.lua` file.
 
 ```lua
+Config = {}
+
+--[[
+    ================================================================
+      SMDZ STUDIOS - SMARTCAB CONFIGURATION
+    ================================================================
+
+      INDEX
+      [01] Core
+      [02] App Store / Branding
+      [03] Framework
+      [04] Localization
+      [05] Interface
+      [06] Taxi Vehicle / AI Driving
+      [07] SmartCab Service
+      [08] Ride+ Subscription
+      [09] No Service Zones
+      [10] Phone Notifications
+      [11] Debug
+
+      Notes:
+      - Webhooks are protected in server_config.lua.
+      - SQL table names are fixed internally and are not configurable.
+      - Fallback locale is fixed internally to English.
+    ================================================================
+]]
+
+-- ================================================================
+-- [01] CORE
+-- ================================================================
+Config.Identifier = "smartcab" -- Internal app identifier used by LB Phone registration and NUI messaging.
+Config.DefaultApp = false -- Keep false so the app is installed from the LB Phone store.
+
+-- ================================================================
+-- [02] APP STORE / BRANDING
+-- ================================================================
+Config.App = {
+    Name = "SmartCab", -- Display app name shown in LB Phone.
+    DescriptionKey = "ui.app_store_description", -- Locale key used for the app store description.
+    Size = 18576, -- App package size metadata shown in store.
+    Price = nil, -- App price in store; nil means free.
+    IconPath = "ui/dist/icon.svg", -- Relative path to app icon inside this resource.
+    Screenshots = {
+        "ui/dist/screenshot-light.png", -- Screenshot used in app store (light variant).
+        "ui/dist/screenshot-dark.png" -- Screenshot used in app store (dark variant).
+    }
+}
+
+-- ================================================================
+-- [03] FRAMEWORK
+-- ================================================================
+Config.Framework = "auto" -- Framework resolver mode: auto / esx / qbcore / qbx.
+
+-- ================================================================
+-- [04] LOCALIZATION
+-- ================================================================
+Config.Localization = {
+    Default = "en" -- Default locale code loaded at startup. Missing keys always fall back to English internally.
+}
+
+-- ================================================================
+-- [05] INTERFACE
+-- ================================================================
+Config.UI = {
+    ThemeMode = "dark" -- Initial UI theme: dark / light.
+}
+
+-- ================================================================
+-- [06] TAXI VEHICLE / AI DRIVING
+-- ================================================================
+Config.Taxi = {
+    VehicleModel = "vivanite2", -- Vehicle model hash/name used for the autonomous taxi.
+    PlatePrefix = "SCB", -- Prefix used in generated taxi plate numbers.
+    ApproachSpeed = 14.0, -- Drive speed while taxi approaches pickup.
+    CruiseSpeed = 20.0, -- Drive speed while taxi is en route to destination.
+    MaxServiceDistance = 350.0, -- Max allowed service distance for optional distance cancellation.
+    CancelOnDistance = false, -- If true, cancel service when player is too far.
+    StopRadius = 8.5, -- Distance where taxi fully stops at pickup.
+    BrakeDistance = 30.0, -- Distance where taxi starts slowing down.
+    DestinationRadius = 16.0, -- Distance considered "destination reached".
+    WaitForPassengerMs = 90000, -- Max waiting time for passenger boarding (ms).
+    DeleteVehicleOnFinish = true, -- If true, delete service taxi when ride completes.
+    SpawnPointBusyRadius = 7.0, -- Radius used to consider a fixed spawn point occupied by another vehicle.
+    Driving = {
+        RealisticMode = true, -- Enables realistic NPC-like driving behavior tuning.
+        DrivingStyle = 786603, -- GTA driving style flag set used by TaskVehicleDriveToCoordLongrange.
+        UseZoneSpeedProfile = true, -- If true, adapts cruise speed by urban/highway/rural zone.
+        UrbanMaxSpeed = 13.5, -- Max speed (m/s) in dense urban zones (~49 km/h).
+        RuralMaxSpeed = 17.5, -- Max speed (m/s) in rural zones (~63 km/h).
+        HighwayMaxSpeed = 24.0, -- Max speed (m/s) in highway zones (~86 km/h).
+        TrafficSlowRadius = 18.0, -- Radius to detect nearby traffic and reduce speed.
+        TrafficSlowMultiplier = 0.72 -- Speed multiplier when nearby traffic is detected.
+    },
+    SpawnPoints = { -- Fixed taxi spawn points { x, y, z, w }.
+        { x = -1324.3838, y = -87.4907, z = 48.7228, w = 4.5525 }, -- Vinewood area.
+        { x = -1081.6715, y = 454.6155, z = 76.0917, w = 148.6608 }, -- West Vinewood / Richman.
+        { x = -516.0714, y = 273.3665, z = 82.6948, w = 182.7358 }, -- Rockford Hills.
+        { x = 681.2192, y = 223.0076, z = 92.9843, w = 164.0809 }, -- Downtown Vinewood.
+        { x = 1100.1901, y = -261.3207, z = 68.8301, w = 322.7424 }, -- Mirror Park / East.
+        { x = 1198.8584, y = -1064.0302, z = 40.7772, w = 121.5092 }, -- La Mesa.
+        { x = 562.0584, y = -1532.1270, z = 28.8665, w = 124.2228 }, -- South LS.
+        { x = 735.8459, y = -2123.2239, z = 28.8748, w = 264.4140 }, -- Cypress Flats.
+        { x = 775.0417, y = -2978.2288, z = 5.3992, w = 182.6835 }, -- Elysian Island north.
+        { x = 1459.1221, y = -2594.9001, z = 48.1246, w = 325.0893 }, -- Port of LS east.
+        { x = 1429.0638, y = -2586.3145, z = 47.6401, w = 344.9333 }, -- Port of LS east 2.
+        { x = 591.8711, y = -2938.0942, z = 5.6430, w = 180.4672 }, -- Elysian Island west.
+        { x = 1271.8892, y = -3330.6636, z = 5.3737, w = 85.6070 }, -- Docks south.
+        { x = 1955.8016, y = -1033.8678, z = 89.0282, w = 195.3356 }, -- El Burro Heights hills.
+        { x = 857.0336, y = 1278.6771, z = 358.8166, w = 344.9922 }, -- Vinewood hills north.
+        { x = 788.2032, y = 2206.1147, z = 51.5828, w = 71.9866 }, -- Grand Senora Desert south.
+        { x = -562.9380, y = -1109.4969, z = 21.7783, w = 261.2621 }, -- Little Seoul.
+        { x = -183.3697, y = -1755.2721, z = 29.7940, w = 225.2257 }, -- Davis / Strawberry.
+        { x = -107.9384, y = -1984.6401, z = 17.6159, w = 173.0829 }, -- Rancho.
+        { x = -190.7387, y = -2167.9775, z = 16.3036, w = 10.6406 }, -- Port approach.
+        { x = -800.4799, y = -2407.1880, z = 14.1736, w = 148.6633 }, -- LSIA perimeter.
+        { x = -880.1287, y = -2602.0959, z = 13.4323, w = 328.5953 }, -- LSIA cargo side.
+        { x = -1321.9543, y = -1119.3652, z = 5.7489, w = 0.4981 }, -- Vespucci canals area.
+        { x = -3053.0781, y = 172.7624, z = 11.1745, w = 177.7191 }, -- Chumash coast.
+        { x = -3063.4790, y = 1731.4188, z = 35.8548, w = 272.9868 }, -- Great Ocean Hwy north.
+        { x = -1146.9514, y = 2657.0652, z = 17.3446, w = 249.3839 }, -- Route 68 west.
+        { x = -2221.4778, y = 4253.5215, z = 46.0938, w = 52.9301 }, -- Raton Canyon.
+        { x = 485.6386, y = 6584.6074, z = 26.2713, w = 203.1979 }, -- Paleto Bay south.
+        { x = 2473.1365, y = 5602.4106, z = 44.5392, w = 202.5041 }, -- Grapeseed.
+        { x = 2128.3928, y = 4925.5986, z = 40.5545, w = 305.1080 }, -- Grapeseed north.
+        { x = 2484.5225, y = 5115.1421, z = 45.4458, w = 89.5626 }, -- Mount Gordo foothills.
+        { x = 401.8201, y = -659.8846, z = 28.5033, w = 267.8049 }, -- Textile City, bus stations.
+        { x = 1094.2697, y = -3227.4607, z = 5.8962, w = 269.9992 }, -- Terminal.
+        { x = -268.1561, y = 6032.5791, z = 31.9888, w = 40.8547 }, -- Paleto North.
+        { x = 34.7193, y = -213.5257, z = 52.7269, w = 250.1021 }, -- Hawick.
+        { x = 1533.4049, y = 786.3257, z = 77.4268, w = 61.5601 }, -- Los Santos highway.
+        { x = 2590.6116, y = 2503.1401, z = 28.6875, w = 266.2703 }, -- Pink Dino, north.
+        { x = 3007.0420, y = 3377.3020, z = 73.8709, w = 312.7009 }, -- Humane Labs Road.
+        { x = 678.5591, y = 3507.1912, z = 34.1984, w = 292.9465 } -- Route 68 North.
+    },
+    Blip = {
+        Enabled = true, -- Enables taxi blip tracking on map.
+        Sprite = 56, -- GTA blip sprite id.
+        Color = 5, -- GTA blip color id.
+        Scale = 0.85, -- Blip size scale.
+        ShortRange = false, -- If true, blip only shows nearby.
+        Name = "SmartCab", -- Blip display name.
+        Route = true, -- If true, enable route line to taxi blip.
+        RouteColor = 5 -- Route line color when Route is enabled.
+    }
+}
+
+-- ================================================================
+-- [07] SMARTCAB SERVICE
+-- ================================================================
+Config.Service = {
+    CooldownSeconds = 0, -- Cooldown between taxi requests (0 disables cooldown completely).
+    TripCost = 0, -- Flat trip charge applied before Ride+ discount logic.
+    ChargeOnTripStart = true, -- If true, charge trip when route starts.
+    CancellationFee = 25, -- Flat fee charged when a player cancels an active SmartCab service. Set 0 to disable the fee.
+    BillingAccount = "bank", -- Billing source for trip and cancellation costs: bank / cash / auto.
+    PhoneCharging = {
+        Enabled = true, -- Enables the paid phone charging add-on after the destination route starts.
+        Price = 75, -- Price charged once per trip when the player starts charging their phone during the route.
+        BillingAccount = "bank", -- Billing source for the phone charging add-on: bank / cash / auto.
+        BatteryGainPerMinute = 5 -- Battery percentage added per minute while the add-on is active. Max battery is fixed internally to 100%.
+    },
+    NightFare = {
+        Enabled = true, -- Enables night fare pricing window.
+        StartHour = 22, -- Night fare start hour (0-23).
+        EndHour = 6, -- Night fare end hour (0-23), supports overnight ranges.
+        Multiplier = 2.0, -- Trip fare multiplier applied while night fare is active.
+        ApplyToMeter = true -- If true, taximeter components are also multiplied at night. The night fare banner is always enabled.
+    },
+    Meter = {
+        Enabled = true, -- Enables in-app live fare meter during trip.
+        BaseFare = 15, -- Base fare added when destination route starts.
+        PerKm = 12, -- Extra fare per kilometer traveled.
+        PerMinute = 4, -- Extra fare per minute elapsed in route.
+        UpdateMs = 1000, -- Meter recalculation interval in milliseconds.
+        StartFromChargedCost = true -- If true, meter starts from charged trip cost when available.
+    }
+}
+
+-- ================================================================
+-- [08] RIDE+ SUBSCRIPTION
+-- ================================================================
+Config.RidePlus = {
+    Enabled = true, -- Enables Ride+ subscription system.
+    ChargeOnActivate = true, -- If true, charge selected plan when activating Ride+.
+    BillingAccount = "bank", -- Billing source for Ride+ charge: bank / cash / auto.
+    DefaultPlan = "monthly", -- Default plan preselected in UI.
+    DiscountPercent = 20, -- Discount percent applied to trip cost for active Ride+ users.
+    Plans = {
+        daily = {
+            Days = 1, -- Plan duration in days.
+            Price = 49 -- Plan price charged at activation.
+        },
+        weekly = {
+            Days = 7, -- Plan duration in days.
+            Price = 199 -- Plan price charged at activation.
+        },
+        monthly = {
+            Days = 30, -- Plan duration in days.
+            Price = 299 -- Plan price charged at activation.
+        }
+    },
+    Arrival = {
+        Enabled = true, -- Enables Ride+ arrival and route performance boosts.
+        ApproachSpeedMultiplier = 1.2, -- Multiplier applied to taxi pickup speed when Ride+ is active.
+        CruiseSpeedMultiplier = 1.1 -- Multiplier applied to destination route speed when Ride+ is active.
+    },
+    Priority = {
+        Enabled = true, -- Enables real Ride+ priority benefits.
+        CooldownBypass = true, -- If true, active Ride+ players skip the taxi request cooldown.
+        CooldownMultiplier = 0.0, -- Cooldown multiplier when CooldownBypass is false. Example: 0.5 = 50% shorter cooldown.
+        FleetAssignDistanceMultiplier = 1.35 -- Multiplies local fleet assignment radius for active Ride+ players.
+    },
+    FreeCancellations = {
+        Enabled = true, -- Gives active Ride+ users free player-requested cancellations.
+        Amount = 2, -- Number of free cancellations available per reset window.
+        ResetHours = 24 -- Hours before the free cancellation allowance resets.
+    }
+}
+
+-- ================================================================
+-- [09] NO SERVICE ZONES
+-- ================================================================
+
+Config.NoServiceZones = {
+    Enabled = true, -- Enables circular zones where SmartCab requests are blocked.
+    CheckPickup = true, -- If true, blocks requests when the player is inside one of these zones.
+    CheckDestination = true, -- If true, blocks requests when the selected waypoint destination is inside one of these zones.
+    Zones = {
+        {
+            id = "cayo_perico", -- Unique zone id used only internally/logging.
+            enabled = true, -- Set false to keep the zone configured but inactive.
+            x = 5266.3604, y = -5427.3711, z = 141.0485, -- Center coordinates. Heading reference: 90.6368.
+            radius = 1800.0, -- Circular radius in meters.
+            useZ = false -- If true, uses 3D sphere distance. False uses map/2D distance.
+        }
+    }
+}
+
+-- ================================================================
+-- [10] PHONE NOTIFICATIONS
+-- ================================================================
+Config.Notifications = {
+    Enabled = true, -- Enables LB Phone notifications generated by this resource.
+    MinimumIntervalMs = 4000, -- Minimum delay between any two notifications to prevent notification bursts.
+    DedupeWindowMs = 12000, -- Blocks the same notification key from being shown repeatedly inside this window.
+    Events = {
+        taxi_incoming = false, -- Disabled because the live service screen already shows when a taxi is assigned.
+        taxi_arrived = true, -- Shows one notification when the taxi reaches the pickup point.
+        select_waypoint = false, -- Disabled because the app already shows the waypoint requirement in the live service screen.
+        trip_started = false, -- Disabled because the route state is already visible inside the app.
+        trip_completed = true, -- Shows one notification when the destination is reached.
+        service_cancelled = false, -- Disabled for player-requested cancellations to avoid redundant confirmation spam.
+        no_waypoint = true, -- Shows an actionable warning when no map waypoint is available.
+        cooldown_active = true, -- Shows the remaining request cooldown when a taxi cannot be requested yet.
+        no_service_zone = true, -- Warns the player when SmartCab is blocked by a configured no-service zone.
+        active_service = true, -- Warns the player when another taxi service is already active.
+        vehicle_lost = true, -- Warns the player when the assigned taxi is missing or destroyed.
+        too_far = true, -- Warns the player when the service is cancelled due to distance.
+        player_dead = true, -- Warns the player when the service is cancelled because of player state.
+        payment_failed = true, -- Warns the player when a trip or cancellation payment cannot be completed.
+        cancel_fee_charged = false, -- Disabled because the cancellation fee is already shown in the in-app confirmation.
+        cancel_fee_payment_failed = true, -- Warns the player if the cancellation fee could not be charged.
+        charge_ok = false, -- Disabled because successful charges are already represented by the live fare and trip state.
+        request_failed = true, -- Warns the player when the taxi request fails.
+        seat_blocked = true, -- Warns the player when the required taxi seat cannot be used.
+        open_app_hint = false, -- Disabled because repeated prompts to open the app are unnecessary.
+        ride_plus_activated = false, -- Disabled because Ride+ activation is confirmed inside the app UI.
+        ride_plus_cancelled = false, -- Disabled because Ride+ cancellation is confirmed inside the app UI.
+        ride_plus_already_active = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_payment_failed = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_phone_missing = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_identifier_missing = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_plan_invalid = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_update_failed = false, -- Disabled because Ride+ feedback is shown inside the app UI.
+        ride_plus_busy = false, -- Disabled because repeated clicks are handled inside the app UI.
+        ride_plus_sql_unavailable = false -- Disabled because Ride+ feedback is shown inside the app UI.
+    }
+}
+
+-- ================================================================
+-- [11] DEBUG
+-- ================================================================
+Config.Debug = false -- true/false only. False keeps warnings and errors visible, but hides normal debug/info logs.
 
 ```
 
