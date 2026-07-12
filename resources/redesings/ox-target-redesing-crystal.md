@@ -23,6 +23,9 @@
 - 🧾 **Version:** `1.1.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
+> This product is a visual redesign of the original `ox_target` interface.
+> It does not replace or rewrite the original targeting API, exports, zones, integrations, framework support, or interaction logic.
+
 ---
 
 # ⭐ **FEATURES:**
@@ -307,7 +310,7 @@ If `Config.ThemeSaveToDB = false`, the DB is not used.
 
 ```sql
 CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
-  identifier VARCHAR(128) PRIMARY KEY,
+  identifier VARCHAR(168) PRIMARY KEY,
   theme VARCHAR(64) NOT NULL,
   colors LONGTEXT NOT NULL
 );
@@ -446,23 +449,6 @@ After starting the server:
 - [ ] Clear the FiveM client cache.
 - [ ] Do not delete the `game` folder.
 - [ ] Restart FiveM and reconnect to the server.
-
-## 📸 Send us the following information
-
-After completing the checklist, please send:
-
-1. A screenshot of the complete `ox_target` folder structure.
-2. The `ensure ox_lib` and `ensure ox_target` section from your `server.cfg`.
-3. A screenshot of your FiveM target key binding.
-4. Your client F8 console after joining the server.
-5. Your server console when `ox_target` starts.
-6. Your current `ox_lib` version.
-7. Your framework name and version.
-8. Confirmation of whether the original official `ox_target` works.
-9. The name of the script, NPC, zone, or interaction you are testing.
-
-> Please do not reply only with “still not working.” We need the requested screenshots and information to identify the exact cause.
-
 
 
 ---

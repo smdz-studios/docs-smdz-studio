@@ -428,17 +428,73 @@
                 title: 'Voice Indicator | SMDZ Studios',
                 description: 'Documentation for SMDZ Voice Indicator, a FiveM voice activity indicator for proximity, radio and phone communication.'
               },
+              '/resources/paid/flyers.md': {
+                title: 'Flyers | SMDZ Studios',
+                description: 'Documentation for SMDZ Flyers, a FiveM flyer and promotional media resource for roleplay servers.'
+              },
+              '/resources/paid/streamers-list.md': {
+                title: 'Streamers List | SMDZ Studios',
+                description: 'Documentation for SMDZ Streamers List, a FiveM resource for showcasing active creators and streamer information.'
+              },
               '/resources/paid/nfc-transfer.md': {
                 title: 'NFC Transfer | SMDZ Studios',
                 description: 'Documentation for SMDZ NFC Transfer, a FiveM money transfer system with framework banking compatibility.'
+              },
+              '/resources/paid/ifruit-pods.md': {
+                title: 'iFruit Pods APP | LB Phone App',
+                description: 'Documentation for SMDZ iFruit Pods APP, an LB Phone app for wireless pod controls, playlists, queue management and persistent settings.'
+              },
+              '/resources/paid/lb_smartcab.md': {
+                title: 'SmartCab LB APP | LB Phone App',
+                description: 'Documentation for SMDZ SmartCab LB APP, an LB Phone taxi service app with trip history, Ride+ plans, charging and framework support.'
+              },
+              '/resources/paid/speed-bumpers.md': {
+                title: 'Speed Bumpers | SMDZ Studios',
+                description: 'Documentation for SMDZ Speed Bumpers, a FiveM traffic calming and speed control resource.'
               },
               '/resources/paid/realistic-uav.md': {
                 title: 'Realistic UAV | SMDZ Studios',
                 description: 'Documentation for SMDZ Realistic UAV, a tactical FiveM UAV resource with synchronized aircraft and aerial camera controls.'
               },
+              '/resources/paid/pets-rescue.md': {
+                title: 'Pets Rescue | SMDZ Studios',
+                description: 'Documentation for SMDZ Pets Rescue, a FiveM pet rescue job and animal interaction resource.'
+              },
+              '/resources/paid/peds-manager.md': {
+                title: 'Peds Manager | SMDZ Studios',
+                description: 'Documentation for SMDZ Peds Manager, a FiveM ped management resource with admin tools and appearance restore workflows.'
+              },
+              '/resources/paid/app-emergency-alerts.md': {
+                title: 'Emergency Alerts LB APP | LB Phone App',
+                description: 'Documentation for SMDZ Emergency Alerts LB APP, an LB Phone emergency notification app with dispatch flow and framework integration.'
+              },
+              '/resources/paid/emergency-gps.md': {
+                title: 'Emergency GPS | SMDZ Studios',
+                description: 'Documentation for SMDZ Emergency GPS, a FiveM emergency location tracking resource for team coordination and response workflows.'
+              },
+              '/resources/paid/rancher-job.md': {
+                title: 'Rancher Job | SMDZ Studios',
+                description: 'Documentation for SMDZ Rancher Job, a FiveM ranching workflow resource for roleplay servers.'
+              },
+              '/resources/paid/evidence-markers.md': {
+                title: 'Evidence Markers | SMDZ Studios',
+                description: 'Documentation for SMDZ Evidence Markers, a FiveM evidence placement and scene visualization resource.'
+              },
+              '/resources/paid/bus-travel.md': {
+                title: 'Bus Travel | SMDZ Studios',
+                description: 'Documentation for SMDZ Bus Travel, a FiveM bus transport resource for route-based travel systems.'
+              },
               '/resources/paid/hud2d-builder.md': {
                 title: 'HUD 2D Builder | SMDZ Studios',
                 description: 'Documentation for SMDZ HUD 2D Builder, a FiveM tool for building and tuning custom HUD elements.'
+              },
+              '/resources/redesings/ox-target-redesing-crystal.md': {
+                title: 'OX Target Crystal Redesign | SMDZ Studios',
+                description: 'Documentation for SMDZ OX Target Crystal Style, a visual redesign for ox_target interaction prompts.'
+              },
+              '/resources/redesings/ox-target-radial-redesign.md': {
+                title: 'OX Target Radial Menu Redesign | SMDZ Studios',
+                description: 'Documentation for SMDZ OX Target Radial Menu, a radial interaction redesign for ox_target.'
               }
             };
 
@@ -566,13 +622,17 @@
                 label: 'Paid Resources',
                 path: 'M4 6h16l-1.5 8.5H7L5.8 8H4V6Zm4 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'
               },
-              'REDESINGS': {
-                label: 'Redesigns',
-                path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
+              'LB PHONE APPS': {
+                label: 'LB Phone Apps',
+                external: true,
+                name: 'smartphone',
+                url: 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/smartphone.svg'
               },
               'REDESIGNS': {
                 label: 'Redesigns',
-                path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z'
+                external: true,
+                name: 'palette',
+                url: 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/palette.svg'
               },
               'TOOLS': {
                 label: 'Tools',
@@ -583,6 +643,7 @@
                 path: 'M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7l-8-4Zm-1 12.2-3-3 1.4-1.4 1.6 1.6 4.6-4.6L17 9.2l-6 6Z'
               }
             };
+            sidebarSectionIconMap.REDESINGS = sidebarSectionIconMap.REDESIGNS;
 
             var sidebarNamedIconMap = {
               portal: 'M4 10.5 12 4l8 6.5V20h-6v-5h-4v5H4v-9.5Z',
@@ -616,7 +677,7 @@
             sidebarNamedIconMap.information = sidebarSectionIconMap.INFORMATION.path;
             sidebarNamedIconMap.resources = sidebarSectionIconMap['PAID RESOURCES'].path;
             sidebarNamedIconMap.paid = sidebarSectionIconMap['PAID RESOURCES'].path;
-            sidebarNamedIconMap.redesigns = sidebarSectionIconMap.REDESIGNS.path;
+            sidebarNamedIconMap.redesigns = sidebarSectionIconMap.REDESIGNS;
             sidebarNamedIconMap.free = sidebarSectionIconMap['FREE RESOURCES'].path;
             sidebarNamedIconMap.newspaper = getSidebarLucideIcon('newspaper');
             sidebarNamedIconMap.sparkles = getSidebarLucideIcon('sparkles');
@@ -1059,6 +1120,15 @@
                 }
 
                 var cardText = (cardEl.textContent || '').toUpperCase();
+                var cardLinks = Array.prototype.slice.call(cardEl.querySelectorAll('a[href]'))
+                  .map(function (linkEl) {
+                    return (linkEl.getAttribute('href') || '').toLowerCase();
+                  })
+                  .join(' ');
+                var cardTags = Array.prototype.slice.call(cardEl.querySelectorAll('.home-showcase-tags span'))
+                  .map(function (tagEl) {
+                    return (tagEl.textContent || '').replace(/\s+/g, ' ').trim().toUpperCase();
+                  });
                 var categories = ['all'];
 
                 if (cardText.indexOf('OPEN SOURCE') !== -1) {
@@ -1085,7 +1155,11 @@
                   categories.push('standalone');
                 }
 
-                if (cardText.indexOf('REDESIGN') !== -1 || cardText.indexOf('REDESING') !== -1 || cardText.indexOf('CRYSTAL') !== -1) {
+                if (cardTags.indexOf('LB PHONE APP') !== -1) {
+                  categories.push('lb-phone-app');
+                }
+
+                if (cardLinks.indexOf('/resources/redesings/') !== -1 || cardTags.indexOf('REDESIGN') !== -1 || cardTags.indexOf('REDESIGNS') !== -1) {
                   categories.push('redesign');
                 }
 
@@ -1555,7 +1629,7 @@
     })();
   </script>
   <!-- Custom plugin: debe cargarse antes del core de Docsify -->
-  <script src="plugins/command-search-pages.js?v=20260626-1"></script>
+  <script src="plugins/command-search-pages.js?v=20260712-1"></script>
   <script src="plugins/command-search.js?v=20260626-1"></script>
   <script src="plugins/five-metrics.js?v=20260622-2"></script>
   <!-- Docsify core: cargar una sola vez -->

@@ -25,35 +25,31 @@ Sidebar icons:
   - [Common Problems](/problems.md "icon:warning")
   - [Asset Escrow System](/fxap.md "icon:shield")
 
-<!-- - **Tools** "icon:wrench"
-  - [Item Converter](/tools/item-converter/index.html "icon:wrench") -->
-
-
 - **Paid Resources**
-  <!-- - [Fast Repair - v 1.0](/resources/paid/fast-repair.md "icon:wrench") -->
   - [Cine Loadscreen](/resources/paid/cine-loadscreen.md "icon:film")
   - [Invite Codes](/resources/paid/invite-codes.md "icon:ticket")
   - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")
   - [Flyers](/resources/paid/flyers.md "icon:flyer")
   - [Streamers List](/resources/paid/streamers-list.md "icon:video")
   - [NFC Transfer](/resources/paid/nfc-transfer.md "icon:money")
-  - [iFruit Pods APP](/resources/paid/ifruit-pods.md "icon:headphones")
   - [Speed Bumpers](/resources/paid/speed-bumpers.md "icon:speed-bump")
   - [Realistic UAV](/resources/paid/realistic-uav.md "icon:drone")
   - [Pets Rescue](/resources/paid/pets-rescue.md "icon:paw")
   - [Peds Manager](/resources/paid/peds-manager.md "icon:user")
-  - [Emergency Alerts APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
   - [Emergency GPS](/resources/paid/emergency-gps.md "icon:location")
   - [Rancher Job](/resources/paid/rancher-job.md "icon:cow")
   - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
   - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
   - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
-  <!-- - [Speed For Zones](/resources/paid/speed-for-zones.md "icon:speedometer") -->
 
-  <!-- - [Railway Job](/resources/paid/railway-job.md "icon:train") -->
+- **LB Phone Apps**
+  <!-- - [SmartCab LB APP](/resources/paid/lb_smartcab.md "icon:car-taxi-front") -->
+  - [iFruit Pods LB APP](/resources/paid/ifruit-pods.md "icon:headphones")
+  - [Emergency Alerts LB APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
 
 - **Redesigns**
-  - [Ox Target (Crystal Style)](/resources/redesings/ox-target-redesing-crystal.md "icon:crystal")
+  - [OX Target (Radial Menu)](/resources/redesings/ox-target-radial-redesign.md "icon:radius")
+  - [OX Target (Crystal Style)](/resources/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
 - **Free Resources**
   - [Handling Editor](/resources/free/handling-editor.md "icon:car")

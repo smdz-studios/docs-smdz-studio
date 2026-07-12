@@ -31,10 +31,36 @@
   <button class="portal-filter-btn" type="button" data-filter="esx">ESX</button>
   <button class="portal-filter-btn" type="button" data-filter="qbcore">QBCore</button>
   <button class="portal-filter-btn" type="button" data-filter="standalone">Standalone</button>
+  <button class="portal-filter-btn" type="button" data-filter="lb-phone-app">LB Phone App</button>
   <button class="portal-filter-btn" type="button" data-filter="redesign">Redesigns</button>
 </div>
 
 <div class="home-showcase-grid">
+
+
+
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/radialmenuoxtarget.png" alt="OX Target Radial Menu preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>OX Target Redesign Radial Menu</h3>
+      <p>OX Target Radial Redesign transforms the original ox_target interface into a modern, animated, and customizable radial menu. It preserves all original exports, integrations, zones, and compatibility without modifying the core target logic.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/redesings/ox-target-radial-redesign.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/radial-menu" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
 
 
 
@@ -238,7 +264,7 @@
       <h3>iFruit Pods APP</h3>
       <p>A production-ready LB Phone app designed to control wireless pods, featuring secure audio playback, advanced playlist management, queue & repeat systems, persistent settings (including dark mode), and asynchronous webhook logging.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/ifruit-pods.md">VIEW DOCS</a>
@@ -384,7 +410,7 @@
       <h3>App Emergency Alerts</h3>
       <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/app-emergency-alerts.md">VIEW DOCS</a>
