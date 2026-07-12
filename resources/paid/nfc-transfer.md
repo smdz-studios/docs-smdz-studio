@@ -14,10 +14,20 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
-<div
-  class="five-metrics-resource"
-  data-resource="smdz_nfc_transfer"
-></div>
+---
+
+<section class="support-hero support-hero--shield">
+  <p class="support-eyebrow">USAGE METRICS</p>
+  <h1>STATISTICS ON THE RESOURCE</h1>
+  <p>Check here for a list of servers using this resource and the number of players enjoying it. (Data provided by 5Metrics)</p>
+  <div class="support-search-tip">Info: If you don't see anything directly below, it may be because it's not in use or there's a problem obtaining the metrics.</div>
+</section>
+
+<div align="center">
+
+[![](https://badges.5metrics.dev/smdz_nfc_transfer/servers.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_nfc_transfer) | [![](https://badges.5metrics.dev/smdz_nfc_transfer/players.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_nfc_transfer)
+
+</div>
 
 ---
 

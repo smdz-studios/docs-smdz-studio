@@ -17,16 +17,26 @@
   THIS RESOURCE HELPS IN THE DEVELOPMENT OF OTHERS, IT DOES NOT CREATE INTERACTIONS BETWEEN PLAYERS
 </p>
 
-<div
-  class="five-metrics-resource"
-  data-resource="smdz_hud2d_builder"
-></div>
+---
+
+<section class="support-hero support-hero--shield">
+  <p class="support-eyebrow">USAGE METRICS</p>
+  <h1>STATISTICS ON THE RESOURCE</h1>
+  <p>Check here for a list of servers using this resource and the number of players enjoying it. (Data provided by 5Metrics)</p>
+  <div class="support-search-tip">Info: If you don't see anything directly below, it may be because it's not in use or there's a problem obtaining the metrics.</div>
+</section>
+
+<div align="center">
+
+[![](https://badges.5metrics.dev/smdz_hud2d_builder/servers.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_hud2d_builder) | [![](https://badges.5metrics.dev/smdz_hud2d_builder/players.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_hud2d_builder)
+
+</div>
 
 ---
 
 # 🧩 OVERVIEW:
 - 📌 **Name:** `smdz_hud2d_builder`
-- 💻 **Author:** **SMDZ Studios**
+- 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
