@@ -416,74 +416,6 @@ setr ox_target:debug 1
 
 ---
 
-# 📸 **INFORMATION REQUIRED FOR SUPPORT:**
-
-Please include:
-
-1. Screenshot of the complete `ox_target` folder structure.
-2. The `ensure ox_lib` and `ensure ox_target` section from your server configuration.
-3. Client F8 console after reproducing the issue.
-4. Server console during `ox_target` startup.
-5. Your `ox_lib` version and framework.
-6. Configured locale, preset, position, and opacity.
-7. Name of the resource or interaction being tested.
-8. Confirmation that the official original `ox_target` works correctly.
-
-> Reports containing only “it does not work” do not provide enough information to identify the cause.
-
----
-
-# 🔄 **UPDATING THE RESOURCE:**
-
-Recommended update procedure:
-
-1. Back up:
-
-```text
-config.lua
-config_presets.lua
-locales/
-web/dist/assets/radial.mp3
-```
-
-2. Stop the server.
-3. Delete the old resource folder.
-4. Upload the new version.
-5. Restore your configuration carefully.
-6. Do not overwrite new configuration keys blindly.
-7. Start the server.
-8. Check the startup banner and both consoles.
-9. Test an existing interaction.
-
-> Do not merge old protected core files into a newer release.
-
----
-
-# 📝 **CHANGELOG:**
-
-## Version `1.0.0`
-
-- Added React + Vite radial interface
-- Added smooth opening and closing animations
-- Added automatic radial pagination
-- Added keyboard and mouse-wheel navigation
-- Added long-label multi-line handling
-- Added configurable radial screen position
-- Added configurable offsets and custom position
-- Added 90% default opacity
-- Added pseudo-3D depth and cursor parallax
-- Added replaceable MP3 opening sound
-- Added eight built-in colour presets
-- Added English, Spanish, French, German, Italian, and Portuguese
-- Added automatic custom locale loading
-- Added protected client and server redesign cores
-- Added startup banner with selected preset and locale
-- Added JavaScript obfuscation after Vite build
-- Added hashed production bundle
-- Preserved original `ox_target` exports, integrations, and convars
-
----
-
 # ⚖️ **CREDITS AND LICENSING:**
 
 This resource includes and preserves the original `ox_target` system and its applicable license.
@@ -504,18 +436,14 @@ This resource includes and preserves the original `ox_target` system and its app
 - **Store:** `https://smdz-studios.tebex.io/`
 - **Documentation:** `https://docs.smdz-studios.com`
 
-### Third-party acknowledgements
+---
 
-- React
-- ReactDOM
-- Vite
-- JavaScript Obfuscator
-- Animate UI radial-menu concept
-- Font Awesome icon assets
+# 🔄 **UPDATES:**
+- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
 
-> The original `ox_target` project remains credited to Overextended.
-> The SMDZ Studios rights apply only to the radial redesign, additional interface, protected integration layer, presets, configuration, compiled web assets, documentation, and original modifications supplied with this product.
-
-<p style="text-align: center; font-weight: bold;">
-© SMDZ Studios 2025–2026. All rights reserved for the SMDZ radial redesign and its original additions.
-</p>
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
