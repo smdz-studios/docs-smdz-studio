@@ -1,5 +1,11 @@
 # 🧾 **CHANGELOG SMDZ STUDIOS:**
 
+  <div class="changelogs">
+    <img
+      src="assets/other/banner-changelogs.png"
+      alt="SMDZ Studios BannerChangelogs"
+    />
+  </div>
 
 #  <span class="changelog-version-badge">1.1.0</span> 🚗 | SMDZ Handling Editor - 2026-07-13
 ### ✅ Added
