@@ -43,6 +43,32 @@
 
 
 
+
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/lbapp-smartcab.png" alt="SmartCab APP preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>SmartCab APP</h3>
+      <p>SmartCab is an advanced autonomous taxi application for LB Phone that lets players request a driverless vehicle, follow its live arrival, select a map destination, manage Ride+ subscriptions, charge their phone during a journey, and review persistent digital trip receipts.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/lb_smartcab.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7557771" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/radialmenuoxtarget.png" alt="OX Target Radial Menu preview image" />

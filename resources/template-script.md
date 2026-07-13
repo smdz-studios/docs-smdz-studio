@@ -130,7 +130,7 @@ Explain any menus, markers, or UI elements players will see.
 
 ---
 
-# 🔌 Events & Exports (Developers)
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 Use this section for server owners and developers who integrate your script with others.
 

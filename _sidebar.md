@@ -43,7 +43,7 @@ Sidebar icons:
   - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
 
 - **LB Phone Apps**
-  <!-- - [SmartCab LB APP](/resources/paid/lb_smartcab.md "icon:car-taxi-front") -->
+  - [SmartCab LB APP](/resources/paid/lb_smartcab.md "icon:car-taxi-front")
   - [iFruit Pods LB APP](/resources/paid/ifruit-pods.md "icon:headphones")
   - [Emergency Alerts LB APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
 
