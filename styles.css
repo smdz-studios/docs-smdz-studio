@@ -4209,6 +4209,23 @@ pre:hover .docsify-copy-code-button {
   transform: scale(1.1);
 }
 
+.smdz-footer-dmca {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
+.smdz-footer-dmca img {
+  display: block;
+  max-width: 140px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.smdz-footer-dmca img:hover {
+  opacity: 1;
+}
+
 .smdz-footer-links,
 .footer-icon-link {
   display: none !important;
