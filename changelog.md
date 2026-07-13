@@ -1,6 +1,44 @@
 # 🧾 **CHANGELOG SMDZ STUDIOS:**
 
 
+#  <span class="changelog-version-badge">1.1.0</span> 🚗 | SMDZ Handling Editor - 2026-07-13
+### ✅ Added
+
+- Added real-time vehicle handling synchronization between all players.
+- Handling changes now remain active after leaving the vehicle and until the vehicle is removed.
+- Players entering an edited vehicle will automatically receive the same handling settings.
+- The editor now displays the latest synchronized values when opened by another player.
+- Added live synchronization when multiple players are editing the same vehicle.
+- Added support for driving the vehicle while the handling editor is open.
+
+### 🔧 Changed
+
+- Improved the way handling values are applied to make changes more noticeable and reliable.
+- The editor now verifies the real value applied to the vehicle before updating the interface.
+- Improved top speed updates so vehicle speed changes take effect correctly.
+- Improved presets and reset functionality for more consistent results.
+- Improved synchronization stability to prevent older changes from replacing newer ones.
+- Driving controls now remain available while testing and adjusting the vehicle.
+
+### ❌ Removed
+
+- Removed outdated synchronization and activation logic.
+
+### ⚠️ Update Note
+
+- **It is HIGHLY RECOMMENDED to install the update for servers that had version 1.0.0 at launch.**
+
+### 🗂️ Files Modified
+
+- `fxmanifest.lua`
+- `client/main.lua`
+- `server/main.lua`
+- `web/src/App.jsx`
+- `web/dist/assets/app-*.js`
+
+
+---
+
 #  <span class="changelog-version-badge">1.1.0</span> 🚌 | SMDZ Bus Travels - 2026-06-20
 ### 💰 Permanent Price Reduction
 

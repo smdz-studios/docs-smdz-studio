@@ -35,7 +35,7 @@
 - 📌 **Name:** `smdz_handling_editor`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.1.0`
 - ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
 
 
