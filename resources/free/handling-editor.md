@@ -30,6 +30,8 @@
 
 ---
 
+> **IMPORTANT:** Following a customer report, we must warn you that if you have scripts that modify handling, for example, RealisticVehicleFailure, some values ​​in our handling editor may not be applicable and you may > receive an error, as other scripts overwrite the handling.
+
 # 🧩 **OVERVIEW:**
 
 - 📌 **Name:** `smdz_handling_editor`
