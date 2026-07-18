@@ -62,7 +62,6 @@ It creates a serious police-drama atmosphere using fullscreen images, smooth zoo
 
 ---
 
-
 # 📦 **REQUIREMENTS:**
 
 This resource is lightweight and does not require a framework.
@@ -284,41 +283,6 @@ Config = { -- Main configuration table.
 
 ---
 
-# 🧪 **COMMON ISSUES:**
-
-| Issue | Possible Cause | Solution |
-|---|---|---|
-| Resource does not start | The resource folder name was changed. | Make sure the folder is named exactly `smdz_cine_loadscreen`. |
-| Resource stops automatically | The built-in resource name validation detected a wrong folder name. | Rename the folder back to `smdz_cine_loadscreen`. |
-| Red errors appear in console | Files may be missing after extraction. | Re-extract the ZIP and make sure all folders are present. |
-| Loading screen does not show | Another loading screen may be running before this one. | Disable other loading screen resources and keep only this one ensured. |
-| Images do not appear | Images are not inside the correct folder. | Place images inside `web/assets/slides/`. |
-| Images do not appear | Unsupported image extension. | Use `.jpg`, `.jpeg`, or `.png` only. |
-| Images do not appear | Image names are not numeric. | Use names like `1.png`, `2.png`, `3.png`, `01.jpg`, `02.jpg`, or `001.jpeg`. |
-| Only some images appear | `slides.maxSlides` is lower than the amount of images you added. | Increase `slides.maxSlides` in `config.lua`. |
-| Same images appear too often | Random mode reshuffles after all images are used. | This is normal behavior. Add more images for more variety. |
-| Fallback screen appears | No valid slide images were detected. | Check image folder, file names, extensions, and file integrity. |
-| Loading screen looks too dark | Vignette, black and white, or image effects may be too strong. | Reduce `blackAndWhiteIntensity`, disable `vignette`, or use brighter images. |
-| Text is too large | Branding or credits scale is too high. | Lower `branding.scale` or `credits.scale` in `config.lua`. |
-| Text is too small | Branding or credits scale is too low. | Increase `branding.scale` or `credits.scale` in `config.lua`. |
-| Credits do not show | Credits are disabled. | Set `credits.enabled = true` in `config.lua`. |
-| Credits appear in the wrong place | Credit positions are configured differently. | Edit `credits.positions` in `config.lua`. |
-| Logo does not appear | Logo is disabled. | Set `logo.enabled = true` in `config.lua`. |
-| Logo does not appear | Logo file is missing or path is wrong. | Place your logo at `web/assets/logo/logo.png` or update `logo.file`. |
-| Logo is too visible | Logo opacity is too high. | Lower `logo.opacity`, for example `0.4` or `0.5`. |
-| Music does not play | Music is disabled. | Set `music.enabled = true` in `config.lua`. |
-| Music does not play | MP3 file is missing or incorrectly named. | Place your file at `web/assets/music/theme.mp3`. |
-| Music does not play automatically | Browser audio restrictions may block autoplay for some clients. | Press `SPACE` if music controls are enabled. |
-| Music is too loud | Volume is too high. | Lower `music.volume`, for example `0.4` or `0.5`. |
-| Music is too quiet | Volume is too low. | Increase `music.volume`, maximum is `1.0`. |
-| Loading screen closes too fast | The server/client loads very quickly. | Increase `loading.minimumDisplayTime` slightly, but avoid very high values on public servers. |
-| Loading progress feels stuck | FiveM load progress events may not always update smoothly. | This is normal; the UI also includes smooth progress behavior. |
-| Config changes do not apply | Resource was not restarted after editing. | Restart the resource or restart the server. |
-
-
-
----
-
 # 🎵 **MUSIC NOTICE:**
 
 ## 1. Music Is Not Provided
@@ -400,6 +364,41 @@ SMDZ Studios provides only the:
 Any third-party content added after purchase is added under the responsibility of the person or community using the resource.
 
 If you are unsure whether you can use a specific song, image, logo, or video, **do not include it** until you have confirmed that you have the necessary rights.
+
+---
+
+# 🧪 **COMMON ISSUES:**
+
+| Issue | Possible Cause | Solution |
+|---|---|---|
+| Resource does not start | The resource folder name was changed. | Make sure the folder is named exactly `smdz_cine_loadscreen`. |
+| Resource stops automatically | The built-in resource name validation detected a wrong folder name. | Rename the folder back to `smdz_cine_loadscreen`. |
+| Red errors appear in console | Files may be missing after extraction. | Re-extract the ZIP and make sure all folders are present. |
+| Loading screen does not show | Another loading screen may be running before this one. | Disable other loading screen resources and keep only this one ensured. |
+| Images do not appear | Images are not inside the correct folder. | Place images inside `web/assets/slides/`. |
+| Images do not appear | Unsupported image extension. | Use `.jpg`, `.jpeg`, or `.png` only. |
+| Images do not appear | Image names are not numeric. | Use names like `1.png`, `2.png`, `3.png`, `01.jpg`, `02.jpg`, or `001.jpeg`. |
+| Only some images appear | `slides.maxSlides` is lower than the amount of images you added. | Increase `slides.maxSlides` in `config.lua`. |
+| Same images appear too often | Random mode reshuffles after all images are used. | This is normal behavior. Add more images for more variety. |
+| Fallback screen appears | No valid slide images were detected. | Check image folder, file names, extensions, and file integrity. |
+| Loading screen looks too dark | Vignette, black and white, or image effects may be too strong. | Reduce `blackAndWhiteIntensity`, disable `vignette`, or use brighter images. |
+| Text is too large | Branding or credits scale is too high. | Lower `branding.scale` or `credits.scale` in `config.lua`. |
+| Text is too small | Branding or credits scale is too low. | Increase `branding.scale` or `credits.scale` in `config.lua`. |
+| Credits do not show | Credits are disabled. | Set `credits.enabled = true` in `config.lua`. |
+| Credits appear in the wrong place | Credit positions are configured differently. | Edit `credits.positions` in `config.lua`. |
+| Logo does not appear | Logo is disabled. | Set `logo.enabled = true` in `config.lua`. |
+| Logo does not appear | Logo file is missing or path is wrong. | Place your logo at `web/assets/logo/logo.png` or update `logo.file`. |
+| Logo is too visible | Logo opacity is too high. | Lower `logo.opacity`, for example `0.4` or `0.5`. |
+| Music does not play | Music is disabled. | Set `music.enabled = true` in `config.lua`. |
+| Music does not play | MP3 file is missing or incorrectly named. | Place your file at `web/assets/music/theme.mp3`. |
+| Music does not play automatically | Browser audio restrictions may block autoplay for some clients. | Press `SPACE` if music controls are enabled. |
+| Music is too loud | Volume is too high. | Lower `music.volume`, for example `0.4` or `0.5`. |
+| Music is too quiet | Volume is too low. | Increase `music.volume`, maximum is `1.0`. |
+| Loading screen closes too fast | The server/client loads very quickly. | Increase `loading.minimumDisplayTime` slightly, but avoid very high values on public servers. |
+| Loading progress feels stuck | FiveM load progress events may not always update smoothly. | This is normal; the UI also includes smooth progress behavior. |
+| Config changes do not apply | Resource was not restarted after editing. | Restart the resource or restart the server. |
+
+
 
 ---
 

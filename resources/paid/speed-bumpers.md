@@ -67,7 +67,6 @@ Designed for performance, security, and a smooth in-game editing experience.
 
 ---
 
-
 # 📦 **REQUIREMENTS:**
 
 - **FiveM server:** latest recommended build.
@@ -638,33 +637,6 @@ print(('Received bumps: %s'):format(tostring(count)))
 
 ---
 
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-| Question | Short answer | Details / best practice |
-|----------|--------------|-------------------------|
-| Does the script support ESX, QBCore, and QBX? | Yes. | Use `Config.Framework = 'auto'` for automatic detection, or force one framework in config if your environment requires strict routing. |
-| Can regular players create or edit speed bumps? | Not by default. | With `Config.AdminOnly = true`, only authorized admins can create, edit, delete, clone, and reposition bumps. |
-| Is ACE enough to grant access? | Usually yes, if fallback is enabled. | Keep `Config.AllowAceFallback = true` and configure `Config.AllowedAce` in `server.cfg` for flexible admin grants. |
-| Can I use framework permissions instead of ACE? | Yes. | Set `Config.FrameworkPermission` (string or table) and `Config.FrameworkAdminGroups` to match your server's role naming. |
-| Is SQL import required? | Strongly recommended. | Import `database/smdz_speed_bumps.sql` before first launch to avoid bootstrap/storage issues. |
-| Are create/update payloads trusted from client? | No. | All sensitive data is validated and sanitized server-side (coords, heading, speed, names, bypass jobs). |
-| Why do admins see more data than players? | Intended behavior. | Admins get management metadata; regular users receive a public-safe payload to reduce unnecessary sensitive details. |
-| Can two admins edit one bump at the same time? | No. | Edit-lock ownership blocks concurrent writes. Lock TTL is controlled by `Config.Concurrency.EditLockTtlMs`. |
-| What happens if an admin disconnects while locking? | Locks are released. | `playerDropped` cleanup removes active locks for that source to avoid long-term stale ownership. |
-| Are duplicate bump names allowed? | No. | Names are normalized and stored with a unique key (`bump_name_key`) to prevent duplicates. |
-| Can bumps be too close to each other? | Not if validation is active. | Minimum spacing is enforced by `Config.RuntimeBehavior.MinBumpSpacing` during create/reposition. |
-| Does it affect NPC traffic? | Configurable. | Use `Config.NpcBehavior.Enabled` and related values to control NPC slowdown scan behavior and load profile. |
-| Can specific jobs bypass bump slowdown? | Yes. | Set `bypassJobs` per bump in the UI; values are sanitized and normalized server-side. |
-| Can I fully restyle the UI? | Yes. | Edit CSS tokens in `shared/config_nui.lua` (`Config.NUI.Colors`) without touching the React source. |
-| Can I switch language quickly? | Yes. | Change `Config.Language` to `en`, `es`, `fr`, or `de`. Locale files are aligned key-by-key. |
-| Does it support custom notification systems? | Yes. | `bridge/client/notifications.lua` supports provider auto-resolution and multiple integrations. |
-| Are public exports available? | Yes. | Client and server exports are available and documented in the Exports section. |
-| Is there anti-abuse protection? | Yes. | Unauthorized repeated attempts are tracked and can trigger alerts/logs via `Config.Security.AbuseAlerts`. |
-| Can I disable Discord logging? | Yes. | Set `Config.DiscordLogs.Enabled = false` or disable event-specific entries in `Config.DiscordLogs.Events`. |
-| Is folder name important? | Critical. | Resource name validation is enforced; changing folder name can prevent startup. |
-
----
-
 # 🧪 **COMMON ISSUES:**
 
 | Symptom / message | Probable cause | How to fix now | Prevention |
@@ -689,6 +661,33 @@ print(('Received bumps: %s'):format(tostring(count)))
 | Discord logs not sent | Invalid webhook or blocked outbound HTTP | Recheck `Config.DiscordLogs.Webhooks` and host network policy | Use one tested webhook per environment and monitor delivery |
 | Manage list seems outdated | Client not refreshed after external changes | Use Manage refresh action or reopen menu | Keep all bump edits through this resource APIs only |
 | Unexpected behavior after update | Config drift or partial overwrite | Restore backup configs and merge carefully | Always backup, diff, and stage-test before production rollout |
+
+---
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Short answer | Details / best practice |
+|----------|--------------|-------------------------|
+| Does the script support ESX, QBCore, and QBX? | Yes. | Use `Config.Framework = 'auto'` for automatic detection, or force one framework in config if your environment requires strict routing. |
+| Can regular players create or edit speed bumps? | Not by default. | With `Config.AdminOnly = true`, only authorized admins can create, edit, delete, clone, and reposition bumps. |
+| Is ACE enough to grant access? | Usually yes, if fallback is enabled. | Keep `Config.AllowAceFallback = true` and configure `Config.AllowedAce` in `server.cfg` for flexible admin grants. |
+| Can I use framework permissions instead of ACE? | Yes. | Set `Config.FrameworkPermission` (string or table) and `Config.FrameworkAdminGroups` to match your server's role naming. |
+| Is SQL import required? | Strongly recommended. | Import `database/smdz_speed_bumps.sql` before first launch to avoid bootstrap/storage issues. |
+| Are create/update payloads trusted from client? | No. | All sensitive data is validated and sanitized server-side (coords, heading, speed, names, bypass jobs). |
+| Why do admins see more data than players? | Intended behavior. | Admins get management metadata; regular users receive a public-safe payload to reduce unnecessary sensitive details. |
+| Can two admins edit one bump at the same time? | No. | Edit-lock ownership blocks concurrent writes. Lock TTL is controlled by `Config.Concurrency.EditLockTtlMs`. |
+| What happens if an admin disconnects while locking? | Locks are released. | `playerDropped` cleanup removes active locks for that source to avoid long-term stale ownership. |
+| Are duplicate bump names allowed? | No. | Names are normalized and stored with a unique key (`bump_name_key`) to prevent duplicates. |
+| Can bumps be too close to each other? | Not if validation is active. | Minimum spacing is enforced by `Config.RuntimeBehavior.MinBumpSpacing` during create/reposition. |
+| Does it affect NPC traffic? | Configurable. | Use `Config.NpcBehavior.Enabled` and related values to control NPC slowdown scan behavior and load profile. |
+| Can specific jobs bypass bump slowdown? | Yes. | Set `bypassJobs` per bump in the UI; values are sanitized and normalized server-side. |
+| Can I fully restyle the UI? | Yes. | Edit CSS tokens in `shared/config_nui.lua` (`Config.NUI.Colors`) without touching the React source. |
+| Can I switch language quickly? | Yes. | Change `Config.Language` to `en`, `es`, `fr`, or `de`. Locale files are aligned key-by-key. |
+| Does it support custom notification systems? | Yes. | `bridge/client/notifications.lua` supports provider auto-resolution and multiple integrations. |
+| Are public exports available? | Yes. | Client and server exports are available and documented in the Exports section. |
+| Is there anti-abuse protection? | Yes. | Unauthorized repeated attempts are tracked and can trigger alerts/logs via `Config.Security.AbuseAlerts`. |
+| Can I disable Discord logging? | Yes. | Set `Config.DiscordLogs.Enabled = false` or disable event-specific entries in `Config.DiscordLogs.Events`. |
+| Is folder name important? | Critical. | Resource name validation is enforced; changing folder name can prevent startup. |
 
 ---
 

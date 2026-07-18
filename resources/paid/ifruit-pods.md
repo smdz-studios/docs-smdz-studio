@@ -80,7 +80,7 @@
 
 ---
 
-# 🤝 **COMPATIBILITY:**
+## 🤝 **COMPATIBILITY:**
 
 ## Frameworks
 - ESX
@@ -651,6 +651,26 @@ Developer tips:
 
 ---
 
+# 🧪 **COMMON ISSUES:**
+
+| Issue | Symptoms | Likely Cause | Fix | Useful Debug Keys |
+|---|---|---|---|---|
+| Resource does not start | Resource fails at boot | Missing dependency, wrong folder name, framework bind failure | Ensure `oxmysql`, `xsound`, `lb-phone` start first; verify folder name `smdz_ifruit_pods`; review startup logs | `debug_core_framework_binding_failed`, `debug_framework_*` |
+| No devices detected | App shows disconnected state | Device session not synced or item not equipped | Use/equip `ifruitpods`, confirm client sends `deviceSession`, and confirm server receives it | `debug_device_equipped`, `debug_device_unequipped`, `debug_device_offline_blocked` |
+| URL rejected | Play action returns invalid URL | URL fails scheme/length/provider checks | Use `http/https`, avoid blocked chars, avoid SoundCloud URLs | `debug_client_rejected_invalid_play_data`, `debug_server_invalid_payload_play` |
+| Playback has no sound | No audio despite play event | `xsound` missing or invalid normalized URL | Ensure `xsound` is running and URL normalization is valid | `debug_audio_playback_started`, `debug_audio_stopped` |
+| Playlists not saving | Changes disappear after refresh | SQL not applied or DB permission issue | Run SQL installer, verify table existence and DB credentials | `debug_db_playlist_table_ready`, `debug_playlist_*` |
+| Settings not persisting | Theme/volume reset on reopen | Settings table/columns missing | Ensure `smdz_ifruit_pods_settings` exists and schema upgrade ran | `debug_db_settings_schema_ok`, `debug_db_settings_schema_upgraded`, `debug_settings_updated` |
+| Webhooks not delivered | No Discord messages | Webhooks disabled, empty URL, or rate-limited source | Enable webhooks, set URL, tune limits, inspect queue health | `debug_webhook_queued`, `debug_webhook_delivered`, `debug_webhook_failed`, `debug_webhook_rate_limited` |
+| NUI frame warning | `SEND_NUI_MESSAGE has no UI frame` | NUI not mounted when message is sent | Open app through LB Phone flow and verify `ui/dist` bundle | `debug_open_requested`, `debug_lbphone_registered` |
+| Keybinds do nothing | Shortcut pressed, no action | Keybinds disabled or playback state blocks command | Enable `Config.Keybinds.Enabled`, verify playback state and shortcuts | `debug_keybinds_disabled`, `debug_keybinds_registered`, `debug_keybind_*` |
+| YouTube short link not working | `youtu.be` link fails or mismatches | Invalid video ID or malformed query parameters | Use canonical `https://www.youtube.com/watch?v=...` or valid `youtu.be/...` | `debug_client_rejected_invalid_play_data`, `debug_server_invalid_payload_play` |
+| Next/previous behaves unexpectedly | Track jumps or stops at end | Repeat mode/queue state mismatch | Validate repeat mode (`off/one/all`) and current playlist context | `debug_playlist_track_next`, `debug_mode_reset_on_track_end` |
+| High webhook spam | Discord flooding or dropped embeds | Rate limit too high or abuse from repeated actions | Lower webhook limits and monitor queue behavior | `debug_webhook_rate_limited`, `debug_webhook_queue_overflow` |
+| Settings update rejected | Save action returns invalid payload | Wrong value types in UI payload | Ensure booleans/theme/defaultVolume are valid before submit | `debug_settings_fetch_ok`, `debug_settings_updated` |
+
+---
+
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | # | Question | Answer |
@@ -681,26 +701,6 @@ Developer tips:
 | 24 | Can I use SoundCloud links? | No. SoundCloud domains are intentionally rejected by validation rules. |
 | 25 | Why does random/next fail even with tracks? | Usually invalid `playlistId/trackIndex`, empty queue context, or dropped device session. Check request/response events. |
 | 26 | What happens if webhook queue is full? | Oldest entries are dropped and throttled warnings are logged to protect server stability. |
-
----
-
-# 🧪 **COMMON ISSUES:**
-
-| Issue | Symptoms | Likely Cause | Fix | Useful Debug Keys |
-|---|---|---|---|---|
-| Resource does not start | Resource fails at boot | Missing dependency, wrong folder name, framework bind failure | Ensure `oxmysql`, `xsound`, `lb-phone` start first; verify folder name `smdz_ifruit_pods`; review startup logs | `debug_core_framework_binding_failed`, `debug_framework_*` |
-| No devices detected | App shows disconnected state | Device session not synced or item not equipped | Use/equip `ifruitpods`, confirm client sends `deviceSession`, and confirm server receives it | `debug_device_equipped`, `debug_device_unequipped`, `debug_device_offline_blocked` |
-| URL rejected | Play action returns invalid URL | URL fails scheme/length/provider checks | Use `http/https`, avoid blocked chars, avoid SoundCloud URLs | `debug_client_rejected_invalid_play_data`, `debug_server_invalid_payload_play` |
-| Playback has no sound | No audio despite play event | `xsound` missing or invalid normalized URL | Ensure `xsound` is running and URL normalization is valid | `debug_audio_playback_started`, `debug_audio_stopped` |
-| Playlists not saving | Changes disappear after refresh | SQL not applied or DB permission issue | Run SQL installer, verify table existence and DB credentials | `debug_db_playlist_table_ready`, `debug_playlist_*` |
-| Settings not persisting | Theme/volume reset on reopen | Settings table/columns missing | Ensure `smdz_ifruit_pods_settings` exists and schema upgrade ran | `debug_db_settings_schema_ok`, `debug_db_settings_schema_upgraded`, `debug_settings_updated` |
-| Webhooks not delivered | No Discord messages | Webhooks disabled, empty URL, or rate-limited source | Enable webhooks, set URL, tune limits, inspect queue health | `debug_webhook_queued`, `debug_webhook_delivered`, `debug_webhook_failed`, `debug_webhook_rate_limited` |
-| NUI frame warning | `SEND_NUI_MESSAGE has no UI frame` | NUI not mounted when message is sent | Open app through LB Phone flow and verify `ui/dist` bundle | `debug_open_requested`, `debug_lbphone_registered` |
-| Keybinds do nothing | Shortcut pressed, no action | Keybinds disabled or playback state blocks command | Enable `Config.Keybinds.Enabled`, verify playback state and shortcuts | `debug_keybinds_disabled`, `debug_keybinds_registered`, `debug_keybind_*` |
-| YouTube short link not working | `youtu.be` link fails or mismatches | Invalid video ID or malformed query parameters | Use canonical `https://www.youtube.com/watch?v=...` or valid `youtu.be/...` | `debug_client_rejected_invalid_play_data`, `debug_server_invalid_payload_play` |
-| Next/previous behaves unexpectedly | Track jumps or stops at end | Repeat mode/queue state mismatch | Validate repeat mode (`off/one/all`) and current playlist context | `debug_playlist_track_next`, `debug_mode_reset_on_track_end` |
-| High webhook spam | Discord flooding or dropped embeds | Rate limit too high or abuse from repeated actions | Lower webhook limits and monitor queue behavior | `debug_webhook_rate_limited`, `debug_webhook_queue_overflow` |
-| Settings update rejected | Save action returns invalid payload | Wrong value types in UI payload | Ensure booleans/theme/defaultVolume are valid before submit | `debug_settings_fetch_ok`, `debug_settings_updated` |
 
 ---
 

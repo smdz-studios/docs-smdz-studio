@@ -67,24 +67,6 @@ It adds interactive bus stops with a clean menu, configurable fares and travel t
 
 ---
 
-# 📥 **INSTALLATION:**
-
-1) Place the resource in your server resources folder:
-
-```
-resources/[smdz]/smdz_bus_travels
-```
-
-2) Add to `server.cfg`:
-
-```
-ensure smdz_bus_travels
-```
-
-3) Restart your server or resource.
-
----
-
 # 📦 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - `ox_lib` (required)
@@ -94,7 +76,7 @@ ensure smdz_bus_travels
 
 ---
 
-# 🤝 **COMPATIBILITY:**
+## 🤝 **COMPATIBILITY:**
 
 ## 🔔 NOTIFICATIONS:
 
@@ -157,198 +139,27 @@ Supported inventory providers:
 
 ---
 
-# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
+# 📥 **INSTALLATION:**
 
-Below is the full developer surface (events, callbacks, exports) available in this resource.
+1) Place the resource in your server resources folder:
 
-## CLIENT EVENTS:
-
-- `smdz_bus_travels:openMenu`
-  Params: `stopId`
-  Opens the bus menu for a specific stop.
-
-## SERVER EVENTS:
-
-- `smdz_bus_travels:cancelTrip`
-  Refunds and cancels the active trip.
-
-- `smdz_bus_travels:completeTrip`
-  Marks the trip complete and sends webhook logs.
-
-## SERVER CALLBACKS (ox_lib):
-
-- `smdz_bus_travels:canUse`
-  Returns: `ok, reason`
-  Checks if the service is available.
-
-- `smdz_bus_travels:getRoutePrice`
-  Params: `fromId, toId`
-  Returns: `ok, price, reason`
-
-- `smdz_bus_travels:payCashForRoute`
-  Params: `fromId, toId, weatherName, clientHour`
-  Returns: `ok, price, message`
-
-- `smdz_bus_travels:getAccessBenefit`
-  Returns: `ok, mode, percent`
-
-## EXPORTS:
-
-### Shared:
-
-- `T(key, ...)`
-  Localized string helper (from `shared/locale.lua`).
-
-### Client:
-
-- `OpenMenu(stopId)`
-- `GetStops()`
-- `GetStopById(stopId)`
-- `IsNightBlocked()`
-- `IsWeatherBlocked()` → returns `(bool, weatherName)`
-- `CalcTravelMs(fromId, toId)`
-
-### Server:
-
-- `GetStops()`
-- `GetStopById(stopId)`
-- `IsNightBlockedAtHour(hour)`
-- `IsWeatherBlocked(weatherName)`
-- `HasVip(source)`
-- `GetAccessBenefit(source)` → returns `(bool, mode, percent)`
-
-## EXPORT USAGE EXAMPLES:
-
-**Client**
-
-```lua
--- Open the menu from another script
-exports['smdz_bus_travels']:OpenMenu('mission_row')
-
--- Check if night blocking is active
-if exports['smdz_bus_travels']:IsNightBlocked() then
-    print('Night service is blocked.')
-end
-
--- Calculate travel time between stops
-local ms = exports['smdz_bus_travels']:CalcTravelMs('mission_row', 'pillbox')
-print(('Travel time: %dms'):format(ms))
+```
+resources/[smdz]/smdz_bus_travels
 ```
 
-**Server**
+2) Add to `server.cfg`:
 
-```lua
--- Check VIP access
-local hasVip = exports['smdz_bus_travels']:HasVip(source)
-
--- Get access benefit details
-local ok, mode, percent = exports['smdz_bus_travels']:GetAccessBenefit(source)
-if ok then
-    print(('VIP mode=%s percent=%s'):format(mode, percent))
-end
+```
+ensure smdz_bus_travels
 ```
 
----
-
-# 🧪 **COMMON ISSUES:**
-
-- If the bus does not appear, enable `Config.Debug` and check for `DBG_BUS_SPAWN_*` logs.
-- If progress bars do not show, verify the selected provider resource is started.
-- If night blocking triggers at the wrong time, verify server uses game time.
-- If VIP access does not appear, ensure `Config.AccessPricing.Enabled = true` and your group/ACE is listed.
-- If menus open but no destinations show, check `Config.Stops` and locale keys for descriptions.
-- If weather block never triggers, confirm your weather system uses standard GTA weather names.
-- If the player stays in the bus after teleport, check for conflicting vehicle scripts or seat locks.
-- If webhooks do not fire, verify the URL and that outbound HTTP is allowed.
-- If pricing is always zero, confirm `Config.Pricing.Enabled` and valid `BaseFee`/`PricePerMeter`.
-- If target interaction fails, ensure the selected target resource is started or set `Config.Target = 'none'`.
-- If markers do not draw, ensure `Config.Markers.Enabled = true` and reduce `DrawDistance` only if needed.
-- If exports do not work, ensure the resource name matches `smdz_bus_travels` and is started.
-- If using `Config.Target = 'none'`, ensure `Config.InteractKey` is a valid key name or control index.
-- If you see “service unavailable,” verify `lib.callback` is working and `ox_lib` is up.
-- If weather blocking shows during clear skies, your weather script may use non‑standard names; update the list.
-- If the travel time feels too short, increase `Config.TravelProgress.BaseMs` and `PerMeter`.
-- If the bus spawns underground, adjust the Z value in `Config.StopsBusSpawn`.
-- If the bus spawns on top of the player, move the spawn a few meters away from the stop coords.
-- If the menu is always blocked, check `Config.NightDisabled` and the configured hours.
-- If prices feel inconsistent, check rounding and `Config.Pricing.Min/Max` values.
-- If VIP shows but no discount is applied, confirm `Config.AccessPricing.StackWithGov` and mode.
-- If notifications are missing, set `Config.Notify = 'fallback'` to test the pipeline.
-- If progress bar hangs, switch to `fallback` to isolate provider issues.
-
----
-
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-**Q: Can I disable dynamic pricing?**
-A: Yes. Set `Config.Pricing.Enabled = false` and use `Config.DefaultPrice`.
-
-**Q: Can I disable the bus spawn and keep instant teleport?**
-A: Yes. Set `Config.BusSpawn.WaitBeforeTeleportMs = 0` and remove spawn entries.
-
-**Q: Why does the VIP line not show?**
-A: Make sure `Config.AccessPricing.Enabled = true` and your group/ACE is listed.
-
-**Q: Can I force a specific notifications provider?**
-A: Yes. Set `Config.Notify = 'provider_name'` (e.g., `ox_lib`, `okokNotify`).
-
-**Q: Can I use a different progress bar provider?**
-A: Yes. Set `Config.ProgressBar` to `ox_lib`, `progressbar`, `mythic_progbar`, `esx_progressbar`, or `fallback`.
-
-**Q: How do I add or remove stops?**
-A: Edit `Config.Stops` and update `Config.StopsBusSpawn` with matching stop IDs.
-
-**Q: The menu is red/blocked even during the day. Why?**
-A: Check `Config.NightDisabled`, your game time, and your weather blocking list.
-
-**Q: Can I change travel time realism?**
-A: Yes. Adjust `Config.TravelProgress.BaseMs`, `PerMeter`, and `DistanceMultiplier`.
-
-**Q: Can I change the bus color?**
-A: Yes. Use `Config.BusSpawn.RandomColor` or set `Config.BusSpawn.Color`.
-
-**Q: Can I disable weather blocking entirely?**
-A: Yes. Set `Config.WeatherBlock.Enabled = false`.
-
-**Q: Do I need ox_target?**
-A: No. Set `Config.Target = 'none'` to use the fallback key interaction.
-
-**Q: Can I show VIP as discount and still apply gov discount?**
-A: Yes. Set `Config.AccessPricing.StackWithGov = true`.
-
-**Q: Why are webhooks not sending?**
-A: Ensure `Config.Webhooks.Enabled = true` and the webhook URL is valid.
-
-**Q: How do I change the night hours?**
-A: Edit `Config.NightFromHour` and `Config.NightToHour`.
-
-**Q: Can I override stop descriptions per locale?**
-A: Yes. Update the `STOP_*_DESC` keys in `locales/en.lua` and `locales/es.lua`.
-
-**Q: Can I reduce CPU usage?**
-A: Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance`.
-
-**Q: Is the bus spawn networked for all players?**
-A: No. It is local per player to prevent collisions and duplication.
-
+3) Restart your server or resource.
 
 ---
 
 # ⚙️ **CONFIGURATION:**
 
 ```lua
---  ____  __  __ ____  _____
--- / ___||  \/  |  _ \|__  /
--- \___ \| |\/| | | | | / /
---  ___) | |  | | |_| |/ /_
--- |____/|_|  |_|____/____|
---
---  ____  _____ _   _ ____ ___ ___  ____
--- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
--- \___ \  | | | | | | | | | | | | \___ \
---  ___) | | | | |_| | |_| | | |_| |___) |
--- |____/  |_|  \___/|____/___\___/|____/
-
 
 Config = Config or {} -- Root config table
 
@@ -668,6 +479,149 @@ Config.BusSpawn = {
 ```
 
 ---
+
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
+
+Below is the full developer surface (events, callbacks, exports) available in this resource.
+
+## CLIENT EVENTS:
+
+- `smdz_bus_travels:openMenu`
+  Params: `stopId`
+  Opens the bus menu for a specific stop.
+
+## SERVER EVENTS:
+
+- `smdz_bus_travels:cancelTrip`
+  Refunds and cancels the active trip.
+
+- `smdz_bus_travels:completeTrip`
+  Marks the trip complete and sends webhook logs.
+
+## SERVER CALLBACKS (ox_lib):
+
+- `smdz_bus_travels:canUse`
+  Returns: `ok, reason`
+  Checks if the service is available.
+
+- `smdz_bus_travels:getRoutePrice`
+  Params: `fromId, toId`
+  Returns: `ok, price, reason`
+
+- `smdz_bus_travels:payCashForRoute`
+  Params: `fromId, toId, weatherName, clientHour`
+  Returns: `ok, price, message`
+
+- `smdz_bus_travels:getAccessBenefit`
+  Returns: `ok, mode, percent`
+
+## EXPORTS:
+
+### Shared:
+
+- `T(key, ...)`
+  Localized string helper (from `shared/locale.lua`).
+
+### Client:
+
+- `OpenMenu(stopId)`
+- `GetStops()`
+- `GetStopById(stopId)`
+- `IsNightBlocked()`
+- `IsWeatherBlocked()` → returns `(bool, weatherName)`
+- `CalcTravelMs(fromId, toId)`
+
+### Server:
+
+- `GetStops()`
+- `GetStopById(stopId)`
+- `IsNightBlockedAtHour(hour)`
+- `IsWeatherBlocked(weatherName)`
+- `HasVip(source)`
+- `GetAccessBenefit(source)` → returns `(bool, mode, percent)`
+
+## EXPORT USAGE EXAMPLES:
+
+**Client**
+
+```lua
+-- Open the menu from another script
+exports['smdz_bus_travels']:OpenMenu('mission_row')
+
+-- Check if night blocking is active
+if exports['smdz_bus_travels']:IsNightBlocked() then
+    print('Night service is blocked.')
+end
+
+-- Calculate travel time between stops
+local ms = exports['smdz_bus_travels']:CalcTravelMs('mission_row', 'pillbox')
+print(('Travel time: %dms'):format(ms))
+```
+
+**Server**
+
+```lua
+-- Check VIP access
+local hasVip = exports['smdz_bus_travels']:HasVip(source)
+
+-- Get access benefit details
+local ok, mode, percent = exports['smdz_bus_travels']:GetAccessBenefit(source)
+if ok then
+    print(('VIP mode=%s percent=%s'):format(mode, percent))
+end
+```
+
+---
+
+# 🧪 **COMMON ISSUES:**
+
+| Issue | Recommended Solution |
+| --- | --- |
+| If the bus does not appear | enable `Config.Debug` and check for `DBG_BUS_SPAWN_*` logs. |
+| If progress bars do not show | verify the selected provider resource is started. |
+| If night blocking triggers at the wrong time | verify server uses game time. |
+| If VIP access does not appear | ensure `Config.AccessPricing.Enabled = true` and your group/ACE is listed. |
+| If menus open but no destinations show | check `Config.Stops` and locale keys for descriptions. |
+| If weather block never triggers | confirm your weather system uses standard GTA weather names. |
+| If the player stays in the bus after teleport | check for conflicting vehicle scripts or seat locks. |
+| If webhooks do not fire | verify the URL and that outbound HTTP is allowed. |
+| If pricing is always zero | confirm `Config.Pricing.Enabled` and valid `BaseFee`/`PricePerMeter`. |
+| If target interaction fails | ensure the selected target resource is started or set `Config.Target = 'none'`. |
+| If markers do not draw | ensure `Config.Markers.Enabled = true` and reduce `DrawDistance` only if needed. |
+| If exports do not work | ensure the resource name matches `smdz_bus_travels` and is started. |
+| If using `Config.Target = 'none'` | ensure `Config.InteractKey` is a valid key name or control index. |
+| If you see “service unavailable” | Verify `lib.callback` is working and `ox_lib` is started before `smdz_bus_travels`. |
+| If weather blocking shows during clear skies | your weather script may use non‑standard names; update the list. |
+| If the travel time feels too short | increase `Config.TravelProgress.BaseMs` and `PerMeter`. |
+| If the bus spawns underground | adjust the Z value in `Config.StopsBusSpawn`. |
+| If the bus spawns on top of the player | move the spawn a few meters away from the stop coords. |
+| If the menu is always blocked | check `Config.NightDisabled` and the configured hours. |
+| If prices feel inconsistent | check rounding and `Config.Pricing.Min/Max` values. |
+| If VIP shows but no discount is applied | confirm `Config.AccessPricing.StackWithGov` and mode. |
+| If notifications are missing | set `Config.Notify = 'fallback'` to test the pipeline. |
+| If progress bar hangs | switch to `fallback` to isolate provider issues. |
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+| --- | --- |
+| Can I disable dynamic pricing? | Yes. Set `Config.Pricing.Enabled = false` and use `Config.DefaultPrice`. |
+| Can I disable the bus spawn and keep instant teleport? | Yes. Set `Config.BusSpawn.WaitBeforeTeleportMs = 0` and remove spawn entries. |
+| Why does the VIP line not show? | Make sure `Config.AccessPricing.Enabled = true` and your group/ACE is listed. |
+| Can I force a specific notifications provider? | Yes. Set `Config.Notify = 'provider_name'` (e.g., `ox_lib`, `okokNotify`). |
+| Can I use a different progress bar provider? | Yes. Set `Config.ProgressBar` to `ox_lib`, `progressbar`, `mythic_progbar`, `esx_progressbar`, or `fallback`. |
+| How do I add or remove stops? | Edit `Config.Stops` and update `Config.StopsBusSpawn` with matching stop IDs. |
+| The menu is red/blocked even during the day. Why? | Check `Config.NightDisabled`, your game time, and your weather blocking list. |
+| Can I change travel time realism? | Yes. Adjust `Config.TravelProgress.BaseMs`, `PerMeter`, and `DistanceMultiplier`. |
+| Can I change the bus color? | Yes. Use `Config.BusSpawn.RandomColor` or set `Config.BusSpawn.Color`. |
+| Can I disable weather blocking entirely? | Yes. Set `Config.WeatherBlock.Enabled = false`. |
+| Do I need ox_target? | No. Set `Config.Target = 'none'` to use the fallback key interaction. |
+| Can I show VIP as discount and still apply gov discount? | Yes. Set `Config.AccessPricing.StackWithGov = true`. |
+| Why are webhooks not sending? | Ensure `Config.Webhooks.Enabled = true` and the webhook URL is valid. |
+| How do I change the night hours? | Edit `Config.NightFromHour` and `Config.NightToHour`. |
+| Can I override stop descriptions per locale? | Yes. Update the `STOP_*_DESC` keys in `locales/en.lua` and `locales/es.lua`. |
+| Can I reduce CPU usage? | Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance`. |
+| Is the bus spawn networked for all players? | No. It is local per player to prevent collisions and duplication. |
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.

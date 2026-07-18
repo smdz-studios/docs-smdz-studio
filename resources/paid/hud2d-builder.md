@@ -34,7 +34,7 @@
 
 ---
 
-# 🖥️ **UI OVERVIEW:**
+# 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_hud2d_builder`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
@@ -448,7 +448,7 @@ return {
 
 ---
 
-# 🧩 **OVERVIEW:**
+# 🖥️ **UI OVERVIEW:**
 When editor is enabled:
 - 🧾 **Top center:** compact header line + position line (reduced size).
 - 🧭 **Left side:** element list, active highlighted.
@@ -494,29 +494,6 @@ When editor is enabled:
 
 ---
 
-# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
-## Server events
-| Event name | Parameters | Description |
-|---|---|---|
-| `smdz_hud2d_builder:checkPermission` | none | Permission check and client response. |
-| `smdz_hud2d_builder:saveSnippet` | `snippet` (string), `isAuto` (bool) | Saves snippet into `/snippets`. |
-
-## Client events
-| Event name | Parameters | Description |
-|---|---|---|
-| `smdz_hud2d_builder:permissionResult` | `allowed` (bool), `reason` (string) | Result from server permission check. |
-
-## Client exports
-| Export name                | Parameters                    | Returns  | Description                         |
-|---------------------------|-------------------------------|----------|-------------------------------------|
-| `getElements()`           | none                          | `table`  | Deep copy of current HUD elements.  |
-| `openEditor()`            | none                          | `nil`    | Opens editor for local player.      |
-| `closeEditor()`           | none                          | `nil`    | Closes editor for local player.     |
-| `toggleEditor()`          | none                          | `nil`    | Toggles open/close.                 |
-| `requestPermission(cb, timeoutMs?)` | callback, optional timeout | `nil`    | Permission check via callback.      |
-
----
-
 # 🧪 **INTEGRATION EXAMPLES:**
 ## Open editor from another resource (client)
 ```lua
@@ -544,140 +521,59 @@ end)
 
 ---
 
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
+## Server events
+| Event name | Parameters | Description |
+|---|---|---|
+| `smdz_hud2d_builder:checkPermission` | none | Permission check and client response. |
+| `smdz_hud2d_builder:saveSnippet` | `snippet` (string), `isAuto` (bool) | Saves snippet into `/snippets`. |
+
+## Client events
+| Event name | Parameters | Description |
+|---|---|---|
+| `smdz_hud2d_builder:permissionResult` | `allowed` (bool), `reason` (string) | Result from server permission check. |
+
+## Client exports
+| Export name                | Parameters                    | Returns  | Description                         |
+|---------------------------|-------------------------------|----------|-------------------------------------|
+| `getElements()`           | none                          | `table`  | Deep copy of current HUD elements.  |
+| `openEditor()`            | none                          | `nil`    | Opens editor for local player.      |
+| `closeEditor()`           | none                          | `nil`    | Closes editor for local player.     |
+| `toggleEditor()`          | none                          | `nil`    | Toggles open/close.                 |
+| `requestPermission(cb, timeoutMs?)` | callback, optional timeout | `nil`    | Permission check via callback.      |
+
+---
+
 # 🧪 **COMMON ISSUES:**
 
-## ✅ Editor does not open / command does nothing
-**Possible causes**
-- Resource not started
-- Player failed permission check
-- Another script cancels chat commands or blocks controls
-
-**What to do**
-- Ensure `ensure smdz_hud2d_builder` is in `server.cfg`
-- Start resource manually: `start smdz_hud2d_builder`
-- Temporarily disable permissions in `shared/config.lua`:
-  - `Config.Permissions.Enabled = false`
-- Check client console for errors (F8 console)
-
-## ✅ Snippets are not saving
-**Most common causes**
-- Missing `snippets/` folder
-- Server user has no write permissions to resource folder
-
-**Fix**
-- Create folder:
-  - `resources/[...]/smdz_hud2d_builder/snippets/`
-- Ensure write permissions:
-  - Windows: run server in a path that is not protected
-  - Linux: `chown -R` and `chmod` accordingly
-
-## ✅ Autosave works but you see no console logs
-This is expected by design.
-- Autosave logs are intentionally quiet to avoid spam.
-- Turn on:
-  - `WebhookConfig.Debug = true`
-
-## ✅ Ctrl + PageUp/PageDown does not change border size
-**Possible causes**
-- Control remapped by client
-- Another resource consumes the input
-- You are holding a different modifier key than expected
-
-**Fix**
-- Verify `CTRL` and `PAGEUP/PAGEDOWN` IDs in `shared/keys_config.lua`
-- Disable other UI scripts temporarily (test environment)
-- Try in an empty server profile to rule out remaps
-
-## ✅ Y does not switch elements
-- Y is defined by the control ID in `shared/keys_config.lua`
-- If users remapped the control in GTA settings, behavior may differ
-
-**Fix**
-- Confirm `CYCLE_ELEMENT` matches your preferred control ID
-- Ask user to reset GTA/FiveM keybinds if needed (client-side)
-
-## ✅ F9 does not hide/show texts
-**Possible causes**
-- Client remapped the F9 control binding
-- Another resource uses the same control and intercepts input
-
-**Fix**
-- Confirm `TOGGLE_TEXTS` ID in `shared/keys_config.lua`
-- Test in a clean environment without other input-heavy scripts
-- Ensure the editor is active when pressing F9
-
-## ✅ Chat does not hide when opening editor
-**Possible causes**
-- Custom chat resource uses a different toggle event/export
-- `chat:toggle` is not implemented by your chat resource
-
-**Fix**
-- Update:
-  - `Config.HideChat.UseEvent` or `Config.HideChat.UseExport`
-- If your chat resource exposes an export, set:
-  - `UseExport = "resourceName:functionName"`
-
-## ✅ Webhook invalid warning appears
-This warning prints once per category by design (to avoid spam).
-**Fix**
-- Configure a valid webhook URL in `shared/webhook_config.lua`
-- Or disable webhooks:
-  - `WebhookConfig.Enabled = false`
-
-## ✅ Resource starts but UI is invisible
-**Possible causes**
-- UI toggled off (F3)
-- Texts toggled off (F9)
-- Another resource manipulating `DrawText` state or screen effects
-
-**Fix**
-- Press F3 to re-enable UI
-- Press F9 to re-enable texts
-- Test with minimal other resources
+| Issue | Possible Cause | Recommended Solution |
+| --- | --- | --- |
+| Editor does not open / command does nothing | Resource not started, player failed permission check, or another script cancels chat commands/blocks controls. | Ensure `ensure smdz_hud2d_builder` is in `server.cfg`, start the resource manually with `start smdz_hud2d_builder`, temporarily disable permissions with `Config.Permissions.Enabled = false`, and check F8 client console errors. |
+| Snippets are not saving | Missing `snippets/` folder or server user has no write permissions to the resource folder. | Create `resources/[...]/smdz_hud2d_builder/snippets/` and ensure write permissions. On Windows, avoid protected paths; on Linux, use the correct `chown`/`chmod`. |
+| Autosave works but no console logs appear | Autosave logs are intentionally quiet to avoid spam. | Turn on `WebhookConfig.Debug = true` only when diagnostics are needed. |
+| Ctrl + PageUp/PageDown does not change border size | Control remapped by client, another resource consumes the input, or a different modifier key is being held. | Verify `CTRL` and `PAGEUP/PAGEDOWN` IDs in `shared/keys_config.lua`, disable other UI scripts temporarily, and test in an empty server profile. |
+| Y does not switch elements | `Y` is defined by the configured control ID, and client-side GTA/FiveM remaps may change behavior. | Confirm `CYCLE_ELEMENT` matches your preferred control ID and ask the user to reset GTA/FiveM keybinds if needed. |
+| F9 does not hide/show texts | Client remapped F9 or another resource intercepts the same control. | Confirm `TOGGLE_TEXTS` in `shared/keys_config.lua`, test without input-heavy scripts, and ensure the editor is active when pressing F9. |
+| Chat does not hide when opening editor | Custom chat resource uses a different toggle event/export, or `chat:toggle` is not implemented. | Update `Config.HideChat.UseEvent` or `Config.HideChat.UseExport`; if your chat resource exposes an export, set `UseExport = "resourceName:functionName"`. |
+| Webhook invalid warning appears | Warning prints once per category by design to avoid spam. | Configure a valid webhook URL in `shared/webhook_config.lua` or disable webhooks with `WebhookConfig.Enabled = false`. |
+| Resource starts but UI is invisible | UI toggled off, texts toggled off, or another resource manipulates DrawText state/screen effects. | Press F3 to re-enable UI, press F9 to re-enable texts, and test with minimal other resources. |
 
 ---
-
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-<!-- **Q: Why is there no background box behind the text?**
-A: Background support is intentionally removed in v1.0.0 by design request. If you want it later, it can be implemented as an optional module or a separate version. -->
-
-**Q: Can I use this without ESX/QBCore?**
-A: Yes. The builder is standalone. Notifications can fallback to chat if no provider is available.
-
-**Q: Can I restrict usage to admins only?**
-A: Yes. Enable permissions in `shared/config.lua` and use either ACE permissions or allowed identifiers:
-- `Config.Permissions.Enabled = true`
-- Configure `Ace` and/or whitelists.
-
-**Q: Do generated snippets work on any server?**
-A: Yes. They are plain Lua snippets that draw text elements every frame and can be placed into any resource.
-
-**Q: Does this script store per-player HUD layouts?**
-A: By default, it saves snippets into the resource folder. It does not implement user profiles or per-player layouts out of the box.
-
-**Q: Can I import a snippet back into the editor?**
-A: Not in v1.0.0. An importer can be implemented in a future update. (v2.0.0)
-
-**Q: Why do keys behave differently for some players?**
-A: FiveM uses control IDs which can be remapped at the client level (GTA/FiveM settings). The resource cannot prevent client remaps.
-
-**Q: Can I change the default controls?**
-A: Yes, server-side: edit `shared/keys_config.lua` and restart the resource.
-
-**Q: Is there a server-side export to read elements from all players?**
-A: Not in v1.0.0. Elements are client-side while editing. For global persistence you’d implement server storage and sync.
-
-**Q: Does it support resolution scaling / safezone?**
-A: Elements are stored as normalized screen coordinates (0.0–1.0). Actual look varies by aspect ratio and safe zone. Use grid/snap for consistent placement.
-
-**Q: Will this impact performance?**
-A: Rendering a small set of text elements per frame is lightweight. If you render very large numbers of elements, you should test and consider optimizing your final HUD implementation.
-
-**Q: Can I integrate this with a staff menu?**
-A: Yes. Use client exports `openEditor()` / `closeEditor()` and `requestPermission()` to gate access.
-
----
+| Question | Answer |
+| --- | --- |
+| Can I use this without ESX/QBCore? | Yes. The builder is standalone. Notifications can fallback to chat if no provider is available. |
+| Can I restrict usage to admins only? | Yes. Enable permissions in `shared/config.lua` and use either ACE permissions or allowed identifiers:<br>- `Config.Permissions.Enabled = true`<br>- Configure `Ace` and/or whitelists. |
+| Do generated snippets work on any server? | Yes. They are plain Lua snippets that draw text elements every frame and can be placed into any resource. |
+| Does this script store per-player HUD layouts? | By default, it saves snippets into the resource folder. It does not implement user profiles or per-player layouts out of the box. |
+| Can I import a snippet back into the editor? | Not in v1.0.0. An importer can be implemented in a future update. (v2.0.0) |
+| Why do keys behave differently for some players? | FiveM uses control IDs which can be remapped at the client level (GTA/FiveM settings). The resource cannot prevent client remaps. |
+| Can I change the default controls? | Yes, server-side: edit `shared/keys_config.lua` and restart the resource. |
+| Is there a server-side export to read elements from all players? | Not in v1.0.0. Elements are client-side while editing. For global persistence you’d implement server storage and sync. |
+| Does it support resolution scaling / safezone? | Elements are stored as normalized screen coordinates (0.0–1.0). Actual look varies by aspect ratio and safe zone. Use grid/snap for consistent placement. |
+| Will this impact performance? | Rendering a small set of text elements per frame is lightweight. If you render very large numbers of elements, you should test and consider optimizing your final HUD implementation. |
+| Can I integrate this with a staff menu? | Yes. Use client exports `openEditor()` / `closeEditor()` and `requestPermission()` to gate access. |
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.

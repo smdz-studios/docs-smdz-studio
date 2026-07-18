@@ -14,7 +14,6 @@
   ⚠️ THIS SCRIPT IS FREE THROUGH TEBEX, OPEN SOURCE VERSION
 </p>
 
-
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_toggleradar`
 - 💻 **Author:** SMDZ Studios
@@ -24,18 +23,18 @@
 
 ---
 
-# 📦 **REQUIREMENTS:**
-- Build: FiveM server (any build)
-- Framework: Standalone
-
----
-
 # ⭐ **FEATURES:**
 - 🗺️ Instantly hide or show your minimap & radar
 - 🌍 Multilanguage support (English, Spanish, Portuguese)
 - 🧩 No dependencies (works with any server)
 - 🛡️ ACE permissions for admin control
 - ✅ Clean, safe code with server-side checks
+
+---
+
+# 📦 **REQUIREMENTS:**
+- Build: FiveM server (any build)
+- Framework: Standalone
 
 ---
 
@@ -84,12 +83,6 @@ Config.ACEPermission = "minimap.toggle"
 
 ---
 
-# 🎮 **USAGE:**
-
-- Type /togglerminimap in chat to toggle the minimap and radar on or off.
-*Messages will appear in your selected language.*
-
-
 # 🌍 **LOCALIZATION:**
 <span class="badge badge--new">NEW UPDATE</span>
 
@@ -136,6 +129,11 @@ Config.Languages = {
 
 ---
 
+# 🎮 **USAGE:**
+
+- Type /togglerminimap in chat to toggle the minimap and radar on or off.
+*Messages will appear in your selected language.*
+
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 ### Client
 - `minimap:client:permissionResult`
@@ -146,7 +144,10 @@ Config.Languages = {
 ---
 
 # 🧪 **COMMON ISSUES:**
-1. Script does not run: Check the ACE permissions.
+
+| Issue | Recommended Solution |
+| --- | --- |
+| Script does not run | Check the ACE permissions. |
 
 ---
 

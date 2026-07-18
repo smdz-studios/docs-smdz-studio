@@ -124,443 +124,6 @@ start smdz_lb_emergency_app
 
 ---
 
-# 📁 **STRUCTURE AND COMPONENTS:**
-
-| Component | Purpose |
-| --- | --- |
-| **Phone App** | Shows alert feed for all players |
-| **Alert Panel** | Authorized jobs create alerts |
-| **Server Core** | Validates permissions, spam, persistence |
-| **Client Core** | Manages NUI + phone integration |
-| **Webhooks** | Logs and public announcements |
-| **Database** | Stores alerts + per-user settings |
-
----
-
-# 🔐 **ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
-
-`/deletealert` can be authorized with any of these:
-
-- `Config.AdminCommandPermissions.Groups` (framework groups)
-- `Config.AdminCommandPermissions.Aces` (ACE permission objects)
-- `Config.AdminCommandPermissions.AceGroups` (ACE groups, like `admin` / `group.admin`)
-
-If a player matches **any** configured option, access is granted.
-
-Config example:
-
-```lua
-Config.AdminCommandPermissions = {
-    Enabled = true,
-    Groups = { "owner", "admin" },
-    Aces = { "smdz_lb_emergency_app.deletealert" },
-    AceGroups = { "admin" }
-}
-```
-
-`server.cfg` example (recommended ACE object flow):
-
-```cfg
-add_ace group.admin smdz_lb_emergency_app.deletealert allow
-add_principal identifier.license:YOUR_LICENSE group.admin
-```
-
-`server.cfg` example for `AceGroups`:
-
-```cfg
-add_ace group.admin group.admin allow
-add_principal identifier.license:YOUR_LICENSE group.admin
-```
-
----
-
-# 🌍 **ZONE TARGETING MODEL:**
-
-Zones are defined as PolyZone polygons. Each player belongs to one zone (or none). Alerts can be sent to:
-
-- **ALL** (global)
-- **Specific zone**
-
-The panel shows the sender’s current zone to avoid mistakes.
-
-
-# 📱 **USER EXPERIENCE (PHONE APP):**
-
-Players see:
-
-- Alert feed with ID, type, job label, and time.
-- Settings for volume, theme, visible types, and privacy.
-
-Alerts update **in real time** with no refresh needed.
-
----
-
-
-# 📦 **PANEL ITEM (OPTIONAL):**
-
-If you want to restrict the **alert panel** to a physical item (e.g. tablet/sonar), enable:
-
-```lua
-Config.PanelItem = {
-    Enabled = true,
-    ItemName = "smdzalerts"
-}
-```
-
-Behavior:
-- When enabled, **command + key mapping are disabled**.
-- Panel opens only when the item is used.
-
-Inventory setup:
-- **ox_inventory**: use `_INSTALL_FILES/item_ox_inventory.lua` (uses export `smdz_lb_emergency_app.useEmergencySonar`).
-- **QBCore/QBX**: use `_INSTALL_FILES/item_qb_inventory.lua` (CreateUseableItem sends client event).
-- **QS**: use `_INSTALL_FILES/item_qs_inventory.lua` for the item definition.
-- **ESX**: handled automatically by the script when `Config.PanelItem.Enabled = true`.
-
-Client event used:
-- `smdz_lb_emergency_app:client:useEmergencySonar`
-
-# 🙈 **ANONYMOUS MODE BEHAVIOR:**
-
-When anonymous:
-
-- Sender name is hidden
-- Rank is still shown
-- Job label remains visible
-
-This allows public alerts without exposing the author’s name.
-
----
-
-# 🗄️ **PERSISTENCE AND DATA STORAGE:**
-
-Database tables:
-
-- `smdz_lb_emergency_app_alerts`
-- `smdz_lb_emergency_app_user_settings`
-
-Stored data includes:
-
-- Alerts, their type, zone, sender, and timestamps
-- Per‑user preferences (volume, theme, hidden types, hidden IDs)
-
-```sql
-CREATE TABLE IF NOT EXISTS `smdz_lb_emergency_app_alerts` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `alert_code` VARCHAR(8) NULL,
-  `message` VARCHAR(255) NOT NULL,
-  `author` VARCHAR(64) NULL,
-  `sender` VARCHAR(64) NULL,
-  `alert_type` VARCHAR(32) NULL,
-  `zone_id` VARCHAR(32) NULL,
-  `firstname` VARCHAR(64) NULL,
-  `lastname` VARCHAR(64) NULL,
-  `job` VARCHAR(32) NULL,
-  `job_label` VARCHAR(64) NULL,
-  `grade` INT NULL,
-  `grade_label` VARCHAR(64) NULL,
-  `anonymous` TINYINT(1) NULL,
-  `created_at` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idx_alert_code` (`alert_code`),
-  KEY `idx_created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_lb_emergency_app_user_settings` (
-  `identifier` VARCHAR(64) NOT NULL,
-  `volume` DOUBLE NULL,
-  `theme` VARCHAR(16) NULL,
-  `cleared_at` INT UNSIGNED NULL,
-  `hide_sender` TINYINT(1) NULL,
-  `hide_rank` TINYINT(1) NULL,
-  `visible_types` TEXT NULL,
-  `hidden_alerts` TEXT NULL,
-  PRIMARY KEY (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-```
-
----
-
-# 📡 **WEBHOOK LOGGING:**
-
-Two webhook systems:
-
-1. **Staff Logs** — full audit of alerts, permissions, identifiers
-2. **Public IC Logs** — optional RP broadcast embed
-
-Both can be configured with:
-
-- Role mentions
-- Custom embed colors
-- Optional image
-
----
-
-# 🌍 **LOCALIZATION:**
-
-Supported locales:
-
-- `en`, `es`, `fr`, `de`, `ptbr`
-
-All UI text, messages, and debug logs are keyed for translation.
-
----
-
-# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
-
-This resource exposes **client and server exports**, and also emits events for advanced integrations.
-
-You can:
-
-- Open the panel programmatically
-- Send alerts from other scripts
-- Fetch current alert list
-- Read user settings
-
-See the **Exports + Events** section below for full details.
-
----
-
-
-## 📤 EXPORTS
-
-## **Client exports (examples per export):**
-
-| Export | Returns | Description | Example |
-| --- | --- | --- | --- |
-| `OpenPanel()` | boolean | Opens the alert panel for local player. | `exports["smdz_lb_emergency_app"]:OpenPanel()` |
-| `SendAlert(data)` | void | Sends alert to server. | `exports["smdz_lb_emergency_app"]:SendAlert({ type = "police", zone = "ALL", message = "Roadblock active on Alta St.", anonymous = false })` |
-| `GetAlerts()` | table | Cached alerts (unfiltered). | `local alerts = exports["smdz_lb_emergency_app"]:GetAlerts()` |
-| `GetFilteredAlerts()` | table | Alerts after user filters. | `local alerts = exports["smdz_lb_emergency_app"]:GetFilteredAlerts()` |
-| `RefreshAlerts()` | table | Fetches and updates alerts. | `local alerts = exports["smdz_lb_emergency_app"]:RefreshAlerts()` |
-| `GetCurrentZone()` | string | Current zone id. | `local zone = exports["smdz_lb_emergency_app"]:GetCurrentZone()` |
-| `GetUserSettings()` | table | User settings. | `local settings = exports["smdz_lb_emergency_app"]:GetUserSettings()` |
-| `SetUserSettings(payload)` | table | Saves settings. | `exports["smdz_lb_emergency_app"]:SetUserSettings({ volume = 0.8, theme = "dark" })` |
-| `ClearUserAlerts()` | table | Clears history for user only. | `exports["smdz_lb_emergency_app"]:ClearUserAlerts()` |
-| `useEmergencySonar(item, slot)` | boolean | Trigger item usage (ox/inventory export). | `exports["smdz_lb_emergency_app"]:useEmergencySonar(item, slot)` |
-| `GetPermissions(refresh?)` | table | `{ filter, allowedTypes }`. | `local perms = exports["smdz_lb_emergency_app"]:GetPermissions(true)` |
-| `IsNuiReady()` | boolean | NUI readiness. | `local ready = exports["smdz_lb_emergency_app"]:IsNuiReady()` |
-| `IsAppReady()` | boolean | App readiness. | `local ready = exports["smdz_lb_emergency_app"]:IsAppReady()` |
-
-## **Server exports (examples per export):**
-
-| Export | Returns | Description | Example |
-| --- | --- | --- | --- |
-| `SendAlert(source, data, opts)` | `ok, result` | Sends alert from server. | `exports["smdz_lb_emergency_app"]:SendAlert(source, { type = "general", zone = "ALL", message = "Emergency broadcast test" })` |
-| `OpenPanel(source, opts)` | `ok, reason` | Opens panel for player. | `exports["smdz_lb_emergency_app"]:OpenPanel(source)` |
-| `DeleteAlert(code, source, opts)` | `ok, result, code` | Deletes alert by code. | `exports["smdz_lb_emergency_app"]:DeleteAlert("762", source)` |
-| `GetAlerts()` | table | Current alert cache. | `local alerts = exports["smdz_lb_emergency_app"]:GetAlerts()` |
-| `GetAlertByCode(code)` | table or nil | Alert by code. | `local alert = exports["smdz_lb_emergency_app"]:GetAlertByCode("762")` |
-| `GetUserSettings(source)` | table or nil | User settings. | `local settings = exports["smdz_lb_emergency_app"]:GetUserSettings(source)` |
-| `GetAlertTypes()` | table | Configured types. | `local types = exports["smdz_lb_emergency_app"]:GetAlertTypes()` |
-| `GetZones()` | table | Configured zones. | `local zones = exports["smdz_lb_emergency_app"]:GetZones()` |
-| `GetPermissions(source)` | table | `{ filter, allowedTypes }`. | `local perms = exports["smdz_lb_emergency_app"]:GetPermissions(source)` |
-| `HasCommandAccess(source)` | boolean | Command permission check. | `local ok = exports["smdz_lb_emergency_app"]:HasCommandAccess(source)` |
-| `HasPanelAccess(source)` | boolean | Panel permission check. | `local ok = exports["smdz_lb_emergency_app"]:HasPanelAccess(source)` |
-| `GetAlertTypeLabel(type)` | string | Localized type label. | `local label = exports["smdz_lb_emergency_app"]:GetAlertTypeLabel("police")` |
-| `GetZoneLabel(zone)` | string | Localized zone label. | `local label = exports["smdz_lb_emergency_app"]:GetZoneLabel("NORTH")` |
-
----
-## 📡 EVENTS
-
-| Event | Direction | Description | Payload |
-| --- | --- | --- | --- |
-| `smdz_lb_emergency_app:sendAlert` | Client → Server | Requests a new alert | `{ type, zone, message, anonymous }` |
-| `smdz_lb_emergency_app:setZone` | Client → Server | Updates player current zone | `zoneId` |
-| `smdz_lb_emergency_app:openPanel` | Server → Client | Opens panel | none |
-| `smdz_lb_emergency_app:alert` | Server → Client | Sends a single alert | `alert` object |
-| `smdz_lb_emergency_app:alertsUpdated` | Server → Client | Sends full list | `alerts[]` |
-| `smdz_lb_emergency_app:notify` | Server → Client | Panel message | `{ message }` |
-| `smdz_lb_emergency_app:alertSent` | Server → Client | Send ack | `{ ok = true }` |
-| `smdz_lb_emergency_app:layoutToggle` | Server → Client | Layout debug | none |
-
----
-
-# 🧩 **NUI CALLBACKS:**
-
-| Callback | Direction | Description | Response |
-| --- | --- | --- | --- |
-| `nuiReady` | NUI → Client | NUI ready | `{ ok = true }` |
-| `getConfig` | NUI → Client | Requests config | `{ types, zones, labels, ui, settings }` |
-| `getAlerts` | NUI → Client | Requests alerts | `alerts[]` |
-| `openPanelAck` | NUI → Client | Panel open ack | `{ ok = true }` |
-| `sendAlert` | NUI → Client | Send alert | `{ ok = true }` |
-| `closePanel` | NUI → Client | Close panel | `{ ok = true }` |
-| `saveUserSettings` | NUI → Client | Save settings | `{ ok, settings }` |
-| `clearHistory` | NUI → Client | Clear local history | `{ ok, clearedAt }` |
-| `layoutMoved` | NUI → Client | Layout debug coords | `{ ok = true }` |
-
-
----
-
-# 🔒 **SECURITY & VALIDATION:**
-
-- All critical checks are server‑side (permissions, cooldown, word filter).
-- Unauthorized attempts can be logged in webhook.
-- `/deletealert` is restricted by framework group permissions and/or ACE permissions.
-
----
-
-# 🧪 **COMMON ISSUES:**
-
-1. **Panel does not open**
-   - Check your job grade and `Config.CommandPermissions`.
-   - Confirm `Config.AlertPermissions` allows your job for the selected type.
-   - If `Config.PanelItem.Enabled = true`, use the item instead of command/key.
-
-2. **Command or key mapping does nothing**
-   - If `Config.PanelItem.Enabled = true`, command and key mapping are disabled by design.
-   - Verify `Config.Command` is set and not empty.
-
-3. **No alerts received**
-   - Ensure `lb-phone` is running before this resource.
-   - Check `Config.RequirePhoneItem` and make sure players have the phone item.
-   - Confirm zones are correct and player is inside a zone.
-
-4. **Alerts show, but no sound**
-   - Verify `ui/dist/assets/sound.mp3` exists.
-   - Check user settings volume is not zero.
-   - Check `Config.Sound.Volume`.
-
-5. **Flashlight does not blink**
-   - Ensure `Config.Flashlight.Enabled = true`.
-   - LB Phone export must be available.
-
-6. **Zone shows wrong region**
-   - Recheck PolyZone polygons and overlap.
-   - Ensure zone IDs match `Config.Zones`.
-
-7. **NUI not opening**
-   - Verify `ui/dist/index.html` exists and UI is built.
-   - Check for console NUI errors.
-
-8. **NUI callbacks timing out**
-   - Ensure `lb-phone` is started and callbacks are registered.
-   - Look for errors in server console.
-
-9. **Permissions not updating after job change**
-   - Reopen the panel to refresh permissions.
-   - Ensure framework job update events are firing.
-
-10. **Webhook logs not sending**
-    - Check webhook URL in `Config.Webhook`.
-    - Verify the server can reach Discord.
-
-11. **Public webhook not sending**
-    - Ensure `Config.PublicWebhook.Enabled = true`.
-    - Verify role mention ID and embed config.
-
-12. **Database errors or missing tables**
-    - Import `database.sql`.
-    - Ensure `oxmysql` is running.
-
-13. **History clears but comes back**
-    - Confirm user settings are saving to DB.
-    - Check for DB errors in console.
-
-14. **Delete alert command doesn’t work**
-    - Ensure your group is in `Config.AdminCommandPermissions.Groups`, your ACE is in `Config.AdminCommandPermissions.Aces`, or your ACE group is in `Config.AdminCommandPermissions.AceGroups`.
-    - Use `/deletealert [ID]`.
-
-15. **Item usage does nothing**
-    - Make sure `Config.PanelItem.Enabled = true`.
-    - Ensure the item exists in your inventory system.
-    - Check the item uses `smdz_lb_emergency_app.useEmergencySonar` (ox) or event (QB/ESX).
-
-16. **Panel opens but can’t send**
-    - Check `Config.AlertPermissions` for the chosen type.
-    - Check `Config.Cooldown` and word filter.
-
-17. **Word filter not blocking**
-    - Ensure `Config.WordFilter.Enabled = true` and list is not empty.
-
-18. **Alerts show wrong time/date**
-    - Check `Config.Ui.TimeLocale` and `Config.Ui.DateLocale`.
-
-19. **Locale keys show instead of text**
-    - Ensure the key exists in the selected locale file.
-    - Verify `Config.Locale` and `Config.FallbackLocale`.
-
-20. **Resource validation failed**
-    - The folder name must be `smdz_lb_emergency_app`.
-
----
-
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-**How do I add a new alert type?**
-Add it in `Config.AlertTypes` and mirror it in `Config.AlertPermissions.Types`.
-
-**Can I allow alerts without a phone item?**
-Set `Config.RequirePhoneItem = false`.
-
-**Do hidden alert types still notify players?**
-Yes. Sound/flashlight/notification always fire. Hidden types only affect the feed.
-
-**How do I update the UI?**
-Run `npm run build` inside `ui/` and restart the resource.
-
-**Why doesn’t the panel open for my job?**
-Check `Config.CommandPermissions` and `Config.AlertPermissions` for job + grade.
-
-**Why does it say “not authorized” even for police?**
-Verify the exact job name and grade (case‑sensitive on some frameworks).
-
-**Can I send alerts from another script?**
-Yes. Use server export `SendAlert(source, data)` or client export `SendAlert(data)`.
-
-**Can I make the panel item‑only?**
-Yes. Enable `Config.PanelItem.Enabled = true` and set `ItemName = "smdz_alerts"`.
-
-**Why does the key mapping not work?**
-If `PanelItem` is enabled, command and key mapping are disabled by design.
-
-**Can I change the default alert type?**
-Yes. Set `Config.DefaultAlertType`.
-
-**Can I change the default zone?**
-Yes. Set `Config.DefaultZone` and `Config.AllZoneLabel`.
-
-**Does the script log admin deletions?**
-Yes. Deletes are logged via webhook with alert ID and author info.
-
-**Do alerts expire automatically?**
-Yes if `Config.Expiration.Enabled = true`.
-
-**Can I disable flashlight blinking?**
-Yes. Set `Config.Flashlight.Enabled = false`.
-
-**Can I disable sound globally?**
-Yes. Set `Config.Sound.Volume = 0` or remove the sound file.
-
-**Are user settings per‑player?**
-Yes. Settings are stored per identifier in the database.
-
-**Can users clear only their own history?**
-Yes. “Clear history” is per user only.
-
-**Why does the app show the wrong language?**
-Check `Config.Locale`, `Config.FallbackLocale`, and the locale file exists.
-
-**Can I rename the resource folder?**
-No. The resource is locked to `smdz_lb_emergency_app`.
-
-**Is LB Phone required?**
-Yes. The app depends on LB Phone exports and NUI.
-
----
-
-# 🎯 **REAL‑WORLD USE CASES:**
-
-- **Amber Alert:** Missing child bulletin sent to all zones with high priority.
-- **Police Advisory:** Road closure or active pursuit in a specific zone.
-- **Medical Notice:** Large‑scale medical incident requiring public caution.
-- **Fire Warning:** Evacuation or restricted area due to wildfire/structure fire.
-- **Military Lockdown:** Restricted access and lockdown in a military zone.
-
----
-
-
 # ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
@@ -987,6 +550,341 @@ Config.Debug = { -- Debug settings (prints).
 ```
 
 ---
+
+# 🔐 **ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
+
+`/deletealert` can be authorized with any of these:
+
+- `Config.AdminCommandPermissions.Groups` (framework groups)
+- `Config.AdminCommandPermissions.Aces` (ACE permission objects)
+- `Config.AdminCommandPermissions.AceGroups` (ACE groups, like `admin` / `group.admin`)
+
+If a player matches **any** configured option, access is granted.
+
+Config example:
+
+```lua
+Config.AdminCommandPermissions = {
+    Enabled = true,
+    Groups = { "owner", "admin" },
+    Aces = { "smdz_lb_emergency_app.deletealert" },
+    AceGroups = { "admin" }
+}
+```
+
+`server.cfg` example (recommended ACE object flow):
+
+```cfg
+add_ace group.admin smdz_lb_emergency_app.deletealert allow
+add_principal identifier.license:YOUR_LICENSE group.admin
+```
+
+`server.cfg` example for `AceGroups`:
+
+```cfg
+add_ace group.admin group.admin allow
+add_principal identifier.license:YOUR_LICENSE group.admin
+```
+
+---
+
+# 🌍 **LOCALIZATION:**
+
+Supported locales:
+
+- `en`, `es`, `fr`, `de`, `ptbr`
+
+All UI text, messages, and debug logs are keyed for translation.
+
+---
+
+# 📱 **USER EXPERIENCE (PHONE APP):**
+
+Players see:
+
+- Alert feed with ID, type, job label, and time.
+- Settings for volume, theme, visible types, and privacy.
+
+Alerts update **in real time** with no refresh needed.
+
+---
+
+# 📁 **STRUCTURE AND COMPONENTS:**
+
+| Component | Purpose |
+| --- | --- |
+| **Phone App** | Shows alert feed for all players |
+| **Alert Panel** | Authorized jobs create alerts |
+| **Server Core** | Validates permissions, spam, persistence |
+| **Client Core** | Manages NUI + phone integration |
+| **Webhooks** | Logs and public announcements |
+| **Database** | Stores alerts + per-user settings |
+
+---
+
+# 🌍 **ZONE TARGETING MODEL:**
+
+Zones are defined as PolyZone polygons. Each player belongs to one zone (or none). Alerts can be sent to:
+
+- **ALL** (global)
+- **Specific zone**
+
+The panel shows the sender’s current zone to avoid mistakes.
+
+# 📦 **PANEL ITEM (OPTIONAL):**
+
+If you want to restrict the **alert panel** to a physical item (e.g. tablet/sonar), enable:
+
+```lua
+Config.PanelItem = {
+    Enabled = true,
+    ItemName = "smdzalerts"
+}
+```
+
+Behavior:
+- When enabled, **command + key mapping are disabled**.
+- Panel opens only when the item is used.
+
+Inventory setup:
+- **ox_inventory**: use `_INSTALL_FILES/item_ox_inventory.lua` (uses export `smdz_lb_emergency_app.useEmergencySonar`).
+- **QBCore/QBX**: use `_INSTALL_FILES/item_qb_inventory.lua` (CreateUseableItem sends client event).
+- **QS**: use `_INSTALL_FILES/item_qs_inventory.lua` for the item definition.
+- **ESX**: handled automatically by the script when `Config.PanelItem.Enabled = true`.
+
+Client event used:
+- `smdz_lb_emergency_app:client:useEmergencySonar`
+
+# 🙈 **ANONYMOUS MODE BEHAVIOR:**
+
+When anonymous:
+
+- Sender name is hidden
+- Rank is still shown
+- Job label remains visible
+
+This allows public alerts without exposing the author’s name.
+
+---
+
+# 🗄️ **PERSISTENCE AND DATA STORAGE:**
+
+Database tables:
+
+- `smdz_lb_emergency_app_alerts`
+- `smdz_lb_emergency_app_user_settings`
+
+Stored data includes:
+
+- Alerts, their type, zone, sender, and timestamps
+- Per‑user preferences (volume, theme, hidden types, hidden IDs)
+
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_lb_emergency_app_alerts` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `alert_code` VARCHAR(8) NULL,
+  `message` VARCHAR(255) NOT NULL,
+  `author` VARCHAR(64) NULL,
+  `sender` VARCHAR(64) NULL,
+  `alert_type` VARCHAR(32) NULL,
+  `zone_id` VARCHAR(32) NULL,
+  `firstname` VARCHAR(64) NULL,
+  `lastname` VARCHAR(64) NULL,
+  `job` VARCHAR(32) NULL,
+  `job_label` VARCHAR(64) NULL,
+  `grade` INT NULL,
+  `grade_label` VARCHAR(64) NULL,
+  `anonymous` TINYINT(1) NULL,
+  `created_at` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_alert_code` (`alert_code`),
+  KEY `idx_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `smdz_lb_emergency_app_user_settings` (
+  `identifier` VARCHAR(64) NOT NULL,
+  `volume` DOUBLE NULL,
+  `theme` VARCHAR(16) NULL,
+  `cleared_at` INT UNSIGNED NULL,
+  `hide_sender` TINYINT(1) NULL,
+  `hide_rank` TINYINT(1) NULL,
+  `visible_types` TEXT NULL,
+  `hidden_alerts` TEXT NULL,
+  PRIMARY KEY (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+---
+
+# 🎯 **REAL‑WORLD USE CASES:**
+
+- **Amber Alert:** Missing child bulletin sent to all zones with high priority.
+- **Police Advisory:** Road closure or active pursuit in a specific zone.
+- **Medical Notice:** Large‑scale medical incident requiring public caution.
+- **Fire Warning:** Evacuation or restricted area due to wildfire/structure fire.
+- **Military Lockdown:** Restricted access and lockdown in a military zone.
+
+---
+
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
+
+This resource exposes **client and server exports**, and also emits events for advanced integrations.
+
+You can:
+
+- Open the panel programmatically
+- Send alerts from other scripts
+- Fetch current alert list
+- Read user settings
+
+See the **Exports + Events** section below for full details.
+
+---
+
+
+## 📤 EXPORTS
+
+## **Client exports (examples per export):**
+
+| Export | Returns | Description | Example |
+| --- | --- | --- | --- |
+| `OpenPanel()` | boolean | Opens the alert panel for local player. | `exports["smdz_lb_emergency_app"]:OpenPanel()` |
+| `SendAlert(data)` | void | Sends alert to server. | `exports["smdz_lb_emergency_app"]:SendAlert({ type = "police", zone = "ALL", message = "Roadblock active on Alta St.", anonymous = false })` |
+| `GetAlerts()` | table | Cached alerts (unfiltered). | `local alerts = exports["smdz_lb_emergency_app"]:GetAlerts()` |
+| `GetFilteredAlerts()` | table | Alerts after user filters. | `local alerts = exports["smdz_lb_emergency_app"]:GetFilteredAlerts()` |
+| `RefreshAlerts()` | table | Fetches and updates alerts. | `local alerts = exports["smdz_lb_emergency_app"]:RefreshAlerts()` |
+| `GetCurrentZone()` | string | Current zone id. | `local zone = exports["smdz_lb_emergency_app"]:GetCurrentZone()` |
+| `GetUserSettings()` | table | User settings. | `local settings = exports["smdz_lb_emergency_app"]:GetUserSettings()` |
+| `SetUserSettings(payload)` | table | Saves settings. | `exports["smdz_lb_emergency_app"]:SetUserSettings({ volume = 0.8, theme = "dark" })` |
+| `ClearUserAlerts()` | table | Clears history for user only. | `exports["smdz_lb_emergency_app"]:ClearUserAlerts()` |
+| `useEmergencySonar(item, slot)` | boolean | Trigger item usage (ox/inventory export). | `exports["smdz_lb_emergency_app"]:useEmergencySonar(item, slot)` |
+| `GetPermissions(refresh?)` | table | `{ filter, allowedTypes }`. | `local perms = exports["smdz_lb_emergency_app"]:GetPermissions(true)` |
+| `IsNuiReady()` | boolean | NUI readiness. | `local ready = exports["smdz_lb_emergency_app"]:IsNuiReady()` |
+| `IsAppReady()` | boolean | App readiness. | `local ready = exports["smdz_lb_emergency_app"]:IsAppReady()` |
+
+## **Server exports (examples per export):**
+
+| Export | Returns | Description | Example |
+| --- | --- | --- | --- |
+| `SendAlert(source, data, opts)` | `ok, result` | Sends alert from server. | `exports["smdz_lb_emergency_app"]:SendAlert(source, { type = "general", zone = "ALL", message = "Emergency broadcast test" })` |
+| `OpenPanel(source, opts)` | `ok, reason` | Opens panel for player. | `exports["smdz_lb_emergency_app"]:OpenPanel(source)` |
+| `DeleteAlert(code, source, opts)` | `ok, result, code` | Deletes alert by code. | `exports["smdz_lb_emergency_app"]:DeleteAlert("762", source)` |
+| `GetAlerts()` | table | Current alert cache. | `local alerts = exports["smdz_lb_emergency_app"]:GetAlerts()` |
+| `GetAlertByCode(code)` | table or nil | Alert by code. | `local alert = exports["smdz_lb_emergency_app"]:GetAlertByCode("762")` |
+| `GetUserSettings(source)` | table or nil | User settings. | `local settings = exports["smdz_lb_emergency_app"]:GetUserSettings(source)` |
+| `GetAlertTypes()` | table | Configured types. | `local types = exports["smdz_lb_emergency_app"]:GetAlertTypes()` |
+| `GetZones()` | table | Configured zones. | `local zones = exports["smdz_lb_emergency_app"]:GetZones()` |
+| `GetPermissions(source)` | table | `{ filter, allowedTypes }`. | `local perms = exports["smdz_lb_emergency_app"]:GetPermissions(source)` |
+| `HasCommandAccess(source)` | boolean | Command permission check. | `local ok = exports["smdz_lb_emergency_app"]:HasCommandAccess(source)` |
+| `HasPanelAccess(source)` | boolean | Panel permission check. | `local ok = exports["smdz_lb_emergency_app"]:HasPanelAccess(source)` |
+| `GetAlertTypeLabel(type)` | string | Localized type label. | `local label = exports["smdz_lb_emergency_app"]:GetAlertTypeLabel("police")` |
+| `GetZoneLabel(zone)` | string | Localized zone label. | `local label = exports["smdz_lb_emergency_app"]:GetZoneLabel("NORTH")` |
+
+---
+## 📡 EVENTS
+
+| Event | Direction | Description | Payload |
+| --- | --- | --- | --- |
+| `smdz_lb_emergency_app:sendAlert` | Client → Server | Requests a new alert | `{ type, zone, message, anonymous }` |
+| `smdz_lb_emergency_app:setZone` | Client → Server | Updates player current zone | `zoneId` |
+| `smdz_lb_emergency_app:openPanel` | Server → Client | Opens panel | none |
+| `smdz_lb_emergency_app:alert` | Server → Client | Sends a single alert | `alert` object |
+| `smdz_lb_emergency_app:alertsUpdated` | Server → Client | Sends full list | `alerts[]` |
+| `smdz_lb_emergency_app:notify` | Server → Client | Panel message | `{ message }` |
+| `smdz_lb_emergency_app:alertSent` | Server → Client | Send ack | `{ ok = true }` |
+| `smdz_lb_emergency_app:layoutToggle` | Server → Client | Layout debug | none |
+
+---
+
+# 🧩 **NUI CALLBACKS:**
+
+| Callback | Direction | Description | Response |
+| --- | --- | --- | --- |
+| `nuiReady` | NUI → Client | NUI ready | `{ ok = true }` |
+| `getConfig` | NUI → Client | Requests config | `{ types, zones, labels, ui, settings }` |
+| `getAlerts` | NUI → Client | Requests alerts | `alerts[]` |
+| `openPanelAck` | NUI → Client | Panel open ack | `{ ok = true }` |
+| `sendAlert` | NUI → Client | Send alert | `{ ok = true }` |
+| `closePanel` | NUI → Client | Close panel | `{ ok = true }` |
+| `saveUserSettings` | NUI → Client | Save settings | `{ ok, settings }` |
+| `clearHistory` | NUI → Client | Clear local history | `{ ok, clearedAt }` |
+| `layoutMoved` | NUI → Client | Layout debug coords | `{ ok = true }` |
+
+
+---
+
+# 🔒 **SECURITY & VALIDATION:**
+
+- All critical checks are server‑side (permissions, cooldown, word filter).
+- Unauthorized attempts can be logged in webhook.
+- `/deletealert` is restricted by framework group permissions and/or ACE permissions.
+
+---
+
+# 📡 **WEBHOOK LOGGING:**
+
+Two webhook systems:
+
+1. **Staff Logs** — full audit of alerts, permissions, identifiers
+2. **Public IC Logs** — optional RP broadcast embed
+
+Both can be configured with:
+
+- Role mentions
+- Custom embed colors
+- Optional image
+
+---
+
+# 🧪 **COMMON ISSUES:**
+
+| Issue | Recommended Solution |
+| --- | --- |
+| Panel does not open | Check your job grade and `Config.CommandPermissions`.<br>Confirm `Config.AlertPermissions` allows your job for the selected type.<br>If `Config.PanelItem.Enabled = true`, use the item instead of command/key. |
+| Command or key mapping does nothing | If `Config.PanelItem.Enabled = true`, command and key mapping are disabled by design.<br>Verify `Config.Command` is set and not empty. |
+| No alerts received | Ensure `lb-phone` is running before this resource.<br>Check `Config.RequirePhoneItem` and make sure players have the phone item.<br>Confirm zones are correct and player is inside a zone. |
+| Alerts show, but no sound | Verify `ui/dist/assets/sound.mp3` exists.<br>Check user settings volume is not zero.<br>Check `Config.Sound.Volume`. |
+| Flashlight does not blink | Ensure `Config.Flashlight.Enabled = true`.<br>LB Phone export must be available. |
+| Zone shows wrong region | Recheck PolyZone polygons and overlap.<br>Ensure zone IDs match `Config.Zones`. |
+| NUI not opening | Verify `ui/dist/index.html` exists and UI is built.<br>Check for console NUI errors. |
+| NUI callbacks timing out | Ensure `lb-phone` is started and callbacks are registered.<br>Look for errors in server console. |
+| Permissions not updating after job change | Reopen the panel to refresh permissions.<br>Ensure framework job update events are firing. |
+| Webhook logs not sending | Check webhook URL in `Config.Webhook`.<br>Verify the server can reach Discord. |
+| Public webhook not sending | Ensure `Config.PublicWebhook.Enabled = true`.<br>Verify role mention ID and embed config. |
+| Database errors or missing tables | Import `database.sql`.<br>Ensure `oxmysql` is running. |
+| History clears but comes back | Confirm user settings are saving to DB.<br>Check for DB errors in console. |
+| Delete alert command doesn’t work | Ensure your group is in `Config.AdminCommandPermissions.Groups`, your ACE is in `Config.AdminCommandPermissions.Aces`, or your ACE group is in `Config.AdminCommandPermissions.AceGroups`.<br>Use `/deletealert [ID]`. |
+| Item usage does nothing | Make sure `Config.PanelItem.Enabled = true`.<br>Ensure the item exists in your inventory system.<br>Check the item uses `smdz_lb_emergency_app.useEmergencySonar` (ox) or event (QB/ESX). |
+| Panel opens but can’t send | Check `Config.AlertPermissions` for the chosen type.<br>Check `Config.Cooldown` and word filter. |
+| Word filter not blocking | Ensure `Config.WordFilter.Enabled = true` and list is not empty. |
+| Alerts show wrong time/date | Check `Config.Ui.TimeLocale` and `Config.Ui.DateLocale`. |
+| Locale keys show instead of text | Ensure the key exists in the selected locale file.<br>Verify `Config.Locale` and `Config.FallbackLocale`. |
+| Resource validation failed | The folder name must be `smdz_lb_emergency_app`. |
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+| --- | --- |
+| How do I add a new alert type? | Add it in `Config.AlertTypes` and mirror it in `Config.AlertPermissions.Types`. |
+| Can I allow alerts without a phone item? | Set `Config.RequirePhoneItem = false`. |
+| Do hidden alert types still notify players? | Yes. Sound/flashlight/notification always fire. Hidden types only affect the feed. |
+| How do I update the UI? | Run `npm run build` inside `ui/` and restart the resource. |
+| Why doesn’t the panel open for my job? | Check `Config.CommandPermissions` and `Config.AlertPermissions` for job + grade. |
+| Why does it say “not authorized” even for police? | Verify the exact job name and grade (case‑sensitive on some frameworks). |
+| Can I send alerts from another script? | Yes. Use server export `SendAlert(source, data)` or client export `SendAlert(data)`. |
+| Can I make the panel item‑only? | Yes. Enable `Config.PanelItem.Enabled = true` and set `ItemName = "smdz_alerts"`. |
+| Why does the key mapping not work? | If `PanelItem` is enabled, command and key mapping are disabled by design. |
+| Can I change the default alert type? | Yes. Set `Config.DefaultAlertType`. |
+| Can I change the default zone? | Yes. Set `Config.DefaultZone` and `Config.AllZoneLabel`. |
+| Does the script log admin deletions? | Yes. Deletes are logged via webhook with alert ID and author info. |
+| Do alerts expire automatically? | Yes if `Config.Expiration.Enabled = true`. |
+| Can I disable flashlight blinking? | Yes. Set `Config.Flashlight.Enabled = false`. |
+| Can I disable sound globally? | Yes. Set `Config.Sound.Volume = 0` or remove the sound file. |
+| Are user settings per‑player? | Yes. Settings are stored per identifier in the database. |
+| Can users clear only their own history? | Yes. “Clear history” is per user only. |
+| Why does the app show the wrong language? | Check `Config.Locale`, `Config.FallbackLocale`, and the locale file exists. |
+| Can I rename the resource folder? | No. The resource is locked to `smdz_lb_emergency_app`. |
+| Is LB Phone required? | Yes. The app depends on LB Phone exports and NUI. |
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.

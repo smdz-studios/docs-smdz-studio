@@ -87,32 +87,42 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 
 ---
 
-# 🚀 **QUICK START:**
+# 🗄️ **DATABASE:**
 
-1. Add your jobs to `Config.AllowedJobs`.
-2. Start the resource and open the UI with `/ref` or `F9`.
-3. Choose an icon, color, size, and label, then press **Create**.
-4. Use **Favorites** for fast reuse and **Config** for themes + distance + default label.
+Table: `smdz_emergency_gps_settings`
 
----
+| Column | Type | Notes |
+| --- | --- | --- |
+| `identifier` | TEXT | Player identifier (fivemlicense). Primary key prefix index. |
+| `favorites` | LONGTEXT | JSON array of icon names. |
+| `favorite_colors` | LONGTEXT | JSON array of color ids. |
+| `last_label` | TEXT | Last used label (per player). |
+| `last_sprite` | INT | Last used sprite (per player). |
+| `last_color` | INT | Last used color (per player). |
+| `last_scale` | FLOAT | Last used scale (per player). |
+| `theme` | TEXT | Theme preset key. |
+| `view_distance` | INT | Max distance (meters). |
+| `default_label` | TEXT | Player default label. |
+| `menu_anim` | TINYINT(1) | 1/0 for menu animation. |
+| `updated_at` | TIMESTAMP | Auto updated on change. |
 
-# 🧱 **ARCHITECTURE & DATA FLOW:**
-
-**Client side:**
-- NUI sends actions to `client/cl_client.lua` (create, delete, settings, favorites, manage...).
-- Client validates job/vehicle rules and forwards state to server events.
-- Client receives `updateClient`/`remove` and renders blips.
-
-**Server side:**
-- Server owns the authoritative reference list (`refsBySource`).
-- Updates are broadcast **per job** using the framework cache (or ACE in standalone).
-- Management panel uses server‑side cache + push updates to subscribers.
-
-**Data flow:**
-1) Player creates a ref → `smdz_emergency_gps:start` (server) → broadcast to job.
-2) Client sends periodic updates → `smdz_emergency_gps:update` → broadcast to job.
-3) Management edits/deletes → server validates permissions → broadcast to job.
-4) Per‑player settings saved to SQL (`favorites`, `favorite_colors`, `theme`, `view_distance`, `menu_anim`, `default_label`, `last_label`, `last_sprite`, `last_color`, `last_scale`)
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_emergency_gps_settings` (
+  `identifier` TEXT NOT NULL,
+  `favorites` LONGTEXT,
+  `favorite_colors` LONGTEXT,
+  `last_label` TEXT,
+  `last_sprite` INT,
+  `last_color` INT,
+  `last_scale` FLOAT,
+  `theme` TEXT,
+  `view_distance` INT,
+  `default_label` TEXT,
+  `menu_anim` TINYINT(1),
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`identifier`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
 
 ---
 
@@ -371,6 +381,49 @@ Config.Blips = {
 
 ---
 
+# 🚀 **QUICK START:**
+
+1. Add your jobs to `Config.AllowedJobs`.
+2. Start the resource and open the UI with `/ref` or `F9`.
+3. Choose an icon, color, size, and label, then press **Create**.
+4. Use **Favorites** for fast reuse and **Config** for themes + distance + default label.
+
+---
+
+# 🎮 **UI GUIDE:**
+
+- **Main tab:** set label, icon, size, color, then press **Create**.
+- **Label input:** max characters enforced; red warning appears at limit.
+- **Favorites tab:** reuse favorites, edit label, and still change size/color.
+- **Config tab:** select theme, view distance, menu animation, default label, and quick reset for last selection.
+- **Management tab:** search players, expand rows, edit label/color/scale, or remove refs.
+- **Delete:** removes your current blip (only via menu button or auto cleanup).
+- **Right‑click:** toggle an icon or color as favorite.
+- **Drag panel:** move the NUI around the screen (stays in bounds).
+- **Vehicle exit:** if `Config.RequireVehicle = true`, NUI closes when you leave the vehicle.
+
+---
+
+# 🧱 **ARCHITECTURE & DATA FLOW:**
+
+**Client side:**
+- NUI sends actions to `client/cl_client.lua` (create, delete, settings, favorites, manage...).
+- Client validates job/vehicle rules and forwards state to server events.
+- Client receives `updateClient`/`remove` and renders blips.
+
+**Server side:**
+- Server owns the authoritative reference list (`refsBySource`).
+- Updates are broadcast **per job** using the framework cache (or ACE in standalone).
+- Management panel uses server‑side cache + push updates to subscribers.
+
+**Data flow:**
+1) Player creates a ref → `smdz_emergency_gps:start` (server) → broadcast to job.
+2) Client sends periodic updates → `smdz_emergency_gps:update` → broadcast to job.
+3) Management edits/deletes → server validates permissions → broadcast to job.
+4) Per‑player settings saved to SQL (`favorites`, `favorite_colors`, `theme`, `view_distance`, `menu_anim`, `default_label`, `last_label`, `last_sprite`, `last_color`, `last_scale`)
+
+---
+
 # 🧩 **STANDALONE (ACE):**
 
 | Key | Type | Default | Description |
@@ -434,59 +487,6 @@ end
 - Return **strings** for job names; they must match `Config.AllowedJobs`.
 - Grades should be numeric (0..n). They drive management permissions.
 - If a function errors, the adapter fallback returns safe defaults.
-
----
-
-# 🗄️ **DATABASE:**
-
-Table: `smdz_emergency_gps_settings`
-
-| Column | Type | Notes |
-| --- | --- | --- |
-| `identifier` | TEXT | Player identifier (fivemlicense). Primary key prefix index. |
-| `favorites` | LONGTEXT | JSON array of icon names. |
-| `favorite_colors` | LONGTEXT | JSON array of color ids. |
-| `last_label` | TEXT | Last used label (per player). |
-| `last_sprite` | INT | Last used sprite (per player). |
-| `last_color` | INT | Last used color (per player). |
-| `last_scale` | FLOAT | Last used scale (per player). |
-| `theme` | TEXT | Theme preset key. |
-| `view_distance` | INT | Max distance (meters). |
-| `default_label` | TEXT | Player default label. |
-| `menu_anim` | TINYINT(1) | 1/0 for menu animation. |
-| `updated_at` | TIMESTAMP | Auto updated on change. |
-
-```sql
-CREATE TABLE IF NOT EXISTS `smdz_emergency_gps_settings` (
-  `identifier` TEXT NOT NULL,
-  `favorites` LONGTEXT,
-  `favorite_colors` LONGTEXT,
-  `last_label` TEXT,
-  `last_sprite` INT,
-  `last_color` INT,
-  `last_scale` FLOAT,
-  `theme` TEXT,
-  `view_distance` INT,
-  `default_label` TEXT,
-  `menu_anim` TINYINT(1),
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`identifier`(191))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
-
----
-
-# 🎮 **UI GUIDE:**
-
-- **Main tab:** set label, icon, size, color, then press **Create**.
-- **Label input:** max characters enforced; red warning appears at limit.
-- **Favorites tab:** reuse favorites, edit label, and still change size/color.
-- **Config tab:** select theme, view distance, menu animation, default label, and quick reset for last selection.
-- **Management tab:** search players, expand rows, edit label/color/scale, or remove refs.
-- **Delete:** removes your current blip (only via menu button or auto cleanup).
-- **Right‑click:** toggle an icon or color as favorite.
-- **Drag panel:** move the NUI around the screen (stays in bounds).
-- **Vehicle exit:** if `Config.RequireVehicle = true`, NUI closes when you leave the vehicle.
 
 ---
 
@@ -574,7 +574,6 @@ exports['smdz_emergency_gps']:CloseUI()
 ```lua
 exports['smdz_emergency_gps']:RefreshManagement()
 ```
-
 
 # 📌 **EXPORT EVENTS (WRAPPERS):**
 

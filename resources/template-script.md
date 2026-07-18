@@ -186,20 +186,8 @@ When you have your real events/exports ready, paste them in a future chat and I 
 
 # 🧪 **COMMON ISSUES:**
 
-List common problems you expect users to hit and how to solve them.
-
-**Examples you can adapt:**
-
-1. **Resource does not start**
-   - Check console for red errors.
-   - Make sure the folder name matches exactly (for example `smdz_example`).
-   - Confirm `ensure smdz_example` is in `server.cfg`.
-
-2. **Database errors**
-   - Check connection credentials.
-   - Verify that migration/SQL file has been executed.
-   - Confirm you selected the correct adapter (`oxmysql` / `mysql-async`).
-
-3. **Permissions not working**
-   - Verify ACE groups or framework perms.
-   - Check that admin commands are not available to normal users.
+| Issue | Recommended Solution |
+| --- | --- |
+| Resource does not start | Check console for red errors.<br>Make sure the folder name matches exactly (for example `smdz_example`).<br>Confirm `ensure smdz_example` is in `server.cfg`. |
+| Database errors | Check connection credentials.<br>Verify that migration/SQL file has been executed.<br>Confirm you selected the correct adapter (`oxmysql` / `mysql-async`). |
+| Permissions not working | Verify ACE groups or framework perms.<br>Check that admin commands are not available to normal users. |

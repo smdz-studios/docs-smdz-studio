@@ -75,17 +75,6 @@
 
 ---
 
-# 💻 **PLANNED EDITIONS:**
-
-| Edition | Planned availability | Source access | Editable areas | Intended audience |
-|---|---|---|---|---|
-| **Free Escrow Edition** | Free | Protected core through FiveM Asset Escrow | Shared config, UI colours, locales, notification bridge, and private server configuration | Server owners who want a ready-to-use handling editor |
-| **Paid Open Source Edition** | Paid | Full source access, subject to the supplied licence | Complete resource and integration logic | Developers who need extensive modifications, custom systems, or resale-project integration |
-
-> Final pricing, licence terms, included files, and support conditions are defined by the official store listing for each edition.
-
----
-
 # 📦 **REQUIREMENTS:**
 
 - **FiveM server:** A current recommended FiveM artifact.
@@ -512,6 +501,16 @@ The editor changes supported handling values live on the vehicle currently drive
 
 ---
 
+# 💻 **PLANNED EDITIONS:**
+
+| Edition | Planned availability | Source access | Editable areas | Intended audience |
+|---|---|---|---|---|
+| **Free Escrow Edition** | Free | Protected core through FiveM Asset Escrow | Shared config, UI colours, locales, notification bridge, and private server configuration | Server owners who want a ready-to-use handling editor |
+| **Paid Open Source Edition** | Paid | Full source access, subject to the supplied licence | Complete resource and integration logic | Developers who need extensive modifications, custom systems, or resale-project integration |
+
+> Final pricing, licence terms, included files, and support conditions are defined by the official store listing for each edition.
+
+---
 
 # 🧰 **EDITABLE HANDLING VARIABLES:**
 
@@ -766,7 +765,6 @@ The resource also listens to FiveM's built-in `onResourceStop` and `playerDroppe
   *Backup config, bridge, private server config, and locales → delete the old folder → install the new folder → restore or merge changes → restart the resource.*
 
 ---
-
 
 # ⚠️ **IMPORTANT WARNING:**
 ### 🚫 DO NOT CHANGE THE RESOURCE FOLDER NAME

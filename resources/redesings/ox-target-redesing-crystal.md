@@ -46,10 +46,32 @@
 
 ---
 
+## 🤝 **COMPATIBILITY:**
+This resource keeps **all original exports and logic** from `ox_target`.
+Your existing scripts do **not** need to change.
+
+---
+
 # 📥 **INSTALLATION:**
 1. Delete your old ox_target folder and place the entire resource folder there for proper functioning; it's very simple.
 2. Ensure `ox_lib` starts **before** this resource.
 3. Start the resource.
+
+---
+
+# 🗄️ **DATABASE:**
+SQL file: `ox_target_themes.sql`
+Table: `smdz_ox_target_themes_crystal`
+
+If `Config.ThemeSaveToDB = false`, the DB is not used.
+
+```sql
+CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
+  identifier VARCHAR(168) PRIMARY KEY,
+  theme VARCHAR(64) NOT NULL,
+  colors LONGTEXT NOT NULL
+);
+```
 
 ---
 
@@ -239,6 +261,37 @@ Features:
 
 ---
 
+# 🎨 **THEMES:**
+Themes are defined in `Config.NuiThemes`.
+Each theme supports:
+- `label` (display name)
+- `id` (short ID shown in UI)
+- `defaultTheme` (true/false)
+- `donatorgroups` (donator-only flag)
+- `boosterGroups` (discord booster‑only)
+- CSS variables (`--accent`, `--panel`, etc.)
+
+Example:
+```lua
+premium_white = {
+  defaultTheme = true,
+  label = 'Premium White',
+  id = '01',
+  donatorgroups = false,
+  boosterGroups = false,
+  ['--accent'] = '#ffffff'
+}
+```
+
+Access rules:
+- 🎟️ Use `donatorgroups = true` for donator‑only themes
+- 🚀 Use `boosterGroups` for Discord boosters
+- ✅ Group names must match your framework groups (ESX/QB/QBX/VRP/ND)
+- 🔐 Use `Config.ThemeDonator.AcePermissions` / `Config.ThemeDiscordBoosters.AcePermissions` for ACE checks from `cfg`
+- ➕ Access logic is OR (`Groups` OR `AcePermissions`)
+
+---
+
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 All original `ox_target` exports remain unchanged. This export is an added helper for the Theme Editor and is **client‑side**.
 
@@ -271,88 +324,20 @@ end)
 
 ---
 
-# 🎨 **THEMES:**
-Themes are defined in `Config.NuiThemes`.
-Each theme supports:
-- `label` (display name)
-- `id` (short ID shown in UI)
-- `defaultTheme` (true/false)
-- `donatorgroups` (donator-only flag)
-- `boosterGroups` (discord booster‑only)
-- CSS variables (`--accent`, `--panel`, etc.)
-
-Example:
-```lua
-premium_white = {
-  defaultTheme = true,
-  label = 'Premium White',
-  id = '01',
-  donatorgroups = false,
-  boosterGroups = false,
-  ['--accent'] = '#ffffff'
-}
-```
-
-Access rules:
-- 🎟️ Use `donatorgroups = true` for donator‑only themes
-- 🚀 Use `boosterGroups` for Discord boosters
-- ✅ Group names must match your framework groups (ESX/QB/QBX/VRP/ND)
-- 🔐 Use `Config.ThemeDonator.AcePermissions` / `Config.ThemeDiscordBoosters.AcePermissions` for ACE checks from `cfg`
-- ➕ Access logic is OR (`Groups` OR `AcePermissions`)
-
----
-
-# 🗄️ **DATABASE:**
-SQL file: `ox_target_themes.sql`
-Table: `smdz_ox_target_themes_crystal`
-
-If `Config.ThemeSaveToDB = false`, the DB is not used.
-
-```sql
-CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
-  identifier VARCHAR(168) PRIMARY KEY,
-  theme VARCHAR(64) NOT NULL,
-  colors LONGTEXT NOT NULL
-);
-```
-
----
-
-# 🤝 **COMPATIBILITY:**
-This resource keeps **all original exports and logic** from `ox_target`.
-Your existing scripts do **not** need to change.
-
----
-
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-**Does it change exports?**
-No. All exports are the same as original `ox_target`.
 
-**Can I use it with ESX / QB / QBX / VRP / ND?**
-Yes. It’s compatible just like the original.
+| Question | Answer |
+| --- | --- |
+| Does it change exports? | No. All exports are the same as original `ox_target`. |
+| Can I use it with ESX / QB / QBX / VRP / ND? | Yes. It’s compatible just like the original. |
+| Can I add my own themes? | Yes. Add a new block inside `Config.NuiThemes` and assign a new `id`. |
+| How do I change the default theme? | Set `Config.NuiTheme` to your theme key, or mark a theme with `defaultTheme = true`. |
+| How do I disable the theme editor command? | Set `Config.ThemeEditor = false` in `config.lua`. |
+| Why is a theme locked for me? | Check `Config.ThemeDonator.Groups` / `Config.ThemeDiscordBoosters.Groups` and `AcePermissions` entries, then verify your framework group and ACE setup in `permissions.cfg` and `server.cfg`. |
+| Can I hide locked themes from the list? | Yes. Set `ShowLocked = false` in the Donator/Booster config blocks. |
+| Do I need oxmysql? | Only if `Config.ThemeSaveToDB = true`. |
+| How do I change the language? | Set `Config.Locale` to one of the available locales in `locales/`. |
 
-**Can I add my own themes?**
-Yes. Add a new block inside `Config.NuiThemes` and assign a new `id`.
-
-**How do I change the default theme?**
-Set `Config.NuiTheme` to your theme key, or mark a theme with `defaultTheme = true`.
-
-**How do I disable the theme editor command?**
-Set `Config.ThemeEditor = false` in `config.lua`.
-
-**Why is a theme locked for me?**
-Check `Config.ThemeDonator.Groups` / `Config.ThemeDiscordBoosters.Groups` and `AcePermissions` entries, then verify your framework group and ACE setup in `permissions.cfg` and `server.cfg`.
-
-**Can I hide locked themes from the list?**
-Yes. Set `ShowLocked = false` in the Donator/Booster config blocks.
-
-**Do I need oxmysql?**
-Only if `Config.ThemeSaveToDB = true`.
-
-**How do I change the language?**
-Set `Config.Locale` to one of the available locales in `locales/`.
-
----
 # ✅ **INSTALLATION CHECKLIST:**
 
 <p style="text-align: center; font-weight: bold; color: red;">

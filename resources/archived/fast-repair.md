@@ -40,13 +40,6 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 
 ---
 
-# 📦 **REQUIREMENTS:**
-- FiveM server (latest build)
-- ESX / QBCore / Standalone
-- Optional: Notification systems
-
----
-
 # ⭐ **FEATURES:**
 - 🔧 **Immersive mechanic NPC** that dynamically repairs player vehicles with smooth animated interactions.
 - 💰 **Flexible pricing system** with configurable repair costs or completely free repair mode.
@@ -58,6 +51,13 @@ It brings immersive repair experiences with animated NPCs, visual effects, coold
 - 🔄 **Full compatibility with ESX & QBCore frameworks** with seamless integration.
 - 🌍 **Localization-ready system** with easy configuration and support for 10+ languages.
 - ⚡ **Optimized performance** with lightweight logic and low resmon usage.
+
+---
+
+# 📦 **REQUIREMENTS:**
+- FiveM server (latest build)
+- ESX / QBCore / Standalone
+- Optional: Notification systems
 
 ---
 

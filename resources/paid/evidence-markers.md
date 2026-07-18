@@ -85,8 +85,29 @@
 # 📦 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - Target (required): `ox_target` or `qb-target` (script stops if missing).
-- Inventory (auto): `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory` (extendable).
 - Framework (auto): ESX / QBCore / QBox / standalone.
+
+---
+
+## 🤝 **COMPATIBILITY:**
+
+- 🎒 **Inventories**
+  `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory`
+  *(Automatic fallback to native ESX / QBCore inventory functions if no supported inventory is detected)*
+
+- 🎯 **Target Systems** *(Required)*
+  `ox_target`, `qb-target`
+
+- 🔔 **Notification Systems**
+  `ox_lib`, `esx`, `qbcore`, `qbox`, `origen_notify`, `wasabi_notify`, `brutal_notify`, `rtx_notify`,
+  `vms_notifyv2`, `mythic_notify`, `okokNotify`, `ps-ui`, `t-notify`, `rcore_notify`, `codem-notification`
+
+- 🧩 **Frameworks**
+  `ESX`, `QBCore`, `QBox`, `Standalone`
+
+- 🌍 **Locales Included**
+  `en`, `es`
+
 
 ---
 
@@ -254,28 +275,6 @@ Config.Timezone = {
 
 ---
 
-# 🤝 **COMPATIBILITY:**
-
-- 🎒 **Inventories**
-  `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory`
-  *(Automatic fallback to native ESX / QBCore inventory functions if no supported inventory is detected)*
-
-- 🎯 **Target Systems** *(Required)*
-  `ox_target`, `qb-target`
-
-- 🔔 **Notification Systems**
-  `ox_lib`, `esx`, `qbcore`, `qbox`, `origen_notify`, `wasabi_notify`, `brutal_notify`, `rtx_notify`,
-  `vms_notifyv2`, `mythic_notify`, `okokNotify`, `ps-ui`, `t-notify`, `rcore_notify`, `codem-notification`
-
-- 🧩 **Frameworks**
-  `ESX`, `QBCore`, `QBox`, `Standalone`
-
-- 🌍 **Locales Included**
-  `en`, `es`
-
-
----
-
 # 🧭 **QUICKSTART:**
 1) Use a marker item.
 2) Gizmo auto-opens; drag axes, `G` snaps to ground.
@@ -297,23 +296,6 @@ Config.Timezone = {
   - `BACKSPACE` / `ESC` → Cancel placement
 - Placement distance is limited by `Config.Placement.MaxDistance` to prevent abuse.
 - A **bottom-center 2D drawtext** displays translated control hints in real time.
-
----
-
-# 📡 **WEBHOOK LOGGING:**
-
-- Fully configurable via `Config.Webhook`:
-  - Webhook URL
-  - Username & avatar
-  - Embed colors
-- Webhook footer is fixed and non-configurable: SMDZ STUDIOS - EVIDENCE MARKERS.
-- Logged events:
-  - Item used
-  - Marker placed
-  - Marker picked up
-  - Placement canceled
-  - Note updated
-- Each event includes **player, job, coordinates, item name, and netId**.
 
 ---
 
@@ -394,6 +376,23 @@ Config.Timezone = {
   ```lua
   local markers = exports['smdz_evidence_markers']:getMarkers()
   ```
+
+---
+
+# 📡 **WEBHOOK LOGGING:**
+
+- Fully configurable via `Config.Webhook`:
+  - Webhook URL
+  - Username & avatar
+  - Embed colors
+- Webhook footer is fixed and non-configurable: SMDZ STUDIOS - EVIDENCE MARKERS.
+- Logged events:
+  - Item used
+  - Marker placed
+  - Marker picked up
+  - Placement canceled
+  - Note updated
+- Each event includes **player, job, coordinates, item name, and netId**.
 
 ---
 

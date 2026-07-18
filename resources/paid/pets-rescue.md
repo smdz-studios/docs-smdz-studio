@@ -295,7 +295,6 @@ Config.Webhooks = {
 4. Animal is marked as recovered and despawns immediately.
 5. Return to the same NPC to complete the mission.
 
-
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 This section is for developers integrating with the resource. All examples assume the resource name is **`smdz_pets_rescue`**.

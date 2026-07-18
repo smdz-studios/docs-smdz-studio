@@ -68,7 +68,6 @@
 
 ---
 
-
 # 📦 **REQUIREMENTS:**
 
 ### Mandatory Dependencies
@@ -234,6 +233,86 @@ add_ace group.admin smdz.flyers.admin allow
 ```bash
 start smdz_flyers
 ```
+
+---
+
+# 🗄️ **DATABASE:**
+
+
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_flyers` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `owner_identifier` VARCHAR(191) NOT NULL,
+    `license_identifier` VARCHAR(191) DEFAULT NULL,
+    `discord_identifier` VARCHAR(191) DEFAULT NULL,
+    `first_name` VARCHAR(191) DEFAULT NULL,
+    `last_name` VARCHAR(191) DEFAULT NULL,
+    `admin_created` TINYINT(1) NOT NULL DEFAULT 0,
+    `image_url` VARCHAR(2048) NOT NULL,
+    `coord_x` DOUBLE NOT NULL,
+    `coord_y` DOUBLE NOT NULL,
+    `coord_z` DOUBLE NOT NULL,
+    `normal_x` DOUBLE NOT NULL,
+    `normal_y` DOUBLE NOT NULL,
+    `normal_z` DOUBLE NOT NULL,
+    `width` DOUBLE NOT NULL,
+    `height` DOUBLE NOT NULL,
+    `rotation` DOUBLE NOT NULL DEFAULT 0,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `expires_at` TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY `idx_smdz_flyers_owner` (`owner_identifier`),
+    KEY `idx_smdz_flyers_expiration` (`expires_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `smdz_flyer_zones` (
+    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(191) NOT NULL,
+    `coord_x` DOUBLE NOT NULL,
+    `coord_y` DOUBLE NOT NULL,
+    `coord_z` DOUBLE NOT NULL,
+    `size_x` DOUBLE NOT NULL,
+    `size_y` DOUBLE NOT NULL,
+    `size_z` DOUBLE NOT NULL,
+    `rotation` DOUBLE NOT NULL DEFAULT 0,
+    `points_json` LONGTEXT DEFAULT NULL,
+    `thickness` DOUBLE DEFAULT NULL,
+    `active` TINYINT(1) NOT NULL DEFAULT 1,
+    `created_by_identifier` VARCHAR(191) DEFAULT NULL,
+    `first_name` VARCHAR(191) DEFAULT NULL,
+    `last_name` VARCHAR(191) DEFAULT NULL,
+    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY `idx_smdz_flyer_zones_creator` (`created_by_identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+## `smdz_flyers`
+
+Stores each persistent flyer, including:
+
+- Owner identifier, license, Discord identifier, first name, and last name.
+- Whether the flyer was created through the administration panel.
+- Image URL.
+- World coordinates and wall normal.
+- Width, height, and rotation.
+- Creation, update, and expiration timestamps.
+
+Indexes are created for owner and expiration lookups.
+
+## `smdz_flyer_zones`
+
+Stores each restricted placement zone, including:
+
+- Zone name.
+- Legacy center, size, and rotation fields.
+- Polygon points as JSON.
+- Height/thickness.
+- Active state.
+- Creator identity and creation time.
+
+The included installer contains safe migration checks for columns introduced by newer versions and removes legacy columns that are no longer used.
 
 ---
 
@@ -863,112 +942,6 @@ Staff-created flyers are stored with `admin_created = 1` and display a `STAFF FL
 
 ---
 
-# 🗄️ **DATABASE:**
-
-
-```sql
-CREATE TABLE IF NOT EXISTS `smdz_flyers` (
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `owner_identifier` VARCHAR(191) NOT NULL,
-    `license_identifier` VARCHAR(191) DEFAULT NULL,
-    `discord_identifier` VARCHAR(191) DEFAULT NULL,
-    `first_name` VARCHAR(191) DEFAULT NULL,
-    `last_name` VARCHAR(191) DEFAULT NULL,
-    `admin_created` TINYINT(1) NOT NULL DEFAULT 0,
-    `image_url` VARCHAR(2048) NOT NULL,
-    `coord_x` DOUBLE NOT NULL,
-    `coord_y` DOUBLE NOT NULL,
-    `coord_z` DOUBLE NOT NULL,
-    `normal_x` DOUBLE NOT NULL,
-    `normal_y` DOUBLE NOT NULL,
-    `normal_z` DOUBLE NOT NULL,
-    `width` DOUBLE NOT NULL,
-    `height` DOUBLE NOT NULL,
-    `rotation` DOUBLE NOT NULL DEFAULT 0,
-    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    `expires_at` TIMESTAMP NULL DEFAULT NULL,
-    PRIMARY KEY (`id`),
-    KEY `idx_smdz_flyers_owner` (`owner_identifier`),
-    KEY `idx_smdz_flyers_expiration` (`expires_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_flyer_zones` (
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(191) NOT NULL,
-    `coord_x` DOUBLE NOT NULL,
-    `coord_y` DOUBLE NOT NULL,
-    `coord_z` DOUBLE NOT NULL,
-    `size_x` DOUBLE NOT NULL,
-    `size_y` DOUBLE NOT NULL,
-    `size_z` DOUBLE NOT NULL,
-    `rotation` DOUBLE NOT NULL DEFAULT 0,
-    `points_json` LONGTEXT DEFAULT NULL,
-    `thickness` DOUBLE DEFAULT NULL,
-    `active` TINYINT(1) NOT NULL DEFAULT 1,
-    `created_by_identifier` VARCHAR(191) DEFAULT NULL,
-    `first_name` VARCHAR(191) DEFAULT NULL,
-    `last_name` VARCHAR(191) DEFAULT NULL,
-    `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (`id`),
-    KEY `idx_smdz_flyer_zones_creator` (`created_by_identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-```
-
-## `smdz_flyers`
-
-Stores each persistent flyer, including:
-
-- Owner identifier, license, Discord identifier, first name, and last name.
-- Whether the flyer was created through the administration panel.
-- Image URL.
-- World coordinates and wall normal.
-- Width, height, and rotation.
-- Creation, update, and expiration timestamps.
-
-Indexes are created for owner and expiration lookups.
-
-## `smdz_flyer_zones`
-
-Stores each restricted placement zone, including:
-
-- Zone name.
-- Legacy center, size, and rotation fields.
-- Polygon points as JSON.
-- Height/thickness.
-- Active state.
-- Creator identity and creation time.
-
-The included installer contains safe migration checks for columns introduced by newer versions and removes legacy columns that are no longer used.
-
----
-
-# 🔒 **SECURITY & VALIDATION:**
-
-`smdz_flyers` treats the server as the final authority. Important protections include:
-
-- One-time placement and removal authorization tokens.
-- Token expiration and cancellation.
-- Server-side permission checks for every admin operation.
-- Server-side distance revalidation before and after removal progress.
-- URL protocol, extension, and blocked-domain validation.
-- Global and per-owner flyer limits.
-- Placement cooldown enforcement.
-- Wall-angle and surface-normal validation.
-- Vehicle-surface rejection.
-- Client-side and server-side restricted-zone checks.
-- Client-side and server-side flyer overlap checks.
-- Final-position validation before SQL insertion.
-- Item removal only after a successful SQL insert.
-- SQL rollback when item consumption fails.
-- A server-side commit rate limit.
-- Automatic cancellation when the resource stops.
-- Discord Webhook URL configuration.
-
-External resources should use the documented server exports instead of triggering internal network events directly.
-
----
-
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 ## Public integration policy
@@ -1185,12 +1158,36 @@ Each returned flyer is a detached table with this structure:
 
 ---
 
+# 🔒 **SECURITY & VALIDATION:**
+
+`smdz_flyers` treats the server as the final authority. Important protections include:
+
+- One-time placement and removal authorization tokens.
+- Token expiration and cancellation.
+- Server-side permission checks for every admin operation.
+- Server-side distance revalidation before and after removal progress.
+- URL protocol, extension, and blocked-domain validation.
+- Global and per-owner flyer limits.
+- Placement cooldown enforcement.
+- Wall-angle and surface-normal validation.
+- Vehicle-surface rejection.
+- Client-side and server-side restricted-zone checks.
+- Client-side and server-side flyer overlap checks.
+- Final-position validation before SQL insertion.
+- Item removal only after a successful SQL insert.
+- SQL rollback when item consumption fails.
+- A server-side commit rate limit.
+- Automatic cancellation when the resource stops.
+- Discord Webhook URL configuration.
+
+External resources should use the documented server exports instead of triggering internal network events directly.
+
+---
+
 # 🧪 **COMMON ISSUES:**
 
-## Common issues table
-
 | Symptom / error | Most likely cause | Resolution | Additional checks |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | The resource stops immediately after startup. | The folder was renamed or a mandatory dependency is unavailable. | Rename the folder to exactly `smdz_flyers`; start `oxmysql` and `ox_lib` first. | Read the first fatal console line instead of later secondary errors. |
 | `smdz_flyers` starts before the database is ready. | Incorrect `server.cfg` order or delayed database startup. | Place `ensure oxmysql` before `ensure smdz_flyers` and restart the server. | Confirm the MySQL connection string works for other resources. |
 | SQL reports that `smdz_flyers` does not exist. | `sql/install.sql` was not imported into the active database. | Import the installer into the same database used by FiveM. | Verify the database name in the connection string. |
@@ -1250,7 +1247,6 @@ Each returned flyer is a detached table with this structure:
 | `GetActiveFlyers` returns an empty table. | Database initialization is incomplete or there are no active flyers. | Wait until the resource is fully started and verify SQL rows. | Do not call the export during another resource's earliest loading phase without retry handling. |
 | Controls conflict with another script during placement. | Another resource is capturing the same keys or NUI focus. | Temporarily disable the conflicting resource and remap its controls where possible. | Check scripts that alter first-person mode, freecam, or disabled controls. |
 | The player remains frozen after an unexpected error. | Another resource error interrupted an animation or progress flow. | Restart the affected client/resource and inspect the original F8 error. | Avoid masking the error with repeated restarts before collecting logs. |
-
 
 ---
 

@@ -171,6 +171,154 @@ The player preferences table stores:
 - Creation and update timestamps.
 ---
 
+# ⚙️ **CONFIGURATION:**
+
+Private server values are stored in:
+
+```text
+server/config_server.lua
+```
+
+## Administrator permissions and webhooks
+
+```lua
+ServerConfig = {}
+
+--[[
+================================================================================
+                            SMDZ VOICE INDICATOR
+                         SERVER-ONLY CONFIGURATION
+================================================================================
+
+This file is loaded only on the server. Keep webhook URLs and other private
+values here. No framework is required. Administrator access can use ACE,
+Discord/license identifiers, or both methods at the same time.
+
+Example server.cfg ACE permission:
+
+    add_ace group.admin smdz_voiceindicator.admin allow
+
+================================================================================
+]]
+
+
+ServerConfig.Admin = {
+    -- Enables the global administrator controls in the settings panel.
+    Enabled = true,
+
+    -- Permission methods use OR logic. A player is allowed when at least one
+    -- enabled method grants access. ACE and identifier permissions may both
+    -- remain enabled at the same time.
+    Permissions = {
+        Ace = {
+            -- Enables ACE permission checks.
+            Enabled = true,
+
+            -- ACE permission required to access or modify global indicator state.
+            Permission = 'smdz_voiceindicator.admin'
+        },
+
+        Identifiers = {
+            -- Enables direct Discord/license identifier checks.
+            Enabled = true,
+
+            -- Add complete FiveM identifiers, including their prefix.
+            -- Supported examples: 'discord:123456789012345678' or
+            -- 'license:0123456789abcdef0123456789abcdef01234567'.
+            Allowed = {
+                'discord:492311610036322305'
+            }
+        }
+    },
+
+    -- Default state used when no persisted value exists yet.
+    DefaultGlobalEnabled = true,
+
+    -- Saves the global enabled/disabled state in SQL across resource restarts.
+    PersistGlobalState = true,
+
+    -- Allows the server console to use internal administrative actions.
+    AllowConsole = true
+}
+
+ServerConfig.Database = {
+    -- Separate table used for global resource settings.
+    GlobalSettingsTable = 'smdz_voiceindicator_settings'
+}
+
+ServerConfig.Webhook = {
+    -- Enables Discord webhook logs for global administrator changes.
+    Enabled = false,
+
+    -- Keep this URL private. This file is never sent to clients.
+    URL = '',
+
+    Username = 'SMDZ Voice Indicator',
+    AvatarURL = '',
+
+    -- Discord embed decimal colors.
+    EnabledColor = 5763719,
+    DisabledColor = 15548997,
+
+    -- Includes the endpoint identifier only when explicitly enabled.
+    IncludeEndpoint = false
+}
+
+
+```
+
+ACE and identifier permissions use **OR logic**. A player is authorized when any enabled permission method grants access.
+
+Both methods can remain enabled at the same time.
+
+### ACE example
+
+```cfg
+add_ace group.admin smdz_voiceindicator.admin allow
+```
+
+### Identifier examples
+
+```lua
+Allowed = {
+    'discord:492311610036322305',
+    'license:0123456789abcdef0123456789abcdef01234567'
+}
+```
+
+Always include the complete identifier prefix.
+
+## Webhook logs
+
+```lua
+ServerConfig.Webhook = {
+    Enabled = false,
+    URL = '',
+    Username = 'SMDZ Voice Indicator',
+    AvatarURL = '',
+    EnabledColor = 5763719,
+    DisabledColor = 15548997,
+    IncludeEndpoint = false
+}
+```
+
+Webhook logs are sent when an administrator changes the global indicator state. Embeds can include:
+
+- Administrator/player name.
+- Server ID.
+- Basic FiveM identifiers.
+- Discord identifier when available.
+- Steam identifier when available.
+- Previous global state.
+- New global state.
+- UTC timestamp.
+
+
+It is intentionally not configurable or translatable.
+
+Keep webhook URLs private and never move them into shared or client files.
+---
+
 # 🔐 **SERVER CONFIGURATION:**
 
 ```lua
@@ -615,154 +763,6 @@ Config.Debug = true
 
 ---
 
-# ⚙️ **CONFIGURATION:**
-
-Private server values are stored in:
-
-```text
-server/config_server.lua
-```
-
-## Administrator permissions and webhooks
-
-```lua
-ServerConfig = {}
-
---[[
-================================================================================
-                            SMDZ VOICE INDICATOR
-                         SERVER-ONLY CONFIGURATION
-================================================================================
-
-This file is loaded only on the server. Keep webhook URLs and other private
-values here. No framework is required. Administrator access can use ACE,
-Discord/license identifiers, or both methods at the same time.
-
-Example server.cfg ACE permission:
-
-    add_ace group.admin smdz_voiceindicator.admin allow
-
-================================================================================
-]]
-
-
-ServerConfig.Admin = {
-    -- Enables the global administrator controls in the settings panel.
-    Enabled = true,
-
-    -- Permission methods use OR logic. A player is allowed when at least one
-    -- enabled method grants access. ACE and identifier permissions may both
-    -- remain enabled at the same time.
-    Permissions = {
-        Ace = {
-            -- Enables ACE permission checks.
-            Enabled = true,
-
-            -- ACE permission required to access or modify global indicator state.
-            Permission = 'smdz_voiceindicator.admin'
-        },
-
-        Identifiers = {
-            -- Enables direct Discord/license identifier checks.
-            Enabled = true,
-
-            -- Add complete FiveM identifiers, including their prefix.
-            -- Supported examples: 'discord:123456789012345678' or
-            -- 'license:0123456789abcdef0123456789abcdef01234567'.
-            Allowed = {
-                'discord:492311610036322305'
-            }
-        }
-    },
-
-    -- Default state used when no persisted value exists yet.
-    DefaultGlobalEnabled = true,
-
-    -- Saves the global enabled/disabled state in SQL across resource restarts.
-    PersistGlobalState = true,
-
-    -- Allows the server console to use internal administrative actions.
-    AllowConsole = true
-}
-
-ServerConfig.Database = {
-    -- Separate table used for global resource settings.
-    GlobalSettingsTable = 'smdz_voiceindicator_settings'
-}
-
-ServerConfig.Webhook = {
-    -- Enables Discord webhook logs for global administrator changes.
-    Enabled = false,
-
-    -- Keep this URL private. This file is never sent to clients.
-    URL = '',
-
-    Username = 'SMDZ Voice Indicator',
-    AvatarURL = '',
-
-    -- Discord embed decimal colors.
-    EnabledColor = 5763719,
-    DisabledColor = 15548997,
-
-    -- Includes the endpoint identifier only when explicitly enabled.
-    IncludeEndpoint = false
-}
-
-
-```
-
-ACE and identifier permissions use **OR logic**. A player is authorized when any enabled permission method grants access.
-
-Both methods can remain enabled at the same time.
-
-### ACE example
-
-```cfg
-add_ace group.admin smdz_voiceindicator.admin allow
-```
-
-### Identifier examples
-
-```lua
-Allowed = {
-    'discord:492311610036322305',
-    'license:0123456789abcdef0123456789abcdef01234567'
-}
-```
-
-Always include the complete identifier prefix.
-
-## Webhook logs
-
-```lua
-ServerConfig.Webhook = {
-    Enabled = false,
-    URL = '',
-    Username = 'SMDZ Voice Indicator',
-    AvatarURL = '',
-    EnabledColor = 5763719,
-    DisabledColor = 15548997,
-    IncludeEndpoint = false
-}
-```
-
-Webhook logs are sent when an administrator changes the global indicator state. Embeds can include:
-
-- Administrator/player name.
-- Server ID.
-- Basic FiveM identifiers.
-- Discord identifier when available.
-- Steam identifier when available.
-- Previous global state.
-- New global state.
-- UTC timestamp.
-
-
-It is intentionally not configurable or translatable.
-
-Keep webhook URLs private and never move them into shared or client files.
----
-
 # 🎮 **USAGE:**
 
 ## Player command
@@ -883,27 +883,6 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 
 ---
 
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-| Question | Answer |
-|---|---|
-| Does this resource require ESX, QBCore, or Qbox? | No. It is fully standalone and does not use a framework bridge. |
-| Which voice resource is supported? | The resource is designed for `pma-voice`. |
-| Are player preferences saved? | Yes. Preferences are stored with `oxmysql` using the first available configured identifier. |
-| Does one player's selected icon affect everyone? | No. Appearance preferences are local to each viewer. |
-| Can normal voice, radio, and phone use different icons? | Yes. Normal voice uses the player's selected icon, while radio and phone can use dedicated context icons. |
-| Can players be prevented from changing certain settings? | Yes. Set individual entries in `Config.Interface.EditableSettings` to `false`. |
-| Can all indicators be disabled during a large event? | Yes. Authorized administrators can use the Administration tab to disable indicators globally. |
-| Can ACE and identifier permissions be enabled together? | Yes. They use OR logic, so either method can grant access. |
-| Which direct identifiers are supported for administrators? | Complete FiveM identifiers such as `discord:` and `license:` entries. |
-| Is the global enabled state persistent? | Yes, when `ServerConfig.Admin.PersistGlobalState = true`. |
-| Are webhook URLs sent to clients? | No. They are stored in `server/config_server.lua`, which is server-only. |
-| Is German included? | Yes. English, Spanish, French, and German locale files are included. |
-| Why is the default size 70%? | It provides a compact default. The panel recommends approximately 75% for a balanced result. |
-| Can custom radio or phone scripts integrate with the indicator? | Yes. Use `SetRadioActive` and `SetPhoneActive` when the custom resource does not expose expected `pma-voice` state. |
-
----
-
 # 🧪 **COMMON ISSUES:**
 
 | Problem | Likely cause | Recommended solution |
@@ -925,6 +904,27 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 | Indicators disappear inside vehicles. | The global vehicle switch or the viewer's personal preference is disabled. | Enable both `Config.Visibility.ShowInsideVehicles` and the player's panel option. |
 | A new locale shows missing or untranslated text. | Translation keys differ between locale files. | Copy all keys from `locales/en.lua`, translate every value, and add the file to `fxmanifest.lua`. |
 | The UI breaks after an update. | Old and new files inside `web/dist` were mixed. | Delete the old resource folder and install the complete new version instead of merging generated assets. |
+
+---
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+|---|---|
+| Does this resource require ESX, QBCore, or Qbox? | No. It is fully standalone and does not use a framework bridge. |
+| Which voice resource is supported? | The resource is designed for `pma-voice`. |
+| Are player preferences saved? | Yes. Preferences are stored with `oxmysql` using the first available configured identifier. |
+| Does one player's selected icon affect everyone? | No. Appearance preferences are local to each viewer. |
+| Can normal voice, radio, and phone use different icons? | Yes. Normal voice uses the player's selected icon, while radio and phone can use dedicated context icons. |
+| Can players be prevented from changing certain settings? | Yes. Set individual entries in `Config.Interface.EditableSettings` to `false`. |
+| Can all indicators be disabled during a large event? | Yes. Authorized administrators can use the Administration tab to disable indicators globally. |
+| Can ACE and identifier permissions be enabled together? | Yes. They use OR logic, so either method can grant access. |
+| Which direct identifiers are supported for administrators? | Complete FiveM identifiers such as `discord:` and `license:` entries. |
+| Is the global enabled state persistent? | Yes, when `ServerConfig.Admin.PersistGlobalState = true`. |
+| Are webhook URLs sent to clients? | No. They are stored in `server/config_server.lua`, which is server-only. |
+| Is German included? | Yes. English, Spanish, French, and German locale files are included. |
+| Why is the default size 70%? | It provides a compact default. The panel recommends approximately 75% for a balanced result. |
+| Can custom radio or phone scripts integrate with the indicator? | Yes. Use `SetRadioActive` and `SetPhoneActive` when the custom resource does not expose expected `pma-voice` state. |
 
 ---
 

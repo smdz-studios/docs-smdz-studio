@@ -88,6 +88,30 @@ Advanced streamer list system with a modern NUI, secure streamer applications, r
 
 ---
 
+## 🤝 **COMPATIBILITY:**
+
+| Dependency | Required | Purpose |
+|---------------------|----------|-------------------------------------------|
+| `oxmysql` | Yes | Persistent storage for streamers/forms/results |
+| `ox_lib` | No (default fallback target) | Client notifications (`lib.notify` / export fallback) |
+| `okokNotify` | Optional | Notification bridge provider |
+| `origen_notify` | Optional | Notification bridge provider |
+| `wasabi_notify` | Optional | Notification bridge provider |
+| `wasabi_uikit` | Optional | Notification bridge provider |
+| `rtx_notify` | Optional | Notification bridge provider |
+| `codem-notification` | Optional | Notification bridge provider |
+| `vms_notifyv2` | Optional | Notification bridge provider |
+| `esx_notify` | Optional | Notification bridge provider |
+| `brutal_notify` | Optional | Notification bridge provider |
+| `FL-Notify` | Optional | Notification bridge provider |
+| `gtm-ui` | Optional | Notification bridge provider |
+| `RO_Notify` | Optional | Notification bridge provider |
+| `RxNotify` | Optional | Notification bridge provider |
+
+If the configured provider is missing, the bridge tries `ox_lib` and finally console fallback.
+
+---
+
 # 📥 **INSTALLATION:**
 
 1. Place the resource folder inside your server resources directory:
@@ -116,27 +140,109 @@ npm run build
 
 ---
 
-# 🤝 **COMPATIBILITY:**
+# 🗄️ **DATABASE:**
 
-| Dependency | Required | Purpose |
-|---------------------|----------|-------------------------------------------|
-| `oxmysql` | Yes | Persistent storage for streamers/forms/results |
-| `ox_lib` | No (default fallback target) | Client notifications (`lib.notify` / export fallback) |
-| `okokNotify` | Optional | Notification bridge provider |
-| `origen_notify` | Optional | Notification bridge provider |
-| `wasabi_notify` | Optional | Notification bridge provider |
-| `wasabi_uikit` | Optional | Notification bridge provider |
-| `rtx_notify` | Optional | Notification bridge provider |
-| `codem-notification` | Optional | Notification bridge provider |
-| `vms_notifyv2` | Optional | Notification bridge provider |
-| `esx_notify` | Optional | Notification bridge provider |
-| `brutal_notify` | Optional | Notification bridge provider |
-| `FL-Notify` | Optional | Notification bridge provider |
-| `gtm-ui` | Optional | Notification bridge provider |
-| `RO_Notify` | Optional | Notification bridge provider |
-| `RxNotify` | Optional | Notification bridge provider |
+Main SQL file:
+- `sql/install_me.sql`
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_streamers_forms` (
+    `identifier` VARCHAR(191) NOT NULL,
+    `submitted_at` BIGINT NOT NULL,
+    `expires_at` BIGINT NOT NULL,
+    `discord_id` VARCHAR(50) NOT NULL,
+    `social_name` VARCHAR(128) NOT NULL,
+    `platform` VARCHAR(24) NOT NULL,
+    `channel_url` VARCHAR(512) NOT NULL,
+    `average_viewers` INT NULL,
+    `avatar_url` VARCHAR(512) NOT NULL,
+    `reason` MEDIUMTEXT NOT NULL,
+    PRIMARY KEY (`identifier`),
+    KEY `idx_expires_at` (`expires_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-If the configured provider is missing, the bridge tries `ox_lib` and finally console fallback.
+CREATE TABLE IF NOT EXISTS `smdz_streamers_form_results` (
+    `identifier` VARCHAR(191) NOT NULL,
+    `status` VARCHAR(24) NOT NULL,
+    `reason` MEDIUMTEXT NOT NULL,
+    `acknowledged` TINYINT(1) NOT NULL DEFAULT 0,
+    `created_at` BIGINT NOT NULL,
+    PRIMARY KEY (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `smdz_streamers_entries` (
+    `id` VARCHAR(128) NOT NULL,
+    `name` VARCHAR(128) NOT NULL,
+    `username` VARCHAR(128) NOT NULL,
+    `avatar_url` VARCHAR(512) NOT NULL,
+    `channel_url` VARCHAR(512) NOT NULL,
+    `platform_override` VARCHAR(24) NULL,
+    `featured` TINYINT(1) NOT NULL DEFAULT 0,
+    `featured_until` BIGINT NULL,
+    `created_at` BIGINT NOT NULL,
+    `updated_at` BIGINT NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `smdz_streamers_form_actions` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `event_code` INT NULL,
+    `identifier` VARCHAR(191) NOT NULL,
+    `status` VARCHAR(24) NOT NULL,
+    `action_reason` MEDIUMTEXT NOT NULL,
+    `admin_identifier` VARCHAR(191) NOT NULL,
+    `admin_name` VARCHAR(80) NOT NULL,
+    `discord_id` VARCHAR(50) NOT NULL,
+    `social_name` VARCHAR(128) NOT NULL,
+    `platform` VARCHAR(24) NOT NULL,
+    `channel_url` VARCHAR(512) NOT NULL,
+    `average_viewers` INT NULL,
+    `avatar_url` VARCHAR(512) NOT NULL,
+    `form_reason` MEDIUMTEXT NOT NULL,
+    `created_at` BIGINT NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `idx_identifier` (`identifier`),
+    KEY `idx_status` (`status`),
+    KEY `idx_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `smdz_streamers_admin_actions` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `event_code` INT NULL,
+    `entity_type` VARCHAR(24) NOT NULL,
+    `entity_id` VARCHAR(128) NOT NULL,
+    `action` VARCHAR(40) NOT NULL,
+    `admin_identifier` VARCHAR(191) NOT NULL,
+    `admin_name` VARCHAR(80) NOT NULL,
+    `details_json` MEDIUMTEXT NOT NULL,
+    `created_at` BIGINT NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `idx_entity_type` (`entity_type`),
+    KEY `idx_entity_id` (`entity_id`),
+    KEY `idx_action` (`action`),
+    KEY `idx_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+
+Tables:
+- `smdz_streamers_entries`
+  - persistent streamer records
+  - includes `featured`, `featured_until`, `platform_override`
+- `smdz_streamers_forms`
+  - pending application forms
+  - cooldown-based reuse model by identifier
+- `smdz_streamers_form_results`
+  - staff decisions (`accepted` / `rejected` + reason + acknowledged)
+- `smdz_streamers_form_actions`
+  - historical form action records used by admin forms/records views
+  - includes `event_code` (unique 5-digit Event ID)
+- `smdz_streamers_admin_actions`
+  - historical streamer admin actions (`create`, `update`, `delete`) for Records tab
+  - includes `event_code` (unique 5-digit Event ID)
+
+Auto-create/migration behavior:
+- Controlled by `Config.Forms.autoCreateTable` and startup migration logic.
+- Includes column updates for size safety (URL/text lengths, etc.).
 
 ---
 
@@ -321,6 +427,22 @@ Command names are configurable in `Config.Commands`.
 
 ---
 
+# 📡 **WEB REQUEST FLOW:**
+
+Status checks are fully server-side:
+
+1. `refreshAll()` iterates SQL-loaded streamers.
+2. URL allowlist validation runs before request.
+3. Twitch:
+   - Direct page fetch
+   - HTML markers parsed for live/offline inference
+4. Kick:
+   - Proxy/API strategy from `Config.Kick`
+   - JSON/HTML fallback parsing
+5. Cache snapshot is updated and distributed.
+
+---
+
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 | Export | Side | Parameters | Returns | Description |
@@ -413,126 +535,30 @@ NUI message actions handled by React:
 
 ---
 
-# 📡 **WEB REQUEST FLOW:**
+# 📚 **DEVELOPER NOTES:**
 
-Status checks are fully server-side:
+- Main server orchestration: `server/main.lua`
+- Web status parser/fetcher: `server/webcheck.lua`
+- Client interaction and NUI focus: `client/main.lua`
+- Notification adapter: `bridge/notify_client.lua`
+- Localization system: `utils/locale.lua`, `locales/*.lua`
+- Debug utility: `utils/debug.lua`
+- Theme tokens: `ui_colors.lua`
 
-1. `refreshAll()` iterates SQL-loaded streamers.
-2. URL allowlist validation runs before request.
-3. Twitch:
-   - Direct page fetch
-   - HTML markers parsed for live/offline inference
-4. Kick:
-   - Proxy/API strategy from `Config.Kick`
-   - JSON/HTML fallback parsing
-5. Cache snapshot is updated and distributed.
+Integration example:
 
----
-
-# 🗄️ **DATABASE:**
-
-Main SQL file:
-- `sql/install_me.sql`
-```sql
-CREATE TABLE IF NOT EXISTS `smdz_streamers_forms` (
-    `identifier` VARCHAR(191) NOT NULL,
-    `submitted_at` BIGINT NOT NULL,
-    `expires_at` BIGINT NOT NULL,
-    `discord_id` VARCHAR(50) NOT NULL,
-    `social_name` VARCHAR(128) NOT NULL,
-    `platform` VARCHAR(24) NOT NULL,
-    `channel_url` VARCHAR(512) NOT NULL,
-    `average_viewers` INT NULL,
-    `avatar_url` VARCHAR(512) NOT NULL,
-    `reason` MEDIUMTEXT NOT NULL,
-    PRIMARY KEY (`identifier`),
-    KEY `idx_expires_at` (`expires_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_streamers_form_results` (
-    `identifier` VARCHAR(191) NOT NULL,
-    `status` VARCHAR(24) NOT NULL,
-    `reason` MEDIUMTEXT NOT NULL,
-    `acknowledged` TINYINT(1) NOT NULL DEFAULT 0,
-    `created_at` BIGINT NOT NULL,
-    PRIMARY KEY (`identifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_streamers_entries` (
-    `id` VARCHAR(128) NOT NULL,
-    `name` VARCHAR(128) NOT NULL,
-    `username` VARCHAR(128) NOT NULL,
-    `avatar_url` VARCHAR(512) NOT NULL,
-    `channel_url` VARCHAR(512) NOT NULL,
-    `platform_override` VARCHAR(24) NULL,
-    `featured` TINYINT(1) NOT NULL DEFAULT 0,
-    `featured_until` BIGINT NULL,
-    `created_at` BIGINT NOT NULL,
-    `updated_at` BIGINT NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_streamers_form_actions` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `event_code` INT NULL,
-    `identifier` VARCHAR(191) NOT NULL,
-    `status` VARCHAR(24) NOT NULL,
-    `action_reason` MEDIUMTEXT NOT NULL,
-    `admin_identifier` VARCHAR(191) NOT NULL,
-    `admin_name` VARCHAR(80) NOT NULL,
-    `discord_id` VARCHAR(50) NOT NULL,
-    `social_name` VARCHAR(128) NOT NULL,
-    `platform` VARCHAR(24) NOT NULL,
-    `channel_url` VARCHAR(512) NOT NULL,
-    `average_viewers` INT NULL,
-    `avatar_url` VARCHAR(512) NOT NULL,
-    `form_reason` MEDIUMTEXT NOT NULL,
-    `created_at` BIGINT NOT NULL,
-    PRIMARY KEY (`id`),
-    KEY `idx_identifier` (`identifier`),
-    KEY `idx_status` (`status`),
-    KEY `idx_created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS `smdz_streamers_admin_actions` (
-    `id` BIGINT NOT NULL AUTO_INCREMENT,
-    `event_code` INT NULL,
-    `entity_type` VARCHAR(24) NOT NULL,
-    `entity_id` VARCHAR(128) NOT NULL,
-    `action` VARCHAR(40) NOT NULL,
-    `admin_identifier` VARCHAR(191) NOT NULL,
-    `admin_name` VARCHAR(80) NOT NULL,
-    `details_json` MEDIUMTEXT NOT NULL,
-    `created_at` BIGINT NOT NULL,
-    PRIMARY KEY (`id`),
-    KEY `idx_entity_type` (`entity_type`),
-    KEY `idx_entity_id` (`entity_id`),
-    KEY `idx_action` (`action`),
-    KEY `idx_created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```lua
+local cache = exports['smdz_streamers_list']:GetStreamersCache()
+for i = 1, #cache do
+    local s = cache[i]
+    print(('[STREAMER] %s live=%s platform=%s featured=%s'):format(
+        s.name,
+        tostring(s.live),
+        tostring(s.platform),
+        tostring(s.featured)
+    ))
+end
 ```
-
-
-Tables:
-- `smdz_streamers_entries`
-  - persistent streamer records
-  - includes `featured`, `featured_until`, `platform_override`
-- `smdz_streamers_forms`
-  - pending application forms
-  - cooldown-based reuse model by identifier
-- `smdz_streamers_form_results`
-  - staff decisions (`accepted` / `rejected` + reason + acknowledged)
-- `smdz_streamers_form_actions`
-  - historical form action records used by admin forms/records views
-  - includes `event_code` (unique 5-digit Event ID)
-- `smdz_streamers_admin_actions`
-  - historical streamer admin actions (`create`, `update`, `delete`) for Records tab
-  - includes `event_code` (unique 5-digit Event ID)
-
-Auto-create/migration behavior:
-- Controlled by `Config.Forms.autoCreateTable` and startup migration logic.
-- Includes column updates for size safety (URL/text lengths, etc.).
-
 ---
 
 # 🔒 **SECURITY & VALIDATION:**
@@ -563,48 +589,6 @@ Auto-create/migration behavior:
 - Throttled debug logger.
 - Incremental refresh flow with async web checks.
 - Admin real-time broadcasts only to subscribed authorized users.
-
-
----
-
-
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-| Question | Answer |
-|---|---|
-| Does this need ESX or QBCore? | No. It runs standalone and coexists with both frameworks. |
-| Can I use ACE only for admin? | Yes. Set `Config.AdminPermissions.mode = 'ace'` and configure `acePermission`. |
-| Can I use Discord IDs only for admin? | Yes. Set `mode = 'discord_ids'` and populate `allowedDiscordIds`. |
-| Can I temporarily allow everyone to admin panel? | Yes, with `mode = 'standalone'` (not recommended for production). |
-| Is streamer storage SQL-only now? | Yes. Streamers are managed in-game and persisted in SQL. |
-| Can I still add streamers from `config.lua`? | No. Current flow is admin panel + SQL persistence. |
-| How are duplicates prevented? | Server blocks duplicates by normalized `username` or `channel_url`. |
-| What if staff accepts a form that duplicates an existing streamer? | The server rejects it with a duplicate validation error. |
-| Are all form fields mandatory? | All except average viewers (optional), based on current validation flow. |
-| Is Discord ID numeric-only? | Yes. Non-numeric values are rejected server-side. |
-| Can I configure reason min/max characters? | Yes, via `Config.Forms.minReasonLength` and `maxReasonLength`. |
-| Why does long reason still fail? | Sanitization/trimming may reduce effective length below minimum. |
-| Can I change form cooldown from 72 hours? | Yes, with `Config.Forms.cooldownHours`. |
-| How does player rejection feedback work? | Player sees rejection reason in-game and can acknowledge to clear state. |
-| Can featured be permanent or timed? | Yes. Staff can set permanent or a custom duration in hours. |
-| How is temporary featured removed? | Cleanup job clears featured when `featured_until <= now`. |
-| Can featured be set during create and edit? | Yes, both flows support featured setup. |
-| Why include `featured_until`? | It stores expiration timestamp for temporary featured mode. |
-| Is live detection client-side? | No. All status detection is server-side. |
-| Does the script request Twitch/Kick constantly? | No. It uses refresh flow + cache windows to limit requests. |
-| Can I change UI colors without rebuilding web? | Yes. Edit `ui_colors.lua` and restart resource. |
-| When do I need `npm run build`? | Only when files under `web/src/*` are changed. |
-| Can forms be disabled while list stays active? | Yes. Set `Config.Forms.enabled = false`. |
-| Can I disable webhook but keep forms? | Yes. Leave `webhookUrl` empty. |
-| Which locales are bundled? | `en`, `es`, `de`, and `fr`. |
-| Why do I get `<\239>` parse errors? | Invalid UTF/BOM bytes in Lua files; re-save as clean UTF-8. |
-| Does admin access use ESX/QBCore groups by default? | No. It uses configured standalone/ACE/Discord-ID modes. |
-| Can other scripts consume streamer state? | Yes, via `exports['smdz_streamers_list']:GetStreamersCache()`. |
-| Is there a quick production hardening checklist? | Yes: strict permissions, debug off, URL allowlist strict, DB backups, webhook verification. |
-| What DB charset/collation is expected? | `utf8mb4` on InnoDB tables (as provided in SQL schema). |
-| Why might admin/public lists differ briefly? | Short-lived cache/refresh timing; real-time broadcast sync resolves it. |
-| Do I need manual cleanup of old records? | Normally no; cleanup jobs handle expired forms/featured state. |
-| Fast post-update smoke test? | Open `/streamers`, open `/adminstreamers`, create one test streamer, and submit/review one form. |
 
 
 ---
@@ -645,30 +629,46 @@ Auto-create/migration behavior:
 | Duplicate streamer still gets in | Data differs only in case/spacing and was not normalized | Keep normalized duplicate checks (`lower/trim`) by username/URL |
 
 ---
-# 📚 **DEVELOPER NOTES:**
 
-- Main server orchestration: `server/main.lua`
-- Web status parser/fetcher: `server/webcheck.lua`
-- Client interaction and NUI focus: `client/main.lua`
-- Notification adapter: `bridge/notify_client.lua`
-- Localization system: `utils/locale.lua`, `locales/*.lua`
-- Debug utility: `utils/debug.lua`
-- Theme tokens: `ui_colors.lua`
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-Integration example:
+| Question | Answer |
+|---|---|
+| Does this need ESX or QBCore? | No. It runs standalone and coexists with both frameworks. |
+| Can I use ACE only for admin? | Yes. Set `Config.AdminPermissions.mode = 'ace'` and configure `acePermission`. |
+| Can I use Discord IDs only for admin? | Yes. Set `mode = 'discord_ids'` and populate `allowedDiscordIds`. |
+| Can I temporarily allow everyone to admin panel? | Yes, with `mode = 'standalone'` (not recommended for production). |
+| Is streamer storage SQL-only now? | Yes. Streamers are managed in-game and persisted in SQL. |
+| Can I still add streamers from `config.lua`? | No. Current flow is admin panel + SQL persistence. |
+| How are duplicates prevented? | Server blocks duplicates by normalized `username` or `channel_url`. |
+| What if staff accepts a form that duplicates an existing streamer? | The server rejects it with a duplicate validation error. |
+| Are all form fields mandatory? | All except average viewers (optional), based on current validation flow. |
+| Is Discord ID numeric-only? | Yes. Non-numeric values are rejected server-side. |
+| Can I configure reason min/max characters? | Yes, via `Config.Forms.minReasonLength` and `maxReasonLength`. |
+| Why does long reason still fail? | Sanitization/trimming may reduce effective length below minimum. |
+| Can I change form cooldown from 72 hours? | Yes, with `Config.Forms.cooldownHours`. |
+| How does player rejection feedback work? | Player sees rejection reason in-game and can acknowledge to clear state. |
+| Can featured be permanent or timed? | Yes. Staff can set permanent or a custom duration in hours. |
+| How is temporary featured removed? | Cleanup job clears featured when `featured_until <= now`. |
+| Can featured be set during create and edit? | Yes, both flows support featured setup. |
+| Why include `featured_until`? | It stores expiration timestamp for temporary featured mode. |
+| Is live detection client-side? | No. All status detection is server-side. |
+| Does the script request Twitch/Kick constantly? | No. It uses refresh flow + cache windows to limit requests. |
+| Can I change UI colors without rebuilding web? | Yes. Edit `ui_colors.lua` and restart resource. |
+| When do I need `npm run build`? | Only when files under `web/src/*` are changed. |
+| Can forms be disabled while list stays active? | Yes. Set `Config.Forms.enabled = false`. |
+| Can I disable webhook but keep forms? | Yes. Leave `webhookUrl` empty. |
+| Which locales are bundled? | `en`, `es`, `de`, and `fr`. |
+| Why do I get `<\239>` parse errors? | Invalid UTF/BOM bytes in Lua files; re-save as clean UTF-8. |
+| Does admin access use ESX/QBCore groups by default? | No. It uses configured standalone/ACE/Discord-ID modes. |
+| Can other scripts consume streamer state? | Yes, via `exports['smdz_streamers_list']:GetStreamersCache()`. |
+| Is there a quick production hardening checklist? | Yes: strict permissions, debug off, URL allowlist strict, DB backups, webhook verification. |
+| What DB charset/collation is expected? | `utf8mb4` on InnoDB tables (as provided in SQL schema). |
+| Why might admin/public lists differ briefly? | Short-lived cache/refresh timing; real-time broadcast sync resolves it. |
+| Do I need manual cleanup of old records? | Normally no; cleanup jobs handle expired forms/featured state. |
+| Fast post-update smoke test? | Open `/streamers`, open `/adminstreamers`, create one test streamer, and submit/review one form. |
 
-```lua
-local cache = exports['smdz_streamers_list']:GetStreamersCache()
-for i = 1, #cache do
-    local s = cache[i]
-    print(('[STREAMER] %s live=%s platform=%s featured=%s'):format(
-        s.name,
-        tostring(s.live),
-        tostring(s.platform),
-        tostring(s.featured)
-    ))
-end
-```
+
 ---
 
 # 🔄 **UPDATES:**

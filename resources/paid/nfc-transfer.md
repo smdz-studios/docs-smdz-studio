@@ -94,40 +94,6 @@ High-end NFC money transfer system with secure server-side validation, React NUI
 
 ---
 
-# 📥 **INSTALLATION:**
-
-1. Place the folder in:
-
-```text
-resources/[smdz]/smdz_nfc_transfer
-```
-
-2. Run the SQL file if you want transfer history:
-
-```text
-sql/smdz_nfc_transfer.sql
-```
-
-3. Ensure dependencies/resources in `server.cfg` (order recommended):
-
-```bash
-ensure ox_lib
-# ensure your framework (es_extended / qb-core / qbx_core)
-# ensure your DB resource (oxmysql / mysql-async / ghmattimysql)
-# ensure optional providers (target/banking/notify/textui)
-ensure smdz_nfc_transfer
-```
-
-4. If you edit UI source (`web/src`), rebuild the NUI:
-
-```bash
-cd resources/[smdz]/smdz_nfc_transfer/web
-npm install
-npm run build
-```
-
----
-
 ## 🤝 **COMPATIBILITY:**
 
 ### Frameworks (auto-detected)
@@ -194,6 +160,71 @@ npm run build
 - `tgg-banking`
 - `tgiann-bank`
 - `wasabi_banking`
+
+---
+
+# 📥 **INSTALLATION:**
+
+1. Place the folder in:
+
+```text
+resources/[smdz]/smdz_nfc_transfer
+```
+
+2. Run the SQL file if you want transfer history:
+
+```text
+sql/smdz_nfc_transfer.sql
+```
+
+3. Ensure dependencies/resources in `server.cfg` (order recommended):
+
+```bash
+ensure ox_lib
+# ensure your framework (es_extended / qb-core / qbx_core)
+# ensure your DB resource (oxmysql / mysql-async / ghmattimysql)
+# ensure optional providers (target/banking/notify/textui)
+ensure smdz_nfc_transfer
+```
+
+4. If you edit UI source (`web/src`), rebuild the NUI:
+
+```bash
+cd resources/[smdz]/smdz_nfc_transfer/web
+npm install
+npm run build
+```
+
+---
+
+# 🗄️ **DATABASE:**
+
+Table: `smdz_nfc_history`
+
+```sql
+CREATE TABLE IF NOT EXISTS `smdz_nfc_history` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `request_id` VARCHAR(64) NOT NULL,
+  `sender_identifier` VARCHAR(80) NOT NULL,
+  `receiver_identifier` VARCHAR(80) NOT NULL,
+  `sender_name` VARCHAR(64) NOT NULL,
+  `receiver_name` VARCHAR(64) NOT NULL,
+  `account_id` VARCHAR(80) NOT NULL,
+  `amount` INT NOT NULL DEFAULT 0,
+  `note` VARCHAR(255) NOT NULL DEFAULT '',
+  `status` VARCHAR(24) NOT NULL DEFAULT 'CANCEL',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_smdz_nfc_request_id` (`request_id`),
+  KEY `idx_smdz_nfc_sender_identifier` (`sender_identifier`),
+  KEY `idx_smdz_nfc_receiver_identifier` (`receiver_identifier`),
+  KEY `idx_smdz_nfc_created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+```
+
+Indexes are included for sender/receiver identifier and created timestamp.
 
 ---
 
@@ -500,34 +531,22 @@ Internal code uses exports from other resources via bridge adapters.
 
 ---
 
-# 🗄️ **DATABASE:**
+# 🔒 **SECURITY & VALIDATION:**
 
-Table: `smdz_nfc_history`
+Implemented protections:
 
-```sql
-CREATE TABLE IF NOT EXISTS `smdz_nfc_history` (
-  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `request_id` VARCHAR(64) NOT NULL,
-  `sender_identifier` VARCHAR(80) NOT NULL,
-  `receiver_identifier` VARCHAR(80) NOT NULL,
-  `sender_name` VARCHAR(64) NOT NULL,
-  `receiver_name` VARCHAR(64) NOT NULL,
-  `account_id` VARCHAR(80) NOT NULL,
-  `amount` INT NOT NULL DEFAULT 0,
-  `note` VARCHAR(255) NOT NULL DEFAULT '',
-  `status` VARCHAR(24) NOT NULL DEFAULT 'CANCEL',
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_smdz_nfc_request_id` (`request_id`),
-  KEY `idx_smdz_nfc_sender_identifier` (`sender_identifier`),
-  KEY `idx_smdz_nfc_receiver_identifier` (`receiver_identifier`),
-  KEY `idx_smdz_nfc_created_at` (`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-```
-
-Indexes are included for sender/receiver identifier and created timestamp.
+- Server-authoritative money operations.
+- Event source validation (`source > 0`, ped existence).
+- Target validation (exists, not self, in range).
+- Required item validation for sender and receiver.
+- Strong input sanitization:
+  - amount numeric/clamped
+  - account ownership check
+  - note cleaned and length-limited
+- Rate limiting per player (`RateLimitPerMinute`).
+- Per-request lock (`TransferLocks`) to prevent double-processing.
+- Cancellation/timeout handling and cleanup for disconnected players.
+- ACE + framework admin group checks in bridge framework module.
 
 ---
 
@@ -551,25 +570,6 @@ Config.Webhook.Url = 'https://discord.com/api/webhooks/...'
 
 ---
 
-# 🔒 **SECURITY & VALIDATION:**
-
-Implemented protections:
-
-- Server-authoritative money operations.
-- Event source validation (`source > 0`, ped existence).
-- Target validation (exists, not self, in range).
-- Required item validation for sender and receiver.
-- Strong input sanitization:
-  - amount numeric/clamped
-  - account ownership check
-  - note cleaned and length-limited
-- Rate limiting per player (`RateLimitPerMinute`).
-- Per-request lock (`TransferLocks`) to prevent double-processing.
-- Cancellation/timeout handling and cleanup for disconnected players.
-- ACE + framework admin group checks in bridge framework module.
-
----
-
 # 🚀 **PERFORMANCE:**
 
 - Minimal polling loops:
@@ -583,120 +583,41 @@ Implemented protections:
 
 # 🧪 **COMMON ISSUES:**
 
-1. **Resource does not start or instantly stops**
-- Confirm folder name is exactly `smdz_nfc_transfer`.
-- The resource includes an internal name guard in `server/main.lua`; any folder rename will force-stop the script.
-
-2. **History UI opens but table is empty**
-- Ensure `Config.History.Enabled = true`.
-- Ensure SQL file `sql/smdz_nfc_transfer.sql` was executed successfully.
-- Ensure one supported DB resource is started: `oxmysql`, `mysql-async`, or `ghmattimysql`.
-- If DB is disabled/missing, transfers still work but history storage is skipped.
-
-3. **No interaction on players (NFC option missing)**
-- Ensure at least one target resource is running (`ox_target` or `qb-target`) if you expect target interactions.
-- Verify `Config.Target.Mode` matches your setup (`auto`, `ox_target`, `qb_target`).
-- Confirm both players are alive, not in vehicles, close enough, and both have the required phone item.
-
-4. **Cannot send transfer after opening sender panel**
-- Amount must be numeric and inside `Config.Transfer.MinAmount` and `Config.Transfer.MaxAmount`.
-- Account must exist in sender account list returned by bridge banking.
-- Notes are sanitized; unsupported characters are removed automatically.
-
-5. **Receiver never gets request panel**
-- Check distance (`Config.Transfer.Distance`) at request creation time.
-- Confirm receiver has phone item.
-- Check server console for rate-limit and validation messages.
-- Verify receiver is a valid connected player (not dropped mid-request).
-
-6. **Transfer is rejected as insufficient funds unexpectedly**
-- In `FeeMode = 'sender'`, sender must cover `amount + fee`.
-- In `FeeMode = 'deduct'`, sender only pays `amount`, but receiver gets `amount - fee`.
-- Confirm account balance comes from the intended banking adapter/provider.
-
-7. **Notification style is not the one expected**
-- In `Config.Notification.Mode = 'auto'`, provider is selected dynamically.
-- Force your preferred provider by setting `Config.Notification.Mode` to a concrete adapter key.
-- Ensure that provider resource is started before this script.
-
-8. **TextUI for NPC history does not appear**
-- Check `Config.NpcPoints` coordinates, interaction mode, and distance values.
-- In `auto`, NPC uses target when available, otherwise TextUI.
-- If using TextUI adapters, ensure configured provider resource is running.
-
-9. **NUI appears but buttons do not react**
-- Rebuild UI if you edited web source: `npm install` then `npm run build` in `web/`.
-- Ensure `web/dist/index.html` and `web/dist/assets/*` exist.
-- Confirm no browser console errors in CEF DevTools.
-
-10. **Apple Pay sound does not play**
-- Actual NUI audio path used by React is `/sound/applepay.ogg`.
-- Current config key value is `appleplay.ogg` by default; keep your actual file naming consistent to avoid confusion.
-- Confirm `Config.Sound.Enabled = true` and volume > 0.
-
-11. **`/nfctest` does nothing**
-- Command only works when `Config.TestMode.Enabled = true`.
-- Test mode simulates local sender flow and optional fake history rows.
-
-12. **Webhook logs are not sent**
-- Ensure `Config.Webhook.Enabled = true`.
-- Set a valid Discord webhook in `Config.Webhook.Url`.
-- Check outbound request restrictions/firewall on host.
-
----
+| Issue | Recommended Solution |
+| --- | --- |
+| Resource does not start or instantly stops | Confirm folder name is exactly `smdz_nfc_transfer`.<br>The resource includes an internal name guard in `server/main.lua`; any folder rename will force-stop the script. |
+| History UI opens but table is empty | Ensure `Config.History.Enabled = true`.<br>Ensure SQL file `sql/smdz_nfc_transfer.sql` was executed successfully.<br>Ensure one supported DB resource is started: `oxmysql`, `mysql-async`, or `ghmattimysql`.<br>If DB is disabled/missing, transfers still work but history storage is skipped. |
+| No interaction on players (NFC option missing) | Ensure at least one target resource is running (`ox_target` or `qb-target`) if you expect target interactions.<br>Verify `Config.Target.Mode` matches your setup (`auto`, `ox_target`, `qb_target`).<br>Confirm both players are alive, not in vehicles, close enough, and both have the required phone item. |
+| Cannot send transfer after opening sender panel | Amount must be numeric and inside `Config.Transfer.MinAmount` and `Config.Transfer.MaxAmount`.<br>Account must exist in sender account list returned by bridge banking.<br>Notes are sanitized; unsupported characters are removed automatically. |
+| Receiver never gets request panel | Check distance (`Config.Transfer.Distance`) at request creation time.<br>Confirm receiver has phone item.<br>Check server console for rate-limit and validation messages.<br>Verify receiver is a valid connected player (not dropped mid-request). |
+| Transfer is rejected as insufficient funds unexpectedly | In `FeeMode = 'sender'`, sender must cover `amount + fee`.<br>In `FeeMode = 'deduct'`, sender only pays `amount`, but receiver gets `amount - fee`.<br>Confirm account balance comes from the intended banking adapter/provider. |
+| Notification style is not the one expected | In `Config.Notification.Mode = 'auto'`, provider is selected dynamically.<br>Force your preferred provider by setting `Config.Notification.Mode` to a concrete adapter key.<br>Ensure that provider resource is started before this script. |
+| TextUI for NPC history does not appear | Check `Config.NpcPoints` coordinates, interaction mode, and distance values.<br>In `auto`, NPC uses target when available, otherwise TextUI.<br>If using TextUI adapters, ensure configured provider resource is running. |
+| NUI appears but buttons do not react | Rebuild UI if you edited web source: `npm install` then `npm run build` in `web/`.<br>Ensure `web/dist/index.html` and `web/dist/assets/*` exist.<br>Confirm no browser console errors in CEF DevTools. |
+| Apple Pay sound does not play | Actual NUI audio path used by React is `/sound/applepay.ogg`.<br>Current config key value is `appleplay.ogg` by default; keep your actual file naming consistent to avoid confusion.<br>Confirm `Config.Sound.Enabled = true` and volume > 0. |
+| `/nfctest` does nothing | Command only works when `Config.TestMode.Enabled = true`.<br>Test mode simulates local sender flow and optional fake history rows. |
+| Webhook logs are not sent | Ensure `Config.Webhook.Enabled = true`.<br>Set a valid Discord webhook in `Config.Webhook.Url`.<br>Check outbound request restrictions/firewall on host. |
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-**Q: Is this script framework-locked?**
-A: No. It auto-detects ESX, QBCore, QBX, and can run in standalone fallback mode.
-
-**Q: Can I force a framework manually instead of auto-detection?**
-A: Yes. Set `Config.Framework.Mode` to `esx`, `qbcore`, `qbx`, or `standalone`.
-
-**Q: Is `ox_lib` optional?**
-A: No. `ox_lib` is required by manifest and used for callbacks/UI helpers.
-
-**Q: Do I need a database for transfers to work?**
-A: No. Database is only required for persistent transfer history.
-
-**Q: Which databases are supported?**
-A: `oxmysql`, `mysql-async`, and `ghmattimysql`.
-
-**Q: Does the script support society/gang/shared accounts?**
-A: Yes, depending on framework and selected banking adapter.
-
-**Q: Can I integrate a custom banking system?**
-A: Yes. Implement adapter methods in `bridge/server/banking/custom.lua`.
-
-**Q: Can I integrate custom notifications or TextUI?**
-A: Yes. Use `bridge/client/notifications/custom.lua` and `bridge/client/textui/custom.lua`.
-
-**Q: Can I disable fees?**
-A: Yes. Set `Config.Transfer.FeePercent = 0`.
-
-**Q: What is the difference between `sender` and `deduct` fee modes?**
-A: `sender` charges sender `amount + fee`; `deduct` sends receiver `amount - fee`.
-
-**Q: Is there anti-spam protection?**
-A: Yes. Requests are rate-limited with `Config.Transfer.RateLimitPerMinute`.
-
-**Q: Is transfer logic client-side or server-side?**
-A: Sensitive logic is server-side (validation, account checks, money movement, final outcome).
-
-**Q: Can players trigger admin-only actions?**
-A: Not by default. Admin checks support ACE and framework group mappings.
-
-**Q: How do I open transfer history?**
-A: Through configured NPC points using target or TextUI interaction.
-
-**Q: What does test mode do exactly?**
-A: Enables `/nfctest`, mock accounts, and optional fake history rows for UI testing.
-
-**Q: Can I rename the resource folder?**
-A: No. Folder rename triggers resource validation lock and automatic stop.
-
-
----
+| Question | Answer |
+| --- | --- |
+| Is this script framework-locked? | No. It auto-detects ESX, QBCore, QBX, and can run in standalone fallback mode. |
+| Can I force a framework manually instead of auto-detection? | Yes. Set `Config.Framework.Mode` to `esx`, `qbcore`, `qbx`, or `standalone`. |
+| Is `ox_lib` optional? | No. `ox_lib` is required by manifest and used for callbacks/UI helpers. |
+| Do I need a database for transfers to work? | No. Database is only required for persistent transfer history. |
+| Which databases are supported? | `oxmysql`, `mysql-async`, and `ghmattimysql`. |
+| Does the script support society/gang/shared accounts? | Yes, depending on framework and selected banking adapter. |
+| Can I integrate a custom banking system? | Yes. Implement adapter methods in `bridge/server/banking/custom.lua`. |
+| Can I integrate custom notifications or TextUI? | Yes. Use `bridge/client/notifications/custom.lua` and `bridge/client/textui/custom.lua`. |
+| Can I disable fees? | Yes. Set `Config.Transfer.FeePercent = 0`. |
+| What is the difference between `sender` and `deduct` fee modes? | `sender` charges sender `amount + fee`; `deduct` sends receiver `amount - fee`. |
+| Is there anti-spam protection? | Yes. Requests are rate-limited with `Config.Transfer.RateLimitPerMinute`. |
+| Is transfer logic client-side or server-side? | Sensitive logic is server-side (validation, account checks, money movement, final outcome). |
+| Can players trigger admin-only actions? | Not by default. Admin checks support ACE and framework group mappings. |
+| How do I open transfer history? | Through configured NPC points using target or TextUI interaction. |
+| What does test mode do exactly? | Enables `/nfctest`, mock accounts, and optional fake history rows for UI testing. |
+| Can I rename the resource folder? | No. Folder rename triggers resource validation lock and automatic stop. |
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.

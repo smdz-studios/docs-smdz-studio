@@ -73,7 +73,10 @@ SMDZ Evidence Board allows authorized players to place persistent physical evide
 
 - 💾 **Keep every case permanently stored in SQL** with normalized tables for boards, evidence elements, connections, ownership, and shared access.
 
-
+<div class="evidenceboardresmon" id="evidenceboardresmon" data-mode="ox-to-qb">
+  <div class="item-evidenceboardresmon">
+    <img src="/assets/other/evidenceboard-resmon.png" alt="evidenceboardresmon" data-no-zoom />
+  </div>
 
 ---
 
@@ -155,8 +158,6 @@ smdz_evidence_board/install_files/sql/install.sql
 ```
 
 The installer creates and updates the required schema, including normalized tables for boards, evidence elements, connections, and persistent access permissions.
-
-```
 
 1. Configure the public settings inside:
 

@@ -41,33 +41,45 @@
 
 ---
 
-# 🎨 **BUILT-IN PRESETS:**
-
-The redesign includes the following presets:
-
-| Preset key | Style |
-|---|---|
-| `default` | Graphite and champagne |
-| `black_white` | Minimal black and white |
-| `green` | Tactical green |
-| `red` | Strong red |
-| `blue` | Modern blue |
-| `pink` | Soft pink |
-| `orange` | Warm orange |
-| `gold` | Premium gold |
-
-The default preset is:
-
-```lua
-Config.TargetPreset = 'black_white'
-```
-
----
-
 # 📦 **REQUIREMENTS:**
 
 - `ox_lib` — required by the original `ox_target`
 - A recent FiveM server artifact
+
+---
+
+## 🤝 **COMPATIBILITY:**
+
+The redesign keeps the original:
+
+- Exports
+- Target options
+- Zones
+- Entity interactions
+- Model interactions
+- Global interactions
+- Framework bridges
+- Compatibility files
+- Event execution
+- Menu names
+- Resource ownership checks
+- Distance checks
+- Bone targeting
+- Icon configuration
+- `iconColor`
+- `canInteract`
+- `groups`
+- `items`
+- `anyItem`
+- `onSelect`
+- `event`
+- `serverEvent`
+- `command`
+- Original convars
+- Supported `qtarget` compatibility layer through `provide 'qtarget'`
+
+No changes are required in scripts that already use `ox_target`.
+
 
 ---
 
@@ -214,6 +226,29 @@ The new `config.lua` controls only the added radial redesign features.
 
 ---
 
+# 🎨 **BUILT-IN PRESETS:**
+
+The redesign includes the following presets:
+
+| Preset key | Style |
+|---|---|
+| `default` | Graphite and champagne |
+| `black_white` | Minimal black and white |
+| `green` | Tactical green |
+| `red` | Strong red |
+| `blue` | Modern blue |
+| `pink` | Soft pink |
+| `orange` | Warm orange |
+| `gold` | Premium gold |
+
+The default preset is:
+
+```lua
+Config.TargetPreset = 'black_white'
+```
+
+---
+
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 All original `ox_target` exports remain unchanged.
@@ -240,38 +275,26 @@ Refer to the official `ox_target` documentation for the complete API and option 
 
 ---
 
-# 🤝 **COMPATIBILITY:**
+# 🧪 **COMMON ISSUES:**
 
-The redesign keeps the original:
-
-- Exports
-- Target options
-- Zones
-- Entity interactions
-- Model interactions
-- Global interactions
-- Framework bridges
-- Compatibility files
-- Event execution
-- Menu names
-- Resource ownership checks
-- Distance checks
-- Bone targeting
-- Icon configuration
-- `iconColor`
-- `canInteract`
-- `groups`
-- `items`
-- `anyItem`
-- `onSelect`
-- `event`
-- `serverEvent`
-- `command`
-- Original convars
-- Supported `qtarget` compatibility layer through `provide 'qtarget'`
-
-No changes are required in scripts that already use `ox_target`.
-
+| Issue | Likely cause | Solution |
+|---|---|---|
+| The radial never appears | Missing core file, duplicated resource, or `ox_lib` not started | Verify both `smdz_core.lua` files, remove duplicate installations, and start `ox_lib` first |
+| Left Alt does nothing | Incorrect FiveM key binding | Reset or reassign the target key in FiveM settings |
+| The original target indicator appears but no radial options appear | The tested entity or zone has no valid options | Test a known working target and inspect `canInteract`, distance, groups, and items |
+| The radial appears in the wrong location | Position or offset configuration | Check `position`, `offsetX`, `offsetY`, `customX`, and `customY` |
+| The radial is too transparent | Opacity is too low | Increase `Config.Radial.opacity` |
+| The radial is too strong or blocks the view | Position or opacity is too high | Use `bottom_center`, increase `offsetY`, or reduce opacity |
+| The radial tilts too much | High `maxTilt` or low perspective | Lower `maxTilt` and increase `perspective` |
+| No opening sound plays | Sound disabled, wrong path, unsupported file, or browser restriction | Verify `enabled`, path, MP3 file, and F8 errors |
+| Custom theme has missing colours | Incomplete preset table | Copy a complete built-in preset and change only values |
+| Custom locale fails | Missing key or Lua syntax error | Compare it with `en.lua` and check F8/server console |
+| UI shows a black full-screen background | Old cached or mixed `dist` files | Delete the previous folder completely, reinstall, and clear client cache |
+| React error in F8 | Old `vendor/react` files mixed with the new build | Delete the entire previous `web/dist` and install a clean copy |
+| Target works in the original resource but not in the redesign | Incorrect installation or missing SMDZ core | Verify folder structure, manifest, and protected files |
+| Numbers or labels overlap | Old cached UI bundle | Replace the complete resource and clear FiveM cache |
+| The selected preset does not apply | Invalid preset key | Use a key that exists in `Config.TargetPresets` |
+| Resource reports an integrity failure | Protected core missing, altered, or not loaded | Restore the original purchased resource files |
 
 ---
 
@@ -297,29 +320,6 @@ No changes are required in scripts that already use `ox_target`.
 | **Does the original `.cfg` configuration still work?** | Yes. Original convars for the hotkey, toggle mode, left-click selection, default interactions, sprites, and debug mode remain supported. |
 | **Can I rename the resource folder?** | No. Keep the folder name exactly as `ox_target` to preserve compatibility. |
 | **Can I remove the SMDZ core files?** | No. `client/smdz_core.lua` and `server/smdz_core.lua` are required for the redesigned interface. |
-
----
-
-# 🧪 **COMMON ISSUES:**
-
-| Issue | Likely cause | Solution |
-|---|---|---|
-| The radial never appears | Missing core file, duplicated resource, or `ox_lib` not started | Verify both `smdz_core.lua` files, remove duplicate installations, and start `ox_lib` first |
-| Left Alt does nothing | Incorrect FiveM key binding | Reset or reassign the target key in FiveM settings |
-| The original target indicator appears but no radial options appear | The tested entity or zone has no valid options | Test a known working target and inspect `canInteract`, distance, groups, and items |
-| The radial appears in the wrong location | Position or offset configuration | Check `position`, `offsetX`, `offsetY`, `customX`, and `customY` |
-| The radial is too transparent | Opacity is too low | Increase `Config.Radial.opacity` |
-| The radial is too strong or blocks the view | Position or opacity is too high | Use `bottom_center`, increase `offsetY`, or reduce opacity |
-| The radial tilts too much | High `maxTilt` or low perspective | Lower `maxTilt` and increase `perspective` |
-| No opening sound plays | Sound disabled, wrong path, unsupported file, or browser restriction | Verify `enabled`, path, MP3 file, and F8 errors |
-| Custom theme has missing colours | Incomplete preset table | Copy a complete built-in preset and change only values |
-| Custom locale fails | Missing key or Lua syntax error | Compare it with `en.lua` and check F8/server console |
-| UI shows a black full-screen background | Old cached or mixed `dist` files | Delete the previous folder completely, reinstall, and clear client cache |
-| React error in F8 | Old `vendor/react` files mixed with the new build | Delete the entire previous `web/dist` and install a clean copy |
-| Target works in the original resource but not in the redesign | Incorrect installation or missing SMDZ core | Verify folder structure, manifest, and protected files |
-| Numbers or labels overlap | Old cached UI bundle | Replace the complete resource and clear FiveM cache |
-| The selected preset does not apply | Invalid preset key | Use a key that exists in `Config.TargetPresets` |
-| Resource reports an integrity failure | Protected core missing, altered, or not loaded | Restore the original purchased resource files |
 
 ---
 
@@ -416,6 +416,16 @@ setr ox_target:debug 1
 
 ---
 
+# 🔄 **UPDATES:**
+- 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
+- 🛠️ During this period, the script will only receive:
+  - **Bug fixes / emergency patches** if necessary
+  - **Small content additions or minor improvements** from time to time
+- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
+
+- 🧾 **UPDATE STEPS:**
+  *Backup config → replace folder → restore config → restart server.*
+
 # ⚖️ **CREDITS & LICENSING:**
 
 This resource includes and preserves the original `ox_target` system and its applicable license.
@@ -437,13 +447,3 @@ This resource includes and preserves the original `ox_target` system and its app
 - **Documentation:** `https://docs.smdz-studios.com`
 
 ---
-
-# 🔄 **UPDATES:**
-- 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
-- 🛠️ During this period, the script will only receive:
-  - **Bug fixes / emergency patches** if necessary
-  - **Small content additions or minor improvements** from time to time
-- ⚠️ Major feature expansions or full system reworks are **not planned** during this timeframe.
-
-- 🧾 **UPDATE STEPS:**
-  *Backup config → replace folder → restore config → restart server.*

@@ -79,6 +79,57 @@ Optional:
 
 ---
 
+## 📦 **INVENTORY:**
+
+Default item:
+
+- `Config.ItemName = 'uavdevice'`
+
+Install templates:
+
+- `_INSTALL_FILES/item.lua`
+
+Native usable registration:
+
+- ESX: `ESX.RegisterUsableItem(...)`
+- QBCore: `QBCore.Functions.CreateUseableItem(...)`
+- QBX: `exports.qbx_core:CreateUseableItem(...)`
+
+Server export for inventory integrations:
+
+```lua
+exports('useUAVItem', useUAVItem)
+```
+
+---
+
+## 🔔 **NOTIFICATIONS:**
+
+Bridge file:
+
+- `modules/notify.lua`
+
+Supported `Config.Notify.provider` values:
+
+- `auto`
+- `ox_lib`
+- `esx`
+- `qbcore`
+- `okoknotify`
+- `origen_notify`
+- `wasabi_notify`
+- `wasabi_uikit`
+- `rtx_notify`
+- `codem-notification`
+- `vms_notifyv2`
+- `esx_notify`
+- `brutal_notify`
+- `fl-notify`
+- `gtm-ui`
+
+
+---
+
 # 📥 **INSTALLATION:**
 
 1. Place the resource in your server files:
@@ -108,6 +159,32 @@ ensure smdz_uav
 ```cfg
 restart smdz_uav
 ```
+
+---
+
+# 🗄️ **DATABASE:**
+
+Install SQL:
+
+- `_INSTALL_FILES/cooldowns.sql`
+
+Table:
+
+- `smdz_uav_cooldowns`
+
+```sql
+-- SMDZ UAV cooldown persistence table (oxmysql)
+CREATE TABLE IF NOT EXISTS `smdz_uav_cooldowns` (
+    `cooldown_key` VARCHAR(168) NOT NULL,
+    `expires_at` BIGINT UNSIGNED NOT NULL DEFAULT 0,
+    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`cooldown_key`),
+    KEY `expires_at` (`expires_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+```
+
+Both global and player cooldown values are persisted in SQL when enabled.
 
 ---
 
@@ -306,30 +383,6 @@ Config.LocaleAliases = { -- Locale alias map (left side) to canonical locale cod
 
 ---
 
-# 📦 **INVENTORY:**
-
-Default item:
-
-- `Config.ItemName = 'uavdevice'`
-
-Install templates:
-
-- `_INSTALL_FILES/item.lua`
-
-Native usable registration:
-
-- ESX: `ESX.RegisterUsableItem(...)`
-- QBCore: `QBCore.Functions.CreateUseableItem(...)`
-- QBX: `exports.qbx_core:CreateUseableItem(...)`
-
-Server export for inventory integrations:
-
-```lua
-exports('useUAVItem', useUAVItem)
-```
-
----
-
 # 🎮 **USAGE:**
 
 1. Use the UAV item.
@@ -428,56 +481,46 @@ Important behavior:
 
 ---
 
-# 🔔 **NOTIFICATIONS:**
+# 🧪 **COMMON ISSUES:**
 
-Bridge file:
+| Problem | Likely cause | Fix |
+|---|---|---|
+| Resource does not start | Wrong startup order or missing dependency | Ensure `ox_lib` and `oxmysql` start before `smdz_uav`. |
+| Resource starts but immediately stops | Folder name validation failed | Keep exact resource name as `smdz_uav` and avoid renaming the folder. |
+| `No such export useUAVItem` | Resource not started or wrong folder name | Ensure resource name is exactly `smdz_uav` and started. |
+| SQL cooldown errors | SQL missing or DB unavailable | Import `_INSTALL_FILES/cooldowns.sql` and verify `oxmysql` state. |
+| Cooldown table exists but cooldown seems ignored | Cooldown disabled in config or TestMode bypass active | Check `Config.Cooldown.enabled`, per-layer toggles, and `Config.TestMode.enabled`. |
+| Cooldown never clears | Stale row or wrong server clock | Validate cooldown values in `smdz_uav_cooldowns` and check host time sync. |
+| Item does nothing | Usable not registered or wrong item name | Check `Config.ItemName` and framework usable registration. |
+| Usable works in one framework but not another | Wrong core resource name mapping | Verify `Config.Framework.resources` matches your real resource names. |
+| Item is not removed | Inventory/framework mismatch | Verify item exists and framework remove function path. |
+| Item removed but UAV never spawns | Activation not finalized or blocked by validation | Check activation progress completion and server logs for rejection reason. |
+| Activation denied in vehicle | Vehicle restriction enabled | Set `Config.UAV.allowInVehicle = true` if desired. |
+| Activation denied randomly under load | Another activation pending | Wait for current activation to finish/timeout; serialized activation is intentional. |
+| Camera does not open | Activation not completed yet | Wait until progress ends, then press `E`. |
+| Camera does not close | Input conflict or stale keybind | Verify controls and test without conflicting scripts. |
+| Camera closes unexpectedly | UAV ended (destroyed/timeout/owner left) | Check end reason in webhook/server debug and confirm UAV still active. |
+| UAV ends unexpectedly | Destroyed, timeout, owner left, force end | Check webhook action history and server logs. |
+| UAV is never destroyable | Destroyable flag disabled | Set `Config.UAV.destroyable = true` and verify plane/pilot damage flags are not overridden by other scripts. |
+| Destroy report rejected | Validation failed (distance/id/source) | Increase `Config.UAV.destroyReportMaxDistance` if needed and review logs. |
+| Destroy report accepted but no notification | Notification provider issue | Validate `Config.Notify.provider`, provider resource state, and mapped notify types. |
+| No sweep targets shown | No players in radius or filters too strict | Increase `Config.UAV.radius` and review `onlyShowOthers` / `requireAlive`. |
+| Sweep only shows fake contacts | Test mode configuration | Check `Config.TestMode.enabled` and `showRealPlayers`. |
+| Heavy zoom blur | Very low FOV and GTA/FiveM stream limits | Increase `Config.AerialCam.antiBlur.minSharpFov` and/or reduce max zoom. |
+| Zoom feels too aggressive | Zoom step too high | Lower `Config.AerialCam.zoomStep`. |
+| Lock-on with `SPACE` does nothing | Lock feature disabled or no valid trace | Set `Config.AerialCam.lockOnSpace = true` and test with clear line of sight. |
+| UAV plane is too low/high | Plane height mismatch for map area | Tune `Config.UAV.planeHeight` for your environment. |
+| UAV speed feels too fast/slow | Plane speed values too high/low | Adjust `Config.UAV.planeSpeed` and graceful end speed (`endFlyAwaySpeed`). |
+| Bottom control/key hint UI spacing looks wrong | Old UI build still loaded | Rebuild `ui`, clear cache, restart resource. |
+| Notifications missing | Provider not installed or wrong config | Set `Config.Notify.provider` to an installed provider. |
+| Wrong notification style/type | Provider type mapping mismatch | Use supported type names for your selected provider and test with `info/success/error/warning`. |
+| Webhook empty | Disabled or invalid URL | Check `Config.Webhook.enabled` and `Config.Webhook.url`. |
+| Webhook shows action keys instead of text | Missing locale key for that action | Add/fix `webhook.action.*` translation keys in locale files. |
+| Webhook missing character name | Framework character fields unavailable | Verify player identity data in framework and keep `includeCharacterName = true`. |
+| Debug appears in console but not in Discord | Expected behavior | Debug categories are intentionally filtered from webhook output. |
+| Locale fallback shows key text | Missing translation in selected locale | Add the missing key to locale file or rely on fallback locale (`Config.FallbackLocale`). |
+| Emoji text looks broken in editor | Wrong file encoding view | Open files as UTF-8 and save as UTF-8 (no BOM). |
 
-- `modules/notify.lua`
-
-Supported `Config.Notify.provider` values:
-
-- `auto`
-- `ox_lib`
-- `esx`
-- `qbcore`
-- `okoknotify`
-- `origen_notify`
-- `wasabi_notify`
-- `wasabi_uikit`
-- `rtx_notify`
-- `codem-notification`
-- `vms_notifyv2`
-- `esx_notify`
-- `brutal_notify`
-- `fl-notify`
-- `gtm-ui`
-
-
----
-
-# 🗄️ **DATABASE:**
-
-Install SQL:
-
-- `_INSTALL_FILES/cooldowns.sql`
-
-Table:
-
-- `smdz_uav_cooldowns`
-
-```sql
--- SMDZ UAV cooldown persistence table (oxmysql)
-CREATE TABLE IF NOT EXISTS `smdz_uav_cooldowns` (
-    `cooldown_key` VARCHAR(168) NOT NULL,
-    `expires_at` BIGINT UNSIGNED NOT NULL DEFAULT 0,
-    `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (`cooldown_key`),
-    KEY `expires_at` (`expires_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-```
-
-Both global and player cooldown values are persisted in SQL when enabled.
 
 ---
 
@@ -519,49 +562,6 @@ Both global and player cooldown values are persisted in SQL when enabled.
 | What if no supported notification script is installed? | The bridge can fall back to `ox_lib` or native feed notification behavior depending on runtime availability. |
 | Do I need to build UI after UI source changes? | Yes, rebuild `ui` and restart the resource. |
 | Is this script compatible with renamed resource folder names? | No. Keep folder/resource name as `smdz_uav` to avoid validation stop logic. |
-
----
-
-# 🧪 **COMMON ISSUES:**
-
-| Problem | Likely cause | Fix |
-|---|---|---|
-| Resource does not start | Wrong startup order or missing dependency | Ensure `ox_lib` and `oxmysql` start before `smdz_uav`. |
-| Resource starts but immediately stops | Folder name validation failed | Keep exact resource name as `smdz_uav` and avoid renaming the folder. |
-| `No such export useUAVItem` | Resource not started or wrong folder name | Ensure resource name is exactly `smdz_uav` and started. |
-| SQL cooldown errors | SQL missing or DB unavailable | Import `_INSTALL_FILES/cooldowns.sql` and verify `oxmysql` state. |
-| Cooldown table exists but cooldown seems ignored | Cooldown disabled in config or TestMode bypass active | Check `Config.Cooldown.enabled`, per-layer toggles, and `Config.TestMode.enabled`. |
-| Cooldown never clears | Stale row or wrong server clock | Validate cooldown values in `smdz_uav_cooldowns` and check host time sync. |
-| Item does nothing | Usable not registered or wrong item name | Check `Config.ItemName` and framework usable registration. |
-| Usable works in one framework but not another | Wrong core resource name mapping | Verify `Config.Framework.resources` matches your real resource names. |
-| Item is not removed | Inventory/framework mismatch | Verify item exists and framework remove function path. |
-| Item removed but UAV never spawns | Activation not finalized or blocked by validation | Check activation progress completion and server logs for rejection reason. |
-| Activation denied in vehicle | Vehicle restriction enabled | Set `Config.UAV.allowInVehicle = true` if desired. |
-| Activation denied randomly under load | Another activation pending | Wait for current activation to finish/timeout; serialized activation is intentional. |
-| Camera does not open | Activation not completed yet | Wait until progress ends, then press `E`. |
-| Camera does not close | Input conflict or stale keybind | Verify controls and test without conflicting scripts. |
-| Camera closes unexpectedly | UAV ended (destroyed/timeout/owner left) | Check end reason in webhook/server debug and confirm UAV still active. |
-| UAV ends unexpectedly | Destroyed, timeout, owner left, force end | Check webhook action history and server logs. |
-| UAV is never destroyable | Destroyable flag disabled | Set `Config.UAV.destroyable = true` and verify plane/pilot damage flags are not overridden by other scripts. |
-| Destroy report rejected | Validation failed (distance/id/source) | Increase `Config.UAV.destroyReportMaxDistance` if needed and review logs. |
-| Destroy report accepted but no notification | Notification provider issue | Validate `Config.Notify.provider`, provider resource state, and mapped notify types. |
-| No sweep targets shown | No players in radius or filters too strict | Increase `Config.UAV.radius` and review `onlyShowOthers` / `requireAlive`. |
-| Sweep only shows fake contacts | Test mode configuration | Check `Config.TestMode.enabled` and `showRealPlayers`. |
-| Heavy zoom blur | Very low FOV and GTA/FiveM stream limits | Increase `Config.AerialCam.antiBlur.minSharpFov` and/or reduce max zoom. |
-| Zoom feels too aggressive | Zoom step too high | Lower `Config.AerialCam.zoomStep`. |
-| Lock-on with `SPACE` does nothing | Lock feature disabled or no valid trace | Set `Config.AerialCam.lockOnSpace = true` and test with clear line of sight. |
-| UAV plane is too low/high | Plane height mismatch for map area | Tune `Config.UAV.planeHeight` for your environment. |
-| UAV speed feels too fast/slow | Plane speed values too high/low | Adjust `Config.UAV.planeSpeed` and graceful end speed (`endFlyAwaySpeed`). |
-| Bottom control/key hint UI spacing looks wrong | Old UI build still loaded | Rebuild `ui`, clear cache, restart resource. |
-| Notifications missing | Provider not installed or wrong config | Set `Config.Notify.provider` to an installed provider. |
-| Wrong notification style/type | Provider type mapping mismatch | Use supported type names for your selected provider and test with `info/success/error/warning`. |
-| Webhook empty | Disabled or invalid URL | Check `Config.Webhook.enabled` and `Config.Webhook.url`. |
-| Webhook shows action keys instead of text | Missing locale key for that action | Add/fix `webhook.action.*` translation keys in locale files. |
-| Webhook missing character name | Framework character fields unavailable | Verify player identity data in framework and keep `includeCharacterName = true`. |
-| Debug appears in console but not in Discord | Expected behavior | Debug categories are intentionally filtered from webhook output. |
-| Locale fallback shows key text | Missing translation in selected locale | Add the missing key to locale file or rely on fallback locale (`Config.FallbackLocale`). |
-| Emoji text looks broken in editor | Wrong file encoding view | Open files as UTF-8 and save as UTF-8 (no BOM). |
-
 
 ---
 

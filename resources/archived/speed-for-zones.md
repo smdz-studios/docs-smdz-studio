@@ -21,7 +21,6 @@
 
 ---
 
-
 # 🧩 **OVERVIEW:**
 - 📌 **Name:** `smdz_speedforzones`
 - 💻 **Author:** SMDZ Studios
@@ -78,79 +77,6 @@ ensure pcb_minigame
 ensure ox_inventory   # optional
 ensure smdz_speedforzones
 ```
-
----
-
-# 🗺️ **ZONES:**
-Zones are defined in config.lua under Config.Zones.
-Each uses PolyZone polygons (vector2 points) and custom texts for banners.
-1. Zone options:
-- ✅ enabled: true/false
-- ✅ unlimited: true (no limit in zone)
-- ✅ limit: speed cap (in km/h or mph)
-- ✅ texts: enter/exit banner strings
-- ✅ points: vector2 polygon
-- 🔁 Overlapping zones:
-
-*If a vehicle is inside multiple zones, the lowest limit applies.*
-```lua
--- EXAMPLE:
-Config.Zones = {
-  CITY = {
-    enabled = true,
-    unlimited = false,
-    limit = 60,
-    texts = { enter = 'CITY LIMIT', exit = 'LEFT CITY' },
-    points = { vector2(x1, y1), vector2(x2, y2), ... }
-  }
-}
-```
-
----
-
-# 🧩 **HACK ITEMS & MINIGAME:**
-
-Players can temporarily bypass speed limits by purchasing and using hack items.
-
-**Flow:**
-
-1. 🛒 Buy a hack item (mothercard) from a dealer.
-2. 🚶‍♂️ Use it while on foot near a vehicle.
-3. ✖️ Complete the PCB minigame (from `pcb_minigame`).
-4. 🔓 On success, the vehicle is “unlocked” for a set time.
-
-**Config options:**
-
-- 🧱 `Config.Hack.minigame`: resource name (default: `pcb_minigame`)
-- 🔩 `solderCount`: minigame difficulty
-- ⏱️ `minigameTimeSec`: minigame duration
-- 🧷 `consumeOnSuccess` / `consumeOnFail`: item removal
-- 🧪 Items: label, duration, price per item
-
-**🔒 SECURITY:**
-All hack attempts and item removals are validated server-side.
-The unlock applies only to the specific vehicle and exactly for the configured time.
-
----
-
-# 💰 **DEALERS:**
-
-Dealers use **ox_lib** menus for a modern experience.
-
-**Config options:**
-
-- 📍 `coords`: dealer location
-- 🧍 `pedModel`: character model
-- 🛒 `saleItems`: items and prices
-- 💳 `money.mode`: `account` (ESX/QB) or `item` (inventory)
-- ⏳ `purchaseCooldownMin`: cooldown per player to prevent spam
-
-**Flow:**
-
-- 🚶 Approach dealer NPC.
-- 📑 Open menu, select item to buy.
-- 🔍 Server checks funds, cooldown, proximity.
-- 📦 Item delivered; if inventory fails, refund is automatic.
 
 ---
 
@@ -724,6 +650,79 @@ Config.Debug = { -- Debug configuration
 
 ---
 
+# 🗺️ **ZONES:**
+Zones are defined in config.lua under Config.Zones.
+Each uses PolyZone polygons (vector2 points) and custom texts for banners.
+1. Zone options:
+- ✅ enabled: true/false
+- ✅ unlimited: true (no limit in zone)
+- ✅ limit: speed cap (in km/h or mph)
+- ✅ texts: enter/exit banner strings
+- ✅ points: vector2 polygon
+- 🔁 Overlapping zones:
+
+*If a vehicle is inside multiple zones, the lowest limit applies.*
+```lua
+-- EXAMPLE:
+Config.Zones = {
+  CITY = {
+    enabled = true,
+    unlimited = false,
+    limit = 60,
+    texts = { enter = 'CITY LIMIT', exit = 'LEFT CITY' },
+    points = { vector2(x1, y1), vector2(x2, y2), ... }
+  }
+}
+```
+
+---
+
+# 🧩 **HACK ITEMS & MINIGAME:**
+
+Players can temporarily bypass speed limits by purchasing and using hack items.
+
+**Flow:**
+
+1. 🛒 Buy a hack item (mothercard) from a dealer.
+2. 🚶‍♂️ Use it while on foot near a vehicle.
+3. ✖️ Complete the PCB minigame (from `pcb_minigame`).
+4. 🔓 On success, the vehicle is “unlocked” for a set time.
+
+**Config options:**
+
+- 🧱 `Config.Hack.minigame`: resource name (default: `pcb_minigame`)
+- 🔩 `solderCount`: minigame difficulty
+- ⏱️ `minigameTimeSec`: minigame duration
+- 🧷 `consumeOnSuccess` / `consumeOnFail`: item removal
+- 🧪 Items: label, duration, price per item
+
+**🔒 SECURITY:**
+All hack attempts and item removals are validated server-side.
+The unlock applies only to the specific vehicle and exactly for the configured time.
+
+---
+
+# 💰 **DEALERS:**
+
+Dealers use **ox_lib** menus for a modern experience.
+
+**Config options:**
+
+- 📍 `coords`: dealer location
+- 🧍 `pedModel`: character model
+- 🛒 `saleItems`: items and prices
+- 💳 `money.mode`: `account` (ESX/QB) or `item` (inventory)
+- ⏳ `purchaseCooldownMin`: cooldown per player to prevent spam
+
+**Flow:**
+
+- 🚶 Approach dealer NPC.
+- 📑 Open menu, select item to buy.
+- 🔍 Server checks funds, cooldown, proximity.
+- 📦 Item delivered; if inventory fails, refund is automatic.
+
+---
+
 # 🔒 **SECURITY & VALIDATION:**
 ### Expanded Security Information
 
@@ -761,108 +760,42 @@ Config.Debug = { -- Debug configuration
 
 # 🧪 **COMMON ISSUES:**
 
-## 📁 FOLDER NAME ERROR:
-**Problem:** Resource prints an error and stops.
-**Solution:** Rename the folder to **smdz_speedforzones**.
-
-
-## 📍 DEALER MENU DOESN'T OPEN:
-**Problem:** No menu at dealer location.
-**Solution:** Start **ox_lib** before this resource and check dealer config.
-
-## 🛠️ HACK ITEM NOT CONSUMED:
-**Problem:** Item remains after use.
-**Solution:** Check your inventory integration (ox_inventory recommended), confirm item is registered and present.
-
-
-## 🚗 VEHICLE NOT UNLOCKED AFTER HACK:
-**Problem:** Speed cap still applies after minigame.
-**Solution:** Make sure **OneSync** is enabled and vehicle is networked. Confirm hack event is processed by the server.
-
-
-## 🔥 WEBHOOK LOGS NOT SENT:
-**Problem:** No Discord notifications.
-**Solution:** Verify webhook URL in config.lua. Check server firewall and Discord permissions.
-
-
-## 🧩 FRAMEWORK NOT DETECTED:
-**Problem:** Money/items not working.
-**Solution:** Explicitly set **FrameworkMode** if your server has both ESX and QBCore.
-
-
-## 🚦 CLAMP FEELS TOO SOFT OR HARD:
-**Problem:** Speed transitions feel unnatural.
-**Solution:** Adjust **Smoothing** parameters in config.
-
-
-## 🎮 MINIGAME DOES NOT LAUNCH:
-**Problem:** Nothing happens when using hack item.
-**Solution:** Ensure **pcb_minigame** is started and matches the configured resource name.
-
-
-## ⚡ PLAYERS REPORT LAG OR SLOW RESPONSE:
-**Problem:** Delay in speed enforcement or menu opening.
-**Solution:** Check server performance, ensure OneSync is enabled, and debug logs are disabled in production.
-
-
-## 📦 ITEMS OR DEALERS NOT SHOWING UP:
-**Problem:** Players cannot see or use items/dealers.
-**Solution:** Check registration in inventory system, dealer config and ensure correct dependency start order.
+| Issue | Problem | Recommended Solution |
+| --- | --- | --- |
+| Folder name error | Resource prints an error and stops. | Rename the folder to **smdz_speedforzones**. |
+| Dealer menu doesn't open | No menu appears at the dealer location. | Start **ox_lib** before this resource and check dealer config. |
+| Hack item not consumed | Item remains after use. | Check your inventory integration, confirm the item is registered, and verify the player has the item. |
+| Vehicle not unlocked after hack | Speed cap still applies after minigame. | Make sure **OneSync** is enabled and the vehicle is networked. Confirm the hack event is processed by the server. |
+| Webhook logs not sent | No Discord notifications are received. | Verify webhook URL in `config.lua`. Check server firewall and Discord permissions. |
+| Framework not detected | Money/items are not working. | Explicitly set **FrameworkMode** if your server has both ESX and QBCore. |
+| Clamp feels too soft or hard | Speed transitions feel unnatural. | Adjust **Smoothing** parameters in config. |
+| Minigame does not launch | Nothing happens when using hack item. | Ensure **pcb_minigame** is started and matches the configured resource name. |
+| Players report lag or slow response | Delay in speed enforcement or menu opening. | Check server performance, ensure OneSync is enabled, and debug logs are disabled in production. |
+| Items or dealers not showing up | Players cannot see or use items/dealers. | Check registration in inventory system, dealer config, and dependency start order. |
 
 ---
 
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
-- ❓ **CAN I USE THIS ON ESX OR QBCORE?**
-Yes, both are supported and auto-detected.
-
-- ❓ **DO I NEED OX_INVENTORY?**
-No, but it’s recommended for modern inventory features and better compatibility.
-
-- ❓ **HOW DO I ADD MORE HACK ITEMS?**
-Add entries to Config.Hack.items and register them in your inventory system (ESX/QBCore/ox_inventory).
-
-- ❓ **CAN I CHANGE THE MINIGAME?**
-Yes, set Config.Hack.minigame to your preferred resource name.
-
-- ❓ **WHAT HAPPENS IF I RENAME THE RESOURCE FOLDER?**
-The script will not start for security reasons. Always use smdz_speedforzones.
-
-- ❓ **HOW DO I MONITOR PURCHASES AND HACKS?**
-Enable Discord webhook logging via Config.Logging.discordWebhook.
-
-- ❓ **CAN I ALLOW ADMINS OR CERTAIN JOBS TO BYPASS LIMITS?**
-Yes, configure ACE and framework bypass settings in config.lua.
-
-- ❓ **IS IT OPTIMIZED FOR BIG SERVERS?**
-Yes, OneSync Infinity is recommended for best performance with many players.
-
-- ❓ **CAN PLAYERS USE UNLOCKS IN ANY VEHICLE?**
-No, unlocks apply only to the specific vehicle targeted during the hack.
-
-- ❓ **DO BANNERS AND NOTIFICATIONS WORK IN ANY LANGUAGE?**
-Banners support English and Spanish by default. You can add more translations in config.lua.
-
-- ❓ **CAN I RESTRICT DEALER ACCESS TO CERTAIN JOBS?**
-Yes, use job whitelist and permissions in the dealer config.
-
-- ❓ **IS SERVER RESTART REQUIRED AFTER CHANGING CONFIG.LUA?**
-Yes, restart the resource or server to apply config changes.
-
-- ❓ **HOW DO I GET SUPPORT OR REPORT BUGS?**
-Contact through the Tebex page, Discord, or the official documentation links.
-
-- ❓ **HOW CAN I TROUBLESHOOT ISSUES IF THINGS DON'T WORK?**
-1. Enable debug mode for more logs.
-2. Check dependency order.
-3. Verify proper registration of items and dealers.
-4. Monitor server console for errors and warnings.
-
-- ❓ **IS THIS SYSTEM SECURE AGAINST CHEATERS?**
-Yes, all critical actions are validated server-side. No client can bypass restrictions or hack the system without server approval.
+| Question | Answer |
+| --- | --- |
+| Can I use this on ESX or QBCore? | Yes, both are supported and auto-detected. |
+| Do I need ox_inventory? | No, but it is recommended for modern inventory features and better compatibility. |
+| How do I add more hack items? | Add entries to `Config.Hack.items` and register them in your inventory system (ESX/QBCore/ox_inventory). |
+| Can I change the minigame? | Yes, set `Config.Hack.minigame` to your preferred resource name. |
+| What happens if I rename the resource folder? | The script will not start for security reasons. Always use `smdz_speedforzones`. |
+| How do I monitor purchases and hacks? | Enable Discord webhook logging via `Config.Logging.discordWebhook`. |
+| Can I allow admins or certain jobs to bypass limits? | Yes, configure ACE and framework bypass settings in `config.lua`. |
+| Is it optimized for big servers? | Yes, OneSync Infinity is recommended for best performance with many players. |
+| Can players use unlocks in any vehicle? | No, unlocks apply only to the specific vehicle targeted during the hack. |
+| Do banners and notifications work in any language? | Banners support English and Spanish by default. You can add more translations in `config.lua`. |
+| Can I restrict dealer access to certain jobs? | Yes, use job whitelist and permissions in the dealer config. |
+| Is server restart required after changing config.lua? | Yes, restart the resource or server to apply config changes. |
+| How do I get support or report bugs? | Contact through the Tebex page, Discord, or the official documentation links. |
+| How can I troubleshoot issues if things don't work? | Enable debug mode, check dependency order, verify items/dealers registration, and monitor server console warnings. |
+| Is this system secure against cheaters? | Yes, all critical actions are validated server-side. No client can bypass restrictions or hack the system without server approval. |
 
 ---
-
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
 - 🛠️ During this period, the script will only receive:
