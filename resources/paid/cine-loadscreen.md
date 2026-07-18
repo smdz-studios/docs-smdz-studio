@@ -404,7 +404,7 @@ If you are unsure whether you can use a specific song, image, logo, or video, **
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
 - 🛠️ During this period, the script will only receive:
   - **Bug fixes / emergency patches** if necessary
   - **Small content additions or minor improvements** from time to time
@@ -416,7 +416,7 @@ If you are unsure whether you can use a specific song, image, logo, or video, **
 ---
 
 # ⚠️ **IMPORTANT WARNING:**
-🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+### 🚫 DO NOT CHANGE THE RESOURCE FOLDER NAME
 
-⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+- ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. (Check: https://smdz-studios.tebex.io/legal)
+- 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

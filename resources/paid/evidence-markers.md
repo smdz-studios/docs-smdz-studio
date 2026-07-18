@@ -300,22 +300,6 @@ Config.Timezone = {
 
 ---
 
-# 📝 **NOTES & TARGET INTERACTIONS:**
-
-
-  - View marker info (**character name, date, time**) via target + ox_lib context menu
-- **3D draw text** above markers:
-  - Evidence title
-  - Note line
-  Visible to all players.
-- Crime-scene **NUI interface**:
-  - Yellow **FBI-style evidence card**
-  - Large ID number
-  - Save / Delete / Cancel actions
-  - Fully localized (EN / ES)
-
----
-
 # 🌐 **DISCORD WEBHOOKS:**
 
 - Fully configurable via `Config.Webhook`:
@@ -331,23 +315,6 @@ Config.Timezone = {
   - Note updated
 - Each event includes **player, job, coordinates, item name, and netId**.
 
----
-
-# 🧹 **AUTO-CLEANUP SYSTEM:**
-
-- Optional timed cleanup using `Cleanup.IntervalHours`.
-- Automatically removes placed markers to keep the map clean.
-- If `NotifyPlayers` is enabled, **owners are notified** when their markers are removed.
-
----
-
-
-# 🧪 **DEBUG:**
-- Turn `Config.Core.Debug = true` to enable rich `[SMDZ DEBUG]` output with colored console lines.
-- Startup logs: detected framework / target / inventory / notify / locale / cleanup timers (auto shows what was chosen when in `auto`).
-- Runtime logs: gizmo state (mouse/world-local/snap), placement clamps, note edits, targets add/remove, sync requests, cleanup removals, webhook sends/failures.
-- Target gatekeeper: if no compatible target is found, a **red critical error** is printed and the resource stops immediately.
-- Recommended: keep debug on during setup; disable for production once all systems are green.
 ---
 
 # 🛠️ **DEVELOPER EVENTS:**
@@ -431,7 +398,7 @@ Config.Timezone = {
 ---
 
 # 🔄 **UPDATES:**
-- 📅 There are currently **NO major update plans** scheduled for **Q1 and Q2 of 2026**.
+- 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
 - 🛠️ During this period, the script will only receive:
   - **Bug fixes / emergency patches** if necessary
   - **Small content additions or minor improvements** from time to time
@@ -443,7 +410,7 @@ Config.Timezone = {
 ---
 
 # ⚠️ **IMPORTANT WARNING:**
-🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
+### 🚫 DO NOT CHANGE THE RESOURCE FOLDER NAME
 
-⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
+- ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. (Check: https://smdz-studios.tebex.io/legal)
+- 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*

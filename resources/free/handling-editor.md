@@ -767,8 +767,9 @@ The resource also listens to FiveM's built-in `onResourceStop` and `playerDroppe
 
 ---
 
-# ⚠️ **IMPORTANT WARNING:**
-🚫 **DO NOT CHANGE THE RESOURCE FOLDER NAME!**
 
-⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. Check: https://smdz-studios.tebex.io/legal
-🧩 *The paid open-source edition may remove or modify this validation from the first lines of `server/main.lua`, depending on the license terms supplied with that edition.*
+# ⚠️ **IMPORTANT WARNING:**
+### 🚫 DO NOT CHANGE THE RESOURCE FOLDER NAME
+
+- ⚖️ If you rename the folder, the script will NOT function and will stop automatically for security reasons. (Check: https://smdz-studios.tebex.io/legal)
+- 🧩 *If you have an open source version, you can remove this security in the first lines of server.lua, sv_main.lua, etc.*
