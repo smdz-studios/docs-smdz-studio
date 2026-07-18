@@ -118,7 +118,7 @@ start smdz_lb_smartcab
 
 ---
 
-# 🗄️ **DATABASE / SQL:**
+# 🗄️ **DATABASE:**
 
 The script includes SQL persistence:
 
@@ -482,7 +482,7 @@ Config.Debug = false -- true/false only. False keeps warnings and errors visible
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 Players use SmartCab entirely through LB Phone. Because `Config.DefaultApp` is `false`, they must first install the application from the phone's app store.
 
@@ -524,7 +524,7 @@ Travel to destination → Trip completed → Receipt saved
 
 ---
 
-# 🔌 Events & Exports (Developers)
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 SmartCab uses network events internally between its NUI, client, and server files. They are documented below for maintenance and debugging, but they are **not advertised as a stable public integration API**. External resources should not trigger service, billing, history, or Ride+ events without adding their own validation layer.
 
@@ -636,7 +636,7 @@ SmartCab consumes several official LB Phone exports internally, including custom
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

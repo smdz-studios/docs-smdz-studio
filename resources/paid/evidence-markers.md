@@ -82,7 +82,7 @@
 
 ---
 
-# 🧰 **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 - FiveM latest recommended build with OneSync.
 - Target (required): `ox_target` or `qb-target` (script stops if missing).
 - Inventory (auto): `ox_inventory`, `qs-inventory`, `qb-inventory`, `origen_inventory`, `core_inventory`, `ak47_inventory` (extendable).
@@ -90,7 +90,7 @@
 
 ---
 
-# 📦 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 1) Place in `resources/[smdz]/smdz_evidence_markers`.
 2) Ensure dependencies start before this resource.
 3) Example `server.cfg`:
@@ -104,7 +104,7 @@
 
 ---
 
-# ⚙️ **CONFIGURATION FILE:**
+# ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
 ```lua
@@ -285,7 +285,7 @@ Config.Timezone = {
 
 ---
 
-# 🎮 **CONTROLS (PLACEMENT):**
+# 🎮 **USAGE:**
 
 - Placement gizmo **opens automatically** when using an evidence marker.
 - Mouse-driven gizmo controls:
@@ -300,7 +300,7 @@ Config.Timezone = {
 
 ---
 
-# 🌐 **DISCORD WEBHOOKS:**
+# 📡 **WEBHOOK LOGGING:**
 
 - Fully configurable via `Config.Webhook`:
   - Webhook URL
@@ -317,7 +317,7 @@ Config.Timezone = {
 
 ---
 
-# 🛠️ **DEVELOPER EVENTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 - **Namespace:** all events start with `smdz_evidence_markers:`.
 - **Notes:** `smdz_evidence_markers:setNote` triggers a webhook (edit/clear) and refreshes draw text for everyone.
 
@@ -339,7 +339,7 @@ Config.Timezone = {
 
 ---
 
-# 📤 **EXPORTS:**
+## EXPORTS
 
 **Client Exports**
 - `useItem(itemName, slot)`

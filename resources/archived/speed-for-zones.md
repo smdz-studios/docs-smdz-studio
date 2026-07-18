@@ -58,7 +58,7 @@ This guide covers everything: installation, configuration, features, troubleshoo
 
 ---
 
-# 📦 **REQUIREMENTS AND INSTALLATION:**
+# 📦 **REQUIREMENTS:**
 ### 1. 🧩 **DEPENDENCIES:**
 
 - **ox_lib** (required for dealer UI)
@@ -154,7 +154,7 @@ Dealers use **ox_lib** menus for a modern experience.
 
 ---
 
-# ⚙️ **CONFIGURATION FILE:**
+# ⚙️ **CONFIGURATION:**
 Everything is in config.lua.
 Key sections:
 - 🧑‍💻 FrameworkMode: auto, esx, qb, none
@@ -724,7 +724,7 @@ Config.Debug = { -- Debug configuration
 
 ---
 
-# 🔒 **SECURITY:**
+# 🔒 **SECURITY & VALIDATION:**
 ### Expanded Security Information
 
 - 🛡️ **All critical logic is enforced server-side.**
@@ -759,7 +759,7 @@ Config.Debug = { -- Debug configuration
 
 ---
 
-# 🐞 **COMMON PROBLEMS:**
+# 🧪 **COMMON ISSUES:**
 
 ## 📁 FOLDER NAME ERROR:
 **Problem:** Resource prints an error and stops.

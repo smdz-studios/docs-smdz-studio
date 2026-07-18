@@ -128,7 +128,7 @@ npm run build
 
 ---
 
-## 🔌 **BRIDGE COMPATIBILITY:**
+## 🤝 **COMPATIBILITY:**
 
 ### Frameworks (auto-detected)
 
@@ -426,7 +426,7 @@ Config.TestMode = {
 
 ---
 
-# 🎮 **COMMANDS:**
+# 🎮 **USAGE:**
 
 | Command | Description | Permission / Notes |
 |---------|-------------|--------------------|
@@ -444,7 +444,7 @@ Config.TestMode = {
 
 ---
 
-# 🔌 **EXPORTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 No public resource exports are defined by `smdz_nfc_transfer` itself.
 
@@ -452,7 +452,7 @@ Internal code uses exports from other resources via bridge adapters.
 
 ---
 
-# 📤 **EVENTS:**
+## EVENTS
 
 ### Client Events (received)
 
@@ -500,7 +500,7 @@ Internal code uses exports from other resources via bridge adapters.
 
 ---
 
-# 💾 **DATABASE / SQL:**
+# 🗄️ **DATABASE:**
 
 Table: `smdz_nfc_history`
 
@@ -581,7 +581,7 @@ Implemented protections:
 
 ---
 
-# 🛠 **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 1. **Resource does not start or instantly stops**
 - Confirm folder name is exactly `smdz_nfc_transfer`.

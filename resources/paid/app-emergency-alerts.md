@@ -46,7 +46,7 @@ This is built to feel like a real-world public alert system (Amber/Police/Medica
 
 ---
 
-# **⭐ FEATURES:**
+# ⭐ **FEATURES:**
 
 - 📱 **LB Phone app integration** (custom app with configurable name, icon, and description)
 - 🧭 **Zone-based dispatch** using PolyZone (Los Santos, North, Cayo Perico, or ALL)
@@ -76,7 +76,7 @@ This is built to feel like a real-world public alert system (Amber/Police/Medica
 
 ---
 
-# **🧱 SUPPORTED FRAMEWORKS & DEPENDENCIES:**
+# 📦 **REQUIREMENTS:**
 
 Frameworks (auto-detected):
 
@@ -93,7 +93,7 @@ Dependencies (required):
 
 ---
 
-# **📥 INSTALLATION:**
+# 📥 **INSTALLATION:**
 
 1. Extract to:
 
@@ -124,7 +124,7 @@ start smdz_lb_emergency_app
 
 ---
 
-# **📁 STRUCTURE AND COMPONENTS:**
+# 📁 **STRUCTURE AND COMPONENTS:**
 
 | Component | Purpose |
 | --- | --- |
@@ -137,7 +137,7 @@ start smdz_lb_emergency_app
 
 ---
 
-# **🔐 ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
+# 🔐 **ADMIN DELETE PERMISSIONS (GROUPS + ACE):**
 
 `/deletealert` can be authorized with any of these:
 
@@ -174,7 +174,7 @@ add_principal identifier.license:YOUR_LICENSE group.admin
 
 ---
 
-# **🌍 ZONE TARGETING MODEL:**
+# 🌍 **ZONE TARGETING MODEL:**
 
 Zones are defined as PolyZone polygons. Each player belongs to one zone (or none). Alerts can be sent to:
 
@@ -184,7 +184,7 @@ Zones are defined as PolyZone polygons. Each player belongs to one zone (or none
 The panel shows the sender’s current zone to avoid mistakes.
 
 
-# **📱 USER EXPERIENCE (PHONE APP):**
+# 📱 **USER EXPERIENCE (PHONE APP):**
 
 Players see:
 
@@ -196,7 +196,7 @@ Alerts update **in real time** with no refresh needed.
 ---
 
 
-# **📦 PANEL ITEM (OPTIONAL):**
+# 📦 **PANEL ITEM (OPTIONAL):**
 
 If you want to restrict the **alert panel** to a physical item (e.g. tablet/sonar), enable:
 
@@ -220,7 +220,7 @@ Inventory setup:
 Client event used:
 - `smdz_lb_emergency_app:client:useEmergencySonar`
 
-# **🙈 ANONYMOUS MODE BEHAVIOR:**
+# 🙈 **ANONYMOUS MODE BEHAVIOR:**
 
 When anonymous:
 
@@ -232,7 +232,7 @@ This allows public alerts without exposing the author’s name.
 
 ---
 
-# **🗄️ PERSISTENCE AND DATA STORAGE:**
+# 🗄️ **PERSISTENCE AND DATA STORAGE:**
 
 Database tables:
 
@@ -281,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `smdz_lb_emergency_app_user_settings` (
 
 ---
 
-# **📡 WEBHOOKS AND AUDIT TRAIL:**
+# 📡 **WEBHOOK LOGGING:**
 
 Two webhook systems:
 
@@ -296,7 +296,7 @@ Both can be configured with:
 
 ---
 
-# **🌐 LOCALIZATION:**
+# 🌍 **LOCALIZATION:**
 
 Supported locales:
 
@@ -306,7 +306,7 @@ All UI text, messages, and debug logs are keyed for translation.
 
 ---
 
-# **🔌 DEVELOPER INTEGRATION:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 This resource exposes **client and server exports**, and also emits events for advanced integrations.
 
@@ -322,7 +322,7 @@ See the **Exports + Events** section below for full details.
 ---
 
 
-# **📤 EXPORTS:**
+## 📤 EXPORTS
 
 ## **Client exports (examples per export):**
 
@@ -361,7 +361,7 @@ See the **Exports + Events** section below for full details.
 | `GetZoneLabel(zone)` | string | Localized zone label. | `local label = exports["smdz_lb_emergency_app"]:GetZoneLabel("NORTH")` |
 
 ---
-# **📡 EVENTS:**
+## 📡 EVENTS
 
 | Event | Direction | Description | Payload |
 | --- | --- | --- | --- |
@@ -376,7 +376,7 @@ See the **Exports + Events** section below for full details.
 
 ---
 
-# **🧩 NUI CALLBACKS:**
+# 🧩 **NUI CALLBACKS:**
 
 | Callback | Direction | Description | Response |
 | --- | --- | --- | --- |
@@ -393,7 +393,7 @@ See the **Exports + Events** section below for full details.
 
 ---
 
-# **🔒 SECURITY NOTES:**
+# 🔒 **SECURITY & VALIDATION:**
 
 - All critical checks are server‑side (permissions, cooldown, word filter).
 - Unauthorized attempts can be logged in webhook.
@@ -401,7 +401,7 @@ See the **Exports + Events** section below for full details.
 
 ---
 
-# **🧪 TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 1. **Panel does not open**
    - Check your job grade and `Config.CommandPermissions`.
@@ -486,7 +486,7 @@ See the **Exports + Events** section below for full details.
 
 ---
 
-# **❓ FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 **How do I add a new alert type?**
 Add it in `Config.AlertTypes` and mirror it in `Config.AlertPermissions.Types`.
@@ -550,7 +550,7 @@ Yes. The app depends on LB Phone exports and NUI.
 
 ---
 
-# **🎯 REAL‑WORLD USE CASES:**
+# 🎯 **REAL‑WORLD USE CASES:**
 
 - **Amber Alert:** Missing child bulletin sent to all zones with high priority.
 - **Police Advisory:** Road closure or active pursuit in a specific zone.

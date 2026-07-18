@@ -80,7 +80,7 @@
 
 ---
 
-# 🔗 COMPATIBILITY
+# 🤝 **COMPATIBILITY:**
 
 ## Frameworks
 - ESX

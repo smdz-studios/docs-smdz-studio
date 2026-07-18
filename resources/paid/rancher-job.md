@@ -10,12 +10,9 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
-
 <p style="text-align: center; font-weight: bold; color: red;">
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
-
----
 
 <section class="support-hero support-hero--shield">
   <p class="support-eyebrow">USAGE METRICS</p>
@@ -80,7 +77,7 @@ The resource spawns one global ranching contract at a time. Players start the jo
 
 ---
 
-# ✅ **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 - 🌐 FiveM server with **OneSync** enabled.
 
 Optional integrations:
@@ -91,7 +88,7 @@ Optional integrations:
 
 ---
 
-# 📦 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 1. Place the resource inside your server resources directory.
 2. Add to `server.cfg`:
    ```
@@ -112,7 +109,7 @@ Optional integrations:
 
 ---
 
-# 🧰 **CONFIGURATION GUIDE:**
+# ⚙️ **CONFIGURATION:**
 🗂️ Main file: `shared/config.lua`
 
 ### 1) Core
@@ -155,89 +152,8 @@ Optional integrations:
 ### 9) Debug
 - 🧠 `Config.Debug` and `Config.DebugAdvanced` for detailed telemetry.
 
----
+## Configuration file
 
-# 🔔 **NOTIFICATIONS:**
-`Config.Notify` allows selecting a notification provider and customizing defaults:
-
-```
-Config.Notify = {
-  mode = 'auto',
-  defaultType = 'info',
-  defaultTime = 5000,
-  title = 'SMDZ Rancher Job',
-  vms = { color = '#34ebe8', icon = 'fa-solid fa-check' },
-  brutal = { type = 'info', sound = false },
-  origen = { type = 'info' },
-  codem = { header = 'SMDZ Rancher Job' },
-  mythic = { ['background-color'] = '#ffffff', ['color'] = '#000000' },
-}
-```
-
-Supported modes:
-- `ox_lib`
-- `okokNotify`
-- `vms_notifyv2`
-- `brutal_notify`
-- `origen_notify`
-- `codem-notification`
-- `wasabi_notify`
-- `rtx_notify`
-- `mythic_notify`
-- ESX / QB / QBX native
-- Standalone fallback (STANDALONE NOT TESTED)
-
----
-
-# 📦 **INVENTORY:**
-Inventory is used **only for item payouts**. If no supported inventory is detected, the script falls back to native ESX/QBCore/QBX item functions.
-
-Supported inventories:
-- `ox_inventory`
-- `tgiann-inventory`
-- `qs-inventory`
-- `origen_inventory`
-- `core_inventory`
-- `jpr-inventory`
-- `codem-inventory`
-
----
-
-# 🌍 **LOCALIZATION:**
-🌐 Locale files live in `locales/`.
-- 🗂️ Default: `en`, `es`, `pt`, `fr`, `de`, `it`
-
-🧩 Add a locale:
-1. 📄 Create `locales/<lang>.lua` with `Locales['<lang>']` table.
-2. Set `Config.Locale = '<lang>'`.
-
----
-
-# 🛡️ **ANTI-EXPLOIT VALIDATION (SERVER):**
-🧯 The server validates completion before payout and can block or cancel the job if checks fail:
-- 📍 **Delivery distance**: player must be within `Config.AntiExploit.deliveryMaxDistance`.
-- ⏱️ **Minimum time**: job must run at least `Config.AntiExploit.minJobTimeSec`.
-- 📊 **Delivered ratio**: delivered cows must meet `Config.AntiExploit.minDeliveredRatio` and `Config.Herd.requiredRatio`.
-- 🧭 **Distance drift**: client-reported distance must match server calculation (`Config.AntiExploit.maxDistanceDriftKm`).
-- 🚶 **On-foot enforcement**: optional checks for start/whistle/finish.
-- 🧯 **Spam protection**: cooldowns and max finish attempts (`startCooldownMs`, `finishCooldownMs`, `maxFinishAttempts`).
-- ⛔ **Job expiry**: optional max duration via `Config.AntiExploit.maxJobDurationSec`.
-
-If a check fails, the attempt is blocked, logged (debug/webhook), and the player is notified.\n---
-
-# 🐄 **COW LOSS & DEATH LOGIC:**
-- ☠️ Cows can die; dead cows are removed from the delivery count.
-- 🏃 Cows too far from the player for too long are marked lost and flee.
-- ✅ “All cows lost” is only confirmed after consecutive checks to avoid false positives.
-
-🛠️ If losses feel too strict, tune:
-- ⏱️ `Config.Herd.lostGraceMs`
-- 🔁 `Config.Herd.lostAllConfirmTicks`
-- 📏 `Config.Herd.lostRadius`
-
----
-
-# ⚙️ **CONFIGURATION FILE:**
 All in `config.lua`:
 
 ```lua
@@ -570,7 +486,91 @@ Config.Points = {
 
 ---
 
-# 📡 **EVENTS:**
+# 🔔 **NOTIFICATIONS:**
+`Config.Notify` allows selecting a notification provider and customizing defaults:
+
+```
+Config.Notify = {
+  mode = 'auto',
+  defaultType = 'info',
+  defaultTime = 5000,
+  title = 'SMDZ Rancher Job',
+  vms = { color = '#34ebe8', icon = 'fa-solid fa-check' },
+  brutal = { type = 'info', sound = false },
+  origen = { type = 'info' },
+  codem = { header = 'SMDZ Rancher Job' },
+  mythic = { ['background-color'] = '#ffffff', ['color'] = '#000000' },
+}
+```
+
+Supported modes:
+- `ox_lib`
+- `okokNotify`
+- `vms_notifyv2`
+- `brutal_notify`
+- `origen_notify`
+- `codem-notification`
+- `wasabi_notify`
+- `rtx_notify`
+- `mythic_notify`
+- ESX / QB / QBX native
+- Standalone fallback (STANDALONE NOT TESTED)
+
+---
+
+# 📦 **INVENTORY:**
+Inventory is used **only for item payouts**. If no supported inventory is detected, the script falls back to native ESX/QBCore/QBX item functions.
+
+Supported inventories:
+- `ox_inventory`
+- `tgiann-inventory`
+- `qs-inventory`
+- `origen_inventory`
+- `core_inventory`
+- `jpr-inventory`
+- `codem-inventory`
+
+
+---
+
+# 🌍 **LOCALIZATION:**
+🌐 Locale files live in `locales/`.
+- 🗂️ Default: `en`, `es`, `pt`, `fr`, `de`, `it`
+
+🧩 Add a locale:
+1. 📄 Create `locales/<lang>.lua` with `Locales['<lang>']` table.
+2. Set `Config.Locale = '<lang>'`.
+
+---
+
+# 🔒 **SECURITY & VALIDATION:**
+🧯 The server validates completion before payout and can block or cancel the job if checks fail:
+- 📍 **Delivery distance**: player must be within `Config.AntiExploit.deliveryMaxDistance`.
+- ⏱️ **Minimum time**: job must run at least `Config.AntiExploit.minJobTimeSec`.
+- 📊 **Delivered ratio**: delivered cows must meet `Config.AntiExploit.minDeliveredRatio` and `Config.Herd.requiredRatio`.
+- 🧭 **Distance drift**: client-reported distance must match server calculation (`Config.AntiExploit.maxDistanceDriftKm`).
+- 🚶 **On-foot enforcement**: optional checks for start/whistle/finish.
+- 🧯 **Spam protection**: cooldowns and max finish attempts (`startCooldownMs`, `finishCooldownMs`, `maxFinishAttempts`).
+- ⛔ **Job expiry**: optional max duration via `Config.AntiExploit.maxJobDurationSec`.
+
+If a check fails, the attempt is blocked, logged (debug/webhook), and the player is notified.
+
+---
+
+# 🐄 **COW LOSS & DEATH LOGIC:**
+- ☠️ Cows can die; dead cows are removed from the delivery count.
+- 🏃 Cows too far from the player for too long are marked lost and flee.
+- ✅ “All cows lost” is only confirmed after consecutive checks to avoid false positives.
+
+🛠️ If losses feel too strict, tune:
+- ⏱️ `Config.Herd.lostGraceMs`
+- 🔁 `Config.Herd.lostAllConfirmTicks`
+- 📏 `Config.Herd.lostRadius`
+
+
+---
+
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 | Side | Event | Purpose |
 |------|-------|---------|
 | Client | `smdz_rancher_job:client:jobUpdate` | Sync global job state to clients (NPC/blip/state). |
@@ -583,9 +583,11 @@ Config.Points = {
 | Server | `smdz_rancher_job:server:finish` | Validates delivery and triggers payout. |
 | Server | `smdz_rancher_job:server:scare` | Makes nearby cows flee when shots happen. |
 | Server | `smdz_rancher_job:server:lostCows` | Confirms lost cows and triggers flee/delete. |
-| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |\n---
+| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |
 
-# 🧾 **WEBHOOK LOGGING:**
+---
+
+# 📡 **WEBHOOK LOGGING:**
 🔗 Enable in `shared/config.lua`:
 ```
 Config.Webhook = {
@@ -631,7 +633,7 @@ Config.Webhook = {
 
 ---
 
-# 🧪 **COMMON PROBLEMS:**
+# 🧪 **COMMON ISSUES:**
 
 | Issue | Recommended Solution |
 |---|---|

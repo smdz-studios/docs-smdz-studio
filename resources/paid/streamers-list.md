@@ -116,7 +116,7 @@ npm run build
 
 ---
 
-# 🔌 **BRIDGE:**
+# 🤝 **COMPATIBILITY:**
 
 | Dependency | Required | Purpose |
 |---------------------|----------|-------------------------------------------|
@@ -309,7 +309,7 @@ To add a new language:
 
 ---
 
-# 🎮 **COMMANDS:**
+# 🎮 **USAGE:**
 
 | Command | Description | Permission |
 |----------------------|--------------------------------------------------|-------------------|
@@ -321,7 +321,7 @@ Command names are configurable in `Config.Commands`.
 
 ---
 
-# 🔌 **EXPORTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 | Export | Side | Parameters | Returns | Description |
 |----------------------|--------|------------|----------|-----------------------------------------------------------|
@@ -334,7 +334,7 @@ Sort order:
 
 ---
 
-# 📤 **EVENTS:**
+## EVENTS
 
 ## Server Events (incoming)
 
@@ -429,7 +429,7 @@ Status checks are fully server-side:
 
 ---
 
-# 🗄️ **SQL STORAGE:**
+# 🗄️ **DATABASE:**
 
 Main SQL file:
 - `sql/install_me.sql`
@@ -609,7 +609,7 @@ Auto-create/migration behavior:
 
 ---
 
-# 🧪 **COMMON PROBLEMS:**
+# 🧪 **COMMON ISSUES:**
 
 | Symptom | Likely Cause | Fix |
 |---|---|---|

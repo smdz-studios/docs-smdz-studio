@@ -171,7 +171,7 @@ The player preferences table stores:
 - Creation and update timestamps.
 ---
 
-# ⚙️ **CONFIGURATION:**
+# 🔐 **SERVER CONFIGURATION:**
 
 ```lua
 Config = {}
@@ -615,7 +615,7 @@ Config.Debug = true
 
 ---
 
-# 🔐 **SERVER CONFIGURATION:**
+# ⚙️ **CONFIGURATION:**
 
 Private server values are stored in:
 
@@ -883,7 +883,7 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|
@@ -904,7 +904,7 @@ The resource does not use `voiceIntent` to determine radio or phone state becaus
 
 ---
 
-# 🛠️ **COMMON PROBLEMS:**
+# 🧪 **COMMON ISSUES:**
 
 | Problem | Likely cause | Recommended solution |
 |---|---|---|

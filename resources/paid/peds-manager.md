@@ -62,7 +62,7 @@ Full-featured ped assignment manager with a modern NUI for staff and players, bu
 
 ---
 
-# 📦 **REQUIREMENTS AND COMPATIBILITY:**
+# 📦 **REQUIREMENTS:**
 
 - **FiveM server:** latest recommended build.
 - **Framework (one of):** `es_extended`, `qb-core`, or `qbx_core`.

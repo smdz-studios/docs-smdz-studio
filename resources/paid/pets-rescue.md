@@ -66,7 +66,7 @@ SMDZ Pets Rescue is a mission system where players help local NPCs recover lost 
 
 ---
 
-# 📦 **REQUIREMENTS AND COMPATIBILITY:**
+# 📦 **REQUIREMENTS:**
 
 - **FiveM server:** latest recommended build (Cerulean).
 - **Framework:** ESX / QBCore / QBX / Standalone.
@@ -499,7 +499,7 @@ print('Active missions:', json.encode(missions))
 
 ---
 
-# 🧯 **COMMON ISSUES:**
+# 🧪 **COMMON ISSUES:**
 
 | Issue | Symptoms | Likely Cause | Fix |
 |---|---|---|---|
@@ -529,7 +529,7 @@ print('Active missions:', json.encode(missions))
 
 ---
 
-## ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

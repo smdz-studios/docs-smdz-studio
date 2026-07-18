@@ -34,7 +34,7 @@
 
 ---
 
-# 🧩 OVERVIEW:
+# 🖥️ **UI OVERVIEW:**
 - 📌 **Name:** `smdz_hud2d_builder`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
@@ -115,7 +115,7 @@ restart smdz_hud2d_builder
 
 ---
 
-# ⚙️ **CONFIGURATION FILES:**
+# ⚙️ **CONFIGURATION:**
 Main:
 - `shared/config.lua`
 
@@ -448,7 +448,7 @@ return {
 
 ---
 
-# 🖥️ **UI OVERVIEW:**
+# 🧩 **OVERVIEW:**
 When editor is enabled:
 - 🧾 **Top center:** compact header line + position line (reduced size).
 - 🧭 **Left side:** element list, active highlighted.
@@ -544,7 +544,7 @@ end)
 
 ---
 
-# 🛠️ **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 ## ✅ Editor does not open / command does nothing
 **Possible causes**

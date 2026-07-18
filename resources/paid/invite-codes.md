@@ -561,7 +561,7 @@ ServerConfig.WebhookColor = 3447003
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 Players interact with a configured NPC to enter an invitation code, preview its rewards, and confirm the redemption.
 

@@ -67,7 +67,7 @@ It adds interactive bus stops with a clean menu, configurable fares and travel t
 
 ---
 
-# 📦 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 
 1) Place the resource in your server resources folder:
 
@@ -94,7 +94,7 @@ ensure smdz_bus_travels
 
 ---
 
-# 🧩 **BRIDGES (PROVIDERS):**
+# 🤝 **COMPATIBILITY:**
 
 ## 🔔 NOTIFICATIONS:
 
@@ -250,7 +250,7 @@ end
 
 ---
 
-# 🛠️ **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 - If the bus does not appear, enable `Config.Debug` and check for `DBG_BUS_SPAWN_*` logs.
 - If progress bars do not show, verify the selected provider resource is started.
@@ -334,7 +334,7 @@ A: No. It is local per player to prevent collisions and duplication.
 
 ---
 
-# ⚙️ **CONFIG.LUA FILE:**
+# ⚙️ **CONFIGURATION:**
 
 ```lua
 --  ____  __  __ ____  _____

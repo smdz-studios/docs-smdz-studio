@@ -415,7 +415,7 @@ Placement mode defaults:
 
 ---
 
-# 🔌 **DEVELOPER INTEGRATIONS (API):**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 This script uses an internal callback bridge:
 
@@ -665,7 +665,7 @@ print(('Received bumps: %s'):format(tostring(count)))
 
 ---
 
-# 🚨 **COMMON PROBLEMS:**
+# 🧪 **COMMON ISSUES:**
 
 | Symptom / message | Probable cause | How to fix now | Prevention |
 |-------------------|----------------|----------------|------------|

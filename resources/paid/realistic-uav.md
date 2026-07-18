@@ -306,7 +306,7 @@ Config.LocaleAliases = { -- Locale alias map (left side) to canonical locale cod
 
 ---
 
-# 🎒 **INVENTORY & USABLES:**
+# 📦 **INVENTORY:**
 
 Default item:
 
@@ -330,7 +330,7 @@ exports('useUAVItem', useUAVItem)
 
 ---
 
-# 🎮 **PLAYER FLOW & CONTROLS:**
+# 🎮 **USAGE:**
 
 1. Use the UAV item.
 2. Wait until activation animation/progress completes.
@@ -387,7 +387,7 @@ Behavior notes:
 
 ---
 
-# 🛰️ **WEBHOOK ACTION LOGGING:**
+# 📡 **WEBHOOK LOGGING:**
 
 Webhook module:
 
@@ -428,7 +428,7 @@ Important behavior:
 
 ---
 
-# 🔔 **NOTIFICATION PROVIDERS:**
+# 🔔 **NOTIFICATIONS:**
 
 Bridge file:
 
@@ -455,7 +455,7 @@ Supported `Config.Notify.provider` values:
 
 ---
 
-# 🧾 **DATABASE:**
+# 🗄️ **DATABASE:**
 
 Install SQL:
 

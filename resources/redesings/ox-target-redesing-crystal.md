@@ -46,14 +46,14 @@
 
 ---
 
-# 🚀 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 1. Delete your old ox_target folder and place the entire resource folder there for proper functioning; it's very simple.
 2. Ensure `ox_lib` starts **before** this resource.
 3. Start the resource.
 
 ---
 
-# ⚙️ **CONFIGURATION FILE:**
+# ⚙️ **CONFIGURATION:**
 
 Core settings (example):
 ```lua
@@ -239,7 +239,7 @@ Features:
 
 ---
 
-# 🔌 **EXPORTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 All original `ox_target` exports remain unchanged. This export is an added helper for the Theme Editor and is **client‑side**.
 
 Open the Theme Editor from another resource (client):
@@ -302,7 +302,7 @@ Access rules:
 
 ---
 
-# 🗄️ **DATABASE (OPTIONAL):**
+# 🗄️ **DATABASE:**
 SQL file: `ox_target_themes.sql`
 Table: `smdz_ox_target_themes_crystal`
 
@@ -318,7 +318,7 @@ CREATE TABLE IF NOT EXISTS smdz_ox_target_themes_crystal (
 
 ---
 
-# 🔌 **COMPATIBILITY:**
+# 🤝 **COMPATIBILITY:**
 This resource keeps **all original exports and logic** from `ox_target`.
 Your existing scripts do **not** need to change.
 
@@ -353,7 +353,7 @@ Only if `Config.ThemeSaveToDB = true`.
 Set `Config.Locale` to one of the available locales in `locales/`.
 
 ---
-# 🔌 **CHECKLIST:**
+# ✅ **INSTALLATION CHECKLIST:**
 
 <p style="text-align: center; font-weight: bold; color: red;">
 - If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.

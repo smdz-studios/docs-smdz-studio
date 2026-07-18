@@ -353,7 +353,7 @@ Config.Streaming = { -- Client-side entity and DUI streaming distances.
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 ### Commands
 
@@ -551,7 +551,7 @@ exports.smdz_evidence_board:LogEvidenceBoardWebhook(eventName, source, details)
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

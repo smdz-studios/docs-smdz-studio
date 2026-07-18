@@ -151,7 +151,7 @@ start smdz_handling_editor
 
 ---
 
-# ⚙️ **CONFIGURATION FILE:**
+# ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
 ```lua

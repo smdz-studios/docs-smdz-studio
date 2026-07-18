@@ -71,7 +71,7 @@ Config.TargetPreset = 'black_white'
 
 ---
 
-# 🚀 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 
 1. Stop the server completely.
 2. Back up your current `ox_target` configuration if necessary.
@@ -193,7 +193,7 @@ The original `ox_target` convars configured through `.cfg` files are still suppo
 
 ---
 
-# 🧾 **ORIGINAL OX_TARGET CONFIGURATION:**
+## ORIGINAL OX_TARGET CONFIGURATION
 
 The redesign does not remove the original `.cfg` convar system.
 
@@ -214,7 +214,7 @@ The new `config.lua` controls only the added radial redesign features.
 
 ---
 
-# 🔌 **EXPORTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 All original `ox_target` exports remain unchanged.
 
@@ -240,7 +240,7 @@ Refer to the official `ox_target` documentation for the complete API and option 
 
 ---
 
-# 🔌 **COMPATIBILITY:**
+# 🤝 **COMPATIBILITY:**
 
 The redesign keeps the original:
 
@@ -275,7 +275,7 @@ No changes are required in scripts that already use `ox_target`.
 
 ---
 
-# ❓ **FAQ — FREQUENTLY ASKED QUESTIONS:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|
@@ -300,7 +300,7 @@ No changes are required in scripts that already use `ox_target`.
 
 ---
 
-# 🧰 **COMMON ISSUES:**
+# 🧪 **COMMON ISSUES:**
 
 | Issue | Likely cause | Solution |
 |---|---|---|
@@ -416,7 +416,7 @@ setr ox_target:debug 1
 
 ---
 
-# ⚖️ **CREDITS AND LICENSING:**
+# ⚖️ **CREDITS & LICENSING:**
 
 This resource includes and preserves the original `ox_target` system and its applicable license.
 

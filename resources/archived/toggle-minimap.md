@@ -51,7 +51,7 @@ ensure toggleradar
 
 ---
 
-# ⚙️ **CONFIGURATION FILE:**
+# ⚙️ **CONFIGURATION:**
 All in `config.lua`:
 
 ```lua
@@ -90,7 +90,7 @@ Config.ACEPermission = "minimap.toggle"
 *Messages will appear in your selected language.*
 
 
-# 🌐 **LANGUAGES:**
+# 🌍 **LOCALIZATION:**
 <span class="badge badge--new">NEW UPDATE</span>
 
 1. English (en)
@@ -136,7 +136,7 @@ Config.Languages = {
 
 ---
 
-# 🔌 **EVENTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 ### Client
 - `minimap:client:permissionResult`
 
@@ -145,7 +145,7 @@ Config.Languages = {
 
 ---
 
-# 🛠️ **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 1. Script does not run: Check the ACE permissions.
 
 ---

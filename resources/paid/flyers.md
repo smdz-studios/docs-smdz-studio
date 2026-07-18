@@ -719,7 +719,7 @@ Config.Webhook = {
 ```
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 ## Player workflow
 
@@ -943,7 +943,7 @@ The included installer contains safe migration checks for columns introduced by 
 
 ---
 
-# 🔐 **SECURITY & VALIDATION:**
+# 🔒 **SECURITY & VALIDATION:**
 
 `smdz_flyers` treats the server as the final authority. Important protections include:
 
@@ -969,7 +969,7 @@ External resources should use the documented server exports instead of triggerin
 
 ---
 
-# 🔌 **EVENTS & EXPORTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 ## Public integration policy
 
@@ -1185,7 +1185,7 @@ Each returned flyer is a detached table with this structure:
 
 ---
 
-# 🧪 **DEBUGGING & DIAGNOSTICS:**
+# 🧪 **COMMON ISSUES:**
 
 ## Common issues table
 
@@ -1254,7 +1254,7 @@ Each returned flyer is a detached table with this structure:
 
 ---
 
-# ❓ **FREQUENTLY ASKED QUESTIONS (FAQ):**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

@@ -106,7 +106,7 @@ When you bring this template in another chat, tell me your real config and I wil
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 Describe how staff and players use the script.
 

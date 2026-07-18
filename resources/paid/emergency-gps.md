@@ -66,7 +66,7 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 
 ---
 
-# 🧰 **REQUIREMENTS:**
+# 📦 **REQUIREMENTS:**
 
 - FXServer artifact with NUI support.
 - One database resource (optional but recommended):
@@ -74,7 +74,7 @@ SMDZ Emergency GPS adds an in‑game NUI panel to create and manage **vehicle re
 
 ---
 
-# 📦 **INSTALLATION:**
+# 📥 **INSTALLATION:**
 
 1. Drop the resource folder into your server resources.
 2. Ensure it in `server.cfg`:
@@ -437,7 +437,7 @@ end
 
 ---
 
-# 🗃️ **DATABASE (SQL):**
+# 🗄️ **DATABASE:**
 
 Table: `smdz_emergency_gps_settings`
 
@@ -591,7 +591,7 @@ TriggerEvent('smdz_gps:exportRefreshManagement')
 
 ---
 
-# 📣 **EVENTS:**
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
 
 | Side | Event | Purpose |
 | --- | --- | --- |
@@ -650,7 +650,7 @@ end)
 
 ---
 
-# 🚀 **PERFORMANCE TIPS:**
+# 🚀 **PERFORMANCE:**
 
 - Increase `Config.Performance.UpdateInterval` for very high player counts.
 - Tune `Config.Performance.MinUpdateDistance` and `MinUpdateHeading` to reduce updates.
@@ -660,7 +660,7 @@ end)
 
 ---
 
-# 🧪 **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 | Symptom | Cause | Fix / Check |
 | --- | --- | --- |

@@ -387,7 +387,7 @@ The following presets are safe starting points. Adjust them to match your staff 
 
 ---
 
-# 🎮 USAGE:
+# 🎮 **USAGE:**
 
 Staff members use the script through a fullscreen in-game NUI. Every opening request is validated by the server, requires Steam to be detected, and checks the member's stored capabilities before the interface is opened.
 
@@ -514,7 +514,7 @@ External resources cannot use the opening exports to bypass Steam, membership, w
 
 ---
 
-# ❓ **FAQ:**
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
 |---|---|

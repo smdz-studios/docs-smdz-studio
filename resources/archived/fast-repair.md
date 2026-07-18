@@ -169,7 +169,7 @@ Config.DebugSoundMode = false       -- Enable debug messages for NUI mechanic so
 
 ---
 
-# 🛠️ **TROUBLESHOOTING:**
+# 🧪 **COMMON ISSUES:**
 
 | Issue | Possible Cause | Solution |
 |---|---|---|
