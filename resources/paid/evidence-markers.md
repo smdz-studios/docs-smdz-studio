@@ -377,22 +377,6 @@ Config.Timezone = {
   local markers = exports['smdz_evidence_markers']:getMarkers()
   ```
 
----
-
-# 📡 **WEBHOOK LOGGING:**
-
-- Fully configurable via `Config.Webhook`:
-  - Webhook URL
-  - Username & avatar
-  - Embed colors
-- Webhook footer is fixed and non-configurable: SMDZ STUDIOS - EVIDENCE MARKERS.
-- Logged events:
-  - Item used
-  - Marker placed
-  - Marker picked up
-  - Placement canceled
-  - Note updated
-- Each event includes **player, job, coordinates, item name, and netId**.
 
 ---
 

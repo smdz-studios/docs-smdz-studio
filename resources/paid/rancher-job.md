@@ -14,6 +14,8 @@
   ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
 </p>
 
+---
+
 <section class="support-hero support-hero--shield">
   <p class="support-eyebrow">USAGE METRICS</p>
   <h1>STATISTICS ON THE RESOURCE</h1>
@@ -55,18 +57,7 @@ The resource spawns one global ranching contract at a time. Players start the jo
 
 ---
 
-# 📦 **REQUIREMENTS:**
-- 🌐 FiveM server with **OneSync** enabled.
-
-Optional integrations:
-- 🧩 Frameworks: `es_extended`, `qb-core`, `qbx_core`
-- 🎯 Target systems: `ox_target`, `qb-target`
-- 📦 Inventory: `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `codem-inventory` (optional, used only for item payouts)
-- 🔔 Notification systems: `ox_lib`, `okokNotify`, `vms_notifyv2`, `brutal_notify`, `origen_notify`, `codem-notification`, `wasabi_notify`, `rtx_notify`, `mythic_notify`
-
----
-
-## 🤝 **COMPATIBILITY:**
+# 🤝 **COMPATIBILITY:**
 
 - 🎒 **Inventories**
   `ox_inventory`, `tgiann-inventory`, `qs-inventory`, `origen_inventory`, `core_inventory`, `jpr-inventory`, `ak47_inventory`,`codem-inventory`
@@ -88,49 +79,9 @@ Optional integrations:
 
 ---
 
-## 🔔 **NOTIFICATIONS:**
-`Config.Notify` allows selecting a notification provider and customizing defaults:
+# 📦 **REQUIREMENTS:**
+- 🌐 FiveM server with **OneSync** enabled.
 
-```
-Config.Notify = {
-  mode = 'auto',
-  defaultType = 'info',
-  defaultTime = 5000,
-  title = 'SMDZ Rancher Job',
-  vms = { color = '#34ebe8', icon = 'fa-solid fa-check' },
-  brutal = { type = 'info', sound = false },
-  origen = { type = 'info' },
-  codem = { header = 'SMDZ Rancher Job' },
-  mythic = { ['background-color'] = '#ffffff', ['color'] = '#000000' },
-}
-```
-
-Supported modes:
-- `ox_lib`
-- `okokNotify`
-- `vms_notifyv2`
-- `brutal_notify`
-- `origen_notify`
-- `codem-notification`
-- `wasabi_notify`
-- `rtx_notify`
-- `mythic_notify`
-- ESX / QB / QBX native
-- Standalone fallback (STANDALONE NOT TESTED)
-
----
-
-## 📦 **INVENTORY:**
-Inventory is used **only for item payouts**. If no supported inventory is detected, the script falls back to native ESX/QBCore/QBX item functions.
-
-Supported inventories:
-- `ox_inventory`
-- `tgiann-inventory`
-- `qs-inventory`
-- `origen_inventory`
-- `core_inventory`
-- `jpr-inventory`
-- `codem-inventory`
 
 
 ---
@@ -142,6 +93,17 @@ Supported inventories:
    ensure smdz_rancher_job
    ```
 3. Configure `shared/config.lua`.
+
+---
+
+# 🔁 **JOB FLOW:**
+1. 💤 **Idle**: no global job exists.
+2. ✅ **Available**: job spawns based on `Config.JobCycle` or the admin command. NPC and blip appear at the selected point.
+3. 🧑‍🌾 **Active**: a player accepts the job. Server spawns cows and assigns a delivery point.
+4. 🐄 **Herding**: player must keep cows in range. Whistle timing, scare logic, and loss timers are applied.
+5. 📦 **Delivery**: player reaches the drop-off (must be on foot), server validates proximity/time/ratio.
+6. 💰 **Complete**: payout is processed, job is cleaned, cooldown begins.
+7. ⛔ **Canceled/Expired**: if time expires, player disconnects, or all cows are lost, cleanup runs and the cycle resets.
 
 ---
 
@@ -522,36 +484,50 @@ Config.Points = {
 
 ---
 
-# 🌍 **LOCALIZATION:**
-🌐 Locale files live in `locales/`.
-- 🗂️ Default: `en`, `es`, `pt`, `fr`, `de`, `it`
+# 🔔 **NOTIFICATIONS:**
+`Config.Notify` allows selecting a notification provider and customizing defaults:
 
-🧩 Add a locale:
-1. 📄 Create `locales/<lang>.lua` with `Locales['<lang>']` table.
-2. Set `Config.Locale = '<lang>'`.
+```
+Config.Notify = {
+  mode = 'auto',
+  defaultType = 'info',
+  defaultTime = 5000,
+  title = 'SMDZ Rancher Job',
+  vms = { color = '#34ebe8', icon = 'fa-solid fa-check' },
+  brutal = { type = 'info', sound = false },
+  origen = { type = 'info' },
+  codem = { header = 'SMDZ Rancher Job' },
+  mythic = { ['background-color'] = '#ffffff', ['color'] = '#000000' },
+}
+```
+
+Supported modes:
+- `ox_lib`
+- `okokNotify`
+- `vms_notifyv2`
+- `brutal_notify`
+- `origen_notify`
+- `codem-notification`
+- `wasabi_notify`
+- `rtx_notify`
+- `mythic_notify`
+- ESX / QB / QBX native
+- Standalone fallback (STANDALONE NOT TESTED)
 
 ---
 
-# 🔁 **JOB FLOW:**
-1. 💤 **Idle**: no global job exists.
-2. ✅ **Available**: job spawns based on `Config.JobCycle` or the admin command. NPC and blip appear at the selected point.
-3. 🧑‍🌾 **Active**: a player accepts the job. Server spawns cows and assigns a delivery point.
-4. 🐄 **Herding**: player must keep cows in range. Whistle timing, scare logic, and loss timers are applied.
-5. 📦 **Delivery**: player reaches the drop-off (must be on foot), server validates proximity/time/ratio.
-6. 💰 **Complete**: payout is processed, job is cleaned, cooldown begins.
-7. ⛔ **Canceled/Expired**: if time expires, player disconnects, or all cows are lost, cleanup runs and the cycle resets.
+# 📦 **INVENTORY:**
+Inventory is used **only for item payouts**. If no supported inventory is detected, the script falls back to native ESX/QBCore/QBX item functions.
 
----
+Supported inventories:
+- `ox_inventory`
+- `tgiann-inventory`
+- `qs-inventory`
+- `origen_inventory`
+- `core_inventory`
+- `jpr-inventory`
+- `codem-inventory`
 
-# 🐄 **COW LOSS & DEATH LOGIC:**
-- ☠️ Cows can die; dead cows are removed from the delivery count.
-- 🏃 Cows too far from the player for too long are marked lost and flee.
-- ✅ “All cows lost” is only confirmed after consecutive checks to avoid false positives.
-
-🛠️ If losses feel too strict, tune:
-- ⏱️ `Config.Herd.lostGraceMs`
-- 🔁 `Config.Herd.lostAllConfirmTicks`
-- 📏 `Config.Herd.lostRadius`
 
 
 ---
@@ -569,23 +545,7 @@ Config.Points = {
 | Server | `smdz_rancher_job:server:finish` | Validates delivery and triggers payout. |
 | Server | `smdz_rancher_job:server:scare` | Makes nearby cows flee when shots happen. |
 | Server | `smdz_rancher_job:server:lostCows` | Confirms lost cows and triggers flee/delete. |
-| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |
-
----
-
-# 🔒 **SECURITY & VALIDATION:**
-🧯 The server validates completion before payout and can block or cancel the job if checks fail:
-- 📍 **Delivery distance**: player must be within `Config.AntiExploit.deliveryMaxDistance`.
-- ⏱️ **Minimum time**: job must run at least `Config.AntiExploit.minJobTimeSec`.
-- 📊 **Delivered ratio**: delivered cows must meet `Config.AntiExploit.minDeliveredRatio` and `Config.Herd.requiredRatio`.
-- 🧭 **Distance drift**: client-reported distance must match server calculation (`Config.AntiExploit.maxDistanceDriftKm`).
-- 🚶 **On-foot enforcement**: optional checks for start/whistle/finish.
-- 🧯 **Spam protection**: cooldowns and max finish attempts (`startCooldownMs`, `finishCooldownMs`, `maxFinishAttempts`).
-- ⛔ **Job expiry**: optional max duration via `Config.AntiExploit.maxJobDurationSec`.
-
-If a check fails, the attempt is blocked, logged (debug/webhook), and the player is notified.
-
----
+| Server | `smdz_rancher_job:server:cancelJob` | Cancels and cleans up the job. |\n---
 
 # 📡 **WEBHOOK LOGGING:**
 🔗 Enable in `shared/config.lua`:
@@ -612,6 +572,26 @@ Config.Webhook = {
 ```
 
 ---
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+|---|---|
+| 🐄 **Cows disappear even when I am nearby.** | Increase `Config.Herd.lostGraceMs` and/or `Config.Herd.lostAllConfirmTicks`. Enable `Config.DebugAdvanced` to inspect each cow’s distance and grace timer. If cows are still being marked as lost, verify `Config.Herd.lostRadius` and confirm that the correct `cowNetIds` are being tracked. |
+| 📏 **The herd is lost too easily.** | Increase `Config.Herd.lostRadius`, reduce `Config.Herd.scareChance`, and lower `Config.Herd.requireWhistleMs`. You can also increase `Config.Herd.herdRadius` to allow cows to follow from a wider range. |
+| ⏱️ **Jobs never appear automatically.** | Make sure `Config.JobCycle.enabled = true`, `spawnChancePerTick` is greater than `0`, and `activeDurationMs` is configured correctly. Also confirm that the resource is running, OneSync is enabled, and the server clock is correct. |
+| 🚫 **Players cannot start the job.** | Check `Config.JobVisibility` and the configured ACE or framework permissions. If `Config.Target.mode = 'none'`, verify `Config.Target.fallbackKey` and `Config.Target.maxDistance`. Players must also be on foot when `requireOnFootForStart` is enabled. |
+| 📍 **Delivery fails even when cows are nearby.** | Delivery is validated server-side using distance and delivered-cow ratio. Increase `Config.Herd.deliveryCountRadius`, reduce `Config.AntiExploit.minDeliveredRatio`, and make sure the player is on foot and within `Config.AntiExploit.deliveryMaxDistance`. |
+| 💬 **Notifications do not appear.** | Make sure the notification resource is started and that `Config.Notify.mode` matches its resource name. You can also use `Config.Notify.mode = 'auto'` and check the startup banner to confirm which provider was detected. |
+| 📢 **The whistle warning appears too often.** | Increase `Config.Herd.whistleWarnCooldownMs` and reduce `Config.Herd.warnBeforeLossMs`. You can also increase `Config.Herd.whistleCooldownMs` to prevent players from repeatedly using the whistle. |
+| 🧍 **The job NPC duplicates after a restart.** | The NPC is automatically removed when the job ends or the resource stops. After a hot restart, confirm that every client received the `jobEnd` event and make sure duplicate copies of the resource are not running. |
+| ⚙️ **How can I manually force a job to start?** | Use the administrator command configured inside `Config.Command`. The command supports ACE and framework permissions and may optionally accept a configured point ID. |
+| 🎒 **Item rewards are not added to the inventory.** | Make sure `Config.Pay.method = 'item'`, confirm that the configured item exists, and verify that `Config.Inventory.mode` matches your inventory resource. Check the startup banner to see which inventory system was detected. |
+| 🐮 **How can I practically disable herd loss?** | Set `Config.Herd.lostAllConfirmTicks` to a very high value and significantly increase `Config.Herd.lostRadius`. You can also increase `Config.Herd.lossCheckMs` so herd-loss checks happen less frequently. |
+| 💰 **Why is the final payout lower than expected?** | The payout is calculated using the number of delivered cows and the total trip distance. Review `Config.Pay.basePerCow`, `Config.Pay.distanceMultiplier`, and `Config.Pay.longTripBonusThresholdKm`. |
+| ⚡ **The job ends immediately after starting.** | Check `Config.AntiExploit.minJobTimeSec` and `Config.JobCycle.activeDurationMs`. Also confirm that the player starting or completing the job is still registered as the active job owner. |
+| 🔗 **Webhook messages have an empty point label.** | Make sure every entry inside `Config.Points` includes a valid `label`. The webhook replaces `{pointLabel}` using this configured value. |
+
+---
 
 # 🧪 **COMMON ISSUES:**
 
@@ -633,27 +613,6 @@ Config.Webhook = {
 | 🧪 **Debug logs do not appear** | Set `Config.Debug = true` and enable the required options inside `Config.DebugAdvanced`. Restart the resource after changing the configuration. |
 | 🧯 **Players are abusing the finish action** | Increase `Config.AntiExploit.finishCooldownMs` and reduce `Config.AntiExploit.maxFinishAttempts` to limit repeated completion requests. |
 
-
----
-
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-| Question | Answer |
-|---|---|
-| 🐄 **Cows disappear even when I am nearby.** | Increase `Config.Herd.lostGraceMs` and/or `Config.Herd.lostAllConfirmTicks`. Enable `Config.DebugAdvanced` to inspect each cow’s distance and grace timer. If cows are still being marked as lost, verify `Config.Herd.lostRadius` and confirm that the correct `cowNetIds` are being tracked. |
-| 📏 **The herd is lost too easily.** | Increase `Config.Herd.lostRadius`, reduce `Config.Herd.scareChance`, and lower `Config.Herd.requireWhistleMs`. You can also increase `Config.Herd.herdRadius` to allow cows to follow from a wider range. |
-| ⏱️ **Jobs never appear automatically.** | Make sure `Config.JobCycle.enabled = true`, `spawnChancePerTick` is greater than `0`, and `activeDurationMs` is configured correctly. Also confirm that the resource is running, OneSync is enabled, and the server clock is correct. |
-| 🚫 **Players cannot start the job.** | Check `Config.JobVisibility` and the configured ACE or framework permissions. If `Config.Target.mode = 'none'`, verify `Config.Target.fallbackKey` and `Config.Target.maxDistance`. Players must also be on foot when `requireOnFootForStart` is enabled. |
-| 📍 **Delivery fails even when cows are nearby.** | Delivery is validated server-side using distance and delivered-cow ratio. Increase `Config.Herd.deliveryCountRadius`, reduce `Config.AntiExploit.minDeliveredRatio`, and make sure the player is on foot and within `Config.AntiExploit.deliveryMaxDistance`. |
-| 💬 **Notifications do not appear.** | Make sure the notification resource is started and that `Config.Notify.mode` matches its resource name. You can also use `Config.Notify.mode = 'auto'` and check the startup banner to confirm which provider was detected. |
-| 📢 **The whistle warning appears too often.** | Increase `Config.Herd.whistleWarnCooldownMs` and reduce `Config.Herd.warnBeforeLossMs`. You can also increase `Config.Herd.whistleCooldownMs` to prevent players from repeatedly using the whistle. |
-| 🧍 **The job NPC duplicates after a restart.** | The NPC is automatically removed when the job ends or the resource stops. After a hot restart, confirm that every client received the `jobEnd` event and make sure duplicate copies of the resource are not running. |
-| ⚙️ **How can I manually force a job to start?** | Use the administrator command configured inside `Config.Command`. The command supports ACE and framework permissions and may optionally accept a configured point ID. |
-| 🎒 **Item rewards are not added to the inventory.** | Make sure `Config.Pay.method = 'item'`, confirm that the configured item exists, and verify that `Config.Inventory.mode` matches your inventory resource. Check the startup banner to see which inventory system was detected. |
-| 🐮 **How can I practically disable herd loss?** | Set `Config.Herd.lostAllConfirmTicks` to a very high value and significantly increase `Config.Herd.lostRadius`. You can also increase `Config.Herd.lossCheckMs` so herd-loss checks happen less frequently. |
-| 💰 **Why is the final payout lower than expected?** | The payout is calculated using the number of delivered cows and the total trip distance. Review `Config.Pay.basePerCow`, `Config.Pay.distanceMultiplier`, and `Config.Pay.longTripBonusThresholdKm`. |
-| ⚡ **The job ends immediately after starting.** | Check `Config.AntiExploit.minJobTimeSec` and `Config.JobCycle.activeDurationMs`. Also confirm that the player starting or completing the job is still registered as the active job owner. |
-| 🔗 **Webhook messages have an empty point label.** | Make sure every entry inside `Config.Points` includes a valid `label`. The webhook replaces `{pointLabel}` using this configured value. |
 
 ---
 
