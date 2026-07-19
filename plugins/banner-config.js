@@ -1,7 +1,7 @@
 // SMDZ Studios — Global announcement bar configuration
 
 window.SMDZ_BANNER_CONFIG = {
-  enabled: true,
+  enabled: false,
 
   // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning"
   type: "info",
@@ -22,7 +22,7 @@ window.SMDZ_BANNER_CONFIG = {
   cta: {
     enabled: true,
     label: "View New Identity",
-    url: "https://docs.smdz-studios.com/#/news/new-identity",
+    url: "https://docs.smdz-studios.com/#/blog/new-identity",
     target: "_self"
   }
 };

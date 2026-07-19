@@ -50,27 +50,15 @@ SMDZ Evidence Board allows authorized players to place persistent physical evide
 # ⭐ **FEATURES:**
 
 - 🕵️ **Bring investigations into the game world** with fully interactive physical evidence boards designed for police, detective, federal, and investigative roleplay.
-
 - 🧱 **Place boards naturally on walls or supported floor surfaces** using an intuitive raycast preview with rotation, height adjustment, precision controls, confirmation, and cancellation.
-
 - 🖥️ **Edit every case through a polished React interface** built specifically for organizing suspects, photographs, documents, notes, and investigative links.
-
-- 🔍 **Let nearby players inspect boards in fullscreen** without granting them editing permissions, creating a clean and immersive viewing experience during briefings and investigations.
-
 - 🧩 **Create multiple evidence types** including sticky notes, suspect profiles, standard evidence photographs, Polaroid photos, and case documents.
-
 - 🎨 **Customize every piece of evidence** by moving, resizing, rotating, renaming, describing, and arranging each item independently.
-
 - 🖼️ **Control exactly how linked images appear** with built-in zoom and repositioning tools for precise image framing inside each photo card.
-
 - 🔗 **Connect clues with red investigation threads** to visually represent relationships between suspects, locations, events, vehicles, and evidence.
-
 - 🗂️ **Customize every case file** with its own department acronym, operation name, subtitle, and case number.
-
 - 👥 **Collaborate with persistent access management** by granting selected players permission to edit a board and removing that access whenever necessary.
-
 - 🔐 **Protect every investigation with owner-based permissions** while allowing configured framework administrators or ACE groups to perform authorized moderation actions.
-
 - 💾 **Keep every case permanently stored in SQL** with normalized tables for boards, evidence elements, connections, ownership, and shared access.
 
 <div class="evidenceboardresmon" id="evidenceboardresmon" data-mode="ox-to-qb">

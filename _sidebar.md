@@ -11,8 +11,8 @@ Sidebar icons:
   train, crystal, radar, redesigns, free
 -->
 
-- **Important News** "icon:newspaper"
-  - [New Identity](news/new-identity.md "icon:sparkles")
+- **Blog** "icon:newspaper"
+  - [Visit](blog/index.md "icon:newspaper")
 
 - **Information**
   - [Portal](/portal.md "icon:portal")
@@ -26,6 +26,8 @@ Sidebar icons:
   - [Asset Escrow System](/fxap.md "icon:shield")
 
 - **Paid Resources**
+  <!-- - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban") -->
+  <!-- - [Admin Board](/resources/paid/admin-board.md "icon:square-kanban") -->
   - [Cine Loadscreen](/resources/paid/cine-loadscreen.md "icon:film")
   - [Invite Codes](/resources/paid/invite-codes.md "icon:ticket")
   - [Voice Indicator](/resources/paid/voice-indicator.md "icon:mic")

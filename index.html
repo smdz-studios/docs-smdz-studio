@@ -333,6 +333,388 @@
               badgeEl.setAttribute('aria-label', (badgeEl.textContent || '').trim() + ': ' + tooltipText);
               badgeEl.dataset.badgeTooltipBound = '1';
             });
+
+            var changelogBadges = contentRoot.querySelectorAll('.changelog-version-badge');
+            changelogBadges.forEach(function (badgeEl) {
+              if (badgeEl.dataset.changelogTooltipBound === '1') {
+                return;
+              }
+
+              var version = (badgeEl.textContent || '').trim();
+              if (!version) {
+                return;
+              }
+
+              var tooltipText = 'Version ' + version + ': release details and update notes.';
+              badgeEl.setAttribute('data-changelog-tooltip', tooltipText);
+              badgeEl.setAttribute('tabindex', '0');
+              badgeEl.setAttribute('aria-label', tooltipText);
+              badgeEl.dataset.changelogTooltipBound = '1';
+            });
+          }
+
+          function enhanceChangelogPage() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var hasChangelogBadges = Boolean(contentRoot.querySelector('.changelog-version-badge'));
+            var isChangelogRoute =
+              routePath === '/changelog.md' ||
+              routePath === '/changelog' ||
+              (window.location.hash || '').indexOf('changelog') !== -1;
+
+            if (!isChangelogRoute && !hasChangelogBadges) {
+              contentRoot.classList.remove('markdown-section--changelog');
+              return;
+            }
+
+            contentRoot.classList.add('markdown-section--changelog');
+
+            var releaseHeadings = Array.prototype.slice.call(
+              contentRoot.querySelectorAll('h1, h2')
+            ).filter(function (headingEl) {
+              return Boolean(headingEl.querySelector('.changelog-version-badge'));
+            });
+
+            var updateChangelogTimeline = function () {
+              window.requestAnimationFrame(function () {
+                var releases = Array.prototype.slice.call(
+                  contentRoot.querySelectorAll('.changelog-release')
+                ).filter(function (releaseEl) {
+                  return !releaseEl.classList.contains('is-search-hidden');
+                });
+                if (!releases.length) {
+                  contentRoot.style.removeProperty('--changelog-timeline-top');
+                  contentRoot.style.removeProperty('--changelog-timeline-bottom');
+                  return;
+                }
+
+                var rootRect = contentRoot.getBoundingClientRect();
+                var firstRect = releases[0].getBoundingClientRect();
+                var lastRect = releases[releases.length - 1].getBoundingClientRect();
+                var dotCenterOffset = 17;
+                var timelineTop = Math.max(0, firstRect.top - rootRect.top + dotCenterOffset);
+                var timelineBottom = Math.max(0, rootRect.bottom - lastRect.top - dotCenterOffset);
+
+                contentRoot.style.setProperty('--changelog-timeline-top', timelineTop + 'px');
+                contentRoot.style.setProperty('--changelog-timeline-bottom', timelineBottom + 'px');
+              });
+            };
+
+            if (contentRoot.dataset.changelogTimelineResizeBound !== '1') {
+              window.addEventListener('resize', updateChangelogTimeline);
+              contentRoot.dataset.changelogTimelineResizeBound = '1';
+            }
+
+            releaseHeadings.forEach(function (headingEl, index) {
+              var releaseEl = headingEl.closest('.changelog-release');
+
+              if (!releaseEl) {
+                releaseEl = document.createElement('article');
+                releaseEl.className = 'changelog-release';
+                headingEl.parentNode.insertBefore(releaseEl, headingEl);
+
+                var currentEl = headingEl;
+                while (currentEl) {
+                  var nextEl = currentEl.nextElementSibling;
+                  if (
+                    nextEl &&
+                    /^(H1|H2)$/.test(nextEl.tagName) &&
+                    nextEl.querySelector('.changelog-version-badge')
+                  ) {
+                    releaseEl.appendChild(currentEl);
+                    break;
+                  }
+
+                  releaseEl.appendChild(currentEl);
+                  currentEl = nextEl;
+                }
+              }
+
+              releaseEl.classList.add('changelog-release');
+              if (index === 0) {
+                releaseEl.classList.add('changelog-release--latest');
+              } else {
+                releaseEl.classList.remove('changelog-release--latest');
+              }
+
+              headingEl.classList.add('changelog-release-heading');
+
+              var bodyEl = releaseEl.querySelector(':scope > .changelog-release-body');
+              if (!bodyEl) {
+                bodyEl = document.createElement('div');
+                bodyEl.className = 'changelog-release-body';
+
+                var bodyChild = headingEl.nextElementSibling;
+                while (bodyChild) {
+                  var nextBodyChild = bodyChild.nextElementSibling;
+                  bodyEl.appendChild(bodyChild);
+                  bodyChild = nextBodyChild;
+                }
+
+                releaseEl.appendChild(bodyEl);
+              }
+
+              var toggleEl = headingEl.querySelector('.changelog-release-toggle');
+              var setReleaseCollapsed = function (collapsed) {
+                releaseEl.classList.toggle('is-collapsed', collapsed);
+                toggleEl.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+                toggleEl.setAttribute('aria-label', collapsed ? 'Show release details' : 'Hide release details');
+
+                if (bodyEl) {
+                  bodyEl.style.maxHeight = collapsed ? '0px' : bodyEl.scrollHeight + 'px';
+                }
+
+                updateChangelogTimeline();
+                window.setTimeout(updateChangelogTimeline, 320);
+              };
+              releaseEl.changelogSetCollapsed = setReleaseCollapsed;
+
+              if (!toggleEl) {
+                toggleEl = document.createElement('button');
+                toggleEl.type = 'button';
+                toggleEl.className = 'changelog-release-toggle';
+                toggleEl.setAttribute('aria-label', 'Toggle release details');
+                headingEl.appendChild(toggleEl);
+
+                toggleEl.addEventListener('click', function (event) {
+                  event.preventDefault();
+                  event.stopPropagation();
+
+                  setReleaseCollapsed(!releaseEl.classList.contains('is-collapsed'));
+                });
+              }
+
+              if (headingEl.dataset.changelogHeadingBound !== '1') {
+                headingEl.setAttribute('role', 'button');
+                headingEl.setAttribute('tabindex', '0');
+                headingEl.addEventListener('click', function (event) {
+                  if (event.target.closest('.changelog-release-toggle')) {
+                    return;
+                  }
+
+                  setReleaseCollapsed(!releaseEl.classList.contains('is-collapsed'));
+                });
+                headingEl.addEventListener('keydown', function (event) {
+                  if (event.key !== 'Enter' && event.key !== ' ') {
+                    return;
+                  }
+
+                  event.preventDefault();
+                  setReleaseCollapsed(!releaseEl.classList.contains('is-collapsed'));
+                });
+                headingEl.dataset.changelogHeadingBound = '1';
+              }
+
+              if (releaseEl.dataset.changelogReleaseReady !== '1') {
+                releaseEl.classList.toggle('is-collapsed', index !== 0);
+                releaseEl.dataset.changelogReleaseReady = '1';
+              }
+
+              var isCollapsed = releaseEl.classList.contains('is-collapsed');
+              setReleaseCollapsed(isCollapsed);
+            });
+
+            var searchEl = contentRoot.querySelector(':scope > .changelog-search');
+            if (!searchEl && releaseHeadings.length) {
+              searchEl = document.createElement('div');
+              searchEl.className = 'changelog-search';
+              searchEl.innerHTML =
+                '<div class="changelog-search-panel">' +
+                  '<label class="changelog-search-field">' +
+                    '<span class="changelog-search-icon" aria-hidden="true"></span>' +
+                    '<input type="search" class="changelog-search-input" placeholder="Search by resource, version, date, file..." aria-label="Search changelog">' +
+                    '<button type="button" class="changelog-search-clear" aria-label="Clear changelog search" hidden>Clear</button>' +
+                  '</label>' +
+                  '<div class="changelog-search-meta" aria-live="polite">' +
+                    '<span class="changelog-search-count"></span>' +
+                    '<span class="changelog-search-hint">Version, resource, date or modified file</span>' +
+                  '</div>' +
+                  '<div class="changelog-search-actions">' +
+                    '<button type="button" class="changelog-search-action" data-changelog-action="expand">Expand all</button>' +
+                    '<button type="button" class="changelog-search-action" data-changelog-action="collapse">Collapse all</button>' +
+                  '</div>' +
+                '</div>' +
+                '<p class="changelog-search-empty" hidden>No changelog entries found.</p>';
+
+              var bannerEl = contentRoot.querySelector(':scope > .changelogs');
+              var firstReleaseEl = releaseHeadings[0].closest('.changelog-release');
+              if (bannerEl && bannerEl.parentNode === contentRoot) {
+                bannerEl.insertAdjacentElement('afterend', searchEl);
+              } else {
+                firstReleaseEl.parentNode.insertBefore(searchEl, firstReleaseEl);
+              }
+            }
+
+            if (searchEl && searchEl.dataset.changelogSearchBound !== '1') {
+              var searchInputEl = searchEl.querySelector('.changelog-search-input');
+              var clearSearchEl = searchEl.querySelector('.changelog-search-clear');
+              var countEl = searchEl.querySelector('.changelog-search-count');
+              var emptyEl = searchEl.querySelector('.changelog-search-empty');
+              var highlightSelector = '.changelog-release-heading, .changelog-release-body';
+              var escapeRegex = function (value) {
+                return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              };
+              var clearHighlights = function () {
+                contentRoot.querySelectorAll('mark.changelog-search-highlight').forEach(function (markEl) {
+                  var parentEl = markEl.parentNode;
+                  if (!parentEl) {
+                    return;
+                  }
+
+                  parentEl.replaceChild(document.createTextNode(markEl.textContent || ''), markEl);
+                  parentEl.normalize();
+                });
+              };
+              var highlightMatches = function (query) {
+                if (!query) {
+                  return;
+                }
+
+                var pattern = new RegExp(escapeRegex(query), 'gi');
+                contentRoot.querySelectorAll('.changelog-release:not(.is-search-hidden)').forEach(function (releaseEl) {
+                  releaseEl.querySelectorAll(highlightSelector).forEach(function (scopeEl) {
+                    var walker = document.createTreeWalker(
+                      scopeEl,
+                      NodeFilter.SHOW_TEXT,
+                      {
+                        acceptNode: function (node) {
+                          if (!node.nodeValue || !pattern.test(node.nodeValue)) {
+                            pattern.lastIndex = 0;
+                            return NodeFilter.FILTER_REJECT;
+                          }
+
+                          pattern.lastIndex = 0;
+                          var parentEl = node.parentElement;
+                          if (
+                            parentEl &&
+                            parentEl.closest('script, style, mark, button')
+                          ) {
+                            return NodeFilter.FILTER_REJECT;
+                          }
+
+                          return NodeFilter.FILTER_ACCEPT;
+                        }
+                      }
+                    );
+                    var matches = [];
+                    var node;
+                    while ((node = walker.nextNode())) {
+                      matches.push(node);
+                    }
+
+                    matches.forEach(function (textNode) {
+                      var fragment = document.createDocumentFragment();
+                      var value = textNode.nodeValue || '';
+                      var lastIndex = 0;
+                      pattern.lastIndex = 0;
+                      value.replace(pattern, function (match, offset) {
+                        if (offset > lastIndex) {
+                          fragment.appendChild(document.createTextNode(value.slice(lastIndex, offset)));
+                        }
+
+                        var markEl = document.createElement('mark');
+                        markEl.className = 'changelog-search-highlight';
+                        markEl.textContent = match;
+                        fragment.appendChild(markEl);
+                        lastIndex = offset + match.length;
+                        return match;
+                      });
+
+                      if (lastIndex < value.length) {
+                        fragment.appendChild(document.createTextNode(value.slice(lastIndex)));
+                      }
+
+                      textNode.parentNode.replaceChild(fragment, textNode);
+                    });
+                  });
+                });
+              };
+              var filterChangelog = function () {
+                var query = (searchInputEl.value || '').trim().toLowerCase();
+                var visibleCount = 0;
+                var totalCount = 0;
+                clearHighlights();
+
+                contentRoot.querySelectorAll('.changelog-release').forEach(function (releaseEl) {
+                  totalCount += 1;
+                  var searchableText = (releaseEl.textContent || '').toLowerCase();
+                  var isVisible = !query || searchableText.indexOf(query) !== -1;
+                  releaseEl.classList.toggle('is-search-hidden', !isVisible);
+
+                  if (isVisible) {
+                    visibleCount += 1;
+                  }
+                });
+
+                if (emptyEl) {
+                  emptyEl.hidden = visibleCount !== 0;
+                }
+
+                if (countEl) {
+                  countEl.textContent = query
+                    ? visibleCount + ' of ' + totalCount + ' updates'
+                    : totalCount + ' updates';
+                }
+
+                if (clearSearchEl) {
+                  clearSearchEl.hidden = !query;
+                }
+
+                highlightMatches(query);
+                contentRoot.querySelectorAll('.changelog-release:not(.is-collapsed):not(.is-search-hidden) .changelog-release-body').forEach(function (bodyEl) {
+                  bodyEl.style.maxHeight = bodyEl.scrollHeight + 'px';
+                });
+
+                updateChangelogTimeline();
+              };
+
+              searchInputEl.addEventListener('input', filterChangelog);
+              if (clearSearchEl) {
+                clearSearchEl.addEventListener('click', function () {
+                  searchInputEl.value = '';
+                  searchInputEl.focus();
+                  filterChangelog();
+                });
+              }
+              searchEl.querySelectorAll('[data-changelog-action]').forEach(function (actionEl) {
+                actionEl.addEventListener('click', function () {
+                  var shouldCollapse = actionEl.dataset.changelogAction === 'collapse';
+                  contentRoot.querySelectorAll('.changelog-release:not(.is-search-hidden)').forEach(function (releaseEl) {
+                    if (typeof releaseEl.changelogSetCollapsed === 'function') {
+                      releaseEl.changelogSetCollapsed(shouldCollapse);
+                    }
+                  });
+                  updateChangelogTimeline();
+                  window.setTimeout(updateChangelogTimeline, 320);
+                });
+              });
+              searchEl.dataset.changelogSearchBound = '1';
+              filterChangelog();
+            }
+
+            var fileHeadings = contentRoot.querySelectorAll('h3');
+            fileHeadings.forEach(function (headingEl) {
+              var label = (headingEl.textContent || '').trim().toUpperCase();
+              if (label.indexOf('FILES MODIFIED') === -1 && label.indexOf('FILES UPDATED') === -1) {
+                return;
+              }
+
+              var listEl = headingEl.nextElementSibling;
+              if (!listEl || listEl.tagName !== 'UL') {
+                return;
+              }
+
+              listEl.classList.add('changelog-file-grid');
+              Array.prototype.slice.call(listEl.children).forEach(function (itemEl) {
+                itemEl.classList.add('changelog-file-chip');
+              });
+            });
+
+            updateChangelogTimeline();
           }
 
           function wrapMarkdownTables() {
@@ -408,9 +790,17 @@
                 title: 'Changelog | SMDZ Studios Docs',
                 description: 'Review recent SMDZ Studios documentation, resource and support changes.'
               },
-              '/news/new-identity.md': {
+              '/blog/index.md': {
+                title: 'Blog | SMDZ Studios',
+                description: 'Visit the SMDZ Studios blog for studio updates, FiveM platform notes and documentation news.'
+              },
+              '/blog/new-identity.md': {
                 title: 'New Identity | SMDZ Studios',
                 description: 'SMDZ Studios brand update with a refreshed visual identity, updated documentation style and cleaner resource presentation.'
+              },
+              '/blog/news-fivem-enchanced.md': {
+                title: 'FiveM Enhanced | SMDZ Studios Blog',
+                description: 'SMDZ Studios notes about preparing resources, documentation and support workflows for a cleaner FiveM Enhanced experience.'
               },
               '/resources/free/handling-editor.md': {
                 title: 'Handling Editor | Free FiveM Resource',
@@ -1442,6 +1832,9 @@
               applyImportantCallouts();
               enhanceScriptVideos();
               enhanceStatusBadges();
+              enhanceChangelogPage();
+              window.setTimeout(enhanceChangelogPage, 80);
+              window.setTimeout(enhanceChangelogPage, 260);
               wrapMarkdownTables();
               initSupportAccordions();
               restoreToolMarkup();
@@ -1579,6 +1972,93 @@
         },
 
         function (hook, vm) {
+          var sidebarVisitCounterSeed = Number('192');
+
+          function formatSidebarVisitCount(value) {
+            var numberValue = Number(value);
+            if (!Number.isFinite(numberValue) || numberValue < 0) {
+              return '—';
+            }
+
+            return new Intl.NumberFormat('en-US').format(numberValue + sidebarVisitCounterSeed);
+          }
+
+          function fetchSidebarVisitCounter(shouldIncrement) {
+            var config = window.SMDZ_VISITOR_CONFIG && window.SMDZ_VISITOR_CONFIG.publicCounter;
+            var counterEl = document.querySelector('[data-sidebar-visit-count]');
+            var statusEl = document.querySelector('[data-sidebar-visit-status]');
+            if (!counterEl || !config || !config.enabled || !config.apiBaseUrl || !config.key) {
+              return;
+            }
+
+            var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+            var timeoutId = controller ? window.setTimeout(function () {
+              controller.abort();
+            }, config.timeoutMs || 3500) : null;
+            var endpoint = config.apiBaseUrl.replace(/\/$/, '') + '/' + (shouldIncrement ? 'hit' : 'get') + '/' + encodeURIComponent(config.key);
+
+            counterEl.textContent = counterEl.textContent && counterEl.textContent !== '—' ? counterEl.textContent : '...';
+            if (statusEl) {
+              statusEl.textContent = shouldIncrement ? 'COUNTING VISIT' : 'TOTAL VISITS';
+            }
+
+            fetch(endpoint, {
+              method: 'GET',
+              cache: 'no-store',
+              credentials: 'omit',
+              signal: controller ? controller.signal : undefined
+            }).then(function (response) {
+              if (!response.ok) {
+                throw new Error('Counter request failed with HTTP ' + response.status + '.');
+              }
+
+              return response.json();
+            }).then(function (data) {
+              counterEl.textContent = formatSidebarVisitCount(data && data.value);
+              if (statusEl) {
+                statusEl.textContent = 'TOTAL VISITS';
+              }
+
+              if (shouldIncrement && config.sessionKey) {
+                try {
+                  window.sessionStorage.setItem(config.sessionKey, '1');
+                } catch (error) {
+                  // The remote counter already persisted the visit.
+                }
+              }
+            }).catch(function () {
+              counterEl.textContent = counterEl.textContent === '...' ? '—' : counterEl.textContent;
+              if (statusEl) {
+                statusEl.textContent = 'VISITS UNAVAILABLE';
+              }
+            }).finally(function () {
+              if (timeoutId) {
+                window.clearTimeout(timeoutId);
+              }
+            });
+          }
+
+          function initSidebarVisitCounter() {
+            var config = window.SMDZ_VISITOR_CONFIG && window.SMDZ_VISITOR_CONFIG.publicCounter;
+            if (!config || !config.enabled) {
+              return;
+            }
+
+            var counterWrapperEl = document.querySelector('.sidebar-visit-counter');
+            if (counterWrapperEl && config.tooltip) {
+              counterWrapperEl.setAttribute('data-sidebar-visit-tooltip', config.tooltip);
+            }
+
+            var shouldIncrement = true;
+            try {
+              shouldIncrement = window.sessionStorage.getItem(config.sessionKey) !== '1';
+            } catch (error) {
+              shouldIncrement = true;
+            }
+
+            fetchSidebarVisitCounter(shouldIncrement);
+          }
+
           hook.doneEach(function () {
             var sidebarParent = document.querySelector('.sidebar');
             var nav = document.querySelector('.sidebar-nav');
@@ -1589,9 +2069,17 @@
                 '<a class="sidebar-logo-wrapper" href="#/portal.md" aria-label="Go to Portal">' +
                   '<img src="assets/logos/smdz-studios.png" alt="SMDZ Studios Logo" />' +
                 '</a>' +
-                '<div class="sidebar-menu-label"><strong>MENU</strong></div>';
+                '<div class="sidebar-menu-label">' +
+                  '<strong>MENU</strong>' +
+                  '<div class="sidebar-visit-counter" aria-live="polite" tabindex="0">' +
+                    '<span data-sidebar-visit-count>...</span>' +
+                    '<small data-sidebar-visit-status>TOTAL VISITS</small>' +
+                  '</div>' +
+                '</div>';
               sidebarParent.insertBefore(header, sidebarParent.firstChild);
             }
+
+            initSidebarVisitCounter();
           });
         },
 

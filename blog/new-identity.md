@@ -1,4 +1,6 @@
 <div class="identity-page">
+  <a class="blog-back-link" href="#/blog/index.md">Back to Blog</a>
+
   <section class="identity-hero">
     <p class="identity-eyebrow">Brand update - 06/22/2026</p>
     <h1>New Identity</h1>

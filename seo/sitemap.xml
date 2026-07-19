@@ -43,8 +43,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/news/new-identity.md</loc>
+    <loc>https://docs.smdz-studios.com/#/blog/index.md</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/blog/new-identity.md</loc>
     <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/blog/news-fivem-enchanced.md</loc>
+    <lastmod>2026-07-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
