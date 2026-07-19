@@ -24,7 +24,7 @@ Sidebar icons:
   - [Asset Escrow System](/fxap.md "icon:shield")
 
 - **Paid Resources**
-  <!-- - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban") -->
+  - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban")
   <!-- - [Admin Board](/resources/paid/admin-board.md "icon:square-kanban") -->
   - [Cine Loadscreen](/resources/paid/cine-loadscreen.md "icon:film")
   - [Invite Codes](/resources/paid/invite-codes.md "icon:ticket")

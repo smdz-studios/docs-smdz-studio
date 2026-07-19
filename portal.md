@@ -40,7 +40,22 @@
 
 
 
-
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/evidence-boards.png" alt="evidence-boards preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Evidence Boards</h3>
+      <p>SMDZ Evidence Boards is an advanced police investigation system for FiveM. Detectives can create persistent physical evidence boards, organize suspects, photographs, Polaroids, documents, notes, and red-thread connections, while board owners manage access, permissions, and collaboration through a polished in-game editor</p>
+      <div class="home-showcase-tags">
+        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-board.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-board" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
 
 
 
