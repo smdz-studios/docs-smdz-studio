@@ -11,13 +11,11 @@ Sidebar icons:
   train, crystal, radar, redesigns, free
 -->
 
-- **Blog** "icon:newspaper"
-  - [Visit](blog/index.md "icon:newspaper")
-
 - **Information**
   - [Portal](/portal.md "icon:portal")
   - [Changelog](/changelog.md "icon:changelog")
   - [Store](https://smdz-studios.tebex.io/ "icon:store")
+  - [Blog](blog/index.md "icon:newspaper")
 
 - **Support**
   - [Get Support](/support.md "icon:support")
