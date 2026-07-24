@@ -1,7 +1,7 @@
 // SMDZ Studios - Sale banner configuration
 
 window.SMDZ_SALE_BANNER_CONFIG = {
-  enabled: true,
+  enabled: false,
 
   text: "🏆 FIFA WORLD CUP 2026 SALE — 30% OFF FROM JUNE 11 TO JULY 19! ⚽",
 
