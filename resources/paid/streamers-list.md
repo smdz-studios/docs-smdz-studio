@@ -79,9 +79,6 @@ Advanced streamer list system with a modern NUI, secure streamer applications, r
 - **Framework:** none required.
 - **Required dependency:**
   - `oxmysql`
-- **Required runtime dependencies:**
-  - NUI runtime (included by FiveM)
-  - Valid outbound internet access from the server host (Twitch/Kick checks, optional webhook)
 - **Optional dependencies:**
   - `ox_lib` (default notification provider)
   - Any supported notification resource configured in `Config.Notifications.provider`
@@ -145,6 +142,7 @@ npm run build
 Main SQL file:
 - `sql/install_me.sql`
 ```sql
+
 CREATE TABLE IF NOT EXISTS `smdz_streamers_forms` (
     `identifier` VARCHAR(191) NOT NULL,
     `submitted_at` BIGINT NOT NULL,
@@ -221,6 +219,7 @@ CREATE TABLE IF NOT EXISTS `smdz_streamers_admin_actions` (
     KEY `idx_action` (`action`),
     KEY `idx_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 ```
 
 

@@ -4430,14 +4430,61 @@ pre:hover .docsify-copy-code-button {
 
 /* Success State (Success class added by plugin) */
 .docsify-copy-code-button.success {
-  background: rgba(240, 196, 25, 0.15) !important;
+  background: rgba(24, 24, 27, 0.96) !important;
   border-color: #f0c419 !important;
   color: #f5c242 !important;
+  outline: none !important;
 }
 
 .docsify-copy-code-button.success::after {
   content: " Copied! ✓";
   font-weight: bold;
+}
+
+.docsify-copy-code-button.copy-feedback {
+  opacity: 1 !important;
+  visibility: visible;
+  animation: copyButtonPop 0.52s ease-out;
+  box-shadow: 0 0 0 3px rgba(245, 194, 66, 0.16), 0 12px 28px rgba(245, 194, 66, 0.16) !important;
+}
+
+.docsify-copy-code-button.copy-feedback::after {
+  content: " Copied! \2713";
+  font-weight: 900;
+}
+
+.docsify-copy-code-button.success::after,
+.docsify-copy-code-button.copy-feedback::after {
+  content: "" !important;
+  display: none !important;
+}
+
+pre.copy-feedback {
+  animation: copyCodeBlockFlash 0.7s ease-out;
+}
+
+@keyframes copyButtonPop {
+  0% {
+    transform: scale(0.92);
+  }
+  48% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes copyCodeBlockFlash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 194, 66, 0);
+  }
+  35% {
+    box-shadow: 0 0 0 2px rgba(245, 194, 66, 0.3), 0 0 34px rgba(245, 194, 66, 0.14);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 194, 66, 0);
+  }
 }
 
 /* Scroll toggle button (bottom-right) */

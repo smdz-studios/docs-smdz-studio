@@ -2539,6 +2539,36 @@
         }
       }
 
+      document.addEventListener('click', function (event) {
+        var copyButton = event.target && event.target.closest
+          ? event.target.closest('.docsify-copy-code-button')
+          : null;
+
+        if (!copyButton) {
+          return;
+        }
+
+        var codeBlock = copyButton.closest('pre');
+        copyButton.classList.remove('copy-feedback');
+        if (codeBlock) {
+          codeBlock.classList.remove('copy-feedback');
+        }
+
+        requestAnimationFrame(function () {
+          copyButton.classList.add('copy-feedback');
+          if (codeBlock) {
+            codeBlock.classList.add('copy-feedback');
+          }
+        });
+
+        window.setTimeout(function () {
+          copyButton.classList.remove('copy-feedback');
+          if (codeBlock) {
+            codeBlock.classList.remove('copy-feedback');
+          }
+        }, 900);
+      }, true);
+
       window.addEventListener('load', function () {
         window.setTimeout(hidePageLoader, 250);
       });
