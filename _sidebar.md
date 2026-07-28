@@ -36,7 +36,6 @@ Sidebar icons:
   - [Rancher Job](/resources/paid/rancher-job.md "icon:cow")
   - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
   - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
-  - [HUD 2D Builder](/resources/paid/hud2d-builder.md "icon:monitor")
 
 - **LB Phone Apps**
   - [SmartCab LB APP](/resources/paid/lb_smartcab.md "icon:car-taxi-front")

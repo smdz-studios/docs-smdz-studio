@@ -57,6 +57,13 @@ The resource spawns one global ranching contract at a time. Players start the jo
 
 ---
 
+# 📦 **REQUIREMENTS:**
+- 🌐 FiveM server with **OneSync** enabled.
+
+
+
+---
+
 # 🤝 **COMPATIBILITY:**
 
 - 🎒 **Inventories**
@@ -76,13 +83,6 @@ The resource spawns one global ranching contract at a time. Players start the jo
 
 - 🌍 **Locales Included**
   `en`, `es`, `pt`, `fr`, `de`, `it`
-
----
-
-# 📦 **REQUIREMENTS:**
-- 🌐 FiveM server with **OneSync** enabled.
-
-
 
 ---
 
@@ -572,27 +572,6 @@ Config.Webhook = {
 ```
 
 ---
-# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
-
-| Question | Answer |
-|---|---|
-| 🐄 **Cows disappear even when I am nearby.** | Increase `Config.Herd.lostGraceMs` and/or `Config.Herd.lostAllConfirmTicks`. Enable `Config.DebugAdvanced` to inspect each cow’s distance and grace timer. If cows are still being marked as lost, verify `Config.Herd.lostRadius` and confirm that the correct `cowNetIds` are being tracked. |
-| 📏 **The herd is lost too easily.** | Increase `Config.Herd.lostRadius`, reduce `Config.Herd.scareChance`, and lower `Config.Herd.requireWhistleMs`. You can also increase `Config.Herd.herdRadius` to allow cows to follow from a wider range. |
-| ⏱️ **Jobs never appear automatically.** | Make sure `Config.JobCycle.enabled = true`, `spawnChancePerTick` is greater than `0`, and `activeDurationMs` is configured correctly. Also confirm that the resource is running, OneSync is enabled, and the server clock is correct. |
-| 🚫 **Players cannot start the job.** | Check `Config.JobVisibility` and the configured ACE or framework permissions. If `Config.Target.mode = 'none'`, verify `Config.Target.fallbackKey` and `Config.Target.maxDistance`. Players must also be on foot when `requireOnFootForStart` is enabled. |
-| 📍 **Delivery fails even when cows are nearby.** | Delivery is validated server-side using distance and delivered-cow ratio. Increase `Config.Herd.deliveryCountRadius`, reduce `Config.AntiExploit.minDeliveredRatio`, and make sure the player is on foot and within `Config.AntiExploit.deliveryMaxDistance`. |
-| 💬 **Notifications do not appear.** | Make sure the notification resource is started and that `Config.Notify.mode` matches its resource name. You can also use `Config.Notify.mode = 'auto'` and check the startup banner to confirm which provider was detected. |
-| 📢 **The whistle warning appears too often.** | Increase `Config.Herd.whistleWarnCooldownMs` and reduce `Config.Herd.warnBeforeLossMs`. You can also increase `Config.Herd.whistleCooldownMs` to prevent players from repeatedly using the whistle. |
-| 🧍 **The job NPC duplicates after a restart.** | The NPC is automatically removed when the job ends or the resource stops. After a hot restart, confirm that every client received the `jobEnd` event and make sure duplicate copies of the resource are not running. |
-| ⚙️ **How can I manually force a job to start?** | Use the administrator command configured inside `Config.Command`. The command supports ACE and framework permissions and may optionally accept a configured point ID. |
-| 🎒 **Item rewards are not added to the inventory.** | Make sure `Config.Pay.method = 'item'`, confirm that the configured item exists, and verify that `Config.Inventory.mode` matches your inventory resource. Check the startup banner to see which inventory system was detected. |
-| 🐮 **How can I practically disable herd loss?** | Set `Config.Herd.lostAllConfirmTicks` to a very high value and significantly increase `Config.Herd.lostRadius`. You can also increase `Config.Herd.lossCheckMs` so herd-loss checks happen less frequently. |
-| 💰 **Why is the final payout lower than expected?** | The payout is calculated using the number of delivered cows and the total trip distance. Review `Config.Pay.basePerCow`, `Config.Pay.distanceMultiplier`, and `Config.Pay.longTripBonusThresholdKm`. |
-| ⚡ **The job ends immediately after starting.** | Check `Config.AntiExploit.minJobTimeSec` and `Config.JobCycle.activeDurationMs`. Also confirm that the player starting or completing the job is still registered as the active job owner. |
-| 🔗 **Webhook messages have an empty point label.** | Make sure every entry inside `Config.Points` includes a valid `label`. The webhook replaces `{pointLabel}` using this configured value. |
-
----
-
 # 🧪 **COMMON ISSUES:**
 
 | Issue | Recommended Solution |
@@ -613,6 +592,27 @@ Config.Webhook = {
 | 🧪 **Debug logs do not appear** | Set `Config.Debug = true` and enable the required options inside `Config.DebugAdvanced`. Restart the resource after changing the configuration. |
 | 🧯 **Players are abusing the finish action** | Increase `Config.AntiExploit.finishCooldownMs` and reduce `Config.AntiExploit.maxFinishAttempts` to limit repeated completion requests. |
 
+
+---
+
+# ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
+
+| Question | Answer |
+|---|---|
+| 🐄 **Cows disappear even when I am nearby.** | Increase `Config.Herd.lostGraceMs` and/or `Config.Herd.lostAllConfirmTicks`. Enable `Config.DebugAdvanced` to inspect each cow’s distance and grace timer. If cows are still being marked as lost, verify `Config.Herd.lostRadius` and confirm that the correct `cowNetIds` are being tracked. |
+| 📏 **The herd is lost too easily.** | Increase `Config.Herd.lostRadius`, reduce `Config.Herd.scareChance`, and lower `Config.Herd.requireWhistleMs`. You can also increase `Config.Herd.herdRadius` to allow cows to follow from a wider range. |
+| ⏱️ **Jobs never appear automatically.** | Make sure `Config.JobCycle.enabled = true`, `spawnChancePerTick` is greater than `0`, and `activeDurationMs` is configured correctly. Also confirm that the resource is running, OneSync is enabled, and the server clock is correct. |
+| 🚫 **Players cannot start the job.** | Check `Config.JobVisibility` and the configured ACE or framework permissions. If `Config.Target.mode = 'none'`, verify `Config.Target.fallbackKey` and `Config.Target.maxDistance`. Players must also be on foot when `requireOnFootForStart` is enabled. |
+| 📍 **Delivery fails even when cows are nearby.** | Delivery is validated server-side using distance and delivered-cow ratio. Increase `Config.Herd.deliveryCountRadius`, reduce `Config.AntiExploit.minDeliveredRatio`, and make sure the player is on foot and within `Config.AntiExploit.deliveryMaxDistance`. |
+| 💬 **Notifications do not appear.** | Make sure the notification resource is started and that `Config.Notify.mode` matches its resource name. You can also use `Config.Notify.mode = 'auto'` and check the startup banner to confirm which provider was detected. |
+| 📢 **The whistle warning appears too often.** | Increase `Config.Herd.whistleWarnCooldownMs` and reduce `Config.Herd.warnBeforeLossMs`. You can also increase `Config.Herd.whistleCooldownMs` to prevent players from repeatedly using the whistle. |
+| 🧍 **The job NPC duplicates after a restart.** | The NPC is automatically removed when the job ends or the resource stops. After a hot restart, confirm that every client received the `jobEnd` event and make sure duplicate copies of the resource are not running. |
+| ⚙️ **How can I manually force a job to start?** | Use the administrator command configured inside `Config.Command`. The command supports ACE and framework permissions and may optionally accept a configured point ID. |
+| 🎒 **Item rewards are not added to the inventory.** | Make sure `Config.Pay.method = 'item'`, confirm that the configured item exists, and verify that `Config.Inventory.mode` matches your inventory resource. Check the startup banner to see which inventory system was detected. |
+| 🐮 **How can I practically disable herd loss?** | Set `Config.Herd.lostAllConfirmTicks` to a very high value and significantly increase `Config.Herd.lostRadius`. You can also increase `Config.Herd.lossCheckMs` so herd-loss checks happen less frequently. |
+| 💰 **Why is the final payout lower than expected?** | The payout is calculated using the number of delivered cows and the total trip distance. Review `Config.Pay.basePerCow`, `Config.Pay.distanceMultiplier`, and `Config.Pay.longTripBonusThresholdKm`. |
+| ⚡ **The job ends immediately after starting.** | Check `Config.AntiExploit.minJobTimeSec` and `Config.JobCycle.activeDurationMs`. Also confirm that the player starting or completing the job is still registered as the active job owner. |
+| 🔗 **Webhook messages have an empty point label.** | Make sure every entry inside `Config.Points` includes a valid `label`. The webhook replaces `{pointLabel}` using this configured value. |
 
 ---
 

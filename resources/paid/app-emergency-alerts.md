@@ -1,4 +1,4 @@
-<div align="center" style="margin-bottom: 1.5rem;">
+﻿<div align="center" style="margin-bottom: 1.5rem;">
   <iframe
     width="640"
     height="360"
@@ -71,8 +71,7 @@ This is built to feel like a real-world public alert system (Amber/Police/Medica
 - 🌍 **Multi-language** (EN, ES, DE, FR, PT-BR) fully localizable
 - 🧾 **Admin tools** (delete alert by ID with permission checks)
 - 📡 **Webhook logs** (staff audit logs + public IC embeds with role mention & image)
-- 🧪 **Extensive debug logs** with levels and colors
-- 🧩 **Exports for integration** (client + server APIs)
+
 
 ---
 
@@ -783,6 +782,8 @@ See the **Exports + Events** section below for full details.
 | Why does the app show the wrong language? | Check `Config.Locale`, `Config.FallbackLocale`, and the locale file exists. |
 | Can I rename the resource folder? | No. The resource is locked to `smdz_lb_emergency_app`. |
 | Is LB Phone required? | Yes. The app depends on LB Phone exports and NUI. |
+
+---
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.
