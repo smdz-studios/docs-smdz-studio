@@ -48,29 +48,25 @@ This is built to feel like a real-world public alert system (Amber/Police/Medica
 
 # ⭐ **FEATURES:**
 
-- 📱 **LB Phone app integration** (custom app with configurable name, icon, and description)
-- 🧭 **Zone-based dispatch** using PolyZone (Los Santos, North, Cayo Perico, or ALL)
-- 🧩 **Multi-framework support** (ESX, QBCore, QBX, vRP auto-detected)
-- 🧰 **Command + keybind panel** (configurable, or item-only mode)
-- 🧾 **Usable item support** for ESX/QBCore + client export for other inventories
-- 🔔 **Emergency notifications** via LB Phone export (always delivered)
-- 🔊 **Alert sound** with per-user volume control
-- 🔦 **Flashlight strobe** while receiving alerts (optional)
-- 📲 **Auto-open phone** on receive with configurable focus
-- 🆔 **Unique alert IDs** (non-repeating among active alerts)
-- 🕵️ **Anonymous mode** (rank always shown, name hidden if enabled)
-- 👤 **Per-user privacy** (hide sender/rank; hide specific alerts by ID)
-- 🧹 **Clear history** per user (does not affect global alerts)
-- 🎯 **Alert type filters** per user (show/hide categories)
-- 🧱 **Word filter / anti-spam** with cooldowns and blocked terms
-- ⏳ **Auto-expiration** with scheduled cleanup
-- 💾 **MySQL persistence** for alerts and user settings
-- 🧠 **Real-time UI updates** across all phones
-- 🏷️ **Job labels + job logos** on alert cards (configurable)
-- 🎨 **iOS-style UI** with light/dark themes and modern settings panel
-- 🌍 **Multi-language** (EN, ES, DE, FR, PT-BR) fully localizable
-- 🧾 **Admin tools** (delete alert by ID with permission checks)
-- 📡 **Webhook logs** (staff audit logs + public IC embeds with role mention & image)
+- 📱 **LB Phone app integration** with a custom phone app, configurable name, icon, description, and native-feeling phone workflow.
+- 🧭 **Zone-based dispatch** using PolyZone, allowing alerts for Los Santos, North, Cayo Perico, or global ALL coverage.
+- 🧰 **Command + keybind panel** with configurable access, optional item-only mode, and a clean in-game alert creation flow.
+- 🧾 **Usable item support** for ESX/QBCore plus a client export path for custom inventories and external integrations.
+- 🔔 **Emergency notifications** delivered through the LB Phone export so players receive alerts consistently through the phone UI.
+- 🔊 **Alert sound** with per-user volume control, letting each player tune emergency audio feedback to their preference.
+- 🔦 **Flashlight strobe** while receiving alerts, optional and configurable for more noticeable high-priority notifications.
+- 📲 **Auto-open phone** on received alerts with configurable focus behavior for faster emergency response roleplay.
+- 🆔 **Unique alert IDs** generated for active alerts, preventing repeated identifiers and making moderation actions easier.
+- 🕵️ **Anonymous mode** where rank can remain visible while the sender name is hidden when configured by the server.
+- 👤 **Per-user privacy** controls to hide sender/rank details or hide specific alerts by ID from personal history.
+- 🧹 **Clear history** per user without deleting global alert records, keeping personal cleanup separate from server data.
+- 🎯 **Alert type filters** per user, allowing players to show or hide categories depending on their roleplay needs.
+- 🧱 **Word filter / anti-spam** with cooldowns and blocked terms to reduce abuse and protect public emergency channels.
+- ⏳ **Auto-expiration** with scheduled cleanup so old alerts disappear cleanly without requiring manual staff maintenance.
+- 🧠 **Real-time UI updates** across all phones, keeping incoming alerts, deletions, and status changes synchronized.
+- 🏷️ **Job labels + job logos** on alert cards, fully configurable to match police, EMS, fire, or custom departments.
+- 🌍 **Multi-language** support for EN, ES, DE, FR, and PT-BR with fully localizable interface and notification text.
+- 🧾 **Admin tools** for deleting alerts by ID with protected permission checks and server-side validation.
 
 
 ---

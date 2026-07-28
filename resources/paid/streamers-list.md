@@ -62,13 +62,6 @@ Advanced streamer list system with a modern NUI, secure streamer applications, r
   - accept/reject forms (reject reason required)
   - auto-create streamer on accept (editable before confirm)
   - create/edit/delete streamers
-- 🗂️ **Records tab** with unified history for:
-  - form decisions/actions
-  - streamer changes (`streamer_created`, `streamer_updated`, `streamer_deleted`)
-  - unique 5-digit Event ID per record (searchable)
-  - detailed per-event modal view with extended context
-  - localized action summaries (`who did what to which record`)
-- 🔔 **In-server result flow** for applicants (pending/rejected/acknowledge).
 - 🎨 **Centralized UI colors in `ui_colors.lua`** (no CSS rebuild needed for color theme changes).
 
 ---
