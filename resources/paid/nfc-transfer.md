@@ -87,10 +87,6 @@ High-end NFC money transfer system with secure server-side validation, React NUI
   - `oxmysql`
   - `mysql-async`
   - `ghmattimysql`
-- **Optional integrations:**
-  - Target: `ox_target` / `qb-target`
-  - Banking adapters: `okokBanking`, `Renewed-Banking`, `qb-banking`, `fd_banking`, `kartik-banking`, `tgg-banking`, `tgiann-bank`, `wasabi_banking`
-  - TextUI/Notify adapters (see compatibility sections)
 
 ---
 

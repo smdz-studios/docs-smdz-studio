@@ -40,13 +40,38 @@
 
 
 
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/keybinds.png" alt="keybinds preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Dynamic Keybinds</h3>
+      <p>Dynamic Keybinds automatically scans FiveM client commands and current player key mappings, then organizes them inside a modern fullscreen interface with an interactive keyboard, conflict detection, search, resource aliases, custom command metadata, and configurable help markers.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/keybinds.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/dynamic-keybinds" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/evidence-boards.png" alt="evidence-boards preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Boards</h3>
-      <p>SMDZ Evidence Boards is an advanced police investigation system for FiveM. Detectives can create persistent physical evidence boards, organize suspects, photographs, Polaroids, documents, notes, and red-thread connections, while board owners manage access, permissions, and collaboration through a polished in-game editor</p>
+      <p>Evidence Boards is an advanced police investigation system for FiveM. Detectives can create persistent physical evidence boards, organize suspects, photographs, Polaroids, documents, notes, and red-thread connections, while board owners manage access, permissions, and collaboration through a polished in-game editor</p>
       <div class="home-showcase-tags">
         <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -603,7 +628,7 @@
 
 
 
-<!-- 
+<!--
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">

@@ -24,6 +24,7 @@ Sidebar icons:
   - [Asset Escrow System](/fxap.md "icon:shield")
 
 - **Paid Resources**
+  - [Dynamic Keybinds](/resources/paid/keybinds.md "icon:keyboard")
   - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban")
   <!-- - [Admin Board](/resources/paid/admin-board.md "icon:square-kanban") -->
   - [Cine Loadscreen](/resources/paid/cine-loadscreen.md "icon:film")
