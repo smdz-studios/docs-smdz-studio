@@ -1,5 +1,3 @@
-# Example Script – Template (Ready to Fill)
-
 <div align="center" style="margin-bottom: 1.5rem;">
 
   <iframe
@@ -14,8 +12,6 @@
   ></iframe>
 </div>
 
-> This file is a **ready-to-fill template** for a new SMDZ Studios script.
-> In future chats, you can paste this file and I will help you fill each section with real data for your script.
 
 ---
 
@@ -94,15 +90,6 @@ Config.ExampleValue = 100
 -- Discord webhook (if used)
 Config.DiscordWebhook = ''
 ```
-
-For each important option, add a short explanation:
-
-- `Config.Locale` – language key, e.g. `en`, `es`, `fr`.
-- `Config.Debug` – enables extra debug prints when `true`.
-- `Config.ExampleValue` – explain what changing this value does.
-- `Config.DiscordWebhook` – webhook URL for logs (if used).
-
-When you bring this template in another chat, tell me your real config and I will help you rewrite this section.
 
 ---
 

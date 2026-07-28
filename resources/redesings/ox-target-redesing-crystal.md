@@ -338,7 +338,7 @@ end)
 | Do I need oxmysql? | Only if `Config.ThemeSaveToDB = true`. |
 | How do I change the language? | Set `Config.Locale` to one of the available locales in `locales/`. |
 
-# ✅ **INSTALLATION CHECKLIST:**
+<!-- # ✅ **INSTALLATION CHECKLIST:**
 
 <p style="text-align: center; font-weight: bold; color: red;">
 - If you have any problems with the installation, follow this short guide and report it via a support ticket; we'll be happy to help.
@@ -433,7 +433,7 @@ After starting the server:
 - [ ] Close FiveM completely.
 - [ ] Clear the FiveM client cache.
 - [ ] Do not delete the `game` folder.
-- [ ] Restart FiveM and reconnect to the server.
+- [ ] Restart FiveM and reconnect to the server. -->
 
 
 ---

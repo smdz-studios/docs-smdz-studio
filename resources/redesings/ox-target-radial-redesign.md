@@ -321,7 +321,7 @@ Refer to the official `ox_target` documentation for the complete API and option 
 | **Can I rename the resource folder?** | No. Keep the folder name exactly as `ox_target` to preserve compatibility. |
 | **Can I remove the SMDZ core files?** | No. `client/smdz_core.lua` and `server/smdz_core.lua` are required for the redesigned interface. |
 
----
+<!-- ---
 
 # ✅ **INSTALLATION CHECKLIST:**
 
@@ -412,7 +412,7 @@ setr ox_target:debug 1
 - [ ] Close FiveM completely.
 - [ ] Clear the FiveM client cache.
 - [ ] Do not delete the `game` folder.
-- [ ] Reconnect and test again.
+- [ ] Reconnect and test again. -->
 
 ---
 
