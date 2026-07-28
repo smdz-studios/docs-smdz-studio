@@ -588,85 +588,6 @@ add_principal identifier.license:YOUR_LICENSE group.admin
 
 ---
 
-# 🌍 **LOCALIZATION:**
-
-Supported locales:
-
-- `en`, `es`, `fr`, `de`, `ptbr`
-
-All UI text, messages, and debug logs are keyed for translation.
-
----
-
-# 📱 **USER EXPERIENCE (PHONE APP):**
-
-Players see:
-
-- Alert feed with ID, type, job label, and time.
-- Settings for volume, theme, visible types, and privacy.
-
-Alerts update **in real time** with no refresh needed.
-
----
-
-# 📁 **STRUCTURE AND COMPONENTS:**
-
-| Component | Purpose |
-| --- | --- |
-| **Phone App** | Shows alert feed for all players |
-| **Alert Panel** | Authorized jobs create alerts |
-| **Server Core** | Validates permissions, spam, persistence |
-| **Client Core** | Manages NUI + phone integration |
-| **Webhooks** | Logs and public announcements |
-| **Database** | Stores alerts + per-user settings |
-
----
-
-# 🌍 **ZONE TARGETING MODEL:**
-
-Zones are defined as PolyZone polygons. Each player belongs to one zone (or none). Alerts can be sent to:
-
-- **ALL** (global)
-- **Specific zone**
-
-The panel shows the sender’s current zone to avoid mistakes.
-
-# 📦 **PANEL ITEM (OPTIONAL):**
-
-If you want to restrict the **alert panel** to a physical item (e.g. tablet/sonar), enable:
-
-```lua
-Config.PanelItem = {
-    Enabled = true,
-    ItemName = "smdzalerts"
-}
-```
-
-Behavior:
-- When enabled, **command + key mapping are disabled**.
-- Panel opens only when the item is used.
-
-Inventory setup:
-- **ox_inventory**: use `_INSTALL_FILES/item_ox_inventory.lua` (uses export `smdz_lb_emergency_app.useEmergencySonar`).
-- **QBCore/QBX**: use `_INSTALL_FILES/item_qb_inventory.lua` (CreateUseableItem sends client event).
-- **QS**: use `_INSTALL_FILES/item_qs_inventory.lua` for the item definition.
-- **ESX**: handled automatically by the script when `Config.PanelItem.Enabled = true`.
-
-Client event used:
-- `smdz_lb_emergency_app:client:useEmergencySonar`
-
-# 🙈 **ANONYMOUS MODE BEHAVIOR:**
-
-When anonymous:
-
-- Sender name is hidden
-- Rank is still shown
-- Job label remains visible
-
-This allows public alerts without exposing the author’s name.
-
----
-
 # 🗄️ **PERSISTENCE AND DATA STORAGE:**
 
 Database tables:
@@ -810,29 +731,6 @@ See the **Exports + Events** section below for full details.
 | `clearHistory` | NUI → Client | Clear local history | `{ ok, clearedAt }` |
 | `layoutMoved` | NUI → Client | Layout debug coords | `{ ok = true }` |
 
-
----
-
-# 🔒 **SECURITY & VALIDATION:**
-
-- All critical checks are server‑side (permissions, cooldown, word filter).
-- Unauthorized attempts can be logged in webhook.
-- `/deletealert` is restricted by framework group permissions and/or ACE permissions.
-
----
-
-# 📡 **WEBHOOK LOGGING:**
-
-Two webhook systems:
-
-1. **Staff Logs** — full audit of alerts, permissions, identifiers
-2. **Public IC Logs** — optional RP broadcast embed
-
-Both can be configured with:
-
-- Role mentions
-- Custom embed colors
-- Optional image
 
 ---
 

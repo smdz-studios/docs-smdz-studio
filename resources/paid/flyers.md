@@ -135,24 +135,6 @@ A target resource is recommended for enlarged flyer previews and removal interac
 The notification provider can be selected manually from the configuration or handled through the corresponding framework bridge.
 
 
-## Recommended resource order
-
-The exact framework, inventory, and target names may differ on your server, but the dependency order should remain consistent:
-
-```cfg
-ensure oxmysql
-ensure ox_lib
-
-ensure es_extended       # or qb-core / qbx_core
-ensure ox_inventory      # or another supported inventory
-ensure ox_target         # or qb-target, optional
-
-ensure smdz_flyers
-```
-
-Starting `smdz_flyers` before its selected bridges can cause incorrect automatic detection. Restart the resource after changing or starting a provider.
-
-
 ---
 
 # 📥 **INSTALLATION:**

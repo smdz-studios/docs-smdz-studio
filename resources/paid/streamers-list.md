@@ -135,7 +135,7 @@ npm run build
 
 5. Restart the server and confirm startup logs.
 
----
+<!-- ---
 
 # 🗄️ **DATABASE:**
 
@@ -220,28 +220,8 @@ CREATE TABLE IF NOT EXISTS `smdz_streamers_admin_actions` (
     KEY `idx_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-```
+``` -->
 
-
-Tables:
-- `smdz_streamers_entries`
-  - persistent streamer records
-  - includes `featured`, `featured_until`, `platform_override`
-- `smdz_streamers_forms`
-  - pending application forms
-  - cooldown-based reuse model by identifier
-- `smdz_streamers_form_results`
-  - staff decisions (`accepted` / `rejected` + reason + acknowledged)
-- `smdz_streamers_form_actions`
-  - historical form action records used by admin forms/records views
-  - includes `event_code` (unique 5-digit Event ID)
-- `smdz_streamers_admin_actions`
-  - historical streamer admin actions (`create`, `update`, `delete`) for Records tab
-  - includes `event_code` (unique 5-digit Event ID)
-
-Auto-create/migration behavior:
-- Controlled by `Config.Forms.autoCreateTable` and startup migration logic.
-- Includes column updates for size safety (URL/text lengths, etc.).
 
 ---
 
@@ -385,32 +365,6 @@ Config.AdminPermissions = {
 ## UI color theme
 All UI color tokens are in `ui_colors.lua` and injected into CSS variables at runtime.
 You can edit colors there without rebuilding CSS.
-
----
-
-# 🌍 **LOCALIZATION:**
-
-Locale files:
-- `locales/en.lua`
-- `locales/es.lua`
-- `locales/de.lua`
-- `locales/fr.lua`
-
-Resolver:
-- `utils/locale.lua` (`Translate`, fallback to `en`)
-
-Localized domains:
-- Main panel UI
-- Form UI
-- Admin panel UI
-- Notifications
-- Command suggestions/help
-- Debug log messages
-
-To add a new language:
-1. Create `locales/<code>.lua`.
-2. Copy all keys from `locales/en.lua`.
-3. Set `Config.Locale = '<code>'`.
 
 ---
 
