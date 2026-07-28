@@ -4,5 +4,9 @@ Allow: /
 Disallow: /.git/
 Disallow: /.vscode/
 Disallow: /node_modules/
+Disallow: /#/blog/
+Disallow: /blog/
+Disallow: /#/resources/archived/
+Disallow: /resources/archived/
 
 Sitemap: https://docs.smdz-studios.com/seo/sitemap.xml

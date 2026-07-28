@@ -20,9 +20,11 @@ window.SMDZ_BANNER_CONFIG = {
     "",
 
   cta: {
-    enabled: true,
+    enabled: false,
     label: "View New Identity",
-    url: "https://docs.smdz-studios.com/#/blog/new-identity",
+    // Blog CTA disabled while keeping the announcement configuration available.
+    // url: "https://docs.smdz-studios.com/#/blog/new-identity",
+    url: "",
     target: "_self"
   }
 };

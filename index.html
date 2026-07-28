@@ -84,7 +84,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260728-needhelp-seo" />
   <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-3" />
   <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-2" />
 </head>
@@ -762,6 +762,10 @@
             if (routePath === '/') {
               routePath = '/portal.md';
             }
+            if (routePath.indexOf('/blog/') === 0) {
+              window.location.replace('#/portal.md');
+              return;
+            }
             var baseUrl = 'https://docs.smdz-studios.com/';
             var defaultTitle = 'SMDZ Studios Docs | FiveM Script Documentation';
             var defaultDescription = 'Official SMDZ Studios documentation for FiveM scripts, resources, setup guides, troubleshooting, Asset Escrow, FAQ and support articles.';
@@ -790,21 +794,58 @@
                 title: 'Changelog | SMDZ Studios Docs',
                 description: 'Review recent SMDZ Studios documentation, resource and support changes.'
               },
-              '/blog/index.md': {
-                title: 'Blog | SMDZ Studios',
-                description: 'Visit the SMDZ Studios blog for studio updates, FiveM platform notes and documentation news.'
+              '/errors-pages/400.md': {
+                title: 'Bad Request | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for malformed or invalid documentation requests.'
               },
-              '/blog/new-identity.md': {
-                title: 'New Identity | SMDZ Studios',
-                description: 'SMDZ Studios brand update with a refreshed visual identity, updated documentation style and cleaner resource presentation.'
+              '/errors-pages/401.md': {
+                title: 'Unauthorized | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for routes requiring authorization.'
               },
-              '/blog/news-fivem-enchanced.md': {
-                title: 'FiveM Enhanced | SMDZ Studios Blog',
-                description: 'SMDZ Studios notes about preparing resources, documentation and support workflows for a cleaner FiveM Enhanced experience.'
+              '/errors-pages/403.md': {
+                title: 'Forbidden | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for restricted documentation routes.'
               },
+              '/errors-pages/404.md': {
+                title: 'Page Not Found | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for missing guides, resources or support articles.'
+              },
+              '/errors-pages/500.md': {
+                title: 'Server Error | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for temporary server-side issues.'
+              },
+              '/errors-pages/503.md': {
+                title: 'Service Unavailable | SMDZ Studios Docs',
+                description: 'SMDZ Studios documentation error page for temporary maintenance or unavailable services.'
+              },
+              // Blog routes are intentionally disabled while keeping their files available.
+              // '/blog/index.md': {
+              //   title: 'Blog | SMDZ Studios',
+              //   description: 'Visit the SMDZ Studios blog for studio updates, FiveM platform notes and documentation news.'
+              // },
+              // '/blog/new-identity.md': {
+              //   title: 'New Identity | SMDZ Studios',
+              //   description: 'SMDZ Studios brand update with a refreshed visual identity, updated documentation style and cleaner resource presentation.'
+              // },
+              // '/blog/news-fivem-enchanced.md': {
+              //   title: 'FiveM Enhanced | SMDZ Studios Blog',
+              //   description: 'SMDZ Studios notes about preparing resources, documentation and support workflows for a cleaner FiveM Enhanced experience.'
+              // },
               '/resources/free/handling-editor.md': {
                 title: 'Handling Editor | Free FiveM Resource',
                 description: 'SMDZ Handling Editor is a free FiveM vehicle handling tool for real-time tuning, presets and handling.meta export.'
+              },
+              '/resources/paid/admin-board.md': {
+                title: 'Admin Board | SMDZ Studios',
+                description: 'Documentation for SMDZ Admin Board, a fullscreen FiveM administrative workspace with boards, tasks, staff tools, logs and persistent notifications.'
+              },
+              '/resources/paid/evidence-board.md': {
+                title: 'Evidence Board | SMDZ Studios',
+                description: 'Documentation for SMDZ Evidence Board, a FiveM investigation board resource for cases, evidence, media, staff workflows and secure persistence.'
+              },
+              '/resources/paid/keybinds.md': {
+                title: 'Dynamic Keybinds | SMDZ Studios',
+                description: 'Documentation for SMDZ Dynamic Keybinds, a FiveM keybind management resource with commands, NUI controls, framework support and secure configuration.'
               },
               '/resources/paid/cine-loadscreen.md': {
                 title: 'Cine Loadscreen | SMDZ Studios',
@@ -2143,7 +2184,7 @@
 
   <!-- Custom scripts -->
   <script src="plugins/banner-config.js?v=20260612"></script>
-  <script src="plugins/salebanner-config.js?v=20260619"></script>
+  <script src="plugins/salebanner-config.js?v=20260728-theme"></script>
   <script src="plugins/visitor-config.js?v=20260612-2"></script>
   <script src="plugins/visitor-notifier.js?v=20260613-1"></script>
   <script src="tools/item-converter/item-converter.js?v=20260626-3"></script>
@@ -2445,6 +2486,23 @@
             var saleText = saleCfg.text || '';
             var saleSeparator = saleCfg.separator || 'SALE';
             var saleItems = [];
+            var saleTheme = saleCfg.theme || {};
+            var saleThemeVariables = {
+              background: '--sale-banner-background',
+              edgeColor: '--sale-banner-edge-color',
+              textColor: '--sale-banner-text-color',
+              borderColor: '--sale-banner-border-color',
+              shadow: '--sale-banner-shadow',
+              separatorTextColor: '--sale-banner-separator-text-color',
+              separatorBackground: '--sale-banner-separator-background'
+            };
+
+            Object.keys(saleThemeVariables).forEach(function (themeKey) {
+              var themeValue = saleTheme[themeKey];
+              if (typeof themeValue === 'string' && themeValue.trim()) {
+                saleBar.style.setProperty(saleThemeVariables[themeKey], themeValue.trim());
+              }
+            });
 
             for (var saleIndex = 0; saleIndex < 8; saleIndex += 1) {
               saleItems.push('<span class="sale-banner-item">' + saleText + '</span>');

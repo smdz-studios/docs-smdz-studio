@@ -1,20 +1,16 @@
 window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
-  '/errors-pages/400.md',
-  '/errors-pages/401.md',
-  '/errors-pages/403.md',
-  '/errors-pages/404.md',
-  '/errors-pages/500.md',
-  '/errors-pages/503.md',
-  '/changelog.md',
-  '/faq.md',
-  '/fxap.md',
-  '/README.md',
-  '/blog/index.md',
-  '/blog/new-identity.md',
-  '/blog/news-fivem-enchanced.md',
   '/portal.md',
-  '/problems.md',
   '/support.md',
+  '/faq.md',
+  '/problems.md',
+  '/fxap.md',
+  '/changelog.md',
+
+  // Blog pages are intentionally disabled while keeping their files available.
+  // '/blog/index.md',
+  // '/blog/new-identity.md',
+  // '/blog/news-fivem-enchanced.md',
+
   '/resources/paid/admin-board.md',
   '/resources/paid/app-emergency-alerts.md',
   '/resources/paid/bus-travel.md',
@@ -26,6 +22,7 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/resources/paid/hud2d-builder.md',
   '/resources/paid/ifruit-pods.md',
   '/resources/paid/invite-codes.md',
+  '/resources/paid/keybinds.md',
   '/resources/paid/lb_smartcab.md',
   '/resources/paid/nfc-transfer.md',
   '/resources/paid/peds-manager.md',
@@ -34,11 +31,26 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/resources/paid/realistic-uav.md',
   '/resources/paid/speed-bumpers.md',
   '/resources/paid/streamers-list.md',
-  '/resources/template-script.md',
-  '/resources/free/handling-editor.md',
   '/resources/paid/voice-indicator.md',
+  '/resources/free/handling-editor.md',
   '/resources/redesings/ox-target-radial-redesign.md',
-  '/resources/redesings/ox-target-redesing-crystal.md'
+  '/resources/redesings/ox-target-redesing-crystal.md',
+
+  // Internal/non-public pages are intentionally excluded from command search.
+  // '/README.md',
+  // '/resources/template-script.md',
+  // '/resources/archived/fast-repair.md',
+  // '/resources/archived/railway-job.md',
+  // '/resources/archived/speed-for-zones.md',
+  // '/resources/archived/toggle-minimap.md',
+
+  // Error pages stay available for routing but are not useful search results.
+  // '/errors-pages/400.md',
+  // '/errors-pages/401.md',
+  // '/errors-pages/403.md',
+  // '/errors-pages/404.md',
+  // '/errors-pages/500.md',
+  // '/errors-pages/503.md'
 ]);
 
 

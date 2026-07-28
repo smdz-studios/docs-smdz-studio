@@ -285,10 +285,9 @@ aside.sidebar::-webkit-scrollbar-thumb {
   -webkit-user-select: none;
   opacity: 0;
   transform: translateY(-10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  background:
-    linear-gradient(90deg, rgba(127, 29, 29, 0.96), rgba(220, 38, 38, 0.98), rgba(127, 29, 29, 0.96));
-  box-shadow: 0 10px 26px rgba(127, 29, 29, 0.24);
+  border-bottom: 1px solid var(--sale-banner-border-color, rgba(255, 255, 255, 0.16));
+  background: var(--sale-banner-background, linear-gradient(90deg, rgba(127, 29, 29, 0.96), rgba(220, 38, 38, 0.98), rgba(127, 29, 29, 0.96)));
+  box-shadow: var(--sale-banner-shadow, 0 10px 26px rgba(127, 29, 29, 0.24));
   transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
 
@@ -311,12 +310,12 @@ aside.sidebar::-webkit-scrollbar-thumb {
 
 .sale-banner::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(127, 29, 29, 1), rgba(127, 29, 29, 0));
+  background: linear-gradient(90deg, var(--sale-banner-edge-color, rgba(127, 29, 29, 1)), rgba(127, 29, 29, 0));
 }
 
 .sale-banner::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(127, 29, 29, 1), rgba(127, 29, 29, 0));
+  background: linear-gradient(270deg, var(--sale-banner-edge-color, rgba(127, 29, 29, 1)), rgba(127, 29, 29, 0));
 }
 
 .sale-banner-track {
@@ -325,7 +324,7 @@ aside.sidebar::-webkit-scrollbar-thumb {
   gap: 1.2rem;
   min-width: max-content;
   padding: 0.52rem 0;
-  color: #ffffff;
+  color: var(--sale-banner-text-color, #ffffff);
   font-family: var(--font-display);
   font-size: 0.86rem;
   font-weight: 900;
@@ -354,8 +353,8 @@ aside.sidebar::-webkit-scrollbar-thumb {
   justify-content: center;
   border-radius: 999px;
   padding: 0.22rem 0.58rem;
-  color: #7f1d1d;
-  background: #ffffff;
+  color: var(--sale-banner-separator-text-color, #7f1d1d);
+  background: var(--sale-banner-separator-background, #ffffff);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
 }
 
@@ -445,7 +444,7 @@ body.has-announcement-bar .sidebar-toggle {
 /* Sidebar nav */
 .sidebar-nav {
   padding-top: 1.2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 0.75rem;
 }
 
 .sidebar-nav ul {
@@ -531,6 +530,86 @@ body.has-announcement-bar .sidebar-toggle {
   padding: 0.56rem 1rem;
   margin: 0.18rem 0;
   font-weight: 500;
+}
+
+.sidebar > .sidebar-discord-banner {
+  display: none !important;
+}
+
+.sidebar-nav .sidebar-discord-banner {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 0.72rem;
+  margin: 0.4rem 1rem 1rem;
+  padding: 0.82rem 0.88rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(135deg, rgba(39, 39, 42, 0.98), rgba(18, 18, 20, 0.98)),
+    #18181b;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+  text-decoration: none;
+  background-image: none;
+  transition: border-color 0.16s ease-out, transform 0.16s ease-out, box-shadow 0.16s ease-out;
+}
+
+.sidebar-nav .sidebar-discord-banner:hover {
+  border-color: rgba(88, 101, 242, 0.42);
+  color: #ffffff;
+  text-decoration: none;
+  background-image: none;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(88, 101, 242, 0.08);
+}
+
+.sidebar-nav .sidebar-discord-banner:focus-visible {
+  outline: 2px solid rgba(88, 101, 242, 0.72);
+  outline-offset: 3px;
+}
+
+.sidebar-nav .sidebar-discord-banner__icon {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.45rem;
+  background: rgba(88, 101, 242, 0.12);
+}
+
+.sidebar-nav .sidebar-discord-banner__icon svg {
+  width: 23px;
+  height: 23px;
+  fill: #5865f2;
+}
+
+.sidebar-nav .sidebar-discord-banner__copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+  line-height: 1.15;
+}
+
+.sidebar-nav .sidebar-discord-banner__copy strong {
+  color: #f4f4f5;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.sidebar-nav .sidebar-discord-banner__copy small {
+  color: #a1a1aa;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.sidebar-nav .sidebar-discord-banner__arrow {
+  color: #f4f4f5;
+  font-size: 1.45rem;
+  font-weight: 300;
+  line-height: 1;
 }
 
 /* Search */
