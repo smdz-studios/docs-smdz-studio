@@ -40,7 +40,22 @@
 
 
 
-
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/witness-calls.png" alt="witness-calls preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Witness Calls</h3>
+      <p>SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can detect crimes, call emergency services with synchronized phone animations, display a clean world-space progress interface, and send detailed alerts through supported dispatch systems.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/witness_calls.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/witness-calls" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
 
 
 

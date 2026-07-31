@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_streamers_list`
+- 📌 **Resource Name:** `smdz_streamers_list`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone (framework-independent, ESX/QBCore compatible)
 - 🧾 **Version:** `1.0.0`

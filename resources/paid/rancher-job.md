@@ -32,7 +32,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_rancher_job`
+- 📌 **Resource Name:** `smdz_rancher_job`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone
 - 🧾 **Version:** `1.2.0`

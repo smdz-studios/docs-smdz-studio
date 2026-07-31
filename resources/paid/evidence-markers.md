@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_evidence_markers`
+- 📌 **Resource Name:** `smdz_evidence_markers`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone
 - 🧾 **Version:** `1.3.0`

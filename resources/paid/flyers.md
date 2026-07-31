@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_flyers`
+- 📌 **Resource Name:** `smdz_flyers`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Qbox / Standalone
 - 🧾 **Version:** `1.0.0`

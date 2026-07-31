@@ -17,7 +17,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `ox_target` by Overextended
+- 📌 **Resource Name:** `ox_target` by Overextended
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / VRP / ND
 - 🧾 **Version:** `1.1.0`

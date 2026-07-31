@@ -35,7 +35,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_voiceindicator`
+- 📌 **Resource Name:** `smdz_voiceindicator`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone (framework-independent, ESX/QBCore compatible)
 - 🧾 **Version:** `1.0.0`

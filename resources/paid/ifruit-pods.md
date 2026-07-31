@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_ifruit_pods`
+- 📌 **Resource Name:** `smdz_ifruit_pods`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX
 - 🧾 **Version:** `1.0.0`

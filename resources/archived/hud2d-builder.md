@@ -35,7 +35,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_hud2d_builder`
+- 📌 **Resource Name:** `smdz_hud2d_builder`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0`

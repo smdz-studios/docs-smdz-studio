@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_evidence_board`
+- 📌 **Resource Name:** `smdz_evidence_board`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Qbox
 - 🧾 **Version:** `1.0.0`

@@ -35,7 +35,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_keybinds`
+- 📌 **Resource Name:** `smdz_keybinds`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0`

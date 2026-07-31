@@ -17,7 +17,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_example` <!-- change to your resource name -->
+- 📌 **Resource Name:** `smdz_example` <!-- change to your resource name -->
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Standalone <!-- choose one -->
 - 🧾 **Version:** `1.0.0`

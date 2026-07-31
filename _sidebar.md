@@ -19,6 +19,7 @@ Sidebar icons:
   <!-- - [Blog](blog/index.md "icon:newspaper") -->
 
 - **Paid Resources**
+  - [Witness Calls](/resources/paid/witness_calls.md "icon:phone-call")
   - [Dynamic Keybinds](/resources/paid/keybinds.md "icon:keyboard")
   - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban")
   <!-- - [Admin Board](/resources/paid/admin-board.md "icon:square-kanban") -->

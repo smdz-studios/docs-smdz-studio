@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_speed_bumps`
+- 📌 **Resource Name:** `smdz_speed_bumps`
 - 💻 **Author:** SMDZ Studios - *Special thanks to Team NXP // NovelaxNeko - https://novelaxneko.com for creating the prop*
 - 🧭 **Framework:** ESX / QBCore / QBX
 - 🧾 **Version:** `1.0.0`

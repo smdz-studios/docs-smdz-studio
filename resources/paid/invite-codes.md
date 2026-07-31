@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_invitecodes`
+- 📌 **Resource Name:** `smdz_invitecodes`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Qbox / Standalone
 - 🧾 **Version:** `1.0.0`

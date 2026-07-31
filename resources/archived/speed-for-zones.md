@@ -22,7 +22,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_speedforzones`
+- 📌 **Resource Name:** `smdz_speedforzones`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore
 - 🧾 **Version:** `1.0.0`

@@ -34,7 +34,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_lb_smartcab`
+- 📌 **Resource Name:** `smdz_lb_smartcab`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / Qbox / Standalone
 - 🧾 **Version:** `1.0.0`

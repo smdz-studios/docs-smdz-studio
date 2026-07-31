@@ -15,7 +15,7 @@
 </p>
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_toggleradar`
+- 📌 **Resource Name:** `smdz_toggleradar`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
 - 🧾 **Version:** `1.0.0 - OPEN SOURCE`

@@ -32,7 +32,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_bus_travels`
+- 📌 **Resource Name:** `smdz_bus_travels`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.1.0`

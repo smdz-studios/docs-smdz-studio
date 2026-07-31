@@ -23,7 +23,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `fast_repair_sergioomdz`
+- 📌 **Resource Name:** `fast_repair_sergioomdz`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore
 - 🧾 **Version:** `1.2.0`

@@ -33,7 +33,7 @@
 ---
 
 # 🧩 **OVERVIEW:**
-- 📌 **Name:** `smdz_lb_emergency_app`
+- 📌 **Resource Name:** `smdz_lb_emergency_app`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QB Box
 - 🧾 **Version:** `1.1.0`

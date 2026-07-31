@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_pets_rescue`
+- 📌 **Resource Name:** `smdz_pets_rescue`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX
 - 🧾 **Version:** `1.0.0`

@@ -21,7 +21,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_adminboard`
+- 📌 **Resource Name:** `smdz_adminboard`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone / ESX / QBCore / Qbox
 - 🧾 **Version:** `2.0.0`

@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_nfc_transfer`
+- 📌 **Resource Name:** `smdz_nfc_transfer`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX / Standalone (auto-detected)
 - 🧾 **Version:** `1.0.0`

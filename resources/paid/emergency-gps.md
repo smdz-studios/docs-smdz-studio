@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_emergency_gps`
+- 📌 **Resource Name:** `smdz_emergency_gps`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX
 - 🧾 **Version:** `1.0.0`

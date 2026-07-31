@@ -33,7 +33,7 @@
 
 # 🧩 **OVERVIEW:**
 
-- 📌 **Name:** `smdz_uav`
+- 📌 **Resource Name:** `smdz_uav`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** ESX / QBCore / QBX (auto-detected)
 - 🧾 **Version:** `1.0.0`
