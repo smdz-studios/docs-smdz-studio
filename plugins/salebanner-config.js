@@ -1,12 +1,12 @@
-// SMDZ Studios - Welcome discount banner configuration
+// SMDZ Studios - Summer sale banner configuration
 
 window.SMDZ_SALE_BANNER_CONFIG = {
   enabled: true,
 
-  text: "🎉 NEW CUSTOMER? USE CODE WELCOME FOR 10% OFF YOUR FIRST PURCHASE!",
+  text: "☀️ SUMMER SALE — 25% OFF YOUR NEXT 3 PURCHASES WITH CODE SUMMER! VALID UNTIL SEPTEMBER 1 🛍️",
 
   // Optional text repeated between loops.
-  separator: "WELCOME",
+  separator: "SUMMER SALE",
 
   url: "https://smdz-studios.tebex.io/",
   target: "_blank",
