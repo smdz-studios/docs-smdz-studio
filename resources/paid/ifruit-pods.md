@@ -474,42 +474,6 @@ Recommended configuration checklist:
 | Next track | `PAGEUP` | `Config.Keybinds.NextTrack` |
 | Previous track | `PAGEDOWN` | `Config.Keybinds.PreviousTrack` |
 
-Keybind note:
-- FiveM key mapping does not support `[` and `]` as valid key names, so defaults use `PAGEUP` / `PAGEDOWN`.
-
-## UI Tabs
-
-- **Player:** URL input, mode, volume, play/stop/pause/resume/seek.
-- **Playlist:** create/delete playlists, add/remove tracks, random play, queue actions.
-- **Settings:** default volume, tooltips, UI sounds, theme (light/dark), danger zone actions.
-
-Typical user flow:
-- Equip/use `ifruitpods` item.
-- Open the app and choose audio mode + volume.
-- Play from URL or from a saved playlist.
-- Manage queue/repeat during playback.
-- Save preferences in Settings for next sessions.
-
----
-
-# 🛠️ **WORKFLOW (TECHNICAL):**
-
-1. **User input (NUI / command / item):** the client opens the UI and prepares payload data.
-2. **Client validation:** basic format checks (`mode`, `volume`, `url`, `playlistId`, `trackIndex`).
-3. **Server event call:** the client triggers `smdz_ifruit_pods:server:*` with sanitized payload.
-4. **Server validation (critical):**
-   - verifies valid `source` and active device session
-   - applies strict sanitization for URL, volume, mode, indexes, and flags
-   - enforces playlist/settings limits
-5. **DB persistence:** operations in `playlists`, `playlist_tracks`, and `settings` through `oxmysql`.
-6. **Client response:** `smdz_ifruit_pods:client:requestResponse` returns `ok/error`.
-7. **Local playback:** client runs `xsound` actions (play, crossfade, pause, seek, stop).
-8. **UI state sync:** reactive updates (`pods_get_state`) for queue, repeat mode, track, and settings.
-9. **Async webhook logging:** embed queue with per-source rate limiting to prevent spam.
-
-**Important technical note:**
-Primary usage is intended for **YouTube** links (priority normalization and compatibility path). Other providers may work depending on configuration, but YouTube is the recommended route for maximum stability.
-
 ---
 
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
