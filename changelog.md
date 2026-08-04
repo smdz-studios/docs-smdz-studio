@@ -7,6 +7,48 @@
 
 ---
 
+#  <span class="changelog-version-badge">1.1.0</span> 🚕 | SMDZ SmartCab - 2026-08-04
+### ✅ ADDED:
+
+- Added optional vehicle keys compatibility through the free and open-source `community_bridge` resource.
+- Added the new `Config.KeysCompatibility` option.
+- Players now receive the taxi keys when the vehicle arrives at the pickup location.
+- Taxi keys are automatically removed when the service is completed, cancelled, or cleaned up.
+- Added automatic cleanup of all vehicles created by SmartCab when the resource is stopped.
+- Added dedicated vehicle keys integration logic through `client/keys.lua`.
+
+### 🔧 CHANGED:
+
+- Improved the passenger boarding process on servers using vehicle key systems.
+- Improved taxi driving AI, route navigation, stopping behavior, and obstacle handling.
+- Improved the taxi approach behavior at pickup and destination locations.
+- Added minor visual improvements to the SmartCab interface.
+- Improved UI spacing, transitions, and general visual consistency.
+
+### 🧩 FIXED:
+
+- Fixed an issue where players received the taxi keys but were unable to enter the vehicle.
+- Fixed the passenger entry animation being cancelled before entering the taxi.
+- Fixed external key systems automatically locking taxis driven by NPCs.
+- Fixed taxi keys not always being removed after finishing or cancelling a service.
+- Fixed SmartCab vehicles remaining active after stopping the resource.
+- Fixed several situations where the driving AI could become stuck or stop incorrectly.
+
+### 🗂️ FILES MODIFIED:
+
+**It is HIGHLY RECOMMENDED to install this update on servers using a vehicle keys or automatic locking system.**
+
+- `fxmanifest.lua`
+- `config.lua`
+- `client/service.lua`
+- `client/keys.lua`
+- `server/cleanup.lua`
+- `web/src/*`
+- `web/dist/assets/*`
+
+
+---
+
 #  <span class="changelog-version-badge">1.1.0</span> 🚗 | Handling Editor - 2026-07-13
 ### ✅ ADDED:
 
