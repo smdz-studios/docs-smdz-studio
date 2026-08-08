@@ -4158,6 +4158,100 @@ button[aria-label^="close"]:focus-visible,
   background-image: var(--callout-icon);
 }
 
+.bridge-policy-card {
+  position: relative;
+}
+
+.bridge-policy-card__toolbar {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 2;
+}
+
+.bridge-policy-card__lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  padding: 0.22rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.22);
+  backdrop-filter: blur(8px);
+}
+
+.bridge-policy-card__lang-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #f4f4f5;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1);
+  transition: opacity 0.16s ease-out, background 0.16s ease-out, transform 0.16s ease-out;
+}
+
+.bridge-policy-card__lang-btn img {
+  display: block;
+  width: 1.32rem;
+  height: 1.32rem;
+  border-radius: 999px;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.bridge-policy-card__lang-btn:hover,
+.bridge-policy-card__lang-btn:focus-visible {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.bridge-policy-card__lang-btn.is-active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.bridge-policy-card__label {
+  max-width: calc(100% - 8rem);
+}
+
+@media (max-width: 640px) {
+  .bridge-policy-card__toolbar {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .bridge-policy-card__lang-switch {
+    gap: 0.24rem;
+    padding: 0.18rem;
+  }
+
+  .bridge-policy-card__lang-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .bridge-policy-card__lang-btn img {
+    width: 1.16rem;
+    height: 1.16rem;
+  }
+
+  .bridge-policy-card__label {
+    max-width: calc(100% - 7.25rem);
+  }
+}
+
 .doc-callout--deprecated {
   --callout-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2 2 20h20L12 2Zm-1 6h2v6h-2V8Zm0 8h2v2h-2v-2Z'/%3E%3C/svg%3E");
   border-left-color: #f59e0b;

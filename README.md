@@ -1,3 +1,13 @@
+# SMDZ Studios Documentation
+
+> [!WARNING]
+
+> No permission is granted to use, copy, modify, redistribute, sell, sublicense,
+> or otherwise exploit any part of this repository or its contents without prior
+> express written authorization from SMDZ Studios.
+>
+> See the full license terms in [LICENSE](C:/Users/Sergio/Documents/docs-smdz-studio/LICENSE).
+
 > [!NOTE]
 >
 > ## Thank You for Reading
@@ -10,10 +20,8 @@
 >
 > The main goal was not only to build functional documentation, but also to create a clean, organized, accessible, and maintainable experience for anyone reading or working with the project.
 >
-> Feel free to explore the files, study the implementation, modify the code, and use it as inspiration for your own projects.
->
 > Please keep in mind that this project may continue to evolve over time. Some sections, features, or code structures may be improved, replaced, or expanded as new ideas, requirements, and Docsify updates are introduced.
 >
 > Thank you again for your time, interest, and support.
 >
-> **Enjoy the documentation, explore the code, and keep building.**
+> **Enjoy the documentation and keep building.**

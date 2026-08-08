@@ -717,6 +717,160 @@
             updateChangelogTimeline();
           }
 
+          function initBridgePolicyCards() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var isBridgeRoute =
+              routePath === '/resources/bridge/main.md' ||
+              routePath === '/resources/bridge/main' ||
+              (window.location.hash || '').indexOf('/resources/bridge/main') !== -1;
+
+            if (!isBridgeRoute) {
+              return;
+            }
+
+            var bridgeCardTranslations = {
+              info: {
+                en: {
+                  label: 'Info',
+                  title: 'Bridge Updates And Compatibility Requests',
+                  p1: 'SMDZ Bridge will be updated periodically to add compatibility for additional resources, correct bugs, improve stability, and maintain proper integration across the SMDZ ecosystem.',
+                  p2: 'Bridge updates are mandatory. If they are not applied, the bridge will stop working due to an obsolete version, and therefore your related script will also stop working. In normal cases, it is sufficient to delete the contents of the previous bridge installation and replace them with the new files.',
+                  p3: 'If you are an existing client and want compatibility for another eligible resource to be added to the bridge, you may request it free of charge through a support ticket in our Discord. Client compatibility requests will be reviewed and implemented as quickly as reasonably possible.'
+                },
+                es: {
+                  label: 'Info',
+                  title: 'Actualizaciones Del Bridge Y Solicitudes De Compatibilidad',
+                  p1: 'SMDZ Bridge se actualizara periodicamente para agregar compatibilidad con mas recursos, corregir errores, mejorar la estabilidad y mantener una integracion correcta dentro del ecosistema de SMDZ.',
+                  p2: 'Las actualizaciones del bridge son obligatorias. Si no se aplican, el bridge dejara de funcionar por tener una version obsoleta y, por lo tanto, tu script relacionado tambien dejara de funcionar. En condiciones normales, bastara con borrar el contenido de la instalacion anterior del bridge y sustituirlo por los nuevos archivos.',
+                  p3: 'Si ya eres cliente y quieres que se agregue al bridge la compatibilidad de otro recurso elegible, podras solicitarlo gratuitamente mediante ticket en nuestro Discord. Las solicitudes de compatibilidad de clientes seran revisadas e implementadas lo mas rapido posible dentro de un plazo razonable.'
+                },
+                fr: {
+                  label: 'Info',
+                  title: 'Mises A Jour Du Bridge Et Demandes De Compatibilite',
+                  p1: 'SMDZ Bridge sera mis a jour periodiquement afin d ajouter la compatibilite avec davantage de ressources, corriger des bugs, ameliorer la stabilite et maintenir une integration correcte dans l ecosysteme SMDZ.',
+                  p2: 'Les mises a jour du bridge sont obligatoires. Si elles ne sont pas appliquees, le bridge cessera de fonctionner en raison d une version obsolete et, par consequent, votre script associe cessera egalement de fonctionner. Dans des conditions normales, il suffit de supprimer le contenu de l ancienne installation du bridge et de le remplacer par les nouveaux fichiers.',
+                  p3: 'Si vous etes deja client et souhaitez qu une autre ressource eligible soit ajoutee au bridge, vous pourrez en faire la demande gratuitement via un ticket sur notre Discord. Les demandes de compatibilite des clients seront examinees et implementees aussi rapidement que raisonnablement possible.'
+                },
+                de: {
+                  label: 'Info',
+                  title: 'Bridge Aktualisierungen Und Kompatibilitatsanfragen',
+                  p1: 'SMDZ Bridge wird regelmassig aktualisiert, um die Kompatibilitat mit weiteren Ressourcen hinzuzufugen, Fehler zu beheben, die Stabilitat zu verbessern und eine korrekte Integration innerhalb des SMDZ Okosystems aufrechtzuerhalten.',
+                  p2: 'Bridge Aktualisierungen sind verpflichtend. Wenn sie nicht installiert werden, funktioniert die Bridge aufgrund einer veralteten Version nicht mehr und damit funktioniert auch dein zugehoriges Script nicht mehr. Unter normalen Umstanden reicht es aus, den Inhalt der vorherigen Bridge Installation zu loschen und durch die neuen Dateien zu ersetzen.',
+                  p3: 'Wenn du bereits Kunde bist und mochtest, dass die Kompatibilitat fur eine weitere geeignete Ressource zum Bridge hinzugefugt wird, kannst du dies kostenlos uber ein Ticket in unserem Discord anfragen. Kompatibilitatsanfragen von Kunden werden gepruft und so schnell wie vernunftigerweise moglich umgesetzt.'
+                }
+              },
+              warning: {
+                en: {
+                  label: 'Warning',
+                  title: 'Important Bridge Conditions',
+                  p1: 'The SMDZ Bridge resource may only be claimed once per CFX account. The bridge is provided at no additional cost, but access is strictly limited to users who already hold the corresponding script entitlement, whether through a free release or a valid purchase.',
+                  p2: 'Bridge updates are mandatory. If the required bridge version is not installed, compatibility will be considered invalid and both the bridge and the associated script may cease to function until the required update is applied.',
+                  p3: 'If a resource depends on SMDZ Bridge, that dependency is mandatory. The dependency requirement will not be removed, altered, or bypassed under any circumstance.',
+                  p4: 'In certain cases, and solely at the discretion of SMDZ Studios, limited telemetry may be used to verify where the bridge is being used and which SMDZ resource is using it. This is used strictly for security and anti-leak purposes related to unauthorized distribution of our resources.',
+                  p5: 'No sensitive data will ever be collected through this process, including private keys, IP addresses, or similar protected information. CFX policy does not legally allow that type of sensitive collection in any case.',
+                  p6: 'By acquiring, claiming, downloading, or using the bridge, you acknowledge and accept these conditions in full.'
+                },
+                es: {
+                  label: 'Warning',
+                  title: 'Condiciones Importantes Del Bridge',
+                  p1: 'El recurso SMDZ Bridge solo podra reclamarse una vez por cuenta de CFX. El bridge se proporciona sin coste adicional, pero el acceso queda estrictamente limitado a los usuarios que ya dispongan del derecho correspondiente sobre el script asociado, ya sea mediante una release gratuita o una compra valida.',
+                  p2: 'Las actualizaciones del bridge son obligatorias. Si no se instala la version requerida del bridge, la compatibilidad se considerara invalida y tanto el bridge como el script asociado podran dejar de funcionar hasta que se aplique la actualizacion requerida.',
+                  p3: 'Si un recurso depende de SMDZ Bridge, dicha dependencia es obligatoria. Ese requisito de dependencia no sera eliminado, modificado ni evitado bajo ninguna circunstancia.',
+                  p4: 'En determinados casos, y unicamente a discrecion de SMDZ Studios, podra utilizarse telemetria limitada para verificar donde se esta usando el bridge y que recurso de SMDZ lo esta utilizando. Esto se aplica exclusivamente por motivos de seguridad y anti filtraciones relacionados con la distribucion no autorizada de nuestros recursos.',
+                  p5: 'Nunca se recopilaran datos sensibles mediante este proceso, incluyendo claves privadas, direcciones IP o informacion protegida similar. La propia normativa de CFX tampoco permite legalmente ese tipo de recopilacion sensible en ningun caso.',
+                  p6: 'Al adquirir, reclamar, descargar o utilizar el bridge, aceptas integramente estas condiciones.'
+                },
+                fr: {
+                  label: 'Warning',
+                  title: 'Conditions Importantes Du Bridge',
+                  p1: 'La ressource SMDZ Bridge ne peut etre reclamee qu une seule fois par compte CFX. Le bridge est fourni sans cout supplementaire, mais l acces est strictement reserve aux utilisateurs qui disposent deja du droit correspondant sur le script concerne, que ce soit par une version gratuite ou par un achat valide.',
+                  p2: 'Les mises a jour du bridge sont obligatoires. Si la version requise du bridge n est pas installee, la compatibilite sera consideree comme invalide et le bridge ainsi que le script associe pourront cesser de fonctionner jusqu a l installation de la mise a jour requise.',
+                  p3: 'Si une ressource depend de SMDZ Bridge, cette dependance est obligatoire. Cette exigence ne sera retiree, modifiee ou contournee en aucune circonstance.',
+                  p4: 'Dans certains cas, et uniquement a la discretion de SMDZ Studios, une telemetrie limitee pourra etre utilisee afin de verifier ou le bridge est utilise et quelle ressource SMDZ l utilise. Cela est strictement reserve a des finalites de securite et de lutte contre les fuites liees a la distribution non autorisee de nos ressources.',
+                  p5: 'Aucune donnee sensible ne sera jamais recueillie par ce processus, y compris des cles privees, des adresses IP ou toute information protegee similaire. Les regles de CFX n autorisent de toute facon pas legalement ce type de collecte sensible.',
+                  p6: 'En acquerant, reclamant, telechargeant ou utilisant le bridge, vous reconnaissez et acceptez integralement ces conditions.'
+                },
+                de: {
+                  label: 'Warning',
+                  title: 'Wichtige Bridge Bedingungen',
+                  p1: 'Die Ressource SMDZ Bridge kann pro CFX Konto nur einmal beansprucht werden. Die Bridge wird ohne zusatzliche Kosten bereitgestellt, der Zugriff ist jedoch ausschliesslich auf Nutzer beschrankt, die bereits uber die entsprechende Berechtigung fur das zugehorige Script verfugen, entweder durch eine kostenlose Veroffentlichung oder einen gultigen Kauf.',
+                  p2: 'Bridge Aktualisierungen sind verpflichtend. Wenn die erforderliche Bridge Version nicht installiert ist, gilt die Kompatibilitat als ungultig und sowohl die Bridge als auch das zugehorige Script konnen aufhoren zu funktionieren, bis das erforderliche Update installiert wurde.',
+                  p3: 'Wenn eine Ressource von SMDZ Bridge abhangt, ist diese Abhangigkeit verpflichtend. Diese Anforderung wird unter keinen Umstanden entfernt, verandert oder umgangen.',
+                  p4: 'In bestimmten Fallen und ausschliesslich nach Ermessen von SMDZ Studios kann eingeschrankte Telemetrie verwendet werden, um zu uberprufen, wo die Bridge verwendet wird und welche SMDZ Ressource sie verwendet. Dies dient ausschliesslich Sicherheits- und Anti Leak Zwecken im Zusammenhang mit der unautorisierten Verbreitung unserer Ressourcen.',
+                  p5: 'Es werden dabei niemals sensible Daten erfasst, einschliesslich privater Schlussel, IP Adressen oder ahnlicher geschutzter Informationen. Die Richtlinien von CFX erlauben eine solche sensible Datenerfassung ohnehin rechtlich nicht.',
+                  p6: 'Durch den Erwerb, die Beanspruchung, den Download oder die Nutzung der Bridge erkennst du diese Bedingungen vollstandig an und akzeptierst sie.'
+                }
+              }
+            };
+
+            function getBridgeCardStorageKey(cardKey) {
+              return 'smdz.bridge.card.lang.' + cardKey;
+            }
+
+            function applyBridgeCardLanguage(cardEl, lang) {
+              var cardKey = cardEl.getAttribute('data-bridge-card');
+              var translations = bridgeCardTranslations[cardKey];
+              if (!translations) {
+                return;
+              }
+
+              var selectedLanguage = translations[lang] ? lang : 'en';
+              var selectedContent = translations[selectedLanguage];
+
+              Array.prototype.forEach.call(cardEl.querySelectorAll('[data-bridge-i18n]'), function (textEl) {
+                var key = textEl.getAttribute('data-bridge-i18n');
+                if (!selectedContent[key]) {
+                  return;
+                }
+
+                var svgEl = textEl.querySelector('svg');
+                if (svgEl) {
+                  textEl.innerHTML = svgEl.outerHTML + selectedContent[key];
+                } else {
+                  textEl.textContent = selectedContent[key];
+                }
+              });
+
+              Array.prototype.forEach.call(cardEl.querySelectorAll('.bridge-policy-card__lang-btn'), function (buttonEl) {
+                var isActive = buttonEl.getAttribute('data-bridge-lang') === selectedLanguage;
+                buttonEl.classList.toggle('is-active', isActive);
+                buttonEl.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+              });
+
+              try {
+                window.localStorage.setItem(getBridgeCardStorageKey(cardKey), selectedLanguage);
+              } catch (error) {}
+            }
+
+            Array.prototype.forEach.call(contentRoot.querySelectorAll('.bridge-policy-card[data-bridge-card]'), function (cardEl) {
+              if (cardEl.dataset.bridgeCardReady === '1') {
+                return;
+              }
+
+              var cardKey = cardEl.getAttribute('data-bridge-card');
+              var savedLanguage = 'en';
+
+              try {
+                savedLanguage = window.localStorage.getItem(getBridgeCardStorageKey(cardKey)) || 'en';
+              } catch (error) {}
+
+              applyBridgeCardLanguage(cardEl, savedLanguage);
+
+              Array.prototype.forEach.call(cardEl.querySelectorAll('.bridge-policy-card__lang-btn'), function (buttonEl) {
+                buttonEl.addEventListener('click', function () {
+                  applyBridgeCardLanguage(cardEl, buttonEl.getAttribute('data-bridge-lang') || 'en');
+                });
+              });
+
+              cardEl.dataset.bridgeCardReady = '1';
+            });
+          }
+
           function wrapMarkdownTables() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot) {
@@ -1044,6 +1198,10 @@
               'INFORMATION': {
                 label: 'Information',
                 path: 'M11 7h2V5h-2v2Zm0 12h2V9h-2v10Zm1-17a10 10 0 1 1 0 20 10 10 0 0 1 0-20Z'
+              },
+              'LIBRARY': {
+                label: 'Library',
+                path: 'M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14.5a1.5 1.5 0 0 1-1.5 1.5H6.5A2.5 2.5 0 0 1 4 17.5v-11ZM6.5 6A.5.5 0 0 0 6 6.5v11c0 .28.22.5.5.5H18V6H6.5Zm2 3h7v1.8h-7V9Zm0 3.4h7v1.8h-7v-1.8Z'
               },
               'SUPPORT': {
                 label: 'Support',
@@ -1874,8 +2032,11 @@
               enhanceScriptVideos();
               enhanceStatusBadges();
               enhanceChangelogPage();
+              initBridgePolicyCards();
               window.setTimeout(enhanceChangelogPage, 80);
               window.setTimeout(enhanceChangelogPage, 260);
+              window.setTimeout(initBridgePolicyCards, 80);
+              window.setTimeout(initBridgePolicyCards, 260);
               wrapMarkdownTables();
               initSupportAccordions();
               restoreToolMarkup();
