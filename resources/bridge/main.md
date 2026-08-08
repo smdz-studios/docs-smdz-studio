@@ -50,6 +50,28 @@ This makes your ecosystem easier to scale, easier to maintain, and far more cons
 Every provider listed below uses the exact FiveM resource folder name expected by the bridge.
 This layer is intended for your own resource line and for the servers of clients who use your scripts.
 
+<section class="bridge-search-panel">
+  <p class="bridge-search-panel__eyebrow">Compatibility Search</p>
+  <h3 class="bridge-search-panel__title">Check If Your Resource Is Supported</h3>
+  <p class="bridge-search-panel__text">
+    Search by resource name, provider family, or keyword such as <code>origen</code>, <code>wasabi</code>, <code>qs</code>, <code>dispatch</code>, or <code>inventory</code>.
+  </p>
+  <div class="bridge-search-panel__field">
+    <input
+      id="bridge-provider-search"
+      class="bridge-search-panel__input"
+      type="search"
+      inputmode="search"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Search compatibility..."
+      aria-label="Search bridge compatibility"
+    />
+    <button type="button" class="bridge-search-panel__clear" data-bridge-search-clear>Clear</button>
+  </div>
+  <p class="bridge-search-panel__status" data-bridge-search-status>Showing every supported provider.</p>
+</section>
+
 ### Framework Providers
 
 - `qbx_core` for Qbox
@@ -77,8 +99,6 @@ This layer is intended for your own resource line and for the servers of clients
 - `qb-inventory`
 - `qs-inventory`
 - `tgiann-inventory`
-
-> Native framework inventory providers are treated as lower-priority fallbacks.
 
 ### Dispatch Providers
 
@@ -186,26 +206,6 @@ This layer is intended for your own resource line and for the servers of clients
 - `wasabi_uikit`
 - `ZSX_UIV2`
 
-
----
-
-<div style="margin-top: 2.5rem;">
-  <p style="margin: 0 0 0.35rem; font-size: 0.82rem; letter-spacing: 0.22rem; text-transform: uppercase; opacity: 0.72;">Approach</p>
-  <h2 style="margin: 0; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.05;">Design Philosophy</h2>
-</div>
-
-SMDZ Bridge is built around a simple idea:
-your resources should not care which compatible provider a client server is using, as long as that provider is supported by the bridge.
-
-That allows each script to stay focused on gameplay or product logic while the bridge handles the private compatibility layer behind the scenes.
-
-<div style="margin-top: 2.5rem;">
-  <p style="margin: 0 0 0.35rem; font-size: 0.82rem; letter-spacing: 0.22rem; text-transform: uppercase; opacity: 0.72;">Vision</p>
-  <h2 style="margin: 0; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.05;">Intended Outcome</h2>
-</div>
-
-With SMDZ Bridge in place, your scripts can target one internal integration layer instead of maintaining separate support paths everywhere.
-That gives you a cleaner private product line, more consistent behavior for your clients, and a stronger long-term base for future SMDZ resources.
 
 ---
 

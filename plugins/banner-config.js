@@ -1,10 +1,10 @@
-// SMDZ Studios — Global announcement bar configuration
+// SMDZ Studios - Global announcement bar configuration
 
 window.SMDZ_BANNER_CONFIG = {
-  enabled: false,
+  enabled: true,
 
   // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning"
-  type: "info",
+  type: "announcement",
 
   // "full" | "compact"
   layout: "compact",
@@ -12,19 +12,17 @@ window.SMDZ_BANNER_CONFIG = {
   // "center" | "left"
   align: "center",
 
-  icon: "🎨",
+  icon: "🔗",
 
-  title: "We changed the visual identity, check it out in the new identity page!",
+  title: "We have launched our own SMDZ Bridge.",
 
   subtitle:
-    "",
+    "It will start being used across our resources very soon.",
 
   cta: {
-    enabled: false,
-    label: "View New Identity",
-    // Blog CTA disabled while keeping the announcement configuration available.
-    // url: "https://docs.smdz-studios.com/#/blog/new-identity",
-    url: "",
+    enabled: true,
+    label: "View Bridge",
+    url: "https://docs.smdz-studios.com/#/resources/bridge/main",
     target: "_self"
   }
 };

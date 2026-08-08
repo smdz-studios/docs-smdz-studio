@@ -4225,6 +4225,103 @@ button[aria-label^="close"]:focus-visible,
   max-width: calc(100% - 8rem);
 }
 
+.bridge-search-panel {
+  margin: 1.35rem 0 2rem;
+  padding: 1.2rem 1.1rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.05rem;
+  background: #242424;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.bridge-search-panel__eyebrow {
+  margin: 0 0 0.35rem;
+  color: #d4d4d8;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+  opacity: 0.82;
+}
+
+.bridge-search-panel__title {
+  margin: 0;
+  color: #fafafa;
+  font-size: clamp(1.18rem, 2.4vw, 1.6rem);
+  line-height: 1.08;
+}
+
+.bridge-search-panel__text {
+  margin: 0.65rem 0 0;
+  color: #b9b9c0;
+  line-height: 1.7;
+}
+
+.bridge-search-panel__field {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 1.05rem;
+}
+
+.bridge-search-panel__input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.9rem;
+  background: #1b1b1b;
+  color: #fafafa;
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  font-weight: 700;
+  outline: none;
+  transition: border-color 0.16s ease-out, background 0.16s ease-out, transform 0.16s ease-out;
+}
+
+.bridge-search-panel__input:focus {
+  border-color: rgba(245, 194, 66, 0.32);
+  background: #171717;
+  transform: translateY(-1px);
+}
+
+.bridge-search-panel__clear {
+  flex: 0 0 auto;
+  padding: 0.86rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.9rem;
+  background: #1d1d1d;
+  color: #f4f4f5;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.16s ease-out, border-color 0.16s ease-out, transform 0.16s ease-out, color 0.16s ease-out;
+}
+
+.bridge-search-panel__clear:hover,
+.bridge-search-panel__clear:focus-visible {
+  background: #202020;
+  border-color: rgba(245, 194, 66, 0.22);
+  color: #ffe08a;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.bridge-search-panel__status {
+  margin: 0.85rem 0 0;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.bridge-provider-hidden {
+  display: none !important;
+}
+
 @media (max-width: 640px) {
   .bridge-policy-card__toolbar {
     top: 0.75rem;
@@ -4249,6 +4346,15 @@ button[aria-label^="close"]:focus-visible,
 
   .bridge-policy-card__label {
     max-width: calc(100% - 7.25rem);
+  }
+
+  .bridge-search-panel__field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bridge-search-panel__clear {
+    width: 100%;
   }
 }
 

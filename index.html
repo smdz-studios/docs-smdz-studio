@@ -871,6 +871,142 @@
             });
           }
 
+          function initBridgeCompatibilityTools() {
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            var contentRoot = document.querySelector('.markdown-section');
+            if (!contentRoot) {
+              return;
+            }
+
+            var isBridgeRoute =
+              routePath === '/resources/bridge/main.md' ||
+              routePath === '/resources/bridge/main' ||
+              (window.location.hash || '').indexOf('/resources/bridge/main') !== -1;
+
+            if (!isBridgeRoute) {
+              return;
+            }
+
+            if (contentRoot.dataset.bridgeProtectionReady !== '1') {
+              contentRoot.addEventListener('keydown', function (event) {
+                var isCopy = (event.ctrlKey || event.metaKey) && !event.shiftKey && String(event.key || '').toLowerCase() === 'c';
+                var isPaste = (event.ctrlKey || event.metaKey) && !event.shiftKey && String(event.key || '').toLowerCase() === 'v';
+
+                if (isCopy || isPaste) {
+                  event.preventDefault();
+                }
+              });
+
+              ['copy', 'cut', 'paste', 'dragstart', 'drop'].forEach(function (eventName) {
+                contentRoot.addEventListener(eventName, function (event) {
+                  event.preventDefault();
+                });
+              });
+
+              contentRoot.dataset.bridgeProtectionReady = '1';
+            }
+
+            var searchInputEl = contentRoot.querySelector('#bridge-provider-search');
+            var clearButtonEl = contentRoot.querySelector('[data-bridge-search-clear]');
+            var statusEl = contentRoot.querySelector('[data-bridge-search-status]');
+            if (!searchInputEl || !clearButtonEl || !statusEl) {
+              return;
+            }
+
+            if (searchInputEl.dataset.bridgeSearchReady === '1') {
+              return;
+            }
+
+            var providerSections = [];
+            var headingNodes = Array.prototype.slice.call(contentRoot.querySelectorAll('h3'));
+            headingNodes.forEach(function (headingEl) {
+              var nextEl = headingEl.nextElementSibling;
+              while (nextEl && nextEl.tagName === 'P' && nextEl.textContent.indexOf('Native framework inventory providers') !== -1) {
+                nextEl = nextEl.nextElementSibling;
+              }
+
+              if (!nextEl || nextEl.tagName !== 'UL') {
+                return;
+              }
+
+              var items = Array.prototype.slice.call(nextEl.querySelectorAll('li'));
+              if (!items.length) {
+                return;
+              }
+
+              providerSections.push({
+                heading: headingEl,
+                list: nextEl,
+                items: items
+              });
+            });
+
+            function normalizeBridgeSearchValue(value) {
+              return String(value || '')
+                .toLowerCase()
+                .replace(/[`_*]/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            }
+
+            function filterBridgeProviders() {
+              var query = normalizeBridgeSearchValue(searchInputEl.value);
+              var totalMatches = 0;
+              var totalVisibleSections = 0;
+
+              providerSections.forEach(function (section) {
+                var sectionMatches = 0;
+
+                section.items.forEach(function (itemEl) {
+                  var text = normalizeBridgeSearchValue(itemEl.textContent);
+                  var isMatch = !query || text.indexOf(query) !== -1;
+                  itemEl.classList.toggle('bridge-provider-hidden', !isMatch);
+                  if (isMatch) {
+                    sectionMatches += 1;
+                    totalMatches += 1;
+                  }
+                });
+
+                var hasMatches = sectionMatches > 0;
+                section.heading.classList.toggle('bridge-provider-hidden', !hasMatches);
+                section.list.classList.toggle('bridge-provider-hidden', !hasMatches);
+                if (hasMatches) {
+                  totalVisibleSections += 1;
+                }
+              });
+
+              var noteEl = contentRoot.querySelector('blockquote');
+              if (noteEl) {
+                var inventoryHeading = contentRoot.querySelector('h3:nth-of-type(3)');
+                if (!query) {
+                  noteEl.classList.remove('bridge-provider-hidden');
+                } else if (inventoryHeading && inventoryHeading.classList.contains('bridge-provider-hidden')) {
+                  noteEl.classList.add('bridge-provider-hidden');
+                } else {
+                  noteEl.classList.remove('bridge-provider-hidden');
+                }
+              }
+
+              if (!query) {
+                statusEl.textContent = 'Showing every supported provider.';
+              } else if (totalMatches === 0) {
+                statusEl.textContent = 'No supported provider matched your search.';
+              } else {
+                statusEl.textContent = 'Found ' + totalMatches + ' matching provider' + (totalMatches === 1 ? '' : 's') + ' across ' + totalVisibleSections + ' categor' + (totalVisibleSections === 1 ? 'y' : 'ies') + '.';
+              }
+            }
+
+            searchInputEl.addEventListener('input', filterBridgeProviders);
+            clearButtonEl.addEventListener('click', function () {
+              searchInputEl.value = '';
+              filterBridgeProviders();
+              searchInputEl.focus();
+            });
+
+            searchInputEl.dataset.bridgeSearchReady = '1';
+            filterBridgeProviders();
+          }
+
           function wrapMarkdownTables() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot) {
@@ -2033,10 +2169,13 @@
               enhanceStatusBadges();
               enhanceChangelogPage();
               initBridgePolicyCards();
+              initBridgeCompatibilityTools();
               window.setTimeout(enhanceChangelogPage, 80);
               window.setTimeout(enhanceChangelogPage, 260);
               window.setTimeout(initBridgePolicyCards, 80);
               window.setTimeout(initBridgePolicyCards, 260);
+              window.setTimeout(initBridgeCompatibilityTools, 80);
+              window.setTimeout(initBridgeCompatibilityTools, 260);
               wrapMarkdownTables();
               initSupportAccordions();
               restoreToolMarkup();
