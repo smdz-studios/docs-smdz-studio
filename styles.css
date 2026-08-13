@@ -4318,6 +4318,39 @@ button[aria-label^="close"]:focus-visible,
   font-weight: 700;
 }
 
+.bridge-policy-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.95rem;
+  padding: 0.78rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc !important;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: background 0.16s ease-out, border-color 0.16s ease-out, transform 0.16s ease-out, color 0.16s ease-out;
+}
+
+.bridge-policy-card__cta:hover,
+.bridge-policy-card__cta:focus-visible {
+  transform: translateY(-1px);
+  text-decoration: none !important;
+  outline: none;
+}
+
+.bridge-policy-card__cta--warning:hover,
+.bridge-policy-card__cta--warning:focus-visible {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(248, 113, 113, 0.28);
+  color: #ffe4e6 !important;
+}
+
 .bridge-provider-hidden {
   display: none !important;
 }

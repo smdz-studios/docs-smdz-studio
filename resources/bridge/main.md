@@ -78,6 +78,24 @@ This layer is intended for your own resource line and for the servers of clients
 - `qb-core` for QBCore
 - `es_extended` for ESX
 
+---
+
+### Inventory Providers
+
+- `ox_inventory`
+- `ak47_inventory`
+- `codem-inventory`
+- `core_inventory`
+- `jaksam_inventory`
+- `origen_inventory`
+- `qb-inventory`
+- `qs-inventory`
+- `tgiann-inventory`
+- `qb-core` as native QBCore inventory fallback
+- `es_extended` as native ESX inventory fallback
+
+---
+
 ### Clothing Providers
 
 - `esx_skin`
@@ -86,19 +104,7 @@ This layer is intended for your own resource line and for the servers of clients
 - `qb-clothing`
 - `rcore_clothing`
 
-### Inventory Providers
-
-- `ox_inventory`
-- `ak47_inventory`
-- `codem-inventory`
-- `core_inventory`
-- `es_extended` as native ESX inventory fallback
-- `jaksam_inventory`
-- `origen_inventory`
-- `qb-core` as native QBCore inventory fallback
-- `qb-inventory`
-- `qs-inventory`
-- `tgiann-inventory`
+---
 
 ### Dispatch Providers
 
@@ -113,7 +119,11 @@ This layer is intended for your own resource line and for the servers of clients
 - `qs_police_creator`
 - `rcore_dispatch`
 - `tk_dispatch`
+- `lb-tablet`
 - `wasabi_mdt`
+- `0r-dispatch`
+
+---
 
 ### Banking Providers
 
@@ -133,12 +143,14 @@ This layer is intended for your own resource line and for the servers of clients
 - `tgiann-bank`
 - `wasabi_banking`
 
+---
+
 ### Fuel Providers
 
+- `LegacyFuel`
 - `BigDaddy-Fuel`
 - `cdn-fuel`
 - `esx-sna-fuel`
-- `LegacyFuel`
 - `lc_fuel`
 - `okokGasStation`
 - `ox_fuel`
@@ -149,6 +161,9 @@ This layer is intended for your own resource line and for the servers of clients
 - `rcore_fuel`
 - `ti_fuel`
 - `x-fuel`
+- `msk_fuel`
+
+---
 
 ### Vehicle Keys Providers
 
@@ -165,6 +180,9 @@ This layer is intended for your own resource line and for the servers of clients
 - `t1ger_keys`
 - `vehicles_keys`
 - `wasabi_carlock`
+- `0r-vehiclekeys`
+
+---
 
 ### Notification Providers
 
@@ -185,9 +203,12 @@ This layer is intended for your own resource line and for the servers of clients
 - `RxNotify`
 - `vms_notifyv2`
 - `wasabi_notify`
-- `wasabi_uikit`
+- `wasabi_uikit` as a notification module
 - `xsNotify`
+- `frkn-uikit` as a notification module
 - `es_extended` as native ESX notification fallback
+
+---
 
 ### TextUI Providers
 
@@ -205,7 +226,10 @@ This layer is intended for your own resource line and for the servers of clients
 - `qb-core` as native QBCore DrawText fallback
 - `wasabi_uikit`
 - `ZSX_UIV2`
-
+- `qs-textui`
+- `r3-textui`
+- `lab-TextUI`
+- `KS-Textui`
 
 ---
 
