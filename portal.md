@@ -39,7 +39,7 @@
 
 
 
-
+<!-- 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/safes.png" alt="safes preview image" />
@@ -55,7 +55,7 @@
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/safes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
-  </article>
+  </article> -->
 
 
   <article class="home-showcase-card">
