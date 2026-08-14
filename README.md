@@ -5,8 +5,7 @@
 > No permission is granted to use, copy, modify, redistribute, sell, sublicense,
 > or otherwise exploit any part of this repository or its contents without prior
 > express written authorization from SMDZ Studios.
->
-> See the full license terms in [LICENSE](C:/Users/Sergio/Documents/docs-smdz-studio/LICENSE).
+
 
 > [!NOTE]
 >

@@ -1,0 +1,93 @@
+Spec-Version: 1.0
+
+Site-Name: SMDZ Studios Docs
+Site-URL: https://docs.smdz-studios.com
+Contact: https://docs.smdz-studios.com/#/support.md
+Policy-URL: https://docs.smdz-studios.com/robots.txt
+
+Training: deny
+Scraping: allow
+Indexing: allow
+Caching: allow
+
+Attribution: required
+AI-Disclosure: recommended
+Audit: optional
+
+Agent: *
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 60/minute
+
+Agent: PerplexityBot
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 120/minute
+
+Agent: OAI-SearchBot
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 120/minute
+
+Agent: ChatGPT-User
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 120/minute
+
+Agent: Claude-SearchBot
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 120/minute
+
+Agent: ClaudeBot
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+  Rate-Limit: 60/minute
+
+Agent: GPTBot
+  Training: deny
+  Scraping: deny
+  Indexing: deny
+  Caching: deny
+
+Agent: Google-Extended
+  Training: deny
+  Scraping: allow
+  Indexing: allow
+  Caching: allow
+
+Agent: CCBot
+  Training: deny
+  Scraping: deny
+  Indexing: deny
+  Caching: deny
+
+Agent: Bytespider
+  Training: deny
+  Scraping: deny
+  Indexing: deny
+  Caching: deny
+
+Agent: Diffbot
+  Training: deny
+  Scraping: deny
+  Indexing: deny
+  Caching: deny
+
+Agent: cohere-ai
+  Training: deny
+  Scraping: deny
+  Indexing: deny
+  Caching: deny

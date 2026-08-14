@@ -55,17 +55,11 @@ SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can d
 # ⭐ FEATURES
 
 - 📞 **Dynamic NPC Witness Calls** — Civilians NPC automatically report crimes they see or hear, creating more realistic and unpredictable police interactions.
-
 - 🚨 **Multiple Crime Detection Types** — Supports gunshots, visible firearms, bladed weapons, assaults, vehicle thefts, hit-and-runs, civilian deaths, and player-down incidents.
-
 - 👁️ **Intelligent Witness Selection** — The system evaluates distance, visibility, NPC condition, behavior, and criminal involvement before selecting a valid witness.
-
 - 🏃 **Realistic Witness Reactions** — Witnesses can complete the call, flee the scene, surrender when threatened, drop their phone, or cancel the report when injured.
-
 - 🔌 **Extensive Dispatch Compatibility** — Includes multiple ready-to-use dispatch bridges and developer exports for integrating custom robberies, missions, and illegal activities.
-
 - 🌍 **Highly Configurable and Multilingual** — Customize crime probabilities, call duration, cooldowns, simultaneous reports, UI visibility, ignored NPCs, and ten included languages.
-
 - 🧩 **Developer-Friendly Exports** — Easily connect custom robberies, missions, illegal activities, and third-party resources through flexible client and server exports with fully customizable report data.
 
 
@@ -90,7 +84,6 @@ SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can d
 
 - **FiveM server:** Latest recommended artifact build.
 - **Framework:** Standalone. Compatible with ESX, QBCore, Qbox, and custom frameworks because no framework dependency is required.
-- **Database:** Not required.
 - **Required dependencies:** None.
 - **Optional dependency:** One supported dispatch resource when police alerts are required.
 
@@ -151,19 +144,6 @@ The main configuration file is `config.lua`. All options include inline English 
 
 
 --[[
-    ╔══════════════════════════════════════════════════════════════════════════════╗
-    ║                         SMDZ WITNESS CALLS CONFIG                         ║
-    ║                     NPC civilian witness reports for FiveM                 ║
-    ╚══════════════════════════════════════════════════════════════════════════════╝
-
-    Table of contents
-    1. General settings
-    2. Witness behavior
-    3. Automatic detections
-    4. Crime type settings / alert toggles
-    5. Cooldowns
-    6. Dispatch bridge
-    7. DUI / NUI visibility
 ]]
 
 Config = {}

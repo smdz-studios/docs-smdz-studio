@@ -808,6 +808,7 @@ Radio → Phone → Normal proximity voice
 ```
 
 Normal voice uses the icon selected by the viewer. Radio and phone can use dedicated icons configured in `Config.ContextIcons`.
+
 ---
 
 # 🔌 **EVENTS & EXPORTS (DEVELOPERS):**

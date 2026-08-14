@@ -9,7 +9,8 @@
   <meta name="description" content="Official SMDZ Studios documentation for FiveM scripts, resources, setup guides, configuration, troubleshooting, Asset Escrow, FAQ and support articles." />
   <meta name="keywords" content="SMDZ Studios, FiveM documentation, FiveM scripts, FiveM resources, ESX, QBCore, GTA RP, installation guides, troubleshooting, Asset Escrow, Tebex, Cfx.re, support" />
   <meta name="author" content="SMDZ Studios" />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow,noarchive" />
+  <meta name="bingbot" content="nocache" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SMDZ Studios Docs | FiveM Script Documentation" />
   <meta property="og:description" content="Official documentation for SMDZ Studios FiveM resources, setup guides, troubleshooting, Asset Escrow, FAQ and support." />
@@ -84,7 +85,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css?v=20260728-needhelp-seo" />
+  <link rel="stylesheet" href="styles.css?v=20260814-search-seo-sync" />
   <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-3" />
   <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-2" />
 </head>
@@ -1084,6 +1085,10 @@
                 title: 'Changelog | SMDZ Studios Docs',
                 description: 'Review recent SMDZ Studios documentation, resource and support changes.'
               },
+              '/resources/bridge/main.md': {
+                title: 'SMDZ Bridge | SMDZ Studios Docs',
+                description: 'Documentation for SMDZ Bridge, the private compatibility core that powers framework and provider support across the SMDZ Studios ecosystem.'
+              },
               '/errors-pages/400.md': {
                 title: 'Bad Request | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for malformed or invalid documentation requests.'
@@ -1125,6 +1130,10 @@
                 title: 'Handling Editor | Free FiveM Resource',
                 description: 'SMDZ Handling Editor is a free FiveM vehicle handling tool for real-time tuning, presets and handling.meta export.'
               },
+              '/resources/paid/advanced-safes.md': {
+                title: 'Advanced Safes | SMDZ Studios',
+                description: 'Documentation for SMDZ Advanced Safes, a FiveM safe management resource with bridge support, secure storage flows and configurable interactions.'
+              },
               '/resources/paid/admin-board.md': {
                 title: 'Admin Board | SMDZ Studios',
                 description: 'Documentation for SMDZ Admin Board, a fullscreen FiveM administrative workspace with boards, tasks, staff tools, logs and persistent notifications.'
@@ -1148,6 +1157,10 @@
               '/resources/paid/voice-indicator.md': {
                 title: 'Voice Indicator | SMDZ Studios',
                 description: 'Documentation for SMDZ Voice Indicator, a FiveM voice activity indicator for proximity, radio and phone communication.'
+              },
+              '/resources/paid/witness_calls.md': {
+                title: 'Witness Calls | SMDZ Studios',
+                description: 'Documentation for SMDZ Witness Calls, a FiveM civilian witness and dispatch alert system with crime detection and supported dispatch integrations.'
               },
               '/resources/paid/flyers.md': {
                 title: 'Flyers | SMDZ Studios',
@@ -1204,10 +1217,6 @@
               '/resources/paid/bus-travel.md': {
                 title: 'Bus Travel | SMDZ Studios',
                 description: 'Documentation for SMDZ Bus Travel, a FiveM bus transport resource for route-based travel systems.'
-              },
-              '/resources/paid/hud2d-builder.md': {
-                title: 'HUD 2D Builder | SMDZ Studios',
-                description: 'Documentation for SMDZ HUD 2D Builder, a FiveM tool for building and tuning custom HUD elements.'
               },
               '/resources/redesings/ox-target-redesing-crystal.md': {
                 title: 'OX Target Crystal Redesign | SMDZ Studios',
@@ -2463,8 +2472,8 @@
     })();
   </script>
   <!-- Custom plugin: debe cargarse antes del core de Docsify -->
-  <script src="plugins/command-search-pages.js?v=20260712-1"></script>
-  <script src="plugins/command-search.js?v=20260626-1"></script>
+  <script src="plugins/command-search-pages.js?v=20260814-1"></script>
+  <script src="plugins/command-search.js?v=20260814-1"></script>
   <script src="plugins/five-metrics.js?v=20260622-2"></script>
   <!-- Docsify core: cargar una sola vez -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>

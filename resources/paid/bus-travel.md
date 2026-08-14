@@ -601,6 +601,8 @@ end
 | If notifications are missing | set `Config.Notify = 'fallback'` to test the pipeline. |
 | If progress bar hangs | switch to `fallback` to isolate provider issues. |
 
+---
+
 # ❓ **FAQ – FREQUENTLY ASKED QUESTIONS:**
 
 | Question | Answer |
@@ -622,6 +624,8 @@ end
 | Can I override stop descriptions per locale? | Yes. Update the `STOP_*_DESC` keys in `locales/en.lua` and `locales/es.lua`. |
 | Can I reduce CPU usage? | Disable markers/blips you don’t need and lower `Config.Markers.DrawDistance`. |
 | Is the bus spawn networked for all players? | No. It is local per player to prevent collisions and duplication. |
+
+---
 
 # 🔄 **UPDATES:**
 - 📅 There are currently **NO major update plans** scheduled for **Q2 and Q3 of 2026**.

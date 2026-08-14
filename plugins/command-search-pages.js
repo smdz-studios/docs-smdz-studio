@@ -5,12 +5,14 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/problems.md',
   '/fxap.md',
   '/changelog.md',
+  '/resources/bridge/main.md',
 
   // Blog pages are intentionally disabled while keeping their files available.
   // '/blog/index.md',
   // '/blog/new-identity.md',
   // '/blog/news-fivem-enchanced.md',
 
+  '/resources/paid/advanced-safes.md',
   '/resources/paid/admin-board.md',
   '/resources/paid/app-emergency-alerts.md',
   '/resources/paid/bus-travel.md',
@@ -19,7 +21,6 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/resources/paid/evidence-board.md',
   '/resources/paid/evidence-markers.md',
   '/resources/paid/flyers.md',
-  '/resources/paid/hud2d-builder.md',
   '/resources/paid/ifruit-pods.md',
   '/resources/paid/invite-codes.md',
   '/resources/paid/keybinds.md',
@@ -32,6 +33,7 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze([
   '/resources/paid/speed-bumpers.md',
   '/resources/paid/streamers-list.md',
   '/resources/paid/voice-indicator.md',
+  '/resources/paid/witness_calls.md',
   '/resources/free/handling-editor.md',
   '/resources/redesings/ox-target-radial-redesign.md',
   '/resources/redesings/ox-target-redesing-crystal.md',
