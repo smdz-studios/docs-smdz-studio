@@ -39,13 +39,13 @@
 
 
 
-<!-- 
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/safes.png" alt="safes preview image" />
     </div>
     <div class="home-showcase-body">
-      <h3>Witness Calls</h3>
+      <h3>Safes System</h3>
       <p>SMDZ Safes is a persistent safe system for FiveM that lets players place safes, protect them with a PIN, share access, and use them as private storage. It includes SQL persistence, configurable capacities, an optional dealer, drill robberies, and smdz_bridge integration for different server setups.</p>
       <div class="home-showcase-tags">
         <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
@@ -55,7 +55,7 @@
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/safes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
-  </article> -->
+  </article>
 
 
   <article class="home-showcase-card">
