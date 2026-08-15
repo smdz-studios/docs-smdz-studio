@@ -20,6 +20,7 @@ Sidebar icons:
   - [SMDZ Bridge](/resources/bridge/main.md "icon:wrench")
 
 - **Paid Resources**
+  - [Safes System](/resources/paid/advanced-safes.md "icon:package-2")
   - [Witness Calls](/resources/paid/witness_calls.md "icon:phone-call")
   - [Dynamic Keybinds](/resources/paid/keybinds.md "icon:keyboard")
   - [Evidence Board](/resources/paid/evidence-board.md "icon:square-kanban")
