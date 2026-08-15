@@ -3802,6 +3802,29 @@ button[aria-label^="close"]:focus-visible,
   will-change: max-height, opacity, transform;
 }
 
+.markdown-section--changelog .changelog-release-media {
+  margin: 0 0 1rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.8rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    rgba(19, 19, 19, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 14px 34px rgba(0, 0, 0, 0.14);
+}
+
+.markdown-section--changelog .changelog-release-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.58rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 10, 0.42);
+  object-fit: cover;
+}
+
 .markdown-section--changelog .changelog-release.is-collapsed .changelog-release-body {
   margin-top: 0;
   opacity: 0;

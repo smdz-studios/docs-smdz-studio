@@ -7,6 +7,64 @@
 
 ---
 
+#  <span class="changelog-version-badge">1.1.0</span> 🚧 | SMDZ Speed Bumps - 2026-08-15
+<div class="changelog-release-media">
+  <img
+    src="assets/updates/1.1.0_speed_bumps.png"
+    alt="SMDZ Speed Bumps 1.1.0 admin interface preview"
+  />
+</div>
+
+### ✅ ADDED:
+
+- Added a completely redesigned administration interface for creating and managing speed bumps.
+- Added a new **Audit / Logs** section to track administrative actions such as creating, editing, deleting, cloning, and repositioning speed bumps.
+- Added search and pagination support to Audit Logs.
+- Added automatic SQL setup and migration on resource startup, including missing tables, columns, and indexes.
+- Added a server-side 15-second cooldown to the Refresh action, with the remaining cooldown displayed directly in the UI.
+- Added runtime UI color customization through `config_ui.lua` without requiring the interface to be rebuilt.
+- Added four new languages: Italian, Portuguese, Dutch, and Polish, bringing the resource to **8 supported languages**.
+
+### 🔧 CHANGED:
+
+- Completely redesigned the sidebar, navigation, forms, cards, buttons, pagination, scrollbars, and general interface layout.
+- Increased the overall interface and text size for improved readability.
+- Improved the speed limit preview with a European-style red speed restriction sign.
+- Manage now displays **6 speed bumps per page**.
+- Improved the placement interface with larger and centered coordinates and title information.
+- Removed the Local/World Gizmo control from the placement interface.
+- Improved visual feedback, page title animations, SVG icon usage, hover effects, and transitions.
+- Moved Discord webhook configuration to `server_config.lua` so webhook URLs remain server-side.
+- Moved configuration files from the previous `shared` folder to the resource root.
+- The detection of NPCS vehicles when passing through a speed limiter has been improved; further improvements will be made in the future, and currently, some detection problems may still occur in certain cases.
+
+### 🧩 FIXED:
+
+- Fixed the speed limit sign not appearing correctly inside the Live Preview of the beta version.
+- Fixed native CEF/Chromium focus outlines appearing around sidebar items, buttons, cards, inputs, and other interactive elements.
+- Fixed several inconsistent button and focus states across the interface of the beta version.
+- Fixed the NUI displaying a dark background when opening or closing of the beta version.
+- Fixed various spacing, alignment, sizing, and visual consistency issues throughout the UI of the beta version.
+- Minor bugs fixed around the bridge.
+- Client synchronization bugs fixed and tested.
+
+### 🗂️ FILES MODIFIED:
+
+**Existing installations no longer require manually importing SQL changes. The resource will automatically create or update the required database structure on startup.**
+
+- `fxmanifest.lua`
+- `config.lua`
+- `config_ui.lua`
+- `server_config.lua`
+- `server/*`
+- `locales/*`
+- `web/src/*`
+- `web/dist/assets/*`
+- `smdz_speed_bumps.sql`
+
+
+---
+
 #  <span class="changelog-version-badge">1.1.0</span> 🚕 | SMDZ SmartCab - 2026-08-04
 ### ✅ ADDED:
 

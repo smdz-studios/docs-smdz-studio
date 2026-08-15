@@ -37,7 +37,7 @@
 - 📌 **Resource Name:** `smdz_speed_bumps`
 - 💻 **Author:** SMDZ Studios - *Special thanks to Team NXP // NovelaxNeko - https://novelaxneko.com for creating the prop*
 - 🧭 **Framework:** ESX / QBCore / QBX
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.1.0`
 - ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
 
 **Short description:**
@@ -140,6 +140,19 @@ Main files:
 
 ```lua
 
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
 
 --[[
     =====================================================================
@@ -159,7 +172,6 @@ Main files:
     10) Security / Abuse Alerts
     11) Placement Controls
     12) Debug
-    13) Discord Logging
 ]]
 
 Config = {}
@@ -168,7 +180,7 @@ Config = {}
 -- 01) General
 -- =====================================================================
 Config.Command = 'speedbump' -- Chat/console command used to open the speed bump creator.
-Config.Language = 'en' -- Active locale key. Supported: 'es' / 'en' / 'fr' / 'de'.
+Config.Language = 'en' -- Active locale key. Supported: 'es' / 'en' / 'fr' / 'de' / 'it' / 'pt' / 'nl' / 'pl'.
 Config.Framework = 'auto' -- Framework mode. Supported: 'auto' / 'esx' / 'qbcore' / 'qbx'.
 
 -- =====================================================================
@@ -243,13 +255,17 @@ Config.RuntimeBehavior = { -- Core runtime behavior for vehicle slowdown and del
 -- =====================================================================
 -- 07) NPC Behavior
 -- =====================================================================
+-- WARNING: MODIFYING THIS SECTION MAY CAUSE INCREASES OR SPIKES IN CPU USAGE IN RESMON
+-- WARNING: MODIFYING THIS SECTION MAY CAUSE INCREASES OR SPIKES IN CPU USAGE IN RESMON
+-- WARNING: MODIFYING THIS SECTION MAY CAUSE INCREASES OR SPIKES IN CPU USAGE IN RESMON
+
 Config.NpcBehavior = { -- Controls if and how NPC traffic is affected by bumps.
     Enabled = true, -- Master toggle for NPC slowdown logic.
     DefaultAffect = false, -- Default value for "Affect NPCs" when creating a new bump.
-    CheckInterval = 350, -- NPC scan interval in milliseconds.
-    ScanRadius = 75.0, -- Max distance from player to consider NPC vehicles.
-    InfluenceRadius = 28.0, -- Max distance from a bump for an NPC vehicle to become a slowdown candidate.
-    MaxVehiclesPerTick = 12, -- Max NPC vehicles processed per scan tick (0 = process all candidates).
+    CheckInterval = 200, -- NPC scan interval in milliseconds.
+    ScanRadius = 90.0, -- Max distance from player to consider NPC vehicles.
+    InfluenceRadius = 34.0, -- Max distance from a bump for an NPC vehicle to become a slowdown candidate.
+    MaxVehiclesPerTick = 20, -- Max NPC vehicles processed per scan tick (0 = process all candidates).
     FairDistribution = true -- If true, rotates candidate selection each tick to avoid starving some NPCs.
 }
 
@@ -260,14 +276,14 @@ Config.Stream = { -- Controls world prop streaming in/out distances.
     InDistance = 120.0, -- Distance where bump prop is spawned.
     OutDistance = 140.0, -- Distance where bump prop is deleted.
     RefreshMs = 1000 -- Streaming refresh interval in milliseconds.
-}
+} -- IF YOU DON'T KNOW WHAT YOU'RE DOING, IT'S BEST TO LEAVE IT AS IS :)
 
 -- =====================================================================
 -- 09) Edit Concurrency
 -- =====================================================================
 Config.Concurrency = { -- Edit lock settings to avoid concurrent overwrite conflicts.
     EditLockTtlMs = 600000 -- Edit lock timeout in milliseconds (600000 = 10 minutes).
-}
+} -- IF YOU DON'T KNOW WHAT YOU'RE DOING, IT'S BEST TO LEAVE IT AS IS :)
 
 -- =====================================================================
 -- 10) Security / Abuse Alerts
@@ -325,38 +341,64 @@ Config.Placement = { -- Placement mode sensitivity, steps, and helper values.
 -- =====================================================================
 Config.Debug = false -- Enables debug marker rendering and additional diagnostics.
 
+
+
+```
+
+
+
+```lua
+
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
+-- Server-only configuration. This file is never loaded by clients.
+
 -- =====================================================================
--- 13) Discord Logging
+-- Discord Logging
 -- =====================================================================
 Config.DiscordLogs = { -- Discord webhook logging configuration.
     Enabled = false, -- Master toggle for Discord logs.
     ShowIP = false, -- If true, includes player endpoint/IP in Discord logs.
-    Webhooks = { -- Webhook URL map per event type.
-        default = 'https://discord.com/api/webhooks/XXXXXX', -- Fallback webhook when an event-specific webhook is missing.
-        created = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for bump created events.
-        deleted = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for nearest-delete events.
-        updated = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for bump update events.
-        repositioned = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for bump reposition events.
-        deleted_by_id = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for delete-by-id (Manage) events.
-        permission_denied = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for permission denied events.
-        invalid_input = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for invalid input/security validation events.
-        too_close = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for too-close placement attempts.
-        delete_not_found = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for delete requests with no nearby bump.
-        sql_error = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for SQL/storage operation failures.
-        storage_unavailable = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for storage unavailable events.
-        permission_abuse = 'https://discord.com/api/webhooks/XXXXXX', -- Webhook for repeated unauthorized attempts.
-        bump_passed = 'https://discord.com/api/webhooks/XXXXXX' -- Webhook for player crossing a speed bump.
-    },
     Username = 'SMDZ Speed Bumps', -- Display name used by the Discord webhook bot.
     AvatarURL = '', -- Optional avatar URL for webhook messages.
     MentionRoleId = '', -- Optional role ID to mention in messages.
     UseTimestamp = true, -- Adds embed timestamp to each Discord log.
+
+    Webhooks = { -- Event-specific Discord webhook URLs.
+        default = 'https://discord.com/api/webhooks/XXXXXX', -- Fallback webhook when an event-specific webhook is missing.
+        created = 'https://discord.com/api/webhooks/XXXXXX', -- Bump created events.
+        deleted = 'https://discord.com/api/webhooks/XXXXXX', -- Nearest-delete events.
+        updated = 'https://discord.com/api/webhooks/XXXXXX', -- Bump update events.
+        repositioned = 'https://discord.com/api/webhooks/XXXXXX', -- Bump reposition events.
+        deleted_by_id = 'https://discord.com/api/webhooks/XXXXXX', -- Delete-by-ID events.
+        permission_denied = 'https://discord.com/api/webhooks/XXXXXX', -- Permission denied events.
+        invalid_input = 'https://discord.com/api/webhooks/XXXXXX', -- Invalid input/security validation events.
+        too_close = 'https://discord.com/api/webhooks/XXXXXX', -- Too-close placement attempts.
+        delete_not_found = 'https://discord.com/api/webhooks/XXXXXX', -- Delete requests with no nearby bump.
+        sql_error = 'https://discord.com/api/webhooks/XXXXXX', -- SQL/storage failures.
+        storage_unavailable = 'https://discord.com/api/webhooks/XXXXXX', -- Storage unavailable events.
+        permission_abuse = 'https://discord.com/api/webhooks/XXXXXX', -- Repeated unauthorized attempts.
+        bump_passed = 'https://discord.com/api/webhooks/XXXXXX' -- Player crossing events.
+    },
+
     Colors = { -- Embed colors (decimal integer format).
         created = 5763719, -- Color for successful create events.
         deleted = 3447003, -- Color for successful delete events.
         warning = 16776960, -- Color for warning-level events.
         error = 15548997 -- Color for error-level events.
     },
+
     Events = { -- Per-event enable/disable switches.
         created = true, -- Sends Discord log when a bump is created.
         deleted = true, -- Sends Discord log when nearest delete is successful.
@@ -372,11 +414,13 @@ Config.DiscordLogs = { -- Discord webhook logging configuration.
         permission_abuse = true, -- Sends Discord log when abuse threshold is reached.
         bump_passed = true -- Sends Discord log when a player crosses a speed bump.
     },
+
     BumpPassed = { -- Validation and anti-spam controls for bump_passed webhook event.
         CooldownMs = 2500, -- Minimum time between logs for same player and same bump.
         MaxDistance = 10.0 -- Max distance from bump center allowed for server-side validation.
     }
 }
+
 
 
 ```
