@@ -32,6 +32,16 @@ Replace this with a **1–2 sentence** description of what the script does.
 
 ---
 
+
+# ⭐ **FEATURES:**
+
+- 1
+- 2
+- 3
+etc
+
+---
+
 # 📦 **REQUIREMENTS:**
 
 Fill this with the real dependencies of your script.

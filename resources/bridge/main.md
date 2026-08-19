@@ -82,15 +82,15 @@ This layer is intended for your own resource line and for the servers of clients
 
 ### Inventory Providers
 
-- `ox_inventory`
-- `ak47_inventory`
-- `codem-inventory`
-- `core_inventory`
-- `jaksam_inventory`
-- `origen_inventory`
-- `qb-inventory`
-- `qs-inventory`
-- `tgiann-inventory`
+- `ox_inventory` - Overextended
+- `ak47_inventory` - MenanAK47
+- `codem-inventory` - CodeM
+- `core_inventory` - CORE Store
+- `jaksam_inventory` - Jaksam Scripts
+- `origen_inventory` - Origen Network
+- `qb-inventory` - QBCore Framework
+- `qs-inventory` - Quasar Store
+- `tgiann-inventory` - TGIANN Store
 - `qb-core` as native QBCore inventory fallback
 - `es_extended` as native ESX inventory fallback
 
@@ -98,135 +98,137 @@ This layer is intended for your own resource line and for the servers of clients
 
 ### Clothing Providers
 
-- `esx_skin`
-- `illenium-appearance`
-- `origen_clothing`
-- `qb-clothing`
-- `rcore_clothing`
+- `esx_skin` - ESX Framework
+- `illenium-appearance` - iLLeniumStudios
+- `origen_clothing` - Origen Network
+- `qb-clothing` - QBCore Framework
+- `rcore_clothing` - RCore
 
 ---
 
 ### Dispatch Providers
 
-- `bub_mdt`
-- `cd_dispatch`
-- `dusa_dispatch`
-- `fd_dispatch`
-- `origen_police`
-- `ps-dispatch`
-- `qf_mdt_police_v2`
-- `qs_dispatch`
-- `qs_police_creator`
-- `rcore_dispatch`
-- `tk_dispatch`
-- `lb-tablet`
-- `wasabi_mdt`
-- `0r-dispatch`
+- `bub_mdt` - BubbleDK
+- `cd_dispatch` - Codesign Software
+- `dusa_dispatch` - Dusa Scripts
+- `fd_dispatch` - Felis Development
+- `origen_police` - Origen Network
+- `ps-dispatch` - Project Sloth
+- `qf_mdt_police_v2` - QF Developers
+- `qs_dispatch` - Quasar Store
+- `qs_police_creator` - Quasar Store
+- `rcore_dispatch` - RCore
+- `tk_dispatch` - TK Scripts
+- `lb-tablet` - LB Scripts
+- `wasabi_mdt` - Wasabi Scripts
+- `0r-dispatch` - 0Resmon Studio
+- `plt_mdt` -  Pluto Development
+- `plt_departments` - Pluto Development
 
 ---
 
 ### Banking Providers
 
-- `brutal_banking`
-- `crm-banking`
-- `fd_banking`
-- `kartik-banking`
-- `okokBanking`
-- `okokBankingV2`
-- `omes_banking`
-- `origen_banking`
-- `qb-banking`
-- `qf_banking`
-- `Renewed-Banking`
-- `qs-banking`
-- `tgg-banking`
-- `tgiann-bank`
-- `wasabi_banking`
+- `brutal_banking` - Brutal Scripts
+- `crm-banking` - CoreM Scripts
+- `fd_banking` - Felis Development
+- `kartik-banking` - Kartik Scripts
+- `okokBanking` - okok Scripts
+- `okokBankingV2` - okok Scripts
+- `omes_banking` - OmesDev
+- `origen_banking` - Origen Network
+- `qb-banking` - QBCore Framework
+- `qf_banking` - QF Developers
+- `Renewed-Banking` - Renewed Scripts
+- `qs-banking` - Quasar Store
+- `tgiann-bank` - TGIANN Store
+- `wasabi_banking` - Wasabi Scripts
 
 ---
 
 ### Fuel Providers
 
-- `LegacyFuel`
-- `BigDaddy-Fuel`
-- `cdn-fuel`
-- `esx-sna-fuel`
-- `lc_fuel`
-- `okokGasStation`
-- `ox_fuel`
-- `ps-fuel`
-- `qb-fuel`
-- `Renewed-Fuel`
-- `qs-fuelstations`
-- `rcore_fuel`
-- `ti_fuel`
-- `x-fuel`
-- `msk_fuel`
+- `LegacyFuel` - InZidiuZ
+- `BigDaddy-Fuel` - Big Daddy Scripts
+- `cdn-fuel` - CodineDev
+- `esx-sna-fuel` - Sna-aaa
+- `lc_fuel` - Lixeiro Charmoso
+- `okokGasStation` - okok Scripts
+- `ox_fuel` - Overextended
+- `ps-fuel` - Project Sloth
+- `qb-fuel` - QBCore Framework
+- `Renewed-Fuel` - Renewed Scripts
+- `qs-fuelstations` - Quasar Store
+- `rcore_fuel` - RCore
+- `ti_fuel` - TebIT
+- `x-fuel` - CodeM
+- `msk_fuel` - MSK Scripts
 
 ---
 
 ### Vehicle Keys Providers
 
-- `brutal_keys`
-- `cd_garage` for keys functions only
-- `dusa_vehiclekeys`
+- `brutal_keys` - Brutal Scripts
+- `cd_garage` - Codesign Software (for keys functions only)
+- `dusa_vehiclekeys` - Dusa Scripts
 - `F_RealCarKeysSystem`
 - `mk_vehiclekeys`
-- `MrNewbVehicleKeys`
-- `p_vehiclekeys`
+- `MrNewbVehicleKeys` - MrNewbScripts
+- `p_vehiclekeys` - pScripts
 - `qbx_vehiclekeys`
-- `qs-vehiclekeys`
-- `Renewed-Vehiclekeys`
-- `t1ger_keys`
-- `vehicles_keys`
-- `wasabi_carlock`
-- `0r-vehiclekeys`
+- `qs-vehiclekeys` - Quasar Store
+- `Renewed-Vehiclekeys` - Renewed Scripts
+- `t1ger_keys` - T1GER Scripts
+- `vehicles_keys` - Jaksam Scripts
+- `wasabi_carlock` - Wasabi Scripts
+- `0r-vehiclekeys` - 0Resmon Studio
 
 ---
 
 ### Notification Providers
 
-- `brutal_notify`
-- `codem-notification`
-- `esx_notify`
+- `brutal_notify` - Brutal Scripts
+- `codem-notification` - CodeM
+- `esx_notify` - ESX Framework
 - `FL-Notify`
 - `gtm-ui`
-- `lation_ui` as a notification module
+- `lation_ui` - Lation Scripts
 - `mythic_notify`
-- `okokNotify`
-- `origen_notify`
-- `ox_lib`
-- `qb-core` as native QBCore notification fallback
+- `okokNotify` - okok Scripts
+- `origen_notify` - Origen Network
+- `ox_lib` - Overextended
+- `qb-core` - QBCore Framework
 - `qf_notify`
-- `RO_Notify`
-- `rtx_notify`
-- `RxNotify`
+- `RO_Notify` - Unknown
+- `rtx_notify` - RTX Dev
+- `RxNotify` - RX Scripts
 - `vms_notifyv2`
-- `wasabi_notify`
-- `wasabi_uikit` as a notification module
+- `wasabi_notify` - Wasabi Scripts
+- `wasabi_uikit`  - Wasabi Scripts
 - `xsNotify`
 - `frkn-uikit` as a notification module
-- `es_extended` as native ESX notification fallback
+- `es_extended` - ESX Framework
 
 ---
 
 ### TextUI Providers
 
-- `brutal_textui`
+- `smdz_textui` - SMDZ Studios
+- `brutal_textui` - Brutal Scripts
 - `bx_textui`
-- `cd_drawtextui`
-- `codem-textui`
-- `dsco_textui`
-- `esx_textui`
+- `cd_drawtextui` - Codesign Software
+- `codem-textui` - CodeM
+- `dsco_textui` - Silantro
+- `esx_textui` - ESX Framework
 - `jg-textui`
-- `lation_ui` as a textui module
-- `okokTextUI`
-- `origen_notify`
-- `ox_lib`
-- `qb-core` as native QBCore DrawText fallback
-- `wasabi_uikit`
+- `lation_ui` - Lation Scripts
+- `okokTextUI` - okok Scripts
+- `origen_notify` - Origen Network
+- `ox_lib` - Overextended
+- `qb-core` - QBCore Framework
+- `wasabi_uikit` - Wasabi Scripts
 - `ZSX_UIV2`
-- `qs-textui`
+- `qs-textui` - Quasar Store
 - `r3-textui`
 - `lab-TextUI`
 - `KS-Textui`
