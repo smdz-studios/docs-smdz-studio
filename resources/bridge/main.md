@@ -171,11 +171,11 @@ This layer is intended for your own resource line and for the servers of clients
 - `brutal_keys` - Brutal Scripts
 - `cd_garage` - Codesign Software (for keys functions only)
 - `dusa_vehiclekeys` - Dusa Scripts
-- `F_RealCarKeysSystem`
-- `mk_vehiclekeys`
+- `F_RealCarKeysSystem` - F Development
+- `mk_vehiclekeys` - ManKind
 - `MrNewbVehicleKeys` - MrNewbScripts
 - `p_vehiclekeys` - pScripts
-- `qbx_vehiclekeys`
+- `qbx_vehiclekeys` - QBX Framework
 - `qs-vehiclekeys` - Quasar Store
 - `Renewed-Vehiclekeys` - Renewed Scripts
 - `t1ger_keys` - T1GER Scripts
@@ -190,23 +190,23 @@ This layer is intended for your own resource line and for the servers of clients
 - `brutal_notify` - Brutal Scripts
 - `codem-notification` - CodeM
 - `esx_notify` - ESX Framework
-- `FL-Notify`
-- `gtm-ui`
+- `FL-Notify` - EV-BeansFL
+- `gtm-ui` - GrandTheftMods
 - `lation_ui` - Lation Scripts
-- `mythic_notify`
+- `mythic_notify` - JayMontana36
 - `okokNotify` - okok Scripts
 - `origen_notify` - Origen Network
 - `ox_lib` - Overextended
 - `qb-core` - QBCore Framework
-- `qf_notify`
+- `qf_notify` - QF Developers
 - `RO_Notify` - Unknown
 - `rtx_notify` - RTX Dev
 - `RxNotify` - RX Scripts
-- `vms_notifyv2`
+- `vms_notifyv2` - Vames
 - `wasabi_notify` - Wasabi Scripts
 - `wasabi_uikit`  - Wasabi Scripts
-- `xsNotify`
-- `frkn-uikit` as a notification module
+- `xsNotify` - X Studios
+- `frkn-uikit` - 0Resmon Studio
 - `es_extended` - ESX Framework
 
 ---
@@ -215,23 +215,23 @@ This layer is intended for your own resource line and for the servers of clients
 
 - `smdz_textui` - SMDZ Studios
 - `brutal_textui` - Brutal Scripts
-- `bx_textui`
+- `bx_textui` - ByteXcripts
 - `cd_drawtextui` - Codesign Software
 - `codem-textui` - CodeM
 - `dsco_textui` - Silantro
 - `esx_textui` - ESX Framework
-- `jg-textui`
+- `jg-textui` - JG Scripts
 - `lation_ui` - Lation Scripts
 - `okokTextUI` - okok Scripts
 - `origen_notify` - Origen Network
 - `ox_lib` - Overextended
 - `qb-core` - QBCore Framework
 - `wasabi_uikit` - Wasabi Scripts
-- `ZSX_UIV2`
+- `ZSX_UIV2` - Zeusx Dev
 - `qs-textui` - Quasar Store
-- `r3-textui`
-- `lab-TextUI`
-- `KS-Textui`
+- `r3-textui` - r3ps4J Store
+- `lab-TextUI` - Lab Scripts
+- `KS-Textui` - Katana Kraft Studio
 
 ---
 
