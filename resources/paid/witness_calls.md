@@ -1,3 +1,19 @@
+<section class="bridge-policy-card bridge-policy-card--warning" aria-label="Mandatory SMDZ Bridge dependency" style="margin-top: 0; border: 1px solid rgba(239, 68, 68, 0.38); background: linear-gradient(180deg, rgba(127, 29, 29, 0.34), rgba(38, 10, 10, 0.92)); border-radius: 18px; padding: 1.2rem 1.15rem 1.15rem; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);">
+  <p class="bridge-policy-card__label" style="margin: 0 0 0.45rem; font-size: 0.82rem; letter-spacing: 0.22rem; text-transform: uppercase; color: #fca5a5; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="display: block; fill: currentColor;">
+      <path d="M12 3 2.7 19a1 1 0 0 0 .87 1.5h16.86A1 1 0 0 0 21.3 19L12 3Zm-1 5h2v6h-2V8Zm0 8h2v2h-2v-2Z"></path>
+    </svg>
+    Required Dependency
+  </p>
+  <h2 style="margin: 0 0 0.85rem; font-size: clamp(1.45rem, 3vw, 2.2rem); line-height: 1.05; color: #fef2f2;">THIS RESOURCE REQUIRES SMDZ BRIDGE</h2>
+  <p style="margin: 0; color: #fecaca; line-height: 1.7; font-weight: 700;">
+    SMDZ Bridge is a required dependency for this resource and must be installed correctly in order for it to function as intended. Please ensure that the bridge is present, properly configured, actively running, and started before any resource that depends on it.
+  </p>
+  <a class="bridge-policy-card__cta bridge-policy-card__cta--warning" href="#/resources/bridge/main.md">Open Bridge Docs</a>
+</section>
+
+---
+
 <div align="center" style="margin-bottom: 1.5rem;">
 
   <iframe
@@ -37,7 +53,7 @@
 - 📌 **Resource Name:** `smdz_witness_calls`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.0.1`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 
@@ -84,27 +100,27 @@ SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can d
 
 - **FiveM server:** Latest recommended artifact build.
 - **Framework:** Standalone. Compatible with ESX, QBCore, Qbox, and custom frameworks because no framework dependency is required.
-- **Required dependencies:** None.
+- **Required dependencies:** smdz_bridge
 - **Optional dependency:** One supported dispatch resource when police alerts are required.
 
 ### Supported dispatch bridges:
 
-- `origen_police`
-- `bub-mdt`
-- `cd_dispatch`
-- `fd_dispatch`
-- `kartik-mdt`
-- `lb-tablet`
-- `p_mdt`
-- `qs-dispatch`
-- `tk_dispatch`
-- `redutzu-mdt`
-- `rcore_dispatch`
-- `core_dispatch`
-- `kibra-dispatch`
-- `0r-dispatch`
-
-The script can also run with `Config.Dispatch.system = 'none'` when dispatch integration is not needed.
+- `bub_mdt` - BubbleDK
+- `cd_dispatch` - Codesign Software
+- `dusa_dispatch` - Dusa Scripts
+- `fd_dispatch` - Felis Development
+- `origen_police` - Origen Network
+- `ps-dispatch` - Project Sloth
+- `qf_mdt_police_v2` - QF Developers
+- `qs_dispatch` - Quasar Store
+- `qs_police_creator` - Quasar Store
+- `rcore_dispatch` - RCore
+- `tk_dispatch` - TK Scripts
+- `lb-tablet` - LB Scripts
+- `wasabi_mdt` - Wasabi Scripts
+- `0r-dispatch` - 0Resmon Studio
+- `plt_mdt` -  Pluto Development
+- `plt_departments` - Pluto Development
 
 ---
 
@@ -122,7 +138,7 @@ resources/[smdz]/smdz_witness_calls
 
 ```bash
 ## SMDZ Studios
-ensure your_dispatch_resource
+ensure smdz_bridge
 ensure smdz_witness_calls
 ```
 
@@ -142,9 +158,6 @@ The main configuration file is `config.lua`. All options include inline English 
 
 ```lua
 
-
---[[
-]]
 
 Config = {}
 

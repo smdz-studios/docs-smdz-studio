@@ -7,6 +7,46 @@
 
 ---
 
+#  <span class="changelog-version-badge">1.0.1</span> 📞 | SMDZ Witness Calls - 2026-08-20
+
+### ✅ ADDED:
+
+- Added full dispatch integration through the `smdz_bridge` resource.
+- Added mandatory `smdz_bridge` dependency.
+- Added automatic validation of the `dispatch.send` bridge module.
+- Added readable weapon names when sending firearm-related witness reports.
+- Added fallback weapon name handling for supported GTA V weapons.
+
+### 🔧 CHANGED:
+
+- Dispatch notifications are now handled exclusively through `smdz_bridge`.
+- Removed direct dependency on individual dispatch resources.
+- Improved the structure of dispatch payloads sent by witness reports.
+- Improved dispatch metadata filtering to only send relevant information.
+- Improved compatibility with different dispatch systems supported by `smdz_bridge`.
+- Improved dispatch availability checks when the configured dispatch provider is restarted or becomes unavailable.
+
+### 🧩 FIXED:
+
+- Fixed internal script keys such as `crimeType`, `detection`, `suspectGender`, and other internal values appearing inside dispatch notifications.
+- Fixed weapon hashes such as `453432689` appearing instead of readable weapon names in some cases.
+- Fixed unnecessary internal metadata being included in civilian reports.
+- Fixed dispatch reports displaying incorrectly formatted crime information in some cases.
+- Fixed potential issues when the active dispatch provider is restarted while Witness Calls is running.
+
+### 🗂️ FILES MODIFIED:
+
+**This update requires the latest version of `smdz_bridge`. The dispatch module is now mandatory for SMDZ Witness Calls.**
+
+- `fxmanifest.lua`
+- `config.lua`
+- `client/*`
+- `server/*`
+- `bridge/*`
+
+
+---
+
 #  <span class="changelog-version-badge">1.1.0</span> 🚧 | SMDZ Speed Bumps - 2026-08-15
 <div class="changelog-release-media">
   <img
