@@ -53,7 +53,6 @@ Sidebar icons:
   - [Handling Editor](/resources/free/handling-editor.md "icon:car")
   - [Parking Camera](/resources/free/parking-camera.md "icon:camera")
 
-
 - **Support** icon:headphones
   - [Get Support](/support.md "icon:info")
   - [FAQ](/faq.md "icon:faq")
