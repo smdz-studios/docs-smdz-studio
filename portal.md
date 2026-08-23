@@ -39,6 +39,25 @@
 
 
 
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/parking-camera.png" alt="Parking Camera preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Parking Camera</h3>
+      <p>SMDZ Parking Camera is a realistic parking assistance system for FiveM with rear and side cameras, dynamic guidelines, obstacle detection, and progressive parking sensor beeps. Fully standalone, multilingual, optimized, and enhanced with lens dirt and camera damage effects.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-free">FREE</span><span>STANDALONE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/free/parking-camera.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/parking-camera" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">

@@ -8,7 +8,7 @@
 <section class="support-hero support-hero--shield">
   <p class="support-eyebrow" style="font-size: 1.1rem; letter-spacing: 0.32rem;">CORE LAYER</p>
   <h1 style="font-size: clamp(3.2rem, 8vw, 5.8rem); line-height: 0.95; margin: 0.35rem 0 0.75rem;">SMDZ BRIDGE</h1>
-  <h1 style="font-size: clamp(1.15rem, 3vw, 2rem); line-height: 0.8; margin: 0.15rem 0 0.7rem; letter-spacing: 0.18rem; opacity: 0.78;">VERSION: 1.0.0</h1>
+  <h1 style="font-size: clamp(1.15rem, 3vw, 2rem); line-height: 0.8; margin: 0.15rem 0 0.7rem; letter-spacing: 0.18rem; opacity: 0.78;">VERSION: 1.0.1</h1>
 
   <p style="font-size: clamp(1.15rem, 2.4vw, 1.7rem); line-height: 1.45; max-width: 900px; margin: 0.75rem auto 0; font-weight: 500;">
     The compatibility core that powers framework and provider support across the SMDZ Studios ecosystem.

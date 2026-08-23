@@ -1,0 +1,563 @@
+<div align="center" style="margin-bottom: 1.5rem;">
+
+  <iframe
+    width="640"
+    height="360"
+    src="https://www.youtube.com/embed/kot4bZHyrQg"
+    title="SMDZ Parking Camera Showcase"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="max-width: 100%; border-radius: 12px;"
+  ></iframe>
+</div>
+
+---
+
+# 🧩 **OVERVIEW:**
+
+- 📌 **Resource Name:** `smdz_parking_camera`
+- 💻 **Author:** SMDZ Studios
+- 🧭 **Framework:** Standalone
+- 🧾 **Version:** `1.0.0`
+- ✅ **Status:** <span class="badge badge--stable">STABLE</span>
+
+**Short description:**
+SMDZ Parking Camera brings a **modern and realistic parking-assistance system** to FiveM, combining an immersive rear camera, dynamic guidelines, obstacle sensors and realistic parking beeps in a clean standalone resource.
+
+Built to be **easy to install, lightweight and framework-independent**, with side camera views, camera damage, lens dirt, multilingual support and a polished React interface.
+
+---
+
+# ⭐ **FEATURES:**
+
+- 🚗 **Realistic parking camera** with automatic activation when reversing and smooth vehicle-attached views.
+- 📏 **Dynamic parking guidelines** that react to steering and help line up manoeuvres naturally.
+- 📡 **Rear obstacle detection** with visual proximity zones and realistic progressive parking-sensor beeps.
+- 🎥 **Multiple camera views** with rear, left and right perspectives, arrow-key switching and adjustable zoom.
+- 💥 **Camera damage simulation** with interference, weak signal and complete camera failure after heavy rear damage.
+- 🧼 **Dynamic lens dirt** that reacts to vehicle dirt and supports integration with vehicle wash systems.
+- 🌍 **Fully standalone & multilingual** with no framework or database required and 9 included languages.
+- ⚡ **Optimized & developer-friendly** with a production React UI, configurable notifications, events and exports for integrations.
+
+---
+
+# 📦 **REQUIREMENTS:**
+
+- **FiveM server:** A current recommended FiveM server build.
+- **Framework:** None — fully standalone.
+- **Database:** None.
+- **Required dependencies:** None.
+- **Optional notification resources:**
+
+  - `ox_lib`
+  - `okokNotify`
+  - `origen_notify`
+  - `wasabi_notify`
+  - `wasabi_uikit`
+  - `rtx_notify`
+  - `codem_notification`
+  - `vms_notifyv2`
+  - `esx_notify`
+  - `brutal_notify`
+  - `fl_notify`
+  - `gtm_ui`
+  - `ro_notify`
+  - `rx_notify`
+
+> The selected notification resource is optional. If it is not available, the script can fall back to native GTA/FiveM notifications depending on your configuration.
+
+---
+
+# 📥 **INSTALLATION:**
+
+1. Download the resource: `smdz_parking_camera.zip`.
+
+2. Extract the folder into your FiveM `resources` directory, for example:
+
+```text
+resources/[smdz]/smdz_parking_camera
+```
+
+3. Add the resource to your `server.cfg`:
+
+```bash
+## SMDZ Studios
+ensure smdz_parking_camera
+```
+
+4. If you use an external notification provider, make sure that resource starts **before** `smdz_parking_camera`.
+
+Example with ox_lib:
+
+```bash
+ensure ox_lib
+ensure smdz_parking_camera
+```
+
+5. Restart your server or start the resource manually:
+
+```bash
+start smdz_parking_camera
+```
+
+6. Enter a supported vehicle and either press the configured camera key or select reverse gear to test the system.
+
+---
+
+# ⚙️ **CONFIGURATION:**
+
+The main configuration file is:
+
+```lua
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
+
+--[[
+===============================================================================
+
+ CONFIGURATION INDEX
+  01. General
+  02. Notifications
+  03. Controls and safety
+  04. Supported vehicles
+  05. Camera calibration
+  06. Parking assistance
+  07. Damage and cleaning
+  08. Debug commands
+  09. User interface
+===============================================================================
+]]
+
+Config = {}
+
+--=============================================================================
+-- 01. GENERAL
+--=============================================================================
+
+Config.Locale = 'en' -- Active locale: en, es, fr, de, it, pt, pl, nl or ja.
+Config.Debug = false -- Enables development prints and visual debug information.
+Config.General = {
+    SpeedUnit = 'kmh' -- Speed unit displayed by the UI: 'kmh' or 'mph'.
+}
+
+--=============================================================================
+-- 02. NOTIFICATIONS
+--=============================================================================
+
+Config.Notifications = {
+    Enabled = true, -- Enables notifications generated by this resource.
+    Provider = 'ox_lib', -- Provider: auto, ox_lib, okok_notify, origen_notify, wasabi_notify, wasabi_uikit, rtx_notify, codem_notification, vms_notifyv2, esx_notify, brutal_notify, fl_notify, gtm_ui, ro_notify, rx_notify, native or custom.
+    Fallback = 'native', -- Provider used when the selected provider is unavailable.
+    Title = 'SMDZ Parking Camera', -- Notification title used by compatible providers.
+    Duration = 4500, -- Notification duration in milliseconds.
+    Position = 'top-right', -- Notification position used by compatible providers.
+    NotifyOnViewChange = false, -- Keep disabled to avoid notification spam while switching views.
+    Custom = function(data) return false end -- Custom provider callback; return true after displaying the notification.
+}
+
+--=============================================================================
+-- 03. CONTROLS AND SAFETY
+--=============================================================================
+
+Config.Controls = {
+    Command = 'parkingcamera', -- Command used to toggle the camera manually.
+    Key = 'B', -- Default FiveM key mapping for the manual toggle.
+    EnableManualToggle = true, -- Allows manual camera activation.
+    EnableAutomaticActivation = true, -- Opens the camera automatically when reverse gear is selected.
+    MaximumActiveSpeedKmh = 20.0, -- Closes the camera above this speed; always configured in km/h.
+    KeepActiveAtStandstill = true, -- Keeps the camera open at 0 km/h during parking manoeuvres.
+    EnableViewCycling = true, -- Enables rear, left and right view switching with the arrow keys.
+    EnableZoom = true -- Enables camera zoom with the mouse wheel.
+}
+
+--=============================================================================
+-- 04. SUPPORTED VEHICLES
+--=============================================================================
+
+Config.VehicleRules = {
+    DriverOnly = true, -- Restricts camera use to the driver seat.
+    AllowedClasses = {
+        [0] = true, -- Compacts.
+        [1] = true, -- Sedans.
+        [2] = true, -- SUVs.
+        [3] = true, -- Coupes.
+        [4] = true, -- Muscle vehicles.
+        [5] = true, -- Sports classics.
+        [6] = true, -- Sports vehicles.
+        [7] = true, -- Super vehicles.
+        [9] = true, -- Off-road vehicles.
+        [10] = true, -- Industrial vehicles.
+        [11] = true, -- Utility vehicles.
+        [12] = true, -- Vans.
+        [17] = true, -- Service vehicles.
+        [18] = true, -- Emergency vehicles.
+        [19] = true, -- Military vehicles.
+        [20] = true -- Commercial vehicles.
+    },
+    DisabledModels = {
+        -- [`model_name`] = true, -- Add a vehicle model here to disable the camera for it.
+    }
+}
+
+--=============================================================================
+-- 05. CAMERA CALIBRATION
+--=============================================================================
+
+Config.Camera = {
+    Views = {
+        rear = {
+            fov = 78.0, -- Default rear-view FOV; this is displayed as 0% zoom.
+            pitch = -7.0, -- Rear camera vertical angle in degrees.
+            lookDistance = 8.0, -- Distance of the rear camera target from the vehicle.
+            offset = vector3(0.0, -0.10, 0.0), -- Local XYZ rear camera position correction.
+            heightRatio = 0.68 -- Rear camera height relative to vehicle height.
+        },
+        left = {
+            fov = 82.0, -- Default left-view FOV; this is displayed as 0% zoom.
+            pitch = -4.0, -- Left camera vertical angle in degrees.
+            lookDistance = 7.5, -- Distance of the left camera target from the vehicle.
+            offset = vector3(-0.08, 0.0, 0.02), -- Local XYZ left camera position correction.
+            heightRatio = 0.70, -- Left camera height relative to vehicle height.
+            longitudinalRatio = 0.62 -- Left camera position along the vehicle length.
+        },
+        right = {
+            fov = 82.0, -- Default right-view FOV; this is displayed as 0% zoom.
+            pitch = -4.0, -- Right camera vertical angle in degrees.
+            lookDistance = 7.5, -- Distance of the right camera target from the vehicle.
+            offset = vector3(0.08, 0.0, 0.02), -- Local XYZ right camera position correction.
+            heightRatio = 0.70, -- Right camera height relative to vehicle height.
+            longitudinalRatio = 0.62 -- Right camera position along the vehicle length.
+        }
+    },
+    MinimumZoomFov = 48.0, -- Narrowest FOV available at 100% zoom.
+    ZoomStep = 3.0, -- FOV change applied per mouse-wheel step.
+    ModelOverrides = {
+        -- [`baller`] = { views = { rear = { offset = vector3(0.0, -0.12, 0.08), heightRatio = 0.70 } } }, -- Example custom-vehicle calibration.
+    }
+}
+
+--=============================================================================
+-- 06. PARKING ASSISTANCE
+--=============================================================================
+
+Config.Guidelines = {
+    Enabled = true, -- Displays parking guidelines in the rear view.
+    Dynamic = true, -- Curves parking guidelines with the steering angle.
+    InvertSteering = false -- Reverses guideline direction for unusual vehicle setups.
+}
+
+Config.Sensors = {
+    Enabled = true, -- Enables rear obstacle detection and progressive beeps.
+    MaximumDistance = 5.0, -- Maximum obstacle detection distance in metres.
+    Zones = {
+        Critical = 0.45, -- STOP zone distance in metres.
+        Danger = 0.90, -- DANGER zone distance in metres.
+        Warning = 1.65, -- CAUTION zone distance in metres.
+        Nearby = 3.20 -- NEARBY zone distance in metres.
+    }
+}
+
+Config.Audio = {
+    Enabled = true, -- Enables the realistic parking-sensor beep.
+    Volume = 0.18 -- Beep volume from 0.0 to 1.0.
+}
+
+--=============================================================================
+-- 07. DAMAGE AND CLEANING
+--=============================================================================
+
+Config.Damage = {
+    Enabled = true -- Enables interference, weak-signal and unavailable camera states.
+}
+
+Config.Cleaning = {
+    Enabled = true, -- Enables camera-lens dirt and wash detection.
+    NotifyWhenCleaned = true -- Displays a notification after the lens is cleaned.
+}
+
+-- External cleaning integrations:
+-- exports['smdz_parking_camera']:CleanParkingCamera(vehicle)
+-- TriggerEvent('smdz_parking_camera:client:cleanLens', vehicle)
+
+--=============================================================================
+-- 08. DEBUG COMMANDS
+--=============================================================================
+
+Config.DebugCommands = {
+    Enabled = false, -- Enables the standalone testing commands below.
+    MaximumDirtCommand = 'parkingcameradirt', -- Applies maximum vehicle and lens dirt.
+    ToggleSensorRaysCommand = 'parkingcamerasensors', -- Toggles visible sensor detection rays.
+    TestBeepCommand = 'parkingcamerabeep' -- Plays the configured parking beep once.
+}
+
+--=============================================================================
+-- 09. USER INTERFACE
+--=============================================================================
+
+Config.UI = {
+    Accent = '#F8D347', -- Main camera and guideline accent color.
+    Danger = '#FF3B30', -- Critical warning color.
+    Warning = '#FFB020', -- Caution warning color.
+    Safe = '#52D273', -- Clear and safe sensor color.
+    ShowSpeed = true, -- Displays current vehicle speed.
+    ShowDistance = true, -- Displays nearest obstacle distance.
+    ShowParkingVisualizer = true, -- Displays the fixed top-view vehicle detector.
+    ShowView = true, -- Displays the current camera view and navigation arrows.
+    ShowZoom = true, -- Displays zoom percentage; every view starts at 0%.
+    ShowCameraStatus = true, -- Displays camera health and signal states.
+    LensDirtEffect = true, -- Enables organic mud stains on the camera lens.
+    MaximumDirtOpacity = 0.88 -- Maximum dirt-effect opacity.
+}
+
+```
+---
+
+# 🎮 **USAGE:**
+
+The parking camera can work automatically or manually.
+
+When automatic activation is enabled, selecting reverse gear opens the rear camera automatically. The camera remains available while the vehicle is stationary during a parking manoeuvre and closes automatically if the configured safety speed is exceeded.
+
+### Commands
+
+| Command | Description | Permission / Notes |
+| --- | --- | --- |
+| `/parkingcamera` | Toggles the parking camera manually. | Driver / everyone |
+| `/parkingcameraleft` | Switches to the previous camera view. | Camera must be active |
+| `/parkingcameraright` | Switches to the next camera view. | Camera must be active |
+| `/parkingcameradirt` | Applies maximum vehicle and camera-lens dirt for testing. | Debug command |
+| `/parkingcamerasensors` | Toggles visible parking sensor debug rays. | Debug command |
+| `/parkingcamerabeep` | Plays the parking sensor beep once for testing. | Debug command |
+
+> Debug commands are only registered when `Config.DebugCommands.Enabled = true`.
+
+### Keybinds
+
+- `B` — toggles the parking camera manually by default.
+- `←` — previous camera view while the camera is active.
+- `→` — next camera view while the camera is active.
+- Mouse wheel — adjusts camera zoom.
+
+The main toggle key uses FiveM key mapping, so players can rebind it through their FiveM settings.
+
+### Camera views
+
+The default camera order is:
+
+```text
+REAR → LEFT → RIGHT → REAR
+```
+
+Rear-only parking assistance features such as guidelines, obstacle detection, distance information and parking beeps are automatically disabled while viewing the side cameras.
+
+### Parking sensors
+
+When an obstacle is detected behind the vehicle, the UI displays its proximity and the parking sensor beep becomes progressively faster as the vehicle approaches it.
+
+Default distance zones:
+
+| Zone | Distance |
+| --- | ---: |
+| Nearby | ≤ 3.20 m |
+| Warning | ≤ 1.65 m |
+| Danger | ≤ 0.90 m |
+| Critical | ≤ 0.45 m |
+
+### Camera damage
+
+Rear vehicle damage can affect the camera. Depending on the damage level, the system may display:
+
+- Visual interference.
+- Weak signal.
+- Heavy static and image loss.
+- Camera unavailable state.
+
+Repairing the vehicle restores the camera condition.
+
+### Lens cleaning
+
+The camera lens can become dirty as the vehicle dirt level increases. Vehicle wash scripts can clean the lens using the provided event or export documented below.
+
+---
+
+# 🔌 **EVENTS & EXPORTS (DEVELOPERS):**
+
+The resource exposes lightweight client-side integrations for external vehicle, garage, wash, HUD or gameplay resources.
+
+### Server Events
+
+This resource does not currently expose any public server events.
+
+### Client Events
+
+#### Set camera state
+
+```lua
+TriggerEvent('smdz_parking_camera:client:setState', true) -- Open camera.
+TriggerEvent('smdz_parking_camera:client:setState', false) -- Close camera.
+```
+
+#### Clean camera lens
+
+```lua
+TriggerEvent('smdz_parking_camera:client:cleanLens', vehicle)
+```
+
+| Event name | Parameters | Description |
+| --- | --- | --- |
+| `smdz_parking_camera:client:setState` | `enabled` (`boolean`) | Opens or closes the parking camera. |
+| `smdz_parking_camera:client:cleanLens` | `vehicle` (`entity`, optional) | Cleans the parking-camera lens for the supplied/current vehicle. |
+
+### Exports
+
+All public client exports are also declared directly in `fxmanifest.lua`, making the integration surface explicit and easy to discover.
+
+#### Check whether the camera is active
+
+```lua
+local active = exports['smdz_parking_camera']:IsParkingCameraActive()
+```
+
+#### Open or close the camera
+
+```lua
+local success = exports['smdz_parking_camera']:SetParkingCamera(true)
+local success = exports['smdz_parking_camera']:SetParkingCamera(false)
+```
+
+#### Cycle camera view
+
+```lua
+exports['smdz_parking_camera']:CycleParkingCameraView(1) -- Next view.
+exports['smdz_parking_camera']:CycleParkingCameraView(-1) -- Previous view.
+```
+
+#### Set a specific camera view
+
+```lua
+exports['smdz_parking_camera']:SetParkingCameraView('rear')
+exports['smdz_parking_camera']:SetParkingCameraView('left')
+exports['smdz_parking_camera']:SetParkingCameraView('right')
+```
+
+#### Clean the lens
+
+```lua
+exports['smdz_parking_camera']:CleanParkingCamera(vehicle)
+```
+
+#### Get camera condition
+
+```lua
+local condition = exports['smdz_parking_camera']:GetParkingCameraCondition(vehicle)
+
+if condition then
+    print(condition.damage)
+    print(condition.signal)
+    print(condition.status)
+end
+```
+
+Returned condition object:
+
+```lua
+{
+    damage = 0.0, -- Camera damage from 0.0 to 1.0.
+    signal = 1.0, -- Remaining signal strength from 0.0 to 1.0.
+    status = 'healthy' -- healthy / interference / weak / unavailable.
+}
+```
+
+| Export name | Side | Parameters | Returns | Description |
+| --- | --- | --- | --- | --- |
+| `IsParkingCameraActive` | Client | None | `boolean` | Returns whether the parking camera is currently active. |
+| `SetParkingCamera` | Client | `enabled` (`boolean`) | `boolean` | Opens or closes the camera and returns whether the request succeeded. |
+| `CycleParkingCameraView` | Client | `direction` (`number`) | `boolean` | Cycles to the previous or next available camera view. |
+| `SetParkingCameraView` | Client | `viewKey` (`string`) | `boolean` | Switches directly to `rear`, `left` or `right`. |
+| `CleanParkingCamera` | Client | `vehicle` (`entity`, optional) | `boolean` | Cleans the camera lens for the supplied/current vehicle. |
+| `GetParkingCameraCondition` | Client | `vehicle` (`entity`, optional) | `table` / `nil` | Returns camera damage, signal level and current condition. |
+
+---
+
+# 🔔 **NOTIFICATION BRIDGE:**
+
+Notifications are routed through:
+
+```text
+client/bridge/notifications.lua
+```
+
+This makes it possible to add additional notification resources later without rewriting the parking camera logic.
+
+To use the built-in custom provider:
+
+```lua
+Config.Notifications.Provider = 'custom'
+
+Config.Notifications.Custom = function(data)
+    TriggerEvent('my_notify:show', {
+        title = data.title,
+        message = data.description,
+        type = data.type,
+        duration = data.duration
+    })
+
+    return true
+end
+```
+
+Return `true` after your custom notification has been displayed.
+
+---
+
+# 🧪 **COMMON ISSUES:**
+
+| Issue | Recommended Solution |
+| --- | --- |
+| Resource does not start | Check the FiveM console for red errors.<br>Make sure the folder is named exactly `smdz_parking_camera`.<br>Confirm `ensure smdz_parking_camera` is present in `server.cfg`. |
+| Camera does not open | Make sure you are the vehicle driver.<br>Check that the vehicle class is enabled under `Config.VehicleRules.AllowedClasses`.<br>Verify the model is not listed in `DisabledModels`. |
+| Camera closes while driving | This is expected above `Config.Controls.MaximumActiveSpeedKmh` (20 km/h by default). |
+| Camera position is incorrect on a custom vehicle | Add a calibration entry under `Config.Camera.ModelOverrides` and adjust the view offset, height or pitch for that model. |
+| Parking sensors do not detect an obstacle | Test while using the rear camera.<br>Run `/parkingcamerasensors` with debug commands enabled to visualize detection rays.<br>Check `Config.Sensors.Enabled` and `MaximumDistance`. |
+| Parking beep is not audible | Confirm `Config.Audio.Enabled = true` and increase `Config.Audio.Volume` if necessary.<br>Use `/parkingcamerabeep` to test the sound directly. |
+| Lens dirt is not visible | Confirm `Config.Cleaning.Enabled = true` and `Config.UI.LensDirtEffect = true`.<br>Use `/parkingcameradirt` to force maximum dirt for testing. |
+| Notification provider does not work | Confirm the selected provider resource is started before `smdz_parking_camera`.<br>Use `Fallback = 'native'` while testing.<br>Verify the provider name in `Config.Notifications.Provider`. |
+| UI changes are not visible | Rebuild the React UI with `npm run build` and restart the FiveM resource.<br>Make sure the updated files exist inside `web/dist`. |
+| Camera appears unavailable after a collision | This is part of the camera damage system.<br>Repair the vehicle or disable `Config.Damage.Enabled` if you do not want this behaviour. |
+
+
+---
+
+# ❓ **FAQ:**
+
+| Question | Answer |
+| --- | --- |
+| Is SMDZ Parking Camera standalone? | Yes. The resource does not require ESX, QBCore or Qbox. Notification integrations are optional and handled through the notification bridge. |
+| Does the camera activate automatically? | Yes, when automatic activation is enabled. It can also be toggled manually using the configured keybind or command. |
+| Does the camera remain active when the vehicle stops during a parking manoeuvre? | Yes. Reaching 0 km/h does not close an already active parking-camera session. |
+| What happens if I drive too fast with the camera active? | The camera closes automatically when the configured safety speed is exceeded. The default limit is 20 km/h. |
+| Can I display speed in MPH instead of KM/H? | Yes. Set `Config.General.SpeedUnit` to `mph`. The default is `kmh`. |
+| Which camera views are included? | Rear, left-side and right-side views are included. The front camera is intentionally not part of the resource. |
+| Can I adjust the camera for custom vehicles? | Yes. Use `Config.Camera.ModelOverrides` to calibrate offsets, height, pitch, FOV and related per-model values. |
+| Do the parking sensors work in every camera view? | The obstacle sensors, parking-distance visualizer and progressive warning beep are designed for the rear view. |
+| Can the parking beep be disabled? | Yes. Disable it through `Config.Audio.Enabled` or adjust its volume from the public configuration. |
+| Does vehicle damage affect the parking camera? | Yes, when the damage system is enabled. Rear damage can cause interference, weak signal or make the camera temporarily unavailable. |
+| Can the camera lens become dirty? | Yes. The lens dirt effect follows the resource cleaning/dirt system and can be cleaned through the provided event/export integration. |
+| Does rain add a camera-lens effect? | No. Weather-based rain effects were intentionally removed. |
+| Which languages are included? | English, Spanish, French, German, Italian, Portuguese, Polish, Dutch and Japanese. |
+| Which notification systems are supported? | The modular bridge supports the providers listed under `Config.Notifications`, including `ox_lib`, with `ox_lib` as the recommended/default integration. |
+| Can I integrate the camera with another script? | Yes. The resource exposes client exports for enabling/disabling the camera, changing views, checking state, cleaning the lens and reading camera condition. They are declared in `fxmanifest.lua`. |
+| Do I need to rebuild the React UI to install the resource? | No. The production files in `web/dist` are already compiled. Rebuilding is only required when editing the UI source in `web/src`. |
+| Why is the resource version always `1.0.0`? | The public resource version is intentionally fixed to `1.0.0` across the manifest, configuration, frontend package and startup output. |
