@@ -11,6 +11,24 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
+<p style="text-align: center; font-weight: bold; color: red;">
+  ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY (FREE, NO PAID)
+</p>
+
+---
+
+<section class="support-hero support-hero--shield">
+  <p class="support-eyebrow">USAGE METRICS</p>
+  <h1>STATISTICS ON THE RESOURCE</h1>
+  <p>Check here for a list of servers using this resource and the number of players enjoying it. (Data provided by 5Metrics)</p>
+  <div class="support-search-tip">Info: If you don't see anything directly below, it may be because it's not in use or there's a problem obtaining the metrics.</div>
+</section>
+
+<div align="center">
+
+[![](https://badges.5metrics.dev/smdz_parking_camera/servers.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_parking_camera) | [![](https://badges.5metrics.dev/smdz_parking_camera/players.svg?style=for-the-badge)](https://5metrics.dev/resource/smdz_parking_camera)
+
+</div>
 
 ---
 
@@ -534,7 +552,6 @@ Return `true` after your custom notification has been displayed.
 | Parking beep is not audible | Confirm `Config.Audio.Enabled = true` and increase `Config.Audio.Volume` if necessary.<br>Use `/parkingcamerabeep` to test the sound directly. |
 | Lens dirt is not visible | Confirm `Config.Cleaning.Enabled = true` and `Config.UI.LensDirtEffect = true`.<br>Use `/parkingcameradirt` to force maximum dirt for testing. |
 | Notification provider does not work | Confirm the selected provider resource is started before `smdz_parking_camera`.<br>Use `Fallback = 'native'` while testing.<br>Verify the provider name in `Config.Notifications.Provider`. |
-| UI changes are not visible | Rebuild the React UI with `npm run build` and restart the FiveM resource.<br>Make sure the updated files exist inside `web/dist`. |
 | Camera appears unavailable after a collision | This is part of the camera damage system.<br>Repair the vehicle or disable `Config.Damage.Enabled` if you do not want this behaviour. |
 
 
@@ -555,9 +572,7 @@ Return `true` after your custom notification has been displayed.
 | Can the parking beep be disabled? | Yes. Disable it through `Config.Audio.Enabled` or adjust its volume from the public configuration. |
 | Does vehicle damage affect the parking camera? | Yes, when the damage system is enabled. Rear damage can cause interference, weak signal or make the camera temporarily unavailable. |
 | Can the camera lens become dirty? | Yes. The lens dirt effect follows the resource cleaning/dirt system and can be cleaned through the provided event/export integration. |
-| Does rain add a camera-lens effect? | No. Weather-based rain effects were intentionally removed. |
+| Does rain add a camera-lens effect? | No. |
 | Which languages are included? | English, Spanish, French, German, Italian, Portuguese, Polish, Dutch and Japanese. |
 | Which notification systems are supported? | The modular bridge supports the providers listed under `Config.Notifications`, including `ox_lib`, with `ox_lib` as the recommended/default integration. |
 | Can I integrate the camera with another script? | Yes. The resource exposes client exports for enabling/disabling the camera, changing views, checking state, cleaning the lens and reading camera condition. They are declared in `fxmanifest.lua`. |
-| Do I need to rebuild the React UI to install the resource? | No. The production files in `web/dist` are already compiled. Rebuilding is only required when editing the UI source in `web/src`. |
-| Why is the resource version always `1.0.0`? | The public resource version is intentionally fixed to `1.0.0` across the manifest, configuration, frontend package and startup output. |

@@ -42,7 +42,7 @@
 
 **Short description:**
 
-`SMDZ Cinematic Loadscreen` is a cinematic image-based loading screen for FiveM servers, inspired by American police TV show (Southland LAPD) opening credits and redesigned with a unique FiveM roleplay identity.
+`SMDZ Cinematic Loadscreen` is a cinematic image-based loading screen for FiveM servers, **inspired by American police TV show (Southland LAPD) opening credits** and redesigned with a unique FiveM roleplay identity.
 
 It creates a serious police-drama atmosphere using fullscreen images, smooth zoom effects, floating credits, film grain, loading status messages, music support, and fully configurable text.
 
