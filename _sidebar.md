@@ -20,7 +20,7 @@ Sidebar icons:
   - [SMDZ Bridge](/resources/bridge/main.md "icon:wrench")
 
 - **Paid Resources FiveM**
-  - [Speed Radars](/resources/paid/speed-radars.md "icon:camera")
+  <!-- - [Speed Radars](/resources/paid/speed-radars.md "icon:camera") -->
   - [Safes System](/resources/paid/advanced-safes.md "icon:package-2")
   - [Witness Calls](/resources/paid/witness_calls.md "icon:phone-call")
   - [Dynamic Keybinds](/resources/paid/keybinds.md "icon:keyboard")
