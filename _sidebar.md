@@ -19,7 +19,8 @@ Sidebar icons:
 - **Library**
   - [SMDZ Bridge](/resources/bridge/main.md "icon:wrench")
 
-- **Paid Resources**
+- **Paid Resources FiveM**
+  - [Speed Radars](/resources/paid/speed-radars.md "icon:camera")
   - [Safes System](/resources/paid/advanced-safes.md "icon:package-2")
   - [Witness Calls](/resources/paid/witness_calls.md "icon:phone-call")
   - [Dynamic Keybinds](/resources/paid/keybinds.md "icon:keyboard")
@@ -40,18 +41,18 @@ Sidebar icons:
   - [Evidence Markers](/resources/paid/evidence-markers.md "icon:evidence")
   - [Bus Travel](/resources/paid/bus-travel.md "icon:bus")
 
-- **LB Phone Apps**
+- **LB Phone Apps FiveM**
   - [SmartCab LB APP](/resources/paid/lb_smartcab.md "icon:car-taxi-front")
   - [iFruit Pods LB APP](/resources/paid/ifruit-pods.md "icon:headphones")
   - [Emergency Alerts LB APP](/resources/paid/app-emergency-alerts.md "icon:phone-alert")
 
-- **Redesigns**
+- **Redesigns FiveM**
   - [OX Target (Radial Menu)](/resources/redesings/ox-target-radial-redesign.md "icon:radius")
   - [OX Target (Crystal Style)](/resources/redesings/ox-target-redesing-crystal.md "icon:crystal")
 
-- **Free Resources**
-  - [Handling Editor](/resources/free/handling-editor.md "icon:car")
+- **Free Resources FiveM**
   - [Parking Camera](/resources/free/parking-camera.md "icon:camera")
+  - [Handling Editor](/resources/free/handling-editor.md "icon:car")
 
 - **Support** icon:headphones
   - [Get Support](/support.md "icon:info")
