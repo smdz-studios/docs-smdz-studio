@@ -6,7 +6,7 @@ Store: https://smdz-studios.tebex.io/
 /* SITE */
 Standards: Docsify, Markdown, HTML, CSS
 Language: English / Spanish
-Description: Official documentation for SMDZ Studios FiveM resources, setup guides, troubleshooting, Asset Escrow, FAQ and support.
+Description: Official documentation for SMDZ Studios FiveM and RedM resources, setup guides, troubleshooting, Asset Escrow and support.
 Sitemap: https://docs.smdz-studios.com/seo/sitemap.xml
 Robots: https://docs.smdz-studios.com/robots.txt
-Last update: 2026-07-11
+Last update: 2026-08-31

@@ -1,6 +1,6 @@
  <div class="changelogs">
     <img
-      src="assets/other/banner-changelogs.png"
+      src="assets/fivem/other/banner-changelogs.png"
       alt="SMDZ Studios BannerChangelogs"
     />
   </div>
@@ -96,7 +96,7 @@
 #  <span class="changelog-version-badge">1.1.0</span> 🚧 | SMDZ Speed Bumps - 2026-08-15
 <div class="changelog-release-media">
   <img
-    src="assets/updates/1.1.0_speed_bumps.png"
+    src="assets/fivem/updates/1.1.0_speed_bumps.png"
     alt="SMDZ Speed Bumps 1.1.0 admin interface preview"
   />
 </div>

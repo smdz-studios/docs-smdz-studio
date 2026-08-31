@@ -9,7 +9,7 @@
   <p style="margin: 0; color: #fecaca; line-height: 1.7; font-weight: 700;">
     SMDZ Bridge is a required dependency for this resource and must be installed correctly in order for it to function as intended. Please ensure that the bridge is present, properly configured, actively running, and started before any resource that depends on it.
   </p>
-  <a class="bridge-policy-card__cta bridge-policy-card__cta--warning" href="#/resources/bridge/main.md">Open Bridge Docs</a>
+  <a class="bridge-policy-card__cta bridge-policy-card__cta--warning" href="#/resources/fivem/bridge/main.md">Open Bridge Docs</a>
 </section>
 
 ---

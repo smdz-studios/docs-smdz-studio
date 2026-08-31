@@ -36,7 +36,7 @@
 
     var payload = {
       username: 'SMDZ Docs Monitor',
-      avatar_url: 'https://docs.smdz-studios.com/assets/discord-logo.png',
+      avatar_url: 'https://docs.smdz-studios.com/assets/fivem/logos/discord-logo.png',
       allowed_mentions: { parse: [] },
       embeds: [
         {
@@ -83,7 +83,7 @@
             }
           ],
           thumbnail: {
-            url: 'https://docs.smdz-studios.com/assets/discord-logo.png'
+            url: 'https://docs.smdz-studios.com/assets/fivem/logos/discord-logo.png'
           },
           footer: {
             text: 'SMDZ Docs Monitor | One confirmed alert per browser session'

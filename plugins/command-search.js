@@ -5,7 +5,7 @@
     return;
   }
 
-  var SEARCH_STORAGE_KEY = 'smdz-command-search-recents';
+  var SEARCH_STORAGE_KEY_PREFIX = 'smdz-command-search-recents-';
   var MAX_RECENTS = 5;
   var MAX_RESULTS = 20;
   var INDEX_READY_TIMEOUT = 1200;
@@ -91,6 +91,18 @@
       .replace(/[^a-z0-9]+/g, ' ')
       .trim()
       .replace(/\s+/g, ' ');
+  }
+
+  function getActivePlatform() {
+    return window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getEffective() : 'fivem';
+  }
+
+  function getPlatformLabel() {
+    return window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getLabel(getActivePlatform()) : 'FiveM';
+  }
+
+  function getSearchStorageKey() {
+    return SEARCH_STORAGE_KEY_PREFIX + getActivePlatform();
   }
 
   function stripSearchTagsBlock(markdown) {
@@ -180,6 +192,10 @@
     var cleanRoute = String(route || '').replace(/^\/+/, '');
     var parts = cleanRoute.split('/');
 
+    if (parts[0] === 'resources' && (parts[1] === 'fivem' || parts[1] === 'redm')) {
+      return (parts[1] === 'redm' ? 'RedM' : 'FiveM') + ' resources';
+    }
+
     if (parts.length > 1) {
       return parts[0].replace(/[-_]+/g, ' ');
     }
@@ -213,7 +229,7 @@
 
   function loadRecentSearches() {
     try {
-      var stored = window.localStorage.getItem(SEARCH_STORAGE_KEY);
+      var stored = window.localStorage.getItem(getSearchStorageKey());
       if (!stored) {
         return [];
       }
@@ -236,7 +252,7 @@
 
   function saveRecentSearches(list) {
     try {
-      window.localStorage.setItem(SEARCH_STORAGE_KEY, JSON.stringify(list.slice(0, MAX_RECENTS)));
+      window.localStorage.setItem(getSearchStorageKey(), JSON.stringify(list.slice(0, MAX_RECENTS)));
     } catch (error) {
       // Ignore storage failures in restricted environments.
     }
@@ -263,7 +279,7 @@
     state.recent = [];
 
     try {
-      window.localStorage.removeItem(SEARCH_STORAGE_KEY);
+      window.localStorage.removeItem(getSearchStorageKey());
     } catch (error) {
       // Ignore storage failures in restricted environments.
     }
@@ -631,7 +647,16 @@
       return state.indexPromise;
     }
 
-    var routes = Array.isArray(window.SMDZ_COMMAND_SEARCH_PAGES) ? window.SMDZ_COMMAND_SEARCH_PAGES.slice() : [];
+    var routeCatalog = window.SMDZ_COMMAND_SEARCH_PAGES || {};
+    var activePlatform = getActivePlatform();
+    var routes = [];
+
+    if (Array.isArray(routeCatalog)) {
+      routes = routeCatalog.slice();
+    } else {
+      routes = (Array.isArray(routeCatalog.shared) ? routeCatalog.shared : [])
+        .concat(Array.isArray(routeCatalog[activePlatform]) ? routeCatalog[activePlatform] : []);
+    }
     state.loading = true;
     state.error = '';
     renderView();
@@ -732,15 +757,16 @@
 
   function createLauncher() {
     var launcher = document.createElement('button');
+    var platformLabel = getPlatformLabel();
     launcher.type = 'button';
     launcher.className = 'command-search-launcher';
     launcher.hidden = true;
-    launcher.setAttribute('aria-label', 'Search documentation');
+    launcher.setAttribute('aria-label', 'Search ' + platformLabel + ' documentation');
     launcher.setAttribute('aria-haspopup', 'dialog');
     launcher.setAttribute('aria-controls', 'command-search-dialog');
     launcher.innerHTML =
       '<span class="command-search-launcher-icon" aria-hidden="true">' + searchIconSvg + '</span>' +
-      '<span class="command-search-launcher-label">Search documentation...</span>' +
+      '<span class="command-search-launcher-label">Search ' + platformLabel + ' docs...</span>' +
       '<span class="command-search-launcher-kbd" aria-hidden="true">Ctrl K</span>';
 
     launcher.addEventListener('click', function () {
@@ -773,6 +799,7 @@
 
   function createModal() {
     var overlay = document.createElement('div');
+    var platformLabel = getPlatformLabel();
     overlay.className = 'command-search-overlay';
     overlay.setAttribute('aria-hidden', 'true');
     overlay.innerHTML =
@@ -781,8 +808,8 @@
         '<div class="command-search-shell">' +
           '<div class="command-search-header">' +
             '<div class="command-search-titleblock">' +
-              '<p id="command-search-title" class="command-search-title">Search documentation</p>' +
-              '<p class="command-search-subtitle">Type a page, heading or keyword.</p>' +
+              '<p id="command-search-title" class="command-search-title">Search ' + platformLabel + ' documentation</p>' +
+              '<p class="command-search-subtitle">Only ' + platformLabel + ' and shared pages are included.</p>' +
             '</div>' +
             '<button type="button" class="command-search-close" aria-label="Close search" data-command-search-close>' +
               '<span aria-hidden="true">×</span>' +
@@ -790,7 +817,7 @@
           '</div>' +
           '<label class="command-search-inputwrap" for="command-search-input">' +
             '<span class="command-search-inputicon" aria-hidden="true">' + searchIconSvg + '</span>' +
-            '<input id="command-search-input" class="command-search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Search documentation..." aria-label="Search documentation" aria-controls="command-search-results" aria-activedescendant="" />' +
+            '<input id="command-search-input" class="command-search-input" type="text" autocomplete="off" spellcheck="false" placeholder="Search ' + platformLabel + ' documentation..." aria-label="Search ' + platformLabel + ' documentation" aria-controls="command-search-results" aria-activedescendant="" />' +
             '<span class="command-search-esc" aria-hidden="true">ESC</span>' +
           '</label>' +
           '<div class="command-search-toolbar">' +
@@ -918,7 +945,7 @@
   function renderEmptyState() {
     var hasRecents = state.recent.length > 0;
 
-    dom.status.textContent = 'Ready to search';
+    dom.status.textContent = 'Ready to search ' + getPlatformLabel();
     dom.helper.hidden = false;
     dom.recent.hidden = !hasRecents;
     dom.clearRecentButton.hidden = !hasRecents;
@@ -928,7 +955,7 @@
     } else {
       dom.results.innerHTML =
         '<div class="command-search-empty">' +
-          '<p>Search by title, heading, page path or keyword.</p>' +
+          '<p>Search ' + getPlatformLabel() + ' pages by title, heading, path or keyword.</p>' +
           '<p class="command-search-empty-hint">Use the keyboard shortcuts above to move through results fast.</p>' +
         '</div>';
     }
@@ -941,7 +968,7 @@
     dom.clearRecentButton.hidden = true;
     dom.results.innerHTML =
       '<div class="command-search-empty command-search-empty--empty">' +
-        '<p>No matching documentation was found.</p>' +
+        '<p>No matching ' + getPlatformLabel() + ' documentation was found.</p>' +
         '<p class="command-search-empty-hint">Try a shorter phrase or a related keyword.</p>' +
       '</div>';
   }

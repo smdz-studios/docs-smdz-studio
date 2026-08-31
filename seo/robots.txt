@@ -4,10 +4,8 @@ Allow: /
 Disallow: /.git/
 Disallow: /.vscode/
 Disallow: /node_modules/
-Disallow: /#/blog/
-Disallow: /blog/
-Disallow: /#/resources/archived/
-Disallow: /resources/archived/
+Disallow: /#/resources/fivem/archived/
+Disallow: /resources/fivem/archived/
 
 # Conservative AI crawler policy.
 # We intentionally do not block major search indexers such as Googlebot or Bingbot here

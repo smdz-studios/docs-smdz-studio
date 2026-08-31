@@ -2,6 +2,7 @@
 
 window.SMDZ_BANNER_CONFIG = {
   enabled: true,
+  platforms: ["fivem", "redm"],
 
   // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning"
   type: "announcement",
@@ -22,7 +23,7 @@ window.SMDZ_BANNER_CONFIG = {
   cta: {
     enabled: true,
     label: "View Bridge",
-    url: "https://docs.smdz-studios.com/#/resources/bridge/main",
+    url: "https://docs.smdz-studios.com/#/resources/fivem/bridge/main",
     target: "_self"
   }
 };

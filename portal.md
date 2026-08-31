@@ -1,6 +1,6 @@
 <div class="hero-logo-panel">
   <div class="hero-logo-inner">
-    <img src="assets/logos/smdz-studios.png" alt="SMDZ Studios Logo" style="max-width: 390px; max-height: 390px;" />
+    <img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios Logo" style="max-width: 390px; max-height: 390px;" />
   </div>
 </div>
 <div class="hero-header-wrapper" style="margin-top: 0.5rem; margin-bottom: 1.8rem; text-align: center;">
@@ -24,6 +24,34 @@
 </div>
 
 <div class="portal-filter-bar" aria-label="Resource filters">
+  <div class="portal-platform-filter">
+    <span class="portal-platform-filter__label">Platform</span>
+    <div class="portal-platform-dropdown" data-selected="fivem">
+      <button id="portal-platform-trigger" class="portal-platform-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="portal-platform-menu">
+        <span class="portal-platform-indicator" aria-hidden="true"></span>
+        <span class="portal-platform-current-label">FIVEM</span>
+        <span class="portal-platform-current-count">(0)</span>
+        <svg class="portal-platform-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="m5.5 7.5 4.5 4 4.5-4"></path>
+        </svg>
+      </button>
+      <div id="portal-platform-menu" class="portal-platform-menu" role="listbox" aria-label="Select documentation platform" hidden>
+        <button id="portal-platform-option-fivem" class="portal-platform-option" type="button" role="option" data-value="fivem" data-label="FIVEM" aria-selected="true">
+          <span class="portal-platform-option__dot" aria-hidden="true"></span>
+          <span class="portal-platform-option__label">FIVEM</span>
+          <span class="portal-platform-option__count">(0)</span>
+          <svg class="portal-platform-option__check" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 10 3 3 7-7"></path></svg>
+        </button>
+        <button id="portal-platform-option-redm" class="portal-platform-option" type="button" role="option" data-value="redm" data-label="REDM" aria-selected="false">
+          <span class="portal-platform-option__dot" aria-hidden="true"></span>
+          <span class="portal-platform-option__label">REDM</span>
+          <span class="portal-platform-option__count">(0)</span>
+          <svg class="portal-platform-option__check" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 10 3 3 7-7"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <span class="portal-filter-divider" aria-hidden="true"></span>
   <button class="portal-filter-btn is-active" type="button" data-filter="all">All</button>
   <button class="portal-filter-btn portal-filter-btn--free" type="button" data-filter="free">Free</button>
   <button class="portal-filter-btn portal-filter-btn--paid" type="button" data-filter="paid">Paid</button>
@@ -35,22 +63,45 @@
   <button class="portal-filter-btn" type="button" data-filter="redesign">Redesigns</button>
 </div>
 
+<div class="portal-filter-empty" role="status" hidden>
+  No resources are available for the selected platform yet.
+</div>
+
 <div class="home-showcase-grid">
+
 
 
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/parking-camera.png" alt="Parking Camera preview image" />
+      <img src="assets/fivem/speed-radars.png" alt="speedradars preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Speed Radars</h3>
+      <p>SMDZ Speed Radars is a complete speed enforcement system for FiveM that combines portable police radars, permanent speed cameras, automatic speeding fines, photographic evidence, live radar monitoring, and configurable payment locations into one immersive traffic enforcement resource.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-radarss.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-radars" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/fivem/parking-camera.png" alt="Parking Camera preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Parking Camera</h3>
       <p>SMDZ Parking Camera is a realistic parking assistance system for FiveM with rear and side cameras, dynamic guidelines, obstacle detection, and progressive parking sensor beeps. Fully standalone, multilingual, optimized, and enhanced with lens dirt and camera damage effects.</p>
       <div class="home-showcase-tags">
-        <span class="tag-free">FREE</span><span>STANDALONE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/free/parking-camera.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/free/parking-camera.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/parking-camera" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -61,16 +112,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/safes.png" alt="safes preview image" />
+      <img src="assets/fivem/safes.png" alt="safes preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Safes System</h3>
       <p>SMDZ Safes is a persistent safe system for FiveM that lets players place safes, protect them with a PIN, share access, and use them as private storage. It includes SQL persistence, configurable capacities, an optional dealer, drill robberies, and smdz_bridge integration for different server setups.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/advanced-safes.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/advanced-safes.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/safes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -79,16 +130,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/witness-calls.png" alt="witness-calls preview image" />
+      <img src="assets/fivem/witness-calls.png" alt="witness-calls preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Witness Calls</h3>
       <p>SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can detect crimes, call emergency services with synchronized phone animations, display a clean world-space progress interface, and send detailed alerts through supported dispatch systems.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/witness_calls.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/witness_calls.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/witness-calls" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -98,16 +149,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/keybinds.png" alt="keybinds preview image" />
+      <img src="assets/fivem/keybinds.png" alt="keybinds preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Dynamic Keybinds</h3>
       <p>Dynamic Keybinds automatically scans FiveM client commands and current player key mappings, then organizes them inside a modern fullscreen interface with an interactive keyboard, conflict detection, search, resource aliases, custom command metadata, and configurable help markers.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/keybinds.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/keybinds.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/dynamic-keybinds" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -119,16 +170,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/evidence-boards.png" alt="evidence-boards preview image" />
+      <img src="assets/fivem/evidence-boards.png" alt="evidence-boards preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Boards</h3>
       <p>Evidence Boards is an advanced police investigation system for FiveM. Detectives can create persistent physical evidence boards, organize suspects, photographs, Polaroids, documents, notes, and red-thread connections, while board owners manage access, permissions, and collaboration through a polished in-game editor</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-board.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/evidence-board.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-board" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -142,16 +193,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/lbapp-smartcab.png" alt="SmartCab APP preview image" />
+      <img src="assets/fivem/lbapp-smartcab.png" alt="SmartCab APP preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>SmartCab APP</h3>
       <p>SmartCab is an advanced autonomous taxi application for LB Phone that lets players request a driverless vehicle, follow its live arrival, select a map destination, manage Ride+ subscriptions, charge their phone during a journey, and review persistent digital trip receipts.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/lb_smartcab.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/lb_smartcab.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7557771" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -163,16 +214,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/radialmenuoxtarget.png" alt="OX Target Radial Menu preview image" />
+      <img src="assets/fivem/radialmenuoxtarget.png" alt="OX Target Radial Menu preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Radial Menu</h3>
       <p>OX Target Radial Redesign transforms the original ox_target interface into a modern, animated, and customizable radial menu. It preserves all original exports, integrations, zones, and compatibility without modifying the core target logic.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/redesings/ox-target-radial-redesign.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesings/ox-target-radial-redesign.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/radial-menu" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -184,16 +235,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/loading-screen-southland.png" alt="Cine Loadscreen preview image" />
+      <img src="assets/fivem/loading-screen-southland.png" alt="Cine Loadscreen preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Cine Loadscreen</h3>
       <p>SMDZ Cinematic Loadscreen is a cinematic image-based loading screen for FiveM servers, inspired by American police TV show (Southland LAPD) opening credits and redesigned with a unique FiveM roleplay identity.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/cine-loadscreen.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/cine-loadscreen.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -203,16 +254,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/invitecodes.png" alt="Invite Codes preview image" />
+      <img src="assets/fivem/invitecodes.png" alt="Invite Codes preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Invite Codes</h3>
       <p>SMDZ Invite Codes is a polished invitation and promotional code system for FiveM. Players can redeem configurable rewards through streamed NPCs, while authorized staff can create, edit, pause, monitor, and manage every code from a complete in-game administration panel</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/invite-codes.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/invite-codes.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/invite-codes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -229,16 +280,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/handling-editor.png" alt="Handling Editor preview image" />
+      <img src="assets/fivem/handling-editor.png" alt="Handling Editor preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Handling Editor</h3>
       <p>SMDZ Handling Editor is a real-time vehicle tuning tool for FiveM. Edit handling values directly in-game, test changes instantly, save presets, restore original values, and export ready-to-use XML for your handling.meta file.</p>
       <div class="home-showcase-tags">
-        <span class="tag-free">FREE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/free/handling-editor.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/free/handling-editor.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/handling-editor" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -260,16 +311,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/voice-indicator.png" alt="Voice Indicator preview image" />
+      <img src="assets/fivem/voice-indicator.png" alt="Voice Indicator preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Voice Indicator</h3>
       <p>SMDZ Voice Indicator is a modern voice activity system for FiveM, designed to make player communication clearer, more immersive, and easier to understand during roleplay. It displays customizable indicators above nearby players while they speak, with dedicated visual states for proximity voice, radio transmissions, and phone calls.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/voice-indicator.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/voice-indicator.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7523221" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -287,16 +338,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/flyers.png" alt="Flyers preview image" />
+      <img src="assets/fivem/flyers.png" alt="Flyers preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Flyers</h3>
       <p>SMDZ Flyers is an advanced flyer placement and advertising system for FiveM, designed to help roleplay servers bring businesses, events, job opportunities, and community announcements directly into the game world. It provides players with a clean and immersive way to create, preview, place, and interact with persistent flyers across Los Santos.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/flyers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/flyers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7512981" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -316,16 +367,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/streamers-list.png" alt="Streamers List preview image" />
+      <img src="assets/fivem/streamers-list.png" alt="Streamers List preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Streamers List</h3>
       <p>Advanced streamer list system with a modern NUI, secure streamer applications, real-time staff panel, SQL persistence, and Twitch/Kick live checks handled server-side.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/streamers-list.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/streamers-list.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7495147" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -346,16 +397,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/nfc-transfer.png" alt="NFC Transfer preview image" />
+      <img src="assets/fivem/nfc-transfer.png" alt="NFC Transfer preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>NFC Transfers</h3>
       <p>High-end NFC money transfer system with secure server-side validation, React NUI, account-aware banking bridges, optional history/NPC interaction, and broad compatibility with ESX/QB ecosystems.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/nfc-transfer.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/nfc-transfer.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/nfc-transfers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -376,16 +427,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/lbappifruit.png" alt="iFruit Pods APP preview image" />
+      <img src="assets/fivem/lbappifruit.png" alt="iFruit Pods APP preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>iFruit Pods APP</h3>
       <p>A production-ready LB Phone app designed to control wireless pods, featuring secure audio playback, advanced playlist management, queue & repeat systems, persistent settings (including dark mode), and asynchronous webhook logging.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/ifruit-pods.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/ifruit-pods.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7432166" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -405,16 +456,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/speedbumps.png" alt="SpeedBumps preview image" />
+      <img src="assets/fivem/speedbumps.png" alt="SpeedBumps preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Speed Bumps</h3>
       <p>SMDZ Speed Bumps is a traffic-control system for FiveM designed to make your city feel alive, organized, and professional.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-bumpers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-bumpers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-bumps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -435,16 +486,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/uav.png" alt="UAV preview image" />
+      <img src="assets/fivem/uav.png" alt="UAV preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Realistic UAV</h3>
       <p>UAV is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a modern overlay.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/realistic-uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/realistic-uav.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/realistic-uav" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -465,16 +516,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/pets-rescue.png" alt="Peds Manager preview image" />
+      <img src="assets/fivem/pets-rescue.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Pets Rescue</h3>
       <p>A Mission system where players rescue lost pets for NPCs, searching dynamic areas and earning rewards. Enhances civilian roleplay and adds immersive, repeatable gameplay.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/pets-rescue.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/pets-rescue.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/pets-rescue" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -494,16 +545,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/pedsmanager.png" alt="Peds Manager preview image" />
+      <img src="assets/fivem/pedsmanager.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Peds Manager</h3>
       <p>Advanced ped management system with admin tools, ped requests, and appearance restore.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/peds-manager.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/peds-manager.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/peds-manager" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -522,16 +573,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/appemergencyalerts.png" alt="App Emergency Alerts preview image" />
+      <img src="assets/fivem/appemergencyalerts.png" alt="App Emergency Alerts preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>App Emergency Alerts</h3>
       <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/app-emergency-alerts.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/app-emergency-alerts.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-alerts" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -550,16 +601,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/crystaloxtarget.png" alt="OX Target Redesign Crystal preview image" />
+      <img src="assets/fivem/crystaloxtarget.png" alt="OX Target Redesign Crystal preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Crystal</h3>
       <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/redesings/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesings/ox-target-redesing-crystal.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/oxtarget-crystal-style" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -578,16 +629,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/emergencygps.png" alt="Emergency GPS preview image" />
+      <img src="assets/fivem/emergencygps.png" alt="Emergency GPS preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Emergency GPS</h3>
       <p>Fast emergency location tracking for team coordination, response clarity and safer operations.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/emergency-gps.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/emergency-gps.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-gps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -606,16 +657,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/evidencemarkers.png" alt="Evidence Markers preview image" />
+      <img src="assets/fivem/evidencemarkers.png" alt="Evidence Markers preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Markers</h3>
       <p>Reliable evidence placement and scene visualization with practical controls for RP workflows.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/evidence-markers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/evidence-markers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-markers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -630,16 +681,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/rancherjob.png" alt="Rancher Job preview image" />
+      <img src="assets/fivem/rancherjob.png" alt="Rancher Job preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Rancher Job</h3>
       <p>Ranch workflow with configurable tasks and progression to expand farming roleplay scenarios.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/rancher-job.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/the-rancher-job" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -656,16 +707,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/bustravels.png" alt="Bus Travel preview image" />
+      <img src="assets/fivem/bustravels.png" alt="Bus Travel preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Bus Travel</h3>
       <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/bus-travel.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/bus-travels" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -684,16 +735,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/speedzones.png" alt="Speed For Zones preview image" />
+      <img src="assets/fivem/archived/speedzones.png" alt="Speed For Zones preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Speed For Zones</h3>
       <p>Speed zones is a zones-based speed limits using PolyZone polygons.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/speed-for-zones.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/archived/speed-for-zones.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-for-zones" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -711,16 +762,16 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/hud2dbuilder.png" alt="HUD2D Builder preview image" />
+      <img src="assets/fivem/archived/hud2dbuilder.png" alt="HUD2D Builder preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>HUD2D Builder</h3>
       <p>Build and tune HUD elements quickly with modular options for custom server interfaces.</p>
       <div class="home-showcase-tags">
-        <span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/hud2d-builder.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/archived/hud2d-builder.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/drawtext-hud" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -737,16 +788,16 @@
 <!--
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fastrepair.png" alt="Fast Repair preview image" />
+      <img src="assets/fivem/archived/fastrepair.png" alt="Fast Repair preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Fast Repair 1.0</h3>
       <p>Lightweight repair logic designed for smoother vehicle maintenance and roleplay consistency.</p>
       <div class="home-showcase-tags">
-        <span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/paid/fast-repair.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/archived/fast-repair.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/fast-repair" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -804,4 +855,4 @@ Depending on what you need right now:
   → Visit **[Support](support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.
 
 Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.
-Everything here is designed to save you time and reduce guesswork when running your FiveM server with SMDZ Studios scripts. 💚
+Everything here is designed to save you time and reduce guesswork when running your FiveM or RedM server with SMDZ Studios scripts. 💛

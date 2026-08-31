@@ -61,7 +61,7 @@ A configurable and performance-focused 3D voice indicator for FiveM. Players can
 
 <div class="voiceindicatorresmon" id="voiceindicatorresmon" data-mode="ox-to-qb">
   <div class="item-voiceindicatorresmon">
-    <img src="/assets/other/resmon-voice-indicator.png" alt="voiceindicatorresmon" data-no-zoom />
+    <img src="/assets/fivem/other/resmon-voice-indicator.png" alt="voiceindicatorresmon" data-no-zoom />
   </div>
 
 > A player's selected appearance only affects what that player sees. It does not force the same icon, size, or colors onto other players.

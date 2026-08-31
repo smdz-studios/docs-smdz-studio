@@ -30,7 +30,7 @@
 
 <section class="support-section">
   <h2 id="what-is-escrow">What Asset Escrow Does</h2>
-  <p>Asset Escrow protects premium FiveM resources by locking the internal logic while leaving documented configuration, translations and integration points editable.</p>
+  <p>Asset Escrow protects premium FiveM and RedM resources by locking the internal logic while leaving documented configuration, translations and integration points editable.</p>
   <div class="support-two-column">
     <div class="support-info-card">
       <h3>Protected</h3>
@@ -93,7 +93,7 @@
         <ol>
           <li>Confirm account ownership in Tebex and Keymaster.</li>
           <li>Transfer the asset if needed.</li>
-          <li>Stop the FiveM server process fully and start it again.</li>
+          <li>Stop the FiveM or RedM server process fully and start it again.</li>
           <li>Compare the server time with <a href="https://time.is/">time.is</a>.</li>
         </ol>
       </div>

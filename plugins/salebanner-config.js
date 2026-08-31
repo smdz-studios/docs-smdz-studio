@@ -2,6 +2,7 @@
 
 window.SMDZ_SALE_BANNER_CONFIG = {
   enabled: true,
+  platforms: ["fivem", "redm"],
 
   text: "☀️ SUMMER SALE — 25% OFF YOUR NEXT 3 PURCHASES WITH CODE SUMMER! VALID UNTIL SEPTEMBER 1 🛍️",
 

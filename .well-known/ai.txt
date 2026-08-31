@@ -2,6 +2,9 @@ Spec-Version: 1.0
 
 Site-Name: SMDZ Studios Docs
 Site-URL: https://docs.smdz-studios.com
+Platforms: FiveM, RedM
+FiveM-Route-Prefix: https://docs.smdz-studios.com/#/resources/fivem/
+RedM-Route-Prefix: https://docs.smdz-studios.com/#/resources/redm/
 Contact: https://docs.smdz-studios.com/#/support.md
 Policy-URL: https://docs.smdz-studios.com/robots.txt
 

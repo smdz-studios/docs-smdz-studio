@@ -63,7 +63,7 @@ SMDZ Evidence Board allows authorized players to place persistent physical evide
 
 <div class="evidenceboardresmon" id="evidenceboardresmon" data-mode="ox-to-qb">
   <div class="item-evidenceboardresmon">
-    <img src="/assets/other/evidenceboard-resmon.png" alt="evidenceboardresmon" data-no-zoom />
+    <img src="/assets/fivem/other/evidenceboard-resmon.png" alt="evidenceboardresmon" data-no-zoom />
   </div>
 
 ---
