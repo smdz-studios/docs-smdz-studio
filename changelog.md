@@ -7,6 +7,74 @@
 
 ---
 
+#  <span class="changelog-version-badge">1.2.0</span> 🚗 | SMDZ Handling Editor - 2026-09-04
+
+### ✅ ADDED:
+
+- Added framework-based access permissions directly through `Config.Access`.
+- Added automatic framework detection with support for ESX, QBCore, and Qbox.
+- Added configurable framework groups for each supported framework.
+- Added identifier-based access permissions.
+- Added support for whitelisting players using identifiers such as:
+  - `discord:`
+  - `license:`
+  - `license2:`
+  - `fivem:`
+  - `steam:`
+- Added configurable access combination modes with `any` and `all` validation.
+- Added optional console access configuration.
+- Added detailed access debug information showing which permission method granted or denied access.
+- Added a much more extensive debug system covering client and server operations.
+- Added debug information for vehicle detection, handling synchronization, network control, state creation, state restoration, presets, permissions, callbacks, and handling application.
+- Added rate-limited debug prints to prevent repetitive events from flooding the client or server console.
+- Added `DebugRateLimitMs` configuration.
+- Added translated debug messages for all supported languages.
+- Added more than 100 diagnostic messages/translation keys to make issues easier to identify.
+
+### 🔧 CHANGED:
+
+- Reworked the handling synchronization system so vehicles are no longer modified simply because a player enters them.
+- Original vehicle handling values are now preserved exactly as returned by the game.
+- Handling editor `min` and `max` limits are now used only for values intentionally edited by the player.
+- Original handling values are no longer normalized or clamped using editor limits.
+- Handling synchronization now focuses on values that have actually been modified instead of rewriting the entire handling configuration unnecessarily.
+- Improved handling state management between the client and server.
+- Improved restoration behavior when handling modifications are removed or reset.
+- Improved handling synchronization for custom vehicles and vehicles using unusual handling values.
+- Improved support for cars, motorcycles, boats, helicopters, aircraft, and addon vehicles.
+- Improved permission configuration structure inside `Config.Access`.
+- ACE permissions, framework permissions, and identifier permissions can now be enabled or disabled independently.
+- Debug output is now more descriptive while remaining protected against console spam.
+
+### 🧩 FIXED:
+
+- Fixed vehicles potentially receiving modified handling values without the Handling Editor ever being opened.
+- Fixed original handling values being incorrectly forced into the editor's configured `min` and `max` ranges.
+- Fixed values such as `fInitialDriveMaxFlatVel` potentially being forced to the editor minimum and causing incorrect vehicle behavior.
+- Fixed certain boats potentially becoming limited to very low speeds after the resource was started.
+- Fixed certain vehicles potentially losing traction, spinning their wheels, sliding sideways, or barely accelerating after handling synchronization.
+- Fixed custom handling values potentially being overwritten simply when entering a vehicle.
+- Fixed unnecessary handling writes being performed on vehicles that had never been edited.
+- Fixed handling reset synchronization potentially leaving previously modified values active for other players.
+- Fixed handling state synchronization unnecessarily sending and reapplying complete vehicle handling data.
+- Fixed several cases where unusual or valid zero handling values could be modified by the validation system.
+- Improved compatibility with vehicles using custom `handling.meta` configurations.
+- Improved diagnostic information for handling write failures and synchronization issues.
+- Fixed access checks being limited primarily to ACE permissions by adding framework group and identifier permission alternatives.
+
+### 🗂️ FILES MODIFIED:
+
+**SMDZ Handling Editor `1.2.0` includes an important handling synchronization rework. It is strongly recommended to update if you use custom vehicles, addon handling files, boats, helicopters, or other vehicles with non-standard handling values.**
+
+- `fxmanifest.lua`
+- `config.lua`
+- `client/*`
+- `server/*`
+- `utils/*`
+- `locales/*`
+
+---
+
 #  <span class="changelog-version-badge">1.1.0</span> 🎟️ | SMDZ Invite Codes - 2026-08-21
 
 ### ✅ ADDED:

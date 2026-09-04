@@ -40,7 +40,7 @@
 - 📌 **Resource Name:** `smdz_handling_editor`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
-- 🧾 **Version:** `1.1.0`
+- 🧾 **Version:** `1.2.0`
 - ✅ **Status:** - <span class="badge badge--stable">STABLE</span>
 
 
@@ -53,27 +53,17 @@
 
 # ⭐ **FEATURES:**
 
-:zap: Real-Time Editing — Modify vehicle handling values instantly while staying inside the game.
-
-:car: Live Vehicle Testing — Drive, brake, turn, and test every change without restarting the resource.
-
-:bar_chart: 36 Editable Handling Values — Adjust engine power, top speed, braking, traction, steering, suspension, weight, damage, and more.
-
-:floppy_disk: Preset System — Save, load, and delete temporary handling presets during your current session.
-
-:page_facing_up: handling.meta Export — Generate a complete XML configuration ready to copy into your handling.meta file.
-
-:clipboard: One-Click XML Copy — Copy the generated handling data directly from the export window.
-
-:mag: Search and Categories — Quickly find values using the search bar or organized handling categories.
-
-:art: Configurable UI Colors — Customize the full interface color palette without rebuilding the React project.
-
-:bell: Notification Bridge — Compatible with multiple notification providers through an easy-to-edit bridge.
-
-:shield: ACE Permission Support — Restrict access to authorized staff members, developers, or specific server groups.
-
-:bar_chart: Discord Webhook Logs — Optional translated embeds with detailed information about editor activity.
+⚡ **Real-Time Handling Editing** — Modify vehicle handling values instantly while staying in-game.
+🚗 **Live Vehicle Testing** — Drive, brake, steer, and test every adjustment immediately without restarting the resource.
+🛠️ **36 Editable Handling Values** — Fine-tune engine power, top speed, braking, traction, steering, suspension, weight, damage, and much more.
+💾 **Preset System** — Save, load, overwrite, and delete temporary handling presets during your current session.
+📄 **handling.meta Export** — Generate a complete XML configuration ready to copy directly into your `handling.meta` file.
+📋 **One-Click XML Copy** — Copy the generated handling configuration directly from the export window with a single click.
+🔎 **Search & Categories** — Quickly find handling values using the built-in search bar and organized handling categories.
+🎨 **Configurable UI Colors** — Customize the complete interface color palette directly from the configuration without rebuilding the React project.
+🔔 **Notification Bridge** — Supports multiple notification providers through a simple and configurable bridge system.
+🛡️ **Flexible Access Control** — Restrict access using ACE permissions, ESX/QBCore/Qbox framework groups, or a whitelist of player identifiers such as Discord and Rockstar licenses.
+📊 **Discord Webhook Logs** — Optional translated Discord embeds with detailed information about important Handling Editor activity.
 
 
 ---
@@ -147,19 +137,27 @@ start smdz_handling_editor
 All in `config.lua`:
 
 ```lua
-Config = {}
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
 
 --[[
     ╔══════════════════════════════════════════════════════════════════════════╗
     ║                    SMDZ STUDIOS • HANDLING EDITOR                       ║
     ║                         SHARED CONFIGURATION                            ║
     ╚══════════════════════════════════════════════════════════════════════════╝
-
     IMPORTANT:
-    • This file is shared with clients. Never place webhooks, passwords,
-      API keys, tokens, or any other private value in this file.
-    • Server-only and sensitive settings are stored in server/config.lua.
-
+    • This file is shared with clients. Never place webhooks, passwords, API keys, tokens, or other private values here.
+    • Server-only logging, webhook, console, and security settings are stored in server/config.lua.
     CONFIGURATION INDEX
     [01] General settings
     [02] Access and vehicle restrictions
@@ -168,102 +166,71 @@ Config = {}
     [05] Preset settings
     [06] User interface settings
     [07] Export settings
-    [08] Logging events
-    [09] Handling categories and field overrides
+    [08] Handling categories and field overrides
 ]]
+Config = {}
 
 --============================================================================--
 -- [01] GENERAL SETTINGS
 --============================================================================--
-
 Config.General = {
-    -- Language used by notifications, UI labels, and webhook embeds.
-    -- Available: 'en', 'es', 'fr', 'de', 'pt', 'tr', 'it', 'nl'.
-    Locale = 'en',
-
-    -- Command used to open or close the handling editor.
-    Command = 'handling',
-
-    -- Human-readable resource name used in notifications and chat suggestions.
-    ResourceLabel = 'SMDZ Handling Editor',
-
-    -- Enables additional console prints intended for development and debugging.
-    Debug = false,
+    Locale = 'en', -- Language used by notifications and UI labels. Available: 'en', 'es', 'fr', 'de', 'pt', 'tr', 'it', 'nl'.
+    Command = 'handling', -- Command used to open or close the handling editor.
+    ResourceLabel = 'SMDZ Handling Editor', -- Human-readable resource name used in notifications and chat suggestions.
+    Debug = false, -- Enables translated diagnostic prints for development and support.
+    DebugRateLimitMs = 2500, -- Minimum delay in ms between repeated high-frequency debug messages.
 }
 
 --============================================================================--
 -- [02] ACCESS AND VEHICLE RESTRICTIONS
 --============================================================================--
-
 Config.Access = {
-    -- Enables ACE permission checks before a player can open the editor.
-    Enabled = true,
+    Enabled = true, -- Enables server-side access validation before a player can use the editor.
+    Mode = 'any', -- 'any' = one enabled method grants access. 'all' = every enabled method must grant access.
+    AllowConsole = false, -- Allows the command from server console. The editor itself still requires a player.
 
-    -- ACE permission required when access validation is enabled.
-    -- Example server.cfg: add_ace group.admin smdz.handling allow
-    AcePermission = 'smdz.handling',
+    Ace = {
+        Enabled = true, -- Enables ACE permission checks.
+        Permission = 'smdz.handling', -- Example: add_ace group.admin smdz.handling allow
+    },
 
-    -- Allows the command to be executed from the server console.
-    -- The editor itself still requires a player, so this should normally be false.
-    AllowConsole = false,
+    Framework = {
+        Enabled = true, -- Enables framework group/permission checks.
+        Provider = 'auto', -- Available: auto, esx, qbcore, qbox. Common aliases are accepted.
+        Groups = { -- Groups accepted for each framework. Custom groups such as owner are supported when they exist in the framework/ACL.
+            esx = { 'owner', 'admin', 'superadmin' },
+            qbcore = { 'owner', 'god', 'admin' },
+            qbox = { 'owner', 'god', 'admin' },
+        },
+    },
 
-    -- Requires the player to occupy the driver seat before opening the editor.
-    DriverOnly = true,
+    Identifiers = {
+        Enabled = false, -- Enables exact FiveM identifier allowlist checks.
+        Allowed = {}, -- Example: { 'discord:492311610036322305', 'license:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
+    },
 
-    -- Optional vehicle model whitelist.
-    -- Leave empty to allow every model that is not explicitly blocked.
-    -- Example: { 'sultan', 'adder', `police` }
-    AllowedModels = {},
-
-    -- Optional vehicle model blacklist.
-    -- Example: { 'rhino', 'lazer', `oppressor2` }
-    BlockedModels = {},
-
-    -- GTA vehicle class IDs that cannot be edited.
-    -- Leave empty to support every vehicle class.
-    -- Example: { 14, 15, 16 } -- Boats, helicopters, planes.
-    BlockedClasses = {},
+    DriverOnly = true, -- Requires the player to occupy the driver seat before opening the editor.
+    AllowedModels = {}, -- Optional model whitelist. Empty allows every model not explicitly blocked.
+    BlockedModels = {}, -- Optional model blacklist. Example: { 'rhino', 'lazer', `oppressor2` }
+    BlockedClasses = {}, -- Optional GTA vehicle class blacklist. Example: { 14, 15, 16 }
 }
 
 --============================================================================--
 -- [03] EDITOR BEHAVIOUR AND CONTROLS
 --============================================================================--
-
 Config.Editor = {
-    -- Keeps normal game controls active while the NUI has focus.
-    -- Keep this false to prevent the camera and vehicle controls from moving.
-    KeepGameInput = false,
-
-    -- Explicitly disables camera/look controls while the editor is open.
-    BlockCameraMovement = true,
-
-    -- Duration in milliseconds of the UI closing animation before focus is released.
-    CloseAnimationDuration = 240,
-
-    -- Control ID used to close the editor from the game.
-    -- 177 is BACKSPACE / Phone Cancel. Use false to disable this control shortcut.
-    CloseControl = 177,
-
-    -- Automatically closes the editor when the player leaves the edited vehicle.
-    CloseWhenLeavingVehicle = true,
-
-    -- Automatically closes the editor when the edited vehicle is destroyed.
-    CloseWhenVehicleIsDestroyed = true,
-
-    -- Maximum distance in metres allowed between the player and edited vehicle.
-    -- Use 0 or false to disable the distance check.
-    MaxVehicleDistance = 8.0,
-
-    -- Restores original values if this resource stops while the editor is open.
-    ResetChangesOnResourceStop = false,
-
-    -- Game control IDs disabled every frame while the editor is open.
-    DisabledControls = {
+    KeepGameInput = false, -- Keeps normal game controls active while NUI has focus.
+    BlockCameraMovement = true, -- Disables camera/look controls while the editor is open.
+    CloseAnimationDuration = 240, -- UI closing animation duration in milliseconds before focus is released.
+    CloseControl = 177, -- Control used to close the editor. 177 = BACKSPACE / Phone Cancel. Use false to disable.
+    CloseWhenLeavingVehicle = true, -- Automatically closes the editor when the player leaves the edited vehicle.
+    CloseWhenVehicleIsDestroyed = true, -- Automatically closes the editor when the edited vehicle is destroyed.
+    MaxVehicleDistance = 8.0, -- Maximum player distance from the edited vehicle in metres. Use 0 or false to disable.
+    ResetChangesOnResourceStop = false, -- Restores original values if this resource stops while the editor is open.
+    DisabledControls = { -- Controls disabled every frame while the editor is open.
         24, 25, 47, 58, 140, 141, 142, 143, 177, 200, 257, 263, 264,
     },
-
-    -- Camera and look control IDs disabled every frame when BlockCameraMovement is true.
-    CameraControls = {
+    CameraControls = { -- Camera/look controls disabled every frame when BlockCameraMovement is true.
         1, 2, 3, 4, 5, 6, 26,
     },
 }
@@ -271,195 +238,338 @@ Config.Editor = {
 --============================================================================--
 -- [04] NOTIFICATION SETTINGS
 --============================================================================--
-
 Config.Notifications = {
-    -- Enables every notification sent by the resource.
-    Enabled = true,
-
+    Enabled = true, -- Enables notifications sent by the resource.
     -- Notification provider to use.
     -- Use 'auto' to follow the priority configured in bridge/notifications.lua.
     -- Built-in values: auto, ox_lib, okokNotify, origen_notify, wasabi_notify,
     -- wasabi_uikit, rtx_notify, codem-notification, vms_notifyv2, esx_notify,
     -- brutal_notify, FL-Notify, gtm-ui, RO_Notify, RxNotify, chat, native, none.
     Provider = 'auto',
-
-    -- Provider used when the selected provider is unavailable or returns an error.
-    Fallback = 'chat',
-
+    Fallback = 'chat', -- Provider used when the selected provider is unavailable or returns an error.
     Defaults = {
-        -- Default notification title.
-        Title = 'SMDZ Handling Editor',
-
-        -- Optional subtitle used by providers that support one.
-        Subtitle = 'SMDZ Studios',
-
-        -- Default type: info, success, warning, or error.
-        Type = 'info',
-
-        -- Default notification duration in milliseconds.
-        Duration = 5000,
-
-        -- Default screen position used by compatible providers.
-        Position = 'top-right',
-
-        -- Default icon used by compatible providers.
-        Icon = 'fa-solid fa-sliders',
-
-        -- Default accent colour used by compatible providers.
-        Color = '#d8ac45',
-
-        -- Enables notification sounds when supported by the provider.
-        Sound = true,
-
-        -- Enables text-to-speech when supported by the provider.
-        TTS = false,
-
-        -- Enables confetti effects when supported by the provider.
-        Confetti = false,
+        Title = 'SMDZ Handling Editor', -- Default notification title.
+        Subtitle = 'SMDZ Studios', -- Optional subtitle used by providers that support one.
+        Type = 'info', -- Default type: info, success, warning, or error.
+        Duration = 5000, -- Default notification duration in milliseconds.
+        Position = 'top-right', -- Default screen position used by compatible providers.
+        Icon = 'fa-solid fa-sliders', -- Default icon used by compatible providers.
+        Color = '#d8ac45', -- Default accent colour used by compatible providers.
+        Sound = true, -- Enables notification sounds when supported.
+        TTS = false, -- Enables text-to-speech when supported.
+        Confetti = false, -- Enables confetti effects when supported.
     },
-
     ProviderOptions = {
         RxNotify = {
-            -- RxNotify position: tl, tc, tr, lc, rc, bl, bc, or br.
-            Position = 'tr',
+            Position = 'tr', -- RxNotify position: tl, tc, tr, lc, rc, bl, bc, or br.
         },
     },
-
-    -- Prefix shown by the built-in chat fallback.
-    ChatPrefix = 'SMDZ Studios',
-
-    -- RGB colour shown by the built-in chat fallback.
-    ChatColor = { 218, 171, 57 },
+    ChatPrefix = 'SMDZ Studios', -- Prefix shown by the built-in chat fallback.
+    ChatColor = { 218, 171, 57 }, -- RGB colour shown by the built-in chat fallback.
 }
 
 --============================================================================--
 -- [05] PRESET SETTINGS
 --============================================================================--
-
 Config.Presets = {
-    -- Maximum number of presets stored during the current player session.
-    Maximum = 20,
-
-    -- Maximum number of characters allowed in a preset name.
-    MaximumNameLength = 32,
-
-    -- Allows saving over an existing preset with the same name.
-    AllowOverwrite = true,
+    Maximum = 20, -- Maximum number of presets stored during the current player session.
+    MaximumNameLength = 32, -- Maximum number of characters allowed in a preset name.
+    AllowOverwrite = true, -- Allows saving over an existing preset with the same name.
 }
 
 --============================================================================--
 -- [06] USER INTERFACE SETTINGS
 --============================================================================--
-
 Config.Interface = {
-    -- Default editor panel width in pixels.
-    PanelWidth = 640,
-
-    -- Initial editor position in pixels from the top-left corner.
-    DefaultPosition = {
+    PanelWidth = 640, -- Default editor panel width in pixels.
+    DefaultPosition = { -- Initial editor position in pixels from the top-left corner.
         x = 24,
         y = 24,
     },
-
-    -- Number of decimal places displayed in numeric fields.
-    -- The UI clamps visible precision to a maximum of four decimals.
-    DecimalPrecision = 3,
+    DecimalPrecision = 3, -- Number of decimal places displayed in numeric fields. Visible precision is capped at four.
 }
-
--- The SMDZ Studios brand, UI animations, and technical field names are
--- intentionally enabled by the resource and are not configurable.
--- Edit every UI colour from config_ui_colors.lua without rebuilding React.
 
 --============================================================================--
 -- [07] EXPORT SETTINGS
 --============================================================================--
-
 Config.Export = {
-    -- Enables the handling.meta XML export button and NUI callback.
-    Enabled = true,
-
-    -- Converts the exported handling name to uppercase.
-    HandlingNameUppercase = true,
-
-    -- Shows the copy-to-clipboard button inside the export modal.
-    CopyButton = true,
+    Enabled = true, -- Enables the handling.meta XML export button and NUI callback.
+    HandlingNameUppercase = true, -- Converts the exported handling name to uppercase.
+    CopyButton = true, -- Shows the copy-to-clipboard button inside the export modal.
 }
 
 --============================================================================--
--- [08] LOGGING EVENTS
+-- [08] HANDLING CATEGORIES AND FIELD OVERRIDES
 --============================================================================--
-
-Config.Logging = {
-    -- Enables audit event processing globally.
-    -- Webhook delivery still depends on server/config.lua.
-    Enabled = true,
-
-    Events = {
-        -- Logs editor opening events.
-        open = true,
-
-        -- Logs editor closing events.
-        close = true,
-
-        -- Logs handling reset events.
-        reset = true,
-
-        -- Logs handling XML export events.
-        export = true,
-
-        -- Logs preset creation and overwrite events.
-        preset_save = true,
-
-        -- Logs preset loading events.
-        preset_load = true,
-
-        -- Logs preset deletion events.
-        preset_delete = true,
-    },
-}
-
---============================================================================--
--- [09] HANDLING CATEGORIES AND FIELD OVERRIDES
---============================================================================--
-
 Config.Handling = {
-    -- Category display order used by the UI navigation tabs.
-    CategoryOrder = {
+    CategoryOrder = { -- Category display order used by the UI navigation tabs.
         'engine',
         'brakes',
         'traction',
         'suspension',
         'damage',
     },
-
     EnabledCategories = {
-        -- Enables engine, drivetrain, speed, mass, and drag values.
-        engine = true,
-
-        -- Enables brake, handbrake, and steering values.
-        brakes = true,
-
-        -- Enables tyre grip and traction values.
-        traction = true,
-
-        -- Enables suspension, anti-roll, and ride-height values.
-        suspension = true,
-
-        -- Enables collision, weapon, deformation, and engine damage values.
-        damage = true,
+        engine = true, -- Enables engine, drivetrain, speed, mass, and drag values.
+        brakes = true, -- Enables brake, handbrake, and steering values.
+        traction = true, -- Enables tyre grip and traction values.
+        suspension = true, -- Enables suspension, anti-roll, and ride-height values.
+        damage = true, -- Enables collision, weapon, deformation, and engine damage values.
     },
+    FieldOverrides = {}, -- Override catalog fields here. Keys: enabled, min, max, step, type, category.
+}
+```
 
-    -- Overrides individual catalog fields without editing shared/handling_catalog.lua.
-    -- Supported keys: enabled, min, max, step, type, category.
-    -- Example:
-    -- FieldOverrides = {
-    --     fInitialDriveForce = { min = 0.05, max = 1.25, step = 0.01 },
-    --     fWeaponDamageMult = { enabled = false },
-    -- }
-    FieldOverrides = {},
+All in `server/config.lua`:
+```lua
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
+
+--[[
+    ╔══════════════════════════════════════════════════════════════════════════╗
+    ║                    SMDZ STUDIOS • HANDLING EDITOR                       ║
+    ║                       SERVER-ONLY CONFIGURATION                         ║
+    ╚══════════════════════════════════════════════════════════════════════════╝
+    IMPORTANT:
+    • This file is loaded only by the server.
+    • Store webhook URLs and all private logging options here.
+    CONFIGURATION INDEX
+    [01] Logging events
+    [02] Discord webhook
+    [03] Server console logs
+    [04] Security and payload validation
+]]
+
+ServerConfig = {}
+
+--============================================================================--
+-- [01] LOGGING EVENTS
+--============================================================================--
+ServerConfig.Logging = {
+    Enabled = true, -- Enables audit event processing globally.
+    Events = {
+        open = true, -- Logs editor opening events.
+        close = true, -- Logs editor closing events.
+        reset = true, -- Logs handling reset events.
+        export = true, -- Logs handling XML export events.
+        preset_save = true, -- Logs preset creation and overwrite events.
+        preset_load = true, -- Logs preset loading events.
+        preset_delete = true, -- Logs preset deletion events.
+    },
+}
+
+--============================================================================--
+-- [02] DISCORD WEBHOOK
+--============================================================================--
+ServerConfig.Webhook = {
+    Enabled = false, -- Enables Discord webhook embeds for enabled audit events.
+    Url = '', -- Private Discord webhook URL.
+    Username = 'SMDZ Studios • Handling Logs', -- Username displayed by the Discord webhook message.
+    AvatarUrl = '', -- Optional avatar URL displayed by the Discord webhook message.
+    Mention = '', -- Optional role mention, for example '<@&123456789012345678>'. Empty disables mentions.
+    IncludeIdentifiers = true, -- Includes player license, Discord, FiveM, Steam, and related identifiers.
+    IncludeCoordinates = true, -- Includes the player's current server-side coordinates.
+    IncludeEndpoint = false, -- Includes the player's network endpoint/IP. Keep false unless genuinely required.
+    Colors = { -- Decimal Discord embed colours used for each audit action.
+        open = 14199877,
+        close = 9807270,
+        reset = 15105570,
+        export = 3447003,
+        preset_save = 5763719,
+        preset_load = 10181046,
+        preset_delete = 15548997,
+    },
+}
+
+--============================================================================--
+-- [03] SERVER CONSOLE LOGS
+--============================================================================--
+ServerConfig.Console = {
+    Enabled = true, -- Prints enabled player audit actions in the FiveM server console.
+}
+
+--============================================================================--
+-- [04] SECURITY AND PAYLOAD VALIDATION
+--============================================================================--
+ServerConfig.Security = {
+    AuditCooldownMs = 650, -- Minimum delay in ms between identical audit actions per player.
+    MaximumTextLength = 64, -- Maximum accepted length for player-supplied text included in logs.
+    ValidateVehicleContext = true, -- Replaces client vehicle plate/model information with server-side entity data.
+    IgnoreMalformedPayloads = true, -- Removes malformed optional values instead of rejecting the entire audit payload.
 }
 
 ```
+
+All in `config_ui_colors.lua`:
+
+```lua
+--  ____  __  __ ____  _____
+-- / ___||  \/  |  _ \|__  /
+-- \___ \| |\/| | | | | / /
+--  ___) | |  | | |_| |/ /_
+-- |____/|_|  |_|____/____|
+--  ____  _____ _   _ ____ ___ ___  ____
+-- / ___||_   _| | | |  _ \_ _/ _ \/ ___|
+-- \___ \  | | | | | | | | | | | | \___ \
+--  ___) | | | | |_| | |_| | | |_| |___) |
+-- |____/  |_|  \___/|____/___\___/|____/
+
+
+
+--[[
+    ╔══════════════════════════════════════════════════════════════════════════╗
+    ║                 SMDZ STUDIOS • UI COLOUR CONFIGURATION                  ║
+    ╚══════════════════════════════════════════════════════════════════════════╝
+    IMPORTANT:
+    • Every visual colour used by the React NUI is centralised in this file.
+    • Changes are sent to the UI when the editor opens, so no Vite rebuild is required.
+    • Restart the resource after editing this file.
+    COLOUR INDEX
+    [01] Core accent and base colours
+    [02] Panel, header, and status colours
+    [03] Button and action colours
+    [04] Navigation, search, and field colours
+    [05] Footer, modal, preset, and XML colours
+    [06] Scrollbar and toast colours
+]]
+Config.UIColors = {
+
+    --============================================================================--
+    -- [01] CORE ACCENT AND BASE COLOURS
+    --============================================================================--
+    Accent = '#d8ac45', -- Main accent colour used by sliders, active tabs, icons, and highlights.
+    White = '#fff', -- Base white colour used by colour mixing and bright hover states.
+    Black = '#000', -- Base black colour used by colour mixing and strong borders.
+    TextPrimary = '#f4f4f5', -- Primary text colour used by the main editor panel.
+
+    --============================================================================--
+    -- [02] PANEL, HEADER, AND STATUS COLOURS
+    --============================================================================--
+    PanelBackground = 'rgba(10, 11, 14, .965)', -- Main editor panel background colour.
+    PanelShadow = 'rgba(0,0,0,.66)', -- Outer panel shadow colour.
+    PanelOuterRing = 'rgba(0,0,0,.35)', -- Secondary dark ring around the main panel.
+    HighlightStrong = 'rgba(255,255,255,.08)', -- Bright internal highlight used on elevated surfaces.
+    SurfaceSoft = 'rgba(255,255,255,.035)', -- Soft translucent surface colour used by buttons and gradients.
+    SurfaceFaint = 'rgba(255,255,255,.025)', -- Very subtle surface highlight used in backgrounds.
+    PatternLine = 'rgba(255,255,255,.012)', -- Diagonal panel pattern line colour.
+    BorderStrong = 'rgba(0,0,0,.62)', -- Strong dark border used by panels and form controls.
+    BorderSoft = 'rgba(255,255,255,.07)', -- Soft separator border used by headers and modals.
+    BorderMedium = 'rgba(255,255,255,.065)', -- Medium separator border used by code and modal surfaces.
+    BorderSubtle = 'rgba(255,255,255,.055)', -- Subtle separator border used by search, footer, and sections.
+    EyebrowText = '#8f9198', -- Small brand eyebrow text colour.
+    LiveText = '#9fd7ab', -- Live-editing label colour.
+    Success = '#66d17a', -- Main green success colour.
+    SuccessGlow = 'rgba(102,209,122,.08)', -- Soft green glow behind the live status indicator.
+    VehicleText = '#8c8e95', -- Vehicle name and plate text colour.
+    GripText = '#4d4f55', -- Header drag-grip icon colour.
+
+    --============================================================================--
+    -- [03] BUTTON AND ACTION COLOURS
+    --============================================================================--
+    ButtonText = '#a7a8ad', -- Default text and SVG colour for the main action buttons.
+    ButtonBackground = 'rgba(255,255,255,.045)', -- Default background for Presets, Reset, Export, and matching buttons.
+    ButtonBorder = 'rgba(0,0,0,.58)', -- Default border for action and icon buttons.
+    ButtonHoverBackground = 'rgba(255,255,255,.075)', -- Hover background for standard action buttons.
+    IconButtonText = '#777980', -- Default colour for neutral icon buttons.
+    DangerText = '#ff8585', -- Red text and SVG colour used by close and delete actions.
+    DangerBorder = 'rgba(255,77,77,.34)', -- Permanent red border used by close buttons.
+    DangerBackground = 'rgba(255,65,65,.14)', -- Permanent red background used by close buttons.
+    DangerHoverBorder = 'rgba(255,77,77,.5)', -- Red close-button border shown on hover.
+    DangerHoverBackground = 'rgba(255,65,65,.24)', -- Red close-button background shown on hover.
+    PrimaryButtonText = '#17130a', -- Text colour used by gold primary buttons.
+    SecondaryButtonText = '#b8bac0', -- Text colour used by secondary modal buttons.
+    DangerButtonStart = '#d94b4b', -- Starting gradient colour of destructive confirmation buttons.
+    DangerButtonEnd = '#a92f38', -- Ending gradient colour of destructive confirmation buttons.
+    DangerButtonBorder = '#7f2028', -- Border colour of destructive confirmation buttons.
+    DangerButtonShadow = 'rgba(220,64,72,.16)', -- Shadow colour of destructive confirmation buttons.
+    DangerButtonHoverStart = '#ee5f5f', -- Starting hover gradient colour of destructive buttons.
+    DangerButtonHoverEnd = '#bc3842', -- Ending hover gradient colour of destructive buttons.
+
+    --============================================================================--
+    -- [04] NAVIGATION, SEARCH, AND FIELD COLOURS
+    --============================================================================--
+    CategoryText = '#696b72', -- Inactive category tab text and SVG colour.
+    CategoryHoverText = '#b7b8bc', -- Category tab text and SVG colour on hover.
+    CategoryActiveText = '#f4e5bc', -- Active category tab text and SVG colour.
+    SearchIconText = '#5e6067', -- Search icon colour.
+    SearchBackground = 'rgba(0,0,0,.24)', -- Search input background colour.
+    InputText = '#d5d5d8', -- Search input text colour.
+    PlaceholderText = '#55575e', -- Placeholder and empty-state text colour.
+    CardBackgroundStart = 'rgba(255,255,255,.033)', -- Starting gradient colour of handling value cards.
+    CardBorder = 'rgba(0,0,0,.46)', -- Default handling value card border.
+    CardHoverEnd = 'rgba(255,255,255,.016)', -- Ending gradient colour of handling cards on hover.
+    FieldTitle = '#dedee1', -- Handling field title colour.
+    TechnicalText = '#61636b', -- Technical handling field name colour.
+    HelpText = '#62646b', -- Information tooltip icon colour.
+    TooltipText = '#c9c9cd', -- Tooltip body text colour.
+    TooltipBackground = '#15161a', -- Tooltip background colour.
+    TooltipBorder = 'rgba(255,255,255,.09)', -- Tooltip border colour.
+    TooltipShadow = 'rgba(0,0,0,.48)', -- Tooltip shadow colour.
+    ChangedText = '#c9af6c', -- Original-value badge text colour.
+    RangeLimitText = '#4f5158', -- Minimum and maximum range label colour.
+    SliderThumbBorder = '#1a1b1f', -- Dark ring around slider handles.
+    ValueText = '#efe6cc', -- Numeric value input text colour.
+    ValueBackground = 'rgba(0,0,0,.27)', -- Numeric value input background colour.
+
+    --============================================================================--
+    -- [05] FOOTER, MODAL, PRESET, AND XML COLOURS
+    --============================================================================--
+    FooterBackground = 'rgba(0,0,0,.12)', -- Editor footer background colour.
+    KeyText = '#73757c', -- Keyboard hint text colour.
+    KeyBackground = 'rgba(255,255,255,.04)', -- Keyboard hint background colour.
+    KeyBorder = 'rgba(255,255,255,.06)', -- Keyboard hint border colour.
+    ModalText = '#efeff1', -- Default modal text colour.
+    ModalBackground = '#101115', -- Modal panel background colour.
+    ModalBorder = 'rgba(0,0,0,.68)', -- Modal panel border colour.
+    ModalShadow = 'rgba(0,0,0,.72)', -- Modal outer shadow colour.
+    ModalOuterRing = 'rgba(0,0,0,.4)', -- Secondary dark ring around modal panels.
+    ConfirmOverlay = 'rgba(0,0,0,.38)', -- Background overlay behind destructive confirmation modals.
+    ModalTitleText = '#ececee', -- Modal title text colour.
+    ModalScrollbarTrack = '#0a0b0e', -- Firefox modal scrollbar track colour.
+    ModalDescriptionText = '#7e8087', -- Modal description and session note text colour.
+    ConfirmIconText = '#ff7272', -- Warning icon colour inside confirmation dialogs.
+    ConfirmIconBackground = 'rgba(255,80,90,.09)', -- Warning icon container background.
+    ConfirmIconBorder = 'rgba(255,80,90,.18)', -- Warning icon container border.
+    ConfirmBodyText = '#a9abb1', -- Confirmation message text colour.
+    ConfirmNameText = '#f0f0f2', -- Preset name colour inside confirmation dialogs.
+    CodeBackground = '#090a0d', -- Exported XML code background colour.
+    CodeText = '#aeb0b6', -- Exported XML code text colour.
+    PresetInputText = '#e6e6e8', -- Preset name input text colour.
+    PresetInputBackground = 'rgba(0,0,0,.26)', -- Preset name input background colour.
+    PresetRowBorder = 'rgba(0,0,0,.52)', -- Saved preset row border colour.
+    PresetText = '#d6d6d9', -- Saved preset name colour.
+    DeleteHoverBorder = 'rgba(255,90,90,.22)', -- Delete preset button border on hover.
+    DeleteHoverBackground = 'rgba(255,90,90,.08)', -- Delete preset button background on hover.
+
+    --============================================================================--
+    -- [06] SCROLLBAR AND TOAST COLOURS
+    --============================================================================--
+    ScrollbarMixBase = '#35363b', -- Dark colour mixed into the main editor scrollbar.
+    ScrollbarTrackTransparent = 'rgba(0,0,0,.15)', -- Transparent scrollbar track used by the editor list.
+    ScrollbarTrack = 'rgba(0,0,0,.16)', -- Scrollbar track used by the editor list.
+    ScrollbarThumbBase = '#3a3b40', -- Dark colour mixed into scrollbar thumbs.
+    ScrollbarThumbBorder = 'rgba(10,11,14,.9)', -- Border around the main editor scrollbar thumb.
+    ScrollbarTrackSolid = '#0b0c0f', -- Solid track used by modal and XML scrollbars.
+    ScrollbarThumbSolid = '#34353a', -- Solid dark colour mixed into modal scrollbar thumbs.
+    ToastText = '#e9e9eb', -- Toast notification text colour.
+    ToastBackground = 'rgba(19,20,24,.96)', -- Toast notification background colour.
+    ToastShadow = 'rgba(0,0,0,.5)', -- Toast notification shadow colour.
+    ToastSuccess = '#6bd47e', -- Success stripe colour used by UI toasts.
+    ToastError = '#f06d6d', -- Error stripe colour used by UI toasts.
+}
+```
+
+
 
 ---
 
