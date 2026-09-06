@@ -69,7 +69,22 @@
 
 <div class="home-showcase-grid">
 
-
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/fivem/modern-pause-menu.png" alt="mpausemenu preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Modern Pause Menu</h3>
+      <p>SMDZ Modern Pause Menu is a FiveM pause menu replacement inspired by the atmosphere of Vice City-style sagas and redesigned with a clean, modern interface. It combines live player information, persistent NEWS, cinematic Photo Mode, socials, personal UI settings and secure staff administration in one experience.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/modern-pause-menu.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/modern-pause-menu" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+    </div>
+  </article>
 
 
   <article class="home-showcase-card">
@@ -83,7 +98,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-radarss.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-radars.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-radars" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>

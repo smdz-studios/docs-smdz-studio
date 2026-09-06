@@ -65,9 +65,6 @@ SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can d
 
 
 
-
-
-
 # ⭐ FEATURES
 
 - 📞 **Dynamic NPC Witness Calls** — Civilians NPC automatically report crimes they see or hear, creating more realistic and unpredictable police interactions.
@@ -81,14 +78,14 @@ SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can d
 
 ## 🚨 **CRIMES DETECTED BY DEFAULT:**
 
-- 🔫 Shots Fired — Civilians can report nearby gunshots, even when they do not directly see the shooter.
-- 👀 Visible Firearms — NPCs can report players openly carrying pistols, rifles, and other firearms.
-- 🔪 Visible Bladed Weapons — Detects knives, machetes, axes, and other configured melee weapons displayed in public.
-- 👊 Assault in Progress — Witnesses can report players physically attacking civilians or other players.
-- 🚗 Vehicle Theft — Detects players stealing occupied vehicles and includes the vehicle model and license plate in the report.
-- 💥 Hit and Run — Civilians can report pedestrians being struck by vehicles, including vehicle details and estimated speed.
-- ☠️ Civilian Killed — Nearby witnesses can report the death of an NPC caused by a player.
-- 🚑 Person Down — Civilians can report when another player is critically injured or killed.
+- 🔫 **Shots Fired —** Civilians can report nearby gunshots, even when they do not directly see the shooter.
+- 👀 **Visible Firearms —** NPCs can report players openly carrying pistols, rifles, and other firearms.
+- 🔪 **Visible Bladed Weapons** — Detects knives, machetes, axes, and other configured melee weapons displayed in public.
+- 👊 **Assault in Progress** — Witnesses can report players physically attacking civilians or other players.
+- 🚗 **Vehicle Theft** — Detects players stealing occupied vehicles and includes the vehicle model and license plate in the report.
+- 💥 **Hit and Run** — Civilians can report pedestrians being struck by vehicles, including vehicle details and estimated speed.
+- ☠️ **Civilian Killed** — Nearby witnesses can report the death of an NPC caused by a player.
+- 🚑 **Person Down** — Civilians can report when another player is critically injured or killed.
 
 
 
@@ -946,7 +943,7 @@ These events support synchronization between the owner client, server, and nearb
 | Only one call starts | Increase `Config.Witness.maxActiveCalls`.<br>Enable `Config.Cooldowns.multipleCallsInSameArea.enabled`.<br>Increase `multipleCallsInSameArea.maxActive` or use `0` for no per-area limit. |
 | Repeated calls are blocked in the same area | Enable `multipleCallsInSameArea.enabled` and `allowSameCrime`.<br>Remember that automatic detectors also have their own cooldowns.<br>The global per-crime cooldown may still prevent rapid duplicate reports when no matching active call exists. |
 | Too many calls or dispatch alerts are created | Lower `Config.Witness.maxActiveCalls` and `multipleCallsInSameArea.maxActive`.<br>Increase detector, crime, or area cooldowns.<br>Make sure another resource is not calling the export repeatedly inside a loop or from every participant. |
-| The same NPC appears to be selected twice | Version `1.1.14` blocks active local and replicated witnesses from being reused.<br>Confirm all clients use the updated resource and restart it on both server and clients.<br>Check that a second copied resource is not running. |
+| The same NPC appears to be selected twice | Version `1.0.1` blocks active local and replicated witnesses from being reused.<br>Confirm all clients use the updated resource and restart it on both server and clients.<br>Check that a second copied resource is not running. |
 | The witness animation plays but the phone is missing | Check that the configured phone model exists and can be streamed.<br>Confirm nearby replication has `createPhoneForNearby` enabled.<br>Look for model loading errors or another resource deleting attached props. |
 | The phone or animation remains after a call | Confirm the resource was not force-restarted during the call.<br>Check for script errors that stop the cleanup thread.<br>Restart the resource once to clear abandoned local state and inspect F8 errors before reproducing it. |
 | DUI is not visible | Confirm `Config.UI.visibility` is not `none` and `Config.UI.showCrime` is configured as desired.<br>Stay within `Config.UI.maxDistance`, face the witness, and keep a clear line of sight.<br>The DUI intentionally hides off-screen and behind geometry. |
