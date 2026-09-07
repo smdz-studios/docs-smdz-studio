@@ -10,9 +10,18 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
-<p style="text-align: center; font-weight: bold; color: red;">
-  ⚠️ THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
-</p>
+<section class="bridge-policy-card bridge-policy-card--info resource-availability-card" aria-label="OPEN SOURCE AND ESCROW VERSIONS" style="margin: 0.95rem 0 1.2rem; border: 1px solid rgba(59, 130, 246, 0.34); background: linear-gradient(180deg, rgba(30, 64, 175, 0.24), rgba(10, 22, 44, 0.94)); border-radius: 16px; padding: 0.92rem 1rem 0.95rem; box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);">
+  <p class="bridge-policy-card__label" style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.18rem; text-transform: uppercase; color: #93c5fd; font-weight: 800; display: inline-flex; align-items: center; gap: 0.45rem;">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" style="display: block; fill: currentColor;">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"></path>
+    </svg>
+    Info
+  </p>
+  <h2 style="margin: 0 0 0.45rem; font-size: clamp(1rem, 2vw, 1.32rem); line-height: 1.1; color: #eff6ff; text-transform: uppercase;">OPEN SOURCE AND ESCROW VERSIONS</h2>
+  <p style="margin: 0; color: #dbeafe; line-height: 1.58; font-weight: 620;">
+    THIS SCRIPT IS AVAILABLE IN OPEN SOURCE AND ESCROW VERSIONS
+  </p>
+</section>
 
 
 ---

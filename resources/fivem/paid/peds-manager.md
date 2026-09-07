@@ -10,9 +10,18 @@
     style="max-width: 100%; border-radius: 12px;"
   ></iframe>
 </div>
-<p style="text-align: center; font-weight: bold; color: red;">
-  ⚠️ THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
-</p>
+<section class="bridge-policy-card bridge-policy-card--info resource-availability-card" aria-label="ESCROW VERSION ONLY" style="margin: 0.95rem 0 1.2rem; border: 1px solid rgba(59, 130, 246, 0.34); background: linear-gradient(180deg, rgba(30, 64, 175, 0.24), rgba(10, 22, 44, 0.94)); border-radius: 16px; padding: 0.92rem 1rem 0.95rem; box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);">
+  <p class="bridge-policy-card__label" style="margin: 0 0 0.35rem; font-size: 0.72rem; letter-spacing: 0.18rem; text-transform: uppercase; color: #93c5fd; font-weight: 800; display: inline-flex; align-items: center; gap: 0.45rem;">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false" style="display: block; fill: currentColor;">
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-6h2v6Zm0-8h-2V7h2v2Z"></path>
+    </svg>
+    Info
+  </p>
+  <h2 style="margin: 0 0 0.45rem; font-size: clamp(1rem, 2vw, 1.32rem); line-height: 1.1; color: #eff6ff; text-transform: uppercase;">ESCROW VERSION ONLY</h2>
+  <p style="margin: 0; color: #dbeafe; line-height: 1.58; font-weight: 620;">
+    THIS SCRIPT IS AVAILABLE IN ESCROW VERSION ONLY
+  </p>
+</section>
 
 ---
 
@@ -106,7 +115,7 @@ CREATE TABLE IF NOT EXISTS smdz_ped_assignments (
 );
 
 CREATE TABLE IF NOT EXISTS smdz_user_state (
-    identifier VARCHAR(128) PRIMARY KEY,
+    identifier VARCHAR(168) PRIMARY KEY,
     current_ped_id VARCHAR(64) NULL,
     last_used_at INT NULL,
     saved_skin LONGTEXT NULL,
@@ -120,7 +129,7 @@ CREATE TABLE IF NOT EXISTS smdz_ped_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     action VARCHAR(16) NOT NULL,
     ped_id VARCHAR(64) NOT NULL,
-    admin_identifier VARCHAR(128) NOT NULL,
+    admin_identifier VARCHAR(168) NOT NULL,
     admin_name VARCHAR(64) NULL,
     target_type VARCHAR(16) NOT NULL,
     target_value VARCHAR(128) NOT NULL,
@@ -134,7 +143,7 @@ CREATE TABLE IF NOT EXISTS smdz_ped_logs (
 );
 
 CREATE TABLE IF NOT EXISTS smdz_ped_admin_rate_limits (
-    admin_identifier VARCHAR(128) NOT NULL,
+    admin_identifier VARCHAR(168) NOT NULL,
     action VARCHAR(16) NOT NULL,
     last_at INT NOT NULL,
     PRIMARY KEY (admin_identifier, action)
@@ -142,7 +151,7 @@ CREATE TABLE IF NOT EXISTS smdz_ped_admin_rate_limits (
 
 CREATE TABLE IF NOT EXISTS smdz_ped_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    identifier VARCHAR(128) NOT NULL,
+    identifier VARCHAR(168) NOT NULL,
     player_name VARCHAR(64) NULL,
     ped_id VARCHAR(64) NOT NULL,
     duration_value INT NULL,
@@ -257,23 +266,7 @@ Config.AdminRateLimit = {
 }
 ```
 
-**Notes:**
-- `Config.Notify.Resource` supports auto-detection. You can force a specific resource name.
-- `Config.Peds.EnableAnimals = false` hides the animals category and removes animal peds from the catalog and assignments.
-- `Config.Peds.Blacklist` blocks peds by id or model and sends a reason to the UI/notify.
-- `Config.Timezone.OffsetMinutes` sets the timezone offset for all displayed times (UI + webhooks).
-- Set `Config.Requests.Enabled = false` to hide and disable the ped request system entirely.
-- `shared/nui-config.lua` controls **all NUI colors** (no color palette in `shared/config.lua`).
-- `Config.Webhook.FooterText` is fixed to **SMDZ STUDIOS - PEDS MANAGER**.
-- `Config.Webhook.ImageBaseUrl` lets webhooks show ped thumbnails (base URL + ped image path).
-- Webhooks also fire for restore and auto‑equip enable/disable.
-- Webhooks also fire for request create/approve/reject actions.
-- Webhooks include formatted dates plus extra fields (ped name/model, target name, identifiers).
-- Default freemode peds are controlled by:
-  - `Config.DefaultFreemodePedMale`
-  - `Config.DefaultFreemodePedFemale`
-- `Config.AdminRateLimit` is persistent and applies to assign/revoke/extend.
-- `Config.Peds.Blacklist` reason shows in-game when blocked.
+
 
 ### NUI Color Palette
 
@@ -377,13 +370,6 @@ NuiConfig.Colors = {
 | `/peds`     | Opens the player panel.              | Everyone                        |
 | `/pedsadmin`| Opens the admin panel.               | ACE or admin group required     |
 
-### UI / Menus
-
-- **Player Panel:** view assigned peds, equip/remove, and **Restore Original** (re-applies native model + saved clothing/appearance).
-- **Admin Panel:** assign peds to identifier, Discord ID, group, job, or server ID; manage durations; revoke/extend; search/filter; pagination; logs and webhooks.
-- **Auto‑Equip:** players can toggle auto‑equip per assigned ped. If enabled, it will equip automatically on connect when valid.
-- **Player Logs:** players can view a lightweight log tab with only their own actions and assignments.
-- **Requests:** players can request a ped with a reason and duration; staff can approve/reject with a reason (player must be online to approve).
 
 ---
 

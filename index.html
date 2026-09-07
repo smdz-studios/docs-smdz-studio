@@ -115,7 +115,7 @@
 
   <div id="platform-selector" class="platform-selector" aria-hidden="true" hidden>
     <section id="platform-selector-dialog" class="platform-selector__dialog" role="dialog" aria-modal="true" aria-labelledby="platform-selector-title" aria-describedby="platform-selector-subtitle">
-      <button id="platform-selector-close" class="platform-selector__close" type="button" aria-label="Close platform selector" hidden>&times;</button>
+      <button id="platform-selector-close" class="platform-selector__close" type="button" aria-label="Close platform selector" hidden><span aria-hidden="true">X</span></button>
       <header class="platform-selector__heading">
         <p class="platform-selector__eyebrow">SMDZ STUDIOS DOCUMENTATION</p>
         <h2 id="platform-selector-title">CHOOSE YOUR PLATFORM</h2>
@@ -235,6 +235,27 @@
           function getCalloutVariant(text) {
             var normalized = (text || '').replace(/\s+/g, ' ').trim().toUpperCase();
 
+            if (normalized.indexOf('[!NOTE]') !== -1 || normalized.indexOf('[!INFO]') !== -1) {
+              return {
+                className: 'doc-callout--info',
+                label: 'INFO'
+              };
+            }
+
+            if (normalized.indexOf('[!WARNING]') !== -1 || normalized.indexOf('[!CAUTION]') !== -1) {
+              return {
+                className: 'doc-callout--warning',
+                label: 'WARNING'
+              };
+            }
+
+            if (normalized.indexOf('[!IMPORTANT]') !== -1 || normalized.indexOf('[!ATTENTION]') !== -1) {
+              return {
+                className: 'doc-callout--attention',
+                label: 'ATTENTION'
+              };
+            }
+
             if (normalized.indexOf('END OF LIFE') !== -1 || normalized.indexOf('DISCONTINUED') !== -1) {
               return {
                 className: 'doc-callout--deprecated',
@@ -266,20 +287,48 @@
             return null;
           }
 
-          function applyImportantCallouts() {
-            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
-            if (routePath.indexOf('/resources/') !== 0) {
+          function cleanCalloutMarker(node) {
+            if (!node) {
               return;
             }
 
+            var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+            var textNode = walker.nextNode();
+            if (!textNode) {
+              return;
+            }
+
+            textNode.nodeValue = textNode.nodeValue.replace(/\[!(NOTE|INFO|WARNING|CAUTION|IMPORTANT|ATTENTION)\]\s*/i, '');
+          }
+
+          function normalizeLegacyCalloutStyle(node) {
+            if (!node || !node.getAttribute) {
+              return;
+            }
+
+            var inlineStyle = node.getAttribute('style') || '';
+            if (!inlineStyle) {
+              return;
+            }
+
+            if (/text-align\s*:|font-weight\s*:|color\s*:/i.test(inlineStyle)) {
+              node.removeAttribute('style');
+            }
+          }
+
+          function applyImportantCallouts() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot) {
               return;
             }
 
-            var candidateNodes = contentRoot.querySelectorAll('p, h1, h2, h3');
+            var candidateNodes = contentRoot.querySelectorAll('blockquote, p, h1, h2, h3');
             candidateNodes.forEach(function (node) {
               if (node.dataset.calloutBound === '1') {
+                return;
+              }
+
+              if (node.closest && node.closest('.bridge-policy-card')) {
                 return;
               }
 
@@ -290,6 +339,8 @@
 
               node.classList.add('doc-callout', variant.className);
               node.setAttribute('data-callout-label', variant.label);
+              normalizeLegacyCalloutStyle(node);
+              cleanCalloutMarker(node);
               node.dataset.calloutBound = '1';
             });
           }

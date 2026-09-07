@@ -3,7 +3,6 @@
   <h1>ADDON WEAPON INSTALLATION</h1>
   <p>Install the resource, register it in the inventory you actually use, then test it in-game with the right identifier.</p>
   <div class="weapons-nav">
-    <a class="home-showcase-btn home-showcase-btn--docs" href="#/resources/fivem/weapons/guide.md?id=quick-start">QUICK START</a>
     <details class="weapons-setup-dropdown">
       <summary>CHOOSE SETUP</summary>
       <div class="weapons-setup-menu">
@@ -25,38 +24,13 @@
         </a>
       </div>
     </details>
-    <a class="home-showcase-btn home-showcase-btn--docs" href="#/resources/fivem/weapons/guide.md?id=troubleshooting">TROUBLESHOOT</a>
   </div>
 </section>
 
-<div class="weapons-start-panel">
-  <div>
-    <span class="weapons-kicker">Start here</span>
-    <h2 id="quick-start">The safe order</h2>
-    <p>Most weapon issues come from doing the right steps in the wrong place. Follow this order first, then jump to your inventory section.</p>
-  </div>
-  <ol class="weapons-step-list">
-    <li><strong>Install the resource</strong><span>Put the package in <code>resources</code>, confirm <code>fxmanifest.lua</code>, then add the correct <code>ensure</code> line.</span></li>
-    <li><strong>Register the item</strong><span>Use the section for your active inventory: ox, QBCore, QBX/Qbox, or no inventory.</span></li>
-    <li><strong>Add the icon</strong><span>Copy the image to the folder used by your inventory and keep the filename exactly the same.</span></li>
-    <li><strong>Restart and test</strong><span>Give the weapon with admin permissions, equip it, reload it, store it, and reconnect.</span></li>
-  </ol>
-</div>
-
-<div class="weapons-note-grid">
-  <div>
-    <strong>Addon weapon</strong>
-    <p>A new weapon with its own identifier, such as <code>WEAPON_SMDZ_EXAMPLE</code>.</p>
-  </div>
-  <div>
-    <strong>Replacement weapon</strong>
-    <p>A model or texture that changes an existing GTA V weapon. This guide is not for replacements.</p>
-  </div>
-  <div>
-    <strong>Important rule</strong>
-    <p>Renaming an inventory item does not create a weapon. The identifier must match the package metadata.</p>
-  </div>
-</div>
+> [!NOTE]
+> **Read this first:** This guide is for **addon weapons**: weapons that add a new spawn name such as `WEAPON_SMDZ_EXAMPLE`. It is not for replacements that only swap the model or texture of a GTA V weapon.
+>
+> Install the weapon resource first. After that, register the same identifier in the system that manages weapons on your server. Renaming an inventory item does not create a weapon.
 
 ## Before you begin
 
@@ -90,29 +64,14 @@ Ammo, weight, and durability values below are examples for a pistol. Use the set
 
 ## Choose your setup
 
-<div class="weapons-choice-grid">
-  <a href="#/resources/fivem/weapons/guide.md?id=no-inventory">
-    <span>No inventory</span>
-    <strong>Spawn by weapon identifier</strong>
-    <p>Use an admin menu or custom delivery system that supports addon weapon names.</p>
-  </a>
-  <a href="#/resources/fivem/weapons/guide.md?id=ox_inventory">
-    <span>ESX / ox</span>
-    <strong>Register in <code>ox_inventory</code></strong>
-    <p>Add the weapon to <code>data/weapons.lua</code>, copy the icon, then give weapon and ammo items.</p>
-  </a>
-  <a href="#/resources/fivem/weapons/guide.md?id=qbcore-inventories">
-    <span>QBCore</span>
-    <strong>Register item and weapon data</strong>
-    <p>Add entries to <code>QBShared.Items</code> and <code>QBShared.Weapons</code>, then configure ammo and durability.</p>
-  </a>
-  <a href="#/resources/fivem/weapons/guide.md?id=qbx-and-qbox">
-    <span>QBX / Qbox</span>
-    <strong>Follow your active inventory</strong>
-    <p>Most Qbox servers using ox should follow the full ox_inventory section.</p>
-  </a>
-</div>
+| Your server uses | Go to | Main files touched |
+| --- | --- | --- |
+| No inventory or persistent weapon system | [No inventory](#/resources/fivem/weapons/guide.md?id=no-inventory) | Admin menu or custom weapon delivery resource |
+| `ox_inventory`, including ESX with ox | [ox_inventory](#/resources/fivem/weapons/guide.md?id=ox_inventory) | `ox_inventory/data/weapons.lua`, `ox_inventory/web/images/` |
+| `qb-core` with `qb-inventory` or an inventory that reads QBCore shared data | [QBCore inventories](#/resources/fivem/weapons/guide.md?id=qbcore-inventories) | `qb-core/shared/items.lua`, `qb-core/shared/weapons.lua`, inventory images |
+| `qbx_core` / Qbox | [QBX and Qbox](#/resources/fivem/weapons/guide.md?id=qbx-and-qbox) | Usually ox files, unless your inventory documents another setup |
 
+> [!NOTE]
 > **Choose by inventory:** Your integration depends on the system managing your weapons as well as your framework. ESX's native loadout is a weapon system even without a visible inventory interface. Follow that loadout's registration and persistence instructions if you use it.
 
 ---
@@ -282,6 +241,8 @@ For attachments, use the component identifiers supplied with the weapon and regi
 - Storing and equipping it again does not duplicate it.
 - On servers with persistence, ownership and ammo survive reconnection as configured.
 - Configured shops and armories deliver the correct item and enforce their permissions.
+
+---
 
 ## Troubleshooting
 
