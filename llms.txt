@@ -12,10 +12,15 @@ Incluye instalacion, configuracion, compatibilidad, troubleshooting, referencia 
 - [Common Problems](https://docs.smdz-studios.com/#/problems.md)
 - [Asset Escrow System](https://docs.smdz-studios.com/#/fxap.md)
 - [SMDZ Bridge](https://docs.smdz-studios.com/#/resources/fivem/bridge/main.md)
+- [Addon Weapon Installation Guide](https://docs.smdz-studios.com/#/resources/fivem/weapons/guide.md)
+- [Baseball Weapon Pack](https://docs.smdz-studios.com/#/resources/fivem/weapons/baseball-pack.md)
+- [Modern Pause Menu](https://docs.smdz-studios.com/#/resources/fivem/paid/modern-pause-menu.md)
+- [Speed Radars](https://docs.smdz-studios.com/#/resources/fivem/paid/speed-radars.md)
 - [Advanced Safes](https://docs.smdz-studios.com/#/resources/fivem/paid/advanced-safes.md)
 - [Witness Calls](https://docs.smdz-studios.com/#/resources/fivem/paid/witness_calls.md)
 - [Dynamic Keybinds](https://docs.smdz-studios.com/#/resources/fivem/paid/keybinds.md)
 - [Handling Editor](https://docs.smdz-studios.com/#/resources/fivem/free/handling-editor.md)
+- [Body Scale](https://docs.smdz-studios.com/#/resources/redm/paid/body-scale.md)
 - [Changelog](https://docs.smdz-studios.com/#/changelog.md)
 
 ## Informacion Critica

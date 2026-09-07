@@ -3,16 +3,20 @@
   <div>
     <p class="platform-library-eyebrow">SMDZ STUDIOS · REDM</p>
     <h1>RedM Resource Documentation</h1>
-    <p>The RedM library is ready for the first SMDZ Studios resources. New scripts, installation guides, configuration references and developer APIs will appear here.</p>
+    <p>The RedM library collects SMDZ Studios RedM resources, installation guides, configuration references and support notes.</p>
   </div>
 </div>
 
 > [!NOTE]
-> There are no public RedM resources listed yet. Use the platform button in the upper-right corner whenever you want to return to the FiveM documentation.
+> RedM resources use their own documentation routes under `resources/redm/`. Use the platform button in the upper-right corner whenever you want to switch back to the FiveM documentation.
 
-## Planned documentation structure
+## Available resources
 
-Every RedM resource will use its own route under `resources/redm/` and will include installation, configuration, permissions, security notes, events, exports and troubleshooting information where applicable.
+- [Body Scale](/resources/redm/paid/body-scale.md) - persistent character height and body width customization for RedM servers.
+
+## Documentation structure
+
+Every RedM resource uses its own route under `resources/redm/` and includes installation, configuration, permissions, security notes, events, exports and troubleshooting information where applicable.
 
 ## Need help?
 

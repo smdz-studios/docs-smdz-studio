@@ -6,19 +6,19 @@
 
   <!-- SEO meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <meta name="description" content="Official SMDZ Studios documentation for FiveM and RedM scripts, resources, setup guides, configuration, troubleshooting, Asset Escrow and support." />
-  <meta name="keywords" content="SMDZ Studios, FiveM documentation, RedM documentation, FiveM scripts, RedM scripts, Cfx.re resources, GTA RP, RDR2 RP, ESX, QBCore, installation guides, troubleshooting, Asset Escrow, Tebex, support" />
+  <meta name="description" content="Official SMDZ Studios documentation for FiveM and RedM scripts, addon weapons, LB Phone apps, setup guides, configuration, troubleshooting, Asset Escrow and support." />
+  <meta name="keywords" content="SMDZ Studios, FiveM documentation, RedM documentation, FiveM scripts, RedM scripts, Cfx.re resources, GTA RP, RDR2 RP, ESX, QBCore, Qbox, VORP, RSG-Core, addon weapons, LB Phone apps, installation guides, troubleshooting, Asset Escrow, Tebex, support" />
   <meta name="author" content="SMDZ Studios" />
   <meta name="robots" content="index,follow,noarchive" />
   <meta name="bingbot" content="nocache" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SMDZ Studios Docs | FiveM &amp; RedM Documentation" />
-  <meta property="og:description" content="Official documentation for SMDZ Studios FiveM and RedM resources, setup guides, troubleshooting, Asset Escrow and support." />
+  <meta property="og:description" content="Official documentation for SMDZ Studios FiveM and RedM resources, addon weapons, setup guides, troubleshooting, Asset Escrow and support." />
   <meta property="og:image" content="https://docs.smdz-studios.com/assets/fivem/logos/smdz-studios.png" />
   <meta property="og:url" content="https://docs.smdz-studios.com/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SMDZ Studios Docs | FiveM &amp; RedM Documentation" />
-  <meta name="twitter:description" content="Official documentation for SMDZ Studios FiveM and RedM scripts, setup guides, troubleshooting and support." />
+  <meta name="twitter:description" content="Official documentation for SMDZ Studios FiveM and RedM scripts, addon weapons, setup guides, troubleshooting and support." />
   <meta name="twitter:image" content="https://docs.smdz-studios.com/assets/fivem/logos/smdz-studios.png" />
 
   <link rel="canonical" href="https://docs.smdz-studios.com/" />
@@ -57,10 +57,12 @@
           "@id": "https://docs.smdz-studios.com/#website",
           "url": "https://docs.smdz-studios.com/",
           "name": "SMDZ Studios Docs",
-          "description": "Official documentation for SMDZ Studios FiveM and RedM scripts, setup guides, troubleshooting, Asset Escrow and support articles.",
+          "description": "Official documentation for SMDZ Studios FiveM and RedM scripts, addon weapons, LB Phone apps, setup guides, troubleshooting, Asset Escrow and support articles.",
           "about": [
             { "@type": "Thing", "name": "FiveM" },
-            { "@type": "Thing", "name": "RedM" }
+            { "@type": "Thing", "name": "RedM" },
+            { "@type": "Thing", "name": "Addon weapons" },
+            { "@type": "Thing", "name": "LB Phone apps" }
           ],
           "publisher": {
             "@id": "https://docs.smdz-studios.com/#organization"
@@ -1127,6 +1129,14 @@
                 title: 'SMDZ Bridge | SMDZ Studios Docs',
                 description: 'Documentation for SMDZ Bridge, the private compatibility core that powers framework and provider support across the SMDZ Studios ecosystem.'
               },
+              '/resources/fivem/weapons/guide.md': {
+                title: 'Addon Weapon Installation Guide | SMDZ Studios',
+                description: 'FiveM addon weapon installation guide for ESX, QBCore, QBX, ox_inventory and servers without an inventory system.'
+              },
+              '/resources/fivem/weapons/baseball-pack.md': {
+                title: 'Baseball Weapon Pack | SMDZ Studios',
+                description: 'Documentation for SMDZ Baseball Weapon Pack, a FiveM addon melee weapon package with blood, chains and spiked baseball bats.'
+              },
               '/errors-pages/400.md': {
                 title: 'Bad Request | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for malformed or invalid documentation requests.'
@@ -1166,6 +1176,14 @@
               '/resources/fivem/paid/admin-board.md': {
                 title: 'Admin Board | SMDZ Studios',
                 description: 'Documentation for SMDZ Admin Board, a fullscreen FiveM administrative workspace with boards, tasks, staff tools, logs and persistent notifications.'
+              },
+              '/resources/fivem/paid/modern-pause-menu.md': {
+                title: 'Modern Pause Menu | SMDZ Studios',
+                description: 'Documentation for SMDZ Modern Pause Menu, a FiveM pause menu replacement with player information, news, photo mode, socials and staff controls.'
+              },
+              '/resources/fivem/paid/speed-radars.md': {
+                title: 'Speed Radars | SMDZ Studios',
+                description: 'Documentation for SMDZ Speed Radars, a FiveM speed enforcement system with portable radars, permanent cameras, fines and photographic evidence.'
               },
               '/resources/fivem/paid/evidence-board.md': {
                 title: 'Evidence Board | SMDZ Studios',
@@ -1257,7 +1275,11 @@
               },
               '/resources/redm/index.md': {
                 title: 'RedM Resource Documentation | SMDZ Studios',
-                description: 'Official landing page for upcoming SMDZ Studios RedM scripts, installation guides, configuration references and developer documentation.'
+                description: 'Official RedM documentation hub for SMDZ Studios scripts, installation guides, configuration references and support articles.'
+              },
+              '/resources/redm/paid/body-scale.md': {
+                title: 'Body Scale | SMDZ Studios RedM',
+                description: 'Documentation for SMDZ Body Scale, a RedM character physique editor with persistent height and body width customization for VORP, RSG-Core and standalone servers.'
               }
             };
 
@@ -1273,10 +1295,10 @@
             var title = currentMeta.title || defaultTitle;
             var description = currentMeta.description || defaultDescription;
             var seoKeywords = selectedPlatform === 'redm'
-              ? 'SMDZ Studios, RedM documentation, RedM scripts, Red Dead Redemption 2 roleplay, RDR2 RP, Cfx.re, Tebex, Asset Escrow, support'
+              ? 'SMDZ Studios, RedM documentation, RedM scripts, Body Scale, Red Dead Redemption 2 roleplay, RDR2 RP, VORP, RSG-Core, Cfx.re, Tebex, Asset Escrow, support'
               : selectedPlatform === 'fivem'
-                ? 'SMDZ Studios, FiveM documentation, FiveM scripts, GTA RP, ESX, QBCore, Qbox, Cfx.re, Tebex, Asset Escrow, support'
-                : 'SMDZ Studios, FiveM documentation, RedM documentation, FiveM scripts, RedM scripts, GTA RP, RDR2 RP, Cfx.re, Tebex, Asset Escrow, support';
+                ? 'SMDZ Studios, FiveM documentation, FiveM scripts, addon weapons, Baseball Weapon Pack, LB Phone apps, GTA RP, ESX, QBCore, Qbox, Cfx.re, Tebex, Asset Escrow, support'
+                : 'SMDZ Studios, FiveM documentation, RedM documentation, FiveM scripts, RedM scripts, addon weapons, Body Scale, GTA RP, RDR2 RP, Cfx.re, Tebex, Asset Escrow, support';
             var routeUrl = routePath === '/portal.md' ? baseUrl : baseUrl + '#/' + routePath.replace(/^\//, '');
 
             document.title = title;
@@ -1415,6 +1437,18 @@
               'FREE RESOURCES': {
                 label: 'Free Resources',
                 path: 'M12 3 4 7v5c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V7l-8-4Zm-1 12.2-3-3 1.4-1.4 1.6 1.6 4.6-4.6L17 9.2l-6 6Z'
+              },
+              'ADDON WEAPONS': {
+                label: 'Addon Weapons',
+                external: true,
+                name: 'package-plus',
+                url: 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/package-plus.svg'
+              },
+              'REDM RESOURCES': {
+                label: 'RedM Resources',
+                external: true,
+                name: 'map',
+                url: 'https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/map.svg'
               }
             };
             sidebarSectionIconMap.REDESINGS = sidebarSectionIconMap.REDESIGNS;
@@ -1531,7 +1565,21 @@
             sidebarNamedIconMap.radar = getSidebarLucideIcon('radar');
             sidebarNamedIconMap.siren = getSidebarLucideIcon('siren');
             sidebarNamedIconMap.tools = getSidebarLucideIcon('wrench');
-            sidebarNamedIconMap['clipboard-copy'] = getSidebarLucideIcon('clipboard-copy');
+            sidebarNamedIconMap['app-window-mac'] = getSidebarLucideIcon('app-window-mac');
+            sidebarNamedIconMap.camera = getSidebarLucideIcon('camera');
+            sidebarNamedIconMap.car = getSidebarLucideIcon('car');
+            sidebarNamedIconMap['car-taxi-front'] = getSidebarLucideIcon('car-taxi-front');
+            sidebarNamedIconMap.film = getSidebarLucideIcon('film');
+            sidebarNamedIconMap.keyboard = getSidebarLucideIcon('keyboard');
+            sidebarNamedIconMap.map = getSidebarLucideIcon('map');
+            sidebarNamedIconMap.mic = getSidebarLucideIcon('mic');
+            sidebarNamedIconMap['package-2'] = getSidebarLucideIcon('package-2');
+            sidebarNamedIconMap['phone-call'] = getSidebarLucideIcon('phone-call');
+            sidebarNamedIconMap.radius = getSidebarLucideIcon('radius');
+            sidebarNamedIconMap.ruler = getSidebarLucideIcon('ruler');
+            sidebarNamedIconMap['square-kanban'] = getSidebarLucideIcon('square-kanban');
+            sidebarNamedIconMap.ticket = getSidebarLucideIcon('ticket');
+            sidebarNamedIconMap.volleyball = getSidebarLucideIcon('volleyball');
 
             sidebarIconMap['/tools/item-converter/'] = {
               label: 'Item Converter',
@@ -1955,6 +2003,10 @@
 
                 if (cardLinks.indexOf('/resources/fivem/redesings/') !== -1 || cardTags.indexOf('REDESIGN') !== -1 || cardTags.indexOf('REDESIGNS') !== -1) {
                   categories.push('redesign');
+                }
+
+                if (cardLinks.indexOf('/resources/fivem/weapons/') !== -1 || cardLinks.indexOf('/resources/redm/weapons/') !== -1 || cardTags.indexOf('WEAPONS') !== -1) {
+                  categories.push('weapons');
                 }
 
                 cardEl.dataset.portalCategories = categories.join(' ');

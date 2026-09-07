@@ -10,6 +10,8 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze({
     '/problems.md',
     '/changelog.md',
     '/resources/fivem/bridge/main.md',
+    '/resources/fivem/weapons/guide.md',
+    '/resources/fivem/weapons/baseball-pack.md',
     '/resources/fivem/paid/advanced-safes.md',
     '/resources/fivem/paid/admin-board.md',
     '/resources/fivem/paid/app-emergency-alerts.md',
@@ -23,11 +25,13 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze({
     '/resources/fivem/paid/invite-codes.md',
     '/resources/fivem/paid/keybinds.md',
     '/resources/fivem/paid/lb_smartcab.md',
+    '/resources/fivem/paid/modern-pause-menu.md',
     '/resources/fivem/paid/nfc-transfer.md',
     '/resources/fivem/paid/peds-manager.md',
     '/resources/fivem/paid/pets-rescue.md',
     '/resources/fivem/paid/rancher-job.md',
     '/resources/fivem/paid/realistic-uav.md',
+    '/resources/fivem/paid/speed-radars.md',
     '/resources/fivem/paid/speed-bumpers.md',
     '/resources/fivem/paid/streamers-list.md',
     '/resources/fivem/paid/voice-indicator.md',
@@ -39,6 +43,7 @@ window.SMDZ_COMMAND_SEARCH_PAGES = Object.freeze({
   ]),
 
   redm: Object.freeze([
-    '/resources/redm/index.md'
+    '/resources/redm/index.md',
+    '/resources/redm/paid/body-scale.md'
   ])
 });

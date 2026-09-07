@@ -61,6 +61,7 @@
   <button class="portal-filter-btn" type="button" data-filter="standalone">Standalone</button>
   <button class="portal-filter-btn" type="button" data-filter="lb-phone-app">LB Phone App</button>
   <button class="portal-filter-btn" type="button" data-filter="redesign">Redesigns</button>
+  <button class="portal-filter-btn" type="button" data-filter="weapons">WEAPONS</button>
 </div>
 
 <div class="portal-filter-empty" role="status" hidden>
