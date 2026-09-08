@@ -27,7 +27,7 @@
   </div>
 </section>
 
-> [!NOTE]
+
 > **Read this first:** This guide is for **addon weapons**: weapons that add a new spawn name such as `WEAPON_SMDZ_EXAMPLE`. It is not for replacements that only swap the model or texture of a GTA V weapon.
 >
 > Install the weapon resource first. After that, register the same identifier in the system that manages weapons on your server. Renaming an inventory item does not create a weapon.
