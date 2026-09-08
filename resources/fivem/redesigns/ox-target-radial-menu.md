@@ -3,7 +3,7 @@
     width="640"
     height="360"
     src="https://www.youtube.com/embed/9FElU876EZE"
-    title="oxtarget redesing showcase"
+    title="oxtarget redesign showcase"
     frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
@@ -19,7 +19,7 @@
   </p>
   <h2 style="margin: 0 0 0.45rem; font-size: clamp(1rem, 2vw, 1.32rem); line-height: 1.1; color: #eff6ff; text-transform: uppercase;">ESCROW VERSION ONLY</h2>
   <p style="margin: 0; color: #dbeafe; line-height: 1.58; font-weight: 620;">
-    THIS SCRIPT (REDESING) IS AVAILABLE IN ESCROW VERSION ONLY
+    THIS SCRIPT (redesign) IS AVAILABLE IN ESCROW VERSION ONLY
   </p>
 </section>
 

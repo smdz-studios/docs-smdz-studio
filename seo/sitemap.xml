@@ -2,54 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://docs.smdz-studios.com/</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/portal.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/docs/support/support.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/docs/support/asset-escrow.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/docs/information/portal.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/support.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/docs/information/changelog.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/faq.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/docs/support/faq.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/problems.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/docs/support/problems.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/fxap.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/core/smdz-bridge.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/changelog.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/bridge/main.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- FiveM addon weapons -->
   <url>
     <loc>https://docs.smdz-studios.com/#/resources/fivem/weapons/guide.md</loc>
     <lastmod>2026-09-07</lastmod>
@@ -62,190 +60,182 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Paid FiveM resources -->
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/modern-pause-menu.md</loc>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/admin-board.md</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/speed-radars.md</loc>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/advanced-safes.md</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/advanced-safes.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/bus-travel.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/witness_calls.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/cine-loadscreen.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/keybinds.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/emergency-gps.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/evidence-board.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/evidence-board.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/admin-board.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/evidence-markers.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/flyers.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/invite-codes.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/keybinds.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/modern-pause-menu.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/nfc-transfer.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/peds-manager.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/pets-rescue.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/rancher-job.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/realistic-uav.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/speed-bumps.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/speed-radars.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/streamers-list.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/voice-indicator.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/witness-calls.md</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/free/handling-editor.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/cine-loadscreen.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/scripts/free/parking-camera.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/invite-codes.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/apps/lb-phone/emergency-alerts.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/voice-indicator.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/apps/lb-phone/ifruit-pods.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/flyers.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/apps/lb-phone/smartcab.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/streamers-list.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/redesigns/ox-target-crystal.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/nfc-transfer.md</loc>
-    <lastmod>2026-08-31</lastmod>
+    <loc>https://docs.smdz-studios.com/#/resources/fivem/redesigns/ox-target-radial-menu.md</loc>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/speed-bumpers.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/realistic-uav.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/pets-rescue.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/peds-manager.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/emergency-gps.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/rancher-job.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/evidence-markers.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/bus-travel.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- LB Phone apps -->
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/lb_smartcab.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/ifruit-pods.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/paid/app-emergency-alerts.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Free resources and redesigns -->
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/free/handling-editor.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/free/parking-camera.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/redesings/ox-target-radial-redesign.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/fivem/redesings/ox-target-redesing-crystal.md</loc>
-    <lastmod>2026-08-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- RedM resources -->
-  <url>
-    <loc>https://docs.smdz-studios.com/#/resources/redm/index.md</loc>
+    <loc>https://docs.smdz-studios.com/#/resources/redm/overview.md</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://docs.smdz-studios.com/#/resources/redm/paid/body-scale.md</loc>
+    <loc>https://docs.smdz-studios.com/#/resources/redm/scripts/paid/body-scale.md</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

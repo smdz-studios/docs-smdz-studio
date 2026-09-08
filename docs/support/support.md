@@ -94,8 +94,8 @@ Relevant Config Snippet (sanitized):
 Run this quick checklist first:
 
 1. Read the script page fully (`Requirements`, `Installation`, `Configuration`, `Troubleshooting`).
-2. Check [Common Problems](problems.md) for known setup issues.
-3. Review [Asset Escrow System](fxap.md) for entitlement/ownership problems.
+2. Check [Common Problems](/docs/support/problems.md) for known setup issues.
+3. Review [Asset Escrow System](/docs/support/asset-escrow.md) for entitlement/ownership problems.
 4. Test on a minimal environment (framework + DB + target SMDZ script).
 5. Confirm your dependency order in `server.cfg` is correct.
 

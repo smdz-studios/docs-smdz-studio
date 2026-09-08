@@ -91,18 +91,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css?v=20260831-platforms-3" />
-  <link rel="stylesheet" href="tools/item-converter/item-converter.css?v=20260626-3" />
-  <link rel="stylesheet" href="tools/blip-generator/blip-generator.css?v=20260626-2" />
-  <script src="plugins/platform-switcher.js?v=20260831-3"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260831-platforms-3" />
+  <script src="assets/js/plugins/platform-switcher.js?v=20260831-3"></script>
 </head>
 <body>
-  <!-- Global announcement bar – content & style controlled from plugins/banner-config.js -->
+  <!-- Global announcement bar – content & style controlled from assets/js/plugins/banner-config.js -->
   <div id="announcement-bar" class="announcement-bar">
     <span id="announcement-text" class="announcement-text"></span>
   </div>
 
-  <!-- Sale banner - content & style controlled from plugins/salebanner-config.js -->
+  <!-- Sale banner - content & style controlled from assets/js/plugins/salebanner-config.js -->
   <div id="sale-banner" class="sale-banner">
     <div class="sale-banner-track" aria-hidden="true"></div>
   </div>
@@ -222,12 +220,65 @@
       coverpage: false,
       themeColor: '#d4a017',
       maxLevel: 4,
-      homepage: 'portal.md',
-      notFoundPage: 'errors-pages/404.md',
+      homepage: 'docs/information/portal.md',
+      notFoundPage: 'docs/errors/404.md',
 
       alias: {
-        '/_sidebar.md': window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getSidebarPath() : '/_sidebar.fivem.md',
-        '/.*/_sidebar.md': window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getSidebarPath() : '/_sidebar.fivem.md'
+        '/_sidebar.md': window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getSidebarPath() : '/docs/navigation/_sidebar.fivem.md',
+        '/.*/_sidebar.md': window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getSidebarPath() : '/docs/navigation/_sidebar.fivem.md',
+        '/_sidebar.fivem.md': '/docs/navigation/_sidebar.fivem.md',
+        '/_sidebar.redm.md': '/docs/navigation/_sidebar.redm.md',
+        '/portal.md': '/docs/information/portal.md',
+        '/changelog.md': '/docs/information/changelog.md',
+        '/support.md': '/docs/support/support.md',
+        '/faq.md': '/docs/support/faq.md',
+        '/problems.md': '/docs/support/problems.md',
+        '/fxap.md': '/docs/support/asset-escrow.md',
+        '/errors-pages/400.md': '/docs/errors/400.md',
+        '/errors-pages/401.md': '/docs/errors/401.md',
+        '/errors-pages/403.md': '/docs/errors/403.md',
+        '/errors-pages/404.md': '/docs/errors/404.md',
+        '/errors-pages/500.md': '/docs/errors/500.md',
+        '/errors-pages/503.md': '/docs/errors/503.md',
+        '/resources/template-script.md': '/resources/templates/script-template.md',
+        '/resources/fivem/bridge/main': '/resources/fivem/core/smdz-bridge.md',
+        '/resources/fivem/bridge/main.md': '/resources/fivem/core/smdz-bridge.md',
+        '/resources/fivem/core/main': '/resources/fivem/core/smdz-bridge.md',
+        '/resources/fivem/free/handling-editor.md': '/resources/fivem/scripts/free/handling-editor.md',
+        '/resources/fivem/free/parking-camera.md': '/resources/fivem/scripts/free/parking-camera.md',
+        '/resources/fivem/paid/admin-board.md': '/resources/fivem/scripts/paid/admin-board.md',
+        '/resources/fivem/paid/advanced-safes.md': '/resources/fivem/scripts/paid/advanced-safes.md',
+        '/resources/fivem/paid/app-emergency-alerts.md': '/resources/fivem/apps/lb-phone/emergency-alerts.md',
+        '/resources/fivem/paid/bus-travel.md': '/resources/fivem/scripts/paid/bus-travel.md',
+        '/resources/fivem/paid/cine-loadscreen.md': '/resources/fivem/scripts/paid/cine-loadscreen.md',
+        '/resources/fivem/paid/emergency-gps.md': '/resources/fivem/scripts/paid/emergency-gps.md',
+        '/resources/fivem/paid/evidence-board.md': '/resources/fivem/scripts/paid/evidence-board.md',
+        '/resources/fivem/paid/evidence-markers.md': '/resources/fivem/scripts/paid/evidence-markers.md',
+        '/resources/fivem/paid/flyers.md': '/resources/fivem/scripts/paid/flyers.md',
+        '/resources/fivem/paid/ifruit-pods.md': '/resources/fivem/apps/lb-phone/ifruit-pods.md',
+        '/resources/fivem/paid/invite-codes.md': '/resources/fivem/scripts/paid/invite-codes.md',
+        '/resources/fivem/paid/keybinds.md': '/resources/fivem/scripts/paid/keybinds.md',
+        '/resources/fivem/paid/lb_smartcab.md': '/resources/fivem/apps/lb-phone/smartcab.md',
+        '/resources/fivem/paid/modern-pause-menu.md': '/resources/fivem/scripts/paid/modern-pause-menu.md',
+        '/resources/fivem/paid/nfc-transfer.md': '/resources/fivem/scripts/paid/nfc-transfer.md',
+        '/resources/fivem/paid/peds-manager.md': '/resources/fivem/scripts/paid/peds-manager.md',
+        '/resources/fivem/paid/pets-rescue.md': '/resources/fivem/scripts/paid/pets-rescue.md',
+        '/resources/fivem/paid/rancher-job.md': '/resources/fivem/scripts/paid/rancher-job.md',
+        '/resources/fivem/paid/realistic-uav.md': '/resources/fivem/scripts/paid/realistic-uav.md',
+        '/resources/fivem/paid/smartcab-lb-app.md': '/resources/fivem/apps/lb-phone/smartcab.md',
+        '/resources/fivem/paid/speed-bumpers.md': '/resources/fivem/scripts/paid/speed-bumps.md',
+        '/resources/fivem/paid/speed-radars.md': '/resources/fivem/scripts/paid/speed-radars.md',
+        '/resources/fivem/paid/streamers-list.md': '/resources/fivem/scripts/paid/streamers-list.md',
+        '/resources/fivem/paid/voice-indicator.md': '/resources/fivem/scripts/paid/voice-indicator.md',
+        '/resources/fivem/paid/witness-calls.md': '/resources/fivem/scripts/paid/witness-calls.md',
+        '/resources/fivem/paid/witness_calls.md': '/resources/fivem/scripts/paid/witness-calls.md',
+        '/resources/fivem/redesings/ox-target-radial-redesign.md': '/resources/fivem/redesigns/ox-target-radial-menu.md',
+        '/resources/fivem/redesings/ox-target-redesing-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+        '/resources/fivem/redesigns/ox-target-radial-redesign.md': '/resources/fivem/redesigns/ox-target-radial-menu.md',
+        '/resources/fivem/redesigns/ox-target-redesign-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+        '/resources/fivem/redesigns/ox-target-redesing-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+        '/resources/redm/index.md': '/resources/redm/overview.md',
+        '/resources/redm/paid/body-scale.md': '/resources/redm/scripts/paid/body-scale.md'
       },
 
       plugins: [
@@ -263,7 +314,7 @@
               };
             }
 
-            if (normalized.indexOf('ESCROW VERSION ONLY') !== -1 || normalized.indexOf('REDESING') !== -1) {
+            if (normalized.indexOf('ESCROW VERSION ONLY') !== -1 || normalized.indexOf('REDESIGN') !== -1 || normalized.indexOf('REDESING') !== -1) {
               return {
                 className: 'doc-callout--escrow',
                 label: 'ESCROW'
@@ -322,13 +373,18 @@
               return;
             }
 
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
+            if (routePath === '/docs/information/portal' || routePath === '/docs/information/portal.md' || contentRoot.querySelector('.home-showcase-grid')) {
+              return;
+            }
+
             var candidateNodes = contentRoot.querySelectorAll('blockquote, p, h1, h2, h3');
             candidateNodes.forEach(function (node) {
               if (node.dataset.calloutBound === '1') {
                 return;
               }
 
-              if (node.closest && node.closest('.bridge-policy-card')) {
+              if (node.closest && node.closest('.bridge-policy-card, .home-showcase-card, .portal-filter-bar, .portal-filter-empty')) {
                 return;
               }
 
@@ -454,7 +510,7 @@
 
             var hasChangelogBadges = Boolean(contentRoot.querySelector('.changelog-version-badge'));
             var isChangelogRoute =
-              routePath === '/changelog.md' ||
+              routePath === '/docs/information/changelog.md' ||
               routePath === '/changelog' ||
               (window.location.hash || '').indexOf('changelog') !== -1;
 
@@ -817,9 +873,10 @@
             }
 
             var isBridgeRoute =
-              routePath === '/resources/fivem/bridge/main.md' ||
-              routePath === '/resources/fivem/bridge/main' ||
-              (window.location.hash || '').indexOf('/resources/fivem/bridge/main') !== -1;
+              routePath === '/resources/fivem/core/smdz-bridge.md' ||
+              routePath === '/resources/fivem/core/smdz-bridge' ||
+              routePath === '/resources/fivem/core/smdz-bridge.md' ||
+              (window.location.hash || '').indexOf('/resources/fivem/core/smdz-bridge') !== -1;
 
             if (!isBridgeRoute) {
               return;
@@ -971,9 +1028,10 @@
             }
 
             var isBridgeRoute =
-              routePath === '/resources/fivem/bridge/main.md' ||
-              routePath === '/resources/fivem/bridge/main' ||
-              (window.location.hash || '').indexOf('/resources/fivem/bridge/main') !== -1;
+              routePath === '/resources/fivem/core/smdz-bridge.md' ||
+              routePath === '/resources/fivem/core/smdz-bridge' ||
+              routePath === '/resources/fivem/core/smdz-bridge.md' ||
+              (window.location.hash || '').indexOf('/resources/fivem/core/smdz-bridge') !== -1;
 
             if (!isBridgeRoute) {
               return;
@@ -1140,9 +1198,9 @@
           }
 
           function updateRouteSeo() {
-            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '/portal.md';
+            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '/docs/information/portal.md';
             if (routePath === '/') {
-              routePath = '/portal.md';
+              routePath = '/docs/information/portal.md';
             }
             var baseUrl = 'https://docs.smdz-studios.com/';
             var selectedPlatform = window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.get() : null;
@@ -1152,31 +1210,31 @@
             var defaultTitle = 'SMDZ Studios Docs | ' + platformLabel + ' Script Documentation';
             var defaultDescription = 'Official SMDZ Studios documentation for ' + platformLabel + ' scripts, resources, setup guides, troubleshooting, Asset Escrow and support articles.';
             var routeMeta = {
-              '/portal.md': {
+              '/docs/information/portal.md': {
                 title: 'SMDZ Studios Portal | ' + platformLabel + ' Resource Documentation',
                 description: 'Browse SMDZ Studios ' + platformLabel + ' resources, script documentation, compatibility information and official support routes.'
               },
-              '/faq.md': {
+              '/docs/support/faq.md': {
                 title: 'FAQ | SMDZ Studios FiveM Support',
                 description: 'Quick answers for SMDZ Studios FiveM resources, updates, supported frameworks, performance, licensing, configuration and support requests.'
               },
-              '/problems.md': {
+              '/docs/support/problems.md': {
                 title: 'Common Problems | SMDZ Studios Troubleshooting',
                 description: 'Troubleshoot SMDZ Studios FiveM scripts by symptom, including startup errors, database issues, permissions, framework setup and performance.'
               },
-              '/fxap.md': {
+              '/docs/support/asset-escrow.md': {
                 title: 'Asset Escrow Guide | SMDZ Studios',
                 description: 'Fix Cfx.re and Tebex Asset Escrow errors for SMDZ Studios FiveM and RedM resources, including ownership, entitlement and protected resource verification issues.'
               },
-              '/support.md': {
+              '/docs/support/support.md': {
                 title: 'Support | SMDZ Studios',
                 description: 'Contact SMDZ Studios support and learn what information to include for faster FiveM and RedM resource troubleshooting.'
               },
-              '/changelog.md': {
+              '/docs/information/changelog.md': {
                 title: 'Changelog | SMDZ Studios Docs',
                 description: 'Review recent SMDZ Studios documentation, resource and support changes.'
               },
-              '/resources/fivem/bridge/main.md': {
+              '/resources/fivem/core/smdz-bridge.md': {
                 title: 'SMDZ Bridge | SMDZ Studios Docs',
                 description: 'Documentation for SMDZ Bridge, the private compatibility core that powers framework and provider support across the SMDZ Studios ecosystem.'
               },
@@ -1188,147 +1246,167 @@
                 title: 'Baseball Weapon Pack | SMDZ Studios',
                 description: 'Documentation for SMDZ Baseball Weapon Pack, a FiveM addon melee weapon package with blood, chains and spiked baseball bats.'
               },
-              '/errors-pages/400.md': {
+              '/docs/errors/400.md': {
                 title: 'Bad Request | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for malformed or invalid documentation requests.'
               },
-              '/errors-pages/401.md': {
+              '/docs/errors/401.md': {
                 title: 'Unauthorized | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for routes requiring authorization.'
               },
-              '/errors-pages/403.md': {
+              '/docs/errors/403.md': {
                 title: 'Forbidden | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for restricted documentation routes.'
               },
-              '/errors-pages/404.md': {
+              '/docs/errors/404.md': {
                 title: 'Page Not Found | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for missing guides, resources or support articles.'
               },
-              '/errors-pages/500.md': {
+              '/docs/errors/500.md': {
                 title: 'Server Error | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for temporary server-side issues.'
               },
-              '/errors-pages/503.md': {
+              '/docs/errors/503.md': {
                 title: 'Service Unavailable | SMDZ Studios Docs',
                 description: 'SMDZ Studios documentation error page for temporary maintenance or unavailable services.'
               },
-              '/resources/fivem/free/handling-editor.md': {
+              '/resources/fivem/scripts/free/handling-editor.md': {
                 title: 'Handling Editor | Free FiveM Resource',
                 description: 'SMDZ Handling Editor is a free FiveM vehicle handling tool for real-time tuning, presets and handling.meta export.'
               },
-              '/resources/fivem/free/parking-camera.md': {
+              '/resources/fivem/scripts/free/parking-camera.md': {
                 title: 'Parking Camera | Free FiveM Resource',
                 description: 'Documentation for SMDZ Parking Camera, a standalone FiveM parking assistance resource with dynamic guidelines and obstacle detection.'
               },
-              '/resources/fivem/paid/advanced-safes.md': {
+              '/resources/fivem/scripts/paid/advanced-safes.md': {
                 title: 'Advanced Safes | SMDZ Studios',
                 description: 'Documentation for SMDZ Advanced Safes, a FiveM safe management resource with bridge support, secure storage flows and configurable interactions.'
               },
-              '/resources/fivem/paid/admin-board.md': {
+              '/resources/fivem/scripts/paid/admin-board.md': {
                 title: 'Admin Board | SMDZ Studios',
                 description: 'Documentation for SMDZ Admin Board, a fullscreen FiveM administrative workspace with boards, tasks, staff tools, logs and persistent notifications.'
               },
-              '/resources/fivem/paid/modern-pause-menu.md': {
+              '/resources/fivem/scripts/paid/modern-pause-menu.md': {
                 title: 'Modern Pause Menu | SMDZ Studios',
                 description: 'Documentation for SMDZ Modern Pause Menu, a FiveM pause menu replacement with player information, news, photo mode, socials and staff controls.'
               },
-              '/resources/fivem/paid/speed-radars.md': {
+              '/resources/fivem/scripts/paid/speed-radars.md': {
                 title: 'Speed Radars | SMDZ Studios',
                 description: 'Documentation for SMDZ Speed Radars, a FiveM speed enforcement system with portable radars, permanent cameras, fines and photographic evidence.'
               },
-              '/resources/fivem/paid/evidence-board.md': {
+              '/resources/fivem/scripts/paid/evidence-board.md': {
                 title: 'Evidence Board | SMDZ Studios',
                 description: 'Documentation for SMDZ Evidence Board, a FiveM investigation board resource for cases, evidence, media, staff workflows and secure persistence.'
               },
-              '/resources/fivem/paid/keybinds.md': {
+              '/resources/fivem/scripts/paid/keybinds.md': {
                 title: 'Dynamic Keybinds | SMDZ Studios',
                 description: 'Documentation for SMDZ Dynamic Keybinds, a FiveM keybind management resource with commands, NUI controls, framework support and secure configuration.'
               },
-              '/resources/fivem/paid/cine-loadscreen.md': {
+              '/resources/fivem/scripts/paid/cine-loadscreen.md': {
                 title: 'Cine Loadscreen | SMDZ Studios',
                 description: 'Cinematic FiveM loading screen documentation for SMDZ Cine Loadscreen.'
               },
-              '/resources/fivem/paid/invite-codes.md': {
+              '/resources/fivem/scripts/paid/invite-codes.md': {
                 title: 'Invite Codes | SMDZ Studios',
                 description: 'Documentation for SMDZ Invite Codes, a FiveM invitation and promotional code system with staff management tools.'
               },
-              '/resources/fivem/paid/voice-indicator.md': {
+              '/resources/fivem/scripts/paid/voice-indicator.md': {
                 title: 'Voice Indicator | SMDZ Studios',
                 description: 'Documentation for SMDZ Voice Indicator, a FiveM voice activity indicator for proximity, radio and phone communication.'
               },
-              '/resources/fivem/paid/witness_calls.md': {
+              '/resources/fivem/scripts/paid/witness-calls.md': {
                 title: 'Witness Calls | SMDZ Studios',
                 description: 'Documentation for SMDZ Witness Calls, a FiveM civilian witness and dispatch alert system with crime detection and supported dispatch integrations.'
               },
-              '/resources/fivem/paid/flyers.md': {
+              '/resources/fivem/scripts/paid/flyers.md': {
                 title: 'Flyers | SMDZ Studios',
                 description: 'Documentation for SMDZ Flyers, a FiveM flyer and promotional media resource for roleplay servers.'
               },
-              '/resources/fivem/paid/streamers-list.md': {
+              '/resources/fivem/scripts/paid/streamers-list.md': {
                 title: 'Streamers List | SMDZ Studios',
                 description: 'Documentation for SMDZ Streamers List, a FiveM resource for showcasing active creators and streamer information.'
               },
-              '/resources/fivem/paid/nfc-transfer.md': {
+              '/resources/fivem/scripts/paid/nfc-transfer.md': {
                 title: 'NFC Transfer | SMDZ Studios',
                 description: 'Documentation for SMDZ NFC Transfer, a FiveM money transfer system with framework banking compatibility.'
               },
-              '/resources/fivem/paid/ifruit-pods.md': {
+              '/resources/fivem/apps/lb-phone/ifruit-pods.md': {
                 title: 'iFruit Pods APP | LB Phone App',
                 description: 'Documentation for SMDZ iFruit Pods APP, an LB Phone app for wireless pod controls, playlists, queue management and persistent settings.'
               },
-              '/resources/fivem/paid/lb_smartcab.md': {
+              '/resources/fivem/apps/lb-phone/smartcab.md': {
                 title: 'SmartCab LB APP | LB Phone App',
                 description: 'Documentation for SMDZ SmartCab LB APP, an LB Phone taxi service app with trip history, Ride+ plans, charging and framework support.'
               },
-              '/resources/fivem/paid/speed-bumpers.md': {
+              '/resources/fivem/scripts/paid/speed-bumps.md': {
                 title: 'Speed Bumpers | SMDZ Studios',
                 description: 'Documentation for SMDZ Speed Bumpers, a FiveM traffic calming and speed control resource.'
               },
-              '/resources/fivem/paid/realistic-uav.md': {
+              '/resources/fivem/scripts/paid/realistic-uav.md': {
                 title: 'Realistic UAV | SMDZ Studios',
                 description: 'Documentation for SMDZ Realistic UAV, a tactical FiveM UAV resource with synchronized aircraft and aerial camera controls.'
               },
-              '/resources/fivem/paid/pets-rescue.md': {
+              '/resources/fivem/scripts/paid/pets-rescue.md': {
                 title: 'Pets Rescue | SMDZ Studios',
                 description: 'Documentation for SMDZ Pets Rescue, a FiveM pet rescue job and animal interaction resource.'
               },
-              '/resources/fivem/paid/peds-manager.md': {
+              '/resources/fivem/scripts/paid/peds-manager.md': {
                 title: 'Peds Manager | SMDZ Studios',
                 description: 'Documentation for SMDZ Peds Manager, a FiveM ped management resource with admin tools and appearance restore workflows.'
               },
-              '/resources/fivem/paid/app-emergency-alerts.md': {
+              '/resources/fivem/apps/lb-phone/emergency-alerts.md': {
                 title: 'Emergency Alerts LB APP | LB Phone App',
                 description: 'Documentation for SMDZ Emergency Alerts LB APP, an LB Phone emergency notification app with dispatch flow and framework integration.'
               },
-              '/resources/fivem/paid/emergency-gps.md': {
+              '/resources/fivem/scripts/paid/emergency-gps.md': {
                 title: 'Emergency GPS | SMDZ Studios',
                 description: 'Documentation for SMDZ Emergency GPS, a FiveM emergency location tracking resource for team coordination and response workflows.'
               },
-              '/resources/fivem/paid/rancher-job.md': {
+              '/resources/fivem/scripts/paid/rancher-job.md': {
                 title: 'Rancher Job | SMDZ Studios',
                 description: 'Documentation for SMDZ Rancher Job, a FiveM ranching workflow resource for roleplay servers.'
               },
-              '/resources/fivem/paid/evidence-markers.md': {
+              '/resources/fivem/scripts/paid/evidence-markers.md': {
                 title: 'Evidence Markers | SMDZ Studios',
                 description: 'Documentation for SMDZ Evidence Markers, a FiveM evidence placement and scene visualization resource.'
               },
-              '/resources/fivem/paid/bus-travel.md': {
+              '/resources/fivem/scripts/paid/bus-travel.md': {
                 title: 'Bus Travel | SMDZ Studios',
                 description: 'Documentation for SMDZ Bus Travel, a FiveM bus transport resource for route-based travel systems.'
               },
-              '/resources/fivem/redesings/ox-target-redesing-crystal.md': {
+              '/resources/fivem/archived/fast-repair.md': {
+                title: 'Fast Repair | Archived FiveM Resource',
+                description: 'Archived documentation for SMDZ Fast Repair, a legacy FiveM repair resource kept for reference.'
+              },
+              '/resources/fivem/archived/hud2d-builder.md': {
+                title: 'HUD 2D Builder | Archived FiveM Resource',
+                description: 'Archived documentation for SMDZ HUD 2D Builder, a legacy FiveM HUD and drawtext builder resource.'
+              },
+              '/resources/fivem/archived/railway-job.md': {
+                title: 'Railway Job | Archived FiveM Resource',
+                description: 'Archived documentation for SMDZ Railway Job, a legacy FiveM railway roleplay resource.'
+              },
+              '/resources/fivem/archived/speed-for-zones.md': {
+                title: 'Speed For Zones | Archived FiveM Resource',
+                description: 'Archived documentation for SMDZ Speed For Zones, a legacy FiveM speed zone resource.'
+              },
+              '/resources/fivem/archived/toggle-minimap.md': {
+                title: 'Toggle Minimap | Archived FiveM Resource',
+                description: 'Archived documentation for SMDZ Toggle Minimap, a legacy FiveM minimap visibility resource.'
+              },
+              '/resources/fivem/redesigns/ox-target-crystal.md': {
                 title: 'OX Target Crystal Redesign | SMDZ Studios',
                 description: 'Documentation for SMDZ OX Target Crystal Style, a visual redesign for ox_target interaction prompts.'
               },
-              '/resources/fivem/redesings/ox-target-radial-redesign.md': {
+              '/resources/fivem/redesigns/ox-target-radial-menu.md': {
                 title: 'OX Target Radial Menu Redesign | SMDZ Studios',
                 description: 'Documentation for SMDZ OX Target Radial Menu, a radial interaction redesign for ox_target.'
               },
-              '/resources/redm/index.md': {
+              '/resources/redm/overview.md': {
                 title: 'RedM Resource Documentation | SMDZ Studios',
                 description: 'Official RedM documentation hub for SMDZ Studios scripts, installation guides, configuration references and support articles.'
               },
-              '/resources/redm/paid/body-scale.md': {
+              '/resources/redm/scripts/paid/body-scale.md': {
                 title: 'Body Scale | SMDZ Studios RedM',
                 description: 'Documentation for SMDZ Body Scale, a RedM character physique editor with persistent height and body width customization for VORP, RSG-Core and standalone servers.'
               }
@@ -1350,7 +1428,7 @@
               : selectedPlatform === 'fivem'
                 ? 'SMDZ Studios, FiveM documentation, FiveM scripts, addon weapons, Baseball Weapon Pack, LB Phone apps, GTA RP, ESX, QBCore, Qbox, Cfx.re, Tebex, Asset Escrow, support'
                 : 'SMDZ Studios, FiveM documentation, RedM documentation, FiveM scripts, RedM scripts, addon weapons, Body Scale, GTA RP, RDR2 RP, Cfx.re, Tebex, Asset Escrow, support';
-            var routeUrl = routePath === '/portal.md' ? baseUrl : baseUrl + '#/' + routePath.replace(/^\//, '');
+            var routeUrl = routePath === '/docs/information/portal.md' ? baseUrl : baseUrl + '#/' + routePath.replace(/^\//, '');
 
             document.title = title;
             setMetaContent('meta[name="description"]', description);
@@ -1404,11 +1482,11 @@
 
           function initMicroInteractions() {
             var sidebarIconMap = {
-              '/portal.md': {
+              '/docs/information/portal.md': {
                 label: 'Portal',
                 path: 'M4 10.5 12 4l8 6.5V20h-6v-5h-4v5H4v-9.5Z'
               },
-              '/changelog.md': {
+              '/docs/information/changelog.md': {
                 label: 'Changelog',
                 path: 'M5 4h14v16H5V4Zm3 4h8V6H8v2Zm0 4h8v-2H8v2Zm0 4h5v-2H8v2Z'
               },
@@ -1416,40 +1494,40 @@
                 label: 'Store',
                 path: 'M4 6h16l-1.5 8.5H7L5.8 8H4V6Zm4 13a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'
               },
-              '/support.md': {
+              '/docs/support/support.md': {
                 label: 'Get Support',
                 path: 'M12 3a7 7 0 0 0-7 7v3H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h3v-7H5v-2a7 7 0 0 1 14 0v2h-2v7h3a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-1v-3a7 7 0 0 0-7-7Z'
               },
-              '/faq.md': {
+              '/docs/support/faq.md': {
                 label: 'FAQ',
                 path: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm-1 14h2v-2h-2v2Zm1-11a3 3 0 0 0-3 3h2a1 1 0 1 1 1 1c-1.3 0-2 1-2 2.3V13h2v-.7c0-.3.2-.5.6-.8A3 3 0 0 0 12 6Z'
               },
-              '/problems.md': {
+              '/docs/support/problems.md': {
                 label: 'Common Problems',
                 path: 'M12 2 2 20h20L12 2Zm-1 6h2v6h-2V8Zm0 8h2v2h-2v-2Z'
               },
-              '/fxap.md': {
+              '/docs/support/asset-escrow.md': {
                 label: 'Asset Escrow System',
                 path: 'M12 2 4 5v6.2c0 5 3.2 9.4 8 10.8 4.8-1.4 8-5.8 8-10.8V5l-8-3Zm-1 13 5-5-1.4-1.4L11 12.2 9.4 10.6 8 12l3 3Z'
               },
               '/resources/fivem/archived/fast-repair.md': { label: 'Fast Repair - v 1.0', path: 'M7 14h10l1 6H6l1-6Zm1-8h8v6H8V6Zm2 2v2h4V8h-4Zm-6 4h2v8H4v-8Zm14 0h2v8h-2v-8Z' },
               '/resources/fivem/archived/speed-for-zones.md': { label: 'Speed For Zones', path: 'M12 4a9 9 0 0 1 9 9h-2a7 7 0 1 0-14 0H3a9 9 0 0 1 9-9Zm1 9 4-4-1.4-1.4-4.3 4.2A2 2 0 1 0 13 13Z' },
               '/resources/fivem/archived/hud2d-builder.md': { label: 'HUD 2D Builder', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm1 10h10v2H7v-2Z' },
-              '/resources/fivem/paid/bus-travel.md': { label: 'Bus Travel', path: 'M6 3h12a2 2 0 0 1 2 2v10a3 3 0 0 1-1 2.2V20h-2v-2H7v2H5v-2.8A3 3 0 0 1 4 15V5a2 2 0 0 1 2-2Zm0 4v5h12V7H6Zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
-              '/resources/fivem/paid/evidence-markers.md': { label: 'Evidence Markers', path: 'M5 4h14v4H5V4Zm2 6h10v10H7V10Zm2 2v6h6v-6H9Z' },
-              '/resources/fivem/paid/rancher-job.md': { label: 'Rancher Job', path: 'M4 11 12 4l8 7v9h-5v-5H9v5H4v-9Zm5 0h6l-3-2.7L9 11Z' },
-              '/resources/fivem/paid/emergency-gps.md': { label: 'Emergency GPS', path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z' },
-              '/resources/fivem/paid/app-emergency-alerts.md': { label: 'Emergency Alerts APP', path: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm4 3v5H8l5 7v-5h3l-5-7Z' },
-              '/resources/fivem/paid/peds-manager.md': { label: 'Peds Manager', path: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0H4Z' },
-              '/resources/fivem/paid/pets-rescue.md': { label: 'Pets Rescue', path: 'M7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM9 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-7 4c3 0 6 3 6 6 0 2-1.8 3-3.3 2.2a5.3 5.3 0 0 0-5.4 0C7.8 20 6 19 6 17c0-3 3-6 6-6Z' },
-              '/resources/fivem/paid/realistic-uav.md': { label: 'Realistic UAV', path: 'M12 3 4 8l8 4 8-4-8-5Zm0 11-8-4v6l8 5 8-5v-6l-8 4Z' },
-              '/resources/fivem/paid/speed-bumpers.md': { label: 'Speed Bumpers', path: 'M3 14h18v4H3v-4Zm2-6h14l2 4H3l2-4Zm3 1-1 2h10l-1-2H8Z' },
-              '/resources/fivem/paid/ifruit-pods.md': { label: 'iFruit Pods APP', path: 'M8 5a4 4 0 0 1 8 0v8a4 4 0 0 1-8 0V5Zm10 5h2v3a8 8 0 0 1-16 0v-3h2v3a6 6 0 0 0 12 0v-3Z' },
-              '/resources/fivem/paid/nfc-transfer.md': { label: 'NFC Transfer', path: 'M3 7h18v10H3V7Zm2 2v6h14V9H5Zm2 1h5v2H7v-2Z' },
-              '/resources/fivem/paid/streamers-list.md': { label: 'Streamers List', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z' },
-              '/resources/fivem/paid/flyers.md': { label: 'Flyers', path: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z' },
+              '/resources/fivem/scripts/paid/bus-travel.md': { label: 'Bus Travel', path: 'M6 3h12a2 2 0 0 1 2 2v10a3 3 0 0 1-1 2.2V20h-2v-2H7v2H5v-2.8A3 3 0 0 1 4 15V5a2 2 0 0 1 2-2Zm0 4v5h12V7H6Zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
+              '/resources/fivem/scripts/paid/evidence-markers.md': { label: 'Evidence Markers', path: 'M5 4h14v4H5V4Zm2 6h10v10H7V10Zm2 2v6h6v-6H9Z' },
+              '/resources/fivem/scripts/paid/rancher-job.md': { label: 'Rancher Job', path: 'M4 11 12 4l8 7v9h-5v-5H9v5H4v-9Zm5 0h6l-3-2.7L9 11Z' },
+              '/resources/fivem/scripts/paid/emergency-gps.md': { label: 'Emergency GPS', path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z' },
+              '/resources/fivem/apps/lb-phone/emergency-alerts.md': { label: 'Emergency Alerts APP', path: 'M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm4 3v5H8l5 7v-5h3l-5-7Z' },
+              '/resources/fivem/scripts/paid/peds-manager.md': { label: 'Peds Manager', path: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 8a8 8 0 0 1 16 0H4Z' },
+              '/resources/fivem/scripts/paid/pets-rescue.md': { label: 'Pets Rescue', path: 'M7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM9 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-7 4c3 0 6 3 6 6 0 2-1.8 3-3.3 2.2a5.3 5.3 0 0 0-5.4 0C7.8 20 6 19 6 17c0-3 3-6 6-6Z' },
+              '/resources/fivem/scripts/paid/realistic-uav.md': { label: 'Realistic UAV', path: 'M12 3 4 8l8 4 8-4-8-5Zm0 11-8-4v6l8 5 8-5v-6l-8 4Z' },
+              '/resources/fivem/scripts/paid/speed-bumps.md': { label: 'Speed Bumpers', path: 'M3 14h18v4H3v-4Zm2-6h14l2 4H3l2-4Zm3 1-1 2h10l-1-2H8Z' },
+              '/resources/fivem/apps/lb-phone/ifruit-pods.md': { label: 'iFruit Pods APP', path: 'M8 5a4 4 0 0 1 8 0v8a4 4 0 0 1-8 0V5Zm10 5h2v3a8 8 0 0 1-16 0v-3h2v3a6 6 0 0 0 12 0v-3Z' },
+              '/resources/fivem/scripts/paid/nfc-transfer.md': { label: 'NFC Transfer', path: 'M3 7h18v10H3V7Zm2 2v6h14V9H5Zm2 1h5v2H7v-2Z' },
+              '/resources/fivem/scripts/paid/streamers-list.md': { label: 'Streamers List', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z' },
+              '/resources/fivem/scripts/paid/flyers.md': { label: 'Flyers', path: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z' },
               '/resources/fivem/archived/railway-job.md': { label: 'Railway Job', path: 'M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3l2 3h-2.5l-1.3-2H8.8l-1.3 2H5l2-3a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 4v4h10V7H7Zm2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
-              '/resources/fivem/redesings/ox-target-redesing-crystal.md': { label: 'Ox Target (Crystal Style)', path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z' }
+              '/resources/fivem/redesigns/ox-target-crystal.md': { label: 'Ox Target (Crystal Style)', path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z' }
             };
 
             var sidebarSectionIconMap = {
@@ -1503,6 +1581,8 @@
               }
             };
             sidebarSectionIconMap.REDESINGS = sidebarSectionIconMap.REDESIGNS;
+            sidebarSectionIconMap.redesigns = sidebarSectionIconMap.REDESIGNS;
+            sidebarSectionIconMap.redesings = sidebarSectionIconMap.REDESIGNS;
 
             var sidebarNamedIconMap = {
               portal: 'M4 10.5 12 4l8 6.5V20h-6v-5h-4v5H4v-9.5Z',
@@ -1632,47 +1712,32 @@
             sidebarNamedIconMap.ticket = getSidebarLucideIcon('ticket');
             sidebarNamedIconMap.volleyball = getSidebarLucideIcon('volleyball');
 
-            sidebarIconMap['/tools/item-converter/'] = {
-              label: 'Item Converter',
-              path: 'M9 3h6a2 2 0 0 1 2 2v1h2a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2V5a2 2 0 0 1 2-2Zm0 3h6V5H9v1Zm-2 4v9h10v-9H7Zm2 2h6v1H9v-1Zm0 3h4v1H9v-1Z'
-            };
-            sidebarIconMap['/tools/item-converter/index.md'] = sidebarIconMap['/tools/item-converter/'];
-            sidebarIconMap['/tools/item-converter/index.html'] = sidebarIconMap['/tools/item-converter/'];
-            sidebarIconMap['/tools/blip-generator/'] = {
-              label: 'Blip Generator',
-              path: 'M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z'
-            };
-            sidebarIconMap['/tools/blip-generator/index.md'] = sidebarIconMap['/tools/blip-generator/'];
-            sidebarIconMap['/tools/blip-generator/index.html'] = sidebarIconMap['/tools/blip-generator/'];
-
             var sidebarIconTextMap = {
-              'PORTAL': sidebarIconMap['/portal.md'],
-              'CHANGELOG': sidebarIconMap['/changelog.md'],
+              'PORTAL': sidebarIconMap['/docs/information/portal.md'],
+              'CHANGELOG': sidebarIconMap['/docs/information/changelog.md'],
               'STORE': sidebarIconMap['https://smdz-studios.tebex.io/'],
-              'GET SUPPORT': sidebarIconMap['/support.md'],
-              'FAQ': sidebarIconMap['/faq.md'],
-              'COMMON PROBLEMS': sidebarIconMap['/problems.md'],
-              'ASSET ESCROW SYSTEM': sidebarIconMap['/fxap.md'],
+              'GET SUPPORT': sidebarIconMap['/docs/support/support.md'],
+              'FAQ': sidebarIconMap['/docs/support/faq.md'],
+              'COMMON PROBLEMS': sidebarIconMap['/docs/support/problems.md'],
+              'ASSET ESCROW SYSTEM': sidebarIconMap['/docs/support/asset-escrow.md'],
               'FAST REPAIR': sidebarIconMap['/resources/fivem/archived/fast-repair.md'],
               'SPEED FOR ZONES': sidebarIconMap['/resources/fivem/archived/speed-for-zones.md'],
               'HUD 2D BUILDER': sidebarIconMap['/resources/fivem/archived/hud2d-builder.md'],
-              'BUS TRAVEL': sidebarIconMap['/resources/fivem/paid/bus-travel.md'],
-              'EVIDENCE MARKERS': sidebarIconMap['/resources/fivem/paid/evidence-markers.md'],
-              'RANCHER JOB': sidebarIconMap['/resources/fivem/paid/rancher-job.md'],
-              'EMERGENCY GPS': sidebarIconMap['/resources/fivem/paid/emergency-gps.md'],
-              'EMERGENCY ALERTS APP': sidebarIconMap['/resources/fivem/paid/app-emergency-alerts.md'],
-              'PEDS MANAGER': sidebarIconMap['/resources/fivem/paid/peds-manager.md'],
-              'PETS RESCUE': sidebarIconMap['/resources/fivem/paid/pets-rescue.md'],
-              'REALISTIC UAV': sidebarIconMap['/resources/fivem/paid/realistic-uav.md'],
-              'SPEED BUMPERS': sidebarIconMap['/resources/fivem/paid/speed-bumpers.md'],
-              'IFRUIT PODS APP': sidebarIconMap['/resources/fivem/paid/ifruit-pods.md'],
-              'NFC TRANSFER': sidebarIconMap['/resources/fivem/paid/nfc-transfer.md'],
-              'STREAMERS LIST': sidebarIconMap['/resources/fivem/paid/streamers-list.md'],
-              'FLYERS': sidebarIconMap['/resources/fivem/paid/flyers.md'],
+              'BUS TRAVEL': sidebarIconMap['/resources/fivem/scripts/paid/bus-travel.md'],
+              'EVIDENCE MARKERS': sidebarIconMap['/resources/fivem/scripts/paid/evidence-markers.md'],
+              'RANCHER JOB': sidebarIconMap['/resources/fivem/scripts/paid/rancher-job.md'],
+              'EMERGENCY GPS': sidebarIconMap['/resources/fivem/scripts/paid/emergency-gps.md'],
+              'EMERGENCY ALERTS APP': sidebarIconMap['/resources/fivem/apps/lb-phone/emergency-alerts.md'],
+              'PEDS MANAGER': sidebarIconMap['/resources/fivem/scripts/paid/peds-manager.md'],
+              'PETS RESCUE': sidebarIconMap['/resources/fivem/scripts/paid/pets-rescue.md'],
+              'REALISTIC UAV': sidebarIconMap['/resources/fivem/scripts/paid/realistic-uav.md'],
+              'SPEED BUMPERS': sidebarIconMap['/resources/fivem/scripts/paid/speed-bumps.md'],
+              'IFRUIT PODS APP': sidebarIconMap['/resources/fivem/apps/lb-phone/ifruit-pods.md'],
+              'NFC TRANSFER': sidebarIconMap['/resources/fivem/scripts/paid/nfc-transfer.md'],
+              'STREAMERS LIST': sidebarIconMap['/resources/fivem/scripts/paid/streamers-list.md'],
+              'FLYERS': sidebarIconMap['/resources/fivem/scripts/paid/flyers.md'],
               'RAILWAY JOB': sidebarIconMap['/resources/fivem/archived/railway-job.md'],
-              'OX TARGET': sidebarIconMap['/resources/fivem/redesings/ox-target-redesing-crystal.md'],
-              'ITEM CONVERTER': sidebarIconMap['/tools/item-converter/'],
-              'BLIP GENERATOR': sidebarIconMap['/tools/blip-generator/']
+              'OX TARGET': sidebarIconMap['/resources/fivem/redesigns/ox-target-crystal.md']
             };
 
             function normalizeSidebarHref(rawHref) {
@@ -2052,7 +2117,7 @@
                   categories.push('lb-phone-app');
                 }
 
-                if (cardLinks.indexOf('/resources/fivem/redesings/') !== -1 || cardTags.indexOf('REDESIGN') !== -1 || cardTags.indexOf('REDESIGNS') !== -1) {
+                if (cardLinks.indexOf('/resources/fivem/redesigns/') !== -1 || cardLinks.indexOf('/resources/fivem/redesings/') !== -1 || cardTags.indexOf('REDESIGN') !== -1 || cardTags.indexOf('REDESIGNS') !== -1) {
                   categories.push('redesign');
                 }
 
@@ -2298,154 +2363,6 @@
             }
           }
 
-          function restoreToolMarkup() {
-            var contentRoot = document.querySelector('.markdown-section');
-            if (!contentRoot) {
-              return;
-            }
-
-            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
-            var toolRootId = '';
-            var toolClassName = '';
-
-            if (routePath.indexOf('/tools/blip-generator/') === 0) {
-              toolRootId = 'blip-generator-tool';
-              toolClassName = 'blip-generator-tool';
-            } else if (routePath.indexOf('/tools/item-converter/') === 0) {
-              toolRootId = 'item-converter-tool';
-              toolClassName = 'item-converter-tool';
-            } else {
-              return;
-            }
-
-            var selectors = ['pre code', 'pre', '.code-collapse-wrapper'];
-            var candidates = [];
-
-            selectors.forEach(function (selector) {
-              contentRoot.querySelectorAll(selector).forEach(function (node) {
-                if (candidates.indexOf(node) === -1) {
-                  candidates.push(node);
-                }
-              });
-            });
-
-            candidates.forEach(function (node) {
-              if (node.dataset && node.dataset.toolMarkupRestored === '1') {
-                return;
-              }
-
-              var source = node.textContent || '';
-              var markerIndex = source.indexOf('class="' + toolClassName + '"');
-              if (markerIndex === -1) {
-                markerIndex = source.indexOf("class='" + toolClassName + "'");
-              }
-              if (markerIndex === -1) {
-                markerIndex = source.indexOf('<div class="' + toolClassName + '"');
-              }
-              if (markerIndex === -1) {
-                markerIndex = source.indexOf("<div class='" + toolClassName + "'");
-              }
-              if (markerIndex === -1) {
-                return;
-              }
-
-              var markupStart = source.lastIndexOf('<', markerIndex);
-              if (markupStart === -1) {
-                markupStart = markerIndex;
-              }
-
-              var markup = source.slice(markupStart).trim();
-              if (!markup) {
-                return;
-              }
-
-              var template = document.createElement('template');
-              template.innerHTML = markup;
-
-              if (!template.content || !template.content.firstElementChild) {
-                return;
-              }
-
-              var targetNode = node;
-              if (node.classList && node.classList.contains('code-collapse-wrapper')) {
-                targetNode = node;
-              } else if (node.tagName === 'CODE' && node.parentElement && node.parentElement.classList.contains('code-collapse-wrapper')) {
-                targetNode = node.parentElement;
-              } else if (node.tagName === 'PRE' && node.parentElement && node.parentElement.classList.contains('code-collapse-wrapper')) {
-                targetNode = node.parentElement;
-              }
-
-              var replacement = document.createDocumentFragment();
-              while (template.content.firstChild) {
-                replacement.appendChild(template.content.firstChild);
-              }
-
-              if (targetNode.parentNode) {
-                targetNode.parentNode.replaceChild(replacement, targetNode);
-              }
-
-              contentRoot.dataset.toolMarkupRestored = toolRootId;
-            });
-          }
-
-          function ensureToolMarkupRendered() {
-            var contentRoot = document.querySelector('.markdown-section');
-            if (!contentRoot) {
-              return;
-            }
-
-            var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
-            var isItemConverterRoute = routePath.indexOf('/tools/item-converter/') === 0;
-            var isBlipGeneratorRoute = routePath.indexOf('/tools/blip-generator/') === 0;
-
-            if (!isItemConverterRoute && !isBlipGeneratorRoute) {
-              return;
-            }
-
-            if (contentRoot.querySelector('#item-converter-tool, #blip-generator-tool')) {
-              return;
-            }
-
-            if (contentRoot.dataset.toolMarkupFetchState === routePath) {
-              return;
-            }
-
-            contentRoot.dataset.toolMarkupFetchState = routePath;
-
-            var sourcePath = isItemConverterRoute
-              ? '/tools/item-converter/index.html?v=20260626-4'
-              : '/tools/blip-generator/index.html?v=20260626-4';
-
-            fetch(sourcePath, { cache: 'no-store' })
-              .then(function (response) {
-                if (!response.ok) {
-                  throw new Error('Failed to load tool markup.');
-                }
-
-                return response.text();
-              })
-              .then(function (html) {
-                if (!contentRoot.isConnected) {
-                  return;
-                }
-
-                contentRoot.innerHTML = html;
-                delete contentRoot.dataset.toolMarkupFetchState;
-                restoreToolMarkup();
-
-                if (isItemConverterRoute && typeof window.SMDZ_initItemConverterTool === 'function') {
-                  window.SMDZ_initItemConverterTool();
-                }
-
-                if (isBlipGeneratorRoute && typeof window.SMDZ_initBlipGeneratorTool === 'function') {
-                  window.SMDZ_initBlipGeneratorTool();
-                }
-              })
-              .catch(function () {
-                delete contentRoot.dataset.toolMarkupFetchState;
-              });
-          }
-
           function initSupportAccordions() {
             var contentRoot = document.querySelector('.markdown-section');
             if (!contentRoot) {
@@ -2543,16 +2460,6 @@
               window.setTimeout(initBridgeCompatibilityTools, 260);
               wrapMarkdownTables();
               initSupportAccordions();
-              restoreToolMarkup();
-              ensureToolMarkupRendered();
-              window.setTimeout(restoreToolMarkup, 60);
-              window.setTimeout(restoreToolMarkup, 240);
-              if (typeof window.SMDZ_initItemConverterTool === 'function') {
-                window.SMDZ_initItemConverterTool();
-              }
-              if (typeof window.SMDZ_initBlipGeneratorTool === 'function') {
-                window.SMDZ_initBlipGeneratorTool();
-              }
             });
           });
         },
@@ -2628,11 +2535,6 @@
 
             codeBlocks.forEach(function (preEl) {
               if (preEl.dataset.collapsibleBound === '1') {
-                return;
-              }
-
-              if (preEl.id === 'item-converter-output') {
-                preEl.dataset.collapsibleBound = '1';
                 return;
               }
 
@@ -2770,17 +2672,11 @@
             var nav = document.querySelector('.sidebar-nav');
             if (sidebarParent && nav && !document.querySelector('.brand-header')) {
               var header = document.createElement('div');
-              var sidebarPlatform = window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getEffective() : 'fivem';
-              var sidebarPlatformLabel = window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getLabel(sidebarPlatform) : 'FiveM';
               header.className = 'brand-header';
               header.innerHTML =
-                '<a class="sidebar-logo-wrapper" href="#/portal.md" aria-label="Go to Portal">' +
+                '<a class="sidebar-logo-wrapper" href="#/docs/information/portal.md" aria-label="Go to Portal">' +
                   '<img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios Logo" />' +
                 '</a>' +
-                '<span class="brand-header-platform" data-platform="' + sidebarPlatform + '">' +
-                  '<img src="' + (window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getIcon(sidebarPlatform) : 'assets/fivem/logos/fivem-logo.png') + '" alt="" aria-hidden="true" />' +
-                  '<span>' + sidebarPlatformLabel + ' DOCS</span>' +
-                '</span>' +
                 '<div class="sidebar-menu-label">' +
                   '<strong>MENU</strong>' +
                   '<div class="sidebar-visit-counter" aria-live="polite" tabindex="0">' +
@@ -2799,10 +2695,10 @@
           hook.afterEach(function (html, next) {
             var footerPlatform = window.SMDZ_PLATFORM ? window.SMDZ_PLATFORM.getEffective() : 'fivem';
             var footerPlatformLogos = footerPlatform === 'redm'
-              ? '<img src="assets/redm/smdz-studios.png" alt="SMDZ Studios" />' +
-                '<img src="assets/redm/cfx.png" alt="Cfx.re" />' +
-                '<img src="assets/redm/rsg.png" alt="RSG Core" />' +
-                '<img src="assets/redm/vorp.png" alt="VORP Core" />'
+              ? '<img src="assets/redm/logos/smdz-studios.png" alt="SMDZ Studios" />' +
+                '<img src="assets/redm/logos/cfx.png" alt="Cfx.re" />' +
+                '<img src="assets/redm/logos/rsg.png" alt="RSG Core" />' +
+                '<img src="assets/redm/logos/vorp.png" alt="VORP Core" />'
               : '<img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios" />' +
                 '<img src="assets/fivem/logos/cfx.png" alt="Cfx.re" />' +
                 '<img src="assets/fivem/logos/esx.png" alt="ESX" />' +
@@ -2836,14 +2732,14 @@
   <script>
     (function () {
       if (!window.location.hash || window.location.hash === '#' || window.location.hash === '#/') {
-        window.location.hash = '#/portal.md';
+        window.location.hash = '#/docs/information/portal.md';
       }
     })();
   </script>
   <!-- Custom plugin: debe cargarse antes del core de Docsify -->
-  <script src="plugins/command-search-pages.js?v=20260831-platforms-1"></script>
-  <script src="plugins/command-search.js?v=20260831-platforms-1"></script>
-  <script src="plugins/five-metrics.js?v=20260622-2"></script>
+  <script src="assets/js/plugins/command-search-pages.js?v=20260831-platforms-1"></script>
+  <script src="assets/js/plugins/command-search.js?v=20260831-platforms-1"></script>
+  <script src="assets/js/plugins/five-metrics.js?v=20260622-2"></script>
   <!-- Docsify core: cargar una sola vez -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
 
@@ -2861,13 +2757,10 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 
   <!-- Custom scripts -->
-  <script src="plugins/banner-config.js?v=20260831-platforms"></script>
-  <script src="plugins/salebanner-config.js?v=20260831-platforms"></script>
-  <script src="plugins/visitor-config.js?v=20260612-2"></script>
-  <script src="plugins/visitor-notifier.js?v=20260831-assets-1"></script>
-  <script src="tools/item-converter/item-converter.js?v=20260626-3"></script>
-  <script src="assets/fivem/other/blips-fivem/blips-data.js?v=20260626-1"></script>
-  <script src="tools/blip-generator/blip-generator.js?v=20260626-2"></script>
+  <script src="assets/js/plugins/banner-config.js?v=20260831-platforms"></script>
+  <script src="assets/js/plugins/salebanner-config.js?v=20260831-platforms"></script>
+  <script src="assets/js/plugins/visitor-config.js?v=20260612-2"></script>
+  <script src="assets/js/plugins/visitor-notifier.js?v=20260831-assets-1"></script>
   <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
 
   <script>

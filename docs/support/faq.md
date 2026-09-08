@@ -6,22 +6,22 @@
 </section>
 
 <section class="support-route-grid" aria-label="Support routes">
-  <a class="support-route-card" href="problems.md#startup">
+  <a class="support-route-card" href="#/docs/support/problems.md?id=startup">
     <span class="support-route-kicker">Script does not start</span>
     <strong>Startup errors</strong>
     <small>Folder names, ensure order, dependencies and cache.</small>
   </a>
-  <a class="support-route-card" href="fxap.md">
+  <a class="support-route-card" href="#/docs/support/asset-escrow.md">
     <span class="support-route-kicker">Escrow / license</span>
     <strong>Asset Escrow</strong>
     <small>Ownership, entitlement and protected resource errors.</small>
   </a>
-  <a class="support-route-card" href="problems.md#database">
+  <a class="support-route-card" href="#/docs/support/problems.md?id=database">
     <span class="support-route-kicker">Data not saving</span>
     <strong>Database</strong>
     <small>oxmysql, missing tables and connection problems.</small>
   </a>
-  <a class="support-route-card" href="support.md">
+  <a class="support-route-card" href="#/docs/support/support.md">
     <span class="support-route-kicker">Still blocked</span>
     <strong>Open support</strong>
     <small>What to send so the issue can be diagnosed quickly.</small>
@@ -91,7 +91,7 @@
       <li>The server license key must belong to the account that owns the asset.</li>
       <li>Protected core files must not be edited.</li>
     </ul>
-    <a class="support-action" href="fxap.md">Open the Asset Escrow guide</a>
+    <a class="support-action" href="#/docs/support/asset-escrow.md">Open the Asset Escrow guide</a>
   </details>
 </section>
 
@@ -107,7 +107,7 @@
       <li>The console does not show missing resource, nil framework or entitlement errors.</li>
       <li>Your FiveM server artifacts are not outdated.</li>
     </ul>
-    <a class="support-action" href="problems.md#startup">Open startup troubleshooting</a>
+    <a class="support-action" href="#/docs/support/problems.md?id=startup">Open startup troubleshooting</a>
   </details>
 
   <details id="database" class="support-accordion">
@@ -118,7 +118,7 @@
       <li>Use one supported adapter and start it before your framework and SMDZ scripts.</li>
       <li>Import provided <code>.sql</code> files into the correct database.</li>
     </ul>
-    <a class="support-action" href="problems.md#database">Open database troubleshooting</a>
+    <a class="support-action" href="#/docs/support/problems.md?id=database">Open database troubleshooting</a>
   </details>
 
   <details id="permissions" class="support-accordion">
@@ -168,7 +168,7 @@
         </ul>
       </div>
     </div>
-    <a class="support-action" href="support.md">Open the support guide</a>
+    <a class="support-action" href="#/docs/support/support.md">Open the support guide</a>
   </details>
 
   <details id="support-scope" class="support-accordion">

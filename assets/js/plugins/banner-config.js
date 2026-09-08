@@ -23,7 +23,7 @@ window.SMDZ_BANNER_CONFIG = {
   cta: {
     enabled: true,
     label: "View Bridge",
-    url: "https://docs.smdz-studios.com/#/resources/fivem/bridge/main",
+    url: "https://docs.smdz-studios.com/#/resources/fivem/core/smdz-bridge.md",
     target: "_self"
   }
 };

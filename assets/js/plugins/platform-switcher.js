@@ -52,7 +52,7 @@
 
   function getRoutePath() {
     var hash = window.location.hash || '';
-    var route = hash.indexOf('#/') === 0 ? hash.slice(1) : '/portal.md';
+    var route = hash.indexOf('#/') === 0 ? hash.slice(1) : '/docs/information/portal.md';
     return '/' + route.replace(/^\/+/, '').split('?')[0].split('#')[0];
   }
 
@@ -69,12 +69,82 @@
 
   function migrateLegacyResourceRoute() {
     var routePath = getRoutePath();
-    var legacyMatch = routePath.match(/^\/resources\/(paid|free|redesings|archived|bridge)(\/.*)?$/i);
+    var routeAliases = {
+      '/_sidebar.fivem.md': '/docs/navigation/_sidebar.fivem.md',
+      '/_sidebar.redm.md': '/docs/navigation/_sidebar.redm.md',
+      '/portal.md': '/docs/information/portal.md',
+      '/changelog.md': '/docs/information/changelog.md',
+      '/support.md': '/docs/support/support.md',
+      '/faq.md': '/docs/support/faq.md',
+      '/problems.md': '/docs/support/problems.md',
+      '/fxap.md': '/docs/support/asset-escrow.md',
+      '/resources/template-script.md': '/resources/templates/script-template.md',
+      '/resources/fivem/bridge/main': '/resources/fivem/core/smdz-bridge.md',
+      '/resources/fivem/bridge/main.md': '/resources/fivem/core/smdz-bridge.md',
+      '/resources/fivem/core/main': '/resources/fivem/core/smdz-bridge.md',
+      '/resources/fivem/free/handling-editor.md': '/resources/fivem/scripts/free/handling-editor.md',
+      '/resources/fivem/free/parking-camera.md': '/resources/fivem/scripts/free/parking-camera.md',
+      '/resources/fivem/paid/admin-board.md': '/resources/fivem/scripts/paid/admin-board.md',
+      '/resources/fivem/paid/advanced-safes.md': '/resources/fivem/scripts/paid/advanced-safes.md',
+      '/resources/fivem/paid/app-emergency-alerts.md': '/resources/fivem/apps/lb-phone/emergency-alerts.md',
+      '/resources/fivem/paid/bus-travel.md': '/resources/fivem/scripts/paid/bus-travel.md',
+      '/resources/fivem/paid/cine-loadscreen.md': '/resources/fivem/scripts/paid/cine-loadscreen.md',
+      '/resources/fivem/paid/emergency-gps.md': '/resources/fivem/scripts/paid/emergency-gps.md',
+      '/resources/fivem/paid/evidence-board.md': '/resources/fivem/scripts/paid/evidence-board.md',
+      '/resources/fivem/paid/evidence-markers.md': '/resources/fivem/scripts/paid/evidence-markers.md',
+      '/resources/fivem/paid/flyers.md': '/resources/fivem/scripts/paid/flyers.md',
+      '/resources/fivem/paid/ifruit-pods.md': '/resources/fivem/apps/lb-phone/ifruit-pods.md',
+      '/resources/fivem/paid/invite-codes.md': '/resources/fivem/scripts/paid/invite-codes.md',
+      '/resources/fivem/paid/keybinds.md': '/resources/fivem/scripts/paid/keybinds.md',
+      '/resources/fivem/paid/lb_smartcab.md': '/resources/fivem/apps/lb-phone/smartcab.md',
+      '/resources/fivem/paid/modern-pause-menu.md': '/resources/fivem/scripts/paid/modern-pause-menu.md',
+      '/resources/fivem/paid/nfc-transfer.md': '/resources/fivem/scripts/paid/nfc-transfer.md',
+      '/resources/fivem/paid/peds-manager.md': '/resources/fivem/scripts/paid/peds-manager.md',
+      '/resources/fivem/paid/pets-rescue.md': '/resources/fivem/scripts/paid/pets-rescue.md',
+      '/resources/fivem/paid/rancher-job.md': '/resources/fivem/scripts/paid/rancher-job.md',
+      '/resources/fivem/paid/realistic-uav.md': '/resources/fivem/scripts/paid/realistic-uav.md',
+      '/resources/fivem/paid/smartcab-lb-app.md': '/resources/fivem/apps/lb-phone/smartcab.md',
+      '/resources/fivem/paid/speed-bumpers.md': '/resources/fivem/scripts/paid/speed-bumps.md',
+      '/resources/fivem/paid/speed-radars.md': '/resources/fivem/scripts/paid/speed-radars.md',
+      '/resources/fivem/paid/streamers-list.md': '/resources/fivem/scripts/paid/streamers-list.md',
+      '/resources/fivem/paid/voice-indicator.md': '/resources/fivem/scripts/paid/voice-indicator.md',
+      '/resources/fivem/paid/witness-calls.md': '/resources/fivem/scripts/paid/witness-calls.md',
+      '/resources/fivem/paid/witness_calls.md': '/resources/fivem/scripts/paid/witness-calls.md',
+      '/resources/fivem/redesings/ox-target-radial-redesign.md': '/resources/fivem/redesigns/ox-target-radial-menu.md',
+      '/resources/fivem/redesings/ox-target-redesing-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+      '/resources/fivem/redesigns/ox-target-radial-redesign.md': '/resources/fivem/redesigns/ox-target-radial-menu.md',
+      '/resources/fivem/redesigns/ox-target-redesign-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+      '/resources/fivem/redesigns/ox-target-redesing-crystal.md': '/resources/fivem/redesigns/ox-target-crystal.md',
+      '/resources/redm/index.md': '/resources/redm/overview.md',
+      '/resources/redm/paid/body-scale.md': '/resources/redm/scripts/paid/body-scale.md'
+    };
+
+    if (routeAliases[routePath]) {
+      routePath = routeAliases[routePath];
+      window.history.replaceState(null, '', window.location.href.split('#')[0] + '#' + routePath);
+      return routePath;
+    }
+
+    var legacyMatch = routePath.match(/^\/resources\/(paid|free|redesigns|redesings|archived|bridge)(\/.*)?$/i);
     if (!legacyMatch) {
       return routePath;
     }
 
-    var migratedRoute = '/resources/fivem/' + legacyMatch[1].toLowerCase() + (legacyMatch[2] || '');
+    var legacyCategory = legacyMatch[1].toLowerCase();
+    if (legacyCategory === 'paid') {
+      legacyCategory = 'scripts/paid';
+    } else if (legacyCategory === 'free') {
+      legacyCategory = 'scripts/free';
+    } else if (legacyCategory === 'bridge') {
+      legacyCategory = 'core';
+    } else if (legacyCategory === 'redesings') {
+      legacyCategory = 'redesigns';
+    }
+
+    var migratedRoute = '/resources/fivem/' + legacyCategory + (legacyMatch[2] || '');
+    if (routeAliases[migratedRoute]) {
+      migratedRoute = routeAliases[migratedRoute];
+    }
     var nextUrl = window.location.href.split('#')[0] + '#' + migratedRoute;
     window.history.replaceState(null, '', nextUrl);
     return migratedRoute;
@@ -98,7 +168,7 @@
   }
 
   function getSidebarPath() {
-    return '/_sidebar.' + getEffectivePlatform() + '.md';
+    return '/docs/navigation/_sidebar.' + getEffectivePlatform() + '.md';
   }
 
   function getPlatformLabel(platform) {
@@ -212,7 +282,7 @@
       return;
     }
 
-    var nextUrl = window.location.href.split('#')[0] + '#/portal.md';
+    var nextUrl = window.location.href.split('#')[0] + '#/docs/information/portal.md';
     window.history.replaceState(null, '', nextUrl);
   }
 

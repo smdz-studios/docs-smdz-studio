@@ -1,6 +1,6 @@
   <div class="resource-hero-visual">
     <img
-      src="assets/fivem/bridge.png"
+      src="assets/fivem/core/smdz-bridge.png"
       alt="SMDZ Studios Bridge"
     />
   </div>

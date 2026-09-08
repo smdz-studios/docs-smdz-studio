@@ -92,7 +92,7 @@ aside.sidebar::-webkit-scrollbar-thumb {
   background: #3f3f46;
 }
 
-/* Global announcement bar — configured in plugins/banner-config.js */
+/* Global announcement bar — configured in assets/js/plugins/banner-config.js */
 .announcement-bar {
   position: sticky;
   top: 0;
@@ -272,7 +272,7 @@ aside.sidebar::-webkit-scrollbar-thumb {
   max-width: 960px;
 }
 
-/* Sale marquee banner - configured in plugins/salebanner-config.js */
+/* Sale marquee banner - configured in assets/js/plugins/salebanner-config.js */
 .sale-banner {
   position: sticky;
   top: var(--sale-banner-top, 0px);
@@ -6641,30 +6641,6 @@ body.platform-selector-open #page-loader {
   font-size: 0.68rem !important;
   font-weight: 900;
   letter-spacing: 0.12em;
-}
-
-.brand-header-platform {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.38rem;
-  margin: 0.35rem auto 0;
-  padding: 0.25rem 0.52rem 0.25rem 0.28rem;
-  border: 1px solid rgba(var(--platform-accent-rgb), 0.38);
-  border-radius: 999px;
-  background: rgba(var(--platform-accent-rgb), 0.08);
-  color: var(--platform-accent-bright);
-  font-family: var(--font-display);
-  font-size: 0.55rem;
-  font-weight: 900;
-  letter-spacing: 0.09em;
-  line-height: 1;
-}
-
-.brand-header-platform img {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 0.25rem;
-  object-fit: contain;
 }
 
 html[data-docs-platform="redm"] .brand-header::after {

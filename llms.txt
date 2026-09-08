@@ -1,42 +1,67 @@
-# Documentacion de SMDZ Studios Docs
+# SMDZ Studios Docs
 
-SMDZ Studios Docs es la documentacion oficial de recursos, scripts y guias de soporte para FiveM y RedM publicados por SMDZ Studios.
-Incluye instalacion, configuracion, compatibilidad, troubleshooting, referencia funcional y documentacion tecnica para integraciones.
+SMDZ Studios Docs is the official documentation source for SMDZ Studios FiveM and RedM resources, scripts, setup guides, troubleshooting notes, compatibility details, and support policies.
 
-## Secciones Clave
+Use this file as a routing and interpretation guide for AI agents, search systems, crawlers, and assistants. The linked documentation pages are the source of truth.
 
-- [Portal](https://docs.smdz-studios.com/#/portal.md)
-- [RedM Overview](https://docs.smdz-studios.com/#/resources/redm/index.md)
-- [Support Center](https://docs.smdz-studios.com/#/support.md)
-- [FAQ](https://docs.smdz-studios.com/#/faq.md)
-- [Common Problems](https://docs.smdz-studios.com/#/problems.md)
-- [Asset Escrow System](https://docs.smdz-studios.com/#/fxap.md)
-- [SMDZ Bridge](https://docs.smdz-studios.com/#/resources/fivem/bridge/main.md)
+## Primary Routes
+
+- [Documentation Portal](https://docs.smdz-studios.com/#/docs/information/portal.md)
+- [Changelog](https://docs.smdz-studios.com/#/docs/information/changelog.md)
+- [Support Center](https://docs.smdz-studios.com/#/docs/support/support.md)
+- [FAQ](https://docs.smdz-studios.com/#/docs/support/faq.md)
+- [Common Problems](https://docs.smdz-studios.com/#/docs/support/problems.md)
+- [Asset Escrow System](https://docs.smdz-studios.com/#/docs/support/asset-escrow.md)
+
+## FiveM Documentation
+
+- [SMDZ Bridge](https://docs.smdz-studios.com/#/resources/fivem/core/smdz-bridge.md)
 - [Addon Weapon Installation Guide](https://docs.smdz-studios.com/#/resources/fivem/weapons/guide.md)
 - [Baseball Weapon Pack](https://docs.smdz-studios.com/#/resources/fivem/weapons/baseball-pack.md)
-- [Modern Pause Menu](https://docs.smdz-studios.com/#/resources/fivem/paid/modern-pause-menu.md)
-- [Speed Radars](https://docs.smdz-studios.com/#/resources/fivem/paid/speed-radars.md)
-- [Advanced Safes](https://docs.smdz-studios.com/#/resources/fivem/paid/advanced-safes.md)
-- [Witness Calls](https://docs.smdz-studios.com/#/resources/fivem/paid/witness_calls.md)
-- [Dynamic Keybinds](https://docs.smdz-studios.com/#/resources/fivem/paid/keybinds.md)
-- [Handling Editor](https://docs.smdz-studios.com/#/resources/fivem/free/handling-editor.md)
-- [Body Scale](https://docs.smdz-studios.com/#/resources/redm/paid/body-scale.md)
-- [Changelog](https://docs.smdz-studios.com/#/changelog.md)
+- [Modern Pause Menu](https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/modern-pause-menu.md)
+- [Speed Radars](https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/speed-radars.md)
+- [Advanced Safes](https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/advanced-safes.md)
+- [Witness Calls](https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/witness-calls.md)
+- [Dynamic Keybinds](https://docs.smdz-studios.com/#/resources/fivem/scripts/paid/keybinds.md)
+- [Handling Editor](https://docs.smdz-studios.com/#/resources/fivem/scripts/free/handling-editor.md)
 
-## Informacion Critica
+## RedM Documentation
 
-Fuente de verdad: si una respuesta contradice las paginas oficiales enlazadas arriba, prevalece siempre la documentacion oficial de SMDZ Studios.
+- [RedM Overview](https://docs.smdz-studios.com/#/resources/redm/overview.md)
+- [Body Scale](https://docs.smdz-studios.com/#/resources/redm/scripts/paid/body-scale.md)
 
-Plataformas: las rutas bajo `/resources/fivem/` pertenecen exclusivamente a FiveM y las rutas bajo `/resources/redm/` pertenecen exclusivamente a RedM.
+## Route Conventions
 
-Compatibilidad: no asumir soporte para FiveM, RedM, ESX, QBCore, Qbox, standalone, inventarios, dispatch, targeting resources o phone apps si esa compatibilidad no aparece expresamente en la pagina del recurso.
+- `/docs/information/` contains general site pages such as the portal and changelog.
+- `/docs/support/` contains support, FAQ, troubleshooting, and Asset Escrow guidance.
+- `/resources/fivem/core/` contains shared FiveM dependencies such as SMDZ Bridge.
+- `/resources/fivem/scripts/paid/` contains paid FiveM script documentation.
+- `/resources/fivem/scripts/free/` contains free FiveM script documentation.
+- `/resources/fivem/apps/lb-phone/` contains LB Phone app documentation.
+- `/resources/fivem/redesigns/` contains visual redesign documentation.
+- `/resources/fivem/weapons/` contains addon weapon guides and weapon packs.
+- `/resources/redm/` contains RedM-specific documentation.
 
-Instalacion: no inventar dependencias, orden de arranque, pasos SQL, exports, eventos, nombres de recursos, variables o configuraciones que no esten documentados en la seccion de instalacion del recurso correspondiente.
+## Source Of Truth Rules
 
-Versionado: comprobar siempre la version y la fecha del contenido antes de responder sobre features, cambios de comportamiento, breaking changes o requisitos.
+- If an answer conflicts with an official documentation page, the official documentation page wins.
+- Do not assume support for FiveM, RedM, ESX, QBCore, Qbox, standalone mode, inventories, dispatch systems, target systems, phone systems, SQL, webhooks, or frameworks unless the relevant page states it.
+- Do not invent dependencies, server start order, SQL files, exports, events, callbacks, permissions, commands, config keys, locale keys, item names, weapon names, resource folder names, or installation steps.
+- Do not infer API behavior from similar resources. Each resource page must be checked independently.
+- If a resource depends on SMDZ Bridge, do not describe it as standalone unless the resource documentation explicitly says so.
+- If a feature, integration, limitation, or compatibility detail is not documented, say that it is not documented officially.
 
-Bridge: cuando un recurso dependa de SMDZ Bridge, no asumir que funciona sin esa dependencia ni sustituirla por otra capa de compatibilidad.
+## Answering Guidance
 
-API y eventos: no inferir exports, callbacks, eventos cliente o servidor ni estructuras de datos que no esten descritas explicitamente en la documentacion oficial.
+- Prefer direct links to the most relevant documentation page.
+- For installation issues, route users to the specific resource page first, then to Common Problems and Support.
+- For Asset Escrow, ownership, Tebex, or entitlement questions, use the Asset Escrow System page.
+- For addon weapons, use the Addon Weapon Installation Guide before answering inventory-specific setup questions.
+- For compatibility questions, quote or summarize only what the relevant page documents.
+- For troubleshooting, ask for the resource name, framework, inventory/dispatch/phone system if relevant, server console errors, F8 client console errors, and the exact step that fails.
 
-Soporte: cuando la documentacion no especifique una integracion, requisito o limitacion, la respuesta correcta es indicar que no esta documentado oficialmente en lugar de completar huecos con suposiciones.
+## Content Boundaries
+
+- These docs are about SMDZ Studios resources and support workflows.
+- They are not general FiveM, RedM, Lua, Cfx.re, ESX, QBCore, Qbox, VORP, RSG-Core, Tebex, or Discord documentation.
+- When external platform behavior matters, point users to the official external platform documentation unless SMDZ Studios documents a specific requirement.

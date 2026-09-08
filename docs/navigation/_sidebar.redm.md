@@ -1,14 +1,15 @@
 <!-- RedM navigation. Keep FiveM-only pages in _sidebar.fivem.md. -->
 ---
 - **Information**
-  - [Portal](/portal.md "icon:portal")
-  <!-- - [RedM Overview](/resources/redm/index.md "icon:map-pinned") -->
+  - [Portal](/docs/information/portal.md "icon:portal")
+  <!-- - [RedM Overview](/resources/redm/overview.md "icon:map-pinned") -->
 
-- **RedM Resources** icon:map
+- **RedM Resources**
+  <!-- - [Body Scale](/resources/redm/scripts/paid/body-scale.md "icon:ruler") -->
 
-- **Support** icon:headphones
-  - [Get Support](/support.md "icon:info")
-  - [Asset Escrow System](/fxap.md "icon:shield")
+- **Support**
+  - [Get Support](/docs/support/support.md "icon:info")
+  - [Asset Escrow System](/docs/support/asset-escrow.md "icon:shield")
 
 ---
 

@@ -121,7 +121,7 @@ ensure smdz_example</code></pre>
   <details class="support-accordion">
     <summary>Escrow or entitlement errors</summary>
     <p>If you see ownership, entitlement or protected resource verification errors, use the dedicated guide.</p>
-    <a class="support-action" href="fxap.md">Open Asset Escrow guide</a>
+    <a class="support-action" href="#/docs/support/asset-escrow.md">Open Asset Escrow guide</a>
   </details>
 
   <details class="support-accordion">
@@ -285,5 +285,4 @@ Config.Notification = 'ox_lib'</code></pre>
     </ol>
   </details>
 </section>
-
 

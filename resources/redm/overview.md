@@ -12,7 +12,7 @@
 
 ## Available resources
 
-- [Body Scale](/resources/redm/paid/body-scale.md) - persistent character height and body width customization for RedM servers.
+- [Body Scale](/resources/redm/scripts/paid/body-scale.md) - persistent character height and body width customization for RedM servers.
 
 ## Documentation structure
 
@@ -20,4 +20,4 @@ Every RedM resource uses its own route under `resources/redm/` and includes inst
 
 ## Need help?
 
-Visit [Support](/support.md) or join the official SMDZ Studios Discord server for current availability and release information.
+Visit [Support](/docs/support/support.md) or join the official SMDZ Studios Discord server for current availability and release information.

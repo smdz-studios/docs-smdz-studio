@@ -72,7 +72,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/modern-pause-menu.png" alt="mpausemenu preview image" />
+      <img src="assets/fivem/previews/modern-pause-menu.png" alt="mpausemenu preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Modern Pause Menu</h3>
@@ -81,7 +81,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/modern-pause-menu.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/modern-pause-menu.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/modern-pause-menu" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -90,7 +90,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/speed-radars.png" alt="speedradars preview image" />
+      <img src="assets/fivem/previews/speed-radars.png" alt="speedradars preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Speed Radars</h3>
@@ -99,7 +99,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-radars.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/speed-radars.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-radars" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -108,7 +108,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/parking-camera.png" alt="Parking Camera preview image" />
+      <img src="assets/fivem/previews/parking-camera.png" alt="Parking Camera preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Parking Camera</h3>
@@ -117,7 +117,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/free/parking-camera.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/free/parking-camera.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/parking-camera" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -128,7 +128,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/safes.png" alt="safes preview image" />
+      <img src="assets/fivem/previews/advanced-safes.png" alt="safes preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Safes System</h3>
@@ -137,7 +137,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/advanced-safes.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/advanced-safes.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/safes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -146,7 +146,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/witness-calls.png" alt="witness-calls preview image" />
+      <img src="assets/fivem/previews/witness-calls.png" alt="witness-calls preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Witness Calls</h3>
@@ -155,7 +155,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/witness_calls.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/witness-calls.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/witness-calls" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -165,7 +165,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/keybinds.png" alt="keybinds preview image" />
+      <img src="assets/fivem/previews/keybinds.png" alt="keybinds preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Dynamic Keybinds</h3>
@@ -174,7 +174,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/keybinds.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/keybinds.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/dynamic-keybinds" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -186,7 +186,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/evidence-boards.png" alt="evidence-boards preview image" />
+      <img src="assets/fivem/previews/evidence-boards.png" alt="evidence-boards preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Boards</h3>
@@ -195,7 +195,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/evidence-board.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/evidence-board.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-board" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -209,7 +209,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/lbapp-smartcab.png" alt="SmartCab APP preview image" />
+      <img src="assets/fivem/previews/smartcab-lb-app.png" alt="SmartCab APP preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>SmartCab APP</h3>
@@ -218,7 +218,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/lb_smartcab.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/apps/lb-phone/smartcab.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7557771" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -230,7 +230,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/radialmenuoxtarget.png" alt="OX Target Radial Menu preview image" />
+      <img src="assets/fivem/previews/ox-target-radial-menu.png" alt="OX Target Radial Menu preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Radial Menu</h3>
@@ -239,7 +239,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesings/ox-target-radial-redesign.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesigns/ox-target-radial-menu.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/radial-menu" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -251,7 +251,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/loading-screen-southland.png" alt="Cine Loadscreen preview image" />
+      <img src="assets/fivem/previews/cine-loadscreen.png" alt="Cine Loadscreen preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Cine Loadscreen</h3>
@@ -260,7 +260,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/cine-loadscreen.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/cine-loadscreen.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -270,7 +270,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/invitecodes.png" alt="Invite Codes preview image" />
+      <img src="assets/fivem/previews/invite-codes.png" alt="Invite Codes preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Invite Codes</h3>
@@ -279,7 +279,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/invite-codes.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/invite-codes.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/invite-codes" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -296,7 +296,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/handling-editor.png" alt="Handling Editor preview image" />
+      <img src="assets/fivem/previews/handling-editor.png" alt="Handling Editor preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Handling Editor</h3>
@@ -305,7 +305,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/free/handling-editor.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/free/handling-editor.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/handling-editor" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -327,7 +327,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/voice-indicator.png" alt="Voice Indicator preview image" />
+      <img src="assets/fivem/previews/voice-indicator.png" alt="Voice Indicator preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Voice Indicator</h3>
@@ -336,7 +336,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/voice-indicator.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/voice-indicator.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7523221" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -354,7 +354,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/flyers.png" alt="Flyers preview image" />
+      <img src="assets/fivem/previews/flyers.png" alt="Flyers preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Flyers</h3>
@@ -363,7 +363,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/flyers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/flyers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7512981" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -383,7 +383,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/streamers-list.png" alt="Streamers List preview image" />
+      <img src="assets/fivem/previews/streamers-list.png" alt="Streamers List preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Streamers List</h3>
@@ -392,7 +392,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/streamers-list.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/streamers-list.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7495147" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -413,7 +413,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/nfc-transfer.png" alt="NFC Transfer preview image" />
+      <img src="assets/fivem/previews/nfc-transfer.png" alt="NFC Transfer preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>NFC Transfers</h3>
@@ -422,7 +422,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/nfc-transfer.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/nfc-transfer.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/nfc-transfers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -443,7 +443,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/lbappifruit.png" alt="iFruit Pods APP preview image" />
+      <img src="assets/fivem/previews/ifruit-pods-lb-app.png" alt="iFruit Pods APP preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>iFruit Pods APP</h3>
@@ -452,7 +452,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/ifruit-pods.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/apps/lb-phone/ifruit-pods.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7432166" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -472,7 +472,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/speedbumps.png" alt="SpeedBumps preview image" />
+      <img src="assets/fivem/previews/speed-bumps.png" alt="SpeedBumps preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Speed Bumps</h3>
@@ -481,7 +481,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/speed-bumpers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/speed-bumps.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/speed-bumps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -502,7 +502,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/uav.png" alt="UAV preview image" />
+      <img src="assets/fivem/previews/realistic-uav.png" alt="UAV preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Realistic UAV</h3>
@@ -511,7 +511,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/realistic-uav.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/realistic-uav.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/realistic-uav" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -532,7 +532,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/pets-rescue.png" alt="Peds Manager preview image" />
+      <img src="assets/fivem/previews/pets-rescue.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Pets Rescue</h3>
@@ -541,7 +541,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/pets-rescue.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/pets-rescue.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/pets-rescue" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -561,7 +561,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/pedsmanager.png" alt="Peds Manager preview image" />
+      <img src="assets/fivem/previews/peds-manager.png" alt="Peds Manager preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Peds Manager</h3>
@@ -570,7 +570,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/peds-manager.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/peds-manager.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/peds-manager" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -589,7 +589,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/appemergencyalerts.png" alt="App Emergency Alerts preview image" />
+      <img src="assets/fivem/previews/app-emergency-alerts.png" alt="App Emergency Alerts preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>App Emergency Alerts</h3>
@@ -598,7 +598,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/app-emergency-alerts.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/apps/lb-phone/emergency-alerts.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-alerts" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -617,7 +617,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/crystaloxtarget.png" alt="OX Target Redesign Crystal preview image" />
+      <img src="assets/fivem/previews/ox-target-crystal.png" alt="OX Target Redesign Crystal preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Crystal</h3>
@@ -626,7 +626,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesings/ox-target-redesing-crystal.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/redesigns/ox-target-crystal.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/oxtarget-crystal-style" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -645,7 +645,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/emergencygps.png" alt="Emergency GPS preview image" />
+      <img src="assets/fivem/previews/emergency-gps.png" alt="Emergency GPS preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Emergency GPS</h3>
@@ -654,7 +654,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/emergency-gps.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/emergency-gps.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/emergency-gps" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -673,7 +673,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/evidencemarkers.png" alt="Evidence Markers preview image" />
+      <img src="assets/fivem/previews/evidence-markers.png" alt="Evidence Markers preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Markers</h3>
@@ -682,7 +682,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/evidence-markers.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/evidence-markers.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/evidence-markers" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -697,7 +697,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/rancherjob.png" alt="Rancher Job preview image" />
+      <img src="assets/fivem/previews/rancher-job.png" alt="Rancher Job preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Rancher Job</h3>
@@ -706,7 +706,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/rancher-job.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/rancher-job.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/the-rancher-job" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -723,7 +723,7 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
-      <img src="assets/fivem/bustravels.png" alt="Bus Travel preview image" />
+      <img src="assets/fivem/previews/bus-travel.png" alt="Bus Travel preview image" />
     </div>
     <div class="home-showcase-body">
       <h3>Bus Travel</h3>
@@ -732,7 +732,7 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/paid/bus-travel.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/bus-travel.md">VIEW DOCS</a>
         <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/bus-travels" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
@@ -862,13 +862,13 @@ Think of this documentation as a focused hub for **server owners** and **develop
 Depending on what you need right now:
 
 - 🧩 **You have a problem/error**
-  → Go to **[Common Problems](problems.md)** for step‑by‑step diagnostics.
+  → Go to **[Common Problems](/docs/support/problems.md)** for step‑by‑step diagnostics.
 
 - 🧾 **You want to understand Asset Escrow / entitlements**
-  → Read **[Asset Escrow System](fxap.md)** to understand how Cfx.re / Tebex protection works and how to fix typical entitlement issues.
+  → Read **[Asset Escrow System](/docs/support/asset-escrow.md)** to understand how Cfx.re / Tebex protection works and how to fix typical entitlement issues.
 
 - 🆘 **You need direct help**
-  → Visit **[Support](support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.
+  → Visit **[Support](/docs/support/support.md)** for contact details and what to include in your ticket so it can be handled quickly and professionally.
 
 Use the **search bar** in the sidebar whenever you remember a keyword but not the exact page name.
 Everything here is designed to save you time and reduce guesswork when running your FiveM or RedM server with SMDZ Studios scripts. 💛

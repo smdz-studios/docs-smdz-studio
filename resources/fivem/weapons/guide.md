@@ -262,4 +262,4 @@ For attachments, use the component identifiers supplied with the weapon and regi
 
 ---
 
-**Need a hand?** Contact [SMDZ Studios Support](#/support.md) with the package name, weapon identifier, framework and inventory versions, the failing step, and the server console or F8 error.
+**Need a hand?** Contact [SMDZ Studios Support](#/docs/support/support.md) with the package name, weapon identifier, framework and inventory versions, the failing step, and the server console or F8 error.

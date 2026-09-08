@@ -211,13 +211,13 @@
     var hash = window.location.hash || '';
 
     if (hash.indexOf('#/') !== 0) {
-      return '/portal.md';
+      return '/docs/information/portal.md';
     }
 
     var route = hash.slice(2).split('?')[0].split('#')[0].trim();
 
     if (!route) {
-      return '/portal.md';
+      return '/docs/information/portal.md';
     }
 
     return '/' + route.replace(/^\/+/, '');

@@ -115,11 +115,11 @@ function main() {
     }
   }
 
-  const stylesUpdated = ensureStyleRule(path.join(ROOT_DIR, 'styles.css'));
+  const stylesUpdated = ensureStyleRule(path.join(ROOT_DIR, 'assets/css/styles.css'));
 
   console.log(`[search-keyword-boost] markdown files scanned: ${targetFiles.length}`);
   console.log(`[search-keyword-boost] markdown files updated: ${updatedFiles}`);
-  console.log(`[search-keyword-boost] styles.css updated: ${stylesUpdated ? 'yes' : 'no'}`);
+  console.log(`[search-keyword-boost] assets/css/styles.css updated: ${stylesUpdated ? 'yes' : 'no'}`);
 }
 
 main();
