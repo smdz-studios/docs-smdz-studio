@@ -36,13 +36,25 @@
 
 ---
 
+# ⭐ **FEATURES:**
+
+- 🩸 **Blood Baseball** — Blood-covered wooden baseball bat with embedded nails, featuring a lightweight model with **3,095 polygons / 1,935 vertices**.
+- ⛓️ **Chains Baseball** — Reinforced wooden baseball bat wrapped with heavy chains and nails, featuring **16,292 polygons / 11,990 vertices**.
+- 🔩 **Spiked Baseball** — Heavily modified baseball bat featuring chains, metal reinforcements, spikes and a distinctive bladed upper section with **26,966 polygons / 21,894 vertices**.
+- 🔫 **True Addon Weapons** — All three weapons are added independently to FiveM and do not replace any original GTA V melee weapon.
+- 🎒 **Inventory Ready** — Integration examples are included for **ox_inventory, QBCore / qb-inventory, qb-weapons and Qbox / QBX-based setups**.
+- 🖼️ **Custom Inventory Icons** — Includes transparent inventory icons designed specifically for each weapon.
+
+
+---
+
 # ⚙️ **TECHNICAL INFORMATION:**
 
 | Weapon | Spawn Name | Type | Polygons | Vertices |
 | --- | --- | --- | ---: | ---: |
 | Blood Baseball | `WEAPON_SMDZ_BLOOD_BASEBALL` | Melee | `3,095` | `1,935` |
 | Chains Baseball | `WEAPON_SMDZ_CHAINS_BASEBALL` | Melee | `16,292` | `11,990` |
-| Spiked Baseball | `WEAPON_SMDZ_SPIKED_BASEBALL` | Melee | `46,966` | `30,894` |
+| Spiked Baseball | `WEAPON_SMDZ_SPIKED_BASEBALL` | Melee | `26,966` | `21,894` |
 
 ### Model Data
 
@@ -63,9 +75,6 @@
 smdz_baseball_pack/
 |-- fxmanifest.lua
 |-- cl_weaponNames.lua
-|-- 1.png
-|-- 2.png
-|-- 3.png
 |-- meta/
 |   |-- weaponarchetypes.meta
 |   |-- weaponanimations.meta

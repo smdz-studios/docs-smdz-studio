@@ -7,7 +7,27 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.2.0</span> 🚗 | SMDZ Handling Editor - 2026-09-04
+#  <span class="changelog-version-badge">1.0.1</span> | SMDZ Parking Camera - 2026-09-09 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
+### 🔧 CHANGED:
+
+- Improved keybind input handling to avoid conflicts with other scripts and NUI interfaces.
+- Parking camera controls now respect active NUI focus and `KeepInput` states.
+
+### 🧩 FIXED:
+
+- Fixed the parking camera keybind triggering while typing in phones, chat, inventories, or other NUI interfaces.
+- Fixed the default `B` key interfering with other resources while the player is using another interface.
+- Resmon usage is further optimized when outside of vehicles, dropping as low as 0.01ms to 0.00ms.
+
+### 🗂️ FILES MODIFIED:
+
+- `fxmanifest.lua`
+- `client/*`
+
+---
+
+#  <span class="changelog-version-badge">1.2.0</span> | SMDZ Handling Editor - 2026-09-04 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 
 ### ✅ ADDED:
 
@@ -75,7 +95,7 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.1.0</span> 🎟️ | SMDZ Invite Codes - 2026-08-21
+#  <span class="changelog-version-badge">1.1.0</span> | SMDZ Invite Codes - 2026-08-21 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 
 ### ✅ ADDED:
 
@@ -121,7 +141,7 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.0.1</span> 📞 | SMDZ Witness Calls - 2026-08-20
+#  <span class="changelog-version-badge">1.0.1</span> | SMDZ Witness Calls - 2026-08-20 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 
 ### ✅ ADDED:
 
@@ -161,7 +181,7 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.1.0</span> 🚧 | SMDZ Speed Bumps - 2026-08-15
+#  <span class="changelog-version-badge">1.1.0</span> | SMDZ Speed Bumps - 2026-08-15 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 <div class="changelog-release-media">
   <img
     src="assets/fivem/updates/1.1.0_speed_bumps.png"
@@ -219,7 +239,8 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.1.0</span> 🚕 | SMDZ SmartCab - 2026-08-04
+#  <span class="changelog-version-badge">1.1.0</span> | SMDZ SmartCab - 2026-08-04 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 
 - Added optional vehicle keys compatibility through the free and open-source `community_bridge` resource.
@@ -261,7 +282,8 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.1.0</span> 🚗 | Handling Editor - 2026-07-13
+#  <span class="changelog-version-badge">1.1.0</span> | Handling Editor - 2026-07-13 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 
 - Added real-time vehicle handling synchronization between all players.
@@ -299,7 +321,8 @@
 
 ---
 
-#  <span class="changelog-version-badge">1.1.0</span> 🚌 | Bus Travels - 2026-06-20
+#  <span class="changelog-version-badge">1.1.0</span> | Bus Travels - 2026-06-20 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 
 - Added additional waiting scenarios to `Config.WaitAnims` for more varied and natural NPC behavior.
@@ -340,7 +363,8 @@
 - `client/cl_main.lua`
 ---
 
-#  <span class="changelog-version-badge">1.2.0</span> 🐄 | The Rancher Job - 2026-05-22
+#  <span class="changelog-version-badge">1.2.0</span> | The Rancher Job - 2026-05-22 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 - New global anti-exploit toggle `Config.AntiExploit.enabled`.
 - Shared anti-exploit state helper in client and server to keep behavior consistent.
@@ -368,7 +392,8 @@
 ---
 
 
-## <span class="changelog-version-badge">1.3.0</span> 🔖 | Evidence Markers - 2026-04-21
+## <span class="changelog-version-badge">1.3.0</span> | Evidence Markers - 2026-04-21 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 - Marker info interaction on active markers through target.
 - Marker info now opens using the same existing evidence NUI card in read-only mode.
@@ -408,7 +433,8 @@
 
 
 
-## <span class="changelog-version-badge">1.1.0</span> 🐄 | The Rancher Job - 2026-04-21
+## <span class="changelog-version-badge">1.1.0</span> | The Rancher Job - 2026-04-21 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 
 - Added NPC distance-based streaming on client side:
@@ -434,7 +460,8 @@
 ---
 
 
-## <span class="changelog-version-badge">1.2.0</span> 🔖 | Evidence Markers - 2026-04-03
+## <span class="changelog-version-badge">1.2.0</span> | Evidence Markers - 2026-04-03 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### 🧩 FIXED:
 - A bug has been fixed for ox inventory which was blocking the purchase and drag from an ox inventory store to the inventory.
 
@@ -444,7 +471,8 @@
 
 ---
 
-## <span class="changelog-version-badge">1.1.0</span> 📱 | LB APP Emergency Alerts - 2026-03-23
+## <span class="changelog-version-badge">1.1.0</span> | LB APP Emergency Alerts - 2026-03-23 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 - Support for ACE permissions has been added to the administrative command to delete alerts. (ACE or GROUPS permissions)
 - Docs updated.
@@ -455,7 +483,8 @@
 ---
 
 
-## <span class="changelog-version-badge">1.1.0</span> 🎨 | OX Target Crystal Style - 2026-03-13
+## <span class="changelog-version-badge">1.1.0</span> | OX Target Crystal Style - 2026-03-13 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 - Added ACE permission support for restricted themes in `Config.ThemeDonator` and `Config.ThemeDiscordBoosters`:
   - New `AcePermissions` option (for example: `group.admin`, `admin`, `themediscordboosters`).
@@ -492,7 +521,8 @@
 
 ---
 
-## <span class="changelog-version-badge">1.1.0</span> 📡 | Emergency GPS - 2026-03-02
+## <span class="changelog-version-badge">1.1.0</span> | Emergency GPS - 2026-03-02 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 - Added favorite color support with SQL persistence (same behavior as icon favorites).
 - Added 3 new UI themes: Obsidian, Lagoon, Saffron.
@@ -530,14 +560,15 @@
 
 ---
 
-## <span class="changelog-version-badge">1.1.1</span> 🔖 | Evidence Markers - 2026-02-20
+## <span class="changelog-version-badge">1.1.1</span> | Evidence Markers - 2026-02-20 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 - The `client/cl_edit_props.lua` file is now open source to avoid `"syntax error near '<\1>'"` problems.
 - The `INSTALL_FILES/items_tgiann-inventory.lua` file has been added for convenience when adding objects to this inventory.
 **NOTE: This update is not required for current customers.**
 
 ---
 
-## <span class="changelog-version-badge">1.1.0</span> 🔖 | Evidence Markers - 2026-02-14
+## <span class="changelog-version-badge">1.1.0</span> | Evidence Markers - 2026-02-14 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
 ### ✅ ADDED:
 
 - Added compatibility layer in `config.lua` to map new structured config to legacy fields used by runtime.

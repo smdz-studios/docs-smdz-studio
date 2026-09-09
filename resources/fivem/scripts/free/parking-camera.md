@@ -46,7 +46,7 @@
 - 📌 **Resource Name:** `smdz_parking_camera`
 - 💻 **Author:** SMDZ Studios
 - 🧭 **Framework:** Standalone
-- 🧾 **Version:** `1.0.0`
+- 🧾 **Version:** `1.0.1`
 - ✅ **Status:** <span class="badge badge--stable">STABLE</span>
 
 **Short description:**

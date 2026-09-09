@@ -590,6 +590,13 @@
               }
 
               headingEl.classList.add('changelog-release-heading');
+              var platformBadgeEl = headingEl.querySelector('.changelog-platform-badge[data-changelog-platform]');
+              releaseEl.dataset.changelogPlatform = platformBadgeEl
+                ? (platformBadgeEl.dataset.changelogPlatform || '').toLowerCase()
+                : 'all';
+              if (typeof window.SMDZ_addChangelogResourceIcon === 'function') {
+                window.SMDZ_addChangelogResourceIcon(headingEl);
+              }
 
               var bodyEl = releaseEl.querySelector(':scope > .changelog-release-body');
               if (!bodyEl) {
@@ -672,14 +679,28 @@
               searchEl.className = 'changelog-search';
               searchEl.innerHTML =
                 '<div class="changelog-search-panel">' +
-                  '<label class="changelog-search-field">' +
-                    '<span class="changelog-search-icon" aria-hidden="true"></span>' +
-                    '<input type="search" class="changelog-search-input" placeholder="Search by resource, version, date, file..." aria-label="Search changelog">' +
-                    '<button type="button" class="changelog-search-clear" aria-label="Clear changelog search" hidden>Clear</button>' +
-                  '</label>' +
+                  '<div class="changelog-search-controls">' +
+                    '<div class="changelog-platform-field">' +
+                      '<span class="changelog-platform-label">Platform</span>' +
+                      '<button type="button" class="changelog-platform-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter changelog by platform">' +
+                        '<span class="changelog-platform-current">All</span>' +
+                        '<span class="changelog-platform-arrow" aria-hidden="true"></span>' +
+                      '</button>' +
+                      '<div class="changelog-platform-menu" role="listbox" hidden>' +
+                        '<button type="button" class="changelog-platform-option is-selected" role="option" aria-selected="true" data-changelog-platform-option="all">All</button>' +
+                        '<button type="button" class="changelog-platform-option" role="option" aria-selected="false" data-changelog-platform-option="fivem">FiveM</button>' +
+                        '<button type="button" class="changelog-platform-option" role="option" aria-selected="false" data-changelog-platform-option="redm">RedM</button>' +
+                      '</div>' +
+                    '</div>' +
+                    '<label class="changelog-search-field">' +
+                      '<span class="changelog-search-icon" aria-hidden="true"></span>' +
+                      '<input type="search" class="changelog-search-input" placeholder="Search by resource, version, date, file..." aria-label="Search changelog">' +
+                      '<button type="button" class="changelog-search-clear" aria-label="Clear changelog search" hidden>Clear</button>' +
+                    '</label>' +
+                  '</div>' +
                   '<div class="changelog-search-meta" aria-live="polite">' +
                     '<span class="changelog-search-count"></span>' +
-                    '<span class="changelog-search-hint">Version, resource, date or modified file</span>' +
+                    '<span class="changelog-search-hint">Platform, version, resource, date or modified file</span>' +
                   '</div>' +
                   '<div class="changelog-search-actions">' +
                     '<button type="button" class="changelog-search-action" data-changelog-action="expand">Expand all</button>' +
@@ -699,6 +720,10 @@
 
             if (searchEl && searchEl.dataset.changelogSearchBound !== '1') {
               var searchInputEl = searchEl.querySelector('.changelog-search-input');
+              var platformFieldEl = searchEl.querySelector('.changelog-platform-field');
+              var platformTriggerEl = searchEl.querySelector('.changelog-platform-trigger');
+              var platformCurrentEl = searchEl.querySelector('.changelog-platform-current');
+              var platformMenuEl = searchEl.querySelector('.changelog-platform-menu');
               var clearSearchEl = searchEl.querySelector('.changelog-search-clear');
               var countEl = searchEl.querySelector('.changelog-search-count');
               var emptyEl = searchEl.querySelector('.changelog-search-empty');
@@ -783,6 +808,7 @@
               };
               var filterChangelog = function () {
                 var query = (searchInputEl.value || '').trim().toLowerCase();
+                var selectedPlatform = platformFieldEl ? (platformFieldEl.dataset.changelogPlatformValue || 'all') : 'all';
                 var visibleCount = 0;
                 var totalCount = 0;
                 clearHighlights();
@@ -790,7 +816,10 @@
                 contentRoot.querySelectorAll('.changelog-release').forEach(function (releaseEl) {
                   totalCount += 1;
                   var searchableText = (releaseEl.textContent || '').toLowerCase();
-                  var isVisible = !query || searchableText.indexOf(query) !== -1;
+                  var releasePlatform = releaseEl.dataset.changelogPlatform || 'all';
+                  var matchesPlatform = selectedPlatform === 'all' || releasePlatform === selectedPlatform;
+                  var matchesQuery = !query || searchableText.indexOf(query) !== -1;
+                  var isVisible = matchesPlatform && matchesQuery;
                   releaseEl.classList.toggle('is-search-hidden', !isVisible);
 
                   if (isVisible) {
@@ -803,9 +832,12 @@
                 }
 
                 if (countEl) {
-                  countEl.textContent = query
-                    ? visibleCount + ' of ' + totalCount + ' updates'
-                    : totalCount + ' updates';
+                  var platformLabel = selectedPlatform === 'all'
+                    ? 'All platforms'
+                    : selectedPlatform.charAt(0).toUpperCase() + selectedPlatform.slice(1);
+                  countEl.textContent = query || selectedPlatform !== 'all'
+                    ? platformLabel + ': ' + visibleCount + ' of ' + totalCount + ' updates'
+                    : platformLabel + ': ' + totalCount + ' updates';
                 }
 
                 if (clearSearchEl) {
@@ -821,6 +853,50 @@
               };
 
               searchInputEl.addEventListener('input', filterChangelog);
+              if (platformFieldEl && platformTriggerEl && platformMenuEl) {
+                platformFieldEl.dataset.changelogPlatformValue = platformFieldEl.dataset.changelogPlatformValue || 'all';
+
+                var setPlatformMenuOpen = function (isOpen) {
+                  platformMenuEl.hidden = !isOpen;
+                  platformFieldEl.classList.toggle('is-open', isOpen);
+                  platformTriggerEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                };
+
+                platformTriggerEl.addEventListener('click', function () {
+                  setPlatformMenuOpen(platformMenuEl.hidden);
+                });
+
+                platformMenuEl.querySelectorAll('[data-changelog-platform-option]').forEach(function (optionEl) {
+                  optionEl.addEventListener('click', function () {
+                    var nextPlatform = optionEl.dataset.changelogPlatformOption || 'all';
+                    platformFieldEl.dataset.changelogPlatformValue = nextPlatform;
+                    if (platformCurrentEl) {
+                      platformCurrentEl.textContent = optionEl.textContent || 'All';
+                    }
+
+                    platformMenuEl.querySelectorAll('[data-changelog-platform-option]').forEach(function (itemEl) {
+                      var isSelected = itemEl === optionEl;
+                      itemEl.classList.toggle('is-selected', isSelected);
+                      itemEl.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+                    });
+
+                    setPlatformMenuOpen(false);
+                    filterChangelog();
+                  });
+                });
+
+                document.addEventListener('click', function (event) {
+                  if (!platformFieldEl.contains(event.target)) {
+                    setPlatformMenuOpen(false);
+                  }
+                });
+
+                platformTriggerEl.addEventListener('keydown', function (event) {
+                  if (event.key === 'Escape') {
+                    setPlatformMenuOpen(false);
+                  }
+                });
+              }
               if (clearSearchEl) {
                 clearSearchEl.addEventListener('click', function () {
                   searchInputEl.value = '';
@@ -1527,6 +1603,8 @@
               '/resources/fivem/scripts/paid/streamers-list.md': { label: 'Streamers List', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z' },
               '/resources/fivem/scripts/paid/flyers.md': { label: 'Flyers', path: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z' },
               '/resources/fivem/archived/railway-job.md': { label: 'Railway Job', path: 'M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3l2 3h-2.5l-1.3-2H8.8l-1.3 2H5l2-3a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 4v4h10V7H7Zm2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
+              '/resources/fivem/scripts/free/parking-camera.md': { label: 'Parking Camera', path: 'M4 5h11a2 2 0 0 1 2 2v1.2l3-1.7V17l-3-1.7V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm1 3v8h9V8H5Z' },
+              '/resources/fivem/scripts/free/handling-editor.md': { label: 'Handling Editor', path: 'M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5 13l1.4-4.2A3 3 0 0 1 9.2 7h5.6a3 3 0 0 1 2.8 1.8L19 13h1v3h-1.2a4 4 0 0 0-7.6 0H8.8a4 4 0 0 0-7.6 0H0v-3h5Zm2.2 0h9.6l-.9-2.8A1.2 1.2 0 0 0 14.8 9H9.2a1.2 1.2 0 0 0-1.1.8L7.2 13Z' },
               '/resources/fivem/redesigns/ox-target-crystal.md': { label: 'Ox Target (Crystal Style)', path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z' }
             };
 
@@ -1740,6 +1818,26 @@
               'OX TARGET': sidebarIconMap['/resources/fivem/redesigns/ox-target-crystal.md']
             };
 
+            var changelogIconTextMap = Object.assign({}, sidebarIconTextMap, {
+              'SMDZ PARKING CAMERA': createSidebarIcon('camera'),
+              'PARKING CAMERA': createSidebarIcon('camera'),
+              'SMDZ HANDLING EDITOR': createSidebarIcon('car'),
+              'HANDLING EDITOR': createSidebarIcon('car'),
+              'SMDZ INVITE CODES': createSidebarIcon('ticket'),
+              'INVITE CODES': createSidebarIcon('ticket'),
+              'SMDZ WITNESS CALLS': createSidebarIcon('phone-call'),
+              'WITNESS CALLS': createSidebarIcon('phone-call'),
+              'SMDZ SPEED BUMPS': createSidebarIcon('speed-bump'),
+              'SPEED BUMPS': createSidebarIcon('speed-bump'),
+              'SMDZ SMARTCAB': createSidebarIcon('car-taxi-front'),
+              'SMARTCAB': createSidebarIcon('car-taxi-front'),
+              'SMDZ BUS TRAVELS': createSidebarIcon('bus'),
+              'BUS TRAVELS': createSidebarIcon('bus'),
+              'THE RANCHER JOB': createSidebarIcon('cow'),
+              'LB APP EMERGENCY ALERTS': createSidebarIcon('phone-alert'),
+              'OX TARGET CRYSTAL STYLE': createSidebarIcon('crystal')
+            });
+
             function normalizeSidebarHref(rawHref) {
               if (!rawHref) {
                 return '';
@@ -1847,6 +1945,88 @@
               }
 
               return null;
+            }
+
+            function getChangelogTextIcon(text) {
+              var normalized = (text || '').replace(/\s+/g, ' ').trim().toUpperCase();
+              var keys = Object.keys(changelogIconTextMap);
+
+              for (var i = 0; i < keys.length; i += 1) {
+                if (normalized.indexOf(keys[i]) !== -1) {
+                  return changelogIconTextMap[keys[i]];
+                }
+              }
+
+              return null;
+            }
+
+            function getChangelogResourceName(headingEl) {
+              var headingText = (headingEl.textContent || '').replace(/\s+/g, ' ').trim();
+              var pipeIndex = headingText.indexOf('|');
+              var resourceText = pipeIndex >= 0 ? headingText.slice(pipeIndex + 1) : headingText;
+
+              return resourceText
+                .replace(/\s+-\s+\d{4}-\d{2}-\d{2}.*$/, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            }
+
+            function renderChangelogIcon(icon) {
+              return renderSidebarIcon(icon)
+                .replace(/sidebar-link-icon--external/g, 'changelog-resource-icon--external')
+                .replace(/sidebar-link-icon/g, 'changelog-resource-icon');
+            }
+
+            function addChangelogResourceIcon(headingEl) {
+              if (headingEl.dataset.changelogResourceIconBound === '1') {
+                return;
+              }
+
+              if (headingEl.querySelector('.changelog-resource-icon')) {
+                headingEl.dataset.changelogResourceIconBound = '1';
+                return;
+              }
+
+              var resourceName = getChangelogResourceName(headingEl);
+              var icon = getChangelogTextIcon(resourceName);
+              var iconMarkup = renderChangelogIcon(icon);
+              if (!iconMarkup) {
+                return;
+              }
+
+              var tempEl = document.createElement('span');
+              tempEl.innerHTML = iconMarkup;
+              var iconEl = tempEl.firstElementChild;
+              if (!iconEl) {
+                return;
+              }
+
+              var badgeEl = headingEl.querySelector('.changelog-version-badge');
+              var nodes = Array.prototype.slice.call(headingEl.childNodes || []);
+              var startIndex = badgeEl ? nodes.indexOf(badgeEl) + 1 : 0;
+
+              for (var i = startIndex; i < nodes.length; i += 1) {
+                var node = nodes[i];
+                if (node.nodeType !== 3 || node.nodeValue.indexOf('|') === -1) {
+                  continue;
+                }
+
+                var separatorIndex = node.nodeValue.indexOf('|');
+                var prefix = node.nodeValue.slice(0, separatorIndex + 1);
+                var suffix = node.nodeValue.slice(separatorIndex + 1).replace(/^\s+/, ' ');
+                node.nodeValue = prefix + ' ';
+                node.parentNode.insertBefore(iconEl, node.nextSibling);
+                node.parentNode.insertBefore(document.createTextNode(suffix), iconEl.nextSibling);
+                headingEl.dataset.changelogResourceIconBound = '1';
+                return;
+              }
+
+              if (badgeEl) {
+                badgeEl.parentNode.insertBefore(document.createTextNode(' '), badgeEl.nextSibling);
+                badgeEl.parentNode.insertBefore(iconEl, badgeEl.nextSibling.nextSibling);
+                badgeEl.parentNode.insertBefore(document.createTextNode(' '), iconEl.nextSibling);
+                headingEl.dataset.changelogResourceIconBound = '1';
+              }
             }
 
             function stripSidebarIconMetadata(text) {
@@ -1985,6 +2165,7 @@
             }
 
             window.SMDZ_enhanceSidebarIcons = enhanceSidebarIcons;
+            window.SMDZ_addChangelogResourceIcon = addChangelogResourceIcon;
 
             var revealTargets = document.querySelectorAll('.feature-card, .home-showcase-card, .pagination-item');
             if (revealTargets.length > 0) {
