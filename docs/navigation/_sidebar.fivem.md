@@ -37,7 +37,7 @@
 
 - **Addon Weapons**
   - [Installation Guide](/resources/fivem/weapons/guide.md "icon:info")
-  <!-- - [Baseball Weapon Pack](/resources/fivem/weapons/baseball-pack.md "icon:volleyball") -->
+  - [Baseball Weapon Pack](/resources/fivem/weapons/baseball-pack.md "icon:volleyball")
 
 - **Redesigns**
   - [OX Target (Radial Menu)](/resources/fivem/redesigns/ox-target-radial-menu.md "icon:radius")
