@@ -2,33 +2,32 @@
   <p class="support-eyebrow">CFX.RE / TEBEX</p>
   <h1>Asset Escrow Guide</h1>
   <p>Use this page when a protected resource fails because of ownership, entitlement or verification errors.</p>
-  <div class="support-search-tip">Fast path: match the console error below, follow the fix, then restart the server fully.</div>
 </section>
 
 <section class="support-route-grid" aria-label="Escrow quick routes">
   <a class="support-route-card" href="#not-owned">
-    <span class="support-route-kicker">Console says</span>
+    <span class="support-route-kicker">Ownership check</span>
     <strong>This asset is not owned</strong>
-    <small>Account or server key ownership mismatch.</small>
+    <small>The license key is running under a Cfx.re account that does not own the protected resource.</small>
   </a>
   <a class="support-route-card" href="#entitlement">
-    <span class="support-route-kicker">Console says</span>
+    <span class="support-route-kicker">Entitlement check</span>
     <strong>Required entitlement</strong>
-    <small>Purchase, transfer, restart or server clock issue.</small>
+    <small>Confirm the purchase owner, transfer state, full restart and server clock before opening a ticket.</small>
   </a>
   <a class="support-route-card" href="#verify">
-    <span class="support-route-kicker">Console says</span>
+    <span class="support-route-kicker">Validation check</span>
     <strong>Failed to verify</strong>
-    <small>Network, firewall or validation connectivity issue.</small>
+    <small>Usually points to outbound connectivity, firewall rules or host-level validation blocking.</small>
   </a>
   <a class="support-route-card" href="#editable-files">
-    <span class="support-route-kicker">Need to edit</span>
+    <span class="support-route-kicker">Before editing</span>
     <strong>Safe files</strong>
-    <small>What can be changed without breaking escrow.</small>
+    <small>Know which configuration and locale files can be changed without breaking escrow protection.</small>
   </a>
 </section>
 
-<section class="support-section">
+<!-- <section class="support-section">
   <h2 id="what-is-escrow">What Asset Escrow Does</h2>
   <p>Asset Escrow protects premium FiveM and RedM resources by locking the internal logic while leaving documented configuration, translations and integration points editable.</p>
   <div class="support-two-column">
@@ -49,7 +48,7 @@
       </ul>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="support-section support-section--compact">
   <h2 id="account-linking">How Ownership Works</h2>

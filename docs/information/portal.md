@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="hero-header-wrapper" style="margin-top: 0.5rem; margin-bottom: 1.8rem; text-align: center;">
-  <h1 class="hero-main-title">
+  <h1 class="hero-main-title portal-main-title">
     PORTAL | OFFICIAL DOCUMENTATION
   </h1>
   <div class="hero-quick-links">
@@ -76,7 +76,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Baseball Weapon Pack</h3>
-      <p>SMDZ Baseball Weapon Pack adds three true addon melee weapons for FiveM: blood, chains and spiked baseball bats. It includes custom models, inventory icons, weapon metadata and setup guidance for ox_inventory, QBCore, QBX and standalone server workflows.</p>
+      <p>SMDZ Baseball Weapon Pack is an addon melee weapon pack for FiveM. It includes three custom baseball bats, inventory icons, weapon metadata, and setup guidance for common inventory and standalone server workflows.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-weapons">WEAPONS</span><span>STANDALONE</span>
       </div>
@@ -95,7 +95,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Modern Pause Menu</h3>
-      <p>SMDZ Modern Pause Menu is a FiveM pause menu replacement inspired by the atmosphere of Vice City-style sagas and redesigned with a clean, modern interface. It combines live player information, persistent NEWS, cinematic Photo Mode, socials, personal UI settings and secure staff administration in one experience.</p>
+      <p>SMDZ Modern Pause Menu is a cinematic pause menu replacement for FiveM. It includes player information, persistent news, photo mode, socials, personal UI settings, and protected staff administration tools.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -113,7 +113,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Speed Radars</h3>
-      <p>SMDZ Speed Radars is a complete speed enforcement system for FiveM that combines portable police radars, permanent speed cameras, automatic speeding fines, photographic evidence, live radar monitoring, and configurable payment locations into one immersive traffic enforcement resource.</p>
+      <p>SMDZ Speed Radars is a traffic enforcement system for FiveM. It includes portable police radars, fixed speed cameras, automatic fines, photographic evidence, live monitoring, and configurable payment points.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -131,7 +131,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Parking Camera</h3>
-      <p>SMDZ Parking Camera is a realistic parking assistance system for FiveM with rear and side cameras, dynamic guidelines, obstacle detection, and progressive parking sensor beeps. Fully standalone, multilingual, optimized, and enhanced with lens dirt and camera damage effects.</p>
+      <p>SMDZ Parking Camera is a standalone parking assistance system for FiveM. It includes rear and side cameras, dynamic guidelines, obstacle detection, sensor beeps, lens effects, and multilingual configuration.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span>
       </div>
@@ -151,7 +151,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Safes System</h3>
-      <p>SMDZ Safes is a persistent safe system for FiveM that lets players place safes, protect them with a PIN, share access, and use them as private storage. It includes SQL persistence, configurable capacities, an optional dealer, drill robberies, and smdz_bridge integration for different server setups.</p>
+      <p>SMDZ Safes is a persistent private storage system for FiveM. It includes placeable safes, PIN protection, shared access, SQL persistence, configurable capacity, dealer options, and drill robbery gameplay.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -169,7 +169,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Witness Calls</h3>
-      <p>SMDZ Witness Calls adds immersive civilian witnesses to FiveM. Nearby NPCs can detect crimes, call emergency services with synchronized phone animations, display a clean world-space progress interface, and send detailed alerts through supported dispatch systems.</p>
+      <p>SMDZ Witness Calls is a civilian witness system for FiveM. It includes NPC crime detection, emergency calls, synchronized phone animations, world-space progress UI, and dispatch alerts for supported providers.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -188,7 +188,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Dynamic Keybinds</h3>
-      <p>Dynamic Keybinds automatically scans FiveM client commands and current player key mappings, then organizes them inside a modern fullscreen interface with an interactive keyboard, conflict detection, search, resource aliases, custom command metadata, and configurable help markers.</p>
+      <p>SMDZ Dynamic Keybinds is a command and key mapping interface for FiveM. It includes command scanning, interactive keyboard display, conflict detection, search, aliases, metadata, and configurable help markers.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -209,7 +209,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Boards</h3>
-      <p>Evidence Boards is an advanced police investigation system for FiveM. Detectives can create persistent physical evidence boards, organize suspects, photographs, Polaroids, documents, notes, and red-thread connections, while board owners manage access, permissions, and collaboration through a polished in-game editor</p>
+      <p>SMDZ Evidence Boards is a police investigation system for FiveM. It includes persistent evidence boards, suspects, photos, documents, notes, red-thread links, access control, and collaborative editing tools.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -232,7 +232,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>SmartCab APP</h3>
-      <p>SmartCab is an advanced autonomous taxi application for LB Phone that lets players request a driverless vehicle, follow its live arrival, select a map destination, manage Ride+ subscriptions, charge their phone during a journey, and review persistent digital trip receipts.</p>
+      <p>SMDZ SmartCab is an autonomous taxi app for LB Phone. It includes driverless vehicle requests, live arrival tracking, destination selection, Ride+ subscriptions, phone charging, and persistent trip receipts.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -253,7 +253,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Radial Menu</h3>
-      <p>OX Target Radial Redesign transforms the original ox_target interface into a modern, animated, and customizable radial menu. It preserves all original exports, integrations, zones, and compatibility without modifying the core target logic.</p>
+      <p>SMDZ OX Target Radial Redesign is a visual interface redesign for ox_target. It includes an animated radial menu, customization options, preserved exports, zone compatibility, and unchanged core target logic.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -274,7 +274,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Cine Loadscreen</h3>
-      <p>SMDZ Cinematic Loadscreen is a cinematic image-based loading screen for FiveM servers, inspired by American police TV show (Southland LAPD) opening credits and redesigned with a unique FiveM roleplay identity.</p>
+      <p>SMDZ Cine Loadscreen is a cinematic loading screen for FiveM. It includes image-based presentation, configurable branding, roleplay-focused atmosphere, and a polished entry experience for server players.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span>
       </div>
@@ -293,7 +293,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Invite Codes</h3>
-      <p>SMDZ Invite Codes is a polished invitation and promotional code system for FiveM. Players can redeem configurable rewards through streamed NPCs, while authorized staff can create, edit, pause, monitor, and manage every code from a complete in-game administration panel</p>
+      <p>SMDZ Invite Codes is an invitation and promotion system for FiveM. It includes redeemable rewards, streamed NPC interaction, staff management tools, code monitoring, pause controls, and an in-game admin panel.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -319,7 +319,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Handling Editor</h3>
-      <p>SMDZ Handling Editor is a real-time vehicle tuning tool for FiveM. Edit handling values directly in-game, test changes instantly, save presets, restore original values, and export ready-to-use XML for your handling.meta file.</p>
+      <p>SMDZ Handling Editor is a real-time vehicle tuning tool for FiveM. It includes in-game handling edits, instant testing, preset saving, original value restore, and XML export for handling.meta workflows.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-free">FREE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -350,7 +350,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Voice Indicator</h3>
-      <p>SMDZ Voice Indicator is a modern voice activity system for FiveM, designed to make player communication clearer, more immersive, and easier to understand during roleplay. It displays customizable indicators above nearby players while they speak, with dedicated visual states for proximity voice, radio transmissions, and phone calls.</p>
+      <p>SMDZ Voice Indicator is a voice activity display system for FiveM. It includes player speech indicators, proximity voice states, radio transmission states, phone call states, and configurable visual styling.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -377,7 +377,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Flyers</h3>
-      <p>SMDZ Flyers is an advanced flyer placement and advertising system for FiveM, designed to help roleplay servers bring businesses, events, job opportunities, and community announcements directly into the game world. It provides players with a clean and immersive way to create, preview, place, and interact with persistent flyers across Los Santos.</p>
+      <p>SMDZ Flyers is an advertising and flyer placement system for FiveM. It includes flyer creation, preview tools, persistent placement, world interaction, and roleplay support for businesses, events, and announcements.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -406,7 +406,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Streamers List</h3>
-      <p>Advanced streamer list system with a modern NUI, secure streamer applications, real-time staff panel, SQL persistence, and Twitch/Kick live checks handled server-side.</p>
+      <p>SMDZ Streamers List is a streamer management system for FiveM. It includes secure applications, modern NUI, staff review tools, SQL persistence, and server-side Twitch and Kick live checks.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>STANDALONE</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -436,7 +436,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>NFC Transfers</h3>
-      <p>High-end NFC money transfer system with secure server-side validation, React NUI, account-aware banking bridges, optional history/NPC interaction, and broad compatibility with ESX/QB ecosystems.</p>
+      <p>SMDZ NFC Transfer is a money transfer system for FiveM. It includes secure server validation, React NUI, banking bridge support, account-aware transfers, optional history, and NPC interaction.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -466,7 +466,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>iFruit Pods APP</h3>
-      <p>A production-ready LB Phone app designed to control wireless pods, featuring secure audio playback, advanced playlist management, queue & repeat systems, persistent settings (including dark mode), and asynchronous webhook logging.</p>
+      <p>SMDZ iFruit Pods is a wireless audio app for LB Phone. It includes secure playback, playlist management, queue and repeat controls, persistent settings, dark mode, and webhook logging.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -495,7 +495,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Speed Bumps</h3>
-      <p>SMDZ Speed Bumps is a traffic-control system for FiveM designed to make your city feel alive, organized, and professional.</p>
+      <p>SMDZ Speed Bumps is a traffic control system for FiveM. It includes deployable road speed bumps, configurable placement rules, roleplay-friendly usage, and practical tools for city traffic management.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -525,7 +525,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Realistic UAV</h3>
-      <p>UAV is a tactical UAV script with a synchronized physical aircraft, lockable aerial camera, SQL-backed cooldowns, and a modern overlay.</p>
+      <p>SMDZ Realistic UAV is a tactical aerial support system for FiveM. It includes synchronized UAV aircraft, lockable camera controls, SQL-backed cooldowns, permission checks, and a modern overlay.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -555,7 +555,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Pets Rescue</h3>
-      <p>A Mission system where players rescue lost pets for NPCs, searching dynamic areas and earning rewards. Enhances civilian roleplay and adds immersive, repeatable gameplay.</p>
+      <p>SMDZ Pets Rescue is a civilian mission system for FiveM. It includes lost pet searches, dynamic search areas, NPC requests, configurable rewards, and repeatable roleplay-focused rescue gameplay.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -584,7 +584,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Peds Manager</h3>
-      <p>Advanced ped management system with admin tools, ped requests, and appearance restore.</p>
+      <p>SMDZ Peds Manager is a character ped management system for FiveM. It includes admin tools, player ped requests, approval workflows, appearance restoration, and framework-friendly management controls.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -612,7 +612,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>App Emergency Alerts</h3>
-      <p>In-app emergency notifications with clean dispatch flow and easy framework integration.</p>
+      <p>SMDZ Emergency Alerts is an emergency notification app for LB Phone. It includes in-app alerts, clean dispatch flow, framework integration, roleplay-friendly messaging, and configurable alert handling.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-phone-app">LB PHONE APP</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -640,7 +640,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>OX Target Redesign Crystal</h3>
-      <p>Crystal-styled redesign for ox_target interaction visuals with cleaner layout and readability.</p>
+      <p>SMDZ OX Target Crystal Redesign is a visual redesign for ox_target. It includes crystal-styled interaction UI, improved readability, cleaner layout, preserved compatibility, and lightweight visual customization.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
@@ -668,7 +668,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Emergency GPS</h3>
-      <p>Fast emergency location tracking for team coordination, response clarity and safer operations.</p>
+      <p>SMDZ Emergency GPS is an emergency location system for FiveM. It includes fast position tracking, team coordination tools, clear response visibility, configurable access, and safer operational workflows.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -696,7 +696,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Evidence Markers</h3>
-      <p>Reliable evidence placement and scene visualization with practical controls for RP workflows.</p>
+      <p>SMDZ Evidence Markers is an evidence placement system for FiveM. It includes scene markers, practical interaction controls, investigation visibility, configurable workflows, and roleplay-friendly evidence management.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -720,7 +720,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Rancher Job</h3>
-      <p>Ranch workflow with configurable tasks and progression to expand farming roleplay scenarios.</p>
+      <p>SMDZ Rancher Job is a ranch roleplay job for FiveM. It includes configurable tasks, progression flow, farming interactions, reward handling, and repeatable work loops for civilian gameplay.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -746,7 +746,7 @@
     </div>
     <div class="home-showcase-body">
       <h3>Bus Travel</h3>
-      <p>Route-based travel system for immersive city transport with configurable stops and prices.</p>
+      <p>SMDZ Bus Travel is a route-based transport system for FiveM. It includes configurable stops, travel prices, destination selection, immersive city movement, and practical public transport workflows.</p>
       <div class="home-showcase-tags">
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>STANDALONE</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
@@ -844,7 +844,7 @@
 
 
 
----
+<!-- ---
 
 # 🧭 **WHAT YOU WILL FIND IN THESE DOCS:**
 
@@ -872,7 +872,7 @@ Think of this documentation as a focused hub for **server owners** and **develop
       performance tips and how to open an effective support ticket.
     </p>
   </div>
-</div>
+</div> -->
 
 ---
 

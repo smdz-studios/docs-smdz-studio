@@ -4,7 +4,7 @@
   - [Portal](/docs/information/portal.md "icon:portal")
   <!-- - [RedM Overview](/resources/redm/overview.md "icon:map-pinned") -->
 
-- **RedM Resources**
+<!-- - **RedM Resources** -->
   <!-- - [Body Scale](/resources/redm/scripts/paid/body-scale.md "icon:ruler") -->
 
 - **Support**

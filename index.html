@@ -23,6 +23,8 @@
 
   <link rel="canonical" href="https://docs.smdz-studios.com/" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://docs.smdz-studios.com/seo/sitemap.xml" />
+  <link rel="alternate" type="text/plain" title="AI usage policy" href="https://docs.smdz-studios.com/seo/ai.txt" />
+  <link rel="alternate" type="text/plain" title="LLMs routing guide" href="https://docs.smdz-studios.com/seo/llms.txt" />
   <!-- frame-ancestors must be sent as an HTTP header; meta tags cannot enforce it. -->
   <meta name="application-name" content="SMDZ Studios Docs" />
   <meta name="apple-mobile-web-app-title" content="SMDZ Docs" />
@@ -91,8 +93,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
 
   <!-- Custom styles -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260831-platforms-3" />
-  <script src="assets/js/plugins/platform-switcher.js?v=20260831-3"></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260913-portal-title-1" />
+  <script src="assets/js/plugins/platform-switcher.js?v=20260913-routes-1"></script>
 </head>
 <body>
   <!-- Global announcement bar – content & style controlled from assets/js/plugins/banner-config.js -->
@@ -143,36 +145,6 @@
     <div class="page-loader-inner">
       <div class="page-loader-modern">
         <div class="page-loader-orbit" aria-hidden="true">
-          <svg class="page-loader-ring page-loader-ring--outer" viewBox="0 0 220 220" focusable="false">
-            <circle cx="110" cy="110" r="92"></circle>
-            <path d="M110 18a92 92 0 0 1 92 92"></path>
-          </svg>
-          <svg class="page-loader-ring page-loader-ring--inner" viewBox="0 0 220 220" focusable="false">
-            <circle cx="110" cy="110" r="66"></circle>
-            <path d="M44 110a66 66 0 0 1 132 0"></path>
-          </svg>
-
-          <div class="page-loader-icon page-loader-icon--code">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M8.7 16.9 3.8 12l4.9-4.9 1.4 1.4L6.6 12l3.5 3.5-1.4 1.4Zm6.6 0-1.4-1.4 3.5-3.5-3.5-3.5 1.4-1.4 4.9 4.9-4.9 4.9Z"></path>
-            </svg>
-          </div>
-          <div class="page-loader-icon page-loader-icon--shield">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M12 22c-4.8-1.3-8-5.7-8-10.7V5.1L12 2l8 3.1v6.2c0 5-3.2 9.4-8 10.7Zm0-2.1c3.6-1.2 6-4.6 6-8.6V6.5l-6-2.3-6 2.3v4.8c0 4 2.4 7.4 6 8.6Zm-1-5.1 5-5-1.4-1.4L11 12l-1.6-1.6L8 11.8l3 3Z"></path>
-            </svg>
-          </div>
-          <div class="page-loader-icon page-loader-icon--server">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M4 4h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v3h14V6H5Zm-1 7h16a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1Zm1 2v3h14v-3H5Zm2-8h2v1H7V7Zm0 9h2v1H7v-1Z"></path>
-            </svg>
-          </div>
-          <div class="page-loader-icon page-loader-icon--search">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="m20.3 18.9-4.1-4.1a7 7 0 1 0-1.4 1.4l4.1 4.1 1.4-1.4ZM5 10.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0Z"></path>
-            </svg>
-          </div>
-
           <div class="page-loader-logo-core">
             <img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios Logo" />
           </div>
@@ -180,8 +152,8 @@
 
         <div class="page-loader-copy">
           <p class="page-loader-kicker">SMDZ Studios</p>
-          <p class="page-loader-title">Preparing documentation</p>
-          <p class="page-loader-status">Indexing scripts, guides and support resources</p>
+          <p class="page-loader-title">Synchronizing docs</p>
+          <p class="page-loader-status">Loading routes, search index and platform resources</p>
         </div>
 
         <div class="page-loader-progress" aria-hidden="true">
@@ -240,7 +212,6 @@
         '/errors-pages/404.md': '/docs/errors/404.md',
         '/errors-pages/500.md': '/docs/errors/500.md',
         '/errors-pages/503.md': '/docs/errors/503.md',
-        '/resources/template-script.md': '/resources/templates/script-template.md',
         '/resources/fivem/bridge/main': '/resources/fivem/core/smdz-bridge.md',
         '/resources/fivem/bridge/main.md': '/resources/fivem/core/smdz-bridge.md',
         '/resources/fivem/core/main': '/resources/fivem/core/smdz-bridge.md',
@@ -1470,26 +1441,6 @@
                 title: 'Bus Travel | SMDZ Studios',
                 description: 'Documentation for SMDZ Bus Travel, a FiveM bus transport resource for route-based travel systems.'
               },
-              '/resources/fivem/archived/fast-repair.md': {
-                title: 'Fast Repair | Archived FiveM Resource',
-                description: 'Archived documentation for SMDZ Fast Repair, a legacy FiveM repair resource kept for reference.'
-              },
-              '/resources/fivem/archived/hud2d-builder.md': {
-                title: 'HUD 2D Builder | Archived FiveM Resource',
-                description: 'Archived documentation for SMDZ HUD 2D Builder, a legacy FiveM HUD and drawtext builder resource.'
-              },
-              '/resources/fivem/archived/railway-job.md': {
-                title: 'Railway Job | Archived FiveM Resource',
-                description: 'Archived documentation for SMDZ Railway Job, a legacy FiveM railway roleplay resource.'
-              },
-              '/resources/fivem/archived/speed-for-zones.md': {
-                title: 'Speed For Zones | Archived FiveM Resource',
-                description: 'Archived documentation for SMDZ Speed For Zones, a legacy FiveM speed zone resource.'
-              },
-              '/resources/fivem/archived/toggle-minimap.md': {
-                title: 'Toggle Minimap | Archived FiveM Resource',
-                description: 'Archived documentation for SMDZ Toggle Minimap, a legacy FiveM minimap visibility resource.'
-              },
               '/resources/fivem/redesigns/ox-target-crystal.md': {
                 title: 'OX Target Crystal Redesign | SMDZ Studios',
                 description: 'Documentation for SMDZ OX Target Crystal Style, a visual redesign for ox_target interaction prompts.'
@@ -1606,9 +1557,6 @@
                 label: 'Asset Escrow System',
                 path: 'M12 2 4 5v6.2c0 5 3.2 9.4 8 10.8 4.8-1.4 8-5.8 8-10.8V5l-8-3Zm-1 13 5-5-1.4-1.4L11 12.2 9.4 10.6 8 12l3 3Z'
               },
-              '/resources/fivem/archived/fast-repair.md': { label: 'Fast Repair - v 1.0', path: 'M7 14h10l1 6H6l1-6Zm1-8h8v6H8V6Zm2 2v2h4V8h-4Zm-6 4h2v8H4v-8Zm14 0h2v8h-2v-8Z' },
-              '/resources/fivem/archived/speed-for-zones.md': { label: 'Speed For Zones', path: 'M12 4a9 9 0 0 1 9 9h-2a7 7 0 1 0-14 0H3a9 9 0 0 1 9-9Zm1 9 4-4-1.4-1.4-4.3 4.2A2 2 0 1 0 13 13Z' },
-              '/resources/fivem/archived/hud2d-builder.md': { label: 'HUD 2D Builder', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm1 10h10v2H7v-2Z' },
               '/resources/fivem/scripts/paid/bus-travel.md': { label: 'Bus Travel', path: 'M6 3h12a2 2 0 0 1 2 2v10a3 3 0 0 1-1 2.2V20h-2v-2H7v2H5v-2.8A3 3 0 0 1 4 15V5a2 2 0 0 1 2-2Zm0 4v5h12V7H6Zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
               '/resources/fivem/scripts/paid/evidence-markers.md': { label: 'Evidence Markers', path: 'M5 4h14v4H5V4Zm2 6h10v10H7V10Zm2 2v6h6v-6H9Z' },
               '/resources/fivem/scripts/paid/rancher-job.md': { label: 'Rancher Job', path: 'M4 11 12 4l8 7v9h-5v-5H9v5H4v-9Zm5 0h6l-3-2.7L9 11Z' },
@@ -1622,7 +1570,6 @@
               '/resources/fivem/scripts/paid/nfc-transfer.md': { label: 'NFC Transfer', path: 'M3 7h18v10H3V7Zm2 2v6h14V9H5Zm2 1h5v2H7v-2Z' },
               '/resources/fivem/scripts/paid/streamers-list.md': { label: 'Streamers List', path: 'M4 5h16v10H4V5Zm2 2v6h12V7H6Zm3 10h6v2H9v-2Zm8.5-8 2.5-1.5v5L17.5 11V9Z' },
               '/resources/fivem/scripts/paid/flyers.md': { label: 'Flyers', path: 'M5 4h14v16H5V4Zm2 3v2h10V7H7Zm0 4v2h10v-2H7Zm0 4v2h6v-2H7Z' },
-              '/resources/fivem/archived/railway-job.md': { label: 'Railway Job', path: 'M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3l2 3h-2.5l-1.3-2H8.8l-1.3 2H5l2-3a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 4v4h10V7H7Zm2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' },
               '/resources/fivem/scripts/free/parking-camera.md': { label: 'Parking Camera', path: 'M4 5h11a2 2 0 0 1 2 2v1.2l3-1.7V17l-3-1.7V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm1 3v8h9V8H5Z' },
               '/resources/fivem/scripts/free/handling-editor.md': { label: 'Handling Editor', path: 'M7 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM5 13l1.4-4.2A3 3 0 0 1 9.2 7h5.6a3 3 0 0 1 2.8 1.8L19 13h1v3h-1.2a4 4 0 0 0-7.6 0H8.8a4 4 0 0 0-7.6 0H0v-3h5Zm2.2 0h9.6l-.9-2.8A1.2 1.2 0 0 0 14.8 9H9.2a1.2 1.2 0 0 0-1.1.8L7.2 13Z' },
               '/resources/fivem/redesigns/ox-target-crystal.md': { label: 'Ox Target (Crystal Style)', path: 'M12 2 3 8l9 14 9-14-9-6Zm0 4 4 2.6-4 6.2-4-6.2L12 6Z' }
@@ -1818,9 +1765,6 @@
               'FAQ': sidebarIconMap['/docs/support/faq.md'],
               'COMMON PROBLEMS': sidebarIconMap['/docs/support/problems.md'],
               'ASSET ESCROW SYSTEM': sidebarIconMap['/docs/support/asset-escrow.md'],
-              'FAST REPAIR': sidebarIconMap['/resources/fivem/archived/fast-repair.md'],
-              'SPEED FOR ZONES': sidebarIconMap['/resources/fivem/archived/speed-for-zones.md'],
-              'HUD 2D BUILDER': sidebarIconMap['/resources/fivem/archived/hud2d-builder.md'],
               'BUS TRAVEL': sidebarIconMap['/resources/fivem/scripts/paid/bus-travel.md'],
               'EVIDENCE MARKERS': sidebarIconMap['/resources/fivem/scripts/paid/evidence-markers.md'],
               'RANCHER JOB': sidebarIconMap['/resources/fivem/scripts/paid/rancher-job.md'],
@@ -1834,7 +1778,6 @@
               'NFC TRANSFER': sidebarIconMap['/resources/fivem/scripts/paid/nfc-transfer.md'],
               'STREAMERS LIST': sidebarIconMap['/resources/fivem/scripts/paid/streamers-list.md'],
               'FLYERS': sidebarIconMap['/resources/fivem/scripts/paid/flyers.md'],
-              'RAILWAY JOB': sidebarIconMap['/resources/fivem/archived/railway-job.md'],
               'OX TARGET': sidebarIconMap['/resources/fivem/redesigns/ox-target-crystal.md']
             };
 
@@ -2876,7 +2819,7 @@
               header.className = 'brand-header';
               header.innerHTML =
                 '<a class="sidebar-logo-wrapper" href="#/docs/information/portal.md" aria-label="Go to Portal">' +
-                  '<img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios Logo" />' +
+                  '<img src="assets/fivem/logos/smdz-studios.png" alt="SMDZ Studios Logo" draggable="false" />' +
                 '</a>' +
                 '<div class="sidebar-menu-label">' +
                   '<strong>MENU</strong>' +
@@ -2886,6 +2829,25 @@
                   '</div>' +
                 '</div>';
               sidebarParent.insertBefore(header, sidebarParent.firstChild);
+
+              var sidebarLogo = header.querySelector('.sidebar-logo-wrapper');
+              if (sidebarLogo) {
+                sidebarLogo.addEventListener('mouseenter', function () {
+                  var rotateX = (Math.random() * 12 - 6).toFixed(2) + 'deg';
+                  var rotateY = (Math.random() * 18 - 9).toFixed(2) + 'deg';
+                  var shiftX = (Math.random() * 8 - 4).toFixed(2) + 'px';
+                  var shiftY = (Math.random() * 8 - 4).toFixed(2) + 'px';
+                  var depth = (14 + Math.random() * 14).toFixed(2) + 'px';
+                  var scale = (1.028 + Math.random() * 0.028).toFixed(3);
+
+                  sidebarLogo.style.setProperty('--sidebar-logo-rotate-x', rotateX);
+                  sidebarLogo.style.setProperty('--sidebar-logo-rotate-y', rotateY);
+                  sidebarLogo.style.setProperty('--sidebar-logo-shift-x', shiftX);
+                  sidebarLogo.style.setProperty('--sidebar-logo-shift-y', shiftY);
+                  sidebarLogo.style.setProperty('--sidebar-logo-depth', depth);
+                  sidebarLogo.style.setProperty('--sidebar-logo-scale', scale);
+                });
+              }
             }
 
             initSidebarVisitCounter();
@@ -2970,9 +2932,68 @@
       var app = document.getElementById('app');
       var loader = document.getElementById('page-loader');
       var loaderHidden = false;
+      var loaderStartedAt = Date.now();
+      var minLoaderDuration = 3000;
+      var loaderStatusTimer = null;
       var blockedKeyCooldown = 140;
       var lastBlockedSignature = '';
       var lastBlockedAt = 0;
+
+      function shuffleLoaderMessages(messages) {
+        var shuffled = messages.slice();
+        for (var index = shuffled.length - 1; index > 0; index -= 1) {
+          var swapIndex = Math.floor(Math.random() * (index + 1));
+          var current = shuffled[index];
+          shuffled[index] = shuffled[swapIndex];
+          shuffled[swapIndex] = current;
+        }
+        return shuffled;
+      }
+
+      function startLoaderStatusRotation() {
+        var statusEl = loader ? loader.querySelector('.page-loader-status') : null;
+        if (!statusEl) {
+          return;
+        }
+
+        var messages = shuffleLoaderMessages([
+          'Loading routes, search index and platform resources',
+          'Preparing FiveM and RedM navigation',
+          'Indexing scripts, guides and support pages',
+          'Checking resource metadata and sidebar links',
+          'Syncing command search entries',
+          'Loading support routes and troubleshooting notes',
+          'Preparing platform switcher state',
+          'Warming up documentation assets',
+          'Resolving guide aliases and legacy routes',
+          'Finalizing SMDZ Studios documentation',
+          'Loading addon weapon references',
+          'Preparing Asset Escrow guidance',
+          'Sorting resource categories',
+          'Checking SEO metadata and page titles',
+          'Building the documentation sidebar',
+          'Preparing quick access actions',
+          'Loading changelog entries',
+          'Syncing FiveM resource docs',
+          'Syncing RedM resource docs',
+          'Preparing support center links',
+          'Optimizing docs layout',
+          'Checking portal showcase entries',
+          'Loading compatibility notes',
+          'Preparing installation guides',
+          'Connecting navigation states',
+          'Refreshing local route cache',
+          'Loading trusted support references',
+          'Preparing documentation experience'
+        ]);
+        var messageIndex = 0;
+
+        statusEl.textContent = messages[messageIndex];
+        loaderStatusTimer = window.setInterval(function () {
+          messageIndex = (messageIndex + 1) % messages.length;
+          statusEl.textContent = messages[messageIndex];
+        }, 700);
+      }
 
       function normalizeShortcutKey(event) {
         return [
@@ -3084,13 +3105,25 @@
       }
 
       installGlobalSecurityGuards();
+      startLoaderStatusRotation();
 
       function hidePageLoader() {
         if (loaderHidden) {
           return;
         }
 
+        var elapsed = Date.now() - loaderStartedAt;
+        if (elapsed < minLoaderDuration) {
+          window.setTimeout(hidePageLoader, minLoaderDuration - elapsed);
+          return;
+        }
+
         loaderHidden = true;
+
+        if (loaderStatusTimer) {
+          window.clearInterval(loaderStatusTimer);
+          loaderStatusTimer = null;
+        }
 
         if (loader) {
           loader.classList.add('page-loader-hidden');

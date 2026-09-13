@@ -78,7 +78,6 @@
       '/faq.md': '/docs/support/faq.md',
       '/problems.md': '/docs/support/problems.md',
       '/fxap.md': '/docs/support/asset-escrow.md',
-      '/resources/template-script.md': '/resources/templates/script-template.md',
       '/resources/fivem/bridge/main': '/resources/fivem/core/smdz-bridge.md',
       '/resources/fivem/bridge/main.md': '/resources/fivem/core/smdz-bridge.md',
       '/resources/fivem/core/main': '/resources/fivem/core/smdz-bridge.md',
@@ -125,7 +124,7 @@
       return routePath;
     }
 
-    var legacyMatch = routePath.match(/^\/resources\/(paid|free|redesigns|redesings|archived|bridge)(\/.*)?$/i);
+    var legacyMatch = routePath.match(/^\/resources\/(paid|free|redesigns|redesings|bridge)(\/.*)?$/i);
     if (!legacyMatch) {
       return routePath;
     }

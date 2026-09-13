@@ -7,6 +7,7 @@ FiveM-Route-Prefix: https://docs.smdz-studios.com/#/resources/fivem/
 RedM-Route-Prefix: https://docs.smdz-studios.com/#/resources/redm/
 Contact: https://docs.smdz-studios.com/#/docs/support/support.md
 Policy-URL: https://docs.smdz-studios.com/robots.txt
+LLMs-URL: https://docs.smdz-studios.com/seo/llms.txt
 
 Training: deny
 Scraping: allow

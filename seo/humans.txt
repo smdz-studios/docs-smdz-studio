@@ -9,4 +9,6 @@ Language: English / Spanish
 Description: Official documentation for SMDZ Studios FiveM and RedM resources, setup guides, troubleshooting, Asset Escrow and support.
 Sitemap: https://docs.smdz-studios.com/seo/sitemap.xml
 Robots: https://docs.smdz-studios.com/robots.txt
-Last update: 2026-08-31
+AI Policy: https://docs.smdz-studios.com/seo/ai.txt
+LLMs Guide: https://docs.smdz-studios.com/seo/llms.txt
+Last update: 2026-09-13
