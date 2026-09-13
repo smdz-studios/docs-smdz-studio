@@ -388,6 +388,13 @@
                 return;
               }
 
+              if (node.tagName !== 'BLOCKQUOTE' && node.closest) {
+                var parentQuote = node.closest('blockquote');
+                if (parentQuote && getCalloutVariant(parentQuote.textContent)) {
+                  return;
+                }
+              }
+
               var variant = getCalloutVariant(node.textContent);
               if (!variant) {
                 return;
@@ -480,6 +487,19 @@
               badgeEl.setAttribute('tabindex', '0');
               badgeEl.setAttribute('aria-label', (badgeEl.textContent || '').trim() + ': ' + tooltipText);
               badgeEl.dataset.badgeTooltipBound = '1';
+            });
+
+            var openSourceTags = contentRoot.querySelectorAll('.home-showcase-tags span.tag-blue');
+            openSourceTags.forEach(function (tagEl) {
+              if (tagEl.dataset.badgeTooltipBound === '1') {
+                return;
+              }
+
+              var tooltipText = 'Open source code is available as an additional purchase option.';
+              tagEl.setAttribute('data-badge-tooltip', tooltipText);
+              tagEl.setAttribute('tabindex', '0');
+              tagEl.setAttribute('aria-label', (tagEl.textContent || '').trim() + ': ' + tooltipText);
+              tagEl.dataset.badgeTooltipBound = '1';
             });
 
             var changelogBadges = contentRoot.querySelectorAll('.changelog-version-badge');

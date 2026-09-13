@@ -127,6 +127,31 @@ aside.sidebar::-webkit-scrollbar-thumb {
 .announcement-type-warning {
   background: linear-gradient(90deg, #c2410c, #f97316);
 }
+.announcement-type-rdr2 {
+  color: #fff3df;
+  border-bottom-color: rgba(212, 160, 65, 0.34);
+  background:
+    linear-gradient(90deg, rgba(42, 5, 5, 0.98), rgba(116, 18, 16, 0.98) 45%, rgba(35, 7, 7, 0.98)),
+    #3b0a0a;
+  box-shadow: 0 10px 28px rgba(64, 8, 8, 0.36);
+}
+
+.announcement-type-rdr2 .announcement-icon {
+  color: #f7c767;
+  text-shadow: 0 0 14px rgba(247, 199, 103, 0.34);
+}
+
+.announcement-type-rdr2 .announcement-cta {
+  border-color: rgba(247, 199, 103, 0.48);
+  background: rgba(247, 199, 103, 0.13);
+  color: #ffe1a0;
+}
+
+.announcement-type-rdr2 .announcement-cta:hover,
+.announcement-type-rdr2 .announcement-cta:focus-visible {
+  border-color: rgba(247, 199, 103, 0.72);
+  background: rgba(247, 199, 103, 0.2);
+}
 
 /* Compact layout (less invasive) */
 .announcement-layout-compact {
@@ -2350,7 +2375,7 @@ button[aria-label^="close"]:focus-visible,
   flex-direction: column;
   min-height: 100%;
   border-radius: 0.9rem;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(160deg, #232323 0%, #1e1e1e 100%);
   border: 1px solid #333333;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
@@ -2386,6 +2411,7 @@ button[aria-label^="close"]:focus-visible,
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 0.9rem 0.9rem 0 0;
   background: #171717;
   border-bottom: 1px solid #353535;
   overflow: hidden;
@@ -2425,6 +2451,7 @@ button[aria-label^="close"]:focus-visible,
   width: 100%;
   height: auto; /* Let the image aspect ratio dictate the natural height */
   display: block;
+  border-radius: 0.9rem 0.9rem 0 0;
 }
 
 .home-showcase-body {
@@ -2464,6 +2491,7 @@ button[aria-label^="close"]:focus-visible,
 }
 
 .home-showcase-tags span {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4679,7 +4707,8 @@ button[aria-label^="close"]:focus-visible,
   box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
 }
 
-.badge[data-badge-tooltip]::after {
+.badge[data-badge-tooltip]::after,
+.home-showcase-tags span[data-badge-tooltip]::after {
   content: attr(data-badge-tooltip);
   position: absolute;
   left: 50%;
@@ -4710,12 +4739,15 @@ button[aria-label^="close"]:focus-visible,
 }
 
 .badge[data-badge-tooltip]:hover::after,
-.badge[data-badge-tooltip]:focus-visible::after {
+.badge[data-badge-tooltip]:focus-visible::after,
+.home-showcase-tags span[data-badge-tooltip]:hover::after,
+.home-showcase-tags span[data-badge-tooltip]:focus-visible::after {
   opacity: 1;
   transform: translate(-50%, 0) scale(1);
 }
 
-.badge:focus-visible {
+.badge:focus-visible,
+.home-showcase-tags span[data-badge-tooltip]:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
@@ -4826,15 +4858,8 @@ button[aria-label^="close"]:focus-visible,
 }
 
 .doc-callout::after {
-  content: attr(data-callout-label);
-  display: block;
-  margin: 0 0 0.35rem;
-  color: #93c5fd;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.22rem;
-  line-height: 1;
-  text-transform: uppercase;
+  content: none;
+  display: none;
 }
 
 .doc-callout p {

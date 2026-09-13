@@ -72,6 +72,25 @@
 
   <article class="home-showcase-card">
     <div class="home-showcase-media">
+      <img src="assets/fivem/weapons/baseball-weaponpack.png" alt="baseball-weaponpack preview image" />
+    </div>
+    <div class="home-showcase-body">
+      <h3>Baseball Weapon Pack</h3>
+      <p>SMDZ Baseball Weapon Pack adds three true addon melee weapons for FiveM: blood, chains and spiked baseball bats. It includes custom models, inventory icons, weapon metadata and setup guidance for ox_inventory, QBCore, QBX and standalone server workflows.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span class="tag-weapons">WEAPONS</span><span>STANDALONE</span>
+      </div>
+      <div class="home-showcase-actions">
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/weapons/baseball-pack.md">VIEW DOCS</a>
+      </div>
+    </div>
+  </article>
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
       <img src="assets/fivem/previews/modern-pause-menu.png" alt="mpausemenu preview image" />
     </div>
     <div class="home-showcase-body">

@@ -4,8 +4,8 @@ window.SMDZ_BANNER_CONFIG = {
   enabled: true,
   platforms: ["fivem", "redm"],
 
-  // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning"
-  type: "announcement",
+  // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning" | "rdr2"
+  type: "rdr2",
 
   // "full" | "compact"
   layout: "compact",
@@ -13,17 +13,17 @@ window.SMDZ_BANNER_CONFIG = {
   // "center" | "left"
   align: "center",
 
-  icon: "🔗",
-
-  title: "We have launched our own SMDZ Bridge.",
+  title: "SMDZ Studios is slowly expanding into RedM.",
 
   subtitle:
-    "It will start being used across our resources very soon.",
+    "New RedM resources and documentation will be added progressively as the platform grows inside our ecosystem.",
+
+  icon: "🐎",
 
   cta: {
     enabled: true,
-    label: "View Bridge",
-    url: "https://docs.smdz-studios.com/#/resources/fivem/core/smdz-bridge.md",
+    label: "View RedM Docs",
+    url: "https://docs.smdz-studios.com/#/resources/redm/overview.md",
     target: "_self"
   }
 };
