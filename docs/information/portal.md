@@ -82,6 +82,7 @@
       </div>
       <div class="home-showcase-actions">
         <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/weapons/baseball-pack.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/baseball-pack" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
