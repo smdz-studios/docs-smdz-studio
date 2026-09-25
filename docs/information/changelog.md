@@ -5,6 +5,32 @@
     />
   </div>
 
+
+#  <span class="changelog-version-badge">1.2.1</span> | SMDZ Handling Editor - 2026-09-25 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
+### 🔧 CHANGED:
+
+* Improved the server-side permission system for better compatibility with ACE permissions and framework admin groups.
+* Added improved support for `admin`, `superadmin`, `god`, and `owner` permission groups.
+* ACE permissions such as `smdz.handling` are now handled more reliably regardless of the player's framework group.
+
+### 🧩 FIXED:
+
+* Fixed an issue where players with valid `group.admin` or `group.owner` permissions could still receive the **"You don't have permission to use this command"** message.
+* Fixed permission checks not correctly recognizing some ACE principal configurations.
+* Improved compatibility with ESX, QBCore, Qbox, and standalone ACE setups.
+* Fixed cases where higher-level administrators were not being recognized correctly by the handling editor.
+
+### 🗂️ FILES MODIFIED:
+
+* `fxmanifest.lua`
+* `server/main.lua`
+* `server/*`
+* `web/*`
+
+---
+
+
 ---
 
 #  <span class="changelog-version-badge">1.0.1</span> | SMDZ Parking Camera - 2026-09-09 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
