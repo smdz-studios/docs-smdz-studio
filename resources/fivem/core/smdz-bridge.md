@@ -91,6 +91,7 @@ This layer is intended for your own resource line and for the servers of clients
 - `qb-inventory`
 - `qs-inventory`
 - `tgiann-inventory`
+- `aty_inventory`
 - `qb-core` as native QBCore inventory fallback
 - `es_extended` as native ESX inventory fallback
 
@@ -163,6 +164,7 @@ This layer is intended for your own resource line and for the servers of clients
 - `ti_fuel`
 - `x-fuel`
 - `msk_fuel`
+- `bupa-fuel`
 
 ---
 
