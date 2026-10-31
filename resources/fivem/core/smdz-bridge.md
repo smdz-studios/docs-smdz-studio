@@ -47,193 +47,173 @@ This makes your ecosystem easier to scale, easier to maintain, and far more cons
   <h2 style="margin: 0; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.05;">Supported Providers</h2>
 </div>
 
-Every provider listed below uses the exact FiveM resource folder name expected by the bridge.
-This layer is intended for your own resource line and for the servers of clients who use your scripts.
+> [!IMPORTANT]
+> The supported providers list has moved. For compatibility information updated in real time, visit [SMDZ Bridge — FiveM](https://smdz-studios.tebex.io/category/bridge-fivem).
+>
+> The crossed-out list below is kept for reference only and is no longer maintained.
 
-<section class="bridge-search-panel">
-  <p class="bridge-search-panel__eyebrow">Compatibility Search</p>
-  <h3 class="bridge-search-panel__title">Check If Your Resource Is Supported</h3>
-  <p class="bridge-search-panel__text">
-    Search by resource name, provider family, or keyword such as <code>origen</code>, <code>wasabi</code>, <code>qs</code>, <code>dispatch</code>, or <code>inventory</code>.
-  </p>
-  <div class="bridge-search-panel__field">
-    <input
-      id="bridge-provider-search"
-      class="bridge-search-panel__input"
-      type="search"
-      inputmode="search"
-      autocomplete="off"
-      spellcheck="false"
-      placeholder="Search compatibility..."
-      aria-label="Search bridge compatibility"
-    />
-    <button type="button" class="bridge-search-panel__clear" data-bridge-search-clear>Clear</button>
-  </div>
-  <p class="bridge-search-panel__status" data-bridge-search-status>Showing every supported provider.</p>
-</section>
+### ~~Framework Providers~~
 
-### Framework Providers
-
-- `qbx_core` for Qbox
-- `qb-core` for QBCore
-- `es_extended` for ESX
+- ~~`qbx_core` for Qbox~~
+- ~~`qb-core` for QBCore~~
+- ~~`es_extended` for ESX~~
 
 ---
 
-### Inventory Providers
+### ~~Inventory Providers~~
 
-- `ox_inventory`
-- `ak47_inventory`
-- `codem-inventory`
-- `core_inventory`
-- `jaksam_inventory`
-- `origen_inventory`
-- `qb-inventory`
-- `qs-inventory`
-- `tgiann-inventory`
-- `aty_inventory`
-- `qb-core` as native QBCore inventory fallback
-- `es_extended` as native ESX inventory fallback
-
----
-
-### Clothing Providers
-
-- `esx_skin`
-- `illenium-appearance`
-- `origen_clothing`
-- `qb-clothing`
-- `rcore_clothing`
+- ~~`ox_inventory`~~
+- ~~`ak47_inventory`~~
+- ~~`codem-inventory`~~
+- ~~`core_inventory`~~
+- ~~`jaksam_inventory`~~
+- ~~`origen_inventory`~~
+- ~~`qb-inventory`~~
+- ~~`qs-inventory`~~
+- ~~`tgiann-inventory`~~
+- ~~`aty_inventory`~~
+- ~~`qb-core` as native QBCore inventory fallback~~
+- ~~`es_extended` as native ESX inventory fallback~~
 
 ---
 
-### Dispatch Providers
+### ~~Clothing Providers~~
 
-- `bub_mdt`
-- `cd_dispatch`
-- `dusa_dispatch`
-- `fd_dispatch`
-- `origen_police`
-- `ps-dispatch`
-- `qf_mdt_police_v2`
-- `qs_dispatch`
-- `qs_police_creator`
-- `rcore_dispatch`
-- `tk_dispatch`
-- `lb-tablet`
-- `wasabi_mdt`
-- `0r-dispatch`
-- `plt_mdt`
-- `plt_departments`
+- ~~`esx_skin`~~
+- ~~`illenium-appearance`~~
+- ~~`origen_clothing`~~
+- ~~`qb-clothing`~~
+- ~~`rcore_clothing`~~
 
 ---
 
-### Banking Providers
+### ~~Dispatch Providers~~
 
-- `brutal_banking`
-- `crm-banking`
-- `fd_banking`
-- `kartik-banking`
-- `okokBanking`
-- `okokBankingV2`
-- `omes_banking`
-- `origen_banking`
-- `qb-banking`
-- `qf_banking`
-- `Renewed-Banking`
-- `qs-banking`
-- `tgiann-bank`
-- `wasabi_banking`
-
----
-
-### Fuel Providers
-
-- `LegacyFuel`
-- `BigDaddy-Fuel`
-- `cdn-fuel`
-- `esx-sna-fuel`
-- `lc_fuel`
-- `okokGasStation`
-- `ox_fuel`
-- `ps-fuel`
-- `qb-fuel`
-- `Renewed-Fuel`
-- `qs-fuelstations`
-- `rcore_fuel`
-- `ti_fuel`
-- `x-fuel`
-- `msk_fuel`
-- `bupa-fuel`
+- ~~`bub_mdt`~~
+- ~~`cd_dispatch`~~
+- ~~`dusa_dispatch`~~
+- ~~`fd_dispatch`~~
+- ~~`origen_police`~~
+- ~~`ps-dispatch`~~
+- ~~`qf_mdt_police_v2`~~
+- ~~`qs_dispatch`~~
+- ~~`qs_police_creator`~~
+- ~~`rcore_dispatch`~~
+- ~~`tk_dispatch`~~
+- ~~`lb-tablet`~~
+- ~~`wasabi_mdt`~~
+- ~~`0r-dispatch`~~
+- ~~`plt_mdt`~~
+- ~~`plt_departments`~~
 
 ---
 
-### Vehicle Keys Providers
+### ~~Banking Providers~~
 
-- `brutal_keys`
-- `cd_garage` (for keys functions only)
-- `dusa_vehiclekeys`
-- `F_RealCarKeysSystem`
-- `mk_vehiclekeys`
-- `MrNewbVehicleKeys`
-- `p_vehiclekeys`
-- `qbx_vehiclekeys`
-- `qs-vehiclekeys`
-- `Renewed-Vehiclekeys`
-- `t1ger_keys`
-- `vehicles_keys`
-- `wasabi_carlock`
-- `0r-vehiclekeys`
-
----
-
-### Notification Providers
-
-- `brutal_notify`
-- `codem-notification`
-- `esx_notify`
-- `FL-Notify`
-- `gtm-ui`
-- `lation_ui`
-- `mythic_notify`
-- `okokNotify`
-- `origen_notify`
-- `ox_lib`
-- `qb-core`
-- `qf_notify`
-- `RO_Notify`
-- `rtx_notify`
-- `RxNotify`
-- `vms_notifyv2`
-- `wasabi_notify`
-- `wasabi_uikit`
-- `xsNotify`
-- `frkn-uikit`
-- `es_extended`
+- ~~`brutal_banking`~~
+- ~~`crm-banking`~~
+- ~~`fd_banking`~~
+- ~~`kartik-banking`~~
+- ~~`okokBanking`~~
+- ~~`okokBankingV2`~~
+- ~~`omes_banking`~~
+- ~~`origen_banking`~~
+- ~~`qb-banking`~~
+- ~~`qf_banking`~~
+- ~~`Renewed-Banking`~~
+- ~~`qs-banking`~~
+- ~~`tgiann-bank`~~
+- ~~`wasabi_banking`~~
 
 ---
 
-### TextUI Providers
+### ~~Fuel Providers~~
 
-- `smdz_textui`
-- `brutal_textui`
-- `bx_textui`
-- `cd_drawtextui`
-- `codem-textui`
-- `dsco_textui`
-- `esx_textui`
-- `jg-textui`
-- `lation_ui`
-- `okokTextUI`
-- `origen_notify`
-- `ox_lib`
-- `qb-core`
-- `wasabi_uikit`
-- `ZSX_UIV2`
-- `qs-textui`
-- `r3-textui`
-- `lab-TextUI`
-- `KS-Textui`
+- ~~`LegacyFuel`~~
+- ~~`BigDaddy-Fuel`~~
+- ~~`cdn-fuel`~~
+- ~~`esx-sna-fuel`~~
+- ~~`lc_fuel`~~
+- ~~`okokGasStation`~~
+- ~~`ox_fuel`~~
+- ~~`ps-fuel`~~
+- ~~`qb-fuel`~~
+- ~~`Renewed-Fuel`~~
+- ~~`qs-fuelstations`~~
+- ~~`rcore_fuel`~~
+- ~~`ti_fuel`~~
+- ~~`x-fuel`~~
+- ~~`msk_fuel`~~
+- ~~`bupa-fuel`~~
+
+---
+
+### ~~Vehicle Keys Providers~~
+
+- ~~`brutal_keys`~~
+- ~~`cd_garage` (for keys functions only)~~
+- ~~`dusa_vehiclekeys`~~
+- ~~`F_RealCarKeysSystem`~~
+- ~~`mk_vehiclekeys`~~
+- ~~`MrNewbVehicleKeys`~~
+- ~~`p_vehiclekeys`~~
+- ~~`qbx_vehiclekeys`~~
+- ~~`qs-vehiclekeys`~~
+- ~~`Renewed-Vehiclekeys`~~
+- ~~`t1ger_keys`~~
+- ~~`vehicles_keys`~~
+- ~~`wasabi_carlock`~~
+- ~~`0r-vehiclekeys`~~
+
+---
+
+### ~~Notification Providers~~
+
+- ~~`brutal_notify`~~
+- ~~`codem-notification`~~
+- ~~`esx_notify`~~
+- ~~`FL-Notify`~~
+- ~~`gtm-ui`~~
+- ~~`lation_ui`~~
+- ~~`mythic_notify`~~
+- ~~`okokNotify`~~
+- ~~`origen_notify`~~
+- ~~`ox_lib`~~
+- ~~`qb-core`~~
+- ~~`qf_notify`~~
+- ~~`RO_Notify`~~
+- ~~`rtx_notify`~~
+- ~~`RxNotify`~~
+- ~~`vms_notifyv2`~~
+- ~~`wasabi_notify`~~
+- ~~`wasabi_uikit`~~
+- ~~`xsNotify`~~
+- ~~`frkn-uikit`~~
+- ~~`es_extended`~~
+
+---
+
+### ~~TextUI Providers~~
+
+- ~~`smdz_textui`~~
+- ~~`brutal_textui`~~
+- ~~`bx_textui`~~
+- ~~`cd_drawtextui`~~
+- ~~`codem-textui`~~
+- ~~`dsco_textui`~~
+- ~~`esx_textui`~~
+- ~~`jg-textui`~~
+- ~~`lation_ui`~~
+- ~~`okokTextUI`~~
+- ~~`origen_notify`~~
+- ~~`ox_lib`~~
+- ~~`qb-core`~~
+- ~~`wasabi_uikit`~~
+- ~~`ZSX_UIV2`~~
+- ~~`qs-textui`~~
+- ~~`r3-textui`~~
+- ~~`lab-TextUI`~~
+- ~~`KS-Textui`~~
 
 ---
 
