@@ -932,6 +932,44 @@
             updateChangelogTimeline();
           }
 
+          function initBridgeVersion() {
+            var versionEl = document.querySelector('.markdown-section [data-bridge-version]');
+            if (!versionEl || versionEl.dataset.bridgeVersionRequested === '1') {
+              return;
+            }
+
+            versionEl.dataset.bridgeVersionRequested = '1';
+            var controller = new AbortController();
+            var timeoutId = window.setTimeout(function () {
+              controller.abort();
+            }, 8000);
+
+            fetch('https://raw.githubusercontent.com/smdz-studios/smdz_bridge/refs/heads/main/version.json', {
+              cache: 'no-store',
+              credentials: 'omit',
+              signal: controller.signal
+            })
+              .then(function (response) {
+                if (!response.ok) {
+                  throw new Error('Bridge version request failed');
+                }
+                return response.json();
+              })
+              .then(function (data) {
+                if (!data || data.resource !== 'smdz_bridge' || typeof data.version !== 'string' ||
+                    data.version.length > 64 || !/^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/.test(data.version)) {
+                  throw new Error('Invalid bridge version');
+                }
+                versionEl.textContent = 'VERSION: ' + data.version;
+              })
+              .catch(function () {
+                versionEl.textContent = 'VERSION: Unavailable';
+              })
+              .finally(function () {
+                window.clearTimeout(timeoutId);
+              });
+          }
+
           function initBridgePolicyCards() {
             var routePath = (vm && vm.route && vm.route.path) ? vm.route.path : '';
             var contentRoot = document.querySelector('.markdown-section');
@@ -2594,6 +2632,7 @@
               enhanceScriptVideos();
               enhanceStatusBadges();
               enhanceChangelogPage();
+              initBridgeVersion();
               initBridgePolicyCards();
               initBridgeCompatibilityTools();
               window.setTimeout(enhanceChangelogPage, 80);

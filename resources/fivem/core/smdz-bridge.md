@@ -8,7 +8,7 @@
 <section class="support-hero support-hero--shield">
   <p class="support-eyebrow" style="font-size: 1.1rem; letter-spacing: 0.32rem;">CORE LAYER</p>
   <h1 style="font-size: clamp(3.2rem, 8vw, 5.8rem); line-height: 0.95; margin: 0.35rem 0 0.75rem;">SMDZ BRIDGE</h1>
-  <h1 style="font-size: clamp(1.15rem, 3vw, 2rem); line-height: 0.8; margin: 0.15rem 0 0.7rem; letter-spacing: 0.18rem; opacity: 0.78;">VERSION: 1.0.1</h1>
+  <h1 data-bridge-version aria-live="polite" style="font-size: clamp(1.15rem, 3vw, 2rem); line-height: 0.8; margin: 0.15rem 0 0.7rem; letter-spacing: 0.18rem; opacity: 0.78;">VERSION: Loading...</h1>
 
   <p style="font-size: clamp(1.15rem, 2.4vw, 1.7rem); line-height: 1.45; max-width: 900px; margin: 0.75rem auto 0; font-weight: 500;">
     The compatibility core that powers framework and provider support across the SMDZ Studios ecosystem.
@@ -47,10 +47,25 @@ This makes your ecosystem easier to scale, easier to maintain, and far more cons
   <h2 style="margin: 0; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.05;">Supported Providers</h2>
 </div>
 
-> [!IMPORTANT]
-> The supported providers list has moved. For compatibility information updated in real time, visit [SMDZ Bridge — FiveM](https://smdz-studios.tebex.io/category/bridge-fivem).
->
-> The crossed-out list below is kept for reference only and is no longer maintained.
+
+<section class="bridge-policy-card bridge-policy-card--warning" style="margin-top: 2.2rem; border: 1px solid rgba(239, 68, 68, 0.38); background: linear-gradient(180deg, rgba(127, 29, 29, 0.34), rgba(38, 10, 10, 0.92)); border-radius: 18px; padding: 1.2rem 1.15rem 1.15rem; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);">
+  <p class="bridge-policy-card__label" style="margin: 0 0 0.45rem; font-size: 0.82rem; letter-spacing: 0.22rem; text-transform: uppercase; color: #fca5a5; font-weight: 800; display: inline-flex; align-items: center; gap: 0.5rem;">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="display: block; fill: currentColor;">
+      <path d="M12 3 2.7 19a1 1 0 0 0 .87 1.5h16.86A1 1 0 0 0 21.3 19L12 3Zm-1 5h2v6h-2V8Zm0 8h2v2h-2v-2Z"></path>
+    </svg>
+    Important
+  </p>
+  <h2 style="margin: 0 0 0.85rem; font-size: clamp(1.45rem, 3vw, 2.2rem); line-height: 1.05; color: #fef2f2;">Supported Providers List Has Moved</h2>
+  <p style="margin: 0 0 0.8rem; color: #fecaca; line-height: 1.7;">
+    For compatibility information updated in real time, visit <a href="https://smdz-studios.tebex.io/category/bridge-fivem" target="_blank" rel="noopener noreferrer">SMDZ Bridge — FiveM</a>.
+  </p>
+  <p style="margin: 0; color: #fecaca; line-height: 1.7;">
+    The crossed-out list below is kept for reference only and is no longer maintained.
+  </p>
+</section>
+
+---
+
 
 ### ~~Framework Providers~~
 
