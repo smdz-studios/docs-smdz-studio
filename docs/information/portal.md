@@ -77,13 +77,12 @@
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/fivem/previews/rcs.png" alt="rcs" />
-      <span>Advanced RCS</span>
     </div>
     <div class="home-showcase-body">
       <h3>Advanced RCS</h3>
       <p>Defy gravity with advanced air stabilization, propelled jumps, wall driving, and powerful vehicle boosts. Featuring realistic thruster effects, mechanic installations, persistent upgrades, and a fully customizable tablet.</p>
       <div class="home-showcase-tags">
-        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span>
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span>
       </div>
       <div class="home-showcase-actions">
         <span class="home-showcase-btn home-showcase-btn--docs" aria-disabled="true">DOCS COMING SOON</span>
