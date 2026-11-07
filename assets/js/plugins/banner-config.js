@@ -1,7 +1,7 @@
 // SMDZ Studios - Global announcement bar configuration
 
 window.SMDZ_BANNER_CONFIG = {
-  enabled: true,
+  enabled: false,
   platforms: ["fivem", "redm"],
 
   // "info" | "alert" | "sale" | "maintenance" | "announcement" | "warning" | "rdr2"

@@ -70,6 +70,37 @@
 
 <div class="home-showcase-grid">
 
+
+
+
+
+  <article class="home-showcase-card">
+    <div class="home-showcase-media">
+      <img src="assets/fivem/previews/rcs.png" alt="rcs" />
+      <span>Advanced RCS</span>
+    </div>
+    <div class="home-showcase-body">
+      <h3>Advanced RCS</h3>
+      <p>Defy gravity with advanced air stabilization, propelled jumps, wall driving, and powerful vehicle boosts. Featuring realistic thruster effects, mechanic installations, persistent upgrades, and a fully customizable tablet.</p>
+      <div class="home-showcase-tags">
+        <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span>
+      </div>
+      <div class="home-showcase-actions">
+        <span class="home-showcase-btn home-showcase-btn--docs" aria-disabled="true">DOCS COMING SOON</span>
+        <span class="home-showcase-btn home-showcase-btn--buy" aria-disabled="true">STORE LINK PENDING</span>
+      </div>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+
+
   <article class="home-showcase-card">
     <div class="home-showcase-media">
       <img src="assets/fivem/weapons/baseball-weaponpack.png" alt="baseball-weaponpack preview image" />
