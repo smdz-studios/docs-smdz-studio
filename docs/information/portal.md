@@ -85,8 +85,8 @@
         <span class="tag-platform tag-fivem">FIVEM</span><span class="tag-paid">PAID</span><span>ESX</span><span>QBCORE</span><span>QBX</span><span class="tag-blue">OPEN SOURCE AVAILABLE</span>
       </div>
       <div class="home-showcase-actions">
-        <span class="home-showcase-btn home-showcase-btn--docs" aria-disabled="true">DOCS COMING SOON</span>
-        <span class="home-showcase-btn home-showcase-btn--buy" aria-disabled="true">STORE LINK PENDING</span>
+        <a class="home-showcase-btn home-showcase-btn--docs" href="/#/resources/fivem/scripts/paid/advanced-rcs.md">VIEW DOCS</a>
+        <a class="home-showcase-btn home-showcase-btn--buy" href="https://smdz-studios.tebex.io/package/7793360" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
     </div>
   </article>
