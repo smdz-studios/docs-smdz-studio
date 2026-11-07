@@ -8,6 +8,7 @@
   - [SMDZ Bridge](/resources/fivem/core/smdz-bridge.md "icon:wrench")
 
 - **Paid Resources**
+  - [Advanced RCS](/resources/fivem/scripts/paid/advanced-rcs.md "icon:waves-vertical")
   - [Modern Pause Menu](/resources/fivem/scripts/paid/modern-pause-menu.md "icon:app-window-mac")
   - [Speed Radars](/resources/fivem/scripts/paid/speed-radars.md "icon:camera")
   - [Safes System](/resources/fivem/scripts/paid/advanced-safes.md "icon:package-2")
