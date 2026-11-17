@@ -1,3 +1,10 @@
+# Changelog moved to Discord
+
+The changelog has moved to Discord. You can find all updates and release notes here:
+
+[View the changelog on Discord](https://discord.com/channels/1413063696867004500/1472287475262292091)
+
+<!--
  <div class="changelogs">
     <img
       src="assets/fivem/other/banner-changelogs.png"
@@ -5,6 +12,73 @@
     />
   </div>
 
+
+# <span class="changelog-version-badge">1.1.0</span> | SMDZ Streamers List - 2026-11-17 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
+
+## 🚀 BIG UPDATE - SMDZ STREAMERS LIST
+
+**⚠️ SMDZ Bridge is now a required dependency.**
+
+### ✅ Added
+
+* Introduced **Streamer Rewards**, a new system that allows streamers to earn in-game rewards based on verified streaming hours.
+* Added automatic live stream title verification for **Twitch and Kick**, supporting configurable keywords and matching conditions.
+* Added support for **item, money, and vehicle rewards**, with customizable streaming hour requirements.
+* Introduced a dedicated **Rewards section**, allowing players to track their progress, view available rewards, and claim unlocked prizes.
+* Added full **Reward Management** functionality to the administration panel, including reward creation, editing, and title verification settings.
+* Added the ability for administrators to manually **grant or remove streaming hours**, with persistent records and Discord logging.
+* Added individual player preferences for **light/dark themes and custom accent colors**, automatically saved in SQL.
+* Added support for **Portuguese (Portugal), Portuguese (Brazil), and Polish**, bringing the total to seven supported languages.
+* Added extended Discord webhook logging for reward claims, streaming hour adjustments, and administrative actions.
+
+### 🎨 UI & Design
+
+* Completely redesigned the interface using the new **SMDZ FRONTEND 2027** design system.
+* Introduced a **fullscreen administration panel** with improved navigation and layout.
+* Added custom dropdowns, inputs, buttons, switches, and DOM-based scrollbars.
+* Introduced new loading skeletons, contextual empty states, and updated SVG iconography.
+* Added smooth interface animations and animated theme transitions.
+* Added platform-specific buttons using official **Twitch and Kick colors**.
+* Improved reward presentation with progress indicators, reward previews, and detailed information panels.
+
+### 🛡️ Security
+
+* Made **SMDZ Bridge mandatory**, with automatic startup healthchecks and provider validation.
+* Integrated framework, notification and inventory operations through SMDZ Bridge.
+* Added server-side verification for streaming hours, reward claims, and administrative actions.
+* Added protection against duplicate reward claims and unauthorized reward delivery.
+* Implemented administrative cooldowns and persistent auditing for streaming hour adjustments.
+* Added server-side validation for reward delivery and framework compatibility.
+
+### 🔧 Changed
+
+* Introduced a redesigned startup console banner (less annoying) displaying resource information, detected framework, integrations, and system status.
+* Moved new feature configuration into `updates_config.lua`.
+* Centralized UI color configuration in `ui_colors_config.lua`.
+* Added dedicated webhook configuration through `server_logs_config.lua`.
+* Moved reward settings and title requirements into SQL, fully manageable from the admin panel.
+* Added an optional public Twitch lookup provider, removing the need to configure OAuth credentials when using that provider.
+* Expanded compatibility with **ESX, QBCore, and Qbox** for money and vehicle rewards.
+* Improved Records with advanced filtering, searching, and detailed action history.
+
+### 🗂️ Files Modified
+
+* `fxmanifest.lua`
+* `config.lua`
+* `updates_config.lua` **(New)**
+* `ui_colors_config.lua` **(Renamed / Updated)**
+* `server_logs_config.lua` **(New)**
+* `client/main.lua`
+* `server/main.lua`
+* `server/rewards.lua` **(New)**
+* `server/reward_delivery.lua` **(New)**
+* `server/theme_preferences.lua` **(New)**
+* `server/webcheck.lua`
+* `locales/*`
+
+**⚠️ The update will be uploaded to the CFX portal tonight/early tomorrow morning. (UTC+1, Brussels / Madrid time)**
+
+---
 
 #  <span class="changelog-version-badge">1.2.1</span> | SMDZ Handling Editor - 2026-09-25 <span class="changelog-platform-badge changelog-platform-badge--fivem" data-changelog-platform="fivem">FiveM</span>
 
@@ -630,3 +704,5 @@
 - `server/sv_exports.lua`
 - `INSTALL_FILES/items_ox_inventory.lua`
 - `INSTALL_FILES/items_qs_inventory.lua`
+
+-->
